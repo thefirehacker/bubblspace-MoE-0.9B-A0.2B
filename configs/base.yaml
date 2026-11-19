@@ -1,0 +1,83 @@
+# ============================================================
+# MoE-0.9B-A2b v2  —  ~917M total / ~213M active params
+# Qwen3-Next-inspired, single H100 80GB, Muon + AdamW
+# ============================================================
+
+run_name: moe0-9b-a2b-base
+
+model:
+  n_layers: 16
+  d_model: 1024
+  vocab_size: 49280          # bubblspace-tokenizer real length 49164, padded to a multiple of 128
+  tie_embeddings: true
+  max_seq_len: 2048
+  norm_eps: 1.0e-6
+
+  attention:
+    n_heads: 16
+    head_dim: 64
+    n_kv_heads: 4
+    qk_norm: true
+    rope_theta: 10000
+    output_gate: true
+    bias: false
+
+  moe:
+    n_experts: 64
+    top_k: 8
+    expert_hidden: 256
+    activation: silu
+    router_init_std: 0.02
+    backend: auto              # auto | grouped_mm | fallback — resolved at startup by probing torch._grouped_mm
+    load_balance_coef: 0.01
+    router_z_loss_coef: 0.001
+
+  init:
+    std: 0.02
+    # residual_proj_std = std / sqrt(2 * n_layers), applied to attn.o_proj and experts.W_down
+
+optimizer:
+  muon:
+    lr: 6.0e-4
+    momentum: 0.95
+    nesterov: true
+    ns_steps: 5
+    weight_decay: 0.1
+  adamw:
+    lr: 6.0e-4
+    betas: [0.9, 0.95]
+    eps: 1.0e-8
+    weight_decay: 0.1
+  grad_clip: 1.0
+
+schedule:
+  warmup_steps: 2000
+  decay: cosine               # cosine | wsd
+  min_lr_ratio: 0.1
+  wsd_decay_frac: 0.2         # only used when decay: wsd
+
+training:
+  dataset: HuggingFaceFW/fineweb-edu
+  dataset_config: sample-10BT
+  total_tokens: 10_000_000_000
+  seq_len: 2048
+  global_batch_tokens: 524288
+  micro_batch: 16
+  precision: bf16
+  compile: true
+  checkpoint_every: 1000
+  log_every: 10
+  expert_hist_every: 100
+  attn_logit_every: 100
+
+data:
+  data_dir: /lambda/nfs/h100-f1/data
+  checkpoint_dir: /lambda/nfs/h100-f1/checkpoints
+
+tokenizer:
+  path: ./bubblspace-tokenizer
+  doc_separator: "<|endoftext|>"
+
+wandb:
+  project: moe0-9b-a2b
+  entity: null

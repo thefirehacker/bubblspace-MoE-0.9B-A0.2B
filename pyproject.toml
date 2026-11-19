@@ -1,0 +1,23 @@
+[project]
+name = "moe0-9b-a2b"
+version = "0.1.0"
+description = "917M/213M-active MoE language model training on a single H100"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.6.0",
+    "transformers>=4.45.0",
+    "tiktoken>=0.8.0",
+    "datasets>=3.0.0",
+    "numpy>=1.26",
+    "wandb>=0.18",
+    "pyyaml>=6.0",
+    "tqdm>=4.66",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]

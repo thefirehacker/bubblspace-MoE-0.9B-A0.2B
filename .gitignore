@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets / local config
+.env
+
+# W&B
+wandb/
+
+# Training artifacts (live on mounted persistent storage, not in git)
+checkpoints/
+data/
+*.pt
+*.ckpt
+*.bin
+*.idx
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

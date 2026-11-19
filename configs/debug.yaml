@@ -1,0 +1,30 @@
+# Overrides on top of base.yaml for a cheap end-to-end smoke test (~100M tokens).
+# Only the keys that differ from base.yaml are listed here; everything else
+# (optimizer hparams, grad_clip, schedule shape, etc.) is inherited so the
+# debug and full runs never drift apart on shared hyperparameters.
+
+run_name: moe0-9b-a2b-debug
+
+model:
+  n_layers: 4
+  d_model: 512
+  moe:
+    n_experts: 16
+    top_k: 4
+    expert_hidden: 128
+
+schedule:
+  warmup_steps: 100
+
+training:
+  total_tokens: 100_000_000
+  global_batch_tokens: 32768   # 16 seqs x 2048
+  micro_batch: 8
+  checkpoint_every: 200
+  log_every: 5
+  expert_hist_every: 20
+  attn_logit_every: 20
+
+data:
+  data_dir: /lambda/nfs/h100-f1/data/debug
+  checkpoint_dir: /lambda/nfs/h100-f1/checkpoints/debug
