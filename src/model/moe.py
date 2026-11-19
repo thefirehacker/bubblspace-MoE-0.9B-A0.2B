@@ -159,12 +159,20 @@ class MoEFFN(nn.Module):
         counts = torch.bincount(sorted_expert, minlength=self.n_experts)
         offs = counts.cumsum(0).to(torch.int32)
 
-        gathered_x = x_flat[sorted_token]
-        gate = torch._grouped_mm(gathered_x, self.W_gate, offs=offs)
-        up = torch._grouped_mm(gathered_x, self.W_up, offs=offs)
+        # torch._grouped_mm is a private op that torch.autocast does not know
+        # to cast — it requires bf16/fp16 inputs explicitly, unlike ordinary
+        # matmul which autocast handles automatically under the training
+        # loop's autocast context.
+        gathered_x = x_flat[sorted_token].to(torch.bfloat16)
+        w_gate = self.W_gate.to(torch.bfloat16)
+        w_up = self.W_up.to(torch.bfloat16)
+        w_down = self.W_down.to(torch.bfloat16)
+
+        gate = torch._grouped_mm(gathered_x, w_gate, offs=offs)
+        up = torch._grouped_mm(gathered_x, w_up, offs=offs)
         h = F.silu(gate) * up
-        down = torch._grouped_mm(h, self.W_down, offs=offs)
-        down = down * sorted_weight.unsqueeze(-1)
+        down = torch._grouped_mm(h, w_down, offs=offs)
+        down = down * sorted_weight.unsqueeze(-1).to(down.dtype)
 
         out = torch.zeros(n_tokens, d, device=x_flat.device, dtype=down.dtype)
         out.index_add_(0, sorted_token, down)
