@@ -16,13 +16,16 @@ env/
 # W&B
 wandb/
 
-# Training artifacts (live on mounted persistent storage, not in git)
-checkpoints/
-data/
+# Training artifacts (live on mounted persistent storage, not in git).
+# Rooted (leading /) so these never shadow source subpackages of the same
+# name, e.g. src/data/ — a bare "data/" matches at any depth and once
+# silently excluded the entire src/data/ package from every commit.
+/checkpoints/
+/data/
 *.pt
 *.ckpt
-*.bin
 *.idx
+shard_*.bin
 
 # OS / editor
 .DS_Store
