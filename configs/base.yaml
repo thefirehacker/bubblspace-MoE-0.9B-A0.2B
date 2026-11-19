@@ -1,9 +1,9 @@
 # ============================================================
-# MoE-0.9B-A2b v2  —  ~917M total / ~213M active params
+# MoE-0.9B-A0.2B v2  —  ~915M total / ~211M active params
 # Qwen3-Next-inspired, single H100 80GB, Muon + AdamW
 # ============================================================
 
-run_name: moe0-9b-a2b-base
+run_name: moe0-9b-a0-2b-base
 
 model:
   n_layers: 16
@@ -79,5 +79,5 @@ tokenizer:
   doc_separator: "<|endoftext|>"
 
 wandb:
-  project: moe0-9b-a2b
+  project: moe0-9b-a0-2b
   entity: null

@@ -1,4 +1,4 @@
-# MoE-0.9B-A2b
+# MoE-0.9B-A0.2B
 
 A from-scratch Mixture-of-Experts language model (~915M total / ~211M active params), trained on a single Lambda Cloud H100 80GB. Architecture is Qwen3-Next-inspired: GQA + QK-norm + RoPE + an elementwise attention output-gate, 64-expert dropless top-8 SwiGLU MoE with ZeroCenteredRMSNorm, trained with Muon (hidden matrices) + AdamW (embedding/router/norms).
 
@@ -65,7 +65,21 @@ The architecture spec was a one-line gloss on a few details; these were resolved
 
 ## Training objective / data mixture
 
-The tokenizer (FIM + tool-call + think tokens) and `src/data/fim.py` are built for coding and AI-agentic training, but the actual data mixture for those is **not yet wired in** — the current `src/data/prepare.py` run targets FineWeb-Edu only. Before a code/agentic-focused run, this needs: (1) one or more code datasets passed through `prepare.py --is_code --fim_rate <r>` so FIM transforms apply, and (2) agentic trajectory data formatted with the `<tool_call>`/`<tool_response>`/`<think>` tokens at the point it's tokenized (not inserted into generic pretraining text). Dataset selection for both is an open decision, not a code gap.
+The tokenizer (FIM + tool-call + think tokens) and `src/data/fim.py` are built for coding and AI-agentic training, but the actual data mixture for those is **not yet wired in** — the current `src/data/prepare.py` run targets FineWeb-Edu only. Before a code/agentic-focused run, this needs: (1) one or more code datasets passed through `prepare.py --is_code --fim_rate <r>` so FIM transforms apply, and (2) agentic trajectory data formatted with the `<tool_call>`/`<tool_response>`/`<think>` tokens at the point it's tokenized (not inserted into generic pretraining text). Dataset selection below is a recommendation, not yet downloaded or wired in.
+
+Recommended mixture (shifting ratio — English-dominant early, code/agentic upweighted in a final anneal phase, rather than strict non-overlapping sequential stages, to avoid forgetting earlier stages):
+
+| Stage | Dataset | Notes |
+|---|---|---|
+| English (base) | `HuggingFaceFW/fineweb-edu` (already wired in) | high-quality filtered web text |
+| English (breadth) | `HuggingFaceTB/cosmopedia-v2` | synthetic textbook-style text; same corpus SmolLM2 itself trained alongside FineWeb-Edu |
+| Code — Python | `HuggingFaceTB/python-edu` | educational-quality Python; pairs with `--is_code --fim_rate` |
+| Code — frontend/JS | `bigcode/the-stack-v2-dedup`, language configs `javascript`, `typescript`, `jsx`/`tsx`, `html`, `css`, `vue` | single corpus, filter by `data_dir`/language; covers React/Vue-style frontend code |
+| Code — backend (multi-language) | same `bigcode/the-stack-v2-dedup`, language configs `java`, `go`, `php`, `c-sharp`, `ruby`, `sql` | broadens beyond Python for server-side code; apply the same FIM transform |
+| Agentic (tool-use) | `Salesforce/xlam-function-calling-60k` or `NousResearch/hermes-function-calling-v1` | formats map directly onto `<tools>`/`<tool_call>`/`<tool_response>` |
+| Agentic (reasoning) | `open-thoughts/OpenThoughts-114k` (or similar CoT set) | gives `<think>`/`</think>` real content instead of unused wrapper tokens |
+
+Caveats: (1) at ~211M active params this won't be a strong coding/agentic model, but enough to learn the formats and basic patterns; (2) The Stack v2 requires accepting its license/attribution terms on the dataset page before `datasets` can stream it; (3) the agentic datasets are small (tens of thousands of examples, not billions of tokens) — they need upsampling/multiple epochs during the anneal phase rather than being a token-matched stage on their own; (4) per-language token budget across frontend/backend isn't pinned down yet — a reasonable starting split is roughly even across the languages listed unless profiling shows a particular language underrepresented relative to your actual use case.
 
 ## Lambda Cloud setup
 
@@ -83,7 +97,7 @@ ssh -i ~/.ssh/wsp.pem ubuntu@209.20.157.241 "df -h /lambda/nfs/h100-f1 && touch 
 
 ```bash
 ssh -i ~/.ssh/wsp.pem ubuntu@209.20.157.241
-git clone <this-repo-url> moe0.9b-a2b && cd moe0.9b-a2b
+git clone <this-repo-url> moe0.9b-a0.2b && cd moe0.9b-a0.2b
 bash scripts/setup_fire01.sh
 wandb login                            # or put WANDB_API_KEY in .env (copy .env.example)
 ```
