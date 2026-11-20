@@ -17,15 +17,19 @@ never inserted into raw web/code text. FIM tokens are inserted only when
 
 import argparse
 import json
+import os
 import random
 from pathlib import Path
 
 import numpy as np
 from datasets import load_dataset
+from dotenv import load_dotenv
 from tqdm import tqdm
 from transformers import AutoTokenizer
 
 from src.data.fim import apply_fim
+
+load_dotenv()
 
 SHARD_TOKENS = 100_000_000  # ~200MB per shard at uint16
 
@@ -33,7 +37,8 @@ SHARD_TOKENS = 100_000_000  # ~200MB per shard at uint16
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default="HuggingFaceFW/fineweb-edu")
-    parser.add_argument("--dataset_config", default="sample-10BT")
+    parser.add_argument("--dataset_config", default="sample-10BT", help="pass '' (empty string) for datasets with no named config, e.g. bigcode/starcoderdata")
+    parser.add_argument("--data_dir", default=None, help="HF load_dataset data_dir (e.g. bigcode/starcoderdata language subfolder)")
     parser.add_argument("--text_field", default="text")
     parser.add_argument("--tokenizer_path", default="bubblspace-tokenizer")
     parser.add_argument("--out_dir", required=True)
@@ -60,7 +65,14 @@ def main():
             tok.convert_tokens_to_ids("<|fim_suffix|>"),
         )
 
-    ds = load_dataset(args.dataset, name=args.dataset_config, split="train", streaming=True)
+    ds = load_dataset(
+        args.dataset,
+        name=args.dataset_config or None,  # "" means "no named config" (e.g. bigcode/starcoderdata)
+        data_dir=args.data_dir,
+        split="train",
+        streaming=True,
+        token=os.environ.get("HF_TOKEN"),
+    )
 
     buffer = np.empty(args.shard_tokens, dtype=np.uint16)
     buf_pos = 0
@@ -105,6 +117,7 @@ def main():
     meta = {
         "dataset": args.dataset,
         "dataset_config": args.dataset_config,
+        "data_dir": args.data_dir,
         "tokenizer_path": args.tokenizer_path,
         "total_tokens": total_written,
         "n_shards": shard_idx,
