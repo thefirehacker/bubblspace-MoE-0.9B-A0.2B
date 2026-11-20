@@ -31,6 +31,7 @@ Usage:
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -131,20 +132,15 @@ def iter_hermes_episodes():
                 yield "".join(turns)
 
 
-def iter_openthoughts_episodes():
-    local_path = hf_hub_download(
-        repo_id="open-thoughts/OpenThoughts-114k",
-        filename="data/train-00000-of-00006.parquet",
-        repo_type="dataset",
-    )
+def _iter_sharegpt_parquet_episodes(repo_id: str, filenames: list[str]):
+    """Shared loader for OpenThoughts-style datasets: a `system` column plus a
+    `conversations` column of ShareGPT {from, value} turns, with reasoning
+    wrapped in <|begin_of_thought|>/<|end_of_thought|> (remapped to our
+    <think>/</think> special tokens) rather than OpenAI-style role/content."""
     import pyarrow.parquet as pq
 
-    for part in range(6):
-        path = hf_hub_download(
-            repo_id="open-thoughts/OpenThoughts-114k",
-            filename=f"data/train-0000{part}-of-00006.parquet",
-            repo_type="dataset",
-        )
+    for filename in filenames:
+        path = hf_hub_download(repo_id=repo_id, filename=filename, repo_type="dataset")
         table = pq.read_table(path)
         systems = table.column("system").to_pylist()
         conv_lists = table.column("conversations").to_pylist()
@@ -164,10 +160,71 @@ def iter_openthoughts_episodes():
                 yield "".join(turns)
 
 
+def iter_openthoughts_episodes():
+    filenames = [f"data/train-0000{part}-of-00006.parquet" for part in range(6)]
+    yield from _iter_sharegpt_parquet_episodes("open-thoughts/OpenThoughts-114k", filenames)
+
+
+def iter_bespoke_stratos_episodes():
+    # Same lineage/format as OpenThoughts (also uses <|begin_of_thought|>), but
+    # a smaller, more curated 17k-example set -- added specifically because
+    # OpenThoughts-114k's <=2048-token keep-rate came back at only ~7.5%
+    # (traces average ~8k tokens), so a shorter-by-construction source was
+    # needed to actually grow the agentic/reasoning pool.
+    yield from _iter_sharegpt_parquet_episodes(
+        "bespokelabs/Bespoke-Stratos-17k", ["data/train-00000-of-00001.parquet"]
+    )
+
+
+GLAIVE_TURN_RE = re.compile(r"\n\n\n(USER|ASSISTANT|FUNCTION RESPONSE): ", re.MULTILINE)
+
+
+def iter_glaive_fc_v2_episodes():
+    """glaiveai/glaive-function-calling-v2: {system, chat} where `chat` is a
+    single flat string with USER:/ASSISTANT:/FUNCTION RESPONSE: turn markers
+    and literal <|endoftext|> turn terminators, and ASSISTANT turns render
+    tool calls as `<functioncall> {...}` rather than JSON role fields."""
+    local_path = hf_hub_download(
+        repo_id="glaiveai/glaive-function-calling-v2",
+        filename="glaive-function-calling-v2.json",
+        repo_type="dataset",
+    )
+    with open(local_path, encoding="utf-8") as f:
+        rows = json.load(f)
+
+    for row in rows:
+        system = (row.get("system") or "").strip()
+        system = system[len("SYSTEM: ") :] if system.startswith("SYSTEM: ") else system
+        chat = "\n\n\n" + (row.get("chat") or "").strip()
+
+        turns = []
+        if system:
+            turns.append(wrap("system", f"<tools>\n{system}\n</tools>"))
+
+        parts = GLAIVE_TURN_RE.split(chat)[1:]  # drop leading empty string before the first marker
+        for role_marker, content in zip(parts[0::2], parts[1::2]):
+            content = content.replace("<|endoftext|>", "").strip()
+            if not content:
+                continue
+            if role_marker == "USER":
+                turns.append(wrap("user", content))
+            elif role_marker == "FUNCTION RESPONSE":
+                turns.append(wrap("user", f"<tool_response>\n{content}\n</tool_response>"))
+            elif role_marker == "ASSISTANT":
+                if "<functioncall>" in content:
+                    call_json = content.split("<functioncall>", 1)[1].strip()
+                    content = f"<tool_call>\n{call_json}\n</tool_call>"
+                turns.append(wrap("assistant", content))
+        if turns:
+            yield "".join(turns)
+
+
 SOURCES = {
     "toolmind": iter_toolmind_episodes,
     "hermes": iter_hermes_episodes,
     "openthoughts": iter_openthoughts_episodes,
+    "bespoke_stratos": iter_bespoke_stratos_episodes,
+    "glaive_fc_v2": iter_glaive_fc_v2_episodes,
 }
 
 
