@@ -44,23 +44,39 @@ approved later — same ratios, same datasets, just a longer Stage 2A.
 
 **GPU time estimate:** 12B tokens ÷ ~87,000 tok/s measured throughput ≈ **~38 hours**.
 
-**Mixture — 26% English replay / 54% Code / 20% Agentic** (corrected from the first
-draft's 71.5/21.9/6.6, which would have left the finished model at >90% English —
-see Issue 1 in the audit):
+**Mixture — 26% English replay / 63.2% Code / 10.8% Agentic** (revised twice: first
+from the original draft's 71.5/21.9/6.6, which would have left the finished model at
+>90% English — see Issue 1 in the audit; then again after real data-prep yields came
+in far short on the agentic pool — see "Agentic pool revision" below):
 
-| Pool | Overall share | Tokens |
-|---|---|---|
-| English replay | 26% | 3.12B |
-| Code | 54% | 6.48B |
-| Agentic (tool-use + reasoning) | 20% | 2.4B |
+| Pool | Overall share | Tokens | Unique tokens on disk | Oversampling |
+|---|---|---|---|---|
+| English replay | 26.0% | 3.12B | 3.12B (1.60B reused Phase 1 shards + 1.52B `cosmopedia-v2`) | ~1.0x |
+| Code | 63.2% | 7.58B | 6.48B | ~1.17x (trivial — `starcoderdata` has far more headroom if ever needed) |
+| Agentic (tool-use + reasoning) | 10.8% | 1.30B | ~375M (see revision below) | ~3.47x |
+
+**Agentic pool revision:** the original 20% (2.4B) target assumed ~1.1B unique
+agentic tokens after the ≤2048 filter. Real data-prep yield came in at only ~297M
+across the first three sources (`hermes` 8.9M, `openthoughts` 17.3M, `toolmind`
+270.4M — `OpenThoughts-114k` in particular kept only 8,575 of 114,000 rows, 92.5%
+dropped, since full CoT traces average ~8k tokens). Two more sources were added
+specifically to close the gap: `glaiveai/glaive-function-calling-v2` (112,431
+episodes kept, only 0.47% dropped, **58.9M tokens** — mostly short single/few-turn
+function calls, a strong yield) and `bespokelabs/Bespoke-Stratos-17k` (3,450 kept,
+**5.5M tokens** — same `<|begin_of_thought|>`-tagged lineage as OpenThoughts but
+more concise, a smaller but free addition). New total: **~375M unique tokens**.
+Rather than force ~6.4x repetition to hit the original 2.4B target, the agentic
+target was lowered to 1.3B (~3.47x — a reasonable repetition factor, not an
+overfitting risk) and the freed 1.1B moved into Code, which already has far more
+headroom than it needs.
 
 ### Two-stage WSD schedule
 
 | Sub-phase | Steps (Phase 2's own counter) | Tokens | LR | English | Code | Agentic |
 |---|---|---|---|---|---|---|
-| **2A — Plateau** | `0 → 19,073` | 10.0B | `6e-5 → 2.4e-4` linear warmup over first 300 steps, then stable `2.4e-4` | 28% (2.82B) | 57% (5.68B) | 15% (1.5B) |
-| **2B — Anneal** | `19,073 → 22,888` (3,815 steps) | 2.0B | Cosine/linear decay `2.4e-4 → 6e-6` | 15% (0.30B) | 40% (0.80B) | 45% (0.90B) |
-| **Total** | **22,888 steps** | **12.0B** | WSD | **26.0% (3.12B)** | **54.0% (6.48B)** | **20.0% (2.40B)** |
+| **2A — Plateau** | `0 → 19,073` | 10.0B | `6e-5 → 2.4e-4` linear warmup over first 300 steps, then stable `2.4e-4` | 28% (2.80B) | 64% (6.40B) | 8% (0.80B) |
+| **2B — Anneal** | `19,073 → 22,888` (3,815 steps) | 2.0B | Cosine/linear decay `2.4e-4 → 6e-6` | 16% (0.32B) | 59% (1.18B) | 25% (0.50B) |
+| **Total** | **22,888 steps** | **12.0B** | WSD | **26.0% (3.12B)** | **63.2% (7.58B)** | **10.8% (1.30B)** |
 
 During Stage 2B, the Code pool's internal weighting shifts toward the curated
 `python-edu-cleaned` source and away from raw `starcoderdata`, so the lowest-LR
@@ -117,17 +133,32 @@ flagged `starcoderdata` files were individually confirmed to sit outside these
 5 languages via Hugging Face's authenticated security API (`git-commits-cleaned/`
 ×3, `github-issues-filtered-structured/` ×1).
 
-### Pool C — Agentic tool-use + reasoning (2.4B tokens, hard-filtered to ≤2048 tokens)
+### Pool C — Agentic tool-use + reasoning (~375M unique tokens, hard-filtered to ≤2048 tokens, 1.3B drawn via ~3.47x oversampling)
 
-| Source | Role | Access |
-|---|---|---|
-| `Nanbeige/ToolMind` | Primary tool-use + reasoning-enhanced trajectories (~990M unique tokens) | **Direct repo, not the `tuandunghcmut/toolmind` mirror** (that mirror is manually-gated and an unofficial re-upload with unclear license provenance — wrong fit for a repo about to carry an "everything is open source" banner). Stream raw `.jsonl` via `huggingface_hub` + `json.loads`, bypassing `datasets.load_dataset`'s PyArrow schema inference, which crashes on ToolMind's heterogeneous nested `tools` JSON |
-| `Salesforce/xlam-function-calling-60k` | Function-calling format diversity | Small (~27M tokens) but clean |
-| `NousResearch/hermes-function-calling-v1` | Function-calling format diversity | Small (~11M tokens) |
-| `open-thoughts/OpenThoughts-114k` | `<think>`/`</think>` reasoning content | **Hard-filtered to ≤1920 tokens** — full traces average ~8,000 tokens (3.55GB / 114k rows), and random 2048-token slicing would train the model to open `<think>` and never close it. Rows over the limit are dropped, not truncated |
+All five sources formatted by `scripts/prepare_agentic.py` into one wire format
+(`<|im_start|>role\n...\n<|im_end|>`, tool schemas wrapped in `<tools>`, calls in
+`<tool_call>`/`<tool_response>`), hard-filtered to ≤2048 tokens per episode (dropped,
+never truncated), and packed into 2048-aligned blocks with `<|fim_pad|>`-padded
+tails. Real measured yields, not pre-run estimates:
 
-Combined unique agentic pool ≈ **~1.1B tokens**. At a 2.4B allocation that's ~2.2
-epochs — on the high side but within tolerance, not excessive repetition.
+| Source | Kept episodes | Tokens | Drop rate | Access |
+|---|---|---|---|---|
+| `Nanbeige/ToolMind` | 192,448 | 270.4M | 48% (of 368,611) | **Direct repo, not the `tuandunghcmut/toolmind` mirror** (manually-gated, unofficial re-upload, unclear license provenance — wrong fit for a repo carrying an "everything is open source" banner). Streamed as raw `.jsonl` via `huggingface_hub` + `json.loads`, bypassing `datasets.load_dataset`'s PyArrow schema inference, which crashes on ToolMind's heterogeneous nested `tools` JSON |
+| `glaiveai/glaive-function-calling-v2` | 112,431 | **58.9M** | 0.47% (of 112,960) | Added after the original 3 sources came in far short (see below). Mostly short single/few-turn function calls — by far the best keep-rate found. `{system, chat}` schema with a custom `USER:`/`ASSISTANT:`/`FUNCTION RESPONSE:` flat-text format, parsed with a dedicated regex rather than ShareGPT/OpenAI-style turns |
+| `NousResearch/hermes-function-calling-v1` | 9,717 | 8.9M | 16% (of 11,578, across all 5 configs) | ShareGPT-style; system messages already carry `<tools>...</tools>` XML natively |
+| `bespokelabs/Bespoke-Stratos-17k` | 3,450 | 5.5M | 79% (of 16,710) | Added alongside `glaive_fc_v2` — same `<|begin_of_thought|>`-tagged lineage as OpenThoughts, more concise, but still mostly long-form reasoning |
+| `open-thoughts/OpenThoughts-114k` | 8,575 | 17.3M | **92.5%** (of 114,000) | `<think>`/`</think>` reasoning content (`<|begin_of_thought|>`/`<|end_of_thought|>` remapped). Full traces average ~8,000 tokens (3.55GB / 114k rows), so the ≤2048 filter drops nearly all of them — this is the single biggest reason the original ~1.1B unique-token estimate turned out wrong |
+
+**Combined unique agentic pool: ~375M tokens** (not the originally estimated
+~1.1B). `ToolMind` and `OpenThoughts-114k` were in the original plan; `glaive_fc_v2`
+and `Bespoke-Stratos-17k` were added specifically to close the gap once real yields
+came in short — `Salesforce/xlam-function-calling-60k` was dropped from the plan
+since `ToolMind` already incorporates a richer, reasoning-annotated version of the
+same underlying xLAM queries (confirmed by comparing file sizes: ToolMind's
+`xlam-function-calling-60k-query.jsonl` alone is 476MB vs. the standalone repo's
+97MB). At the revised 1.3B allocation (section 2), that's ~3.47x oversampling —
+a reasonable repetition factor, not an overfitting risk the way ~6-8x would have
+been against the 2.4B target.
 
 ## 4. Confirmed bugs this plan fixes (full detail in `issue-01-phase2.md`)
 
