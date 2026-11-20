@@ -52,6 +52,7 @@ def load_weights(model: Transformer, checkpoint_path: str) -> int | None:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="configs/base.yaml")
+    parser.add_argument("--debug", action="store_true", help="merge configs/debug.yaml, for a quick smoke test")
     parser.add_argument("--checkpoint", required=True)
     parser.add_argument("--tokenizer", default=None, help="defaults to cfg.tokenizer.path")
     parser.add_argument("--tasks", default=DEFAULT_TASKS)
@@ -61,7 +62,7 @@ def main():
 
     import lm_eval  # deferred: only needed for this script, not training
 
-    cfg = load_config(args.config)
+    cfg = load_config(args.config, debug=args.debug)
     if cfg.model.moe.backend == "auto":
         cfg.model.moe.backend = "grouped_mm" if probe_grouped_mm() else "fallback"
     print(f"[moe] backend resolved to: {cfg.model.moe.backend}")

@@ -38,7 +38,7 @@ class BubblSpaceLM(LM):
         self.model = model
         self.tokenizer = tokenizer
         self.cfg = cfg
-        self.device = device
+        self._device = device  # lm_eval.api.model.LM defines `device` as a read-only property backed by self._device
         self.real_vocab_size = len(tokenizer)
         self.max_seq_len = cfg.model.max_seq_len
         self.eot_token_id = tokenizer.eos_token_id
@@ -66,7 +66,7 @@ class BubblSpaceLM(LM):
         inp = torch.tensor([full_enc[:-1]], dtype=torch.long, device=self.device)
         targets = torch.tensor(full_enc[1:], dtype=torch.long, device=self.device)
 
-        with torch.autocast(device_type=self.device, dtype=self._autocast_dtype):
+        with torch.autocast(device_type=self.device, dtype=self._autocast_dtype, enabled=(self.device == "cuda")):
             logits, _, _, _ = self.model(inp)
         logits = logits[0, :, : self.real_vocab_size].float()
 
@@ -112,7 +112,7 @@ class BubblSpaceLM(LM):
                     continue
                 inp = torch.tensor([chunk[:-1]], dtype=torch.long, device=self.device)
                 targets = torch.tensor(chunk[1:], dtype=torch.long, device=self.device)
-                with torch.autocast(device_type=self.device, dtype=self._autocast_dtype):
+                with torch.autocast(device_type=self.device, dtype=self._autocast_dtype, enabled=(self.device == "cuda")):
                     logits, _, _, _ = self.model(inp)
                 logits = logits[0, :, : self.real_vocab_size].float()
                 log_probs = F.log_softmax(logits, dim=-1)
@@ -138,7 +138,7 @@ class BubblSpaceLM(LM):
                 seq_len = input_ids.shape[1]
                 if seq_len > self.max_seq_len:
                     input_ids = input_ids[:, -self.max_seq_len :]
-                with torch.autocast(device_type=self.device, dtype=self._autocast_dtype):
+                with torch.autocast(device_type=self.device, dtype=self._autocast_dtype, enabled=(self.device == "cuda")):
                     logits, _, _, _ = self.model(input_ids)
                 next_logits = logits[0, -1, : self.real_vocab_size]
                 next_id = next_logits.argmax().view(1, 1)
