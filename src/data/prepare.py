@@ -37,7 +37,7 @@ SHARD_TOKENS = 100_000_000  # ~200MB per shard at uint16
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default="HuggingFaceFW/fineweb-edu")
-    parser.add_argument("--dataset_config", default=None)
+    parser.add_argument("--dataset_config", default="sample-10BT", help="pass '' (empty string) for datasets with no named config, e.g. bigcode/starcoderdata")
     parser.add_argument("--data_dir", default=None, help="HF load_dataset data_dir (e.g. bigcode/starcoderdata language subfolder)")
     parser.add_argument("--text_field", default="text")
     parser.add_argument("--tokenizer_path", default="bubblspace-tokenizer")
@@ -67,7 +67,7 @@ def main():
 
     ds = load_dataset(
         args.dataset,
-        name=args.dataset_config,
+        name=args.dataset_config or None,  # "" means "no named config" (e.g. bigcode/starcoderdata)
         data_dir=args.data_dir,
         split="train",
         streaming=True,
