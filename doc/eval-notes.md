@@ -366,6 +366,30 @@ Sources: [Pythia paper](https://arxiv.org/pdf/2304.01373),
 [EleutherAI/pythia-160m-v0](https://huggingface.co/EleutherAI/pythia-160m-v0),
 [SmolLM2 paper](https://arxiv.org/pdf/2502.02737).
 
+### step_8000 (2026-11-20)
+
+Checkpoint: `step_8000.pt` — step 8,000 / 19,073 planned steps (~42% through
+the run). Tokens seen: 8,000 × 524,288 ≈ **4.19B**. Raw results:
+[`benchmark/step_8000.json`](../benchmark/step_8000.json).
+
+| Task | Metric | step_7000 | step_8000 | Δ |
+|---|---|---|---|---|
+| PIQA | acc_norm | 64.7% | 64.5% | -0.2 (noise) |
+| ARC-Easy | acc_norm | 51.1% | 50.7% | -0.4 (noise) |
+| HellaSwag | acc_norm | 37.0% | 38.0% | +1.0 |
+| LAMBADA (openai) | acc | 29.0% | 31.0% | **+2.0** |
+| LAMBADA (openai) | perplexity | 58.1 | **50.3** | **-7.8 (better)** |
+| WinoGrande | acc | 52.4% | 51.7% | -0.7 (noise) |
+| ARC-Challenge | acc_norm | 28.0% | 27.6% | -0.4 (noise) |
+
+**Read:** most metrics are flat within statistical noise over just 1,000
+steps (stderr on most of these tasks is ~1-1.4%, so ±1 point swings aren't
+meaningful on their own). LAMBADA is the exception — a real, consistent
+improvement. This is the exact metric flagged in the `step_7000` comparison
+above as most dependent on total tokens seen (vs. Pythia/SmolLM2's much
+larger token budgets), so it being the first to move clearly as training
+continues is a good, expected signal rather than a coincidence.
+
 ---
 
 ## Next Step: Dropping the Custom Adapter Altogether
