@@ -8,9 +8,9 @@ Local repo scaffolding and all of Phases 2–6's code have been written already:
 
 ## Context
 
-The user has a Lambda Cloud on-demand H100 80GB instance (`fire01`, region `us-west-3`, `ssh ubuntu@209.20.157.241`) already running, and wants to train a from-scratch Mixture-of-Experts language model on it against FineWeb-Edu (~10B tokens). The repo (`bubblspace-MoE0.9B-A2b`) is confirmed completely empty — just `git init`, no commits, no remote — so this is a greenfield build, not a modification.
+The user has a Lambda Cloud on-demand H100 80GB instance (`fire01`, region `us-west-3`) already running, and wants to train a from-scratch Mixture-of-Experts language model on it against FineWeb-Edu (~10B tokens). The repo (`bubblspace-MoE0.9B-A2b`) is confirmed completely empty — just `git init`, no commits, no remote — so this is a greenfield build, not a modification.
 
-Two architecture specs were given in chat; the user confirmed **v2** ("Qwen3-Next-inspired": 64 experts/top-8, ZeroCenteredRMSNorm, attention output-gate, global-batch load balancing) is the target, superseding v1. The user also flagged a real risk up front: their persistent storage filesystem (`c2b9e73db4c341539cf88735d098beb7`, believed to be in "Utah") may or may not be in the same Lambda region as `fire01` (`us-west-3`) — and Lambda filesystems cannot be mounted across regions, so this must be resolved before any data download or paid GPU time is spent. The user also wants W&B logging, both a fast (`torch._grouped_mm`) and a portable fallback MoE kernel, and a README + .gitignore as explicit deliverables.
+Two architecture specs were given in chat; the user confirmed **v2** ("Qwen3-Next-inspired": 64 experts/top-8, ZeroCenteredRMSNorm, attention output-gate, global-batch load balancing) is the target, superseding v1. The user also flagged a real risk up front: their persistent storage filesystem (believed to be in "Utah") may or may not be in the same Lambda region as `fire01` (`us-west-3`) — and Lambda filesystems cannot be mounted across regions, so this must be resolved before any data download or paid GPU time is spent. The user also wants W&B logging, both a fast (`torch._grouped_mm`) and a portable fallback MoE kernel, and a README + .gitignore as explicit deliverables.
 
 **Outcome:** a working, debug-tested training pipeline for this exact architecture, with the storage question resolved first, that can be left running unattended for the full ~10B-token / ~19k-step run.
 
@@ -58,7 +58,7 @@ Checkpoints and tokenized data live under the mounted persistent storage (e.g. `
 
 This blocks all downstream work since it governs whether data/checkpoints have anywhere durable to live.
 
-1. Check the filesystem `c2b9e73db4c341539cf88735d098beb7`'s region via the Lambda console **Storage** tab (or `GET https://cloud.lambdalabs.com/api/v1/filesystems`) and compare against `fire01`'s region (`us-west-3`).
+1. Check the filesystem's region via the Lambda console **Storage** tab (or `GET https://cloud.lambdalabs.com/api/v1/filesystems`) and compare against `fire01`'s region (`us-west-3`).
 2. **If they match:** copy the exact NFS mount command Lambda provides for that filesystem (don't hand-construct it — the DNS name is filesystem-specific) and mount at `/mnt/moe-storage`; add it to `/etc/fstab` or a mount step in `setup_fire01.sh` so it survives reboot. No transfer fee beyond the standard ~$0.20/GB/month storage rate.
 3. **If they don't match:** Lambda has no cross-region mount. Document two options in the README, recommending the first:
    - Relaunch an H100 instance in the filesystem's actual region and re-point SSH.

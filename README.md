@@ -2,32 +2,14 @@
 
 A from-scratch Mixture-of-Experts language model (~915M total / ~211M active params), trained on a single Lambda Cloud H100 80GB. Architecture is Qwen3-Next-inspired: GQA + QK-norm + RoPE + an elementwise attention output-gate, 64-expert dropless top-8 SwiGLU MoE with ZeroCenteredRMSNorm, trained with Muon (hidden matrices) + AdamW (embedding/router/norms).
 
-**Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces) below. The current concrete data pipeline tokenizes FineWeb-Edu as the base text corpus; a code + agentic-trajectory data mixture is the natural next addition (dataset selection not yet pinned down — see "Training objective" below) and the tokenizer/FIM plumbing is already in place for it.
+**Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces). The current concrete data pipeline tokenizes FineWeb-Edu as the base text corpus; a code + agentic-trajectory data mixture is the natural next phase (see "Training objective" below) and the tokenizer/FIM plumbing is already in place for it.
 
-## Tokenizer
+- **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b)
+- **License**: [Apache 2.0](LICENSE)
 
-[scripts/build_tokenizer.py](scripts/build_tokenizer.py) builds `bubblspace-tokenizer/` from `HuggingFaceTB/SmolLM2-360M`'s tokenizer (49,152 tokens) — **no new tokenizer is trained**, it only extends the vocabulary:
+## Status
 
-| Added | Tokens |
-|---|---|
-| Chat | `<\|im_start\|>`, `<\|im_end\|>` *(already present in the SmolLM2 base tokenizer — skipped)* |
-| FIM | `<\|fim_prefix\|>`, `<\|fim_middle\|>`, `<\|fim_suffix\|>`, `<\|fim_pad\|>` |
-| Tools | `<tools>`, `</tools>`, `<tool_call>`, `</tool_call>`, `<tool_response>`, `</tool_response>` |
-| Reasoning | `<think>`, `</think>` |
-
-Result: 49,152 + 12 new = 49,164 real tokens, padded to **49,280** (multiple of 128) for `model.vocab_size`. The 116 padding rows are never produced by the tokenizer and are sliced out of the loss entirely in `scripts/train.py` (not just left to cross-entropy's target-matching — they're excluded from the softmax too). Embeddings stay tied.
-
-Document separator for pretraining: `<|endoftext|>` (the tokenizer's `eos_token`, id 0), appended after every document. Chat/tool/think tokens are **never** inserted into raw pretraining text; FIM tokens are inserted only into code samples when `--is_code --fim_rate > 0` is passed to `src/data/prepare.py` (see [src/data/fim.py](src/data/fim.py), standard PSM prefix/suffix/middle layout).
-
-Verified locally (`scripts/build_tokenizer.py` + `scripts/sanity_check_data.py`): all 15 special tokens encode to a single id each, round-trip (`decode(encode(x)) == x`) holds on web/Python/math samples. Bytes-per-token vs. GPT-2, measured on real ~800KB held-out samples (real FineWeb-Edu docs, real Python stdlib source, real FineMath docs — not toy strings):
-
-| Domain | bubblspace bytes/token | GPT-2 bytes/token | Result |
-|---|---|---|---|
-| Web (FineWeb-Edu) | 4.541 | 4.639 | ~parity (bubblspace ~2% more tokens) |
-| Python (stdlib) | 3.752 | 2.191 | **bubblspace ~1.7x more efficient** (~58% as many tokens as GPT-2) |
-| Math (FineMath) | 3.326 | 3.561 | bubblspace ~7% more tokens (slightly behind) |
-
-Net: no efficiency reason to prefer GPT-2 for this model — bubblspace-tokenizer is clearly better on code, roughly tied on general English, marginally behind on math. (An earlier pass at this measurement, on a 56-byte toy string, gave a misleadingly different and in fact inverted reading — don't trust anything below a real, reasonably-sized sample.)
+Pretraining (phase 1: English-only base checkpoint, FineWeb-Edu, 10B tokens, single H100, no instruction tuning yet) is in progress. See [`benchmark/README.md`](benchmark/README.md) for benchmark results tracked across checkpoints as training progresses, and [`doc/eval-notes.md`](doc/eval-notes.md) for a full technical walkthrough of how evaluation is wired up for this custom (non-`transformers`-native) architecture.
 
 ## Architecture summary
 
@@ -52,16 +34,42 @@ Optimizer: Muon (lr 6e-4, momentum 0.95, Nesterov, 5 Newton-Schulz steps, update
 
 Full config: [configs/base.yaml](configs/base.yaml). Cheap smoke-test config: [configs/debug.yaml](configs/debug.yaml).
 
-## Open assumptions
+## Tokenizer
 
-The architecture spec was a one-line gloss on a few details; these were resolved with a documented choice rather than left ambiguous — revisit if training behaves oddly:
+[scripts/build_tokenizer.py](scripts/build_tokenizer.py) builds `bubblspace-tokenizer/` from `HuggingFaceTB/SmolLM2-360M`'s tokenizer (49,152 tokens) — **no new tokenizer is trained**, it only extends the vocabulary:
 
-1. **QK-norm/RoPE order**: norm applied before rotation (Qwen3-style).
-2. **Global-batch load balancing**: the router's load-balance loss uses a *differentiable* per-micro-batch mean probability combined with a *detached* running expert-count fraction accumulated across the 16 gradient-accumulation micro-batches of one optimizer step (reset after each step). A literal "single aux-loss backward after all 16 micro-batches" isn't compatible with standard gradient accumulation.
-3. **MoE fallback backend**: a dense-masked variant exists only as a correctness oracle in `tests/test_moe_backends.py` (computes every token through every expert — never used in training); the actual fallback is a gather + per-expert Python loop in the forward pass (`src/model/moe.py`). That loop is fine — only the Muon optimizer's Newton-Schulz step is required to avoid a per-expert loop, and it does (batched via `bmm`).
-4. **`torch._grouped_mm`** is a private, experimental PyTorch API whose signature can shift between versions. `moe.backend: auto` probes it at startup (`src/model/moe.py:probe_grouped_mm`) and falls back automatically if it's unavailable or errors.
-5. **`torch.compile`** + dropless MoE's data-dependent per-expert token counts can trigger excessive recompilation. Watch for this during the debug run; `training.compile: false` in the config is the documented escape hatch.
-6. **Tokenizer vs. GPT-2**: measured for real (see "Tokenizer" above) — bubblspace-tokenizer is ~1.7x more token-efficient on Python code, ~parity on general English, ~7% behind on math. No change needed; resolved in favor of keeping the SmolLM2-based tokenizer.
+| Added | Tokens |
+|---|---|
+| Chat | `<\|im_start\|>`, `<\|im_end\|>` *(already present in the SmolLM2 base tokenizer — skipped)* |
+| FIM | `<\|fim_prefix\|>`, `<\|fim_middle\|>`, `<\|fim_suffix\|>`, `<\|fim_pad\|>` |
+| Tools | `<tools>`, `</tools>`, `<tool_call>`, `</tool_call>`, `<tool_response>`, `</tool_response>` |
+| Reasoning | `<think>`, `</think>` |
+
+Result: 49,152 + 12 new = 49,164 real tokens, padded to **49,280** (multiple of 128) for `model.vocab_size`. The 116 padding rows are never produced by the tokenizer and are sliced out of the loss entirely in `scripts/train.py` (not just left to cross-entropy's target-matching — they're excluded from the softmax too). Embeddings stay tied.
+
+Document separator for pretraining: `<|endoftext|>` (the tokenizer's `eos_token`, id 0), appended after every document. Chat/tool/think tokens are **never** inserted into raw pretraining text; FIM tokens are inserted only into code samples when `--is_code --fim_rate > 0` is passed to `src/data/prepare.py` (see [src/data/fim.py](src/data/fim.py), standard PSM prefix/suffix/middle layout).
+
+Verified locally (`scripts/build_tokenizer.py` + `scripts/sanity_check_data.py`): all 15 special tokens encode to a single id each, round-trip (`decode(encode(x)) == x`) holds on web/Python/math samples. Bytes-per-token vs. GPT-2, measured on real ~800KB held-out samples (real FineWeb-Edu docs, real Python stdlib source, real FineMath docs — not toy strings):
+
+| Domain | bubblspace bytes/token | GPT-2 bytes/token | Result |
+|---|---|---|---|
+| Web (FineWeb-Edu) | 4.541 | 4.639 | ~parity (bubblspace ~2% more tokens) |
+| Python (stdlib) | 3.752 | 2.191 | **bubblspace ~1.7x more efficient** (~58% as many tokens as GPT-2) |
+| Math (FineMath) | 3.326 | 3.561 | bubblspace ~7% more tokens (slightly behind) |
+
+Net: no efficiency reason to prefer GPT-2 for this model — bubblspace-tokenizer is clearly better on code, roughly tied on general English, marginally behind on math.
+
+## Benchmarks
+
+Standard base-LM benchmark suite (HellaSwag, PIQA, ARC-Easy/Challenge, WinoGrande, LAMBADA) via [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness), scored with a custom adapter since this isn't a `transformers`-native architecture — see [`src/eval/lm_eval_adapter.py`](src/eval/lm_eval_adapter.py) and [`doc/eval-notes.md`](doc/eval-notes.md) for how that's wired up, and [`benchmark/README.md`](benchmark/README.md) for full results tracked per checkpoint, including a comparison against GPT-2-124M, Pythia-160M/410M, and SmolLM2-360M at matched (or smaller) training-token budgets.
+
+```bash
+pip install -e ".[eval]"
+python scripts/run_benchmarks.py \
+    --checkpoint /path/to/step_N.pt \
+    --tasks hellaswag,piqa,arc_easy,arc_challenge,winogrande,lambada_openai \
+    --output benchmark/step_N.json
+```
 
 ## Training objective / data mixture
 
@@ -81,28 +89,37 @@ Recommended mixture (shifting ratio — English-dominant early, code/agentic upw
 
 Caveats: (1) at ~211M active params this won't be a strong coding/agentic model, but enough to learn the formats and basic patterns; (2) The Stack v2 requires accepting its license/attribution terms on the dataset page before `datasets` can stream it; (3) the agentic datasets are small (tens of thousands of examples, not billions of tokens) — they need upsampling/multiple epochs during the anneal phase rather than being a token-matched stage on their own; (4) per-language token budget across frontend/backend isn't pinned down yet — a reasonable starting split is roughly even across the languages listed unless profiling shows a particular language underrepresented relative to your actual use case.
 
-## Lambda Cloud setup
+## Design notes
 
-### 1. Storage (resolved)
+The architecture spec was a one-line gloss on a few details; these were resolved with a documented choice rather than left ambiguous — revisit if training behaves oddly:
 
-`fire01` already has a Lambda persistent filesystem mounted at `/lambda/nfs/h100-f1` (confirmed via SSH: `mount`, `df -h`, and a live write test — 1.7PB reported, currently empty, writable). Lambda only lets you attach a filesystem to an instance at launch if it's in the same region, so this being mounted at all already proves it's region-matched to `fire01` (`us-west-3`) — there's no separate cross-region transfer fee to worry about.
+1. **QK-norm/RoPE order**: norm applied before rotation (Qwen3-style).
+2. **Global-batch load balancing**: the router's load-balance loss uses a *differentiable* per-micro-batch mean probability combined with a *detached* running expert-count fraction accumulated across the 16 gradient-accumulation micro-batches of one optimizer step (reset after each step). A literal "single aux-loss backward after all 16 micro-batches" isn't compatible with standard gradient accumulation.
+3. **MoE fallback backend**: a dense-masked variant exists only as a correctness oracle in `tests/test_moe_backends.py` (computes every token through every expert — never used in training); the actual fallback is a gather + per-expert Python loop in the forward pass (`src/model/moe.py`). That loop is fine — only the Muon optimizer's Newton-Schulz step is required to avoid a per-expert loop, and it does (batched via `bmm`).
+4. **`torch._grouped_mm`** is a private, experimental PyTorch API whose signature can shift between versions. `moe.backend: auto` probes it at startup (`src/model/moe.py:probe_grouped_mm`) and falls back automatically if it's unavailable or errors.
+5. **`torch.compile`** + dropless MoE's data-dependent per-expert token counts can trigger excessive recompilation. Watch for this during the debug run; `training.compile: false` in the config is the documented escape hatch.
+6. **Tokenizer vs. GPT-2**: measured for real (see "Tokenizer" above) — bubblspace-tokenizer is ~1.7x more token-efficient on Python code, ~parity on general English, ~7% behind on math. No change needed; resolved in favor of keeping the SmolLM2-based tokenizer.
 
-One open item: I couldn't confirm via the Lambda API (no API key available from this machine) whether this filesystem's underlying ID is exactly `c2b9e73db4c341539cf88735d098beb7` — if you have more than one filesystem in your account, double-check in the console's **Storage** tab that `h100-f1` is the one you intended. If it's the wrong one, unmount it and attach the correct filesystem (Lambda console → instance → Storage), then re-run the write test below.
+## Reproducing training (Lambda Cloud / any CUDA host)
+
+### 1. Storage
+
+Attach a persistent filesystem to your GPU instance and mount it (Lambda: can only be attached to an instance in the same region as the filesystem). Checkpoints and tokenized data live there, never in this repo. Verify with a write test before starting a paid run:
 
 ```bash
-ssh -i ~/.ssh/wsp.pem ubuntu@209.20.157.241 "df -h /lambda/nfs/h100-f1 && touch /lambda/nfs/h100-f1/._t && rm /lambda/nfs/h100-f1/._t && echo OK"
+ssh -i ~/.ssh/<your-key>.pem ubuntu@<your-instance-ip> "df -h /lambda/nfs/h100-f1 && touch /lambda/nfs/h100-f1/._t && rm /lambda/nfs/h100-f1/._t && echo OK"
 ```
 
 ### 2. Environment setup
 
 ```bash
-ssh -i ~/.ssh/wsp.pem ubuntu@209.20.157.241
+ssh -i ~/.ssh/<your-key>.pem ubuntu@<your-instance-ip>
 git clone <this-repo-url> moe0.9b-a0.2b && cd moe0.9b-a0.2b
 bash scripts/setup_fire01.sh
 wandb login                            # or put WANDB_API_KEY in .env (copy .env.example)
 ```
 
-`setup_fire01.sh` confirms the GPU, sets up the venv, probes `torch._grouped_mm` availability, and verifies the storage mount. **Already run once and confirmed on `fire01`:** PyTorch 2.14.1+cu130, CUDA available, H100 PCIe 80GB, `torch._grouped_mm` usable — so `moe.backend: auto` will resolve to the fast grouped-GEMM path by default on this instance, not the fallback.
+`setup_fire01.sh` confirms the GPU, sets up the venv, probes `torch._grouped_mm` availability, and verifies the storage mount.
 
 ### 3. Debug run (always do this before the full run)
 
@@ -125,6 +142,14 @@ python scripts/train.py configs/base.yaml
 
 ~19k optimizer steps at 524288 tokens/step. Checkpoints land in `/lambda/nfs/h100-f1/checkpoints/<run_name>/` every 1000 steps. Monitor the first few hundred steps closely before leaving it unattended.
 
+### 5. Inference / benchmarking a checkpoint
+
+```bash
+python scripts/generate.py --checkpoint /path/to/step_N.pt --prompt "Your prompt here" --max_new_tokens 100
+pip install -e ".[eval]"
+python scripts/run_benchmarks.py --checkpoint /path/to/step_N.pt --output benchmark/step_N.json
+```
+
 ## Local development / tests
 
 The model, optimizer, and config code can be unit-tested on CPU without a GPU or any data:
@@ -144,8 +169,24 @@ configs/        base.yaml (full spec) + debug.yaml (override-only, smaller shape
 src/model/      transformer, attention (GQA+QK-norm+RoPE+output-gate), MoE (2 backends), norm, init
 src/optim/      Muon (batched Newton-Schulz), AdamW/Muon param-group split, LR schedule
 src/data/       tokenization (prepare.py), FIM transform (fim.py), memmap dataset reader (dataset.py)
-scripts/        build_tokenizer.py, setup_fire01.sh, sanity_check_data.py, train.py
+src/eval/       lm-evaluation-harness adapter for this custom (non-transformers-native) architecture
+scripts/        build_tokenizer.py, setup_fire01.sh, sanity_check_data.py, train.py,
+                generate.py (inference), run_benchmarks.py, push_to_hf.py
+benchmark/      per-checkpoint benchmark results (raw JSON + readable summary)
+doc/            design/implementation notes, including a full eval-harness walkthrough
+storyboard/     chronological narrative of how this project was built
 tests/          CPU-feasible unit tests (param count, Muon math, MoE backend equivalence, tiny overfit wiring check)
 ```
 
 Checkpoints and tokenized data live on the mounted persistent storage (`/lambda/nfs/h100-f1/...`), never in this repo. `bubblspace-tokenizer/` is the one data artifact that *is* committed (it's ~3.4MB and defines the model's vocabulary, not training data).
+
+## License
+
+Apache License 2.0 — see [LICENSE](LICENSE).
+
+## Acknowledgments
+
+- Tokenizer base: [HuggingFaceTB/SmolLM2-360M](https://huggingface.co/HuggingFaceTB/SmolLM2-360M)
+- Pretraining corpus: [HuggingFaceFW/fineweb-edu](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu)
+- Muon optimizer: Keller Jordan's Newton-Schulz orthogonalization approach, with the Moonlight weight-decay variant
+- Evaluation: [EleutherAI/lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)
