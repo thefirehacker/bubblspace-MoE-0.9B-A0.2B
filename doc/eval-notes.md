@@ -293,6 +293,81 @@ If you later want an in-distribution held-out perplexity metric alongside `wikit
 
 ---
 
+## Results Log
+
+### step_7000 (2026-11-20)
+
+Checkpoint: `step_7000.pt` — step 7,000 / 19,073 planned steps (~37% through
+the single 10B-token FineWeb-Edu pretraining run), loss ≈2.8 at this point.
+Tokens seen so far: 7,000 × 524,288 ≈ **3.67B** (of a 10B-token total planned
+for this entire run). Raw results: [`benchmark/step_7000.json`](../benchmark/step_7000.json).
+
+| Task | Metric | Score | Random baseline |
+|---|---|---|---|
+| PIQA | acc_norm | 64.7% | 50% (2-choice) |
+| ARC-Easy | acc_norm | 51.1% | ~25% (multi-choice) |
+| HellaSwag | acc_norm | 37.0% | 25% (4-choice) |
+| LAMBADA (openai) | acc (exact last-word match) | 29.0% | ~0% (strict exact-match) |
+| LAMBADA (openai) | perplexity | 58.1 | — |
+| WinoGrande | acc | 52.4% | 50% (2-choice) |
+| ARC-Challenge | acc_norm | 28.0% | 25% (4-choice) |
+
+**Read:** tasks that reward broad surface-pattern learning (PIQA, ARC-Easy,
+HellaSwag) are clearly above chance already. LAMBADA's strict exact-match
+accuracy (29%) is a genuinely positive signal of real language-modeling
+quality this early. The two hardest, most reasoning-heavy benchmarks
+(ARC-Challenge, WinoGrande) sitting near chance is expected at this model
+size (~915M total / ~211M active) and training stage — not a sign of a
+problem.
+
+#### Comparison against other models of similar scale
+
+| Task | **Ours (step_7000)** | GPT-2-124M (fully trained) | Pythia-160M (fully trained) | Pythia-410M (fully trained) | SmolLM2-360M (fully trained, curated data) |
+|---|---|---|---|---|---|
+| PIQA | 64.7% | 62.9% | 73.1% | 74.1% | 77.6% |
+| ARC-Easy | 51.1% | 39.5% | 46.3% | 51.2% | ~61.0%* |
+| ARC-Challenge | 28.0% | ~19%** | 19.2% | 21.8% | ~61.0%* |
+| HellaSwag | 37.0% | 31.1% | — | — | 69.3% |
+| WinoGrande | 52.4% | 51.6% | 59.2% | 59.3% | 61.1% |
+| LAMBADA acc | 29.0% | 32.6% | 63.3% | 65.7% | — |
+
+\*SmolLM2's reported "ARC" is an E+C average, not split — not perfectly
+comparable to our per-split numbers.
+\*\*Commonly-cited approximate figure; less firmly sourced than the others
+in this table.
+
+#### How many tokens were these comparison models actually trained on?
+
+| Model | Training tokens | Notes |
+|---|---|---|
+| **Ours (step_7000)** | ~3.67B seen so far (**10B planned total** for the entire run) | Single pass (not multiple epochs) over FineWeb-Edu `sample-10BT` |
+| GPT-2-124M | ~8-9B unique tokens (WebText), ~10-53B total across training | WebText itself is ~8-9B tokens; the original paper does not state an exact epoch count, so total tokens-seen estimates vary by source |
+| Pythia-160M / 410M | ~300B tokens (exactly 299,892,736,000) | 1 epoch over the Pile: 143,000 steps × 1024 batch × 2048 seq_len — precisely documented in the Pythia paper |
+| SmolLM2-360M | ~4T tokens (4,000B) | Multi-stage curated-data curriculum (same tokenizer family as ours) |
+
+**Why this context matters:** our model is already ahead of GPT-2-124M on
+most tasks and competitive with the fully-trained Pythia-160M on ARC-Easy/
+ARC-Challenge — despite still being mid-training *and* working with a far
+smaller total token budget (10B) than every comparison point here (30x
+smaller than Pythia's 300B, over 1000x smaller than SmolLM2's 4T). That
+makes the LAMBADA gap unsurprising (it specifically rewards precise
+long-range calibration, which scales strongly with total tokens seen) and
+reframes the strong early showing elsewhere as a genuinely efficient result
+for the architecture, not just "it got lucky" — though it also means this
+run's *final* checkpoint will still never catch up to Pythia-410M or
+SmolLM2-360M on raw data volume alone.
+
+Caveat: this is not a perfectly apples-to-apples comparison — these models
+differ in total/active parameter split (ours is MoE: 915M total / 211M
+active, vs. fully dense comparisons), training token budgets, and possibly
+minor eval-harness version differences across sources.
+
+Sources: [Pythia paper](https://arxiv.org/pdf/2304.01373),
+[EleutherAI/pythia-160m-v0](https://huggingface.co/EleutherAI/pythia-160m-v0),
+[SmolLM2 paper](https://arxiv.org/pdf/2502.02737).
+
+---
+
 ## Next Step: Dropping the Custom Adapter Altogether
 
 `BubblSpaceLM` works cleanly today because it hides our custom `Transformer.forward()` signature and works around the lack of padding masks by running at `batch_size=1`. If you want to understand what it would take to package BubblSpace MoE-0.9B-A0.2B so `AutoModelForCausalLM.from_pretrained(...)` and `lm_eval --model hf` can load it natively, continue to [What It Takes to Make a Custom MoE Transformers-Native](transformer-native.md).
