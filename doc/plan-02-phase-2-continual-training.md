@@ -1,12 +1,26 @@
 # Phase 2 Execution Plan: Code + Agentic Continual Pretraining (with English Replay)
 
-**Status:** Finalized design, ready for implementation while Phase 1 finishes.
+**Status:** Finalized design, data prep in progress on the secondary GPU instance.
 **Corrections history:** this plan supersedes the first draft after an audit that found
 real bugs and dataset-access problems — see [`issue-01-phase2.md`](issue-01-phase2.md)
 for the full audit (confirmed issues, independent verification notes, and what was
 pushed back on). Design rationale (why continue from checkpoint, why a shifting
 mixture, why anneal pairs with LR decay) remains in
 [`continual-training.md`](continual-training.md).
+
+**Security update (post-finalization):** `OpenCoder-LLM/opc-annealing-corpus` was
+**dropped entirely** after checking Hugging Face's actual ClamAV security-scan API
+(not just the dataset page, which is client-rendered and misses this on a plain
+fetch) — **59 of 85 sampled files (69%)** across exactly the two configs this plan
+had selected (`algorithmic_corpus`, `synthetic_code_snippet`) came back
+`status: unsafe`. That's pervasive, not an isolated false positive, so the whole
+dataset is excluded rather than cherry-picked around. Its 0.98B-token allocation
+was redistributed into `starcoderdata`'s existing language pools (section 3).
+Separately, `bigcode/starcoderdata` itself has 4 ClamAV-flagged files repo-wide —
+verified via the same API to all sit in `git-commits-cleaned/` (3 files) and
+`github-issues-filtered-structured/` (1 file), **neither of which are in this
+plan's 5 selected languages** — no change needed there, but noted so this isn't
+re-litigated if the language set is ever expanded.
 
 ## 1. Phase 1 status
 
@@ -49,9 +63,11 @@ see Issue 1 in the audit):
 | **Total** | **22,888 steps** | **12.0B** | WSD | **26.0% (3.12B)** | **54.0% (6.48B)** | **20.0% (2.40B)** |
 
 During Stage 2B, the Code pool's internal weighting shifts toward the curated
-sub-sources (`python-edu-cleaned`, `opc-annealing-corpus`) and away from raw
-`starcoderdata`, so the lowest-LR updates concentrate on the highest-quality code —
-same principle as concentrating agentic data in the anneal window.
+`python-edu-cleaned` source and away from raw `starcoderdata`, so the lowest-LR
+updates concentrate on the highest-quality code — same principle as concentrating
+agentic data in the anneal window. (`opc-annealing-corpus` was originally slated for
+this curated-anneal role but was dropped for pervasive ClamAV flags — see the
+security update above — so `python-edu-cleaned` carries that role alone.)
 
 Peak LR `2.4e-4` = 0.4x Phase 1's peak (`6e-4`) — large enough for Muon to
 meaningfully re-specialize experts and for AdamW to pull the 14 suppressed special
@@ -82,16 +98,24 @@ blob-ID pointers, not file content (confirmed live — `python-edu`'s real schem
 | Source | Language / config | Tokens | Access |
 |---|---|---|---|
 | `Avelina/python-edu-cleaned` | Python (curated/educational) | 1.5B | `text_field="text"` — verified: same schema as `python-edu` plus a hydrated `text` column, 980 junk files already removed |
-| `bigcode/starcoderdata` | `data_dir="python"` | 1.0B | `text_field="content"`, **gated — accept ToS + set `HF_TOKEN`** |
-| `bigcode/starcoderdata` | `data_dir="typescript"` | 1.0B | same |
-| `bigcode/starcoderdata` | `data_dir="javascript"` | 0.8B | same |
-| `bigcode/starcoderdata` | `data_dir="go"` | 0.6B | same |
-| `bigcode/starcoderdata` | `data_dir="sql"` + `shell` + `json`/`yaml`/`dockerfile`/`markdown` | 0.6B | same, combined bucket |
-| `OpenCoder-LLM/opc-annealing-corpus` | configs `algorithmic_corpus` + `synthetic_code_snippet` | 0.98B | `text_field="text"` — verified live schema: `type, lang, text`; weighted toward Stage 2B anneal |
+| `bigcode/starcoderdata` | `data_dir="python"` | 1.25B | `text_field="content"`, **gated — accept ToS + set `HF_TOKEN`** |
+| `bigcode/starcoderdata` | `data_dir="typescript"` | 1.25B | same |
+| `bigcode/starcoderdata` | `data_dir="javascript"` | 1.0B | same |
+| `bigcode/starcoderdata` | `data_dir="go"` | 0.75B | same |
+| `bigcode/starcoderdata` | `data_dir="sql"` + `shell` + `json`/`yaml`/`dockerfile`/`markdown` | 0.73B | same, combined bucket |
 
 Language scope was narrowed from the original 13-language spread
 (Python/JS/TS/JSX/TSX/HTML/CSS/Vue/Java/Go/PHP/C#/Ruby/SQL) to these 5, so each
 language gets 4-6x more signal rather than ~85M tokens apiece — see Issue 1.
+
+`OpenCoder-LLM/opc-annealing-corpus` (originally slated here for ~0.98B curated
+algorithmic/synthetic tokens) was dropped for pervasive ClamAV flags (see security
+update above) — its allocation was redistributed proportionally across the
+`starcoderdata` language pools, which have effectively unlimited headroom (250B+
+tokens total) and no comparable flag issue in the selected languages. All 4
+flagged `starcoderdata` files were individually confirmed to sit outside these
+5 languages via Hugging Face's authenticated security API (`git-commits-cleaned/`
+×3, `github-issues-filtered-structured/` ×1).
 
 ### Pool C — Agentic tool-use + reasoning (2.4B tokens, hard-filtered to ≤2048 tokens)
 
