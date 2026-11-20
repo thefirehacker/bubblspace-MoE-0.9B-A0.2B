@@ -5,11 +5,12 @@ A from-scratch Mixture-of-Experts language model (~915M total / ~211M active par
 **Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces). The current concrete data pipeline tokenizes FineWeb-Edu as the base text corpus; a code + agentic-trajectory data mixture is the natural next phase (see "Training objective" below) and the tokenizer/FIM plumbing is already in place for it.
 
 - **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b)
+- **Live training graphs/logs (W&B, public)**: [forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker)
 - **License**: [Apache 2.0](LICENSE)
 
 ## Status
 
-Pretraining (phase 1: English-only base checkpoint, FineWeb-Edu, 10B tokens, single H100, no instruction tuning yet) is in progress. See [`benchmark/README.md`](benchmark/README.md) for benchmark results tracked across checkpoints as training progresses, and [`doc/eval-notes.md`](doc/eval-notes.md) for a full technical walkthrough of how evaluation is wired up for this custom (non-`transformers`-native) architecture.
+Pretraining (phase 1: English-only base checkpoint, FineWeb-Edu, 10B tokens, single H100, no instruction tuning yet) is in progress. See [`benchmark/README.md`](benchmark/README.md) for benchmark results tracked across checkpoints as training progresses, [`doc/eval-notes.md`](doc/eval-notes.md) for a full technical walkthrough of how evaluation is wired up for this custom (non-`transformers`-native) architecture, and the [public W&B run](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker) for live loss/throughput/routing-balance graphs.
 
 ## Architecture summary
 
