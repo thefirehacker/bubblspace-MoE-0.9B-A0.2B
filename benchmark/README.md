@@ -61,6 +61,29 @@ the `step_7000` comparison-against-other-models analysis as most dependent
 on total tokens seen, so seeing it move first and most clearly as training
 continues is a good, expected signal rather than a surprise.
 
+## step_9000 (2026-11-20)
+
+Checkpoint: `step_9000.pt` — step 9,000 / 19,073 planned steps (~47% through
+the run). Raw results: [step_9000.json](step_9000.json).
+
+| Task | Metric | step_8000 | step_9000 | Δ |
+|---|---|---|---|---|
+| PIQA | acc_norm | 64.5% | **65.9%** | **+1.4** |
+| ARC-Easy | acc_norm | 50.7% | 50.8% | +0.1 (noise) |
+| HellaSwag | acc_norm | 38.0% | 38.5% | +0.5 |
+| LAMBADA (openai) | acc | 31.0% | 30.6% | -0.4 (noise) |
+| LAMBADA (openai) | perplexity | 50.3 | **49.3** | -1.0 (better) |
+| WinoGrande | acc | 51.7% | 51.5% | -0.2 (noise) |
+| ARC-Challenge | acc_norm | 27.6% | 27.2% | -0.4 (noise) |
+
+**Read:** PIQA posts the clearest real gain this step (+1.4, above the
+~1.1% stderr noise floor on that task) alongside HellaSwag's continued
+slow climb. LAMBADA perplexity keeps improving (now down 15% from the
+step_7000 baseline of 58.1), reinforcing the step_8000 read that it's the
+metric most sensitive to additional tokens seen. Everything else remains
+flat within stderr — consistent with a model still mid-run rather than any
+regression.
+
 ## How to reproduce
 
 ```bash

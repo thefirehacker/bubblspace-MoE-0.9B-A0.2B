@@ -185,6 +185,27 @@ Checkpoints and tokenized data live on the mounted persistent storage (`/lambda/
 
 Apache License 2.0 — see [LICENSE](LICENSE).
 
+## Disclaimer
+
+This project — code, training pipeline, model checkpoints, and any associated
+dataset preparation scripts — is published **for learning and research purposes
+only**. It is an experimental, independently-trained small language model, not
+a finished or production-grade product.
+
+**AIEDX Private Limited bears no responsibility or liability for any output
+produced by this model or any software built using this repository.** Use of
+the code, checkpoints, or data pipeline is entirely at your own risk, and is
+provided "AS IS" without warranty of any kind, express or implied, consistent
+with Section 7 of the Apache License 2.0 above.
+
+**On the nature of AI output:** this is a small, base-pretrained (non-instruction-tuned)
+language model. Its outputs are statistically plausible continuations of text,
+not verified facts, advice, or reasoning. It can be confidently wrong, biased,
+inconsistent, or nonsensical, especially at this parameter scale and training
+stage — see [`benchmark/README.md`](benchmark/README.md) for where it stands
+on standard evaluations. Do not rely on anything it generates for factual,
+medical, legal, financial, or safety-critical purposes.
+
 ## Acknowledgments
 
 - Tokenizer base: [HuggingFaceTB/SmolLM2-360M](https://huggingface.co/HuggingFaceTB/SmolLM2-360M)
