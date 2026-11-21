@@ -33,6 +33,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from transformers import AutoTokenizer
 
 from src.config import load_config
+from src.eval.determinism import make_deterministic
 from src.data.dataset import _Pool
 from src.model.moe import probe_grouped_mm
 from src.model.transformer import Transformer
@@ -222,6 +223,7 @@ def eval_reasoning(gen, pools, tok, ids, n_examples, budget):
 
 
 def main():
+    make_deterministic()  # bit-reproducible scores (see src/eval/determinism.py)
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/base.yaml")
     ap.add_argument("--phase2_config", default="configs/phase2.yaml", help="for val_tokens_per_pool (held-out split)")
