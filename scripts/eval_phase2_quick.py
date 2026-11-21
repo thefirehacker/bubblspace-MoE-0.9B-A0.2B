@@ -61,17 +61,23 @@ class Gen:
         self.rv = len(tok)
 
     @torch.no_grad()
-    def greedy(self, ids, max_new, stop_ids=(), stop_text=None):
+    def greedy(self, ids, max_new, stop_ids=(), stop_text=None, use_cache=True):
+        """Greedy decode. use_cache=True: one prefill pass over the prompt, then
+        one token per step against the KV cache (O(n) instead of O(n^2) work).
+        use_cache=False re-runs the full sequence each step (reference path)."""
         ids = list(ids)[-(self.max_seq_len - max_new):]
         out = []
+        cache = self.model.new_kv_cache() if use_cache else None
+        step_input = ids
         for _ in range(max_new):
-            x = torch.tensor([ids + out], device=self.device)
+            x = torch.tensor([step_input if use_cache else ids + out], device=self.device)
             with torch.autocast("cuda", dtype=torch.bfloat16):
-                logits, *_ = self.model(x)
+                logits, *_ = self.model(x, kv_cache=cache)
             nxt = int(logits[0, -1, : self.rv].argmax())
             if nxt in stop_ids:
                 return out, nxt
             out.append(nxt)
+            step_input = [nxt]
             if stop_text is not None and stop_text in self.tok.decode(out):
                 return out, None
         return out, None

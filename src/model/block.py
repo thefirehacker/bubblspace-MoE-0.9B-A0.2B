@@ -37,8 +37,9 @@ class TransformerBlock(nn.Module):
         load_tracker: ExpertLoadTracker | None,
         layer_idx: int,
         block_mask=None,
+        layer_cache=None,
     ):
-        x = x + self.attn(self.norm1(x), cos, sin, block_mask)
+        x = x + self.attn(self.norm1(x), cos, sin, block_mask, layer_cache)
         moe_out, lb_loss, z_loss, hard_counts = self.moe(self.norm2(x), load_tracker, layer_idx)
         x = x + moe_out
         return x, lb_loss, z_loss, hard_counts
