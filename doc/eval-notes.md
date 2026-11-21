@@ -450,6 +450,33 @@ move here, +2.7).
 
 ---
 
+### step_19073 (2026-11-21) — Phase 1 final checkpoint
+
+Checkpoint: `step_19073.pt` — step 19,073 / 19,073 planned steps (100%,
+Phase 1 complete), full 10.0B tokens. Raw results:
+[`benchmark/step_19073.json`](../benchmark/step_19073.json).
+
+| Task | Metric | step_18000 | step_19073 | Δ |
+|---|---|---|---|---|
+| PIQA | acc_norm | 68.8% | 68.2% | -0.6 (noise) |
+| ARC-Easy | acc_norm | 56.6% | 56.1% | -0.5 (noise) |
+| HellaSwag | acc_norm | 42.6% | 42.9% | +0.3 (noise) |
+| LAMBADA (openai) | acc | 35.3% | 34.8% | -0.5 (noise) |
+| LAMBADA (openai) | perplexity | 31.0 | 32.0 | +1.0 (noise) |
+| WinoGrande | acc | 50.7% | 51.4% | +0.7 (noise) |
+| ARC-Challenge | acc_norm | 29.9% | 29.8% | -0.1 (noise) |
+
+**Read:** flat within stderr across all seven metrics over the final 1,073
+steps, exactly as expected since the cosine LR schedule had already decayed
+to its `min_lr_ratio` floor well before this point -- there just isn't much
+room left for the last steps to move anything. This closes out Phase 1:
+the model plateaus at PIQA 68%, ARC-Easy 56%, HellaSwag 43%, LAMBADA acc
+35%/ppl 32, with WinoGrande and ARC-Challenge essentially at their
+model-size-appropriate floor (~50% and ~30%). Phase 2 continual training
+is the next lever, not further steps on this run.
+
+---
+
 ## Next Step: Dropping the Custom Adapter Altogether
 
 `BubblSpaceLM` works cleanly today because it hides our custom `Transformer.forward()` signature and works around the lack of padding masks by running at `batch_size=1`. If you want to understand what it would take to package BubblSpace MoE-0.9B-A0.2B so `AutoModelForCausalLM.from_pretrained(...)` and `lm_eval --model hf` can load it natively, continue to [What It Takes to Make a Custom MoE Transformers-Native](transformer-native.md).
