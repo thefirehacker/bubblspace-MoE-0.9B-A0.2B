@@ -33,6 +33,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from transformers import AutoTokenizer
 
 from src.config import load_config
+from src.eval.determinism import make_deterministic
 from src.data.dataset import _Pool
 from src.model.attention import build_doc_block_mask
 from src.model.moe import probe_grouped_mm
@@ -40,6 +41,7 @@ from src.model.transformer import Transformer
 
 
 def main():
+    make_deterministic()  # bit-reproducible scores (see src/eval/determinism.py)
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/base.yaml")
     ap.add_argument("--checkpoint", required=True)

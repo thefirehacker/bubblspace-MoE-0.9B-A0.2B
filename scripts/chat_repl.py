@@ -48,16 +48,18 @@ def load_weights(model: Transformer, checkpoint_path: str):
 
 @torch.no_grad()
 def generate(model, tok, device, real_vocab_size, eot_id, max_seq_len, prompt, max_new_tokens, temperature, top_p, greedy):
-    ids = tok.encode(prompt, add_special_tokens=False)
+    # KV cache: one prefill pass over the prompt, then one token per step.
+    # RoPE is precomputed for max_seq_len positions, so the prompt is trimmed
+    # to leave room for the generated tokens.
+    ids = tok.encode(prompt, add_special_tokens=False)[-(max_seq_len - max_new_tokens):]
     input_ids = torch.tensor([ids], dtype=torch.long, device=device)
     autocast_dtype = torch.bfloat16 if device == "cuda" else torch.float32
+    cache = model.new_kv_cache()
 
     generated = []
     for _ in range(max_new_tokens):
-        if input_ids.shape[1] > max_seq_len:
-            input_ids = input_ids[:, -max_seq_len:]
         with torch.autocast(device_type=device, dtype=autocast_dtype, enabled=(device == "cuda")):
-            logits, _, _, _ = model(input_ids)
+            logits, _, _, _ = model(input_ids, kv_cache=cache)
         next_logits = logits[0, -1, :real_vocab_size].float()
 
         if greedy:
@@ -77,7 +79,7 @@ def generate(model, tok, device, real_vocab_size, eot_id, max_seq_len, prompt, m
         if next_id == eot_id:
             break
         generated.append(next_id)
-        input_ids = torch.cat([input_ids, torch.tensor([[next_id]], device=device)], dim=1)
+        input_ids = torch.tensor([[next_id]], device=device)  # only the new token; history lives in the cache
 
     return tok.decode(generated)
 

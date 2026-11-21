@@ -164,3 +164,19 @@ def test_prefetcher_matches_inline_order(tmp_path):
         assert torch.equal(xi, xp) and torch.equal(yi, yp)
     with pytest.raises(StopIteration):
         BatchPrefetcher(pf_ds, 4, 2, 0, 0).next("cpu")
+
+
+def test_kv_cache_matches_full_forward():
+    model, _ = tiny_model()
+    torch.manual_seed(1)
+    T, P = 40, 17  # total length, prefill length
+    x = torch.randint(10, 1000, (1, T), device=DEVICE)
+    with torch.no_grad():
+        full, *_ = model(x)  # reference: no cache, whole sequence at once
+        cache = model.new_kv_cache()
+        pre, *_ = model(x[:, :P], kv_cache=cache)
+        assert torch.allclose(pre[0], full[0, :P], atol=1e-4), (pre[0] - full[0, :P]).abs().max()
+        for t in range(P, T):  # single-token decode steps
+            step, *_ = model(x[:, t : t + 1], kv_cache=cache)
+            assert torch.allclose(step[0, -1], full[0, t], atol=1e-4), (t, (step[0, -1] - full[0, t]).abs().max())
+        assert cache.seq_len == T

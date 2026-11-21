@@ -29,6 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from transformers import AutoTokenizer
 
 from src.config import load_config
+from src.eval.determinism import make_deterministic
 from src.eval.lm_eval_adapter import BubblSpaceLM
 from src.model.moe import probe_grouped_mm
 from src.model.transformer import Transformer
@@ -50,6 +51,7 @@ def load_weights(model: Transformer, checkpoint_path: str) -> int | None:
 
 
 def main():
+    make_deterministic()  # bit-reproducible scores (see src/eval/determinism.py)
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="configs/base.yaml")
     parser.add_argument("--debug", action="store_true", help="merge configs/debug.yaml, for a quick smoke test")

@@ -37,6 +37,7 @@ from transformers import AutoTokenizer
 
 from scripts.eval_phase2_quick import Gen
 from src.config import load_config
+from src.eval.determinism import make_deterministic
 from src.model.moe import probe_grouped_mm
 from src.model.transformer import Transformer
 
@@ -189,6 +190,7 @@ def eval_bfcl(gen, tok, stop_ids, per_category, rng, exclude=frozenset()):
 
 
 def main():
+    make_deterministic()  # bit-reproducible scores (see src/eval/determinism.py)
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/base.yaml")
     ap.add_argument("--checkpoint", required=True)

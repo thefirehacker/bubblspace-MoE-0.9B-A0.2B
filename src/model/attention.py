@@ -63,7 +63,9 @@ class Attention(nn.Module):
         if output_gate:
             self.gate_proj = nn.Linear(d_model, n_heads * head_dim, bias=bias)
 
-    def forward(self, x: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor, block_mask=None) -> torch.Tensor:
+    def forward(self, x: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor, block_mask=None, layer_cache=None) -> torch.Tensor:
+        # layer_cache: inference-only KV cache (a dict holding this layer's
+        # past k/v). None (always, in training) keeps the original path exactly.
         bsz, seq_len, _ = x.shape
 
         q = self.q_proj(x).view(bsz, seq_len, self.n_heads, self.head_dim)
@@ -77,7 +79,21 @@ class Attention(nn.Module):
         k = apply_rope(k.transpose(1, 2), cos, sin)
         v = v.transpose(1, 2)
 
-        if block_mask is not None:
+        if layer_cache is not None:
+            # cos/sin were already sliced at the cache offset by Transformer.forward,
+            # so new k is rotated for its true positions before being appended.
+            prefill = "k" not in layer_cache
+            if not prefill:
+                assert seq_len == 1, "KV cache supports one prefill call then single-token steps"
+                k = torch.cat([layer_cache["k"], k], dim=2)
+                v = torch.cat([layer_cache["v"], v], dim=2)
+            layer_cache["k"], layer_cache["v"] = k, v
+            # prefill: ordinary causal attention; decode: the single new query
+            # may attend to every cached position, so no mask is needed.
+            attn_out = F.scaled_dot_product_attention(
+                q, k, v, is_causal=prefill, enable_gqa=(self.n_heads != self.n_kv_heads)
+            )
+        elif block_mask is not None:
             # Phase 2: causal + same-document mask (tokens never attend across
             # <|endoftext|> into an unrelated document / packed episode).
             attn_out = flex_attention(
