@@ -114,6 +114,31 @@ since it is one of the two hardest, most reasoning-heavy tasks in this
 suite (along with ARC-Challenge, which did move here) and is known to need
 much more scale/training to shift meaningfully.
 
+## step_19073 (2026-11-21) — Phase 1 final checkpoint
+
+Checkpoint: `step_19073.pt` — step 19,073 / 19,073 planned steps (**100% —
+Phase 1 complete**), full 10.0B-token FineWeb-Edu pretraining run finished.
+Raw results: [step_19073.json](step_19073.json).
+
+| Task | Metric | step_18000 | step_19073 | Δ |
+|---|---|---|---|---|
+| PIQA | acc_norm | 68.8% | 68.2% | -0.6 (noise) |
+| ARC-Easy | acc_norm | 56.6% | 56.1% | -0.5 (noise) |
+| HellaSwag | acc_norm | 42.6% | 42.9% | +0.3 (noise) |
+| LAMBADA (openai) | acc | 35.3% | 34.8% | -0.5 (noise) |
+| LAMBADA (openai) | perplexity | 31.0 | 32.0 | +1.0 (noise) |
+| WinoGrande | acc | 50.7% | 51.4% | +0.7 (noise) |
+| ARC-Challenge | acc_norm | 29.9% | 29.8% | -0.1 (noise) |
+
+**Read:** every metric is flat within stderr over the final 1,073 steps —
+expected, since the LR schedule had already decayed to its floor
+(`min_lr_ratio: 0.1`) well before this point, so these last steps make very
+small, low-magnitude updates. This is the final Phase 1 base-pretraining
+checkpoint; continued improvement from here requires Phase 2's continual
+training on the expanded English + code + agentic mixture
+(`doc/plan-02-phase-2-continual-training.md`), not more steps on the same
+10B-token FineWeb-Edu-only run.
+
 ## How to reproduce
 
 ```bash
