@@ -211,6 +211,14 @@ class MultiPoolTokenDataset:
         return {k: v / z for k, v in probs.items()}
 
     def get_batch(self, batch_size: int, device, step: int = 0):
+        x, y = self.get_batch_cpu(batch_size, step)
+        return x.to(device, non_blocking=True), y.to(device, non_blocking=True)
+
+    def get_batch_cpu(self, batch_size: int, step: int = 0):
+        """Assemble one micro-batch on the CPU (pinned when CUDA is present).
+        Split out from get_batch so BatchPrefetcher can run it off the main
+        thread: profiling showed ~86 ms/micro-batch of mostly NFS random-read
+        latency sitting serially in front of ~379 ms of GPU compute."""
         stage_idx = self.stage_for(step)
         if self._cache_step_stage != stage_idx:
             self._cache_probs = self.pool_probs(stage_idx)
@@ -224,12 +232,66 @@ class MultiPoolTokenDataset:
         for i, pi in enumerate(picks):
             x[i], y[i] = self.pools[names[pi]].sample(self.rng, self.pad_id, self.fim_ids, self.eot_id, self.fim_rate)
 
-        return (
-            torch.from_numpy(x).to(device, non_blocking=True),
-            torch.from_numpy(y).to(device, non_blocking=True),
-        )
+        x_t, y_t = torch.from_numpy(x), torch.from_numpy(y)
+        if torch.cuda.is_available():
+            x_t, y_t = x_t.pin_memory(), y_t.pin_memory()
+        return x_t, y_t
 
     def val_batches(self, n_per_pool: int, device):
         for name, pool in self.pools.items():
             xv, yv = pool.val_batch(n_per_pool, self.pad_id)
             yield name, pool.group, torch.from_numpy(xv).to(device), torch.from_numpy(yv).to(device)
+
+
+class BatchPrefetcher:
+    """Background thread that keeps a queue of ready CPU micro-batches.
+
+    Produces batches in exactly the order the training loop consumes them
+    (grad_accum micro-batches per step, steps start_step..total_steps-1), so
+    the stage-dependent mixture is identical to calling get_batch inline --
+    only the timing changes. One thread is enough: data assembly (~86 ms) is
+    mostly NFS read latency (releases the GIL) and is far below one
+    micro-batch of GPU compute (~379 ms).
+    """
+
+    _DONE = object()
+
+    def __init__(self, dataset: MultiPoolTokenDataset, micro_batch: int, grad_accum: int,
+                 start_step: int, total_steps: int, depth: int = 8):
+        import queue
+        import threading
+
+        self._q = queue.Queue(maxsize=depth)
+        self._stop = threading.Event()
+
+        def produce():
+            try:
+                for step in range(start_step, total_steps):
+                    for _ in range(grad_accum):
+                        item = dataset.get_batch_cpu(micro_batch, step)
+                        while not self._stop.is_set():
+                            try:
+                                self._q.put(item, timeout=1.0)
+                                break
+                            except queue.Full:
+                                continue
+                        if self._stop.is_set():
+                            return
+                self._q.put(self._DONE)
+            except BaseException as e:  # surface loader errors in the training thread
+                self._q.put(e)
+
+        self._thread = threading.Thread(target=produce, name="batch-prefetch", daemon=True)
+        self._thread.start()
+
+    def next(self, device):
+        item = self._q.get()
+        if item is self._DONE:
+            raise StopIteration("prefetcher exhausted")
+        if isinstance(item, BaseException):
+            raise RuntimeError("batch prefetch thread failed") from item
+        x, y = item
+        return x.to(device, non_blocking=True), y.to(device, non_blocking=True)
+
+    def close(self):
+        self._stop.set()
