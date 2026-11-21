@@ -1,0 +1,643 @@
+{
+ "description": "Probe v3: entity-attribute binding with sentence structures absent from both probe v2 and the contrastive training corpus (scripts/gen_contrastive.py). Structures: 'The one that was {attr} was the' (entity as answer), 'so of the two, the {entity} was clearly the' (attribute as answer, no 'because'), 'The person who was {attr} was' (person as answer). Fresh entities and names (asserted absent from v2 and the generator). Same scoring as v2: correct binding = ctxA prefers c1 AND ctxB prefers c2.",
+ "categories": [
+  "ability_attribution",
+  "comparative_value",
+  "emotional_attribution",
+  "possession_obligation",
+  "social_attribution",
+  "spatial_fit"
+ ],
+ "cases": [
+  {
+   "name": "drone / train (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The courier drone and the cargo train left the depot together, and the drone delivered its parcel first. The one that was faster was the",
+   "ctxB": "The courier drone and the cargo train left the depot together, and the drone delivered its parcel first. The one that was slower was the",
+   "c1": " drone.",
+   "c2": " train."
+  },
+  {
+   "name": "drone / train (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The courier drone and the cargo train left the depot together, and the drone delivered its parcel first, so of the two, the drone was clearly the",
+   "ctxB": "The courier drone and the cargo train left the depot together, and the drone delivered its parcel first, so of the two, the train was clearly the",
+   "c1": " faster one.",
+   "c2": " slower one."
+  },
+  {
+   "name": "banquet / snack (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The banquet and the snack were both served at the wedding, and the banquet kept the guests at the table for hours. The one that was longer was the",
+   "ctxB": "The banquet and the snack were both served at the wedding, and the banquet kept the guests at the table for hours. The one that was shorter was the",
+   "c1": " banquet.",
+   "c2": " snack."
+  },
+  {
+   "name": "banquet / snack (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The banquet and the snack were both served at the wedding, and the banquet kept the guests at the table for hours, so of the two, the banquet was clearly the",
+   "ctxB": "The banquet and the snack were both served at the wedding, and the banquet kept the guests at the table for hours, so of the two, the snack was clearly the",
+   "c1": " longer one.",
+   "c2": " shorter one."
+  },
+  {
+   "name": "tugboat / dinghy (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The tugboat pulled the barge while the dinghy drifted beside it. The one that was more powerful was the",
+   "ctxB": "The tugboat pulled the barge while the dinghy drifted beside it. The one that was weaker was the",
+   "c1": " tugboat.",
+   "c2": " dinghy."
+  },
+  {
+   "name": "tugboat / dinghy (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The tugboat pulled the barge while the dinghy drifted beside it, so of the two, the tugboat was clearly the",
+   "ctxB": "The tugboat pulled the barge while the dinghy drifted beside it, so of the two, the dinghy was clearly the",
+   "c1": " more powerful one.",
+   "c2": " weaker one."
+  },
+  {
+   "name": "Stradivarius / student violin (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The violinist bought a Stradivarius and a student violin, and the Stradivarius used up most of her savings. The one that was pricier was the",
+   "ctxB": "The violinist bought a Stradivarius and a student violin, and the Stradivarius used up most of her savings. The one that was cheaper was the",
+   "c1": " Stradivarius.",
+   "c2": " student violin."
+  },
+  {
+   "name": "Stradivarius / student violin (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The violinist bought a Stradivarius and a student violin, and the Stradivarius used up most of her savings, so of the two, the Stradivarius was clearly the",
+   "ctxB": "The violinist bought a Stradivarius and a student violin, and the Stradivarius used up most of her savings, so of the two, the student violin was clearly the",
+   "c1": " pricier one.",
+   "c2": " cheaper one."
+  },
+  {
+   "name": "truck / golf cart (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The quarry truck and the golf cart crossed the same old bridge, and only the truck made it creak. The one that was heavier was the",
+   "ctxB": "The quarry truck and the golf cart crossed the same old bridge, and only the truck made it creak. The one that was lighter was the",
+   "c1": " truck.",
+   "c2": " golf cart."
+  },
+  {
+   "name": "truck / golf cart (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The quarry truck and the golf cart crossed the same old bridge, and only the truck made it creak, so of the two, the truck was clearly the",
+   "ctxB": "The quarry truck and the golf cart crossed the same old bridge, and only the truck made it creak, so of the two, the golf cart was clearly the",
+   "c1": " heavier one.",
+   "c2": " lighter one."
+  },
+  {
+   "name": "cathedral bell / bicycle bell (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The cathedral bell and the bicycle bell rang at the same moment, and only the cathedral bell was heard across the valley. The one that was louder was the",
+   "ctxB": "The cathedral bell and the bicycle bell rang at the same moment, and only the cathedral bell was heard across the valley. The one that was quieter was the",
+   "c1": " cathedral bell.",
+   "c2": " bicycle bell."
+  },
+  {
+   "name": "cathedral bell / bicycle bell (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The cathedral bell and the bicycle bell rang at the same moment, and only the cathedral bell was heard across the valley, so of the two, the cathedral bell was clearly the",
+   "ctxB": "The cathedral bell and the bicycle bell rang at the same moment, and only the cathedral bell was heard across the valley, so of the two, the bicycle bell was clearly the",
+   "c1": " louder one.",
+   "c2": " quieter one."
+  },
+  {
+   "name": "ice cube / glacier (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The glacier and the ice cube both sat in the sun, and the ice cube was gone within minutes. The one that was smaller was the",
+   "ctxB": "The glacier and the ice cube both sat in the sun, and the ice cube was gone within minutes. The one that was larger was the",
+   "c1": " ice cube.",
+   "c2": " glacier."
+  },
+  {
+   "name": "ice cube / glacier (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The glacier and the ice cube both sat in the sun, and the ice cube was gone within minutes, so of the two, the ice cube was clearly the",
+   "ctxB": "The glacier and the ice cube both sat in the sun, and the ice cube was gone within minutes, so of the two, the glacier was clearly the",
+   "c1": " smaller one.",
+   "c2": " larger one."
+  },
+  {
+   "name": "novel / pamphlet (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The novel and the pamphlet were assigned on the same day, and the novel took the class the whole term to finish. The one that was longer was the",
+   "ctxB": "The novel and the pamphlet were assigned on the same day, and the novel took the class the whole term to finish. The one that was shorter was the",
+   "c1": " novel.",
+   "c2": " pamphlet."
+  },
+  {
+   "name": "novel / pamphlet (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The novel and the pamphlet were assigned on the same day, and the novel took the class the whole term to finish, so of the two, the novel was clearly the",
+   "ctxB": "The novel and the pamphlet were assigned on the same day, and the novel took the class the whole term to finish, so of the two, the pamphlet was clearly the",
+   "c1": " longer one.",
+   "c2": " shorter one."
+  },
+  {
+   "name": "hawk / sparrow (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The hawk and the sparrow were both spotted above the field, and the hawk had the wider wingspan. The one that was bigger was the",
+   "ctxB": "The hawk and the sparrow were both spotted above the field, and the hawk had the wider wingspan. The one that was smaller was the",
+   "c1": " hawk.",
+   "c2": " sparrow."
+  },
+  {
+   "name": "hawk / sparrow (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The hawk and the sparrow were both spotted above the field, and the hawk had the wider wingspan, so of the two, the hawk was clearly the",
+   "ctxB": "The hawk and the sparrow were both spotted above the field, and the hawk had the wider wingspan, so of the two, the sparrow was clearly the",
+   "c1": " bigger one.",
+   "c2": " smaller one."
+  },
+  {
+   "name": "espresso / decaf (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The espresso and the decaf were poured side by side, and only the espresso kept her awake all night. The one that was stronger was the",
+   "ctxB": "The espresso and the decaf were poured side by side, and only the espresso kept her awake all night. The one that was milder was the",
+   "c1": " espresso.",
+   "c2": " decaf."
+  },
+  {
+   "name": "espresso / decaf (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The espresso and the decaf were poured side by side, and only the espresso kept her awake all night, so of the two, the espresso was clearly the",
+   "ctxB": "The espresso and the decaf were poured side by side, and only the espresso kept her awake all night, so of the two, the decaf was clearly the",
+   "c1": " stronger one.",
+   "c2": " milder one."
+  },
+  {
+   "name": "skyscraper / kiosk (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The skyscraper and the kiosk stood on the same corner, and the skyscraper blocked the afternoon sun. The one that was taller was the",
+   "ctxB": "The skyscraper and the kiosk stood on the same corner, and the skyscraper blocked the afternoon sun. The one that was shorter was the",
+   "c1": " skyscraper.",
+   "c2": " kiosk."
+  },
+  {
+   "name": "skyscraper / kiosk (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The skyscraper and the kiosk stood on the same corner, and the skyscraper blocked the afternoon sun, so of the two, the skyscraper was clearly the",
+   "ctxB": "The skyscraper and the kiosk stood on the same corner, and the skyscraper blocked the afternoon sun, so of the two, the kiosk was clearly the",
+   "c1": " taller one.",
+   "c2": " shorter one."
+  },
+  {
+   "name": "necklace / bracelet (entity)",
+   "category": "comparative_value",
+   "structure": "the_one_that_was",
+   "ctxA": "The heirloom necklace and the plastic bracelet went to auction, and the necklace drew the highest bid. The one that was more valuable was the",
+   "ctxB": "The heirloom necklace and the plastic bracelet went to auction, and the necklace drew the highest bid. The one that was less valuable was the",
+   "c1": " necklace.",
+   "c2": " bracelet."
+  },
+  {
+   "name": "necklace / bracelet (attribute)",
+   "category": "comparative_value",
+   "structure": "of_the_two",
+   "ctxA": "The heirloom necklace and the plastic bracelet went to auction, and the necklace drew the highest bid, so of the two, the necklace was clearly the",
+   "ctxB": "The heirloom necklace and the plastic bracelet went to auction, and the necklace drew the highest bid, so of the two, the bracelet was clearly the",
+   "c1": " more valuable one.",
+   "c2": " less valuable one."
+  },
+  {
+   "name": "harp / minivan (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The harp would not fit into the minivan. The one that was too big was the",
+   "ctxB": "The harp would not fit into the minivan. The one that was too small was the",
+   "c1": " harp.",
+   "c2": " minivan."
+  },
+  {
+   "name": "harp / minivan (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The harp would not fit into the minivan, so of the two, the harp was clearly the",
+   "ctxB": "The harp would not fit into the minivan, so of the two, the minivan was clearly the",
+   "c1": " too big one.",
+   "c2": " too small one."
+  },
+  {
+   "name": "pool table / stairs (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The pool table could not be carried down the basement stairs. The one that was too wide was the",
+   "ctxB": "The pool table could not be carried down the basement stairs. The one that was too narrow was the",
+   "c1": " pool table.",
+   "c2": " stairs."
+  },
+  {
+   "name": "pool table / stairs (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The pool table could not be carried down the basement stairs, so of the two, the pool table was clearly the",
+   "ctxB": "The pool table could not be carried down the basement stairs, so of the two, the stairs was clearly the",
+   "c1": " too wide one.",
+   "c2": " too narrow one."
+  },
+  {
+   "name": "drum kit / closet (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The drum kit did not fit inside the closet. The one that was too bulky was the",
+   "ctxB": "The drum kit did not fit inside the closet. The one that was too small was the",
+   "c1": " drum kit.",
+   "c2": " closet."
+  },
+  {
+   "name": "drum kit / closet (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The drum kit did not fit inside the closet, so of the two, the drum kit was clearly the",
+   "ctxB": "The drum kit did not fit inside the closet, so of the two, the closet was clearly the",
+   "c1": " too bulky one.",
+   "c2": " too small one."
+  },
+  {
+   "name": "statue / crate (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The marble statue would not go into the crate. The one that was too large was the",
+   "ctxB": "The marble statue would not go into the crate. The one that was too small was the",
+   "c1": " statue.",
+   "c2": " crate."
+  },
+  {
+   "name": "statue / crate (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The marble statue would not go into the crate, so of the two, the statue was clearly the",
+   "ctxB": "The marble statue would not go into the crate, so of the two, the crate was clearly the",
+   "c1": " too large one.",
+   "c2": " too small one."
+  },
+  {
+   "name": "hot tub / gate (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The hot tub could not pass through the garden gate. The one that was too wide was the",
+   "ctxB": "The hot tub could not pass through the garden gate. The one that was too narrow was the",
+   "c1": " hot tub.",
+   "c2": " gate."
+  },
+  {
+   "name": "hot tub / gate (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The hot tub could not pass through the garden gate, so of the two, the hot tub was clearly the",
+   "ctxB": "The hot tub could not pass through the garden gate, so of the two, the gate was clearly the",
+   "c1": " too wide one.",
+   "c2": " too narrow one."
+  },
+  {
+   "name": "telescope / roof (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The telescope would not stand upright under the attic roof. The one that was too tall was the",
+   "ctxB": "The telescope would not stand upright under the attic roof. The one that was too low was the",
+   "c1": " telescope.",
+   "c2": " roof."
+  },
+  {
+   "name": "telescope / roof (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The telescope would not stand upright under the attic roof, so of the two, the telescope was clearly the",
+   "ctxB": "The telescope would not stand upright under the attic roof, so of the two, the roof was clearly the",
+   "c1": " too tall one.",
+   "c2": " too low one."
+  },
+  {
+   "name": "rowing machine / hallway (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The rowing machine would not fit along the hallway. The one that was too long was the",
+   "ctxB": "The rowing machine would not fit along the hallway. The one that was too short was the",
+   "c1": " rowing machine.",
+   "c2": " hallway."
+  },
+  {
+   "name": "rowing machine / hallway (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The rowing machine would not fit along the hallway, so of the two, the rowing machine was clearly the",
+   "ctxB": "The rowing machine would not fit along the hallway, so of the two, the hallway was clearly the",
+   "c1": " too long one.",
+   "c2": " too short one."
+  },
+  {
+   "name": "teddy bear / gift bag (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The giant teddy bear did not fit into the gift bag. The one that was too big was the",
+   "ctxB": "The giant teddy bear did not fit into the gift bag. The one that was too small was the",
+   "c1": " teddy bear.",
+   "c2": " gift bag."
+  },
+  {
+   "name": "teddy bear / gift bag (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The giant teddy bear did not fit into the gift bag, so of the two, the teddy bear was clearly the",
+   "ctxB": "The giant teddy bear did not fit into the gift bag, so of the two, the gift bag was clearly the",
+   "c1": " too big one.",
+   "c2": " too small one."
+  },
+  {
+   "name": "tractor / archway (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The tractor could not drive under the archway. The one that was too tall was the",
+   "ctxB": "The tractor could not drive under the archway. The one that was too low was the",
+   "c1": " tractor.",
+   "c2": " archway."
+  },
+  {
+   "name": "tractor / archway (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The tractor could not drive under the archway, so of the two, the tractor was clearly the",
+   "ctxB": "The tractor could not drive under the archway, so of the two, the archway was clearly the",
+   "c1": " too tall one.",
+   "c2": " too low one."
+  },
+  {
+   "name": "canvas / easel (entity)",
+   "category": "spatial_fit",
+   "structure": "the_one_that_was",
+   "ctxA": "The canvas would not fit on the easel. The one that was too large was the",
+   "ctxB": "The canvas would not fit on the easel. The one that was too small was the",
+   "c1": " canvas.",
+   "c2": " easel."
+  },
+  {
+   "name": "canvas / easel (attribute)",
+   "category": "spatial_fit",
+   "structure": "of_the_two",
+   "ctxA": "The canvas would not fit on the easel, so of the two, the canvas was clearly the",
+   "ctxB": "The canvas would not fit on the easel, so of the two, the easel was clearly the",
+   "c1": " too large one.",
+   "c2": " too small one."
+  },
+  {
+   "name": "consoled (Beatrix/Cormac)",
+   "category": "emotional_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Beatrix consoled Cormac after the audition. The person who was devastated was",
+   "ctxB": "Beatrix consoled Cormac after the audition. The person who was sympathetic was",
+   "c1": " Cormac.",
+   "c2": " Beatrix."
+  },
+  {
+   "name": "sent flowers to (Delphine/Eamon)",
+   "category": "emotional_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Delphine sent flowers to Eamon at the hospital. The person who was recovering was",
+   "ctxB": "Delphine sent flowers to Eamon at the hospital. The person who was thoughtful was",
+   "c1": " Eamon.",
+   "c2": " Delphine."
+  },
+  {
+   "name": "cheered up (Florian/Greta)",
+   "category": "emotional_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Florian cheered up Greta after the exam results. The person who was discouraged was",
+   "ctxB": "Florian cheered up Greta after the exam results. The person who was upbeat was",
+   "c1": " Greta.",
+   "c2": " Florian."
+  },
+  {
+   "name": "wrote a thank-you note to (Horace/Imogen)",
+   "category": "emotional_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Horace wrote a thank-you note to Imogen. The person who was helpful was",
+   "ctxB": "Horace wrote a thank-you note to Imogen. The person who was grateful was",
+   "c1": " Imogen.",
+   "c2": " Horace."
+  },
+  {
+   "name": "made amends with (Jasper/Kirra)",
+   "category": "emotional_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Jasper made amends with Kirra. The person who was wronged was",
+   "ctxB": "Jasper made amends with Kirra. The person who was regretful was",
+   "c1": " Kirra.",
+   "c2": " Jasper."
+  },
+  {
+   "name": "calmed down (Lucan/Marisol)",
+   "category": "emotional_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Lucan calmed down Marisol before the interview. The person who was panicking was",
+   "ctxB": "Lucan calmed down Marisol before the interview. The person who was composed was",
+   "c1": " Marisol.",
+   "c2": " Lucan."
+  },
+  {
+   "name": "welcomed (Niamh/Orrin)",
+   "category": "emotional_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Niamh welcomed Orrin into the neighbourhood. The person who was new in town was",
+   "ctxB": "Niamh welcomed Orrin into the neighbourhood. The person who was friendly was",
+   "c1": " Orrin.",
+   "c2": " Niamh."
+  },
+  {
+   "name": "sympathized with (Petra/Quentin)",
+   "category": "emotional_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Petra sympathized with Quentin after the flood. The person who was homeless was",
+   "ctxB": "Petra sympathized with Quentin after the flood. The person who was compassionate was",
+   "c1": " Quentin.",
+   "c2": " Petra."
+  },
+  {
+   "name": "repaid (Rowan/Saoirse)",
+   "category": "possession_obligation",
+   "structure": "the_person_who_was",
+   "ctxA": "Rowan repaid Saoirse the loan. The person who was the lender was",
+   "ctxB": "Rowan repaid Saoirse the loan. The person who was the borrower was",
+   "c1": " Saoirse.",
+   "c2": " Rowan."
+  },
+  {
+   "name": "handed the house keys to (Tobias/Ulla)",
+   "category": "possession_obligation",
+   "structure": "the_person_who_was",
+   "ctxA": "Tobias handed the house keys to Ulla. The person who was the new owner was",
+   "ctxB": "Tobias handed the house keys to Ulla. The person who was the seller was",
+   "c1": " Ulla.",
+   "c2": " Tobias."
+  },
+  {
+   "name": "returned the drill to (Viggo/Wren)",
+   "category": "possession_obligation",
+   "structure": "the_person_who_was",
+   "ctxA": "Viggo returned the drill to Wren. The person who was the owner was",
+   "ctxB": "Viggo returned the drill to Wren. The person who was the borrower was",
+   "c1": " Wren.",
+   "c2": " Viggo."
+  },
+  {
+   "name": "reimbursed (Yasmin/Zeno)",
+   "category": "possession_obligation",
+   "structure": "the_person_who_was",
+   "ctxA": "Yasmin reimbursed Zeno for the train tickets. The person who was out of pocket was",
+   "ctxB": "Yasmin reimbursed Zeno for the train tickets. The person who was in charge of expenses was",
+   "c1": " Zeno.",
+   "c2": " Yasmin."
+  },
+  {
+   "name": "tipped (Beatrix/Cormac)",
+   "category": "possession_obligation",
+   "structure": "the_person_who_was",
+   "ctxA": "Beatrix tipped Cormac after the meal. The person who was the waiter was",
+   "ctxB": "Beatrix tipped Cormac after the meal. The person who was the customer was",
+   "c1": " Cormac.",
+   "c2": " Beatrix."
+  },
+  {
+   "name": "paid rent to (Delphine/Eamon)",
+   "category": "possession_obligation",
+   "structure": "the_person_who_was",
+   "ctxA": "Delphine paid rent to Eamon. The person who was the landlord was",
+   "ctxB": "Delphine paid rent to Eamon. The person who was the tenant was",
+   "c1": " Eamon.",
+   "c2": " Delphine."
+  },
+  {
+   "name": "lent a spare jacket to (Florian/Greta)",
+   "category": "possession_obligation",
+   "structure": "the_person_who_was",
+   "ctxA": "Florian lent a spare jacket to Greta. The person who was cold was",
+   "ctxB": "Florian lent a spare jacket to Greta. The person who was well prepared was",
+   "c1": " Greta.",
+   "c2": " Florian."
+  },
+  {
+   "name": "gave the trophy to (Horace/Imogen)",
+   "category": "possession_obligation",
+   "structure": "the_person_who_was",
+   "ctxA": "Horace gave the trophy to Imogen. The person who was the champion was",
+   "ctxB": "Horace gave the trophy to Imogen. The person who was the presenter was",
+   "c1": " Imogen.",
+   "c2": " Horace."
+  },
+  {
+   "name": "defeated (Jasper/Kirra)",
+   "category": "ability_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Jasper defeated Kirra in the final round. The person who was outclassed was",
+   "ctxB": "Jasper defeated Kirra in the final round. The person who was the stronger player was",
+   "c1": " Kirra.",
+   "c2": " Jasper."
+  },
+  {
+   "name": "coached (Lucan/Marisol)",
+   "category": "ability_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Lucan coached Marisol before the match. The person who was the beginner was",
+   "ctxB": "Lucan coached Marisol before the match. The person who was the expert was",
+   "c1": " Marisol.",
+   "c2": " Lucan."
+  },
+  {
+   "name": "translated the letter for (Niamh/Orrin)",
+   "category": "ability_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Niamh translated the letter for Orrin. The person who was unable to read it was",
+   "ctxB": "Niamh translated the letter for Orrin. The person who was fluent in the language was",
+   "c1": " Orrin.",
+   "c2": " Niamh."
+  },
+  {
+   "name": "fixed the bicycle for (Petra/Quentin)",
+   "category": "ability_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Petra fixed the bicycle for Quentin. The person who was not handy with tools was",
+   "ctxB": "Petra fixed the bicycle for Quentin. The person who was a skilled mechanic was",
+   "c1": " Quentin.",
+   "c2": " Petra."
+  },
+  {
+   "name": "out-sprinted (Rowan/Saoirse)",
+   "category": "ability_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Rowan out-sprinted Saoirse at the finish. The person who was slower was",
+   "ctxB": "Rowan out-sprinted Saoirse at the finish. The person who was faster was",
+   "c1": " Saoirse.",
+   "c2": " Rowan."
+  },
+  {
+   "name": "promoted (Tobias/Ulla)",
+   "category": "social_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Tobias promoted Ulla. The person who was the hardworking employee was",
+   "ctxB": "Tobias promoted Ulla. The person who was the manager was",
+   "c1": " Ulla.",
+   "c2": " Tobias."
+  },
+  {
+   "name": "fined (Viggo/Wren)",
+   "category": "social_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Viggo fined Wren for speeding. The person who was the driver was",
+   "ctxB": "Viggo fined Wren for speeding. The person who was the police officer was",
+   "c1": " Wren.",
+   "c2": " Viggo."
+  },
+  {
+   "name": "interviewed (Yasmin/Zeno)",
+   "category": "social_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Yasmin interviewed Zeno for the job. The person who was the candidate was",
+   "ctxB": "Yasmin interviewed Zeno for the job. The person who was the recruiter was",
+   "c1": " Zeno.",
+   "c2": " Yasmin."
+  },
+  {
+   "name": "graded (Beatrix/Cormac)",
+   "category": "social_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Beatrix graded Cormac's essay. The person who was the student was",
+   "ctxB": "Beatrix graded Cormac's essay. The person who was the teacher was",
+   "c1": " Cormac.",
+   "c2": " Beatrix."
+  },
+  {
+   "name": "diagnosed (Delphine/Eamon)",
+   "category": "social_attribution",
+   "structure": "the_person_who_was",
+   "ctxA": "Delphine diagnosed Eamon. The person who was the patient was",
+   "ctxB": "Delphine diagnosed Eamon. The person who was the doctor was",
+   "c1": " Eamon.",
+   "c2": " Delphine."
+  }
+ ]
+}
