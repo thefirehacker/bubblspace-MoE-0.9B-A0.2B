@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.config import RunConfig, load_config
-from src.data.dataset import IGNORE_INDEX, MultiPoolTokenDataset, ShardedTokenDataset
+from src.data.dataset import IGNORE_INDEX, BatchPrefetcher, MultiPoolTokenDataset, ShardedTokenDataset
 from src.model.attention import build_doc_block_mask
 from src.model.moe import probe_grouped_mm
 from src.model.transformer import Transformer
@@ -216,6 +216,12 @@ def main():
     autocast_dtype = torch.bfloat16 if cfg.training.precision == "bf16" else torch.float32
 
     val_every = int(phase2.get("val_every", 250)) if phase2 else 0
+    # Phase 2: assemble micro-batches on a background thread so NFS reads
+    # overlap GPU compute (profiled: ~1.37 s/step of serial loader time).
+    prefetcher = (
+        BatchPrefetcher(dataset, cfg.training.micro_batch, grad_accum, start_step, total_steps)
+        if phase2 else None
+    )
 
     for step in range(start_step, total_steps):
         if val_every and step % val_every == 0:
@@ -233,7 +239,7 @@ def main():
 
         for _ in range(grad_accum):
             if phase2:
-                x, y = dataset.get_batch(cfg.training.micro_batch, device, step=step)
+                x, y = prefetcher.next(device)
             else:
                 x, y = dataset.get_batch(cfg.training.micro_batch, device)
             last_x = x

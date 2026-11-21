@@ -138,3 +138,29 @@ def test_phase2_schedule():
     assert f(19073) == pytest.approx(1.0)
     assert f(22888) == pytest.approx(0.025)
     assert all(f(s) >= f(s + 1) for s in range(19073, 22888, 37))
+
+
+def test_prefetcher_matches_inline_order(tmp_path):
+    from src.data.dataset import BatchPrefetcher
+    L = 16
+    for n in ("a", "b"):
+        _write_pool(tmp_path / n, np.random.randint(10, 1000, 20_000))
+    cfg = {
+        "pools": {"a": {"path": str(tmp_path / "a"), "group": "g1"}, "b": {"path": str(tmp_path / "b"), "group": "g2"}},
+        "stages": [{"until_step": 3, "groups": {"g1": 1.0, "g2": 0.0}},
+                   {"until_step": 6, "groups": {"g1": 0.0, "g2": 1.0}}],
+    }
+    np.random.seed(7)
+    inline_ds = MultiPoolTokenDataset(cfg, L, PAD, EOT, None, seed=1)
+    inline = [inline_ds.get_batch(4, "cpu", step=s) for s in range(6) for _ in range(2)]
+
+    np.random.seed(7)
+    pf_ds = MultiPoolTokenDataset(cfg, L, PAD, EOT, None, seed=1)
+    pf = BatchPrefetcher(pf_ds, micro_batch=4, grad_accum=2, start_step=0, total_steps=6, depth=3)
+    fetched = [pf.next("cpu") for _ in range(12)]
+    pf.close()
+
+    for (xi, yi), (xp, yp) in zip(inline, fetched):
+        assert torch.equal(xi, xp) and torch.equal(yi, yp)
+    with pytest.raises(StopIteration):
+        BatchPrefetcher(pf_ds, 4, 2, 0, 0).next("cpu")
