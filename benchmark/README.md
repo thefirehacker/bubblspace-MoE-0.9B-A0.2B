@@ -84,6 +84,36 @@ metric most sensitive to additional tokens seen. Everything else remains
 flat within stderr — consistent with a model still mid-run rather than any
 regression.
 
+## step_18000 (2026-11-21)
+
+Checkpoint: `step_18000.pt` — step 18,000 / 19,073 planned steps (~94% through
+the run), ~9.44B of 10B planned tokens seen. Raw results:
+[step_18000.json](step_18000.json). This jumps 9,000 steps ahead of the
+last logged checkpoint (`step_9000`), so deltas below reflect ~4.7B
+additional tokens of training, not the usual 1,000-step increment.
+
+| Task | Metric | step_9000 | step_18000 | Δ |
+|---|---|---|---|---|
+| PIQA | acc_norm | 65.9% | **68.8%** | **+2.9** |
+| ARC-Easy | acc_norm | 50.8% | **56.6%** | **+5.8** |
+| HellaSwag | acc_norm | 38.5% | **42.6%** | **+4.1** |
+| LAMBADA (openai) | acc | 30.6% | **35.3%** | **+4.7** |
+| LAMBADA (openai) | perplexity | 49.3 | **31.0** | **-18.3 (better)** |
+| WinoGrande | acc | 51.5% | 50.7% | -0.8 (noise) |
+| ARC-Challenge | acc_norm | 27.2% | **29.9%** | **+2.7** |
+
+**Read:** every task except WinoGrande posts a move well clear of its
+stderr (~1-1.4% on most tasks) — the clearest sign yet of real learning
+rather than noise, consistent with nearly doubling total tokens seen since
+the last checkpoint. LAMBADA perplexity in particular has fallen 37% from
+the step_7000 baseline (58.1 → 31.0) and its accuracy is up 6.3 points
+(29.0% → 35.3%), reaffirming it as the most token-sensitive metric in this
+suite. ARC-Easy (+5.8) and HellaSwag (+4.1) also show their largest single
+jumps of the run so far. WinoGrande remains flat within noise — expected,
+since it is one of the two hardest, most reasoning-heavy tasks in this
+suite (along with ARC-Challenge, which did move here) and is known to need
+much more scale/training to shift meaningfully.
+
 ## How to reproduce
 
 ```bash
