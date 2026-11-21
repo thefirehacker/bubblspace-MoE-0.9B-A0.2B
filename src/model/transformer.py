@@ -40,7 +40,10 @@ class Transformer(nn.Module):
     def make_load_tracker(self, device) -> ExpertLoadTracker:
         return ExpertLoadTracker(self.n_layers, self.cfg.moe.n_experts, device)
 
-    def forward(self, idx: torch.Tensor, load_tracker: ExpertLoadTracker | None = None):
+    def forward(self, idx: torch.Tensor, load_tracker: ExpertLoadTracker | None = None, block_mask=None):
+        # block_mask=None keeps the exact Phase 1 path (causal SDPA). Phase 2
+        # builds a doc mask outside the compiled graph (attention.build_doc_block_mask)
+        # and passes it in here.
         bsz, seq_len = idx.shape
         x = self.embed(idx)
         cos = self.rope_cos[:seq_len].to(x.device)
@@ -50,7 +53,7 @@ class Transformer(nn.Module):
         z_loss_sum = x.new_zeros(())
         hard_counts = []
         for i, block in enumerate(self.blocks):
-            x, lb, z, hc = block(x, cos, sin, load_tracker, i)
+            x, lb, z, hc = block(x, cos, sin, load_tracker, i, block_mask)
             lb_loss_sum = lb_loss_sum + lb
             z_loss_sum = z_loss_sum + z
             hard_counts.append(hc)

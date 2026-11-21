@@ -36,8 +36,9 @@ class TransformerBlock(nn.Module):
         sin: torch.Tensor,
         load_tracker: ExpertLoadTracker | None,
         layer_idx: int,
+        block_mask=None,
     ):
-        x = x + self.attn(self.norm1(x), cos, sin)
+        x = x + self.attn(self.norm1(x), cos, sin, block_mask)
         moe_out, lb_loss, z_loss, hard_counts = self.moe(self.norm2(x), load_tracker, layer_idx)
         x = x + moe_out
         return x, lb_loss, z_loss, hard_counts

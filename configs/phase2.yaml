@@ -1,0 +1,132 @@
+# ============================================================
+# MoE-0.9B-A0.2B v2  —  PHASE 2 continual training (English+STEM / code / agentic / contrastive)
+# Qwen3-Next-inspired, single H100 80GB, Muon + AdamW
+# ============================================================
+
+run_name: moe0-9b-a0-2b-phase02
+
+model:
+  n_layers: 16
+  d_model: 1024
+  vocab_size: 49280          # bubblspace-tokenizer real length 49164, padded to a multiple of 128
+  tie_embeddings: true
+  max_seq_len: 2048
+  norm_eps: 1.0e-6
+
+  attention:
+    n_heads: 16
+    head_dim: 64
+    n_kv_heads: 4
+    qk_norm: true
+    rope_theta: 10000
+    output_gate: true
+    bias: false
+
+  moe:
+    n_experts: 64
+    top_k: 8
+    expert_hidden: 256
+    activation: silu
+    router_init_std: 0.02
+    backend: auto              # auto | grouped_mm | fallback — resolved at startup by probing torch._grouped_mm
+    load_balance_coef: 0.01
+    router_z_loss_coef: 0.001
+
+  init:
+    std: 0.02
+    # residual_proj_std = std / sqrt(2 * n_layers), applied to attn.o_proj and experts.W_down
+
+optimizer:
+  muon:
+    lr: 6.0e-4
+    momentum: 0.95
+    nesterov: true
+    ns_steps: 5
+    weight_decay: 0.1
+  adamw:
+    lr: 6.0e-4
+    betas: [0.9, 0.95]
+    eps: 1.0e-8
+    weight_decay: 0.1
+  grad_clip: 1.0
+
+schedule:
+  warmup_steps: 2000
+  decay: cosine               # cosine | wsd
+  min_lr_ratio: 0.1
+  wsd_decay_frac: 0.2         # only used when decay: wsd
+
+training:
+  dataset: HuggingFaceFW/fineweb-edu
+  dataset_config: sample-10BT
+  total_tokens: 10_000_000_000
+  seq_len: 2048
+  global_batch_tokens: 524288
+  micro_batch: 16
+  precision: bf16
+  compile: true
+  checkpoint_every: 1000
+  log_every: 10
+  expert_hist_every: 100
+  attn_logit_every: 100
+
+data:
+  data_dir: /lambda/nfs/h100-f1/data
+  checkpoint_dir: /lambda/nfs/h100-f1/checkpoints
+
+tokenizer:
+  path: ./bubblspace-tokenizer
+  doc_separator: "<|endoftext|>"
+
+wandb:
+  project: moe0-9b-a0-2b
+  entity: null
+
+# ------------------------------------------------------------
+# Phase 2: continue from step_19073.pt via --init_from.
+# Model/optimizer/training blocks above are identical to Phase 1
+# (same architecture, same Muon/AdamW groups); everything that
+# differs lives here. See doc/plan-02-phase-2-continual-training.md.
+# ------------------------------------------------------------
+phase2:
+  step_offset: 19073          # W&B global_step = phase2 step + 19073 (lines up with phase01)
+  wandb_group: moe0-9b-a0-2b
+  total_steps: 22888          # 12.0B tokens at 524,288 tokens/step
+  decay_start_step: 19073     # Stage 2A plateau = first 10.0B tokens; 2B anneal = last 2.0B
+  warmup_steps: 300
+  start_lr: 6.0e-5            # Phase 1's final lr (re-warm starts here, not from 0)
+  peak_lr: 2.4e-4             # 0.4x Phase 1 peak
+  end_lr: 6.0e-6
+  doc_mask: true              # causal + same-document flex_attention mask
+  fim_rate: 0.5               # window-level FIM on code pools, 50/50 PSM/SPM
+  val_every: 250
+  val_tokens_per_pool: 2097152
+
+  pools:
+    # English + knowledge + STEM (fixed relative weights within group)
+    en_wiki:       {path: /lambda/nfs/h100-f1/data/phase2/en_wiki,      group: english, weight: 1.5}
+    en_cosmo:      {path: /lambda/nfs/h100-f1/data/phase2/en_cosmo,     group: english, weight: 1.5}
+    en_finemath:   {path: /lambda/nfs/h100-f1/data/phase2/en_finemath,  group: english, weight: 1.0}
+    en_fineweb:    {path: /lambda/nfs/h100-f1/data, group: english, weight: 0.8, recursive: false}
+    # Code (weighted by unique tokens within group), window-level FIM
+    code_python_edu:         {path: /lambda/nfs/h100-f1/data/phase2/code_python_edu,         group: code, fim: true}
+    code_starcoder_python:   {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_python,   group: code, fim: true}
+    code_starcoder_typescript: {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_typescript, group: code, fim: true}
+    code_starcoder_javascript: {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_javascript, group: code, fim: true}
+    code_starcoder_go:       {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_go,       group: code, fim: true}
+    code_starcoder_sql_shell_cfg: {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_sql_shell_cfg, group: code, fim: true}
+    # Agentic / reasoning: block-aligned, pad targets masked
+    agentic_toolmind:        {path: /lambda/nfs/h100-f1/data/phase2/agentic_toolmind,        group: agentic, kind: block}
+    agentic_glaive_fc_v2:    {path: /lambda/nfs/h100-f1/data/phase2/agentic_glaive_fc_v2,    group: agentic, kind: block}
+    agentic_openthoughts:    {path: /lambda/nfs/h100-f1/data/phase2/agentic_openthoughts,    group: agentic, kind: block}
+    agentic_hermes:          {path: /lambda/nfs/h100-f1/data/phase2/agentic_hermes,          group: agentic, kind: block}
+    agentic_bespoke_stratos: {path: /lambda/nfs/h100-f1/data/phase2/agentic_bespoke_stratos, group: agentic, kind: block}
+    # Synthetic contrastive entity-attribute binding (scripts/gen_contrastive.py)
+    contrastive:             {path: /lambda/nfs/h100-f1/data/phase2/contrastive,             group: contrastive}
+
+  stages:
+    - until_step: 19073       # Stage 2A plateau (10.0B tokens)
+      groups: {english: 0.415, code: 0.49, agentic: 0.08, contrastive: 0.015}  # contrastive: ~150M drawn / 61.9M unique
+    - until_step: 22888       # Stage 2B anneal (2.0B tokens): curated, no raw FineWeb
+      groups: {english: 0.34, code: 0.38, agentic: 0.22, contrastive: 0.06}    # contrastive: ~120M drawn (~4.4x total)
+      boost: {en_fineweb: 0.0, code_python_edu: 3.0}
