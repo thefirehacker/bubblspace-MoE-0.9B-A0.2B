@@ -4,7 +4,7 @@ This covers the window between "Phase 1 is done, start Phase 2" and the Phase 2 
 
 ## 1. The ask
 
-Phase 1 finished at `step_19073` (10B FineWeb-Edu tokens, ~87k tok/s, ~32h on one H100). You said: start Phase 2 on `fire01`. The plan (`doc/plan-02-phase-2-continual-training.md`, revised after the entity-binding probe work in `temp/scratchpad01_pre_phase2.md`) was 12B tokens, continuing from `step_19073` with a two-stage WSD schedule.
+Phase 1 finished at `step_19073` (10B FineWeb-Edu tokens, ~87k tok/s, ~32h on one H100). You said: start Phase 2 on `fire01`. The plan (`doc/plan-02-phase-2-continual-training.md`, revised after the entity-binding probe work in [`doc/review-01-pre-phase2-semantic-diagnosis.md`](../review-01-pre-phase2-semantic-diagnosis.md)) was 12B tokens, continuing from `step_19073` with a two-stage WSD schedule.
 
 But the training code to do that didn't exist yet. `scripts/train.py` had no way to continue a *finished* run (`--resume` would exit immediately because `start_step == total_steps`), the data loader read a single pool with uniform random windows, and attention had no document mask. So Phase 2 started with writing code, not launching it.
 

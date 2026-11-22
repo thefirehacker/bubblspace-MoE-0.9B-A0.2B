@@ -33,7 +33,7 @@ Security checks changed the plan twice:
 
 ### Version 3 — rebalanced for binding (what's running)
 
-The binding diagnosis changed the English pool. Version 2's English was half reused FineWeb-Edu, the same noisy web distribution that had produced the problem. Its anneal also dropped English to 16% with zero encyclopedic or STEM text. The pre-Phase 2 review (kept in a local scratchpad, `temp/scratchpad01_pre_phase2.md`, not committed) rebuilt the English group around dense, contradiction-free sources:
+The binding diagnosis changed the English pool. Version 2's English was half reused FineWeb-Edu, the same noisy web distribution that had produced the problem. Its anneal also dropped English to 16% with zero encyclopedic or STEM text. The pre-Phase 2 review ([`review-01-pre-phase2-semantic-diagnosis.md`](../review-01-pre-phase2-semantic-diagnosis.md)) rebuilt the English group around dense, contradiction-free sources:
 
 | English pool | Unique tokens | Within-group weight | Why |
 |---|---|---|---|
