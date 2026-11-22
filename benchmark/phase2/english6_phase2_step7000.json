@@ -1,0 +1,67 @@
+{
+  "checkpoint": "/lambda/nfs/us-west-1-eval-inference/phase2_step_7000.pt",
+  "step": 7000,
+  "tasks": [
+    "hellaswag",
+    "piqa",
+    "arc_easy",
+    "arc_challenge",
+    "winogrande",
+    "lambada_openai"
+  ],
+  "limit": null,
+  "results": {
+    "hellaswag": {
+      "name": "hellaswag",
+      "alias": "hellaswag",
+      "sample_len": 10042,
+      "acc,none": 0.33628759211312487,
+      "acc_stderr,none": 0.004714730865398675,
+      "acc_norm,none": 0.40689105755825533,
+      "acc_norm_stderr,none": 0.004902502514738594
+    },
+    "piqa": {
+      "name": "piqa",
+      "alias": "piqa",
+      "sample_len": 1838,
+      "acc,none": 0.6686615886833515,
+      "acc_stderr,none": 0.010982077458957346,
+      "acc_norm,none": 0.6751904243743199,
+      "acc_norm_stderr,none": 0.010926296238294032
+    },
+    "arc_easy": {
+      "name": "arc_easy",
+      "alias": "arc_easy",
+      "sample_len": 2376,
+      "acc,none": 0.5812289562289562,
+      "acc_stderr,none": 0.01012348716016781,
+      "acc_norm,none": 0.5117845117845118,
+      "acc_norm_stderr,none": 0.010256933475911013
+    },
+    "arc_challenge": {
+      "name": "arc_challenge",
+      "alias": "arc_challenge",
+      "sample_len": 1172,
+      "acc,none": 0.2508532423208191,
+      "acc_stderr,none": 0.012668198621315426,
+      "acc_norm,none": 0.2738907849829352,
+      "acc_norm_stderr,none": 0.013032004972989506
+    },
+    "winogrande": {
+      "name": "winogrande",
+      "alias": "winogrande",
+      "sample_len": 1267,
+      "acc,none": 0.5169692186266772,
+      "acc_stderr,none": 0.01404439040161297
+    },
+    "lambada_openai": {
+      "name": "lambada_openai",
+      "alias": "lambada_openai",
+      "sample_len": 5153,
+      "perplexity,none": 38.19121288484321,
+      "perplexity_stderr,none": 1.4771426118342232,
+      "acc,none": 0.33029303318455266,
+      "acc_stderr,none": 0.006552457124918186
+    }
+  }
+}
