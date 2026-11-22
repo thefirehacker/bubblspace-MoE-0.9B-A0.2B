@@ -491,6 +491,7 @@ Phase 2's own counter. In W&B, `global_step` = Phase 2 step + 19,073.
 |---|---|---|---|
 | Binding probe v2 (100 cases, 10 categories) | `scripts/probe_entity_binding.py` | log-likelihood minimal pairs: correct only if the preference flips with the named entity | every 1,000 steps |
 | Binding probe v3 (70 cases) | same | same; sentence structures disjoint from v2 and from the contrastive training corpus | every 1,000 steps |
+| Binding probe v4 (112 cases, added at step 9,000) | same | same; built by `scripts/gen_contrastive_v2.py` only from sentence frames, entity pairs and names **held out** of all contrastive training data. A coin flip scores ~25% (both contexts must be right) | every 2,000 steps from 11,000 |
 | Code fill-in-the-middle (60 held-out lines) | `scripts/eval_phase2_quick.py` | PSM prompt, greedy to end of line, exact match | every 1,000 steps |
 | Agentic tool-call format (23 held-out episodes) | same | emits `<tool_call>`, closes it, valid JSON, name = gold, argument keys = gold, ends the turn | every 1,000 steps |
 | Reasoning format (8 held-out episodes) | same | opens `<think>`, closes `</think>` within 512 tokens | every 1,000 steps |
@@ -522,20 +523,21 @@ without them:
 Generation evals use a KV cache (`Transformer.new_kv_cache()`), tested to
 match the full forward pass.
 
-### Results through step 7,000 (Stage 2A, peak learning rate)
+### Results through step 9,000 (Stage 2A, peak learning rate)
 
 Raw files: [`benchmark/phase2/`](../benchmark/phase2/).
 
-| Eval | Phase 1 final | 1k | 2k | 3k | 4k | 5k | 6k | 7k |
-|---|---|---|---|---|---|---|---|---|
-| Agentic: valid call, name = gold | 0% | 17% | 30% | 39% | 30% | 30% | 22% | **48%** |
-| Agentic: argument keys = gold | 0% | 13% | 30% | 39% | 30% | 30% | 22% | **43%** |
-| Agentic: ends turn | 0% | 35% | 30% | 39% | 35% | 39% | 35% | 43% |
-| Reasoning: opens / closes `<think>` | 0 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% |
-| FIM exact match | 0% | 0% | 0% | 0% | 0% | 3.3% | 5.0% | 5.0% |
-| Probe v2 (/100) | 24 | 25 | 31 | 25 | 27 | 25 | 27 | 28 |
-| Probe v3 (/70) | 4 | 6 | 3 | 6 | 4 | 5 | 5 | 6 |
-| Routing: mean load CV across layers | 0.623 | 0.385 | 0.333 | 0.318 | 0.304 | 0.293 | 0.288 | 0.285 |
+| Eval | Phase 1 final | 1k | 2k | 3k | 4k | 5k | 6k | 7k | 9k |
+|---|---|---|---|---|---|---|---|---|---|
+| Agentic: valid call, name = gold | 0% | 17% | 30% | 39% | 30% | 30% | 22% | **48%** | 30% |
+| Agentic: argument keys = gold | 0% | 13% | 30% | 39% | 30% | 30% | 22% | **43%** | 30% |
+| Agentic: ends turn | 0% | 35% | 30% | 39% | 35% | 39% | 35% | 43% | 35% |
+| Reasoning: opens / closes `<think>` | 0 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / **12%** |
+| FIM exact match | 0% | 0% | 0% | 0% | 0% | 3.3% | 5.0% | 5.0% | 1.7% |
+| Probe v2 (/100) | 24 | 25 | 31 | 25 | 27 | 25 | 27 | 28 | 24 |
+| Probe v3 (/70) | 4 | 6 | 3 | 6 | 4 | 5 | 5 | 6 | 3 |
+| Probe v4 (/112, chance ≈ 28) | 13 | 21 | — | — | — | — | — | — | 11 |
+| Routing: mean load CV across layers | 0.623 | 0.385 | 0.333 | 0.318 | 0.304 | 0.293 | 0.288 | 0.285 | 0.274 |
 
 The agentic set has only 23 episodes, so one episode is ~4 points. Read it as
 a trend, not as exact percentages.
@@ -549,45 +551,54 @@ a trend, not as exact percentages.
 | BFCL multiple, AST | 0% | **6%** |
 | BFCL parallel, AST | 0% | 0% |
 
-**English forgetting gate, step 5,000:**
+**English forgetting gate** (now every 2,000 steps):
 
-| Task | Metric | Phase 1 final | Phase 2 step 5,000 | Δ | stderr |
-|---|---|---|---|---|---|
-| HellaSwag | acc_norm | 42.86% | 40.39% | **−2.47** | ~0.5 |
-| PIQA | acc_norm | 68.17% | 67.30% | −0.87 | ~1.1 |
-| ARC-Easy | acc_norm | 56.10% | 52.78% | **−3.32** | ~1.0 |
-| ARC-Challenge | acc_norm | 29.78% | 27.99% | −1.79 | ~1.3 |
-| WinoGrande | acc | 51.38% | 51.07% | −0.31 | ~1.4 |
-| LAMBADA (openai) | acc | 34.80% | 32.85% | −1.95 | ~0.7 |
-| LAMBADA (openai) | perplexity | 32.0 | 39.0 | +7.0 (worse) | — |
-| **Average (6 accuracies)** | | **47.18** | **45.40** | **−1.78** | |
+| Task | Metric | Phase 1 final | P2 5k | P2 7k | P2 9k | stderr |
+|---|---|---|---|---|---|---|
+| HellaSwag | acc_norm | 42.86 | 40.39 | 40.69 | 40.64 | ~0.5 |
+| PIQA | acc_norm | 68.17 | 67.30 | 67.52 | 67.90 | ~1.1 |
+| ARC-Easy | acc_norm | 56.10 | 52.78 | 51.18 | 52.57 | ~1.0 |
+| ARC-Challenge | acc_norm | 29.78 | 27.99 | 27.39 | 27.99 | ~1.3 |
+| WinoGrande | acc | 51.38 | 51.07 | 51.70 | 52.72 | ~1.4 |
+| LAMBADA (openai) | acc | 34.80 | 32.85 | 33.03 | **35.30** | ~0.7 |
+| **Average (6 accuracies)** | | **47.18** | **45.40** | **45.25** | **46.19** | |
 
 ### Read
 
 - **Code and agentic went from zero to measurable.** CRUXEval-O and BFCL are
   external benchmarks, scored without running model code, and both moved off
   zero. The 94% parsable rate on CRUXEval-O means the model learned the answer
-  format, and 8.5% of its answers are correct. The held-out agentic format
-  check reached 48% valid, correct-name calls at step 7,000.
-- **Reasoning never closes `<think>` within 512 tokens.** BFCL shows the same
-  problem: many failures are the model opening a ToolMind-style `<think>`
-  block and never reaching the call. Expect the anneal (agentic share 8% →
-  22%) to matter most here.
-- **Binding has not moved.** v2 stays within 24–31 and v3 within 3–6, which is
-  noise. Contrastive validation loss has been flat at ~0.59 since step ~500.
-  The model fitted the contrastive corpus quickly, but that hasn't
-  transferred to the probes. This is the one Phase 2 goal not working so far.
-- **English regressed −1.78 on average, beyond the planned ~1-point gate.**
-  HellaSwag and ARC-Easy drop by several standard errors. FineWeb-Edu
-  validation loss rose 2.50 → 2.76, while Wikipedia and Cosmopedia
-  validation loss fell. Caveat: Phase 1's number was measured after its
-  learning rate had decayed, and step 5,000 is at Phase 2's peak learning
-  rate. Annealing reliably adds points, so part of this gap is expected to
-  close in the decay (steps 19,073–22,888). Whether it closes enough is
-  open. The English suite now runs every 2,000 steps from step 7,000 to
-  measure the trend. If it is still falling at step 19,000, Stage 2B will be
-  restarted with a small FineWeb-Edu share instead of zero.
-- **Routing is healthier than Phase 1.** Load CV 0.62 → 0.29, with no
+  format, and 8.5% of its answers are correct. The held-out agentic check
+  peaked at 48% valid, correct-name calls (step 7,000). It's 30% at step
+  9,000; with 23 episodes, that's within noise.
+- **Reasoning closed `</think>` for the first time at step 9,000** (1 of 8
+  episodes within 512 tokens). Until then it opened the block and never
+  finished. BFCL shows the same problem: many failures are a ToolMind-style
+  `<think>` block that never reaches the call.
+- **English dipped, then recovered at peak learning rate.** The average fell
+  to −1.78 at step 5,000 and was flat at step 7,000, then recovered to −0.99
+  at step 9,000. LAMBADA is now above Phase 1, and WinoGrande is the highest
+  in either phase (within its stderr). HellaSwag (−2.2) is the one task still
+  clearly down. Phase 1 was measured after its learning-rate decay and these
+  are at Phase 2's peak, so the anneal should add more. As insurance,
+  especially for HellaSwag, Stage 2B keeps FineWeb-Edu at ~5.7% instead of 0%
+  (applied by resuming from `step_19000.pt`; an exact continuation).
+- **Binding has not moved, and probe v4 explains why.** v2 stays 24–31 and v3
+  3–6. Probe v4 uses only phrasings and entities that never appear in any
+  contrastive training data. It scores 13/112 for Phase 1 and 11/112 at step
+  9,000, both **below** the ~28 a coin flip would get: the model picks the
+  same attribute regardless of which entity is named. Contrastive validation
+  loss went flat at ~0.59 by step ~500, and the model began copying v1's
+  fixed phrases ("Put the other way around:") into free generation. It
+  learned the template, not the binding. For the anneal, v1 is replaced by
+  `scripts/gen_contrastive_v2.py`:
+  - 15 sentence frames instead of 1
+  - pronoun and former/latter resolution
+  - 9 question formats
+  - narrative distractors and multi-step possession tracking
+  - no wrapper phrase in more than 6.4% of documents
+  - 133.5M unique tokens, so each document is seen about once
+- **Routing is healthier than Phase 1.** Load CV 0.62 → 0.27, with no
   overloaded experts since step 3,000. One layer-0 expert is briefly starved
   at some checkpoints, but a different one each time, which is rotation, not
   death.

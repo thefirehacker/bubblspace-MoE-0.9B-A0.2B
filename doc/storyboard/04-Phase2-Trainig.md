@@ -33,7 +33,7 @@ Security checks changed the plan twice:
 
 ### Version 3 — rebalanced for binding (what's running)
 
-The binding diagnosis changed the English pool. Version 2's English was half reused FineWeb-Edu, the same noisy web distribution that had produced the problem. Its anneal also dropped English to 16% with zero encyclopedic or STEM text. The pre-Phase 2 review (kept in a local scratchpad, `temp/scratchpad01_pre_phase2.md`, not committed) rebuilt the English group around dense, contradiction-free sources:
+The binding diagnosis changed the English pool. Version 2's English was half reused FineWeb-Edu, the same noisy web distribution that had produced the problem. Its anneal also dropped English to 16% with zero encyclopedic or STEM text. The pre-Phase 2 review ([`review-01-pre-phase2-semantic-diagnosis.md`](../review-01-pre-phase2-semantic-diagnosis.md)) rebuilt the English group around dense, contradiction-free sources:
 
 | English pool | Unique tokens | Within-group weight | Why |
 |---|---|---|---|
@@ -52,10 +52,10 @@ The first test run was only 78% unique: the physical-fit family has only ~80 pos
 
 | Group | Stage 2A (10B tokens) | Stage 2B (2B tokens) |
 |---|---|---|
-| English + knowledge + STEM | 41.5% | 34% (FineWeb-Edu boost 0) |
+| English + knowledge + STEM | 41.5% | 34% (originally FineWeb-Edu boost 0; changed to ~5.7% at step 19,000) |
 | Code | 49% | 38% (python-edu boost ×3) |
 | Agentic | 8% | 22% |
-| Contrastive | 1.5% (~150M drawn) | 6% (~120M drawn, ~4.4× total) |
+| Contrastive | 1.5% (~150M drawn) | 6% (~120M drawn; v2 corpus from step 19,000) |
 
 Two ideas from the review were deliberately left out:
 - **Shared-expert grafting** was rejected. As you pointed out, all 64 routed experts already share the residual stream and every attention layer, so there's no structural gap for a shared expert to fill.
@@ -84,7 +84,7 @@ Phase 2 isn't a fresh run. It continues a model that already went through a full
   - agentic 8% → 22%
   - contrastive 1.5% → 6%
   - code reweighted ×3 toward curated `python-edu-cleaned`
-  - English kept at 34%, but only Wikipedia, Cosmopedia and FineMath; raw FineWeb-Edu is switched off
+  - English kept at 34%, but only Wikipedia, Cosmopedia and FineMath; raw FineWeb-Edu is switched off *(changed mid-run: FineWeb-Edu kept at ~5.7%, and contrastive v1 replaced by v2; see section 12)*
 - The reasoning comes from Warmup-Stable-Decay training (used by SmolLM2 and others): data seen during the low-learning-rate tail has an outsized effect on the final checkpoint. Updates there are small and precise, so concentrated specialized data imprints its patterns without the large updates that cause forgetting at high learning rate.
 - This is why the anneal is a separate phase rather than just the end of a curve: the plateau builds broad competence on a mixed stream, and the anneal consolidates the skills we care about most at the point where the model is most receptive and least prone to drift.
 
@@ -235,12 +235,85 @@ The full tables are in [`eval-notes.md`](../eval-notes.md#phase-2-evaluation-con
 - **A watcher's exit code isn't a verdict.** The eval-queue watcher exited 1 because its final error-grep found no tracebacks. Read the output, not the status.
 - **Escalation discipline:** I first presented the FineWeb question as a decision needed today. When you asked what it rested on, the honest answer was one validation-loss signal and a decision ~20 hours away. Present watch items as watch items.
 
-## 12. Where things stand now
+## 12. Mid-run changes at step ~9,000–10,000
 
-- Training: step ~7,000 / 22,888, healthy, Stage 2A.
-- Next: English trend at 9k, 11k, 13k, 15k, 17k and 19k. The FineWeb decision before step 19,000. The anneal.
-- Pending with you:
-  - HumanEval/MBPP in a Docker sandbox on the A10 (no network, CPU/memory/time limits).
-  - Fixing the eval's "name in tools" check, which scores below the stricter "name = gold" and so must be mis-parsing one tool-list format.
-  - The mid-run call on distillation.
-- The HF model card shows Phase 2 progress, but the weights on HF are still Phase 1's final checkpoint. Phase 2 weights get uploaded only with your approval.
+### The English trend turned
+
+The English suite moved to every 2,000 steps. The overnight eval scripts covered steps 2,000–7,000 and exited normally at the end of their range, deleting each checkpoint after evaluation, so step 7,000 was copied over again. The trend:
+
+| | Phase 1 | 5k | 7k | 9k |
+|---|---|---|---|---|
+| 6-task average | 47.18 | 45.40 | 45.25 | **46.19** |
+
+The loss happened early, when the data mix changed, then started recovering at peak learning rate. LAMBADA passed Phase 1 at step 9,000. HellaSwag (−2.2) stayed down.
+
+### Decision: FineWeb-Edu back into the anneal
+
+You decided to keep FineWeb-Edu in Stage 2B at its Stage 2A weight: ~5.7% of the anneal's tokens, taken only from Wikipedia, Cosmopedia and FineMath. Code, agentic and contrastive are untouched. Total tokens and steps don't change.
+
+You asked whether stopping and restarting causes forgetting. It doesn't. `--resume` restores the weights, both optimizers' state, both learning-rate schedulers and the step counter, so it's an exact continuation, unlike the Phase 1 → 2 transition, which re-warmed the learning rate and changed the data. The only change is which data Stage 2B samples.
+
+### Contrastive v2
+
+Free generations from the step-9,000 model showed the v1 phrase "Put the other way around:" being copied. Together with flat v3 and a validation loss that plateaued at step ~500, that showed v1 was teaching templates. `scripts/gen_contrastive_v2.py` rebuilds the corpus:
+
+| | v1 | v2 |
+|---|---|---|
+| Sentence frames for event + reason | 1, inside 6 wrappers | 15 (fronted, consequence, cleft, semicolon, …) |
+| Reference resolution | none | "it" and "the former/latter", with explicit resolution |
+| Question formats | 1 | 9, including either/or |
+| Document shapes | 6 | 9 + possession chains, narrative distractors, two situations per document |
+| Most frequent wrapper phrase | ~17% of documents | 6.4% |
+| Unique tokens | 61.9M (~4.4× repetition over Phase 2) | 133.5M (~0.9× in the anneal) |
+
+Its guards assert that:
+- no probe v2/v3 entity pair or name appears
+- no probe v3 frame phrase appears ("The one that was", "of the two", …)
+- no held-out frame appears
+
+The held-out frames, entity pairs and names build **probe v4** (112 cases), the first probe that is template-free by construction. Baselines: Phase 1 13/112, step 1,000 21/112, step 9,000 11/112, all below the ~28 a coin flip scores. That's the honest baseline the anneal has to beat.
+
+### How the restart is set up
+
+`configs/phase2.yaml`:
+- adds the `contrastive_v2` pool, boosted to 0 in Stage 2A so steps 19,000–19,073 replay exactly
+- sets v1 to 0 in Stage 2B
+- keeps FineWeb-Edu in Stage 2B
+
+A sampler check on fire01 confirmed Stage 2A is bit-for-bit the same mix and Stage 2B is as intended.
+
+Before arming anything, `--resume` was tested on the A10 with a real Phase 2 checkpoint (step 1,000, tiny batch):
+- **Test 1** started while the step-9,000 probes were running, because my wait condition also matched the English check's "done" line, and it ran out of memory.
+- **Test 2** passed: resumed at step 1,000 and trained 168 steps cleanly.
+- **Test 3** used the final config with the v2 pool loaded and passed.
+
+`~/switch_2b.sh` on fire01 runs at the step-19,000 checkpoint (~08:25 IST, 23 Nov):
+1. Waits for the file to be complete.
+2. Checks that the process it will stop really is the training process, and that the final config and v2 data are in place.
+3. Stops training and resumes with the same W&B run id.
+4. Confirms after 15 minutes. If the new launch fails, it falls back to resuming with the original config, so training doesn't sit stopped overnight.
+
+### Generation controls and step 9,000 on HF
+
+- **Chat REPL** ([`scripts/chat_repl.py`](../../scripts/chat_repl.py)):
+  - New controls: repetition penalty (default 1.15), no-repeat 4-grams, min-p, and a `/chat` mode that wraps input in the `<|im_start|>` format and stops at `<|im_end|>`.
+  - On the India prompt, the loop ("a country that is very diverse in its culture…" ×3) is replaced by a varied paragraph.
+  - In chat mode the model answers "The capital of France is Paris." and stops by itself.
+  - Removing the loops exposed the remaining binding errors ("ruled by the Aryans for over 2,000 years").
+- **Weights:** the step-9,000 weights went to Hugging Face `main`, and the Phase 1 final weights were preserved on a `phase1-final` branch first. The model card now says which checkpoint is on `main` and where Phase 1 lives.
+
+**Mistakes and lessons today:**
+- A `pkill -f` again matched its own shell. The pattern appeared in the config name on the same command line.
+- A wait condition matched a substring of a different log line. Anchor log matches.
+
+## 13. Where things stand now
+
+- **Training:** step ~10,000 / 22,888, healthy, Stage 2A. The switch to the new Stage 2B mix is armed for step 19,000.
+- **Evals:** English, probes v2/v3/v4, the quick suite and routing every 2,000 steps. CRUXEval/BFCL at step 19,000 and at the final step.
+- **Still pending with you:**
+  - HumanEval/MBPP in a Docker sandbox on the A10.
+  - Fixing the eval's "name in tools" check, which scores below the stricter "name = gold".
+  - After Phase 2, the binding plan:
+    - knowledge augmentation (many paraphrases per fact)
+    - SmolLM2-1.7B distillation as a short Phase 2C
+    - SFT, then DPO on consistent vs. contradictory answers
