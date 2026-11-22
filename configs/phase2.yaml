@@ -123,13 +123,18 @@ phase2:
     agentic_bespoke_stratos: {path: /lambda/nfs/h100-f1/data/phase2/agentic_bespoke_stratos, group: agentic, kind: block}
     # Synthetic contrastive entity-attribute binding (scripts/gen_contrastive.py)
     contrastive:             {path: /lambda/nfs/h100-f1/data/phase2/contrastive,             group: contrastive}
+    # v2 (scripts/gen_contrastive_v2.py): 15 frames, pronoun/former-latter, varied Q&A, narrative + distractors,
+    # possession chains; 133.5M unique tokens. Used only in Stage 2B (replaces v1 there).
+    contrastive_v2:          {path: /lambda/nfs/h100-f1/data/phase2/contrastive_v2,          group: contrastive}
 
   stages:
     - until_step: 19073       # Stage 2A plateau (10.0B tokens)
       groups: {english: 0.415, code: 0.49, agentic: 0.08, contrastive: 0.015}  # contrastive: ~150M drawn / 61.9M unique
+      boost: {contrastive_v2: 0.0}   # v2 off in 2A, so the 2A mix is unchanged
     - until_step: 22888       # Stage 2B anneal (2.0B tokens)
-      groups: {english: 0.34, code: 0.38, agentic: 0.22, contrastive: 0.06}    # contrastive: ~120M drawn (~4.4x total)
-      # FineWeb-Edu kept at its Stage 2A weight (~5.7% of 2B tokens) instead of the original 0:
-      # the English gate showed -1.8 avg at steps 5k/7k (ARC-Easy worst). Applied by resuming
-      # from step_19000.pt on 2026-11-22/23 (doc/storyboard/04-Phase2-Trainig.md).
-      boost: {code_python_edu: 3.0}
+      groups: {english: 0.34, code: 0.38, agentic: 0.22, contrastive: 0.06}    # contrastive: ~120M drawn, all from v2 (~0.9x)
+      # Changes applied by resuming from step_19000.pt (doc/storyboard/04-Phase2-Trainig.md):
+      #  - FineWeb-Edu kept at its Stage 2A weight (~5.7% of 2B tokens) instead of the original 0:
+      #    the English gate showed -1.8 avg at steps 5k/7k (ARC-Easy, HellaSwag worst).
+      #  - contrastive v1 -> v2: v1's fixed templates were being memorized and copied into generations.
+      boost: {code_python_edu: 3.0, contrastive: 0.0}
