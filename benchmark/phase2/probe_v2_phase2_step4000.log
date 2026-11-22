@@ -1,0 +1,917 @@
+[ckpt] loaded /lambda/nfs/us-west-1-eval-inference/phase2_step_4000.pt (step 4000)
+
+=== suitcase / car trunk ===
+  ctxA: ...uld not fit in the car trunk because the trunk was
+    too small.     logprob=  -0.429
+    too big.       logprob=  -3.742   -> prefers: too small.
+  ctxB: ... not fit in the car trunk because the suitcase was
+    too small.     logprob=  -0.816
+    too big.       logprob=  -2.878   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== piano / elevator ===
+  ctxA: ...d not fit in the elevator because the elevator was
+    too small.     logprob=  -0.794
+    too big.       logprob=  -3.732   -> prefers: too small.
+  ctxB: ...ould not fit in the elevator because the piano was
+    too small.     logprob=  -2.225
+    too big.       logprob=  -2.412   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== mattress / van ===
+  ctxA: ...tress would not fit in the van because the van was
+    too small.     logprob=  -0.660
+    too big.       logprob=  -3.597   -> prefers: too small.
+  ctxB: ... would not fit in the van because the mattress was
+    too small.     logprob=  -1.172
+    too big.       logprob=  -4.297   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== sofa / moving truck ===
+  ctxA: ... not fit in the moving truck because the truck was
+    too small.     logprob=  -2.676
+    too big.       logprob=  -2.302   -> prefers: too big.
+  ctxB: ...d not fit in the moving truck because the sofa was
+    too small.     logprob=  -2.013
+    too big.       logprob=  -2.579   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== bookshelf / alcove ===
+  ctxA: ...would not fit in the alcove because the alcove was
+    too small.     logprob=  -0.500
+    too big.       logprob=  -6.187   -> prefers: too small.
+  ctxB: ...ld not fit in the alcove because the bookshelf was
+    too small.     logprob=  -0.910
+    too big.       logprob=  -5.910   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== refrigerator / delivery van ===
+  ctxA: ...ld not fit in the delivery van because the van was
+    too small.     logprob=  -0.702
+    too big.       logprob=  -2.577   -> prefers: too small.
+  ctxB: ...t in the delivery van because the refrigerator was
+    too small.     logprob=  -1.082
+    too big.       logprob=  -2.332   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== aquarium / display cabinet ===
+  ctxA: ...fit in the display cabinet because the cabinet was
+    too small.     logprob=  -0.181
+    too big.       logprob=  -4.743   -> prefers: too small.
+  ctxB: ...it in the display cabinet because the aquarium was
+    too small.     logprob=  -0.256
+    too big.       logprob=  -3.631   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== wardrobe / shipping container ===
+  ctxA: ...n the shipping container because the container was
+    too small.     logprob=  -0.412
+    too big.       logprob=  -2.724   -> prefers: too small.
+  ctxB: ...in the shipping container because the wardrobe was
+    too small.     logprob=  -0.554
+    too big.       logprob=  -2.117   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== desk / office elevator ===
+  ctxA: ...it in the office elevator because the elevator was
+    too small.     logprob=  -1.767
+    too big.       logprob=  -4.892   -> prefers: too small.
+  ctxB: ...ot fit in the office elevator because the desk was
+    too small.     logprob=  -1.501
+    too big.       logprob=  -4.189   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== crate / cargo hold ===
+  ctxA: ...t fit in the cargo hold because the cargo hold was
+    too small.     logprob=  -0.381
+    too big.       logprob=  -5.308   -> prefers: too small.
+  ctxB: ...ld not fit in the cargo hold because the crate was
+    too small.     logprob=  -1.893
+    too big.       logprob=  -3.456   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== car / alley ===
+  ctxA: ...r does not fit into the alley because the alley is
+    too narrow.    logprob=  -1.458
+    too wide.      logprob=  -4.652   -> prefers: too narrow.
+  ctxB: ...car does not fit into the alley because the car is
+    too narrow.    logprob=  -1.960
+    too wide.      logprob=  -2.149   -> prefers: too narrow.
+  correct binding (flips A->c1, B->c2): False
+
+=== wardrobe / doorway ===
+  ctxA: ...not go through the doorway because the doorway was
+    too narrow.    logprob=  -1.269
+    too wide.      logprob=  -6.211   -> prefers: too narrow.
+  ctxB: ...ot go through the doorway because the wardrobe was
+    too narrow.    logprob=  -2.242
+    too wide.      logprob=  -4.371   -> prefers: too narrow.
+  correct binding (flips A->c1, B->c2): False
+
+=== sofa / staircase ===
+  ctxA: ...t stuck on the staircase because the staircase was
+    too narrow.    logprob=  -2.234
+    too wide.      logprob=  -5.499   -> prefers: too narrow.
+  ctxB: ...fa got stuck on the staircase because the sofa was
+    too narrow.    logprob=  -3.330
+    too wide.      logprob=  -5.010   -> prefers: too narrow.
+  correct binding (flips A->c1, B->c2): False
+
+=== fridge / kitchen doorway ===
+  ctxA: ...hrough the kitchen doorway because the doorway was
+    too narrow.    logprob=  -1.620
+    too wide.      logprob=  -5.683   -> prefers: too narrow.
+  ctxB: ...through the kitchen doorway because the fridge was
+    too narrow.    logprob=  -2.889
+    too wide.      logprob=  -2.514   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== truck / country lane ===
+  ctxA: ...t pass along the country lane because the lane was
+    too narrow.    logprob=  -0.869
+    too wide.      logprob=  -5.249   -> prefers: too narrow.
+  ctxB: ... pass along the country lane because the truck was
+    too narrow.    logprob=  -2.387
+    too wide.      logprob=  -1.280   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== bed frame / apartment door ===
+  ctxA: ...it through the apartment door because the door was
+    too narrow.    logprob=  -1.024
+    too wide.      logprob=  -4.214   -> prefers: too narrow.
+  ctxB: ...rough the apartment door because the bed frame was
+    too narrow.    logprob=  -1.352
+    too wide.      logprob=  -3.291   -> prefers: too narrow.
+  correct binding (flips A->c1, B->c2): False
+
+=== canoe / river channel ===
+  ctxA: ... through the river channel because the channel was
+    too narrow.    logprob=  -0.331
+    too wide.      logprob=  -3.208   -> prefers: too narrow.
+  ctxB: ...ss through the river channel because the canoe was
+    too narrow.    logprob=  -1.173
+    too wide.      logprob=  -1.873   -> prefers: too narrow.
+  correct binding (flips A->c1, B->c2): False
+
+=== bookcase / hallway ===
+  ctxA: ... around the hallway corner because the hallway was
+    too narrow.    logprob=  -0.809
+    too wide.      logprob=  -4.622   -> prefers: too narrow.
+  ctxB: ...around the hallway corner because the bookcase was
+    too narrow.    logprob=  -2.201
+    too wide.      logprob=  -2.452   -> prefers: too narrow.
+  correct binding (flips A->c1, B->c2): False
+
+=== piano / stairwell landing ===
+  ctxA: ...k on the stairwell landing because the landing was
+    too narrow.    logprob=  -3.979
+    too wide.      logprob=  -6.157   -> prefers: too narrow.
+  ctxB: ...uck on the stairwell landing because the piano was
+    too narrow.    logprob=  -5.611
+    too wide.      logprob=  -5.886   -> prefers: too narrow.
+  correct binding (flips A->c1, B->c2): False
+
+=== trailer / bridge lane ===
+  ctxA: ...uld not cross the bridge lane because the lane was
+    too narrow.    logprob=  -0.662
+    too wide.      logprob=  -5.182   -> prefers: too narrow.
+  ctxB: ... not cross the bridge lane because the trailer was
+    too narrow.    logprob=  -1.516
+    too wide.      logprob=  -2.175   -> prefers: too narrow.
+  correct binding (flips A->c1, B->c2): False
+
+=== truck / tunnel ===
+  ctxA: ...not pass through the tunnel because the tunnel was
+    too low.       logprob=  -4.657
+    too tall.      logprob=  -5.649   -> prefers: too low.
+  ctxB: ... not pass through the tunnel because the truck was
+    too low.       logprob=  -7.816
+    too tall.      logprob=  -2.597   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== boat / bridge ===
+  ctxA: ...d not pass under the bridge because the bridge was
+    too low.       logprob=  -1.991
+    too tall.      logprob=  -2.188   -> prefers: too low.
+  ctxB: ...uld not pass under the bridge because the boat was
+    too low.       logprob=  -4.717
+    too tall.      logprob=  -2.381   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== ladder / garage ===
+  ctxA: ... not stand up in the garage because the garage was
+    too low.       logprob=  -0.818
+    too tall.      logprob=  -1.880   -> prefers: too low.
+  ctxB: ... not stand up in the garage because the ladder was
+    too low.       logprob=  -2.502
+    too tall.      logprob=  -0.564   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== bus / garage ===
+  ctxA: ...could not fit in the garage because the garage was
+    too low.       logprob=  -5.944
+    too tall.      logprob=  -9.629   -> prefers: too low.
+  ctxB: ...us could not fit in the garage because the bus was
+    too low.       logprob=  -6.190
+    too tall.      logprob=  -4.128   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== crane / overpass ===
+  ctxA: ... drive under the overpass because the overpass was
+    too low.       logprob=  -1.984
+    too tall.      logprob=  -2.222   -> prefers: too low.
+  ctxB: ...not drive under the overpass because the crane was
+    too low.       logprob=  -4.948
+    too tall.      logprob=  -0.360   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== RV / parking garage ===
+  ctxA: ...the parking garage because the garage entrance was
+    too low.       logprob=  -5.942
+    too tall.      logprob=  -6.748   -> prefers: too low.
+  ctxB: ...ld not enter the parking garage because the RV was
+    too low.       logprob=  -5.058
+    too tall.      logprob=  -3.919   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== flagpole / barn doorway ===
+  ctxA: ...d through the barn doorway because the doorway was
+    too low.       logprob=  -2.315
+    too tall.      logprob=  -4.231   -> prefers: too low.
+  ctxB: ... through the barn doorway because the flagpole was
+    too low.       logprob=  -4.222
+    too tall.      logprob=  -0.965   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== shipping container / warehouse ceiling ===
+  ctxA: ...e stacked inside because the warehouse ceiling was
+    too low.       logprob=  -1.425
+    too tall.      logprob=  -4.966   -> prefers: too low.
+  ctxB: ...ld not be stacked inside because the container was
+    too low.       logprob=  -4.177
+    too tall.      logprob=  -2.416   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== antenna / bridge underside ===
+  ctxA: ...craped the bridge underside because the bridge was
+    too low.       logprob=  -5.767
+    too tall.      logprob=  -6.804   -> prefers: too low.
+  ctxB: ...raped the bridge underside because the antenna was
+    too low.       logprob=  -6.396
+    too tall.      logprob=  -6.168   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== moving truck / toll booth ===
+  ctxA: ...uck at the toll booth because the booth canopy was
+    too low.       logprob=  -3.225
+    too tall.      logprob=  -3.818   -> prefers: too low.
+  ctxB: ... got stuck at the toll booth because the truck was
+    too low.       logprob=  -9.514
+    too tall.      logprob=  -5.525   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== chess tournament ===
+  ctxA: ...med Liam in the chess tournament because Maria was
+    more skilled.  logprob=  -2.516
+    less skilled.  logprob=  -8.898   -> prefers: more skilled.
+  ctxB: ...rmed Liam in the chess tournament because Liam was
+    more skilled.  logprob=  -3.749
+    less skilled.  logprob=  -6.753   -> prefers: more skilled.
+  correct binding (flips A->c1, B->c2): False
+
+=== missed deadline blame ===
+  ctxA: ...os for the missed deadline because Carlos had been
+    careless.      logprob=  -6.838
+    unreasonable.  logprob= -11.470   -> prefers: careless.
+  ctxB: ...r the missed deadline because the manager had been
+    careless.      logprob=  -6.715
+    unreasonable.  logprob= -11.156   -> prefers: careless.
+  correct binding (flips A->c1, B->c2): False
+
+=== substitution ===
+  ctxA: ...ch substituted Daniel for Ethan because Daniel was
+    fresher.       logprob= -13.712
+    exhausted.     logprob=  -8.173   -> prefers: exhausted.
+  ctxB: ...ach substituted Daniel for Ethan because Ethan was
+    fresher.       logprob= -14.183
+    exhausted.     logprob=  -8.986   -> prefers: exhausted.
+  correct binding (flips A->c1, B->c2): False
+
+=== court ruling ===
+  ctxA: ... of the plaintiff because the plaintiff's case was
+    stronger.      logprob=  -4.436
+    weaker.        logprob=  -7.440   -> prefers: stronger.
+  ctxB: ... of the plaintiff because the defendant's case was
+    stronger.      logprob=  -4.419
+    weaker.        logprob=  -7.372   -> prefers: stronger.
+  correct binding (flips A->c1, B->c2): False
+
+=== proposal rejection ===
+  ctxA: ...tee rejected the proposal because the proposal was
+    poorly researched. logprob= -11.683
+    overly cautious. logprob= -12.559   -> prefers: poorly researched.
+  ctxB: ...ee rejected the proposal because the committee was
+    poorly researched. logprob= -15.466
+    overly cautious. logprob= -10.692   -> prefers: overly cautious.
+  correct binding (flips A->c1, B->c2): True
+
+=== startup investment ===
+  ctxA: ... backed the startup because the startup's team was
+    promising.     logprob=  -9.168
+    risk-tolerant. logprob= -15.732   -> prefers: promising.
+  ctxB: ...vestor backed the startup because the investor was
+    promising.     logprob= -11.916
+    risk-tolerant. logprob= -13.425   -> prefers: promising.
+  correct binding (flips A->c1, B->c2): False
+
+=== article cut ===
+  ctxA: ...The editor cut the article because the article was
+    too long.      logprob=  -2.816
+    short on space. logprob= -12.378   -> prefers: too long.
+  ctxB: ...The editor cut the article because the editor was
+    too long.      logprob= -10.620
+    short on space. logprob= -11.432   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): False
+
+=== failed essay ===
+  ctxA: ...failed the student because the student's essay was
+    plagiarized.   logprob=  -5.015
+    strict.        logprob= -12.403   -> prefers: plagiarized.
+  ctxB: ...essor failed the student because the professor was
+    plagiarized.   logprob= -15.068
+    strict.        logprob=  -2.138   -> prefers: strict.
+  correct binding (flips A->c1, B->c2): True
+
+=== booed referee ===
+  ctxA: ...d booed the referee because the referee's call was
+    unfair.        logprob=  -3.662
+    biased toward the home team. logprob= -20.226   -> prefers: unfair.
+  ctxB: ...The crowd booed the referee because the crowd was
+    unfair.        logprob=  -8.755
+    biased toward the home team. logprob= -22.078   -> prefers: unfair.
+  correct binding (flips A->c1, B->c2): False
+
+=== tenant eviction ===
+  ctxA: ...ord evicted the tenant because the tenant had been
+    behind on rent. logprob= -11.082
+    impatient.     logprob= -10.457   -> prefers: impatient.
+  ctxB: ...d evicted the tenant because the landlord had been
+    behind on rent. logprob= -11.078
+    impatient.     logprob=  -8.273   -> prefers: impatient.
+  correct binding (flips A->c1, B->c2): False
+
+=== funeral comfort ===
+  ctxA: ...omforted James after the funeral because James was
+    grieving.      logprob=  -0.937
+    compassionate. logprob= -11.274   -> prefers: grieving.
+  ctxB: ...omforted James after the funeral because Sarah was
+    grieving.      logprob=  -7.061
+    compassionate. logprob=  -6.439   -> prefers: compassionate.
+  correct binding (flips A->c1, B->c2): True
+
+=== apology after argument ===
+  ctxA: ... to Grace after the argument because Noah had been
+    rude.          logprob=  -5.852
+    forgiving.     logprob=  -9.112   -> prefers: rude.
+  ctxB: ...to Grace after the argument because Grace had been
+    rude.          logprob=  -5.843
+    forgiving.     logprob= -10.534   -> prefers: rude.
+  correct binding (flips A->c1, B->c2): False
+
+=== nurse reassurance ===
+  ctxA: ...urse reassured the patient because the patient was
+    anxious.       logprob=  -1.524
+    calm.          logprob=  -9.614   -> prefers: anxious.
+  ctxB: ... nurse reassured the patient because the nurse was
+    anxious.       logprob=  -7.680
+    calm.          logprob=  -1.540   -> prefers: calm.
+  correct binding (flips A->c1, B->c2): True
+
+=== sibling forgiveness ===
+  ctxA: ...orgave her brother quickly because her brother was
+    remorseful.    logprob=  -1.186
+    easygoing.     logprob=  -7.806   -> prefers: remorseful.
+  ctxB: ...Emma forgave her brother quickly because Emma was
+    remorseful.    logprob=  -6.726
+    easygoing.     logprob=  -1.269   -> prefers: easygoing.
+  correct binding (flips A->c1, B->c2): True
+
+=== therapy progress ===
+  ctxA: ...pist praised Liam's progress because Liam had been
+    diligent in therapy. logprob= -14.920
+    encouraging.   logprob= -11.858   -> prefers: encouraging.
+  ctxB: ...sed Liam's progress because the therapist had been
+    diligent in therapy. logprob= -14.724
+    encouraging.   logprob=  -8.394   -> prefers: encouraging.
+  correct binding (flips A->c1, B->c2): False
+
+=== race crowd cheer ===
+  ctxA: ...rowd cheered for the runner because the runner was
+    determined.    logprob=  -9.112
+    supportive.    logprob=  -9.624   -> prefers: determined.
+  ctxB: ...crowd cheered for the runner because the crowd was
+    determined.    logprob=  -8.445
+    supportive.    logprob=  -7.063   -> prefers: supportive.
+  correct binding (flips A->c1, B->c2): True
+
+=== consoled after loss ===
+  ctxA: ...the student after the loss because the student was
+    disappointed.  logprob=  -5.437
+    kind-hearted.  logprob= -13.085   -> prefers: disappointed.
+  ctxB: ...the student after the loss because the teacher was
+    disappointed.  logprob=  -7.767
+    kind-hearted.  logprob= -11.788   -> prefers: disappointed.
+  correct binding (flips A->c1, B->c2): False
+
+=== father scolding ===
+  ctxA: ...he father scolded his son because his son had been
+    careless.      logprob=  -1.255
+    strict.        logprob= -10.077   -> prefers: careless.
+  ctxB: ...father scolded his son because the father had been
+    careless.      logprob=  -3.244
+    strict.        logprob=  -2.601   -> prefers: strict.
+  correct binding (flips A->c1, B->c2): True
+
+=== avoided at party ===
+  ctxA: ...voided Marcus at the party because Marcus had been
+    rude earlier.  logprob=  -6.811
+    holding a grudge. logprob= -12.719   -> prefers: rude earlier.
+  ctxB: ...d Marcus at the party because the friends had been
+    rude earlier.  logprob=  -7.887
+    holding a grudge. logprob= -13.552   -> prefers: rude earlier.
+  correct binding (flips A->c1, B->c2): False
+
+=== donor thanks ===
+  ctxA: ...teers thanked the donor because the donor had been
+    generous.      logprob=  -0.708
+    grateful.      logprob=  -8.979   -> prefers: generous.
+  ctxB: ... thanked the donor because the volunteers had been
+    generous.      logprob=  -1.732
+    grateful.      logprob=  -5.069   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== rookie vs champion ===
+  ctxA: ...rookie lost to the champion because the rookie was
+    inexperienced. logprob=  -2.164
+    experienced.   logprob=  -3.555   -> prefers: inexperienced.
+  ctxB: ...okie lost to the champion because the champion was
+    inexperienced. logprob=  -2.222
+    experienced.   logprob=  -4.258   -> prefers: inexperienced.
+  correct binding (flips A->c1, B->c2): False
+
+=== amateurs beat pros ===
+  ctxA: ...t the professionals because the professionals were
+    overconfident. logprob=  -3.417
+    well-prepared. logprob=  -8.404   -> prefers: overconfident.
+  ctxB: ...m beat the professionals because the amateurs were
+    overconfident. logprob=  -3.906
+    well-prepared. logprob=  -7.257   -> prefers: overconfident.
+  correct binding (flips A->c1, B->c2): False
+
+=== intern vs manager ===
+  ctxA: ...sk faster than the manager because the manager was
+    busy with other work. logprob= -21.695
+    efficient.     logprob=  -5.875   -> prefers: efficient.
+  ctxB: ...ask faster than the manager because the intern was
+    busy with other work. logprob= -22.899
+    efficient.     logprob=  -5.711   -> prefers: efficient.
+  correct binding (flips A->c1, B->c2): False
+
+=== pilot vs trainee storm ===
+  ctxA: ...rm better than the trainee because the trainee was
+    inexperienced. logprob=  -2.641
+    well-trained.  logprob=  -8.894   -> prefers: inexperienced.
+  ctxB: ...rm better than the trainee because the veteran was
+    inexperienced. logprob=  -5.232
+    well-trained.  logprob=  -5.514   -> prefers: inexperienced.
+  correct binding (flips A->c1, B->c2): False
+
+=== junior lawyer vs partner ===
+  ctxA: ...o the senior partner because the junior lawyer was
+    underprepared. logprob= -12.418
+    highly experienced. logprob=  -8.655   -> prefers: highly experienced.
+  ctxB: ... the senior partner because the senior partner was
+    underprepared. logprob= -13.913
+    highly experienced. logprob=  -8.570   -> prefers: highly experienced.
+  correct binding (flips A->c1, B->c2): False
+
+=== software struggle ===
+  ctxA: ... senior staff did not because the new employee was
+    unfamiliar with it. logprob=  -8.442
+    already trained on it. logprob= -16.545   -> prefers: unfamiliar with it.
+  ctxB: ...senior staff did not because the senior staff were
+    unfamiliar with it. logprob=  -7.710
+    already trained on it. logprob= -15.054   -> prefers: unfamiliar with it.
+  correct binding (flips A->c1, B->c2): False
+
+=== underdog surprise win ===
+  ctxA: ...rised everyone by winning because the underdog had
+    trained in secret. logprob= -18.435
+    underestimated the opponent. logprob= -15.155   -> prefers: underestimated the opponent.
+  ctxB: ...rised everyone by winning because the favorite had
+    trained in secret. logprob= -17.586
+    underestimated the opponent. logprob= -14.852   -> prefers: underestimated the opponent.
+  correct binding (flips A->c1, B->c2): False
+
+=== exam ace vs fail ===
+  ctxA: ...ile his classmate failed because the classmate had
+    not studied.   logprob=  -5.178
+    studied thoroughly. logprob= -11.705   -> prefers: not studied.
+  ctxB: ...while his classmate failed because the student had
+    not studied.   logprob=  -5.000
+    studied thoroughly. logprob= -11.806   -> prefers: not studied.
+  correct binding (flips A->c1, B->c2): False
+
+=== apprentice broke vase ===
+  ctxA: ...ter craftsman never did because the apprentice was
+    still learning. logprob=  -7.937
+    highly skilled. logprob=  -6.054   -> prefers: highly skilled.
+  ctxB: ... master craftsman never did because the master was
+    still learning. logprob= -10.436
+    highly skilled. logprob=  -6.657   -> prefers: highly skilled.
+  correct binding (flips A->c1, B->c2): False
+
+=== slower runner won ===
+  ctxA: ...r still won the marathon because the faster runner
+    dropped out early. logprob= -16.261
+    paced herself well. logprob= -27.069   -> prefers: dropped out early.
+  ctxB: ...r still won the marathon because the slower runner
+    dropped out early. logprob= -17.268
+    paced herself well. logprob= -26.779   -> prefers: dropped out early.
+  correct binding (flips A->c1, B->c2): False
+
+=== cat chased mouse ===
+  ctxA: ...The cat chased the mouse because the mouse had
+    stolen some food. logprob= -18.938
+    gone hungry.   logprob= -11.052   -> prefers: gone hungry.
+  ctxB: ...The cat chased the mouse because the cat had
+    stolen some food. logprob= -22.468
+    gone hungry.   logprob= -12.100   -> prefers: gone hungry.
+  correct binding (flips A->c1, B->c2): False
+
+=== dog barked at carrier ===
+  ctxA: ...d at the mail carrier because the mail carrier had
+    approached the gate. logprob= -21.785
+    wanted to protect the house. logprob= -25.496   -> prefers: approached the gate.
+  ctxB: ...dog barked at the mail carrier because the dog had
+    approached the gate. logprob= -21.560
+    wanted to protect the house. logprob= -28.959   -> prefers: approached the gate.
+  correct binding (flips A->c1, B->c2): False
+
+=== crowd pushed toward stage ===
+  ctxA: ...crowd pushed toward the stage because the band had
+    started playing. logprob=  -8.192
+    grown excited. logprob= -14.527   -> prefers: started playing.
+  ctxB: ...rowd pushed toward the stage because the crowd had
+    started playing. logprob= -14.556
+    grown excited. logprob= -12.520   -> prefers: grown excited.
+  correct binding (flips A->c1, B->c2): True
+
+=== guard stopped visitor ===
+  ctxA: ... guard stopped the visitor because the visitor had
+    forgotten his badge. logprob= -14.975
+    been following protocol. logprob= -15.893   -> prefers: forgotten his badge.
+  ctxB: ...he guard stopped the visitor because the guard had
+    forgotten his badge. logprob= -14.730
+    been following protocol. logprob= -17.328   -> prefers: forgotten his badge.
+  correct binding (flips A->c1, B->c2): False
+
+=== hawk circled field ===
+  ctxA: ...The hawk circled the field because a rabbit had
+    wandered into the open. logprob= -12.410
+    been hunting for food. logprob= -16.069   -> prefers: wandered into the open.
+  ctxB: ...The hawk circled the field because the hawk had
+    wandered into the open. logprob= -17.752
+    been hunting for food. logprob= -18.104   -> prefers: wandered into the open.
+  correct binding (flips A->c1, B->c2): False
+
+=== waiter rushed to table ===
+  ctxA: ...aiter rushed to the table because the customer had
+    spilled a drink. logprob= -14.122
+    been attentive to guests. logprob= -26.641   -> prefers: spilled a drink.
+  ctxB: ... waiter rushed to the table because the waiter had
+    spilled a drink. logprob= -15.100
+    been attentive to guests. logprob= -23.826   -> prefers: spilled a drink.
+  correct binding (flips A->c1, B->c2): False
+
+=== alarm startled burglar ===
+  ctxA: ... alarm startled the burglar because the sensor had
+    detected motion. logprob=  -7.561
+    been careless about the wires. logprob= -22.397   -> prefers: detected motion.
+  ctxB: ...alarm startled the burglar because the burglar had
+    detected motion. logprob= -15.374
+    been careless about the wires. logprob= -20.441   -> prefers: detected motion.
+  correct binding (flips A->c1, B->c2): False
+
+=== toddler cried at balloon ===
+  ctxA: ...ed when the balloon popped because the balloon had
+    burst loudly.  logprob= -16.053
+    been easily frightened. logprob= -21.058   -> prefers: burst loudly.
+  ctxB: ...ed when the balloon popped because the toddler had
+    burst loudly.  logprob= -20.832
+    been easily frightened. logprob= -15.464   -> prefers: been easily frightened.
+  correct binding (flips A->c1, B->c2): True
+
+=== security tackled intruder ===
+  ctxA: ...team tackled the intruder because the intruder had
+    jumped the fence. logprob= -10.734
+    been trained for emergencies. logprob= -18.119   -> prefers: jumped the fence.
+  ctxB: ...tackled the intruder because the security team had
+    jumped the fence. logprob= -14.287
+    been trained for emergencies. logprob= -14.592   -> prefers: jumped the fence.
+  correct binding (flips A->c1, B->c2): False
+
+=== teacher separated students ===
+  ctxA: ...eparated the two students because the students had
+    started arguing. logprob= -10.915
+    been strict about classroom rules. logprob= -25.600   -> prefers: started arguing.
+  ctxB: ...separated the two students because the teacher had
+    started arguing. logprob= -15.333
+    been strict about classroom rules. logprob= -20.880   -> prefers: started arguing.
+  correct binding (flips A->c1, B->c2): False
+
+=== lent car ===
+  ctxA: ...Tom lent Sam his car because Sam's car had
+    broken down.   logprob=  -2.607
+    wanted to help. logprob= -21.223   -> prefers: broken down.
+  ctxB: ...Tom lent Sam his car because Tom had
+    broken down.   logprob= -13.175
+    wanted to help. logprob= -17.077   -> prefers: broken down.
+  correct binding (flips A->c1, B->c2): False
+
+=== asked for help moving ===
+  ctxA: ...a asked Raj for help with the move because Raj was
+    strong.        logprob=  -2.067
+    overwhelmed with boxes. logprob= -26.940   -> prefers: strong.
+  ctxB: ...asked Raj for help with the move because Priya was
+    strong.        logprob=  -7.323
+    overwhelmed with boxes. logprob= -23.377   -> prefers: strong.
+  correct binding (flips A->c1, B->c2): False
+
+=== owed contractor ===
+  ctxA: ...ed the contractor money because the contractor had
+    finished the work. logprob= -12.499
+    fallen behind on payments. logprob= -12.256   -> prefers: fallen behind on payments.
+  ctxB: ... owed the contractor money because the company had
+    finished the work. logprob= -13.342
+    fallen behind on payments. logprob= -12.702   -> prefers: fallen behind on payments.
+  correct binding (flips A->c1, B->c2): False
+
+=== returned ladder ===
+  ctxA: ...eturned the borrowed ladder to Wei because Wei had
+    asked for it back. logprob=  -6.195
+    finished the repairs. logprob= -15.072   -> prefers: asked for it back.
+  ctxB: ...eturned the borrowed ladder to Wei because Liu had
+    asked for it back. logprob=  -7.074
+    finished the repairs. logprob= -13.709   -> prefers: asked for it back.
+  correct binding (flips A->c1, B->c2): False
+
+=== bank approved loan ===
+  ctxA: ...proved the loan because the applicant's credit was
+    excellent.     logprob=  -5.115
+    eager to lend. logprob= -19.215   -> prefers: excellent.
+  ctxB: ...The bank approved the loan because the bank was
+    excellent.     logprob= -12.453
+    eager to lend. logprob= -11.013   -> prefers: eager to lend.
+  correct binding (flips A->c1, B->c2): True
+
+=== watered plants while traveling ===
+  ctxA: ... Anna's plants while she traveled because Anna had
+    asked for the favor. logprob= -19.375
+    wanted to be kind. logprob= -21.365   -> prefers: asked for the favor.
+  ctxB: ...plants while she traveled because the neighbor had
+    asked for the favor. logprob= -19.620
+    wanted to be kind. logprob= -22.172   -> prefers: asked for the favor.
+  correct binding (flips A->c1, B->c2): False
+
+=== library fine ===
+  ctxA: ... fined Marcus for the late book because Marcus had
+    kept it past the due date. logprob= -20.476
+    been strict about deadlines. logprob= -19.974   -> prefers: been strict about deadlines.
+  ctxB: ...d Marcus for the late book because the library had
+    kept it past the due date. logprob= -20.645
+    been strict about deadlines. logprob= -20.067   -> prefers: been strict about deadlines.
+  correct binding (flips A->c1, B->c2): False
+
+=== donor funded scholarship ===
+  ctxA: ...nor funded the scholarship because the student had
+    shown great promise. logprob=  -9.960
+    been passionate about education. logprob= -16.748   -> prefers: shown great promise.
+  ctxB: ...donor funded the scholarship because the donor had
+    shown great promise. logprob= -13.155
+    been passionate about education. logprob= -16.277   -> prefers: shown great promise.
+  correct binding (flips A->c1, B->c2): False
+
+=== returned deposit ===
+  ctxA: ...ndlord returned the deposit because the tenant had
+    left the apartment spotless. logprob= -30.604
+    been required by law to do so. logprob= -18.370   -> prefers: been required by law to do so.
+  ctxB: ...lord returned the deposit because the landlord had
+    left the apartment spotless. logprob= -30.667
+    been required by law to do so. logprob= -19.069   -> prefers: been required by law to do so.
+  correct binding (flips A->c1, B->c2): False
+
+=== shop replaced phone ===
+  ctxA: ...ed the broken phone for free because the phone had
+    still been under warranty. logprob= -18.330
+    been known for good service. logprob= -21.800   -> prefers: still been under warranty.
+  ctxB: ...ced the broken phone for free because the shop had
+    still been under warranty. logprob= -19.119
+    been known for good service. logprob= -16.958   -> prefers: been known for good service.
+  correct binding (flips A->c1, B->c2): True
+
+=== glass shattered ===
+  ctxA: ...ttered when it hit the floor because the glass was
+    fragile.       logprob=  -3.447
+    hard concrete. logprob= -18.118   -> prefers: fragile.
+  ctxB: ...ttered when it hit the floor because the floor was
+    fragile.       logprob=  -5.964
+    hard concrete. logprob= -12.683   -> prefers: fragile.
+  correct binding (flips A->c1, B->c2): False
+
+=== knife could not cut bread ===
+  ctxA: ...nife could not cut the bread because the knife was
+    dull.          logprob=  -6.165
+    stale and hard. logprob= -32.254   -> prefers: dull.
+  ctxB: ...nife could not cut the bread because the bread was
+    dull.          logprob= -11.064
+    stale and hard. logprob= -28.497   -> prefers: dull.
+  correct binding (flips A->c1, B->c2): False
+
+=== rope snapped ===
+  ctxA: ...ed under the climber's weight because the rope was
+    worn out.      logprob=  -9.950
+    too heavy for it. logprob= -12.233   -> prefers: worn out.
+  ctxB: ...under the climber's weight because the climber was
+    worn out.      logprob=  -9.809
+    too heavy for it. logprob= -11.573   -> prefers: worn out.
+  correct binding (flips A->c1, B->c2): False
+
+=== bridge collapsed ===
+  ctxA: ...e collapsed under the truck because the bridge was
+    structurally weak. logprob=  -6.979
+    overloaded.    logprob=  -4.090   -> prefers: overloaded.
+  ctxB: ...ge collapsed under the truck because the truck was
+    structurally weak. logprob= -11.081
+    overloaded.    logprob=  -4.141   -> prefers: overloaded.
+  correct binding (flips A->c1, B->c2): False
+
+=== paper tore easily ===
+  ctxA: ...The paper tore easily because the paper was
+    thin.          logprob=  -4.351
+    sharp.         logprob=  -8.180   -> prefers: thin.
+  ctxB: ...The paper tore easily because the scissors were
+    thin.          logprob=  -6.540
+    sharp.         logprob=  -4.325   -> prefers: sharp.
+  correct binding (flips A->c1, B->c2): True
+
+=== tent blew away ===
+  ctxA: ...he tent blew away in the wind because the tent was
+    poorly staked down. logprob= -34.395
+    unusually strong. logprob= -14.501   -> prefers: unusually strong.
+  ctxB: ...he tent blew away in the wind because the wind was
+    poorly staked down. logprob= -35.362
+    unusually strong. logprob=  -8.998   -> prefers: unusually strong.
+  correct binding (flips A->c1, B->c2): False
+
+=== chair creaked ===
+  ctxA: ...hair creaked under the guest because the chair was
+    rickety.       logprob=  -7.574
+    quite heavy.   logprob= -10.094   -> prefers: rickety.
+  ctxB: ...hair creaked under the guest because the guest was
+    rickety.       logprob= -10.411
+    quite heavy.   logprob= -12.983   -> prefers: rickety.
+  correct binding (flips A->c1, B->c2): False
+
+=== umbrella inside out ===
+  ctxA: ...d inside out in the storm because the umbrella was
+    cheaply made.  logprob= -15.366
+    powerful.      logprob=  -8.863   -> prefers: powerful.
+  ctxB: ...rned inside out in the storm because the storm was
+    cheaply made.  logprob= -18.227
+    powerful.      logprob=  -5.738   -> prefers: powerful.
+  correct binding (flips A->c1, B->c2): False
+
+=== battery died quickly ===
+  ctxA: ...The battery died quickly because the battery was
+    old and worn.  logprob=  -9.661
+    running many apps. logprob= -26.030   -> prefers: old and worn.
+  ctxB: ...The battery died quickly because the phone was
+    old and worn.  logprob= -11.457
+    running many apps. logprob= -21.106   -> prefers: old and worn.
+  correct binding (flips A->c1, B->c2): False
+
+=== shoes fell apart ===
+  ctxA: ...fell apart after one season because the shoes were
+    poorly made.   logprob=  -6.393
+    hard on his shoes. logprob= -22.971   -> prefers: poorly made.
+  ctxB: ... fell apart after one season because the owner was
+    poorly made.   logprob= -12.980
+    hard on his shoes. logprob= -13.731   -> prefers: poorly made.
+  correct binding (flips A->c1, B->c2): False
+
+=== painting sold for more ===
+  ctxA: ... for more than the sketch because the painting was
+    more valuable. logprob=  -3.144
+    a quick draft. logprob= -20.034   -> prefers: more valuable.
+  ctxB: ...ld for more than the sketch because the sketch was
+    more valuable. logprob=  -6.436
+    a quick draft. logprob= -22.575   -> prefers: more valuable.
+  correct binding (flips A->c1, B->c2): False
+
+=== sports car faster ===
+  ctxA: ...h line before the sedan because the sports car was
+    faster.        logprob=  -4.584
+    slower.        logprob=  -6.022   -> prefers: faster.
+  ctxB: ...finish line before the sedan because the sedan was
+    faster.        logprob=  -6.994
+    slower.        logprob=  -4.463   -> prefers: slower.
+  correct binding (flips A->c1, B->c2): True
+
+=== large pizza cost more ===
+  ctxA: ...ore than the small one because the large pizza had
+    more toppings. logprob= -13.887
+    less dough.    logprob= -14.765   -> prefers: more toppings.
+  ctxB: ...ore than the small one because the small pizza had
+    more toppings. logprob= -13.813
+    less dough.    logprob= -12.204   -> prefers: less dough.
+  correct binding (flips A->c1, B->c2): True
+
+=== elephant enclosure ===
+  ctxA: ...enclosure than the rabbit because the elephant was
+    much heavier.  logprob=  -2.991
+    small and light. logprob= -17.187   -> prefers: much heavier.
+  ctxB: ...r enclosure than the rabbit because the rabbit was
+    much heavier.  logprob=  -6.032
+    small and light. logprob= -11.313   -> prefers: much heavier.
+  correct binding (flips A->c1, B->c2): False
+
+=== express train sooner ===
+  ctxA: ...ooner than the local train because the express was
+    faster.        logprob=  -2.917
+    making more stops. logprob= -11.573   -> prefers: faster.
+  ctxB: ...r than the local train because the local train was
+    faster.        logprob=  -6.671
+    making more stops. logprob= -15.305   -> prefers: faster.
+  correct binding (flips A->c1, B->c2): False
+
+=== diamond ring cost more ===
+  ctxA: ...e than the silver one because the diamond ring was
+    rarer.         logprob=  -5.265
+    plain and common. logprob= -17.016   -> prefers: rarer.
+  ctxB: ...re than the silver one because the silver ring was
+    rarer.         logprob=  -8.836
+    plain and common. logprob= -14.971   -> prefers: rarer.
+  correct binding (flips A->c1, B->c2): False
+
+=== tanker carried more fuel ===
+  ctxA: ... fuel than the pickup truck because the tanker was
+    far larger.    logprob= -10.909
+    meant for small loads. logprob= -24.586   -> prefers: far larger.
+  ctxB: ...than the pickup truck because the pickup truck was
+    far larger.    logprob= -16.404
+    meant for small loads. logprob= -21.329   -> prefers: far larger.
+  correct binding (flips A->c1, B->c2): False
+
+=== marathon took longer ===
+  ctxA: ...to finish than the sprint because the marathon was
+    much longer in distance. logprob= -25.715
+    over in seconds. logprob= -24.153   -> prefers: over in seconds.
+  ctxB: ...r to finish than the sprint because the sprint was
+    much longer in distance. logprob= -32.651
+    over in seconds. logprob= -15.819   -> prefers: over in seconds.
+  correct binding (flips A->c1, B->c2): False
+
+=== antique vase worth more ===
+  ctxA: ...h more than the modern one because the antique was
+    rare and old.  logprob=  -7.326
+    mass-produced. logprob=  -9.346   -> prefers: rare and old.
+  ctxB: ...re than the modern one because the modern vase was
+    rare and old.  logprob= -11.554
+    mass-produced. logprob=  -7.301   -> prefers: mass-produced.
+  correct binding (flips A->c1, B->c2): True
+
+=== cargo ship carried more ===
+  ctxA: ...s than the fishing boat because the cargo ship was
+    massive.       logprob=  -4.455
+    small and built for fishing. logprob= -21.360   -> prefers: massive.
+  ctxB: ...than the fishing boat because the fishing boat was
+    massive.       logprob=  -8.798
+    small and built for fishing. logprob= -22.104   -> prefers: massive.
+  correct binding (flips A->c1, B->c2): False
+
+============================================================
+Correct entity-attribute binding: 27/100
+
+By category:
+  ability_attribution      0/10  (0%)
+  agent_patient_causation  2/10  (20%)
+  comparative_value        3/10  (30%)
+  emotional_attribution    5/10  (50%)
+  material_property        1/10  (10%)
+  possession_obligation    2/10  (20%)
+  social_attribution       2/10  (20%)
+  spatial_height           10/10  (100%)
+  spatial_size             0/10  (0%)
+  spatial_width            2/10  (20%)
+[probe] saved results to benchmark/phase2/probe_v2_phase2_step4000.json
