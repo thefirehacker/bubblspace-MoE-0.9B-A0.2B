@@ -1,16 +1,35 @@
 # MoE-0.9B-A0.2B
 
+> **📌 Current checkpoint on Hugging Face: Phase 1 final (`step_19073`, 10B FineWeb-Edu tokens, English only).**
+> Phase 2 (English + code + agentic, 12B tokens) is **in progress** (step ~7,000 / 22,888). Its weights are not on HF yet.
+
 A from-scratch Mixture-of-Experts language model (~915M total / ~211M active params), trained on a single Lambda Cloud H100 80GB. Architecture is Qwen3-Next-inspired: GQA + QK-norm + RoPE + an elementwise attention output-gate, 64-expert dropless top-8 SwiGLU MoE with ZeroCenteredRMSNorm, trained with Muon (hidden matrices) + AdamW (embedding/router/norms).
 
-**Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces). The current concrete data pipeline tokenizes FineWeb-Edu as the base text corpus; a code + agentic-trajectory data mixture is the natural next phase (see "Training objective" below) and the tokenizer/FIM plumbing is already in place for it.
+**Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces). Phase 1 built an English base on FineWeb-Edu. Phase 2 (running now) continues it on English + code + agentic + contrastive-binding data.
 
-- **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b)
-- **Live training graphs/logs (W&B, public)**: [forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker)
+- **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (currently the Phase 1 final checkpoint)
+- **Live training graphs/logs (W&B, public)**: Phase 1 [goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker), Phase 2 [lec9ww5h](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/lec9ww5h) (same project; Phase 2's `global_step` continues from 19,073)
 - **License**: [Apache 2.0](LICENSE)
 
 ## Status
 
-Pretraining (phase 1: English-only base checkpoint, FineWeb-Edu, 10B tokens, single H100, no instruction tuning yet) is in progress. See [`benchmark/README.md`](benchmark/README.md) for benchmark results tracked across checkpoints as training progresses, [`doc/eval-notes.md`](doc/eval-notes.md) for a full technical walkthrough of how evaluation is wired up for this custom (non-`transformers`-native) architecture, and the [public W&B run](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker) for live loss/throughput/routing-balance graphs.
+| Phase | What | State |
+|---|---|---|
+| 1 | English base, FineWeb-Edu `sample-10BT`, 10B tokens, 19,073 steps | ✅ done (`step_19073`, ~32.7h on one H100) |
+| 2 | Continual training: English + code + agentic + contrastive, 12B tokens, 22,888 steps | 🟡 running, step ~7,000 (Stage 2A plateau; Stage 2B anneal from step 19,073) |
+| 3 | SFT (assistant-only loss masking) | planned |
+
+**Phase 2 so far** (step 5,000 milestone, full table in [`benchmark/README.md`](benchmark/README.md)):
+
+| | Phase 1 final | Phase 2 step 5,000 |
+|---|---|---|
+| CRUXEval-O pass@1 | 0.0% | 8.5% |
+| BFCL simple / multiple / parallel (decontaminated) | 0 / 0 / 0% | 9 / 6 / 0% |
+| Held-out agentic tool-call format (valid, correct name) | 0% | 30% (48% at step 7,000) |
+| Binding probe v2 / v3 | 24/100, 4/70 | 25/100, 5/70 (no real change) |
+| English 6-task average | 47.18 | 45.40 (−1.78, at peak learning rate) |
+
+See [`doc/eval-notes.md`](doc/eval-notes.md) for how every eval is wired up for this custom (non-`transformers`-native) architecture. Storyboards in [`doc/storyboard/`](doc/storyboard/) give the chronological build narrative.
 
 ## Architecture summary
 
@@ -74,21 +93,20 @@ python scripts/run_benchmarks.py \
 
 ## Training objective / data mixture
 
-The tokenizer (FIM + tool-call + think tokens) and `src/data/fim.py` are built for coding and AI-agentic training, but the actual data mixture for those is **not yet wired in** — the current `src/data/prepare.py` run targets FineWeb-Edu only. Before a code/agentic-focused run, this needs: (1) one or more code datasets passed through `prepare.py --is_code --fim_rate <r>` so FIM transforms apply, and (2) agentic trajectory data formatted with the `<tool_call>`/`<tool_response>`/`<think>` tokens at the point it's tokenized (not inserted into generic pretraining text). Dataset selection below is a recommendation, not yet downloaded or wired in.
+**Phase 1:** 100% FineWeb-Edu `sample-10BT` (10B tokens, single pass).
 
-Recommended mixture (shifting ratio — English-dominant early, code/agentic upweighted in a final anneal phase, rather than strict non-overlapping sequential stages, to avoid forgetting earlier stages):
+**Phase 2** ([`configs/phase2.yaml`](configs/phase2.yaml), design in [`doc/plan-02-phase-2-continual-training.md`](doc/plan-02-phase-2-continual-training.md) and [`doc/storyboard/04-Phase2-Trainig.md`](doc/storyboard/04-Phase2-Trainig.md)) runs 16 pools in four groups, sampled per row by stage-dependent group weights:
 
-| Stage | Dataset | Notes |
-|---|---|---|
-| English (base) | `HuggingFaceFW/fineweb-edu` (already wired in) | high-quality filtered web text |
-| English (breadth) | `HuggingFaceTB/cosmopedia-v2` | synthetic textbook-style text; same corpus SmolLM2 itself trained alongside FineWeb-Edu |
-| Code — Python | `HuggingFaceTB/python-edu` | educational-quality Python; pairs with `--is_code --fim_rate` |
-| Code — frontend/JS | `bigcode/the-stack-v2-dedup`, language configs `javascript`, `typescript`, `jsx`/`tsx`, `html`, `css`, `vue` | single corpus, filter by `data_dir`/language; covers React/Vue-style frontend code |
-| Code — backend (multi-language) | same `bigcode/the-stack-v2-dedup`, language configs `java`, `go`, `php`, `c-sharp`, `ruby`, `sql` | broadens beyond Python for server-side code; apply the same FIM transform |
-| Agentic (tool-use) | `Salesforce/xlam-function-calling-60k` or `NousResearch/hermes-function-calling-v1` | formats map directly onto `<tools>`/`<tool_call>`/`<tool_response>` |
-| Agentic (reasoning) | `open-thoughts/OpenThoughts-114k` (or similar CoT set) | gives `<think>`/`</think>` real content instead of unused wrapper tokens |
+| Group | Pools (sources) | Stage 2A (steps 0–19,073, 10B tok) | Stage 2B anneal (19,073–22,888, 2B tok) |
+|---|---|---|---|
+| English + knowledge + STEM | Wikipedia `20231101.en`, Cosmopedia-v2, FineMath-4plus, FineWeb-Edu replay | 41.5% | 34% (FineWeb-Edu off) |
+| Code (window-level FIM, 50/50 PSM/SPM) | `Avelina/python-edu-cleaned`; `bigcode/starcoderdata` Python, TypeScript, JavaScript, Go, SQL/shell/config | 49% | 38% (python-edu ×3) |
+| Agentic (block-aligned episodes ≤2048 tokens, pad loss masked) | ToolMind, glaive-function-calling-v2, OpenThoughts-114k, hermes-function-calling-v1, Bespoke-Stratos-17k | 8% | 22% |
+| Contrastive binding (synthetic minimal pairs, `scripts/gen_contrastive.py`) | 61.9M unique tokens | 1.5% | 6% |
 
-Caveats: (1) at ~211M active params this won't be a strong coding/agentic model, but enough to learn the formats and basic patterns; (2) The Stack v2 requires accepting its license/attribution terms on the dataset page before `datasets` can stream it; (3) the agentic datasets are small (tens of thousands of examples, not billions of tokens) — they need upsampling/multiple epochs during the anneal phase rather than being a token-matched stage on their own; (4) per-language token budget across frontend/backend isn't pinned down yet — a reasonable starting split is roughly even across the languages listed unless profiling shows a particular language underrepresented relative to your actual use case.
+Learning rate: re-warm 6e-5 → 2.4e-4 over 300 steps, hold, then linear decay to 6e-6 over the final 3,815 steps (the anneal). Attention uses a causal + same-document mask (`flex_attention`) so packed documents can't attend to each other. Every dataset was checked with Hugging Face's malware scan before use. `OpenCoder-LLM/opc-annealing-corpus` was dropped after 69% of sampled files came back flagged.
+
+Caveat: at ~211M active params the realistic Phase 2 goal is learning the FIM / tool-call / think formats and basic code and agentic patterns, not a strong standalone coding model.
 
 ## Design notes
 
@@ -175,7 +193,7 @@ scripts/        build_tokenizer.py, setup_fire01.sh, sanity_check_data.py, train
                 generate.py (inference), run_benchmarks.py, push_to_hf.py
 benchmark/      per-checkpoint benchmark results (raw JSON + readable summary)
 doc/            design/implementation notes, including a full eval-harness walkthrough
-storyboard/     chronological narrative of how this project was built
+doc/storyboard/ chronological narrative of how this project was built
 tests/          CPU-feasible unit tests (param count, Muon math, MoE backend equivalence, tiny overfit wiring check)
 ```
 

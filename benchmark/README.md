@@ -139,6 +139,33 @@ training on the expanded English + code + agentic mixture
 (`doc/plan-02-phase-2-continual-training.md`), not more steps on the same
 10B-token FineWeb-Edu-only run.
 
+## Phase 2 (in progress) — through step 7,000 of 22,888
+
+Phase 2 continues from `step_19073` on English + code + agentic +
+contrastive data (12B tokens). Raw results are in [`phase2/`](phase2/), one
+JSON per eval per checkpoint. How each eval is scored is in
+[`doc/eval-notes.md`](../doc/eval-notes.md#phase-2-evaluation-continual-training-english--code--agentic--contrastive).
+All evals are deterministic (bit-identical across reruns).
+
+| Eval | Phase 1 final | P2 1k | 2k | 3k | 4k | 5k | 6k | 7k |
+|---|---|---|---|---|---|---|---|---|
+| Agentic: valid call, name = gold (23 eps) | 0% | 17% | 30% | 39% | 30% | 30% | 22% | **48%** |
+| Reasoning: closes `<think>` ≤512 tok | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
+| FIM exact match (60 lines) | 0% | 0% | 0% | 0% | 0% | 3.3% | 5.0% | 5.0% |
+| Binding probe v2 (/100) | 24 | 25 | 31 | 25 | 27 | 25 | 27 | 28 |
+| Binding probe v3 (/70) | 4 | 6 | 3 | 6 | 4 | 5 | 5 | 6 |
+
+| Milestone (step 5,000) | Phase 1 final | Phase 2 |
+|---|---|---|
+| CRUXEval-O pass@1 | 0.0% | **8.5%** |
+| BFCL simple / multiple / parallel (AST, decontaminated) | 0 / 0 / 0% | **9 / 6 / 0%** |
+| English 6-task average | 47.18 | 45.40 (**−1.78**) |
+
+**Read:** code and agentic moved off zero on external benchmarks. Binding
+hasn't moved. English regressed beyond the ~1-point gate. That is partly
+expected at peak learning rate, but it's real and now tracked every 2,000
+steps (files `phase2/english6_phase2_step*.json`).
+
 ## How to reproduce
 
 ```bash

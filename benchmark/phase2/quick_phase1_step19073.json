@@ -1,0 +1,481 @@
+{
+  "checkpoint": "/lambda/nfs/us-west-1-eval-inference/step_19073.pt",
+  "step": 19073,
+  "fim": {
+    "n": 60,
+    "exact_match": 0.0,
+    "examples": [
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "    pkg: \"{{item}}\"",
+        "pred": " mysql_packages: mysql_packages",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_javascript",
+        "gold": "//     const slugRegex = new Regex(`^(${this.slug})((-[0-9]*$)?)$`, \"i\");",
+        "pred": " = mongoose.model(\"Food\", FoodSchema);",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "namespace: flux-system",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "    - kolide_redis_requirepass: \"redis_password_to_change\"",
+        "pred": "grads:grads, when: ansible_os_family == 'Debian'",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "email: <EMAIL>",
+        "pred": " brilliancer: BinduSriAdabala undermover: BinduSriAdabala undermover: BinduSriAdabala undermover: BinduSriAdabala undermover: BinduSriAdabala undermover: BinduSriAdabala undermover: B",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "dist: xenial",
+        "pred": ":",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_typescript",
+        "gold": "  onlyValidData: true",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "    - condition: time",
+        "pred": " before: \"16:00:00\"",
+        "exact": false
+      },
+      {
+        "pool": "code_python_edu",
+        "gold": "    def add_on_start_listener(self, listener: callable) -> None:",
+        "pred": " is a Python module that implements the",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "        - string: \"Port\"",
+        "pred": " ENUM - string: \"PthR\" ENUM - string: \"PthR\" ENUM - string: \"PthR\" ENUM - string: \"PthR\" ENUM - string: \"PthR\" ENUM - string: \"PthR\" ENUM - string: \"PthR\" ENUM",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "  name: motioneye-service",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "  - master",
+        "pred": " build: '/*.exe'",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "Parameters:",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_python",
+        "gold": "logger = logging.getLogger(__name__)",
+        "pred": "\",attrsattrs =attrs,attrs_code =attrs,attrs_code =attrs,attrs_code =attrs,attrs_code =attrs,attrs_code =attrs,attrs_code =attrs,attrs_code =attrs,attrs_code =attrs,attrs_code =attrs,attrs_code =",
+        "exact": false
+      },
+      {
+        "pool": "code_python_edu",
+        "gold": "        read_data = f.read()",
+        "pred": " print(read_data)esterone",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "      <Data Name=\"TargetUserName\">dadmin</Data> ",
+        "pred": " <EventID>4776</EventID> XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "exact": false
+      },
+      {
+        "pool": "code_python_edu",
+        "gold": "    def test_sub(self):",
+        "pred": " c_l_1, c_l_2]) unittest c_l_1 = CustomList(unittest.TestCase) unittest c_l_2 = CustomList(unittest.TestCase) unittest c_l_1 = CustomList(unittest.TestCase) unittest c_l_2 = CustomList(",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_python",
+        "gold": "        for _, p in enumerate(threads):",
+        "pred": "Willi()Willi =Willi(100000)Willi =Willi(100000)Willi.append(Willi)Willi.append(Willi)Willi.join(Willi)Willi.join(Willi)Willi.append(Willi)Willi.join(Willi)Willi.join(",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "      expiry-time-unit: SECONDS",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_typescript",
+        "gold": "  onAfterOpen: () => void;",
+        "pred": ");",
+        "exact": false
+      }
+    ]
+  },
+  "agentic": {
+    "n": 23,
+    "emits_tool_call": 0.0,
+    "closes_tool_call": 0.0,
+    "valid_json_call": 0.0,
+    "name_in_tools": 0.0,
+    "name_eq_gold": 0.0,
+    "argkeys_eq_gold": 0.0,
+    "ends_turn": 0.0,
+    "examples": [
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "get_random_fact",
+          "args": {}
+        },
+        "pred_text": "Hey, I'm feeling a bit bored. Can you tell me something interesting?\nesteronegyzstan_2012_2013_2014_2015_2016_2017_2018_2019_2020_2021_2022_2023_2024_2025_2026_2027_2028_2029_2030_2031_2032_2033_2034_2035_2036_2037_2038_2039_2040_2041_2042_2043_2044_2045_2046_2047"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "generate_random_color",
+          "args": {}
+        },
+        "pred_text": "I'm a designer and I need a random color for inspiration. Can you help?\nesteronegyzistant \"name\": \"generate_random_color\",esteronegyzistant \"description\": \"Generate a random color in hexadecimal format\",esteronegyzistant \"parameters\":esteronegyzistant \"parameters\":esteronegyzistant \"parameters\":esteronegyzistant \"parameters\":esteronegyzistant \"parameters\":esteronegyzistant \"parameters\":esteronegyz"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "get_news",
+          "args": {}
+        },
+        "pred_text": "Hi, can you tell me the latest news?\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"news\"\nesteronegyzstan \"n"
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "analyze_health_data",
+          "args": {
+            "data": [
+              {
+                "timestamp": "2022-03-01T10:00:00Z",
+                "heart_rate": 80,
+                "blood_pressure": {
+                  "systolic": 120,
+                  "diastolic": 80
+                }
+              },
+              {
+                "timestamp": "2022-03-01T11:00:00Z",
+                "heart_rate": 85,
+                "blood_pressure": {
+                  "systolic": 122,
+                  "diastolic": 82
+                }
+              },
+              {
+                "timestamp": "2022-03-01T12:00:00Z",
+                "heart_rate": 90,
+                "blood_pressure": {
+                  "systolic": 125,
+                  "diastolic": 85
+                }
+              }
+            ]
+          }
+        },
+        "pred_text": "Here it is: cfg[:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:][:]["
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "get_exercise_plan",
+          "args": {
+            "fitness_goals": [
+              "build muscle",
+              "improve flexibility"
+            ]
+          }
+        },
+        "pred_text": "hdfs: 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "get_exercise_recommendations",
+          "args": {
+            "age": 30,
+            "gender": "male",
+            "fitness_level": "intermediate"
+          }
+        },
+        "pred_text": "esteroneclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclineclinecl"
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "get_exercise_recommendation",
+          "args": {
+            "fitness_goal": "lose weight",
+            "duration": 30
+          }
+        },
+        "pred_text": "esteroneanceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceranceran"
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "search_exercises",
+          "args": {
+            "category": "cardio",
+            "duration": 30,
+            "intensity": "medium"
+          }
+        },
+        "pred_text": "esteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercise\"\nesteroneysignatory: \"Exercis"
+      },
+      {
+        "pool": "agentic_toolmind",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "v1_exchangerate",
+          "args": {
+            "pair": "AUD_NZD"
+          }
+        },
+        "pred_text": "What is the difference between a helper and a helper?\nAns: A helper is a function that returns a value to the caller. A helper is a function that returns a value to the caller.\nAns: A helper is a function that returns a value to the caller. A helper is a function that returns a value to the caller.\nAns: A helper is a function that returns a value to the caller. A helper is a function that returns "
+      },
+      {
+        "pool": "agentic_toolmind",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "random_mlem",
+          "args": {
+            "maxheight": 1000,
+            "maxwidth": 1500
+          }
+        },
+        "pred_text": "################################################################################################################################################################################################################################################################################################################################################################################################################"
+      },
+      {
+        "pool": "agentic_toolmind",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "exchange",
+          "args": {
+            "base": "JPY",
+            "to": "USD",
+            "int": "2000"
+          }
+        },
+        "pred_text": "Assign a value to a variable.\nMessageBox(“Value of x is 1000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "pool": "agentic_toolmind",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "bodies",
+          "args": {
+            "make": "Honda",
+            "type": "Sedan",
+            "year": "2015",
+            "sort": "model",
+            "direction": "asc"
+          }
+        },
+        "pred_text": "The provided tools only include a function for fetching gas price data in Arizona (`us_az`). There are no available tools to retrieve information about Honda sedan models, vehicle specifications, or flight route data from LAX.\nesteroneviations: \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"Honda\", \"H"
+      }
+    ]
+  },
+  "reasoning": {
+    "n": 8,
+    "budget_tokens": 512,
+    "opens_think": 0.0,
+    "closes_think": 0.0,
+    "examples": [
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": false,
+        "closes_think": false,
+        "n_tokens": 89,
+        "head": "What is the effect of surface area and pore size of solid catalysts on the rate of reaction in catalysis by solid surfaces?\nMessageBoxotherapist.com is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertis"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": false,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "How does the concentration of a reactant affect the equilibrium position of a chemical reaction? Provide a specific example of a reaction and explain how the Le Châtelier's principle applies in this situation.\nesteronehavioral, chemical, chemical reaction, chemical reaction, chemical reaction, chemi"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": false,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "How will the equilibrium position of the reaction CO(g) + 2H2(g) ⇌ CH3OH(g) be affected if 0.5 moles of H2 are added to a previously established equilibrium system containing 1 mole of CO, 2 moles of H2, and 0.5 moles of CH3OH?\nMessageBoxviations: 0.5 moles of H2 = 1 mole of CO = 2 moles of H2 = 0.5"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": false,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "What is the effect of increasing the concentration of the reactant in a redox reaction on the equilibrium constant and concentration of products at equilibrium, given the balanced chemical equation and initial concentrations of all reactants and products?\nMessageBoxffecht the following question:\nMes"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": false,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "How does the formation of ground-level ozone due to the reaction between nitrogen oxides (NOx) and volatile organic compounds (VOCs) present in polluted air affect human health, and what are some effective approaches to minimize this health impact in heavily polluted areas?\nMessageBoxviations: <|beg"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": false,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "What is the cell potential of the given electrochemical reaction if the concentration of zinc ions is 0.1 M, the concentration of copper ions is 1.0 M, and the standard reduction potential for zinc is -0.76 V?\nMessageBoxigramservice.com is a service that provides you with a solution to your problem."
+      }
+    ]
+  },
+  "greedy": [
+    {
+      "prompt": "The marathon took longer to finish than the sprint because the marathon was",
+      "completion": " a race of endurance, not speed.\nThe marathon was a race of endurance, not speed.\nThe marathon was a race of endurance, not speed.\nThe marathon was a race of endurance, not speed.\nThe marathon was a race of endurance, not speed.\nThe marathon was"
+    },
+    {
+      "prompt": "The marathon took longer to finish than the sprint because the sprint was",
+      "completion": " longer.\nThe marathon was longer than the sprint because the sprint was longer.\nThe marathon was longer than the sprint because the sprint was longer.\nThe marathon was longer than the sprint because the sprint was longer.\nThe marathon was longer than the sprint because the sprint was longer.\nThe"
+    },
+    {
+      "prompt": "The wardrobe would not go through the doorway because the doorway was",
+      "completion": " the wardrobe.\nThe wardrobe was the place where the wardrobe was kept.\nThe wardrobe was the place where the wardrobe was kept.\nThe wardrobe was the place where the wardrobe was kept.\nThe wardrobe was the place where the wardrobe was kept."
+    },
+    {
+      "prompt": "The wardrobe would not go through the doorway because the wardrobe was",
+      "completion": " a symbol of the wardrobe.\nThe wardrobe was a symbol of the wardrobe.\nThe wardrobe was a symbol of the wardrobe.\nThe wardrobe was a symbol of the wardrobe.\nThe wardrobe was a symbol of the wardrobe.\nThe wardrobe was"
+    },
+    {
+      "prompt": "The capital of India is",
+      "completion": " New Delhi. It is the largest city in India and the capital of the country. It is also the largest city in the Indian subcontinent.\nThe name of the city is derived from the Sanskrit word “Nagar” which means “the place of the river”.\nThe city is also known as"
+    },
+    {
+      "prompt": "The capital of the United States is",
+      "completion": " Washington, D.C.\nThe capital of the United States is Washington, D.C.\nThe capital of the United States is Washington, D.C.\nThe capital of the United States is Washington, D.C.\nThe capital of the United States is Washington, D."
+    },
+    {
+      "prompt": "The Riemann hypothesis is a mathematical conjecture about",
+      "completion": " the geometry of the Riemann surface. It is a generalization of the Riemann hypothesis that is a generalization of the Riemann–Stieltjes–Riemann hypothesis.\nThe Riemann hypothesis is a generalization of the Riemann–Stieltjes–Riemann hypothesis that is a generalization of"
+    },
+    {
+      "prompt": "In Sanskrit, the word Kama means",
+      "completion": " desire, desire, passion, passion, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire, desire,"
+    },
+    {
+      "prompt": "def fibonacci(n):\n",
+      "completion": "- 1000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "prompt": "import json\n\ndef load_config(path):\n",
+      "completion": "# load the config file\n# load the config file\n# load the config file\n# load the config file\n# load the config file\n# load the config file\n# load the config file\n# load the config file\n# load the config file\n# load the config file\n"
+    },
+    {
+      "prompt": "SELECT name, email FROM users WHERE",
+      "completion": " name = 'John' AND email = 'firstname.lastname@example.org'\nThe above code will return the email address of John.\nThe above code will return the email address of John.\nThe above code will return the email address of John.\nThe above code will return the"
+    },
+    {
+      "prompt": "<|im_start|>system\n<tools>\n[{\"name\": \"get_weather\", \"description\": \"Get current weather for a city\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}]\n</tools>\n<|im_end|>\n<|im_start|>user\nWhat's the weather in Paris right now?\n<|im_end|>\n<|im_start|>assistant\n",
+      "completion": "hdfs_name = \"Get current weather for a city\"\nhdfs_name = \"Get current weather for a city\"\nhdfs_name = \"Get current weather for a city\"\nhdfs_name = \"Get current weather for a city\"\nhdfs_name"
+    }
+  ],
+  "elapsed_s": 707.3
+}

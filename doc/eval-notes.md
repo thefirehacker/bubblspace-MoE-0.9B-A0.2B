@@ -264,7 +264,7 @@ Here, both elements of the `(ll, is_greedy)` tuple returned by `BubblSpaceLM.log
 
 It is easy to assume a training repository automatically tracks validation perplexity, so it is worth being explicit about what is currently wired up:
 
-1. **No validation loop in training (`scripts/train.py`):** During pretraining, `scripts/train.py` computes and logs cross-entropy (`ce_loss`), MoE load-balance loss (`lb_loss`), and router z-loss (`z_loss`) strictly on the training stream. There is no held-out validation dataloader or standalone perplexity script in `scripts/`.
+1. **No validation loop in Phase 1 training (`scripts/train.py`):** *(Phase 2 adds one: per-pool held-out validation loss every 250 steps; see "Phase 2 Evaluation" below.)* During Phase 1 pretraining, `scripts/train.py` computes and logs cross-entropy (`ce_loss`), MoE load-balance loss (`lb_loss`), and router z-loss (`z_loss`) strictly on the training stream. There is no held-out validation dataloader or standalone perplexity script in `scripts/`.
 2. **Rolling perplexity is supported via the harness (`loglikelihood_rolling`):** `BubblSpaceLM` implements `loglikelihood_rolling(requests)`, which is the method `lm-evaluation-harness` calls for perplexity benchmarks such as `wikitext`. It is not in `DEFAULT_TASKS`, so the default command never invokes it, but you can run it immediately by adding `wikitext` to `--tasks`:
 
 ```bash
@@ -474,6 +474,123 @@ the model plateaus at PIQA 68%, ARC-Easy 56%, HellaSwag 43%, LAMBADA acc
 35%/ppl 32, with WinoGrande and ARC-Challenge essentially at their
 model-size-appropriate floor (~50% and ~30%). Phase 2 continual training
 is the next lever, not further steps on this run.
+
+---
+
+## Phase 2 Evaluation (continual training: English + code + agentic + contrastive)
+
+Phase 2 continues from `step_19073.pt` for 22,888 more steps (12B tokens). The
+six-task suite above can't see what Phase 2 is for, so it now acts as a
+**forgetting gate**, and a broader suite was added. The full design is in
+[`eval-plan-phase2.md`](eval-plan-phase2.md). Phase 2 step numbers below are
+Phase 2's own counter. In W&B, `global_step` = Phase 2 step + 19,073.
+
+### What was added, and how each eval is scored
+
+| Eval | Script | Scoring | Cadence |
+|---|---|---|---|
+| Binding probe v2 (100 cases, 10 categories) | `scripts/probe_entity_binding.py` | log-likelihood minimal pairs: correct only if the preference flips with the named entity | every 1,000 steps |
+| Binding probe v3 (70 cases) | same | same; sentence structures disjoint from v2 and from the contrastive training corpus | every 1,000 steps |
+| Code fill-in-the-middle (60 held-out lines) | `scripts/eval_phase2_quick.py` | PSM prompt, greedy to end of line, exact match | every 1,000 steps |
+| Agentic tool-call format (23 held-out episodes) | same | emits `<tool_call>`, closes it, valid JSON, name = gold, argument keys = gold, ends the turn | every 1,000 steps |
+| Reasoning format (8 held-out episodes) | same | opens `<think>`, closes `</think>` within 512 tokens | every 1,000 steps |
+| MoE routing per (layer, expert) | `scripts/analyze_routing.py` | load CV, entropy, starved (<0.1×) / overloaded (>3×) experts, domain specialization | every 1,000 steps |
+| CRUXEval-O (800) | `scripts/eval_phase2_milestone.py` | predict the output of given code; `ast.literal_eval` comparison; **model code is never executed** | milestones |
+| BFCL v3 simple / multiple / parallel (100 each) | same | AST match of function name and arguments in our `<tools>`/`<tool_call>` format; 11 contaminated questions excluded | milestones |
+| English 6-task (forgetting gate) | `scripts/run_benchmarks.py` | as above | every 2,000 steps from step 7,000 |
+| Per-pool validation loss (16 pools) | `scripts/train.py` | held-out tail of each pool, 2M tokens each | every 250 steps, live in W&B |
+
+Three measurement fixes came first, because the numbers aren't trustworthy
+without them:
+
+1. **Determinism.** Two identical forward passes of this MoE differed by up
+   to ~0.1 in the logits. Non-deterministic CUDA kernels flip near-tied top-8
+   router choices, so greedy generations diverged and close probe cases
+   flipped between runs. `src/eval/determinism.py` (deterministic algorithms
+   plus `CUBLAS_WORKSPACE_CONFIG=:4096:8`) makes repeated runs bit-identical.
+   All Phase 2 evals use it. This is why the Phase 1 v2 probe reads **24/100**
+   here instead of the earlier 25/100: same checkpoint, deterministic
+   re-score.
+2. **Contamination.** `scripts/contamination_check.py` runs a 13-gram overlap
+   check of BFCL against the raw ToolMind / Hermes / Glaive sources. It found
+   11 of 603 questions (simple 3, multiple 1, parallel 7), and those are
+   excluded from scoring. Result: `benchmark/phase2/contamination_bfcl.json`.
+3. **The exact held-out split.** The quick suite reads the same validation
+   tail the training loader holds out (`val_tokens_per_pool` from
+   `configs/phase2.yaml`), so FIM and agentic prompts are never training data.
+
+Generation evals use a KV cache (`Transformer.new_kv_cache()`), tested to
+match the full forward pass.
+
+### Results through step 7,000 (Stage 2A, peak learning rate)
+
+Raw files: [`benchmark/phase2/`](../benchmark/phase2/).
+
+| Eval | Phase 1 final | 1k | 2k | 3k | 4k | 5k | 6k | 7k |
+|---|---|---|---|---|---|---|---|---|
+| Agentic: valid call, name = gold | 0% | 17% | 30% | 39% | 30% | 30% | 22% | **48%** |
+| Agentic: argument keys = gold | 0% | 13% | 30% | 39% | 30% | 30% | 22% | **43%** |
+| Agentic: ends turn | 0% | 35% | 30% | 39% | 35% | 39% | 35% | 43% |
+| Reasoning: opens / closes `<think>` | 0 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% |
+| FIM exact match | 0% | 0% | 0% | 0% | 0% | 3.3% | 5.0% | 5.0% |
+| Probe v2 (/100) | 24 | 25 | 31 | 25 | 27 | 25 | 27 | 28 |
+| Probe v3 (/70) | 4 | 6 | 3 | 6 | 4 | 5 | 5 | 6 |
+| Routing: mean load CV across layers | 0.623 | 0.385 | 0.333 | 0.318 | 0.304 | 0.293 | 0.288 | 0.285 |
+
+The agentic set has only 23 episodes, so one episode is ~4 points. Read it as
+a trend, not as exact percentages.
+
+**Milestone, step 5,000:**
+
+| Benchmark | Phase 1 final | Phase 2 step 5,000 |
+|---|---|---|
+| CRUXEval-O pass@1 (800) | 0.0% (0% parsable) | **8.5%** (94% parsable) |
+| BFCL simple, AST | 0% | **9%** |
+| BFCL multiple, AST | 0% | **6%** |
+| BFCL parallel, AST | 0% | 0% |
+
+**English forgetting gate, step 5,000:**
+
+| Task | Metric | Phase 1 final | Phase 2 step 5,000 | Δ | stderr |
+|---|---|---|---|---|---|
+| HellaSwag | acc_norm | 42.86% | 40.39% | **−2.47** | ~0.5 |
+| PIQA | acc_norm | 68.17% | 67.30% | −0.87 | ~1.1 |
+| ARC-Easy | acc_norm | 56.10% | 52.78% | **−3.32** | ~1.0 |
+| ARC-Challenge | acc_norm | 29.78% | 27.99% | −1.79 | ~1.3 |
+| WinoGrande | acc | 51.38% | 51.07% | −0.31 | ~1.4 |
+| LAMBADA (openai) | acc | 34.80% | 32.85% | −1.95 | ~0.7 |
+| LAMBADA (openai) | perplexity | 32.0 | 39.0 | +7.0 (worse) | — |
+| **Average (6 accuracies)** | | **47.18** | **45.40** | **−1.78** | |
+
+### Read
+
+- **Code and agentic went from zero to measurable.** CRUXEval-O and BFCL are
+  external benchmarks, scored without running model code, and both moved off
+  zero. The 94% parsable rate on CRUXEval-O means the model learned the answer
+  format, and 8.5% of its answers are correct. The held-out agentic format
+  check reached 48% valid, correct-name calls at step 7,000.
+- **Reasoning never closes `<think>` within 512 tokens.** BFCL shows the same
+  problem: many failures are the model opening a ToolMind-style `<think>`
+  block and never reaching the call. Expect the anneal (agentic share 8% →
+  22%) to matter most here.
+- **Binding has not moved.** v2 stays within 24–31 and v3 within 3–6, which is
+  noise. Contrastive validation loss has been flat at ~0.59 since step ~500.
+  The model fitted the contrastive corpus quickly, but that hasn't
+  transferred to the probes. This is the one Phase 2 goal not working so far.
+- **English regressed −1.78 on average, beyond the planned ~1-point gate.**
+  HellaSwag and ARC-Easy drop by several standard errors. FineWeb-Edu
+  validation loss rose 2.50 → 2.76, while Wikipedia and Cosmopedia
+  validation loss fell. Caveat: Phase 1's number was measured after its
+  learning rate had decayed, and step 5,000 is at Phase 2's peak learning
+  rate. Annealing reliably adds points, so part of this gap is expected to
+  close in the decay (steps 19,073–22,888). Whether it closes enough is
+  open. The English suite now runs every 2,000 steps from step 7,000 to
+  measure the trend. If it is still falling at step 19,000, Stage 2B will be
+  restarted with a small FineWeb-Edu share instead of zero.
+- **Routing is healthier than Phase 1.** Load CV 0.62 → 0.29, with no
+  overloaded experts since step 3,000. One layer-0 expert is briefly starved
+  at some checkpoints, but a different one each time, which is rotation, not
+  death.
 
 ---
 

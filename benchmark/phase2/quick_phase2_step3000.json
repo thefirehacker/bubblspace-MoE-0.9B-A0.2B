@@ -1,0 +1,481 @@
+{
+  "checkpoint": "/lambda/nfs/us-west-1-eval-inference/phase2_step_3000.pt",
+  "step": 3000,
+  "fim": {
+    "n": 60,
+    "exact_match": 0.0,
+    "examples": [
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "    pkg: \"{{item}}\"",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_javascript",
+        "gold": "//     const slugRegex = new Regex(`^(${this.slug})((-[0-9]*$)?)$`, \"i\");",
+        "pred": "//     this.save();",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "namespace: flux-system",
+        "pred": "# Copyright 2019 The Kubernetes Authors.",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "    - kolide_redis_requirepass: \"redis_password_to_change\"",
+        "pred": " - kolide_mysql_user: \"{{ kolide_mysql_user }}\"",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "email: <EMAIL>",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "dist: xenial",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_typescript",
+        "gold": "  onlyValidData: true",
+        "pred": " {",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "    - condition: time",
+        "pred": " - service: light.turn_on",
+        "exact": false
+      },
+      {
+        "pool": "code_python_edu",
+        "gold": "    def add_on_start_listener(self, listener: callable) -> None:",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "        - string: \"Port\"",
+        "pred": " - 5a2f620f29ca2f44fc22df67b674198f:0x4063FD",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "  name: motioneye-service",
+        "pred": " name: motioneye",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "  - master",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "Parameters:",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_python",
+        "gold": "logger = logging.getLogger(__name__)",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_python_edu",
+        "gold": "        read_data = f.read()",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "      <Data Name=\"TargetUserName\">dadmin</Data> ",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_python_edu",
+        "gold": "    def test_sub(self):",
+        "pred": " self.assertIsInstance(c_l_1 + [1], CustomList)",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_python",
+        "gold": "        for _, p in enumerate(threads):",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "      expiry-time-unit: SECONDS",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_typescript",
+        "gold": "  onAfterOpen: () => void;",
+        "pred": "import {",
+        "exact": false
+      }
+    ]
+  },
+  "agentic": {
+    "n": 23,
+    "emits_tool_call": 0.4782608695652174,
+    "closes_tool_call": 0.43478260869565216,
+    "valid_json_call": 0.43478260869565216,
+    "name_in_tools": 0.21739130434782608,
+    "name_eq_gold": 0.391304347826087,
+    "argkeys_eq_gold": 0.391304347826087,
+    "ends_turn": 0.391304347826087,
+    "examples": [
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_random_fact",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_random_fact\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "generate_random_color",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"generate_random_color\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_news",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_news\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": false,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": false,
+        "gold": {
+          "name": "analyze_health_data",
+          "args": {
+            "data": [
+              {
+                "timestamp": "2022-03-01T10:00:00Z",
+                "heart_rate": 80,
+                "blood_pressure": {
+                  "systolic": 120,
+                  "diastolic": 80
+                }
+              },
+              {
+                "timestamp": "2022-03-01T11:00:00Z",
+                "heart_rate": 85,
+                "blood_pressure": {
+                  "systolic": 122,
+                  "diastolic": 82
+                }
+              },
+              {
+                "timestamp": "2022-03-01T12:00:00Z",
+                "heart_rate": 90,
+                "blood_pressure": {
+                  "systolic": 125,
+                  "diastolic": 85
+                }
+              }
+            ]
+          }
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"analyze_health_data\", \"arguments\": {\"data\": [{\"timestamp\": \"2022-03-01T10:00:00Z\", \"heart_rate\": 80, \"blood_pressure\": {\"systolic\": 120, \"diastolic\": 80}}, {\"timestamp\": \"2022-03-01T11:00:00Z\", \"heart_rate\": 85, \"blood_pressure\": {\"systolic\": 122, \"diastolic\": 82}}, {\"timestamp\": \"2022-03-01T12:00:00Z\", \"heart_rate\": 90, \"blood_pressure\": {\"systolic\": 125, \"diastolic\": 85}}]}"
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": false,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_exercise_plan",
+          "args": {
+            "fitness_goals": [
+              "build muscle",
+              "improve flexibility"
+            ]
+          }
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_exercise_plan\", \"arguments\": {\"fitness_goals\": [\"build muscle\", \"improve flexibility\"]}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": false,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_exercise_recommendations",
+          "args": {
+            "age": 30,
+            "gender": "male",
+            "fitness_level": "intermediate"
+          }
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_exercise_recommendations\", \"arguments\": {\"age\": 30, \"gender\": \"male\", \"fitness_level\": \"intermediate\"}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": false,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_exercise_recommendation",
+          "args": {
+            "fitness_goal": "lose weight",
+            "duration": 30
+          }
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_exercise_recommendation\", \"arguments\": {\"fitness_goal\": \"lose weight\", \"duration\": 30}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_hermes",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": false,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "search_exercises",
+          "args": {
+            "category": "cardio",
+            "duration": 30,
+            "intensity": "medium"
+          }
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"search_exercises\", \"arguments\": {\"category\": \"cardio\", \"duration\": 30, \"intensity\": \"medium\"}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_toolmind",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "v1_exchangerate",
+          "args": {
+            "pair": "AUD_NZD"
+          }
+        },
+        "pred_text": "<think>\nOkay, the user mentioned they updated some more functions I can use. Let me check the tools provided again.\n\nWait, in the initial message, the tools listed were v1_exchangerate and get_4_date_endpoint. The user's latest message says they added more functions, but looking at the current context, the tools section hasn't changed. Wait, no—the user is saying \"I have updated some more function"
+      },
+      {
+        "pool": "agentic_toolmind",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "random_mlem",
+          "args": {
+            "maxheight": 1000,
+            "maxwidth": 1500
+          }
+        },
+        "pred_text": "<think>\nOkay, let's see. The user mentioned they updated some more functions I can choose from. Wait, but looking at the tools provided earlier, there are only two functions: video_search and random_mlem. The user's latest message says they added more functions, but in the current context, the tools section still shows only those two.\n\nWait, maybe the user is testing if I notice that no new tools "
+      },
+      {
+        "pool": "agentic_toolmind",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "exchange",
+          "args": {
+            "base": "JPY",
+            "to": "USD",
+            "int": "2000"
+          }
+        },
+        "pred_text": "<think>\nOkay, let's see. The user mentioned they updated some more functions I can choose from. Wait, but looking at the tools provided earlier, there are only three functions listed: time_series, exchange, and rates. The user's latest message says they added more functions, but in the current context, the tools section still shows the same three.\n\nWait, maybe the user is testing if I notice that "
+      },
+      {
+        "pool": "agentic_toolmind",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": false,
+        "gold": {
+          "name": "bodies",
+          "args": {
+            "make": "Honda",
+            "type": "Sedan",
+            "year": "2015",
+            "sort": "model",
+            "direction": "asc"
+          }
+        },
+        "pred_text": "<think>\nOkay, let's tackle this user query. The user wants to fetch all sedan bodies from Honda made in 2015, sorted by model in ascending order, and direct routes from LAX. \n\nFirst, I need to check the available functions. The 'bodies' function seems relevant here. Let me look at its parameters. The 'make_model_trim_id' and 'direction' are optional, but the user specified 'model' and 'sorting dir"
+      }
+    ]
+  },
+  "reasoning": {
+    "n": 8,
+    "budget_tokens": 512,
+    "opens_think": 1.0,
+    "closes_think": 0.0,
+    "examples": [
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out the effect of surface area and pore size on the rate of reaction in catalysis by solid surfaces. Let me start by recalling what I know about catalysis. I think it's a process where a catalyst is added to a system, and the catalyst helps speed up the reaction. B"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out how decreasing the concentration of a reactant affects the equilibrium position of a chemical reaction. Let me start by recalling what Le Châtelier's principle is. It's a principle that states that the equilibrium position of a chemical reaction is determined b"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out how the equilibrium position of the reaction CO(g) + 2H2(g) will change if I add 0.5 moles of H2 to the system. Let me start by recalling what equilibrium means. The equilibrium is the position where the reactants and products are in equilibrium. So, the reacti"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out how the reaction between the reactant and product in a redox reaction affects the equilibrium constant and concentration of the products at equilibrium. Let me start by recalling what I know about redox reactions.\n\nFirst, the reaction is a redox reaction, right"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out how the formation of ground-level ozone due to the reaction between nitrogen oxides (NOx) and volatile organic compounds (VOCs) in polluted air affects human health and some effective approaches to minimize that impact. Let me start by recalling what I know abo"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to find the cell potential of a redox reaction where zinc is 0.1 M, copper is 1.0 M, and the standard reduction potential is -0.76 V. Let me start by recalling what cell potential means. The cell potential is the potential of a redox reaction at a given concentration of elec"
+      }
+    ]
+  },
+  "greedy": [
+    {
+      "prompt": "The marathon took longer to finish than the sprint because the marathon was",
+      "completion": " much longer. The marathon took longer to finish than the sprint because the sprint was over quickly."
+    },
+    {
+      "prompt": "The marathon took longer to finish than the sprint because the sprint was",
+      "completion": " over quickly. The marathon took longer to finish than the sprint because the marathon was much longer."
+    },
+    {
+      "prompt": "The wardrobe would not go through the doorway because the doorway was",
+      "completion": " too small. Put the other way around: The wardrobe would not go through the doorway because the doorway was too small."
+    },
+    {
+      "prompt": "The wardrobe would not go through the doorway because the wardrobe was",
+      "completion": " too small. Put the other way around: The wardrobe would not go through the door because the wardrobe was too small."
+    },
+    {
+      "prompt": "The capital of India is",
+      "completion": " New Delhi. It is the largest city in the country and the capital of the Indian state of Delhi. The city is located in the northern part of the Indian state of Uttar Pradesh. It is the capital of the state of Delhi.\nThe city is the largest city in the state of Delhi."
+    },
+    {
+      "prompt": "The capital of the United States is",
+      "completion": " Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United States is Washington, D.C.\n\nThe capital of the United States is"
+    },
+    {
+      "prompt": "The Riemann hypothesis is a mathematical conjecture about",
+      "completion": " the distribution of the Riemann zeta function. It is named after the mathematician Bernhard Riemann.\n\nThe Riemann zeta function is a complex-valued function of the real variable, and is defined as\n\n${\\displaystyle \\sigma _{z}=e^{i\\frac{"
+    },
+    {
+      "prompt": "In Sanskrit, the word Kama means",
+      "completion": " \"desire\" and is used to describe the desire for something. It is a Sanskrit word that means \"desire\" or \"desire\".\n\nKama is a Sanskrit word that means \"desire\". It is used to describe the desire for something. It is a Sanskrit word that"
+    },
+    {
+      "prompt": "def fibonacci(n):\n",
+      "completion": "\tif n == 0:\n\t\treturn 0\n\telif n == 1:\n\t\treturn 1\n\telse:\n\t\treturn fibonacci(n-1) + fibonacci(n-2)\n\ndef fibonacci_recursive(n):\n\t"
+    },
+    {
+      "prompt": "import json\n\ndef load_config(path):\n",
+      "completion": "\twith open(path, 'r') as f:\n\t\treturn json.load(f)\n\ndef load_config_json(path):\n\twith open(path, 'r') as f:\n\t\treturn json.load(f)\n\ndef load_config"
+    },
+    {
+      "prompt": "SELECT name, email FROM users WHERE",
+      "completion": " email = ?;\n\n--\n-- Table structure for table `users`\n--\n\nCREATE TABLE `users` (\n  `id` int(11) NOT NULL,\n  `name` varchar(100) NOT NULL,\n  `email` varchar"
+    },
+    {
+      "prompt": "<|im_start|>system\n<tools>\n[{\"name\": \"get_weather\", \"description\": \"Get current weather for a city\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}]\n</tools>\n<|im_end|>\n<|im_start|>user\nWhat's the weather in Paris right now?\n<|im_end|>\n<|im_start|>assistant\n",
+      "completion": "<tool_call>\n{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}\n</tool_call>\n"
+    }
+  ],
+  "elapsed_s": 518.1
+}
