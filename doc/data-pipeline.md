@@ -114,7 +114,7 @@ Paths are under `/lambda/nfs/h100-f1/data/phase25/` unless noted.
 | | `code_starcoder_python_fresh` | `bigcode/starcoderdata` python (local scanned parquet) | skip first 881,190 docs | 1.500B | 1.0B | BigCode terms | `9fc30b578ced` | ClamAV clean | ✅ |
 | | `code_starcoder_js_fresh` / `_ts_fresh` | starcoderdata javascript / typescript | skip 939,475 / 1,616,913 docs | 0.250B + 0.250B | 0.3B | BigCode terms | same | ClamAV clean | ✅ |
 | | Phase 2 code pools (replay) | §4.1 | — | 6.48B | 1.7B | — | — | — | ✅ on disk |
-| Relations | `contrastive_v3` | ours: `scripts/gen_contrastive_v3.py`, v2 extended to new structures (reversed questions, passive, nested clauses, negation, comparatives, temporal, part–whole, cause–effect), some structures held out → probe v5 | — | ~0.3B | 0.6B | ours | — | — | ⏳ to build |
+| Relations | `contrastive_v3` | ours: `scripts/gen_contrastive_v3.py`: v2 shapes (39%) + new structures (reported speech, whereas/while, negation pairs, both…but only, direct comparatives, doer/receiver roles, fit counterfactuals) + new families (part–whole 64 pairs, cause–effect 45 pairs, temporal). **Held out entirely:** passive voice, relative clauses, "respectively" → probe v5 (120 cases, private until used). Published: `bubblspace-contrastive-binding` config `v3` (with `family` / `structure` columns) | 63,603 v2-style docs skipped (surface overlap with held-out structures) | 0.348B (10,094,548 docs) | 0.6B | CC BY 4.0 | — | — | ✅ |
 | | `relational_llm` (raw: `raw/relational_llm`) | ours: `scripts/gen_relational_llm.py`, Qwen3-30B-A3B-Instruct-2507 (`0d7cf23991f4`), grounded on Wikipedia passages, 5 formats, fact-checked | probe-overlap, copy (15-word), fact-check verdict | ~50–70M (time-boxed) | 0.15B | CC BY-SA 4.0 | — | — | 🔄 generating; **user EDA before 2.5a**; published as `TheFireHacker/bubblspace-relational-passages-Qwen3-30B` |
 | | `kg_text` | ConceptNet (is-a, part-of, used-for, causes, capable-of) + Wikidata triples, each in several phrasings | — | ~0.5B | 0.6B | CC BY-SA / CC0 | — | to check | ⏳ to build |
 | | `nli_commonsense` | e-SNLI, MNLI, CommonsenseQA (train), ATOMIC-2020, rendered as text (ANLI excluded: non-commercial) | — | ~0.25B | 0.45B | mostly CC BY / CC BY-SA | — | to check | ⏳ to build |
@@ -153,7 +153,7 @@ Measured with `scripts/measure_doc_lengths.py` (`benchmark/phase2/doc_lengths.js
 |---|---|---|
 | English 6 | lm-eval: HellaSwag, PIQA, ARC-Easy, ARC-Challenge, WinoGrande, LAMBADA | log-likelihood |
 | Closed-book facts | lm-eval TriviaQA (5-shot, first 2,000), NQ-open (5-shot, 3,610); `benchmark/data/facts-closedbook/facts-simple-v1-20261123.json` (95 questions, ours) | greedy generation |
-| Binding probes | `benchmark/data/probefinding-winograndestyle/`: v2 (100), v3 (70, new structures), v4 (112, held out from contrastive v2); v5 planned (held out from contrastive v3) | log-likelihood, minimal pairs |
+| Binding probes | `benchmark/data/probefinding-winograndestyle/`: v2 (100), v3 (70, new structures), v4 (112, held out from contrastive v2), v5 (120, held-out structures of contrastive v3: passive, relative clause, respectively; private until used). v2–v4 published on HF with a canary GUID | log-likelihood, minimal pairs |
 | Code | HumanEval (164), MBPP full test (500), Docker sandbox; CRUXEval-O (800) | greedy |
 | Tool use | BFCL simple / multiple / parallel (11 contaminated ids excluded) | AST match |
 | Long context (2.5b) | needle/passkey + multi-hop retrieval at 2k–16k, loss by position | to build |
@@ -162,5 +162,6 @@ Measured with `scripts/measure_doc_lengths.py` (`benchmark/phase2/doc_lengths.js
 
 | Date | Change |
 |---|---|
+| 23 Nov 2026 | Contrastive v3 generated (348M tokens) and published as config `v3`; probe v5 built (private) |
 | 23 Nov 2026 | Contrastive v1/v2 + binding probes v2/v3/v4 (canary GUID) published on HF (`bubblspace-contrastive-binding`, CC BY 4.0) |
 | 23 Nov 2026 | File created: Phases 1–2 documented from pool metadata; Phase 2.5a pools and status; 2.5b plan; revisions recorded |

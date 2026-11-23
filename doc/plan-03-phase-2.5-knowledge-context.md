@@ -75,7 +75,7 @@ About 65% of 2.5a is English text (knowledge + relations), so no separate "gener
 | | **`fact_seeking`** (`nvidia/Nemotron-Pretraining-Specialized-v1.2`): MCQ about encyclopedic facts, written by Qwen3-30B-A3B, several questions per fact | 18% | 3.6B | 6.5B | 0.55 | CC BY 4.0 |
 | | **FineWeb-Edu, `int_score ≥ 4`** (`sample-100BT`) | 8% | 1.6B | 2.5B | 0.64 | ODC-BY |
 | | **SYNTH** (`PleIAs/SYNTH`, English rows only, query + answer; reasoning traces dropped) | 8% | 1.6B | 2.5B | 0.64 | CC BY 4.0 |
-| Relations | contrastive corpus v3 | 3% | 0.6B | 0.3B | 2.0 | ours |
+| Relations | contrastive corpus v3 | 3% | 0.6B | 0.348B | 1.7 | CC BY 4.0 (ours, published) |
 | | LLM-written relational passages (grounded on Wikipedia, time-boxed) | 0.75% | 0.15B | ~0.05–0.07B | ~2–3 | CC BY-SA 4.0 |
 | | NLI / CommonsenseQA / ATOMIC as text | 2.25% | 0.45B | 0.25B | 1.8 | mostly CC BY / CC BY-SA |
 | | ConceptNet / Wikidata as text | 3% | 0.6B | 0.5B | 1.2 | CC BY-SA / CC0 |
@@ -142,7 +142,7 @@ Each source is capped at **≤ 4 passes over its unique tokens**. Contrastive v1
 | fresh StarCoderData Python | `code_starcoder_python_fresh` | 1.5B | ✅ 1.50B (ClamAV clean) |
 | fresh StarCoderData JS/TS | `code_starcoder_js_fresh`, `code_starcoder_ts_fresh` | 0.5B | ✅ 0.25B + 0.25B (ClamAV clean) |
 | SYNTH (English, query + answer) | `synth_en` | 2.5B | downloading → ClamAV → tokenize |
-| contrastive v3 | — | ~0.3B | generator to write |
+| contrastive v3 | `contrastive_v3` | ~0.3B | ✅ 0.348B (10.1M docs); probe v5 built (120 cases) |
 | LLM relational passages | `raw/relational_llm` | ~70M kept (time-boxed) | full run started 23 Nov (grounded, 5 formats); user EDA before 2.5a |
 | NLI / CSQA / ATOMIC | — | ~0.25B | to download + render |
 | ConceptNet / Wikidata text | — | ~0.5B | to download + render |
