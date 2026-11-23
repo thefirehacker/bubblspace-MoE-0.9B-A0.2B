@@ -94,9 +94,9 @@ Plan: [plan-03 §2](plan-03-phase-2.5-knowledge-context.md). Init from Phase 2 f
 
 | Category | Billion tokens | Share |
 |---|---|---|
-| Knowledge (English) | 11.2B | 56% |
+| Knowledge (English) | 11.77B | 58.9% |
 | Code | 5.0B | 25% |
-| Relations (English) | 1.8B | 9% |
+| Relations (English) | 1.23B | 6.1% |
 | Agentic / tool | 1.0B | 5% |
 | Math | 1.0B | 5% |
 
@@ -108,20 +108,21 @@ Paths are under `/lambda/nfs/h100-f1/data/phase25/` unless noted.
 |---|---|---|---|---|---|---|---|---|---|
 | Knowledge | `en_wiki_full` | `wikimedia/wikipedia` 20231101.en, all 6,407,814 articles | — | 5.058B | 4.4B | CC BY-SA 3.0 / GFDL | `b04c8d1ceb2f` | HF safe 41/41 | ✅ |
 | | `fact_seeking` | `nvidia/Nemotron-Pretraining-Specialized-v1.2` / Fact-Seeking, `part_000000`–`000007` (MCQ about encyclopedic facts, written by Qwen3-30B-A3B) | scan-safe files only | 5.424B | 3.6B | CC BY 4.0 | `807afc1fa65c` | HF safe (8 files) | ✅ |
-| | `fwe_edu4` | `HuggingFaceFW/fineweb-edu` sample-100BT | `int_score ≥ 4` (14% of docs kept) | 2.500B | 1.6B | ODC-BY | `87f09149ef47` | HF safe | ✅ |
-| | `synth_en` | `PleIAs/SYNTH` (Wikipedia vital articles amplified into queries + grounded answers) | `language=en`; text = query + answer (reasoning traces dropped) | 2.5B target | 1.6B | CC BY 4.0 | `0d6813a29666` | ClamAV clean | 🔄 tokenizing |
+| | `fwe_edu4` | `HuggingFaceFW/fineweb-edu` sample-100BT | `int_score ≥ 4` (14% of docs kept) | 2.500B | 1.87B | ODC-BY | `87f09149ef47` | HF safe | ✅ |
+| | `synth_en` | `PleIAs/SYNTH` (Wikipedia vital articles amplified into queries + grounded answers) | `language=en`; text = query + answer (reasoning traces dropped) | 2.500B (7.97M rows) | 1.9B | CC BY 4.0 | `0d6813a29666` | ClamAV clean | ✅ |
 | Code | `code_python_edu_fresh` | `Avelina/python-edu-cleaned` | skip first 2,936,148 docs (used in Phase 2), so never-seen code | 2.422B (dataset exhausted) | 2.0B | ODC-BY | `3fedf55e02e7` | HF safe 29/29 | ✅ |
 | | `code_starcoder_python_fresh` | `bigcode/starcoderdata` python (local scanned parquet) | skip first 881,190 docs | 1.500B | 1.0B | BigCode terms | `9fc30b578ced` | ClamAV clean | ✅ |
 | | `code_starcoder_js_fresh` / `_ts_fresh` | starcoderdata javascript / typescript | skip 939,475 / 1,616,913 docs | 0.250B + 0.250B | 0.3B | BigCode terms | same | ClamAV clean | ✅ |
 | | Phase 2 code pools (replay) | §4.1 | — | 6.48B | 1.7B | — | — | — | ✅ on disk |
-| Relations | `contrastive_v3` | ours: `scripts/gen_contrastive_v3.py`: v2 shapes (39%) + new structures (reported speech, whereas/while, negation pairs, both…but only, direct comparatives, doer/receiver roles, fit counterfactuals) + new families (part–whole 64 pairs, cause–effect 45 pairs, temporal). **Held out entirely:** passive voice, relative clauses, "respectively" → probe v5 (120 cases, private until used). Published: `bubblspace-contrastive-binding` config `v3` (with `family` / `structure` columns) | 63,603 v2-style docs skipped (surface overlap with held-out structures) | 0.348B (10,094,548 docs) | 0.6B | CC BY 4.0 | — | — | ✅ |
+| Relations | `contrastive_v3` | ours: `scripts/gen_contrastive_v3.py`: v2 shapes (39%) + new structures (reported speech, whereas/while, negation pairs, both…but only, direct comparatives, doer/receiver roles, fit counterfactuals) + new families (part–whole 64 pairs, cause–effect 45 pairs, temporal). **Held out entirely:** passive voice, relative clauses, "respectively" → probe v5 (120 cases, private until used). Published: `bubblspace-contrastive-binding` config `v3` (with `family` / `structure` columns) | 63,603 v2-style docs skipped (surface overlap with held-out structures) | 0.348B (10,094,548 docs) | 0.9B | CC BY 4.0 | — | — | ✅ |
 | | `relational_llm` (raw: `raw/relational_llm`) | ours: `scripts/gen_relational_llm.py`, Qwen3-30B-A3B-Instruct-2507 (`0d7cf23991f4`), grounded on Wikipedia passages, 5 formats, fact-checked | probe-overlap, copy (15-word), fact-check verdict | ~50–70M (time-boxed) | 0.15B | CC BY-SA 4.0 | — | — | 🔄 generating; **user EDA before 2.5a**; published as `TheFireHacker/bubblspace-relational-passages-Qwen3-30B` |
-| | `kg_text` | ConceptNet (is-a, part-of, used-for, causes, capable-of) + Wikidata triples, each in several phrasings | — | ~0.5B | 0.6B | CC BY-SA / CC0 | — | to check | ⏳ to build |
-| | `nli_commonsense` | e-SNLI, MNLI, CommonsenseQA (train), ATOMIC-2020, rendered as text (ANLI excluded: non-commercial) | — | ~0.25B | 0.45B | mostly CC BY / CC BY-SA | — | to check | ⏳ to build |
+| | `kg_text` | `conceptnet5/conceptnet5` English edges (467k, weight ≥ 1, 26 relations) → concept-centric paragraphs + direction question, via `scripts/render_relational_sources.py`. Wikidata5M (`intfloat/wikidata5m`) rendered then **dropped**: noisy aliases gave garbled entity names | lang=en, weight ≥ 1 | 0.0084B (198k docs) | 0.03B | CC BY-SA 4.0 | `conceptnet5/conceptnet5` | ClamAV clean | ✅ |
+| | `nli_commonsense` | e-SNLI train (`esnli/esnli`, HF parquet conversion — the repo is a loading script, not executed), MultiNLI train (`nyu-mll/multi_nli`), CommonsenseQA train (`tau/commonsense_qa`), ATOMIC-2020 (`Estwld/atomic2020-origin`, parquet only), rendered with varied templates (ANLI excluded: non-commercial) | train splits only | 0.047B (974k docs) | 0.15B | CC BY-SA / CC BY / MIT | see source repos | ClamAV clean | ✅ |
 | Agentic | Phase 2 agentic pools (replay) | §4.1 | — | 0.38B in blocks (0.29B unpadded) | 1.0B (~2.7 passes over the blocks) | Apache-2.0 | — | — | ✅ on disk |
 | Math | `en_finemath` (replay) | §4.1 | — | 1.0B | 1.0B | ODC-BY | — | — | ✅ on disk |
 
 **Considered and not used:**
+- `intfloat/wikidata5m` (Wikidata triples): rendered, then dropped. The alias lists are noisy ("Huamn", "CAT:CROATIA", "Franzoesische Republik"), so entity names came out misspelled.
 - `nvidia/Nemotron-CC-v2` / `diverse_qa`: gated, access request pending. SYNTH fills the slot.
 - `wiki_rewrite`: listed by Marin but not in NVIDIA's public Specialized-v1 repo any more.
 - `nvidia/Nemotron-Pretraining-Code-v3`: metadata only (repo/path/commit); the code itself would need fetching from GitHub.
@@ -162,6 +163,7 @@ Measured with `scripts/measure_doc_lengths.py` (`benchmark/phase2/doc_lengths.js
 
 | Date | Change |
 |---|---|
+| 23 Nov 2026 | Relations rebalanced (1.8B → 1.23B; +0.57B to SYNTH and FineWeb-Edu ≥ 4) because ConceptNet (8.4M) and NLI/commonsense (47M) came out smaller than planned; Wikidata5M dropped (noisy entity names) |
 | 23 Nov 2026 | Contrastive v3 generated (348M tokens) and published as config `v3`; probe v5 built (private) |
 | 23 Nov 2026 | Contrastive v1/v2 + binding probes v2/v3/v4 (canary GUID) published on HF (`bubblspace-contrastive-binding`, CC BY 4.0) |
 | 23 Nov 2026 | File created: Phases 1–2 documented from pool metadata; Phase 2.5a pools and status; 2.5b plan; revisions recorded |

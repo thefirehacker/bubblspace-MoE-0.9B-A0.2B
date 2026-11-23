@@ -58,14 +58,16 @@ Part of what looked like missing knowledge in the REPL is base-model rambling, w
 
 | Category | Billion tokens | Share |
 |---|---|---|
-| Knowledge (English) | **11.2B** | 56% |
+| Knowledge (English) | **11.77B** | 58.9% |
 | Code | **5.0B** | 25% |
-| Relations (English) | **1.8B** | 9% |
+| Relations (English) | **1.23B** | 6.1% |
 | Agentic / tool | **1.0B** | 5% |
 | Math | **1.0B** | 5% |
 | **Total** | **20.0B** | 100% |
 
 About 65% of 2.5a is English text (knowledge + relations), so no separate "general English" group is needed.
+
+**Rebalanced 23 Nov.** The relational pools came out smaller than planned (ConceptNet 8.4M tokens after dropping Wikidata5M; NLI/commonsense 47M). At the old shares they would have been repeated ~72× and ~10×. Every relational source is now capped at ≤ ~3.5 passes, and the freed 0.57B moved to SYNTH (+0.3B) and FineWeb-Edu ≥ 4 (+0.27B), both still under one pass.
 
 **By source:**
 
@@ -73,12 +75,12 @@ About 65% of 2.5a is English text (knowledge + relations), so no separate "gener
 |---|---|---|---|---|---|---|
 | Knowledge | **Wikipedia** full English (`wikimedia/wikipedia` 20231101.en) | 22% | 4.4B | ~5–6B (all) | ~0.8 | CC BY-SA 3.0 / GFDL |
 | | **`fact_seeking`** (`nvidia/Nemotron-Pretraining-Specialized-v1.2`): MCQ about encyclopedic facts, written by Qwen3-30B-A3B, several questions per fact | 18% | 3.6B | 6.5B | 0.55 | CC BY 4.0 |
-| | **FineWeb-Edu, `int_score ≥ 4`** (`sample-100BT`) | 8% | 1.6B | 2.5B | 0.64 | ODC-BY |
-| | **SYNTH** (`PleIAs/SYNTH`, English rows only, query + answer; reasoning traces dropped) | 8% | 1.6B | 2.5B | 0.64 | CC BY 4.0 |
-| Relations | contrastive corpus v3 | 3% | 0.6B | 0.348B | 1.7 | CC BY 4.0 (ours, published) |
+| | **FineWeb-Edu, `int_score ≥ 4`** (`sample-100BT`) | 9.35% | 1.87B | 2.5B | 0.75 | ODC-BY |
+| | **SYNTH** (`PleIAs/SYNTH`, English rows only, query + answer; reasoning traces dropped) | 9.5% | 1.9B | 2.5B | 0.76 | CC BY 4.0 |
+| Relations | contrastive corpus v3 | 4.5% | 0.9B | 0.348B | 2.6 | CC BY 4.0 (ours, published) |
 | | LLM-written relational passages (grounded on Wikipedia, time-boxed) | 0.75% | 0.15B | ~0.05–0.07B | ~2–3 | CC BY-SA 4.0 |
-| | NLI / CommonsenseQA / ATOMIC as text | 2.25% | 0.45B | 0.25B | 1.8 | mostly CC BY / CC BY-SA |
-| | ConceptNet / Wikidata as text | 3% | 0.6B | 0.5B | 1.2 | CC BY-SA / CC0 |
+| | NLI / CommonsenseQA / ATOMIC as text | 0.75% | 0.15B | 0.047B | 3.2 | mostly CC BY / CC BY-SA / MIT |
+| | ConceptNet as text (Wikidata5M dropped: noisy entity names) | 0.15% | 0.03B | 0.0084B | 3.6 | CC BY-SA 4.0 |
 | Code | **Fresh Python-edu** (`Avelina/python-edu-cleaned`, skipping the 2,936,148 docs Phase 2 used) | 10% | 2.0B | up to 2.5B | ~0.8 | per-file permissive |
 | | **Fresh StarCoderData Python** (`bigcode/starcoderdata` python, skipping 881,190 used docs) | 5% | 1.0B | 1.5B | 0.67 | per-file permissive |
 | | **Fresh StarCoderData JS/TS** (skipping 939,475 / 1,616,913 used docs) | 1.5% | 0.3B | 0.5B | 0.6 | per-file permissive |
@@ -109,7 +111,7 @@ Its files have no HF scan status, so they are scanned with ClamAV. If NVIDIA acc
 
 `wiki_rewrite` (in Marin's list) is **not** in NVIDIA's public repo: Specialized-v1 now holds only InfiniByte-Reasoning and Math-Textbooks. It's dropped.
 
-### 2.3 Relational data (9%, 1.8B tokens)
+### 2.3 Relational data (6.1%, 1.23B tokens)
 
 Each source is capped at **≤ 4 passes over its unique tokens**. Contrastive v1 got memorized as a template when it was repeated too often.
 
@@ -117,8 +119,8 @@ Each source is capped at **≤ 4 passes over its unique tokens**. Contrastive v1
 |---|---|---|
 | **Contrastive corpus v3** (`scripts/gen_contrastive_v3.py`, new) | v2's generator extended to new structures: reversed questions, passive voice, nested clauses, negation, comparatives, temporal order, part–whole, cause–effect. **Some structures are held out entirely** and go into probe v5. | ~0.3B |
 | **LLM-written relational passages** (`scripts/gen_relational_llm.py`) | Qwen3-30B-A3B-Instruct-2507 via vLLM on the H100. **Grounded only:** each prompt contains a real 120–350-word English Wikipedia passage, and the model may use only facts from it plus everyday knowledge. 16 relation types × **5 formats** (Q&A, process, explainer, common confusion, comparative prose) × 4 reading levels. Every output is fact-checked by the same model against the source (short critique + `VERDICT: PASS/FAIL`; rejects and critiques are saved for auditing). Outputs copying a 15-word stretch of the source are dropped, and a probe-overlap filter keeps probes and the facts probe clean. Published as `TheFireHacker/bubblspace-relational-passages-Qwen3-30B` (CC BY-SA 4.0). **Tests 1–4** (23 Nov):<br>• free generation contained factual errors<br>• everyday scenes were mostly rejected<br>• staged-mistake dialogues confused the model<br>• pronoun narratives and minimal pairs forced fiction onto factual sources (13% / 7% passed vs 79% for Q&A), so they were dropped; binding and pronoun cases come from contrastive v3 instead<br>**Time-boxed:** generation stops at a file boundary when the rest of the prep is ready, and can resume after 2.5a/2.5b to grow the HF dataset. **The user reviews the data (EDA) before 2.5a training starts.** | ~70M kept target (~13 h); whatever is done when prep finishes |
-| **Human-written relational reasoning** | e-SNLI (entailment with explanations), MNLI, CommonsenseQA train, ATOMIC-2020 causal commonsense, each rendered as text. ANLI is skipped (non-commercial license). | ~0.2–0.3B |
-| **Verbalized knowledge graphs** | ConceptNet (is-a, part-of, used-for, causes, capable-of) and Wikidata triples, each written in several phrasings ("Plants take in carbon dioxide and release oxygen.") | ~0.5B |
+| **Human-written relational reasoning** (`scripts/render_relational_sources.py`) | e-SNLI train (549k, with human explanations; taken from HF's parquet conversion because the repo is a loading script), MultiNLI train (393k), CommonsenseQA train (9.7k), ATOMIC-2020 (22k events; names substituted for PersonX/PersonY; each relation rendered as Q&A because its tails are fragments). Varied templates. ANLI is skipped (non-commercial license). | **0.047B** |
+| **Verbalized knowledge graphs** (`scripts/render_relational_sources.py`) | ConceptNet English edges (467k, weight ≥ 1, 26 relations), as concept-centric paragraphs with varied phrasings and a direction-checking question ("Is a car part of a wheel? No; …"). **Wikidata5M was rendered and then dropped:** its alias lists produce misspelled or garbled entity names ("Huamn", "CAT:CROATIA", "Franzoesische Republik"). Full Wikipedia, `fact_seeking` and SYNTH cover those facts in clean prose. | **0.0084B** |
 
 ### 2.4 Pipeline per source
 
@@ -141,11 +143,11 @@ Each source is capped at **≤ 4 passes over its unique tokens**. Contrastive v1
 | fresh Python-edu | `code_python_edu_fresh` | 2.5B | ✅ 2.42B (dataset exhausted) |
 | fresh StarCoderData Python | `code_starcoder_python_fresh` | 1.5B | ✅ 1.50B (ClamAV clean) |
 | fresh StarCoderData JS/TS | `code_starcoder_js_fresh`, `code_starcoder_ts_fresh` | 0.5B | ✅ 0.25B + 0.25B (ClamAV clean) |
-| SYNTH (English, query + answer) | `synth_en` | 2.5B | downloading → ClamAV → tokenize |
+| SYNTH (English, query + answer) | `synth_en` | 2.5B | ✅ 2.50B (ClamAV clean; 7.97M of 9.85M rows read) |
 | contrastive v3 | `contrastive_v3` | ~0.3B | ✅ 0.348B (10.1M docs); probe v5 built (120 cases) |
 | LLM relational passages | `raw/relational_llm` | ~70M kept (time-boxed) | full run started 23 Nov (grounded, 5 formats); user EDA before 2.5a |
-| NLI / CSQA / ATOMIC | — | ~0.25B | to download + render |
-| ConceptNet / Wikidata text | — | ~0.5B | to download + render |
+| NLI / CSQA / ATOMIC | `nli_commonsense` | ~0.25B | ✅ 0.047B (ClamAV clean) |
+| ConceptNet text | `kg_text` | ~0.5B | ✅ 0.0084B (ClamAV clean); Wikidata5M dropped |
 | decontamination | — | — | after tokenization |
 
 ### 2.6 Evals (A10)
