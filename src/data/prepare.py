@@ -47,6 +47,11 @@ def main():
     parser.add_argument("--is_code", action="store_true", help="enable FIM transform for this dataset")
     parser.add_argument("--fim_rate", type=float, default=0.0, help="probability of applying FIM per document (code only)")
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--data_files", nargs="*", default=None,
+                        help="only these repo files (e.g. the files that passed the HF security scan)")
+    parser.add_argument("--min_int_score", type=int, default=None,
+                        help="keep only examples with int_score >= this (FineWeb-Edu quality score)")
+    parser.add_argument("--batch_docs", type=int, default=1000, help="documents per batched tokenizer call")
     args = parser.parse_args()
 
     out_dir = Path(args.out_dir)
@@ -69,6 +74,7 @@ def main():
         args.dataset,
         name=args.dataset_config or None,  # "" means "no named config" (e.g. bigcode/starcoderdata)
         data_dir=args.data_dir,
+        data_files=args.data_files or None,
         split="train",
         streaming=True,
         token=os.environ.get("HF_TOKEN"),
@@ -89,16 +95,8 @@ def main():
         shard_idx += 1
         buf_pos = 0
 
-    for example in ds:
-        if total_written >= args.max_tokens:
-            break
-        ids = tok.encode(example[args.text_field], add_special_tokens=False)
-
-        if fim_ids is not None and rng.random() < args.fim_rate:
-            ids = apply_fim(ids, *fim_ids, rng)
-
-        ids.append(eot_id)
-
+    def write(ids):
+        nonlocal buf_pos, total_written
         i = 0
         while i < len(ids) and total_written < args.max_tokens:
             space = args.shard_tokens - buf_pos
@@ -110,6 +108,30 @@ def main():
             pbar.update(take)
             if buf_pos == args.shard_tokens:
                 flush_shard()
+
+    def encode_batch(texts):
+        # one batched call: the Rust tokenizer parallelizes across documents
+        for ids in tok(texts, add_special_tokens=False)["input_ids"]:
+            if total_written >= args.max_tokens:
+                return
+            if fim_ids is not None and rng.random() < args.fim_rate:
+                ids = apply_fim(ids, *fim_ids, rng)
+            write(ids + [eot_id])
+
+    batch, kept, seen = [], 0, 0
+    for example in ds:
+        if total_written >= args.max_tokens:
+            break
+        seen += 1
+        if args.min_int_score is not None and example.get("int_score", 0) < args.min_int_score:
+            continue
+        kept += 1
+        batch.append(example[args.text_field])
+        if len(batch) >= args.batch_docs:
+            encode_batch(batch)
+            batch = []
+    if batch and total_written < args.max_tokens:
+        encode_batch(batch)
 
     flush_shard()
     pbar.close()
@@ -127,6 +149,10 @@ def main():
         "real_vocab_size": real_vocab_size,
         "is_code": args.is_code,
         "fim_rate": args.fim_rate,
+        "data_files": args.data_files,
+        "min_int_score": args.min_int_score,
+        "docs_seen": seen,
+        "docs_kept": kept,
     }
     with open(out_dir / "meta.json", "w") as f:
         json.dump(meta, f, indent=2)
