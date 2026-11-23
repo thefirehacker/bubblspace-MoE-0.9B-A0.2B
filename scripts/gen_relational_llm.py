@@ -85,6 +85,15 @@ GROUNDED_RULES = ("Use ONLY facts stated in the source passage, plus simple ever
                   "names or technical claims that are not in the passage. Do not copy sentences from the passage; rephrase. "
                   "If the passage does not support the requested relation, use another relation the passage clearly supports.")
 
+# v4 (after EDA of shards 0-5): quantity/comparison/spatial passed only 14-37% in every domain because random Wikipedia
+# passages rarely contain them, so the model invented numbers; ~15% of passages opened with a few stock phrases.
+# Now the model CHOOSES one of 3 candidate relations that the source genuinely supports, and stock openings are banned.
+CHOSEN_RULES = ("Use ONLY facts stated in the source passage, plus simple everyday knowledge. Do not add dates, numbers, "
+                "names or technical claims that are not in the passage. Do not copy sentences from the passage; rephrase. "
+                "Do not force a relation that is not genuinely present in the passage. Vary how you begin: do not start with "
+                "'People often', 'People sometimes', 'A common confusion', 'One common confusion' or 'What happens if'.")
+STOCK_OPENINGS = ("people often", "people sometimes", "a common confusion", "one common confusion", "what happens if")
+
 EVERYDAY_RULES = ("Use invented people and ordinary objects and places. Do not rely on specialised facts; everything must "
                   "follow logically from what the text itself says.")
 
@@ -92,6 +101,12 @@ JUDGE_GROUNDED = ("You are a strict fact-checker. Compare the GENERATED TEXT wit
                   "Look for: any claim not supported by the source or common knowledge, wrong numbers, internal "
                   "contradictions, illogical events, or a property, role, cause or effect assigned to the wrong entity. "
                   "Write at most two short sentences of critique, then a final line exactly 'VERDICT: PASS' or 'VERDICT: FAIL'.")
+
+JUDGE_CHOSEN = ("You are a strict fact-checker. Compare the GENERATED TEXT with the SOURCE and with general knowledge. "
+                "Look for: any claim not supported by the source or common knowledge, wrong numbers, internal "
+                "contradictions, illogical events, a property, role, cause or effect assigned to the wrong entity, or a "
+                "relation ({rel}: {desc}) that is forced or contrived rather than genuinely present in the source. "
+                "Write at most two short sentences of critique, then a final line exactly 'VERDICT: PASS' or 'VERDICT: FAIL'.")
 
 JUDGE_EVERYDAY = ("You are a strict reviewer. Check the TEXT for internal contradictions, illogical or impossible events, "
                   "wrong arithmetic, pronouns that cannot be resolved as claimed, or a property, role, cause or effect "
@@ -171,14 +186,24 @@ def copies_source(text, source, n=15):
 
 def build_meta(i, seed, grounded_frac):
     r = random.Random(seed * 1_000_003 + i)
-    return {"idx": i, "mode": "grounded" if r.random() < grounded_frac else "everyday",
-            "relation": r.choice(list(RELATIONS)), "format": r.choice(list(FORMATS)), "level": r.choice(LEVELS),
-            "topic": r.choice(EVERYDAY_TOPICS), "words": r.choice([150, 200, 250, 300])}
+    m = {"idx": i, "mode": "grounded" if r.random() < grounded_frac else "everyday",
+         "relation": r.choice(list(RELATIONS)), "format": r.choice(list(FORMATS)), "level": r.choice(LEVELS),
+         "topic": r.choice(EVERYDAY_TOPICS), "words": r.choice([150, 200, 250, 300])}
+    others = [x for x in RELATIONS if x != m["relation"]]
+    m["candidates"] = [m["relation"]] + r.sample(others, 2)
+    return m
 
 
-def user_prompt(m, src):
+def user_prompt(m, src, chosen=False):
     rel = RELATIONS[m["relation"]]
     tail = f" Write for {m['level']}, about {m['words']} words."
+    if chosen and m["mode"] == "grounded":
+        cands = "\n".join(f"- {c}: {RELATIONS[c]}" for c in m["candidates"])
+        task = FORMATS[m["format"]].format(subject="the subject of the source passage", rel="that relation")
+        return (f"SOURCE (from the Wikipedia article \"{src['title']}\"):\n<<<\n{src['text']}\n>>>\n\n"
+                f"CANDIDATE RELATIONS:\n{cands}\n\n"
+                f"TASK: First choose the ONE candidate relation that the source most clearly and naturally supports, and "
+                f"write it alone on the first line as 'RELATION: <name>'. Then, from the next line: {task} {CHOSEN_RULES}{tail}")
     if m["mode"] == "grounded":
         task = FORMATS[m["format"]].format(subject="the subject of the source passage", rel=rel)
         return (f"SOURCE (from the Wikipedia article \"{src['title']}\"):\n<<<\n{src['text']}\n>>>\n\n"
@@ -186,7 +211,10 @@ def user_prompt(m, src):
     return FORMATS[m["format"]].format(subject=m["topic"], rel=rel) + " " + EVERYDAY_RULES + tail
 
 
-def judge_prompt(m, text, src):
+def judge_prompt(m, text, src, chosen=False):
+    if chosen and m["mode"] == "grounded":
+        j = JUDGE_CHOSEN.format(rel=m["relation"], desc=RELATIONS[m["relation"]])
+        return f"{j}\n\nSOURCE:\n{src['text']}\n\nGENERATED TEXT:\n{text}"
     if m["mode"] == "grounded":
         return f"{JUDGE_GROUNDED}\n\nSOURCE:\n{src['text']}\n\nGENERATED TEXT:\n{text}"
     return f"{JUDGE_EVERYDAY}\n\nTEXT:\n{text}"
@@ -205,6 +233,8 @@ def main():
     ap.add_argument("--max_tokens", type=int, default=700)
     ap.add_argument("--temperature", type=float, default=0.7)
     ap.add_argument("--max_num_seqs", type=int, default=512)
+    ap.add_argument("--relation_mode", choices=["chosen", "requested"], default="chosen",
+                    help="chosen (v4): model picks 1 of 3 candidate relations; requested: one relation is assigned (shards 0-5)")
     ap.add_argument("--probes", nargs="*", default=sorted(glob.glob("benchmark/data/probefinding-winograndestyle/*.json")))
     ap.add_argument("--facts", default="benchmark/data/facts-closedbook/facts-simple-v1-20261123.json")
     args = ap.parse_args()
@@ -234,14 +264,25 @@ def main():
         srcs = iter(WikiPassages(args.wiki_dir, args.seed * 7919 + sid).sample(n_g))
         for m in meta:
             m["src"] = next(srcs) if m["mode"] == "grounded" else None
-        res = llm.generate([chat([{"role": "system", "content": SYSTEM}, {"role": "user", "content": user_prompt(m, m["src"])}])
-                            for m in meta], sp, use_tqdm=False)
+        chosen = args.relation_mode == "chosen"
+        res = llm.generate([chat([{"role": "system", "content": SYSTEM},
+                                  {"role": "user", "content": user_prompt(m, m["src"], chosen)}]) for m in meta], sp, use_tqdm=False)
         cand, gen_tok = [], 0
-        drop = {"truncated": 0, "short": 0, "probe": 0, "copied": 0, "judge_fail": 0}
+        drop = {"truncated": 0, "short": 0, "probe": 0, "copied": 0, "no_relation": 0, "stock_opening": 0, "judge_fail": 0}
         for m, r in zip(meta, res):
             o = r.outputs[0]
             gen_tok += len(o.token_ids)
             text = o.text.strip()
+            if chosen and m["mode"] == "grounded" and o.finish_reason == "stop":
+                first, _, rest = text.partition("\n")
+                g = re.match(r"\s*\**RELATION:\**\s*([a-z_]+)", first.strip(), re.I)
+                if not g or g.group(1).lower() not in m["candidates"]:
+                    drop["no_relation"] += 1
+                    continue
+                m["relation"], text = g.group(1).lower(), rest.strip()
+                if text.lower().startswith(STOCK_OPENINGS):
+                    drop["stock_opening"] += 1
+                    continue
             if o.finish_reason != "stop":
                 drop["truncated"] += 1
             elif len(text.split()) < 80:
@@ -252,7 +293,7 @@ def main():
                 drop["copied"] += 1
             else:
                 cand.append((m, text))
-        jres = llm.generate([chat([{"role": "user", "content": judge_prompt(m, t, m["src"])}]) for m, t in cand],
+        jres = llm.generate([chat([{"role": "user", "content": judge_prompt(m, t, m["src"], chosen)}]) for m, t in cand],
                             judge_sp, use_tqdm=False)
         kept, rejects = [], []
         for (m, text), jr in zip(cand, jres):
@@ -262,12 +303,14 @@ def main():
                 kept.append({"text": text, "mode": m["mode"], "relation": m["relation"], "format": m["format"],
                              "level": m["level"], "topic": None if m["src"] else m["topic"],
                              "source_title": m["src"]["title"] if m["src"] else None,
-                             "source_url": m["src"]["url"] if m["src"] else None, "idx": m["idx"]})
+                             "source_url": m["src"]["url"] if m["src"] else None, "idx": m["idx"],
+                             "relation_source": "chosen_from_3" if chosen else "requested",
+                             "relation_candidates": m["candidates"] if chosen else None})
             else:
                 drop["judge_fail"] += 1
                 rejects.append({"text": text, "critique": critique, "mode": m["mode"], "relation": m["relation"],
                                 "format": m["format"], "source_title": m["src"]["title"] if m["src"] else None,
-                                "idx": m["idx"]})
+                                "idx": m["idx"], "relation_source": "chosen_from_3" if chosen else "requested"})
         tmp = out / f"shard_{sid:05d}.jsonl.tmp"
         with open(tmp, "w") as f:
             for k in kept:
