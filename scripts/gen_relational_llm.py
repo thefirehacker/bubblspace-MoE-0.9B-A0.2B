@@ -5,7 +5,10 @@ structural variety than template corpora. Contrastive v2 taught binding that tra
 words but not to new sentence structures (probe v3 flat), so every prompt combines a relation type x
 format x reading level, and the model writes the text freely.
 
-Two modes (v2 of this script, after a test showed factual errors in free generation):
+Two modes (v2 of this script, after a test showed factual errors in free generation; v3 defaults to
+grounded only and drops the dialogue format, after test 3 showed staged-mistake dialogues confuse the
+model and the check rejected ~88% of everyday scenes; test 4 dropped pronoun narratives and minimal
+pairs, which forced fiction onto factual sources: 13% / 7% passed the check, vs 79% for Q&A):
   * grounded (default 70%): the prompt includes a real Wikipedia passage and the model may use only
     facts stated in it plus everyday knowledge (grounding idea as in PleIAs/SYNTH).
   * everyday (30%): invented people and everyday objects/scenes, so correctness = internal consistency.
@@ -65,17 +68,10 @@ FORMATS = {
                  "State clearly which property, role or effect belongs to which entity.",
     "confusion": "Write a short 'common confusion' explainer about two things from {subject} that people could mix up, "
                  "focused on {rel}. Say what each one really is, which way round the relation goes, and why the mix-up happens.",
-    "minimal_pair": "Write two short versions of the same scene from {subject}. Change exactly one detail between them so "
-                    "that {rel} flips, and spell out how the consequence differs. Label them Version 1 and Version 2.",
-    "pronouns": "Write a short narrative from {subject} with two people or two objects, using pronouns (he/she/it/they) where "
-                "the meaning depends on {rel}. After it, add 2-3 sentences that state explicitly who or what each pronoun "
-                "refers to and why.",
     "qa": "Write 4-6 question-and-answer pairs about {subject}, each testing {rel}. Vary the question forms (which, who, why, "
           "what happens if, true or false). Each answer gives the answer and a one-sentence reason.",
     "process": "Describe a process or sequence of events from {subject} step by step, making {rel} explicit at each step "
                "(what goes in, what comes out, what acts on what).",
-    "dialogue": "Write a short dialogue between two people about {subject} in which one of them gets {rel} the wrong way round "
-                "and the other corrects them with a clear explanation.",
     "compare_prose": "Compare two or three related things from {subject} in flowing prose (no tables), focused on {rel}. Use "
                      "varied sentence structures: passive voice, relative clauses, 'the former/the latter', comparatives.",
 }
@@ -203,7 +199,8 @@ def main():
     ap.add_argument("--out_dir", required=True)
     ap.add_argument("--n_prompts", type=int, default=900_000)
     ap.add_argument("--chunk", type=int, default=20_000, help="prompts per shard")
-    ap.add_argument("--grounded_frac", type=float, default=0.7)
+    ap.add_argument("--grounded_frac", type=float, default=1.0,
+                    help="share of grounded prompts (test 3: everyday scenes were mostly rejected, so default is grounded only)")
     ap.add_argument("--seed", type=int, default=2025)
     ap.add_argument("--max_tokens", type=int, default=700)
     ap.add_argument("--temperature", type=float, default=0.7)
@@ -257,9 +254,10 @@ def main():
                 cand.append((m, text))
         jres = llm.generate([chat([{"role": "user", "content": judge_prompt(m, t, m["src"])}]) for m, t in cand],
                             judge_sp, use_tqdm=False)
-        kept = []
+        kept, rejects = [], []
         for (m, text), jr in zip(cand, jres):
-            v = re.findall(r"VERDICT:\s*(PASS|FAIL)", jr.outputs[0].text.upper())
+            critique = jr.outputs[0].text.strip()
+            v = re.findall(r"VERDICT:\s*(PASS|FAIL)", critique.upper())
             if v and v[-1] == "PASS":
                 kept.append({"text": text, "mode": m["mode"], "relation": m["relation"], "format": m["format"],
                              "level": m["level"], "topic": None if m["src"] else m["topic"],
@@ -267,9 +265,15 @@ def main():
                              "source_url": m["src"]["url"] if m["src"] else None, "idx": m["idx"]})
             else:
                 drop["judge_fail"] += 1
+                rejects.append({"text": text, "critique": critique, "mode": m["mode"], "relation": m["relation"],
+                                "format": m["format"], "source_title": m["src"]["title"] if m["src"] else None,
+                                "idx": m["idx"]})
         tmp = out / f"shard_{sid:05d}.jsonl.tmp"
         with open(tmp, "w") as f:
             for k in kept:
+                f.write(json.dumps(k, ensure_ascii=False) + "\n")
+        with open(out / f"rejects_{sid:05d}.jsonl", "w") as f:  # kept for auditing the fact-check
+            for k in rejects:
                 f.write(json.dumps(k, ensure_ascii=False) + "\n")
         tmp.rename(out / f"shard_{sid:05d}.jsonl")
         dt = time.time() - t0

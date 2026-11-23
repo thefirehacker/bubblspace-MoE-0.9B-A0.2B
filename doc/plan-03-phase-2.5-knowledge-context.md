@@ -75,10 +75,10 @@ About 65% of 2.5a is English text (knowledge + relations), so no separate "gener
 | | **`fact_seeking`** (`nvidia/Nemotron-Pretraining-Specialized-v1.2`): MCQ about encyclopedic facts, written by Qwen3-30B-A3B, several questions per fact | 18% | 3.6B | 6.5B | 0.55 | CC BY 4.0 |
 | | **FineWeb-Edu, `int_score ≥ 4`** (`sample-100BT`) | 8% | 1.6B | 2.5B | 0.64 | ODC-BY |
 | | **SYNTH** (`PleIAs/SYNTH`, English rows only, query + answer; reasoning traces dropped) | 8% | 1.6B | 2.5B | 0.64 | CC BY 4.0 |
-| Relations | contrastive corpus v3 | 2.5% | 0.5B | 0.3B | 1.7 | ours |
-| | LLM-written relational passages | 3% | 0.6B | 0.5B | 1.2 | Qwen3 (Apache-2.0) output |
-| | NLI / CommonsenseQA / ATOMIC as text | 1.5% | 0.3B | 0.25B | 1.2 | mostly CC BY / CC BY-SA |
-| | ConceptNet / Wikidata as text | 2% | 0.4B | 0.5B | 0.8 | CC BY-SA / CC0 |
+| Relations | contrastive corpus v3 | 3% | 0.6B | 0.3B | 2.0 | ours |
+| | LLM-written relational passages (grounded on Wikipedia, time-boxed) | 0.75% | 0.15B | ~0.05–0.07B | ~2–3 | CC BY-SA 4.0 |
+| | NLI / CommonsenseQA / ATOMIC as text | 2.25% | 0.45B | 0.25B | 1.8 | mostly CC BY / CC BY-SA |
+| | ConceptNet / Wikidata as text | 3% | 0.6B | 0.5B | 1.2 | CC BY-SA / CC0 |
 | Code | **Fresh Python-edu** (`Avelina/python-edu-cleaned`, skipping the 2,936,148 docs Phase 2 used) | 10% | 2.0B | up to 2.5B | ~0.8 | per-file permissive |
 | | **Fresh StarCoderData Python** (`bigcode/starcoderdata` python, skipping 881,190 used docs) | 5% | 1.0B | 1.5B | 0.67 | per-file permissive |
 | | **Fresh StarCoderData JS/TS** (skipping 939,475 / 1,616,913 used docs) | 1.5% | 0.3B | 0.5B | 0.6 | per-file permissive |
@@ -116,7 +116,7 @@ Each source is capped at **≤ 4 passes over its unique tokens**. Contrastive v1
 | Source | What | Unique (target) |
 |---|---|---|
 | **Contrastive corpus v3** (`scripts/gen_contrastive_v3.py`, new) | v2's generator extended to new structures: reversed questions, passive voice, nested clauses, negation, comparatives, temporal order, part–whole, cause–effect. **Some structures are held out entirely** and go into probe v5. | ~0.3B |
-| **LLM-written relational passages** (`scripts/gen_relational_llm.py`) | Qwen3-30B-A3B-Instruct-2507 via vLLM on the H100. 16 relation types × 8 formats × 4 reading levels. **70% grounded** on a real 120–350-word Wikipedia passage (only facts from the passage plus everyday knowledge), **30% everyday/fictional scenes** (correctness = internal consistency). Every output is fact-checked by the same model (short critique + `VERDICT: PASS/FAIL`, against the source when grounded), and outputs copying a 15-word stretch of the source are dropped. A probe-overlap filter keeps probes v2–v5 and the facts probe clean. To be published as `TheFireHacker/bubblspace-relational-passages-Qwen3-30B` (CC BY-SA 4.0, because the grounded part derives from Wikipedia). | ~0.25B kept (~15–18 h of H100) |
+| **LLM-written relational passages** (`scripts/gen_relational_llm.py`) | Qwen3-30B-A3B-Instruct-2507 via vLLM on the H100. **Grounded only:** each prompt contains a real 120–350-word English Wikipedia passage, and the model may use only facts from it plus everyday knowledge. 16 relation types × **5 formats** (Q&A, process, explainer, common confusion, comparative prose) × 4 reading levels. Every output is fact-checked by the same model against the source (short critique + `VERDICT: PASS/FAIL`; rejects and critiques are saved for auditing). Outputs copying a 15-word stretch of the source are dropped, and a probe-overlap filter keeps probes and the facts probe clean. Published as `TheFireHacker/bubblspace-relational-passages-Qwen3-30B` (CC BY-SA 4.0). **Tests 1–4** (23 Nov):<br>• free generation contained factual errors<br>• everyday scenes were mostly rejected<br>• staged-mistake dialogues confused the model<br>• pronoun narratives and minimal pairs forced fiction onto factual sources (13% / 7% passed vs 79% for Q&A), so they were dropped; binding and pronoun cases come from contrastive v3 instead<br>**Time-boxed:** generation stops at a file boundary when the rest of the prep is ready, and can resume after 2.5a/2.5b to grow the HF dataset. **The user reviews the data (EDA) before 2.5a training starts.** | ~70M kept target (~13 h); whatever is done when prep finishes |
 | **Human-written relational reasoning** | e-SNLI (entailment with explanations), MNLI, CommonsenseQA train, ATOMIC-2020 causal commonsense, each rendered as text. ANLI is skipped (non-commercial license). | ~0.2–0.3B |
 | **Verbalized knowledge graphs** | ConceptNet (is-a, part-of, used-for, causes, capable-of) and Wikidata triples, each written in several phrasings ("Plants take in carbon dioxide and release oxygen.") | ~0.5B |
 
@@ -143,7 +143,7 @@ Each source is capped at **≤ 4 passes over its unique tokens**. Contrastive v1
 | fresh StarCoderData JS/TS | `code_starcoder_js_fresh`, `code_starcoder_ts_fresh` | 0.5B | ✅ 0.25B + 0.25B (ClamAV clean) |
 | SYNTH (English, query + answer) | `synth_en` | 2.5B | downloading → ClamAV → tokenize |
 | contrastive v3 | — | ~0.3B | generator to write |
-| LLM relational passages | `raw/relational_llm` | ~0.25B kept | grounded test 3 running; full run after review |
+| LLM relational passages | `raw/relational_llm` | ~70M kept (time-boxed) | full run started 23 Nov (grounded, 5 formats); user EDA before 2.5a |
 | NLI / CSQA / ATOMIC | — | ~0.25B | to download + render |
 | ConceptNet / Wikidata text | — | ~0.5B | to download + render |
 | decontamination | — | — | after tokenization |
