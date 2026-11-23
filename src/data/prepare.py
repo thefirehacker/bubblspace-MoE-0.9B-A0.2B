@@ -51,6 +51,13 @@ def main():
                         help="only these repo files (e.g. the files that passed the HF security scan)")
     parser.add_argument("--min_int_score", type=int, default=None,
                         help="keep only examples with int_score >= this (FineWeb-Edu quality score)")
+    parser.add_argument("--skip_docs", type=int, default=0,
+                        help="skip the first N documents of the stream (e.g. those already used by an earlier pool)")
+    parser.add_argument("--text_template", default=None,
+                        help="build the document text from several fields, e.g. '{query}\\n\\n{synthetic_answer}' "
+                             "(escape sequences like \\n are decoded); overrides --text_field")
+    parser.add_argument("--where", nargs="*", default=[],
+                        help="keep only examples whose field equals a value, e.g. language=en")
     parser.add_argument("--batch_docs", type=int, default=1000, help="documents per batched tokenizer call")
     args = parser.parse_args()
 
@@ -79,6 +86,8 @@ def main():
         streaming=True,
         token=os.environ.get("HF_TOKEN"),
     )
+    if args.skip_docs:
+        ds = ds.skip(args.skip_docs)
 
     buffer = np.empty(args.shard_tokens, dtype=np.uint16)
     buf_pos = 0
@@ -118,6 +127,9 @@ def main():
                 ids = apply_fim(ids, *fim_ids, rng)
             write(ids + [eot_id])
 
+    template = args.text_template.encode().decode("unicode_escape") if args.text_template else None
+    where = [w.split("=", 1) for w in args.where]
+
     batch, kept, seen = [], 0, 0
     for example in ds:
         if total_written >= args.max_tokens:
@@ -125,8 +137,10 @@ def main():
         seen += 1
         if args.min_int_score is not None and example.get("int_score", 0) < args.min_int_score:
             continue
+        if any(str(example.get(k)) != v for k, v in where):
+            continue
         kept += 1
-        batch.append(example[args.text_field])
+        batch.append(template.format(**example) if template else example[args.text_field])
         if len(batch) >= args.batch_docs:
             encode_batch(batch)
             batch = []
@@ -151,6 +165,9 @@ def main():
         "fim_rate": args.fim_rate,
         "data_files": args.data_files,
         "min_int_score": args.min_int_score,
+        "skip_docs": args.skip_docs,
+        "text_template": args.text_template,
+        "where": args.where,
         "docs_seen": seen,
         "docs_kept": kept,
     }

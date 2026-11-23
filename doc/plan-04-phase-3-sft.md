@@ -2,7 +2,7 @@
 
 Status: **draft, data shortlist open** (23 Nov 2026). Marin refs reviewed; OpenAthena refs still to come.
 
-Order: `phase2-step22888` → **Phase 2.5a** (knowledge + relations) → **Phase 2.5b** (context 8192), both in [plan-03](plan-03-phase-2.5-knowledge-context.md) → **Phase 3 SFT at 8192** (this plan) → Phase 4 RL. SFT starts from the 2.5b final checkpoint.
+Order: `phase2-step22888` → **Phase 2.5a** (knowledge + relations) → **Phase 2.5b** (context 16384), both in [plan-03](plan-03-phase-2.5-knowledge-context.md) → **Phase 3 SFT at 16384** (this plan) → Phase 4 RL. SFT starts from the 2.5b final checkpoint.
 
 ## 1. What Phase 3 has to achieve
 
@@ -35,7 +35,7 @@ The model was trained at `seq_len 2048`. Most modern agent and reasoning traces 
 
 Truncating a trajectory removes its outcome, which teaches the wrong thing. **So every candidate dataset gets a length scan first.** We keep only examples that fit whole in 2048 tokens (with our tokenizer and template).
 
-**Phase 2.5b ([plan-03](plan-03-phase-2.5-knowledge-context.md)) raises this to 8192.** The length scan then measures the fraction that fits in 8192, and 2048 stays the fallback if Phase 2.5 fails.
+**Phase 2.5b ([plan-03](plan-03-phase-2.5-knowledge-context.md)) raises this to 16384.** The length scan then measures the fraction that fits in 16384, with 8192 as the fallback if 16k fails.
 
 ## 3. Data shortlist (Marin token-count list)
 
@@ -117,7 +117,7 @@ This needs fast sampling (many completions per prompt), so the **batched generat
 ## 8. Open decisions (yours)
 
 1. **NVIDIA Data Agreement license** for the Nemotron SFT sets: OK to use, or apache/cc-by sources only?
-2. **Context:** decided 23 Nov: add Phase 2.5 (8192) before SFT.
+2. **Context:** decided 23 Nov: add Phase 2.5 before SFT (2.5b extends to 16384, fallback 8192).
 3. **Reasoning style:** train `<think>…</think>` traces, or plain answers only?
 4. **OpenAthena references:** pending. The shortlist gets finalized after those.
 5. **fire01:** keep running for prep, or stop until the data is ready.
