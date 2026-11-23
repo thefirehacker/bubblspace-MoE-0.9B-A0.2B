@@ -59,6 +59,7 @@ def main():
     parser.add_argument("--tokenizer", default=None, help="defaults to cfg.tokenizer.path")
     parser.add_argument("--tasks", default=DEFAULT_TASKS)
     parser.add_argument("--limit", type=int, default=None, help="cap examples per task, for a quick smoke test")
+    parser.add_argument("--num_fewshot", type=int, default=None, help="few-shot examples per prompt (task default if unset)")
     parser.add_argument("--output", default=None, help="path to save results JSON")
     args = parser.parse_args()
 
@@ -82,7 +83,7 @@ def main():
     task_list = [t.strip() for t in args.tasks.split(",") if t.strip()]
     print(f"[eval] running tasks: {task_list}" + (f" (limit={args.limit})" if args.limit else ""))
 
-    results = lm_eval.simple_evaluate(model=lm, tasks=task_list, limit=args.limit)
+    results = lm_eval.simple_evaluate(model=lm, tasks=task_list, limit=args.limit, num_fewshot=args.num_fewshot)
 
     summary = results["results"]
     print(json.dumps(summary, indent=2))
@@ -97,6 +98,7 @@ def main():
                     "step": step,
                     "tasks": task_list,
                     "limit": args.limit,
+                    "num_fewshot": args.num_fewshot,
                     "results": summary,
                 },
                 f,
