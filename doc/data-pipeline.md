@@ -60,8 +60,8 @@ Config: [`configs/phase2.yaml`](../configs/phase2.yaml). Init from Phase 1 final
 | | `agentic_openthoughts` | `open-thoughts/OpenThoughts-114k` | 0.014B (8,575; 105k dropped as > 2048) | Apache-2.0 | `bd093c3994fd` |
 | | `agentic_hermes` | `NousResearch/hermes-function-calling-v1` | 0.007B (9,717) | Apache-2.0 | `dae3e1d28cfb` |
 | | `agentic_bespoke_stratos` | `bespokelabs/Bespoke-Stratos-17k` | 0.006B (3,450; 13k dropped as > 2048) | Apache-2.0 | `9e9adba94391` |
-| Contrastive | `contrastive` (v1) | ours: `scripts/gen_contrastive.py`, one sentence frame | 0.062B | ours | — |
-| | `contrastive_v2` | ours: `scripts/gen_contrastive_v2.py`, 15 frames, pronoun/former-latter, varied Q&A, distractors, possession chains. Held-out frames/pairs/names → probe v4 | 0.133B | ours | — |
+| Contrastive | `contrastive` (v1) | ours: `scripts/gen_contrastive.py`, one sentence frame. Published: [`TheFireHacker/bubblspace-contrastive-binding`](https://huggingface.co/datasets/TheFireHacker/bubblspace-contrastive-binding) config `v1` (2,089,904 docs) | 0.062B | CC BY 4.0 | — |
+| | `contrastive_v2` | ours: `scripts/gen_contrastive_v2.py`, 15 frames, pronoun/former-latter, varied Q&A, distractors, possession chains. Held-out frames/pairs/names → probe v4. Published: same repo, config `v2` (3,635,229 docs) | 0.133B | CC BY 4.0 | — |
 
 The agentic token counts exclude padding (blocks incl. padding: 0.376B in total).
 
@@ -162,4 +162,5 @@ Measured with `scripts/measure_doc_lengths.py` (`benchmark/phase2/doc_lengths.js
 
 | Date | Change |
 |---|---|
+| 23 Nov 2026 | Contrastive v1/v2 + binding probes v2/v3/v4 (canary GUID) published on HF (`bubblspace-contrastive-binding`, CC BY 4.0) |
 | 23 Nov 2026 | File created: Phases 1–2 documented from pool metadata; Phase 2.5a pools and status; 2.5b plan; revisions recorded |
