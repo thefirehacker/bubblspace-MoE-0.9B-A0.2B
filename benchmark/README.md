@@ -139,46 +139,59 @@ training on the expanded English + code + agentic mixture
 (`doc/plan-02-phase-2-continual-training.md`), not more steps on the same
 10B-token FineWeb-Edu-only run.
 
-## Phase 2 (in progress) — through step 9,000 of 22,888
+## Phase 2 (in progress) — through step 19,000 of 22,888 (end of Stage 2A)
 
 Phase 2 continues from `step_19073` on English + code + agentic +
 contrastive data (12B tokens). Raw results are in [`phase2/`](phase2/), one
 JSON per eval per checkpoint. How each eval is scored is in
 [`doc/eval-notes.md`](../doc/eval-notes.md#phase-2-evaluation-continual-training-english--code--agentic--contrastive).
-All evals are deterministic (bit-identical across reruns). The step-9,000
-weights are on Hugging Face (`main`); Phase 1 final is on the `phase1-final` branch.
+All evals are deterministic (bit-identical across reruns). The step-19,000
+weights are on Hugging Face (`main`). Step 9,000 is on branch `phase2-step9000` and Phase 1 final on `phase1-final`.
 
-| Eval | Phase 1 final | P2 1k | 2k | 3k | 4k | 5k | 6k | 7k | 9k |
-|---|---|---|---|---|---|---|---|---|---|
-| Agentic: valid call, name = gold (23 eps) | 0% | 17% | 30% | 39% | 30% | 30% | 22% | **48%** | 30% |
-| Reasoning: closes `<think>` ≤512 tok | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | **12%** |
-| FIM exact match (60 lines) | 0% | 0% | 0% | 0% | 0% | 3.3% | 5.0% | 5.0% | 1.7% |
-| Binding probe v2 (/100) | 24 | 25 | 31 | 25 | 27 | 25 | 27 | 28 | 24 |
-| Binding probe v3 (/70) | 4 | 6 | 3 | 6 | 4 | 5 | 5 | 6 | 3 |
-| Binding probe v4 (/112, chance ≈ 28) | 13 | 21 | — | — | — | — | — | — | 11 |
+| Eval | Phase 1 | P2 1k | 3k | 5k | 7k | 9k | 11k | 13k | 15k | 17k | **19k** |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Agentic: valid call, name = gold (23 eps) | 0% | 17% | 39% | 30% | 48% | 30% | 26% | 35% | 43% | 35% | 35% |
+| Reasoning: closes `<think>` ≤512 tok | 0% | 0% | 0% | 0% | 0% | 12% | 0% | 0% | 0% | 0% | 0% |
+| FIM exact match (60 lines) | 0% | 0% | 0% | 3.3% | 5.0% | 1.7% | 3.3% | 1.7% | 1.7% | 3.3% | 3.3% |
+| Binding probe v2 (/100) | 24 | 25 | 25 | 25 | 28 | 24 | 24 | 22 | 29 | 28 | 30 |
+| Binding probe v3 (/70) | 4 | 6 | 6 | 5 | 6 | 3 | 1 | 4 | 4 | 4 | 4 |
+| Binding probe v4 (/112, chance ≈ 28) | 13 | 21 | — | — | — | 11 | 17 | 13 | 24 | 18 | 17 |
+| Routing: mean load CV | 0.623 | 0.385 | 0.318 | 0.293 | 0.285 | 0.274 | 0.264 | 0.260 | 0.252 | 0.252 | 0.246 |
+
+(Steps 2k, 4k and 6k are in `phase2/`; omitted here for width.)
 
 **English forgetting gate** (6-task, `phase2/english6_phase2_step*.json`):
 
-| Task | Phase 1 final | P2 5k | P2 7k | P2 9k |
-|---|---|---|---|---|
-| HellaSwag | 42.86 | 40.39 | 40.69 | 40.64 |
-| PIQA | 68.17 | 67.30 | 67.52 | 67.90 |
-| ARC-Easy | 56.10 | 52.78 | 51.18 | 52.57 |
-| ARC-Challenge | 29.78 | 27.99 | 27.39 | 27.99 |
-| WinoGrande | 51.38 | 51.07 | 51.70 | 52.72 |
-| LAMBADA | 34.80 | 32.85 | 33.03 | **35.30** |
-| **Average** | **47.18** | 45.40 | 45.25 | **46.19** |
+| Task | Phase 1 | 5k | 7k | 9k | 11k | 13k | 15k | 17k | **19k** |
+|---|---|---|---|---|---|---|---|---|---|
+| HellaSwag | 42.86 | 40.39 | 40.69 | 40.64 | 40.28 | 40.61 | 40.65 | 40.72 | 40.26 |
+| PIQA | 68.17 | 67.30 | 67.52 | 67.90 | 67.19 | 67.57 | 67.46 | 66.92 | 66.87 |
+| ARC-Easy | 56.10 | 52.78 | 51.18 | 52.57 | 53.20 | 52.90 | 51.64 | 52.15 | **55.09** |
+| ARC-Challenge | 29.78 | 27.99 | 27.39 | 27.99 | 27.99 | 29.18 | 27.90 | 29.61 | 29.18 |
+| WinoGrande | 51.38 | 51.07 | 51.70 | 52.72 | 52.57 | 51.78 | 50.67 | 53.75 | 52.25 |
+| LAMBADA | 34.80 | 32.85 | 33.03 | 35.30 | 34.54 | 34.02 | 32.08 | 33.96 | 32.21 |
+| **Average** | **47.18** | 45.40 | 45.25 | 46.19 | 45.96 | 46.01 | 45.07 | 46.18 | **45.98** |
 
-| Milestone (step 5,000) | Phase 1 final | Phase 2 |
-|---|---|---|
-| CRUXEval-O pass@1 | 0.0% | **8.5%** |
-| BFCL simple / multiple / parallel (AST, decontaminated) | 0 / 0 / 0% | **9 / 6 / 0%** |
+| Milestones | Phase 1 final | P2 step 5,000 | **P2 step 19,000** |
+|---|---|---|---|
+| CRUXEval-O pass@1 | 0.0% | 8.5% | **17.7%** (98% parsable) |
+| BFCL simple / multiple / parallel (AST, decontaminated) | 0 / 0 / 0% | 9 / 6 / 0% | **25 / 13 / 0%** |
+
+**Code generation with execution** (`scripts/eval_code_gen.py` + `scripts/sandbox_exec.py`; greedy, deterministic; every program runs in its own network-less, non-root, read-only container with CPU/memory/process/10 s limits):
+
+| | Phase 1 final | P2 step 9,000 | **P2 step 19,000** |
+|---|---|---|---|
+| HumanEval pass@1 (164) | 0/164 = 0.0% | 15/164 = 9.1% | **19/164 = 11.6%** |
+| MBPP pass@1 (500, full test split) | not run (no code in Phase 1 training) | 42/500 = 8.4% | **63/500 = 12.6%** |
+
+Raw: `phase2/codegen_*.json` (completions + assembled programs) and `phase2/codeexec_*.json` (per-task pass/fail).
 
 **Read:**
-- Code and agentic moved off zero on external benchmarks.
-- English dipped (−1.8 at steps 5k–7k), then recovered to −1.0 by step 9k, still at peak learning rate. LAMBADA is now above Phase 1.
-- Binding hasn't moved. Probe v4, built only from phrasings and entities absent from all training data, stays below chance. The model picks the same attribute regardless of which entity is named.
-- Reasoning closed `</think>` for the first time at step 9,000.
+- **Code and tool calling grew steadily through the plateau.** CRUXEval-O 8.5% → 17.7%, BFCL simple 9% → 25%, HumanEval 9.1% → 11.6%, MBPP 8.4% → 12.6%.
+- **English held around −1 vs Phase 1 throughout Stage 2A.** ARC-Easy recovered to 55.1 at step 19,000. HellaSwag and LAMBADA are the remaining gaps.
+- **Binding hasn't moved.** Probe v4 (phrasings and entities absent from all training data) stays below chance.
+- **Still at zero:** BFCL parallel calls and closing `</think>`.
+- **Routing:** steadily more even. Load CV 0.62 → 0.25, with no starved or overloaded experts at the last four checkpoints.
 
 ## How to reproduce
 

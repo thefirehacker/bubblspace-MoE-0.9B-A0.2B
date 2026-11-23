@@ -499,6 +499,7 @@ Phase 2's own counter. In W&B, `global_step` = Phase 2 step + 19,073.
 | CRUXEval-O (800) | `scripts/eval_phase2_milestone.py` | predict the output of given code; `ast.literal_eval` comparison; **model code is never executed** | milestones |
 | BFCL v3 simple / multiple / parallel (100 each) | same | AST match of function name and arguments in our `<tools>`/`<tool_call>` format; 11 contaminated questions excluded | milestones |
 | English 6-task (forgetting gate) | `scripts/run_benchmarks.py` | as above | every 2,000 steps from step 7,000 |
+| HumanEval (164) + MBPP (500) pass@1 | `scripts/eval_code_gen.py` → `scripts/sandbox_exec.py` | generation and execution are separate steps. Each program runs in its own container: no network, 1 CPU, 512 MB, 64 processes, read-only filesystem, non-root, all capabilities dropped, 10 s kill. Image pinned by digest. Adversarial self-test (`--selftest`) must pass first | milestones |
 | Per-pool validation loss (16 pools) | `scripts/train.py` | held-out tail of each pool, 2M tokens each | every 250 steps, live in W&B |
 
 Three measurement fixes came first, because the numbers aren't trustworthy
@@ -523,59 +524,67 @@ without them:
 Generation evals use a KV cache (`Transformer.new_kv_cache()`), tested to
 match the full forward pass.
 
-### Results through step 9,000 (Stage 2A, peak learning rate)
+### Results through step 19,000 (all of Stage 2A, peak learning rate)
 
 Raw files: [`benchmark/phase2/`](../benchmark/phase2/).
 
-| Eval | Phase 1 final | 1k | 2k | 3k | 4k | 5k | 6k | 7k | 9k |
-|---|---|---|---|---|---|---|---|---|---|
-| Agentic: valid call, name = gold | 0% | 17% | 30% | 39% | 30% | 30% | 22% | **48%** | 30% |
-| Agentic: argument keys = gold | 0% | 13% | 30% | 39% | 30% | 30% | 22% | **43%** | 30% |
-| Agentic: ends turn | 0% | 35% | 30% | 39% | 35% | 39% | 35% | 43% | 35% |
-| Reasoning: opens / closes `<think>` | 0 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / 0% | 100 / **12%** |
-| FIM exact match | 0% | 0% | 0% | 0% | 0% | 3.3% | 5.0% | 5.0% | 1.7% |
-| Probe v2 (/100) | 24 | 25 | 31 | 25 | 27 | 25 | 27 | 28 | 24 |
-| Probe v3 (/70) | 4 | 6 | 3 | 6 | 4 | 5 | 5 | 6 | 3 |
-| Probe v4 (/112, chance ≈ 28) | 13 | 21 | — | — | — | — | — | — | 11 |
-| Routing: mean load CV across layers | 0.623 | 0.385 | 0.333 | 0.318 | 0.304 | 0.293 | 0.288 | 0.285 | 0.274 |
+| Eval | Phase 1 | P2 1k | 3k | 5k | 7k | 9k | 11k | 13k | 15k | 17k | **19k** |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Agentic: valid call, name = gold | 0% | 17% | 39% | 30% | 48% | 30% | 26% | 35% | 43% | 35% | 35% |
+| Agentic: argument keys = gold | 0% | 13% | 39% | 30% | 43% | 30% | 26% | 30% | 43% | 35% | 30% |
+| Reasoning: closes `</think>` ≤512 tok | 0% | 0% | 0% | 0% | 0% | 12% | 0% | 0% | 0% | 0% | 0% |
+| FIM exact match | 0% | 0% | 0% | 3.3% | 5.0% | 1.7% | 3.3% | 1.7% | 1.7% | 3.3% | 3.3% |
+| Probe v2 (/100) | 24 | 25 | 25 | 25 | 28 | 24 | 24 | 22 | 29 | 28 | 30 |
+| Probe v3 (/70) | 4 | 6 | 6 | 5 | 6 | 3 | 1 | 4 | 4 | 4 | 4 |
+| Probe v4 (/112, chance ≈ 28) | 13 | 21 | — | — | — | 11 | 17 | 13 | 24 | 18 | 17 |
+| Routing: mean load CV | 0.623 | 0.385 | 0.318 | 0.293 | 0.285 | 0.274 | 0.264 | 0.260 | 0.252 | 0.252 | 0.246 |
 
-The agentic set has only 23 episodes, so one episode is ~4 points. Read it as
-a trend, not as exact percentages.
+The agentic set has only 23 episodes, so one episode is ~4 points. Read it as a trend, not as exact percentages.
 
-**Milestone, step 5,000:**
+**Milestones:**
 
-| Benchmark | Phase 1 final | Phase 2 step 5,000 |
-|---|---|---|
-| CRUXEval-O pass@1 (800) | 0.0% (0% parsable) | **8.5%** (94% parsable) |
-| BFCL simple, AST | 0% | **9%** |
-| BFCL multiple, AST | 0% | **6%** |
-| BFCL parallel, AST | 0% | 0% |
+| Benchmark | Phase 1 final | P2 step 5,000 | **P2 step 19,000** |
+|---|---|---|---|
+| CRUXEval-O pass@1 (800) | 0.0% (0% parsable) | 8.5% (94% parsable) | **17.7%** (98% parsable) |
+| BFCL simple, AST | 0% | 9% | **25%** |
+| BFCL multiple, AST | 0% | 6% | **13%** |
+| BFCL parallel, AST | 0% | 0% | 0% |
 
-**English forgetting gate** (now every 2,000 steps):
+**Code generation with execution (HumanEval / MBPP):**
 
-| Task | Metric | Phase 1 final | P2 5k | P2 7k | P2 9k | stderr |
-|---|---|---|---|---|---|---|
-| HellaSwag | acc_norm | 42.86 | 40.39 | 40.69 | 40.64 | ~0.5 |
-| PIQA | acc_norm | 68.17 | 67.30 | 67.52 | 67.90 | ~1.1 |
-| ARC-Easy | acc_norm | 56.10 | 52.78 | 51.18 | 52.57 | ~1.0 |
-| ARC-Challenge | acc_norm | 29.78 | 27.99 | 27.39 | 27.99 | ~1.3 |
-| WinoGrande | acc | 51.38 | 51.07 | 51.70 | 52.72 | ~1.4 |
-| LAMBADA (openai) | acc | 34.80 | 32.85 | 33.03 | **35.30** | ~0.7 |
-| **Average (6 accuracies)** | | **47.18** | **45.40** | **45.25** | **46.19** | |
+| | Phase 1 final | P2 step 9,000 | **P2 step 19,000** |
+|---|---|---|---|
+| HumanEval pass@1 | 0/164 (0.0%) | 15/164 (9.1%) | **19/164 (11.6%)** |
+| MBPP pass@1 (full test) | not run (no code in Phase 1) | 42/500 (8.4%) | **63/500 (12.6%)** |
+
+Notes on how this was measured:
+- **Prompt boundary fix.** HumanEval prompts end with a bare `"\n"`, while this tokenizer merges a newline with the following indentation. The model answered the lone trailing newline with `<|endoftext|>`, so every completion came out empty. The trailing newline is stripped before generation.
+- **No early-exit cheats.** Every pass, at both checkpoints, was checked for `exit()` / `sys.exit` / `os._exit` before the tests run. None found.
+- **Steps 9k → 19k:** HumanEval +6 new solves / −2 lost; MBPP +32 / −11. Syntax errors fell (HumanEval 23 → 17, MBPP 45 → 22). Most failures are code that runs but returns the wrong answer.
+- **Format failures on MBPP that SFT should fix:** NameError 36, and `input()` calls 21.
+- **Easy problems only so far.** Every HumanEval pass is in the first ~60 problems.
+- **Contamination isn't ruled out.** `python-edu-cleaned` hasn't been checked against HumanEval/MBPP. StarCoderData was decontaminated by BigCode.
+
+**English forgetting gate** (every 2,000 steps):
+
+| Task | Metric | Phase 1 | 5k | 7k | 9k | 11k | 13k | 15k | 17k | **19k** |
+|---|---|---|---|---|---|---|---|---|---|---|
+| HellaSwag | acc_norm | 42.86 | 40.39 | 40.69 | 40.64 | 40.28 | 40.61 | 40.65 | 40.72 | 40.26 |
+| PIQA | acc_norm | 68.17 | 67.30 | 67.52 | 67.90 | 67.19 | 67.57 | 67.46 | 66.92 | 66.87 |
+| ARC-Easy | acc_norm | 56.10 | 52.78 | 51.18 | 52.57 | 53.20 | 52.90 | 51.64 | 52.15 | **55.09** |
+| ARC-Challenge | acc_norm | 29.78 | 27.99 | 27.39 | 27.99 | 27.99 | 29.18 | 27.90 | 29.61 | 29.18 |
+| WinoGrande | acc | 51.38 | 51.07 | 51.70 | 52.72 | 52.57 | 51.78 | 50.67 | 53.75 | 52.25 |
+| LAMBADA (openai) | acc | 34.80 | 32.85 | 33.03 | 35.30 | 34.54 | 34.02 | 32.08 | 33.96 | 32.21 |
+| **Average (6 accuracies)** | | **47.18** | 45.40 | 45.25 | 46.19 | 45.96 | 46.01 | 45.07 | 46.18 | **45.98** |
 
 ### Read
 
-- **Code and agentic went from zero to measurable.** CRUXEval-O and BFCL are
-  external benchmarks, scored without running model code, and both moved off
-  zero. The 94% parsable rate on CRUXEval-O means the model learned the answer
-  format, and 8.5% of its answers are correct. The held-out agentic check
-  peaked at 48% valid, correct-name calls (step 7,000). It's 30% at step
-  9,000; with 23 episodes, that's within noise.
+- **Code and agentic grew steadily through the plateau.** CRUXEval-O doubled from step 5,000 to 19,000 (8.5% → 17.7%), and BFCL simple nearly tripled (9% → 25%). Both are scored without running model code. Under real execution, HumanEval went 9.1% → 11.6% and MBPP 8.4% → 12.6% from step 9,000 to 19,000 (Phase 1: 0%). The held-out agentic format check moved within 26–48%, with 23 episodes, which is noisy.
 - **Reasoning closed `</think>` for the first time at step 9,000** (1 of 8
   episodes within 512 tokens). Until then it opened the block and never
   finished. BFCL shows the same problem: many failures are a ToolMind-style
   `<think>` block that never reaches the call.
-- **English dipped, then recovered at peak learning rate.** The average fell
+- **English dipped, then held at roughly −1 for the rest of Stage 2A** (step 19,000: 45.98; ARC-Easy back to 55.1). Before that, the average fell
   to −1.78 at step 5,000 and was flat at step 7,000, then recovered to −0.99
   at step 9,000. LAMBADA is now above Phase 1, and WinoGrande is the highest
   in either phase (within its stderr). HellaSwag (−2.2) is the one task still

@@ -1,13 +1,13 @@
 # MoE-0.9B-A0.2B
 
-> **📌 Current checkpoint on Hugging Face (`main`): Phase 2, step 9,000 of 22,888.** It's mid-run (Stage 2A, peak learning rate, not annealed yet).
-> The Phase 1 final checkpoint (`step_19073`, English only) stays available on the HF branch [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final).
+> **📌 Current checkpoint on Hugging Face (`main`): Phase 2, step 19,000 of 22,888.** It's the end of the Stage 2A plateau, the last checkpoint before the anneal.
+> Other checkpoints on HF branches: [`phase2-step9000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step9000) and [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final) (`step_19073`, English only).
 
 A from-scratch Mixture-of-Experts language model (~915M total / ~211M active params), trained on a single Lambda Cloud H100 80GB. Architecture is Qwen3-Next-inspired: GQA + QK-norm + RoPE + an elementwise attention output-gate, 64-expert dropless top-8 SwiGLU MoE with ZeroCenteredRMSNorm, trained with Muon (hidden matrices) + AdamW (embedding/router/norms).
 
 **Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces). Phase 1 built an English base on FineWeb-Edu. Phase 2 (running now) continues it on English + code + agentic + contrastive-binding data.
 
-- **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (`main` = Phase 2 step 9,000; `phase1-final` branch = Phase 1 final)
+- **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (`main` = Phase 2 step 19,000; branches `phase2-step9000`, `phase1-final`)
 - **Live training graphs/logs (W&B, public)**: Phase 1 [goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker), Phase 2 [lec9ww5h](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/lec9ww5h) (same project; Phase 2's `global_step` continues from 19,073)
 - **License**: [Apache 2.0](LICENSE)
 
@@ -16,22 +16,24 @@ A from-scratch Mixture-of-Experts language model (~915M total / ~211M active par
 | Phase | What | State |
 |---|---|---|
 | 1 | English base, FineWeb-Edu `sample-10BT`, 10B tokens, 19,073 steps | ✅ done (`step_19073`, ~32.7h on one H100) |
-| 2 | Continual training: English + code + agentic + contrastive, 12B tokens, 22,888 steps | 🟡 running, step ~10,000 (Stage 2A plateau; Stage 2B anneal from step 19,073) |
+| 2 | Continual training: English + code + agentic + contrastive, 12B tokens, 22,888 steps | 🟡 in the final anneal, step ~21,000 / 22,888 (anneal started at step 19,073) |
 | 3 | SFT (assistant-only loss masking) | planned |
 
 **Phase 2 so far** (full table in [`benchmark/README.md`](benchmark/README.md)):
 
-| | Phase 1 final | P2 step 5,000 | P2 step 9,000 |
-|---|---|---|---|
-| CRUXEval-O pass@1 | 0.0% | 8.5% | next at step 19,000 |
-| BFCL simple / multiple / parallel (decontaminated) | 0 / 0 / 0% | 9 / 6 / 0% | next at step 19,000 |
-| Held-out agentic tool-call format (valid, correct name) | 0% | 30% | 30% (peak 48% at step 7,000) |
-| Reasoning: closes `</think>` within 512 tokens | 0% | 0% | 12% |
-| English 6-task average | 47.18 | 45.40 | **46.19** (−1.0, recovering) |
-| Binding probe v2 / v3 | 24/100, 4/70 | 25/100, 5/70 | 24/100, 3/70 |
-| Binding probe v4 (held-out phrasings + entities; chance ≈ 28/112) | 13/112 | — | 11/112 |
+| | Phase 1 final | P2 step 5,000 | P2 step 9,000 | **P2 step 19,000** |
+|---|---|---|---|---|
+| CRUXEval-O pass@1 | 0.0% | 8.5% | — | **17.7%** |
+| BFCL simple / multiple / parallel (decontaminated) | 0 / 0 / 0% | 9 / 6 / 0% | — | **25 / 13 / 0%** |
+| **HumanEval pass@1** (164, sandboxed execution) | 0.0% | — | 9.1% | **11.6%** |
+| **MBPP pass@1** (500, sandboxed execution) | not run (no code training) | — | 8.4% | **12.6%** |
+| Held-out agentic tool-call format (valid, correct name) | 0% | 30% | 30% | 35% |
+| Reasoning: closes `</think>` within 512 tokens | 0% | 0% | 12% | 0% |
+| English 6-task average | 47.18 | 45.40 | 46.19 | 45.98 |
+| Binding probe v2 / v3 | 24/100, 4/70 | 25/100, 5/70 | 24/100, 3/70 | 30/100, 4/70 |
+| Binding probe v4 (held-out phrasings + entities; chance ≈ 28/112) | 13/112 | — | 11/112 | 17/112 |
 
-**Mid-run changes (applied at step 19,000 by resuming from the checkpoint):**
+**Mid-run changes (applied at step 19,000 by resuming from the checkpoint; the switch ran automatically on 23 Nov and was verified):**
 - Stage 2B keeps FineWeb-Edu at ~5.7% instead of 0%.
 - The contrastive binding data switches to v2 ([`scripts/gen_contrastive_v2.py`](scripts/gen_contrastive_v2.py)): 15 sentence frames instead of 1, pronoun resolution, and varied question formats. The v1 corpus was being memorized as templates.
 
