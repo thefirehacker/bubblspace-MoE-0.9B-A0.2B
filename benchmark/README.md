@@ -174,6 +174,15 @@ weights are on Hugging Face (`main`); Phase 1 final is on the `phase1-final` bra
 | CRUXEval-O pass@1 | 0.0% | **8.5%** |
 | BFCL simple / multiple / parallel (AST, decontaminated) | 0 / 0 / 0% | **9 / 6 / 0%** |
 
+**Code generation with execution** (`scripts/eval_code_gen.py` + `scripts/sandbox_exec.py`; greedy, deterministic; every program runs in its own network-less, non-root, read-only container with CPU/memory/process/10 s limits):
+
+| | Phase 1 final | Phase 2 step 9,000 |
+|---|---|---|
+| HumanEval pass@1 (164) | 0/164 = **0.0%** | 15/164 = **9.1%** |
+| MBPP pass@1 (500, full test split) | not run (no code in Phase 1 training) | 42/500 = **8.4%** |
+
+Raw: `phase2/codegen_*.json` (completions + assembled programs) and `phase2/codeexec_*.json` (per-task pass/fail).
+
 **Read:**
 - Code and agentic moved off zero on external benchmarks.
 - English dipped (−1.8 at steps 5k–7k), then recovered to −1.0 by step 9k, still at peak learning rate. LAMBADA is now above Phase 1.

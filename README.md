@@ -26,6 +26,8 @@ A from-scratch Mixture-of-Experts language model (~915M total / ~211M active par
 | CRUXEval-O pass@1 | 0.0% | 8.5% | next at step 19,000 |
 | BFCL simple / multiple / parallel (decontaminated) | 0 / 0 / 0% | 9 / 6 / 0% | next at step 19,000 |
 | Held-out agentic tool-call format (valid, correct name) | 0% | 30% | 30% (peak 48% at step 7,000) |
+| **HumanEval pass@1** (164, sandboxed execution) | 0.0% | — | **9.1%** |
+| **MBPP pass@1** (500, sandboxed execution) | not run (no code training) | — | **8.4%** |
 | Reasoning: closes `</think>` within 512 tokens | 0% | 0% | 12% |
 | English 6-task average | 47.18 | 45.40 | **46.19** (−1.0, recovering) |
 | Binding probe v2 / v3 | 24/100, 4/70 | 25/100, 5/70 | 24/100, 3/70 |

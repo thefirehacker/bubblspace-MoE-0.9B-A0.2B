@@ -306,12 +306,42 @@ Before arming anything, `--resume` was tested on the A10 with a real Phase 2 che
 - A `pkill -f` again matched its own shell. The pattern appeared in the config name on the same command line.
 - A wait condition matched a substring of a different log line. Anchor log matches.
 
+### HumanEval / MBPP with a real sandbox
+
+HumanEval and MBPP were deferred all along, because scoring them means **executing model-written code**. They were built on the A10 in two separate steps:
+
+1. **Generation.** `scripts/eval_code_gen.py` writes completions to JSON and executes nothing. It's greedy and deterministic.
+2. **Execution.** `scripts/sandbox_exec.py` runs each program in its own fresh Docker container:
+   - no network
+   - 1 CPU, 512 MB, no swap, 64 processes
+   - read-only filesystem, 16 MB no-exec `/tmp`
+   - non-root user, all capabilities dropped, no privilege escalation
+   - 1 MB file-size limit and a 10 s kill
+   - image pinned by digest, program passed on standard input, no host mounts
+
+Before any model code ran, an adversarial self-test had to pass. It tries network and DNS, writes to `/etc` and `/`, a root check, an infinite loop, a 2 GB allocation, a fork bomb, running a script from `/tmp`, and a 50 MB file write. All 12 checks passed, and no containers were left behind. Both datasets passed the HF malware scan.
+
+**Two snags:**
+- **Empty HumanEval completions.** The first test gave an empty completion for every HumanEval problem. HumanEval prompts end with a bare newline, but this tokenizer merges a newline with the following indentation, so the model treated the lone trailing newline as end of document. Stripping it fixed generation. Without that check the score would have been a false 0%.
+- **Lost work on reorder.** The run was reordered to put Phase 2 first, and you skipped Phase 1's MBPP as meaningless for a model that never saw code. That lost ~55 minutes of Phase 1 HumanEval generation, because the script only saved at the end. It now saves after each benchmark.
+
+| | Phase 1 final | Phase 2 step 9,000 |
+|---|---|---|
+| HumanEval pass@1 | 0/164 (0.0%) | **15/164 (9.1%)** |
+| MBPP pass@1 | not run | **42/500 (8.4%)** |
+
+Checks on the result:
+- **All 57 passes are genuine.** None of the code calls `exit()` early, and none of the passing bodies is near-empty.
+- **The passes are on easier problems.** Every HumanEval pass is in the first ~60 problems.
+- **Contamination isn't ruled out yet.** `python-edu-cleaned` still needs a contamination check against HumanEval/MBPP. StarCoderData was decontaminated by BigCode.
+
 ## 13. Where things stand now
 
 - **Training:** step ~10,000 / 22,888, healthy, Stage 2A. The switch to the new Stage 2B mix is armed for step 19,000.
 - **Evals:** English, probes v2/v3/v4, the quick suite and routing every 2,000 steps. CRUXEval/BFCL at step 19,000 and at the final step.
 - **Still pending with you:**
-  - HumanEval/MBPP in a Docker sandbox on the A10.
+  - A contamination check of `python-edu-cleaned` against HumanEval/MBPP.
+  - Batched generation (~5–10× faster code evals) before the final checkpoint.
   - Fixing the eval's "name in tools" check, which scores below the stricter "name = gold".
   - After Phase 2, the binding plan:
     - knowledge augmentation (many paraphrases per fact)

@@ -499,6 +499,7 @@ Phase 2's own counter. In W&B, `global_step` = Phase 2 step + 19,073.
 | CRUXEval-O (800) | `scripts/eval_phase2_milestone.py` | predict the output of given code; `ast.literal_eval` comparison; **model code is never executed** | milestones |
 | BFCL v3 simple / multiple / parallel (100 each) | same | AST match of function name and arguments in our `<tools>`/`<tool_call>` format; 11 contaminated questions excluded | milestones |
 | English 6-task (forgetting gate) | `scripts/run_benchmarks.py` | as above | every 2,000 steps from step 7,000 |
+| HumanEval (164) + MBPP (500) pass@1 | `scripts/eval_code_gen.py` → `scripts/sandbox_exec.py` | generation and execution are separate steps. Each program runs in its own container: no network, 1 CPU, 512 MB, 64 processes, read-only filesystem, non-root, all capabilities dropped, 10 s kill. Image pinned by digest. Adversarial self-test (`--selftest`) must pass first | milestones |
 | Per-pool validation loss (16 pools) | `scripts/train.py` | held-out tail of each pool, 2M tokens each | every 250 steps, live in W&B |
 
 Three measurement fixes came first, because the numbers aren't trustworthy
@@ -550,6 +551,19 @@ a trend, not as exact percentages.
 | BFCL simple, AST | 0% | **9%** |
 | BFCL multiple, AST | 0% | **6%** |
 | BFCL parallel, AST | 0% | 0% |
+
+**Code generation with execution (HumanEval / MBPP), step 9,000:**
+
+| | Phase 1 final | Phase 2 step 9,000 |
+|---|---|---|
+| HumanEval pass@1 | 0/164 (0.0%) | **15/164 (9.1%)** |
+| MBPP pass@1 (full test) | not run (no code in Phase 1) | **42/500 (8.4%)** |
+
+Notes on how this was measured:
+- **Prompt boundary fix.** HumanEval prompts end with a bare `"\n"`, while this tokenizer merges a newline with the following indentation. The model answered the lone trailing newline with `<|endoftext|>`, so every completion came out empty. The trailing newline is stripped before generation.
+- **No early-exit cheats.** All 57 passes were checked for `exit()` / `sys.exit` / `os._exit` before the tests run, and for near-empty bodies. None found.
+- **Easy problems only so far.** Every HumanEval pass is in the first ~60 problems, which tend to be the simpler ones.
+- **Contamination isn't ruled out.** BigCode decontaminated StarCoderData against HumanEval/MBPP, but `python-edu-cleaned` hasn't been checked against them yet.
 
 **English forgetting gate** (now every 2,000 steps):
 
