@@ -335,13 +335,61 @@ Checks on the result:
 - **The passes are on easier problems.** Every HumanEval pass is in the first ~60 problems.
 - **Contamination isn't ruled out yet.** `python-edu-cleaned` still needs a contamination check against HumanEval/MBPP. StarCoderData was decontaminated by BigCode.
 
-## 13. Where things stand now
+## 13. Stage 2A complete, and the switch to the anneal
 
-- **Training:** step ~10,000 / 22,888, healthy, Stage 2A. The switch to the new Stage 2B mix is armed for step 19,000.
-- **Evals:** English, probes v2/v3/v4, the quick suite and routing every 2,000 steps. CRUXEval/BFCL at step 19,000 and at the final step.
+### A bug caught before it fired
+
+During a routine evening check, the step-11,000 checkpoint turned out to be **592 bytes larger** than the earlier ones (7,530,979,963 vs 7,530,979,371). The checkpoint stores small counters whose encoded length grows once the step number reaches 5 digits. The armed switch script waited for the *old exact size*, so at step 19,000 it would have waited forever, and the whole anneal would have run on the old mix with no alert.
+
+The fix: treat the checkpoint as complete when it's over 7.5 GB, its size is unchanged across two checks a minute apart, and it's a valid zip (PyTorch writes the zip index last). It was tested on the real step-12,000 checkpoint and re-armed. Lesson: never key automation on an exact artifact size.
+
+### The switch (step 19,000, 23 Nov, 08:36 IST)
+
+It ran unattended overnight:
+1. Checkpoint detected complete.
+2. Old training process (verified by its command line) stopped.
+3. New process launched 2 seconds later with `--resume step_19000.pt` and the same W&B run id.
+4. Confirmed alive after 15 minutes.
+
+Total downtime was ~7 minutes, mostly recompiling. Checks afterwards:
+- **Resume:** the log shows `resumed … at step 19000`, and W&B reports "Resuming run moe0-9b-a0-2b-phase02".
+- **Learning rate:** 2.27e-4 at step 19,280, exactly on the decay line.
+- **Stage 2B mix:** `contrastive_v2=0.060` and `en_fineweb=0.057` as configured.
+- **Loss:** steps 19,000–19,073 (same mix) matched the pre-restart loss.
+
+At the start of the anneal:
+- **Router adjustment:** z-loss rose 11% and load balance by 0.3%, both settling within ~500 steps.
+- **Training loss** dropped 1.41 → 1.30, because batches now hold more low-loss agentic and Python tokens.
+- **Validation loss** kept improving for English, code and agentic.
+- **v1 contrastive validation loss jumped 0.59 → 1.67** within ~180 steps of v1 leaving the mix. That's the clearest evidence yet that the model had memorized v1's surface templates rather than the binding behind them.
+
+You also asked why the learning rate is flat and then linear, rather than cosine like Phase 1. It's WSD by design: a long plateau to absorb the new data, then a separate decay window paired with the anneal's data shift.
+
+### Stage 2A results (step 19,000)
+
+| | Phase 1 | Step 5,000 / 9,000 | **Step 19,000** |
+|---|---|---|---|
+| CRUXEval-O | 0.0% | 8.5% (5k) | **17.7%** |
+| BFCL simple / multiple / parallel | 0 / 0 / 0% | 9 / 6 / 0% (5k) | **25 / 13 / 0%** |
+| HumanEval | 0.0% | 9.1% (9k) | **11.6%** |
+| MBPP | — | 8.4% (9k) | **12.6%** |
+| English average | 47.18 | 45.40 / 46.19 | 45.98 |
+| Probe v4 (chance ≈ 28) | 13 | — / 11 | 17 |
+
+- **Code and tool calling roughly doubled over the plateau.**
+- **English held around −1,** with ARC-Easy back to 55.1.
+- **Binding didn't move.**
+- **Routing reached its best:** load CV 0.246, with no starved experts at the last four checkpoints.
+
+The step-19,000 weights went to HF `main`, with step 9,000 preserved on branch `phase2-step9000`. You decided to skip batched generation for now. HumanEval/MBPP for step 19,000 ran one-at-a-time in ~1.7h.
+
+## 14. Where things stand now
+
+- **Training:** in the anneal, step ~21,200 / 22,888, finishing ~15:20 IST on 23 Nov.
+- **Evals:** step 21,000 next. Then the final checkpoint: full suite plus CRUXEval/BFCL, and HumanEval/MBPP on request.
 - **Still pending with you:**
   - A contamination check of `python-edu-cleaned` against HumanEval/MBPP.
-  - Batched generation (~5–10× faster code evals) before the final checkpoint.
+  - Batched generation, deferred.
   - Fixing the eval's "name in tools" check, which scores below the stricter "name = gold".
   - After Phase 2, the binding plan:
     - knowledge augmentation (many paraphrases per fact)
