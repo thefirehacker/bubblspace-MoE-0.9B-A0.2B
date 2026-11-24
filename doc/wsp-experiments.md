@@ -228,9 +228,39 @@ Requiring both halves of a minimal pair to come out right is **not our invention
 | **Trichelair et al. 2018, *How Reasonable are Common-Sense Reasoning Tasks: A Case-Study on the Winograd Schema Challenge and SWAG*** (switchable Winograd schemas) | If swapping the candidates doesn't switch the answer, the model is using a shortcut. The same idea as our entity swap. |
 | **Gardner et al. 2020, *Evaluating Models' Local Decision Boundaries via Contrast Sets*** (also §7.5) | Small edits that should flip the label, with consistency measured over the set. The general framework our flip scoring belongs to. |
 | **Li et al. 2023, *Benchmarking and Improving Generator–Validator Consistency of Language Models*** | Models often *validate* (rank or judge) an answer differently from how they *generate* it. The general form of our level-2 vs level-3 gap. |
-| Work on multiple-choice log-prob evaluation diverging from generated answers (search: "multiple-choice probability vs generation misalignment", "MCQ log-likelihood evaluation reliability") | Ranking pre-written options can overstate what a model produces on its own. Find and cite the specific papers in the literature pass. |
+| **Lyu, Wu & Aji 2024, *Beyond Probabilities: Unveiling the Misalignment in Evaluating Large Language Models*** (arXiv 2402.13887) | Probability-based and generation-based predictions on multiple-choice benchmarks differ substantially, and their agreement is low even when both are correct. |
+| **Wang et al. 2024, *"My Answer is C": First-Token Probabilities Do Not Match Text Answers in Instruction-Tuned Language Models*** (arXiv 2402.14499) | First-token option probabilities disagree with the text answer in over 60% of cases for instruction-tuned models. |
 
-**What may still be new here** (to be checked against the literature before claiming it):
+**Closest work found in the literature search (24 Nov 2026):**
+
+| Paper | Overlap with our idea | Difference |
+|---|---|---|
+| **Chan, Huang, Elazar & Geiger 2026, *Pretraining Data Statistics Shape the Phases of Learning Entity Comparison in Language Models*** (arXiv 2611.16882, NeurIPS 2026 submission) | **The closest.** Entity *comparison* learned in phases over training: entity frequency first, then position in the prompt, then the correct answer. Measured on 163M models trained from scratch and on 26 checkpoints each of OLMo-2 1B–32B. The phases are driven by training-data statistics; small amounts of synthetic task data leave the model stuck in the heuristic phases, and small-scale runs predict large-scale dynamics. | World-knowledge comparison ("which country is larger"), not in-context binding of an attribute to an entity in a sentence. Scored with teacher-forced logits on the first token where the two entities differ, which is close to our level 2. No free-generation level, no Winograd-style held-out structures, no weight-editing intervention. |
+| **Li & Webb 2026, *What drives the emergence of symbolic mechanisms in large language models?*** (arXiv 2611.13270, NeurIPS 2026) | Symbolic mechanisms, including entity–attribute binding, emerge in transformers trained from scratch, and **data diversity, not architecture**, is the main driver. | Synthetic abstract tasks and mechanistic signatures, not natural-language probes or public checkpoints. Supports the many-frames design of contrastive v2/v3. |
+| **Chang et al. 2024, *How Do Large Language Models Acquire Factual Knowledge During Pretraining?*** (arXiv 2406.11813, NeurIPS 2024) | Knowledge is acquired as small probability increases that accumulate until the fact becomes the top decoded output; rarely seen facts may never reach that point. | Facts, not binding. It gives a candidate **mechanism for our level-2 vs level-3 lag**: ranking improves before the answer becomes the top generation. |
+| **Kazemnejad et al. 2023, *Measuring the Knowledge Acquisition–Utilization Gap in Pretrained Language Models*** (XTEVAL, arXiv 2305.14775) | Models know more than they can use, at every model size. | Knowledge use in downstream tasks, not binding, and not across pretraining checkpoints. |
+| **van der Wal et al. 2025, *PolyPythias*** (ICLR 2025); **Biderman et al. 2023, *Pythia*** | WinoGrande and prediction consistency tracked across many checkpoints and seeds. | Single-row scoring on standard benchmarks only. |
+
+**Verdict.** The developmental framing is **partly taken**: Chan et al. 2026 already show heuristic-then-correct phases over training for entity comparison, with a level-2-style metric and OLMo-2 checkpoints. What remains open as far as this search found:
+1. The same developmental question for **in-context binding** (Winograd-style minimal pairs), which they don't test.
+2. **Level 3 across training:** when, or whether, the model *writes* the bound answer once level 2 is passed. None of the papers found tracks generation alongside ranking over checkpoints. Chang et al. 2024 predicts a lag.
+3. **WSP as an intervention** at different training stages: no editing in any of these papers.
+4. Held-out *structures* (probe v5) as a control for template learning.
+Our pitch has to build on Chan et al. 2026, not compete with it. Their frequency and position phases are also concrete shortcuts our probe can test for: a model that always picks the more frequent ending passes level 1 but fails level 2, and a position diagnostic (swapping the order in which the entities are mentioned) would separate the position phase.
+
+**Which checkpoints prior work evaluated** (for choosing our own grid):
+
+| Paper | Models | Checkpoints | Scoring |
+|---|---|---|---|
+| Chan, Huang, Elazar & Geiger 2026 (arXiv 2611.16882) | OLMo-2 1B, 7B, 13B, 32B; own 163M models | **26 per OLMo-2 model**, mostly stage 1 (before the anneal); own models every 200 steps | teacher-forced logits at the first token where the two entities differ |
+| Bonnasse-Gahot & Pallier 2026, *Left-right asymmetry in predicting brain activity from LLMs' representations emerges with their formal linguistic competence* (arXiv 2602.12811) | OLMo-2 7B; Pythia 2.8B and 6.9B | **10 log-spaced**: OLMo-2 7B at 1, 3, 5, 13, 30, 80, 214, 558, 1477, 3896B tokens (stage 1); Pythia step 16 (≈30M tokens) to step 143000 (≈300B) | log-prob on minimal pairs (BLiMP, Zorro); lm-eval for WinoGrande. Formal linguistic competence emerges around **10B tokens** |
+| Tigges, Hanna, Yu & Biderman 2024, *LLM Circuit Analyses Are Consistent Across Training and Scale* (NeurIPS 2024, arXiv 2407.10827) | Pythia 70M–2.8B | across 300B tokens (spacing: see paper) | circuit analysis; task abilities and their components emerge at similar token counts across scales |
+| Biderman et al. 2023, *Pythia* | Pythia 70M–12B | 154 per model: step 0, log-spaced steps 1–512, then every 1,000 to 143,000 | lm-eval |
+| van der Wal et al. 2025, *PolyPythias* | 50 Pythia-style runs | ≈7k checkpoints across seeds | lm-eval, prediction consistency |
+
+Our first grid (24 Nov) was chosen before this table: Pythia at 7 token-matched checkpoints (2–300B, including 42B ≈ BubblSpace after 2.5a), OLMo-2 1B/7B at the stage-1 checkpoint nearest 1–2000B tokens plus `main`. Compared with the literature it **misses the earliest phase (< 1B tokens)**, has fewer points than Chan et al., and has only one checkpoint after the OLMo-2 anneal.
+
+**What may still be new here** (refined by the search above):
 1. All three levels (single-row, pair flip, generation flip) on the **same** cases, broken down by relation type.
 2. **Held-out structures** (probe v5), so template memorisation can't pass.
 3. The three levels **measured across pretraining checkpoints**: when each appears and whether generation ever catches up. Feng & Steinhardt (§7.3) study binding across model *sizes*, not across training time.
@@ -253,7 +283,7 @@ Requiring both halves of a minimal pair to come out right is **not our invention
 | Collateral damage on social attribution | MEMIT, AlphaEdit | Replace the single λ blob with a null-space projection, or spread the edit across layers 5–11. |
 | Weak binding signal in layers 5–11 | Feng & Steinhardt (binding IDs); Prakash et al. (fine-tuning amplifies existing circuits) | Look for binding-ID directions; repeat WSP on the 2.5a checkpoint, where training should have strengthened the circuit. |
 | Contrastive v1 memorised as a template | Physics of LMs 3.1; Kaushik et al. | Many frames and held-out structures (v3, probe v5) instead of one template. |
-| Probe v4 79/112 but generation flip 7/112 (§6.1) | Elazar et al. (pair scoring); Li et al. (generator–validator gap); Schaeffer et al. | Report all three levels on every checkpoint; measure the curve across public checkpoints (Pythia, OLMo 2) to see if the gap is universal. |
+| Probe v4 79/112 but generation flip 7/112 (§6.1) | Elazar et al. (pair scoring); Li et al. (generator–validator gap); Lyu et al. 2024; Chang et al. 2024 (probability accumulates before it decodes); Schaeffer et al. | Report all three levels on every checkpoint; measure the curve across public checkpoints (Pythia, OLMo 2) to see if the gap is universal. |
 | "Not capacity" stance | Physics of LMs 3.1–3.3; Grokked Transformers; TinyStories | Treat failures as data and signal problems first; use the capacity estimate (≈2 bits/param) as a sanity check. |
 | Carrying results to larger models | μP; DataDecide; RegMix | Validate data interventions at 0.9B with metrics that are known to predict at scale. |
 
@@ -291,6 +321,58 @@ WinoGrande sat at chance (about 51%) for the whole of Phase 1. That said binding
 So we built our own set. Each case is a minimal pair: the same sentence, the named entity swapped, two different endings. A case counts only if the preferred ending flips with the entity. The first version had a grammar confound ("had" versus "was" gave the answer away). After that was removed, probe v2 scored 25/100, and three categories sat at zero: comparative value, emotional attribution, and possession/obligation.
 
 WSP on the Phase 1 final checkpoint (`step_19073`) then split the score from the output. Attempt 2 moved the probe from 25 to 31, and those three categories from 0/30 to 10/30. Free generation stayed wrong. That is the pattern above. The probe was sharp enough to steer the data. Contrastive v2 was written at those zero categories. It carried to new words and frames (probe v4, 17 to 82/112) and did not carry to new sentence structures (probe v3, 4 to 6/70). Phase 2.5a is the next dataset for that gap: relational passages in natural prose, not another copy of the same template.
+
+### Three things a model does before it binds: frequency, position, then the right entity
+
+Chan, Huang, Elazar & Geiger (2026, §7.6) found that language models learn entity comparison in three phases over pretraining. Binding should go through the same shortcuts, and each one leaves a recognisable signature in our three levels (L1 single row, L2 pair flip, L3 generation flip).
+
+| Phase | What the model does | Example ("Hiro corrected Zoe because _ was mistaken") | Signature in our scores |
+|---|---|---|---|
+| **1. Frequency** | Picks whichever answer is more common in its training data, whatever the sentence says. | Always prefers the more frequent ending ("mistaken") or the more frequent name, in both halves of the pair. | **L1 ≈ 50%**, but **L2 below chance (< 25%)**: the same choice wins in both halves, so one half is always wrong. In generation it writes the **same answer for both twins**. |
+| **2. Position** | Picks the entity by where it sits in the sentence: the first-mentioned or the last-mentioned one. | Always answers "Hiro" (first name in the sentence), whichever twin it reads. | Same below-chance L2. In generation the written name is mostly the **first** (or mostly the **last**) mentioned. Twins keep the names in the same order, so this also gives the same name for both twins. |
+| **3. Binding** | Uses the sentence to decide which entity the property belongs to. | "Zoe" when the sentence says Zoe was mistaken, "Hiro" when it says Hiro was. | **L2 well above 25%**, then **L3** rises: the model writes the right name in both twins. |
+
+The distinction matters for scoring. Single-row scoring (how WinoGrande is officially scored) can't separate phases 1 and 2 from guessing: all three sit near 50%. Pair scoring exposes them, because a fixed preference fails one half of every pair and falls *below* chance. Generation shows which shortcut it is, because we can see which name the model writes.
+
+### What our probes caught
+
+#### Our finding: the model was answering by habit, not by reading the sentence
+
+**What we saw.** Through all of Phase 1 the model sat at chance on WinoGrande (≈51%). The standard score said only "no signal"; it didn't say *why*. So on 21 Nov we wrote our own minimal pairs. The first probe had 11 spatial cases ("The wardrobe would not fit through the doorway because the … was too …") and scored **6/11**. That looks like slightly better than guessing.
+
+Reading the cases one by one showed something else: **the model chose "too narrow" every time, whichever entity the sentence named.** It wasn't reading the sentence at all. It had one fixed preference, and that preference happened to be right in 6 of 11 cases. The aggregate score hid a model answering by habit.
+
+**How we caught it.** We changed the scoring so that a habit can't pass:
+1. **Two versions of every sentence, differing only in the entity** ("…because the wardrobe was…" / "…because the doorway was…").
+2. **Credit only if the preferred ending flips with the entity.** A fixed preference now scores 0, and random guessing 25%.
+3. **Ten relation categories instead of one,** after you pushed back on the first probe being too narrow ("why only big small type").
+4. **A second shortcut removed from the probe itself.** In v1, "had" vs "was" endings let verb agreement pick the answer. Removing it (v2) dropped agent–patient from 100% to 40% and possession from 60% to 0%. Those scores had been the shortcut too.
+
+**What the instrument then showed:**
+- **Phase 1 final:** v2 at **25/100**, with three relation types at a flat **0%**: comparative value, emotional attribution, possession/obligation. The habit was no longer hidden, and it was located by relation type.
+- **Phase 2 Stage 2A:** after 10B more tokens, the held-out probe v4 stayed at 11–24/112, **below** the ≈28 a coin flip scores. The habit survived continued pretraining.
+- **The anneal with contrastive v2:** the *ranking* finally flipped (v4 77–82/112), but the generation check showed the model *writes* the right ending in only **7/112** pairs. Ranking moved past the habit; writing didn't.
+- **Held-out structures (v5):** still below chance (10/120) and 0/120 in generation.
+
+**The same pattern in other models.** Running the identical instrument on Pythia-160M across 7 checkpoints (2B–300B tokens):
+- **v4 pairs:** stay at 1–10% for the whole run, far below 25%.
+- **WinoGrande at 42B tokens:** the model writes one of the two names 90% of the time and gets 45% of single sentences right, but **0% of twin pairs**. It writes the same name for both twins: the habit again, now visible in what it writes.
+
+**It corroborates Chan et al. (2026).** Chan, Huang, Elazar & Geiger found, independently, that models learning entity comparison pass through a **frequency phase** first (picking the more frequent entity whatever the question), then a **position phase**, before answering correctly. They show it on OLMo-2 checkpoints and on models trained from scratch.
+
+What we saw is that first phase, found from the other direction: from a failing model, not from a planned study. It also extends their result in three ways:
+- **A different task:** in-context binding, where the attribute and both entities are in the sentence, rather than world-knowledge comparison.
+- **A different model:** our MoE trained from scratch.
+- **A new level:** generation, where the habit outlasts the ranking fix.
+
+The pair-scoring rule itself also matches Elazar et al. (2021), who used it to show WinoGrande models near random.
+
+**Still open: the position phase.** We haven't yet observed Chan et al.'s second phase (always picking the first- or last-mentioned entity). From 24 Nov every WinoGrande run records:
+- whether the written name is the first- or second-mentioned one;
+- whether the same name is written for both twins;
+- which name the ranking prefers.
+
+Runs finished before that (Pythia-160M and the first few others) will be rescored. The cleanest test is still to build: an order-swapped copy of each probe pair ("Zoe corrected Hiro…"). Position-driven answers flip with the order; frequency-driven answers don't.
 
 ### How we plan to scale the experiment
 
