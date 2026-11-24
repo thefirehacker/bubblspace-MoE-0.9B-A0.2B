@@ -232,3 +232,25 @@ The papers below are grouped by the question they answer for this project. Title
 | Target categories | 0/30 → 0/30 (attempt 1) → 10/30 (attempt 2) |
 | Free generation | not improved in either attempt |
 | Checkpoints (A10) | `wsp_checkpoints/wsp_step19073_20261121T191046.pt`, `wsp_checkpoints/wsp_closedform_step19073_20261121T191951.pt` |
+
+## 9. Goldilocks zone for reasoning experiments
+
+WSP is a tool we can use to check and improve reasoning in a language model, not only a one-off edit on a finished checkpoint. The idea is to run it during the early and middle part of training, on a model that is still being pretrained, instead of on a heavily trained instruction-following model. Too early and there is no circuit to push. Too late, after instruction tuning, and the behaviour is already baked in and hard to read. We want the checkpoint that is just right: not underbaked, not overbaked.
+
+What makes a result useful is a specific pattern. If WSP moves the probes and the evals but the actual generated text stays wrong, that is not a fix. It is a signal. We run the same experiment on the next checkpoint, one that has been trained on reasoning and relational data. If training strengthened the circuit, the same edit should show up in the output, not only in the score.
+
+### What the initial runs showed
+
+The first runs gave us a signal, and that signal is what the new data was built from.
+
+WinoGrande sat at chance (about 51%) for the whole of Phase 1. That said binding was weak. It did not say which relation was broken, or whether the model was using a shortcut. A WinoGrande row is one sentence, two fill-ins, one answer. The official score can move because one option is simply the more likely word.
+
+So we built our own set. Each case is a minimal pair: the same sentence, the named entity swapped, two different endings. A case counts only if the preferred ending flips with the entity. The first version had a grammar confound ("had" versus "was" gave the answer away). After that was removed, probe v2 scored 25/100, and three categories sat at zero: comparative value, emotional attribution, and possession/obligation.
+
+WSP on the Phase 1 final checkpoint (`step_19073`) then split the score from the output. Attempt 2 moved the probe from 25 to 31, and those three categories from 0/30 to 10/30. Free generation stayed wrong. That is the pattern above. The probe was sharp enough to steer the data. Contrastive v2 was written at those zero categories. It carried to new words and frames (probe v4, 17 to 82/112) and did not carry to new sentence structures (probe v3, 4 to 6/70). Phase 2.5a is the next dataset for that gap: relational passages in natural prose, not another copy of the same template.
+
+### How we plan to scale the experiment
+
+**A. Our own training run.** Repeat the probes and the same WSP setup on later checkpoints, especially after the relational and reasoning data in Phase 2.5a. Same edit, same probe, plus free generation. If the score moves and the text still does not, we go to the next checkpoint rather than tuning the edit harder on a model that has not learned the relation yet.
+
+**B. Unannealed checkpoints from other open models.** Run the same evals and the same WSP experiment on public checkpoints taken before the learning-rate anneal, while the model is still in that goldilocks part of training. Instruction-tuned releases are the wrong target. We want the base checkpoint where a binding circuit can exist and has not yet been covered over by chat tuning.
