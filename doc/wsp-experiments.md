@@ -135,7 +135,93 @@ So neither weight surgery nor contrastive pretraining text has fixed binding yet
 - **Evaluate on probe v4 and in free generation,** not on the probe whose cases the edit was solved from (attempt 2 solved on 30 probe cases and was scored on the same probe, which flatters it).
 - **Try it on the Phase 2 model.** A model with a stronger underlying signal might respond very differently to the same edit.
 
-## 7. Key numbers
+## 7. Literature review
+
+**Objective this reading serves:** don't assume model capacity is the problem. The model is poor at relations, so find ways to teach a *small* model relational structure, then carry what works to larger models and longer training runs.
+
+The papers below are grouped by the question they answer for this project. Titles, authors and years are given so each one can be searched directly. Verify the details when pulling the papers.
+
+### 7.1 The editing methods WSP builds on
+
+| Paper | What it gives us |
+|---|---|
+| Meng et al. 2022, *Locating and Editing Factual Associations in GPT* (ROME) | The rank-one closed-form edit behind qwen0.8B-wsp, and causal tracing to find where a fact is stored. |
+| Meng et al. 2023, *Mass-Editing Memory in a Transformer* (MEMIT) | ROME spread across several layers and thousands of edits. The regularised least-squares solve with a protection term (our attempt 2) comes from here. |
+| Fang et al. 2024/25, *AlphaEdit: Null-Space Constrained Knowledge Editing* | Projects the edit into the null space of protected keys, so unrelated inputs can't change. Aimed at exactly our collateral damage (social attribution 40 → 10%). |
+| Mitchell et al. 2022, *Fast Model Editing at Scale* (MEND) | A learned editor network instead of a closed-form solve. Useful contrast. |
+| Yao et al. 2023, *Editing Large Language Models: Problems, Methods, and Opportunities* | Survey of the field and its standard evaluations. |
+
+### 7.2 Why the edit moved the probe but not generation
+
+| Paper | What it gives us |
+|---|---|
+| Hase et al. 2023, *Does Localization Inform Editing?* | Where causal tracing locates a fact doesn't predict which layer is best to edit. Questions our "most swap-sensitive heads / layer 6" choice. |
+| Cohen et al. 2023, *Evaluating the Ripple Effects of Knowledge Editing* | Edits pass the targeted test but fail on related or rephrased cases. The same pattern as our 31/100 probe score with unchanged free generation. |
+| Ilharco et al. 2023, *Editing Models with Task Arithmetic* | Weight-space edits that add or remove *skills* rather than single facts. Closest to our goal of strengthening a general skill. |
+| Turner et al. 2023, *Activation Addition*; Zou et al. 2023, *Representation Engineering* | Steering activations at inference time. A cheap test of whether a direction for a relation exists before editing weights. |
+| Schaeffer et al. 2023, *Are Emergent Abilities of Large Language Models a Mirage?* | The choice of metric (log-prob ranking vs generated text) can make an ability look present, absent or sudden. Why we now require both a scored probe and free generation. |
+
+### 7.3 How transformers represent binding
+
+| Paper | What it gives us |
+|---|---|
+| **Feng & Steinhardt 2024, *How do Language Models Bind Entities in Context?*** | **Start here.** Finds "binding ID" vectors that attach attributes to entities, shared across tasks. The mechanism our wardrobe/stairwell probe tests. |
+| Feng et al. 2024, *Monitoring Latent World States in Language Models with Propositional Probes* | Reads (entity, attribute) bindings directly from activations. A candidate probe that needs neither log-prob ranking nor generation. |
+| Hernandez et al. 2024, *Linearity of Relation Decoding in Transformer Language Models* | Many relations are well approximated by one linear map on the subject's representation. If a relation is roughly linear, a least-squares edit is the natural tool, which grounds the closed-form approach. |
+| Kim & Schuster 2023, *Entity Tracking in Language Models* | Small models track entity state poorly; larger and code-trained models do better. Supports the code share in Phase 2.5a. |
+| **Prakash et al. 2024, *Fine-Tuning Enhances Existing Mechanisms: A Case Study on Entity Tracking*** | Fine-tuning improved entity tracking by strengthening the circuit that already existed, not by building a new one. Basis for re-running WSP *after* Phase 2.5a: editing needs a formed circuit to strengthen. |
+| Wang et al. 2022, *Interpretability in the Wild* (IOI circuit) | A complete circuit for a who-did-what-to-whom task in GPT-2 small. The method to copy for mapping our binding heads. |
+| Geva et al. 2021, *Transformer Feed-Forward Layers Are Key-Value Memories*; Geva et al. 2023, *Dissecting Recall of Factual Associations* | Facts are stored in MLPs, while attention moves and extracts them. Context for editing attention `o_proj` (our choice) versus MLP `down_proj` (qwen0.8B-wsp). |
+| Elhage et al. 2021, *A Mathematical Framework for Transformer Circuits*; Olsson et al. 2022, *In-context Learning and Induction Heads* | Background on how attention heads move information between positions. |
+
+### 7.4 Not capacity: data and format decide
+
+| Paper | What it gives us |
+|---|---|
+| **Allen-Zhu & Li, *Physics of Language Models*, Part 3.1: Knowledge Storage and Extraction** | **Essential.** The same small model can or can't use a fact depending on whether pretraining contained varied rephrasings of it. Capacity is equal; data format decides. The theory behind our contrastive corpus with many sentence frames. |
+| Allen-Zhu & Li, Part 3.2: Knowledge Manipulation | Comparison, classification and inverse lookup fail without the right training signal. Comparison is one of our zero categories. |
+| Allen-Zhu & Li, Part 3.3: Knowledge Capacity Scaling Laws | About 2 bits of knowledge per parameter, a way to check whether a 0.9B model is really capacity-limited for a task. |
+| Wang et al. 2024, *Grokked Transformers are Implicit Reasoners* | Small transformers learn composition and comparison with enough training. Comparison generalises out of distribution, composition doesn't, explained via circuits. Directly about relation types. |
+| Berglund et al. 2023, *The Reversal Curse* | Training on "A is B" doesn't teach "B is A". Why our relational data states relations in both directions. |
+| Eldan & Li 2023, *TinyStories*; Gunasekar et al. 2023, *Textbooks Are All You Need* (phi-1) | Very small models gain abilities from targeted data. Precedent for designing the data instead of scaling the model. |
+
+### 7.5 Designing data that teaches relations
+
+| Paper | What it gives us |
+|---|---|
+| Kaushik et al. 2020, *Learning the Difference that Makes a Difference with Counterfactually-Augmented Data* | Minimal-pair counterfactuals stop shortcut learning. The principle behind contrastive v2/v3. |
+| Gardner et al. 2020, *Evaluating Models' Local Decision Boundaries via Contrast Sets* | The evaluation side of the same idea: our flip-based probe scoring. |
+| Sakaguchi et al. 2020, *WinoGrande* | Adversarial filtering to remove word-association giveaways. Relevant to the grammar confound we fixed between probe v1 and v2. |
+| Yang et al. 2024, *Synthetic Continued Pretraining* (EntiGraph) | Generates text about relations between entities from a small corpus for continued pretraining. The closest published analogue to our Qwen3 relational passages. |
+| Maini et al. 2024, *Rephrasing the Web* (WRAP) | Rewriting web text into styles such as Q&A helps small models learn. Connects to Physics 3.1. |
+
+### 7.6 Small model to large runs
+
+| Paper | What it gives us |
+|---|---|
+| Yang et al. 2022, *Tensor Programs V* (μP) | Hyperparameters tuned on a small model transfer to a large one. The standard tool for "test small, run big". |
+| Magnusson et al. 2025, *DataDecide* | Whether data choices made with small runs hold at scale, and which metrics predict well. |
+| Xie et al. 2023, *DoReMi*; Liu et al. 2024, *RegMix* | Choosing data mixtures on small proxy models, then using them at scale. Our 2.5a mixture shares are this problem. |
+
+### 7.7 How this reading maps to our results and next steps
+
+| Our observation | Literature that explains it | What it suggests |
+|---|---|---|
+| Attempt 2 fixed probe cases but not generation | Cohen et al. (ripple effects); Hase et al. (localization); Schaeffer et al. (metric choice) | Edit toward full-vocabulary targets from correct generations; score on held-out probe v5 plus free generation. |
+| Collateral damage on social attribution | MEMIT, AlphaEdit | Replace the single λ blob with a null-space projection, or spread the edit across layers 5–11. |
+| Weak binding signal in layers 5–11 | Feng & Steinhardt (binding IDs); Prakash et al. (fine-tuning amplifies existing circuits) | Look for binding-ID directions; repeat WSP on the 2.5a checkpoint, where training should have strengthened the circuit. |
+| Contrastive v1 memorised as a template | Physics of LMs 3.1; Kaushik et al. | Many frames and held-out structures (v3, probe v5) instead of one template. |
+| "Not capacity" stance | Physics of LMs 3.1–3.3; Grokked Transformers; TinyStories | Treat failures as data and signal problems first; use the capacity estimate (≈2 bits/param) as a sanity check. |
+| Carrying results to larger models | μP; DataDecide; RegMix | Validate data interventions at 0.9B with metrics that are known to predict at scale. |
+
+**Suggested reading order (about two weeks):**
+1. Feng & Steinhardt, then Physics of LMs 3.1 and 3.2. The binding mechanism exists, and data decides whether it forms.
+2. ROME, then MEMIT, then Hase et al. What our edit did and why it was narrow.
+3. Prakash et al. and Hernandez et al. Why WSP after Phase 2.5a should work better.
+4. Grokked Transformers, then Counterfactually-Augmented Data. Data design per relation type.
+5. DataDecide and μP. Carrying results to larger runs.
+
+## 8. Key numbers
 
 | Item | Value |
 |---|---|
