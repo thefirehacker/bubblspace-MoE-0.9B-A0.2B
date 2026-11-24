@@ -218,7 +218,26 @@ The papers below are grouped by the question they answer for this project. Title
 | Yang et al. 2024, *Synthetic Continued Pretraining* (EntiGraph) | Generates text about relations between entities from a small corpus for continued pretraining. The closest published analogue to our Qwen3 relational passages. |
 | Maini et al. 2024, *Rephrasing the Web* (WRAP) | Rewriting web text into styles such as Q&A helps small models learn. Connects to Physics 3.1. |
 
-### 7.6 Small model to large runs
+### 7.6 Scoring binding: twins, pairs and generation (prior art for our probe)
+
+Requiring both halves of a minimal pair to come out right is **not our invention**, and neither is the observation that probability scoring and generation disagree. Both need explicit citations in anything we publish.
+
+| Paper | What it already established |
+|---|---|
+| **Elazar et al. 2021, *Back to Square One: Artifact Detection, Training and Commonsense Disentanglement in the Winograd Schema*** | Scored WinoGrande's twin sentences **as a pair** ("group scoring") and found models fall close to random. This is our level 2 (pair flip), already published for WinoGrande. |
+| **Trichelair et al. 2018, *How Reasonable are Common-Sense Reasoning Tasks: A Case-Study on the Winograd Schema Challenge and SWAG*** (switchable Winograd schemas) | If swapping the candidates doesn't switch the answer, the model is using a shortcut. The same idea as our entity swap. |
+| **Gardner et al. 2020, *Evaluating Models' Local Decision Boundaries via Contrast Sets*** (also §7.5) | Small edits that should flip the label, with consistency measured over the set. The general framework our flip scoring belongs to. |
+| **Li et al. 2023, *Benchmarking and Improving Generator–Validator Consistency of Language Models*** | Models often *validate* (rank or judge) an answer differently from how they *generate* it. The general form of our level-2 vs level-3 gap. |
+| Work on multiple-choice log-prob evaluation diverging from generated answers (search: "multiple-choice probability vs generation misalignment", "MCQ log-likelihood evaluation reliability") | Ranking pre-written options can overstate what a model produces on its own. Find and cite the specific papers in the literature pass. |
+
+**What may still be new here** (to be checked against the literature before claiming it):
+1. All three levels (single-row, pair flip, generation flip) on the **same** cases, broken down by relation type.
+2. **Held-out structures** (probe v5), so template memorisation can't pass.
+3. The three levels **measured across pretraining checkpoints**: when each appears and whether generation ever catches up. Feng & Steinhardt (§7.3) study binding across model *sizes*, not across training time.
+4. **WSP as a diagnostic intervention**: an edit that moves level 2 but not level 3 shows the level-2 signal is shallow.
+5. A training-data intervention (Phase 2.5a) evaluated with the same instrument.
+
+### 7.7 Small model to large runs
 
 | Paper | What it gives us |
 |---|---|
@@ -226,7 +245,7 @@ The papers below are grouped by the question they answer for this project. Title
 | Magnusson et al. 2025, *DataDecide* | Whether data choices made with small runs hold at scale, and which metrics predict well. |
 | Xie et al. 2023, *DoReMi*; Liu et al. 2024, *RegMix* | Choosing data mixtures on small proxy models, then using them at scale. Our 2.5a mixture shares are this problem. |
 
-### 7.7 How this reading maps to our results and next steps
+### 7.8 How this reading maps to our results and next steps
 
 | Our observation | Literature that explains it | What it suggests |
 |---|---|---|
@@ -234,6 +253,7 @@ The papers below are grouped by the question they answer for this project. Title
 | Collateral damage on social attribution | MEMIT, AlphaEdit | Replace the single λ blob with a null-space projection, or spread the edit across layers 5–11. |
 | Weak binding signal in layers 5–11 | Feng & Steinhardt (binding IDs); Prakash et al. (fine-tuning amplifies existing circuits) | Look for binding-ID directions; repeat WSP on the 2.5a checkpoint, where training should have strengthened the circuit. |
 | Contrastive v1 memorised as a template | Physics of LMs 3.1; Kaushik et al. | Many frames and held-out structures (v3, probe v5) instead of one template. |
+| Probe v4 79/112 but generation flip 7/112 (§6.1) | Elazar et al. (pair scoring); Li et al. (generator–validator gap); Schaeffer et al. | Report all three levels on every checkpoint; measure the curve across public checkpoints (Pythia, OLMo 2) to see if the gap is universal. |
 | "Not capacity" stance | Physics of LMs 3.1–3.3; Grokked Transformers; TinyStories | Treat failures as data and signal problems first; use the capacity estimate (≈2 bits/param) as a sanity check. |
 | Carrying results to larger models | μP; DataDecide; RegMix | Validate data interventions at 0.9B with metrics that are known to predict at scale. |
 
