@@ -425,3 +425,5 @@ Phase 2 is closed. The next stages are planned in [plan-03](../plan-03-phase-2.5
 Two of the new datasets are published:
 - [`bubblspace-contrastive-binding`](https://huggingface.co/datasets/TheFireHacker/bubblspace-contrastive-binding): v1–v3 plus probes v2–v4
 - [`bubblspace-relational-passages-Qwen3-30B`](https://huggingface.co/datasets/TheFireHacker/bubblspace-relational-passages-Qwen3-30B)
+
+On 24 Nov the final step-22,888 weights replaced step 19,000 on HF `main` (same tensors as the training-states copy, checksum verified). Step 19,000 moved to branch [`phase2-step19000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step19000), next to `phase2-step9000` and `phase1-final`. The model card and `training_config.yaml` now describe the full Phase 2 run, including the Stage 2B changes.

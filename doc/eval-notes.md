@@ -679,6 +679,44 @@ From Phase 2.5 on, generation evals use a **KV cache** in the lm-eval adapter (`
 - **Facts barely moved across 12B tokens of Phase 2:** simple facts 81 → 82, TriviaQA 8.5 → 11.6%, NQ 2.9 → 3.9%. The errors are confusions between related concepts (oxygen vs CO₂, nucleus vs mitochondria). That's the motivation for Phase 2.5a's knowledge-dense mix.
 - **Tool use is format-limited, which SFT should fix.** BFCL multiple improved (13 → 17%) and parallel calls appeared (1%). The quick agentic check plateaued at ≈39%, and `</think>` is still never closed within 512 tokens.
 
+
+### Phase 2.5 baselines on the Phase 2 final checkpoint (24 Nov)
+
+Measured before Phase 2.5 starts, so every 2.5a/2.5b number has a reference.
+
+**Probe v5** (120 cases, the structures held out of contrastive v3), on the A10: **10/120**.
+
+| Structure | Correct |
+|---|---|
+| passive | 0/40 |
+| relative clause | 1/40 |
+| respectively | 9/40 |
+
+Like probe v4 before contrastive v2 arrived, this is below chance.
+
+**Long context** (`scripts/eval_long_context.py`). The model was trained at 2k with RoPE theta 1e4; only the cache was raised to 16k for this run.
+
+| | 2k | 4k | 8k | 16k |
+|---|---|---|---|---|
+| passkey | 85% | 15% | 0% | 0% |
+| multi-hop 2-hop / 1-hop control | 33% / 25% | 0 / 0 | 0 / 0 | 0 / 0 |
+
+| Loss by position | 0–512 | 512–1k | 1k–2k | 2k–4k | 4k–8k | 8k–16k |
+|---|---|---|---|---|---|---|
+| Phase 2 final | 2.59 | 2.60 | 2.60 | 2.75 | 3.25 | 4.26 |
+
+Multi-hop with invented names is near chance (25%) even at 2k, so it measures more than reach.
+
+**Hardware matters for small differences.** The same step-22888 checkpoint gives these scores:
+
+| | A10 | H100 |
+|---|---|---|
+| probe v2 | 37/100 | 36/100 |
+| probe v4 | 77/112 | 79/112 |
+| probe v5 | 10/120 | 8/120 |
+
+bf16 kernels differ between the two GPUs. Only compare checkpoints scored on the same machine: the A10 for the watcher series, and one machine per WSP sweep.
+
 ---
 
 ## Next Step: Dropping the Custom Adapter Altogether

@@ -172,6 +172,14 @@ The extend-or-decay rule uses the fast tier. Probes are cheap (≈1–2 min each
 
 Expected: facts and probes v4/v5 rise. **v3 is the honest test and isn't promised.** If it stays flat, structural generalization is the open problem, and that gets reported as such.
 
+**Implemented (24 Nov):**
+- `scripts/relay_ckpts_25a.sh` (fire01) copies every 2,000th checkpoint and the final one to the A10, bandwidth-limited.
+- `scripts/eval_watch_25a.sh` (A10) runs both tiers: fast at every 2,000 steps; full at 8k / 16k / 24k / 32k and the final 38,147. Fast-only checkpoints are deleted on the A10 after scoring; originals stay on fire01.
+- `scripts/summarize_evals.py` rewrites `benchmark/phase25a/summary.md` after each checkpoint: one row per step, with Phase 2 final as the reference row.
+- Both start at launch, together with the training run.
+
+**Phase 2 final baseline for probe v5** (held-out structures, measured 24 Nov): **10/120** (passive 0/40, relative clause 1/40, respectively 9/40). That is below chance, as probe v4 was before contrastive v2 arrived.
+
 ## 3. Phase 2.5b: context extension to 16384
 
 **How it works.**
@@ -224,6 +232,24 @@ Full Wikipedia (2.5a) adds more long articles. The Phase 2 agentic pools were ca
 - **multi-hop retrieval** at the same lengths (two or more facts spread far apart, combined in one answer). Needle tests alone would overstate how well the model *uses* long context.
 - loss by position on held-out long documents (should keep falling past 2048)
 - the full 2.5a suite: no drop > 1 point
+
+**Implemented (24 Nov):** `scripts/eval_long_context.py`.
+- **passkey:** 5 depths × 8 trials per length.
+- **multi-hop:** a person→town fact and a town→bakery fact placed far apart, plus 3 distractor chains, with invented names. Chance is 25%. A 1-hop control separates finding a fact from combining facts.
+- **loss by position:** on 94 held-out long documents (wiki, FineWeb, code, FineMath), cut from the validation tail that `train.py` never trains on.
+
+**Baseline, Phase 2 final (trained at 2k, RoPE theta 1e4, cache raised to 16k):**
+
+| | 2k | 4k | 8k | 16k |
+|---|---|---|---|---|
+| passkey | 85% | 15% | 0% | 0% |
+| multi-hop 2-hop / 1-hop | 33% / 25% | 0 / 0 | 0 / 0 | 0 / 0 |
+
+| Loss by position | 0–512 | 512–1k | 1k–2k | 2k–4k | 4k–8k | 8k–16k |
+|---|---|---|---|---|---|---|
+| Phase 2 final | 2.59 | 2.60 | 2.60 | 2.75 | 3.25 | 4.26 |
+
+As expected, retrieval collapses past 2k and loss rises with position. 2.5b passes if passkey and multi-hop hold out to 16k and the loss keeps falling past 2,048. Multi-hop at 2k is already near chance, so a 2.5b gain there would also show a reasoning gain, not only longer reach.
 
 **Go/no-go:**
 - Retrieval works at 16k and short evals hold → Phase 3 runs at 16384.

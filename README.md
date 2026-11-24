@@ -1,6 +1,6 @@
 # MoE-0.9B-A0.2B
 
-> **📌 Current checkpoint on Hugging Face (`main`): Phase 2, step 19,000 of 22,888.** It's the end of the Stage 2A plateau, the last checkpoint before the anneal.
+> **📌 Current checkpoint on Hugging Face (`main`): Phase 2 final, step 22,888** (after the Stage 2B anneal). The end-of-plateau step 19,000 is on branch `phase2-step19000`.
 > Other checkpoints on HF branches: [`phase2-step9000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step9000) and [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final) (`step_19073`, English only).
 > **Full training checkpoints** (weights + optimizer + scheduler + RNG, to resume or branch training) for **3 specific checkpoints**: Phase 1 final `step_19073`, Phase 2 `step_19000` (end of plateau) and Phase 2 final `step_22888`, in [**bubblspace-moe0.9b-a0.2b-training-states**](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states). Restore with [`scripts/restore_checkpoint.py`](scripts/restore_checkpoint.py).
 
@@ -8,7 +8,7 @@ A from-scratch Mixture-of-Experts language model (≈915M total / ≈211M active
 
 **Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces). Phase 1 built an English base on FineWeb-Edu. Phase 2 (completed 23 Nov) continued it on English + code + agentic + contrastive-binding data.
 
-- **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (`main` = Phase 2 step 19,000; branches `phase2-step9000`, `phase1-final`)
+- **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (`main` = Phase 2 final step 22,888; branches `phase2-step19000`, `phase2-step9000`, `phase1-final`)
 - **Full training states** (3 checkpoints, safetensors + JSON, ≈7.5 GB each): [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states)
 - **Live training graphs/logs (W&B, public)**: Phase 1 [goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker), Phase 2 [lec9ww5h](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/lec9ww5h) (same project; Phase 2's `global_step` continues from 19,073)
 - **License**: [Apache 2.0](LICENSE)
@@ -19,8 +19,8 @@ A from-scratch Mixture-of-Experts language model (≈915M total / ≈211M active
 |---|---|---|
 | 1 | English base, FineWeb-Edu `sample-10BT`, 10B tokens, 19,073 steps | ✅ done (`step_19073`, ≈32h 20m on one H100) |
 | 2 | Continual training: English + code + agentic + contrastive, 12B tokens, 22,888 steps | ✅ done (step 22,888, 23 Nov, ≈39h 50m); final evals complete |
-| 2.5a | Knowledge + semantic relations + code, 20B tokens (Wikipedia, fact Q&A, SYNTH, FineWeb-Edu ≥ 4, fresh code, contrastive v3, grounded relational passages) | 🔄 data prepared and decontaminated; generation of grounded passages finishing ([plan](doc/plan-03-phase-2.5-knowledge-context.md), [data](doc/data-pipeline.md)) |
-| 2.5b | Context extension 2048 → 16,384 (≈1.5B tokens) | planned |
+| 2.5a | Knowledge + semantic relations + code, 20B tokens (Wikipedia, fact Q&A, SYNTH, FineWeb-Edu ≥ 4, fresh code, contrastive v3, grounded relational passages) | 🔄 all data ready and decontaminated; smoke-tested; eval watcher and baselines in place; awaiting launch ([plan](doc/plan-03-phase-2.5-knowledge-context.md), [data](doc/data-pipeline.md)) |
+| 2.5b | Context extension 2048 → 16,384 (≈1.5B tokens) | long-context data, evals and baseline ready; runs right after 2.5a |
 | 3 | SFT at 16k (assistant-only loss masking) | planned ([plan](doc/plan-04-phase-3-sft.md)) |
 
 **Phase 2 results** (full table in [`benchmark/README.md`](benchmark/README.md)):
