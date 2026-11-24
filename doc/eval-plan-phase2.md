@@ -6,7 +6,7 @@ All evals run on the **A10 eval host**, never on `fire01`. The only `fire01` int
 
 ## Ground rules
 
-- **Base model, no SFT.** ~211M active params, no instruction tuning. Every eval uses completion-style prompts (no chat-following assumed) and scores either log-likelihood of fixed candidates or the *form/content* of greedy generations.
+- **Base model, no SFT.** ≈211M active params, no instruction tuning. Every eval uses completion-style prompts (no chat-following assumed) and scores either log-likelihood of fixed candidates or the *form/content* of greedy generations.
 - **Trends over absolutes.** Expect low absolute numbers on code/agentic. The signal is checkpoint-over-checkpoint movement vs. the Phase 1 baseline (`step_19073`), which should be near zero on code/agentic — confirming the evals are measuring something real.
 - **Generation vs. scoring are different tests.** The binding work showed a forced two-way log-likelihood "win" can coexist with wrong free generation (marathon/sprint). Every binding claim needs both a scored probe *and* greedy generations.
 
@@ -29,13 +29,13 @@ All evals run on the **A10 eval host**, never on `fire01`. The only `fire01` int
 
 ## Cadence
 
-- **Every checkpoint (every 1,000 steps), ~15 min on A10:** probe v2 + v3, greedy prompts, FIM exact match, agentic + reasoning format, routing analysis.
+- **Every checkpoint (every 1,000 steps), ≈15 min on A10:** probe v2 + v3, greedy prompts, FIM exact match, agentic + reasoning format, routing analysis.
 - **Milestones — steps 5,000, 10,000, 19,073 (end of Stage 2A), 22,888 (final):** everything above plus the English suite, CRUXEval-O, BFCL, HumanEval/MBPP.
 - **Baselines, once:** Phase 1 `step_19073` on the whole suite; **SmolLM2-360M** (similar size, same base tokenizer, `transformers`-native) on the standard benchmarks for a size-realistic reference.
 
 ## Gates (what "Phase 2 worked" means)
 
-1. **English:** 6-task average within ~1 point of Phase 1 final (`benchmark/step_19073.json`).
+1. **English:** 6-task average within ≈1 point of Phase 1 final (`benchmark/step_19073.json`).
 2. **Code / agentic:** clearly above the Phase 1 baseline on FIM exact match, agentic format, CRUXEval-O, BFCL, HumanEval/MBPP.
 3. **Binding:** probe **v3** and greedy generations improve — not only v2, which shares templates with the contrastive training data.
 

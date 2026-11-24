@@ -4,7 +4,7 @@ This covers the window between "Phase 1 is done, start Phase 2" and the Phase 2 
 
 ## 1. The ask
 
-Phase 1 finished at `step_19073` (10B FineWeb-Edu tokens, ~87k tok/s, ~32h on one H100). You said: start Phase 2 on `fire01`. The plan (`doc/plan-02-phase-2-continual-training.md`, revised after the entity-binding probe work in [`doc/review-01-pre-phase2-semantic-diagnosis.md`](../review-01-pre-phase2-semantic-diagnosis.md)) was 12B tokens, continuing from `step_19073` with a two-stage WSD schedule.
+Phase 1 finished at `step_19073` (10B FineWeb-Edu tokens, ≈87k tok/s, ≈32h on one H100). You said: start Phase 2 on `fire01`. The plan (`doc/plan-02-phase-2-continual-training.md`, revised after the entity-binding probe work in [`doc/review-01-pre-phase2-semantic-diagnosis.md`](../review-01-pre-phase2-semantic-diagnosis.md)) was 12B tokens, continuing from `step_19073` with a two-stage WSD schedule.
 
 But the training code to do that didn't exist yet. `scripts/train.py` had no way to continue a *finished* run (`--resume` would exit immediately because `start_step == total_steps`), the data loader read a single pool with uniform random windows, and attention had no document mask. So Phase 2 started with writing code, not launching it.
 
@@ -40,21 +40,21 @@ Following the malware-scan practice from Storyboard 02, I scanned both datasets 
 
 ### Contrastive repetition
 
-The first contrastive test run was only 78% unique at 20k documents. The physical-fit template family has only ~80 possible distinct documents and would have repeated thousands of times. **Fix**: the generator writes only unique documents; repetition is controlled in one place, the pool's sampling weight (lowered to 1.5% in Stage 2A / 6% in 2B, about 4.4× total).
+The first contrastive test run was only 78% unique at 20k documents. The physical-fit template family has only ≈80 possible distinct documents and would have repeated thousands of times. **Fix**: the generator writes only unique documents; repetition is controlled in one place, the pool's sampling weight (lowered to 1.5% in Stage 2A / 6% in 2B, about 4.4× total).
 
-## 4. Why a smoke test before a ~40h run
+## 4. Why a smoke test before a ≈40h run
 
 Phase 2 is roughly two days of H100 time. A crash at hour 30, or a silent bug that wastes the whole run, costs far more than 100 steps. The smoke test (`configs/phase2_smoke.yaml`: same code path, 100 steps, short warmup, separate W&B run) answers the correctness questions cheaply:
 
 | Check | What it guards against | Smoke #1 result |
 |---|---|---|
-| `--init_from` loads | wrong weights / reset optimizer → loss spike | ✅ first English val loss 2.52, consistent with Phase 1's ~2.6 |
+| `--init_from` loads | wrong weights / reset optimizer → loss spike | ✅ first English val loss 2.52, consistent with Phase 1's ≈2.6 |
 | `flex_attention` under `torch.compile` | graph breaks, crashes, compile blowups | ✅ compiled, no breaks |
-| Stability through re-warm | LR shock, divergence | ✅ `grad_norm` 2.84 → ~0.19 by step 80 |
+| Stability through re-warm | LR shock, divergence | ✅ `grad_norm` 2.84 → ≈0.19 by step 80 |
 | Checkpoint save | losing hours of training to a save bug | ✅ |
-| Throughput | a run that takes far longer than planned | ⚠️ **~69–71k tok/s** |
+| Throughput | a run that takes far longer than planned | ⚠️ **≈69–71k tok/s** |
 
-Everything passed except the one number that decides wall-clock: at ~70k tok/s, 12B tokens is **~48h**, not the 38–39h planned. Smoke #1 also flagged two things to watch during the real run: MoE load-balance loss ~1.15 (vs 1.00 in Phase 1, the router adapting to code/agentic tokens), and contrastive val loss dropping 3.87 → 0.70 in 50 steps (template predictability, not memorization, since validation is held out).
+Everything passed except the one number that decides wall-clock: at ≈70k tok/s, 12B tokens is **≈48h**, not the 38–39h planned. Smoke #1 also flagged two things to watch during the real run: MoE load-balance loss ≈1.15 (vs 1.00 in Phase 1, the router adapting to code/agentic tokens), and contrastive val loss dropping 3.87 → 0.70 in 50 steps (template predictability, not memorization, since validation is held out).
 
 ## 5. Why profile, and why my guess was wrong
 
@@ -77,10 +77,10 @@ You chose option (b), profile and fix before launching, on the condition that ea
 | Forward+backward **without** mask (Phase 1 path) | 365.6 ms |
 | Optimizer step, Muon+AdamW (once per step) | 130 ms |
 
-- **The document mask costs ~3.7%.** My guess was wrong; `flex_attention` is nearly as fast as the fused causal kernel here.
-- **Data loading is the whole gap:** 86 ms × 16 = **~1.37 s per step with the GPU idle**, because the loader ran serially on the main thread. The likely cause is random reads from network storage (`/lambda/nfs`), with 16 rows per micro-batch coming from different pools.
+- **The document mask costs ≈3.7%.** My guess was wrong; `flex_attention` is nearly as fast as the fused causal kernel here.
+- **Data loading is the whole gap:** 86 ms × 16 = **≈1.37 s per step with the GPU idle**, because the loader ran serially on the main thread. The likely cause is random reads from network storage (`/lambda/nfs`), with 16 rows per micro-batch coming from different pools.
 - **Recompiles were a non-issue:** a one-time per-layer-index specialization at warm-up, inherited from Phase 1 code.
-- **Ceiling if loading overlapped compute:** ~6.2 s/step, **~84.6k tok/s**, about 39h.
+- **Ceiling if loading overlapped compute:** ≈6.2 s/step, **≈84.6k tok/s**, about 39h.
 
 ### Mistake — `pkill -f` killing its own shell, twice
 
@@ -96,11 +96,11 @@ Smoke test #2, same config as #1:
 
 | | Smoke #1 (serial loader) | Smoke #2 (prefetch) |
 |---|---|---|
-| Steady-state throughput | ~69–71k tok/s | **~85.5k tok/s** |
-| Projected Phase 2 wall-clock | ~48h | **~39h** |
+| Steady-state throughput | ≈69–71k tok/s | **≈85.5k tok/s** |
+| Projected Phase 2 wall-clock | ≈48h | **≈39h** |
 | Loss / val / `grad_norm` | baseline | tracks #1 |
 
-The measured ~85.5k tok/s lands on the profiler's ~84.6k ceiling, within ~2% of Phase 1. **About 9 hours of H100 time saved**, and the model trains on exactly the same data in exactly the same order.
+The measured ≈85.5k tok/s lands on the profiler's ≈84.6k ceiling, within ≈2% of Phase 1. **About 9 hours of H100 time saved**, and the model trains on exactly the same data in exactly the same order.
 
 ## 7. Where things stand now
 
@@ -114,5 +114,5 @@ python3 scripts/train.py configs/phase2.yaml \
   --init_from /lambda/nfs/h100-f1/checkpoints/moe0-9b-a0-2b-base/step_19073.pt
 ```
 
-  It will appear in W&B as a new run, `moe0-9b-a0-2b-phase02`, in the same project and group as phase01, with `global_step` continuing from 19,073. Expected duration: ~39h for 22,888 steps.
+  It will appear in W&B as a new run, `moe0-9b-a0-2b-phase02`, in the same project and group as phase01, with `global_step` continuing from 19,073. Expected duration: ≈39h for 22,888 steps.
 - The write-up of this window is published to the landing site as the FireHacker post `phase-2-profiling-before-launch-data-loading`.

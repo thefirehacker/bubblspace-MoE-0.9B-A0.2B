@@ -12,7 +12,7 @@ Phase 1 (in progress, finishes at `step_19073` / 10B tokens) produces a pure Eng
 
 Phase 1's final checkpoint (`step_19073.pt`) contains the full model weights plus both optimizer states (Muon's momentum buffers and AdamW's first/second moments), the step counter, and RNG state. Starting Phase 2 from this checkpoint means the model begins already fluent in English rather than randomly initialized.
 
-Re-initializing and training from scratch on the English + code + agentic mixture would re-spend the entire 10B-token English learning curve (~32 hours on an H100) a second time — strictly wasteful compute when Phase 1 already paid for it.
+Re-initializing and training from scratch on the English + code + agentic mixture would re-spend the entire 10B-token English learning curve (≈32 hours on an H100) a second time — strictly wasteful compute when Phase 1 already paid for it.
 
 ### 2. Why a shifting mixture, not hard sequential stages
 
@@ -25,8 +25,8 @@ The standard mitigation is **rehearsal**: keep a nonzero share of English in eve
 
 Phase 2 never does 100% English or 100% code — it is always a blend, with the mixture ratio shifting over Phase 2's step range:
 
-- **Early in Phase 2 (English-dominant):** e.g., illustrative ~85% English / 15% code + agentic — enough for the model and MoE router to start learning the new tokens and formats without shocking the weights.
-- **Late in Phase 2 (code/agentic upweighted — final anneal):** shifts toward e.g., illustrative ~40% English / 45% code / 15% agentic, while still keeping enough English in the mix to anchor the base.
+- **Early in Phase 2 (English-dominant):** e.g., illustrative ≈85% English / 15% code + agentic — enough for the model and MoE router to start learning the new tokens and formats without shocking the weights.
+- **Late in Phase 2 (code/agentic upweighted — final anneal):** shifts toward e.g., illustrative ≈40% English / 45% code / 15% agentic, while still keeping enough English in the mix to anchor the base.
 
 *(Percentages above are illustrative, not finalized.)*
 
@@ -84,4 +84,4 @@ From `README.md`'s "Training objective / data mixture" section — English, code
 ## Scope & Expectations
 
 - **Still base pretraining, not chat/SFT:** even after Phase 2 finishes, the model will not reliably chat or follow instructions. Supervised fine-tuning (SFT) is a separate later pass on top of the Phase 2 checkpoint.
-- **Capacity caveat:** at ~211M active parameters (~915M total), the realistic target for Phase 2 is learning the FIM/tool-call/think formats and basic coding/agentic patterns — not a strong standalone coding model.
+- **Capacity caveat:** at ≈211M active parameters (≈915M total), the realistic target for Phase 2 is learning the FIM/tool-call/think formats and basic coding/agentic patterns — not a strong standalone coding model.

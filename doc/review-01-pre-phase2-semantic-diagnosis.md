@@ -12,7 +12,7 @@
 
 # Scratchpad 01 — Pre-Phase 2 Semantic Understanding Diagnosis & Plan
 
-> **Purpose:** Recurring multi-agent scratchpad for discussing, auditing, and refining the pre-Phase 2 design for `bubblspace-MoE0.9B-A2b` (~915.6M total / ~211M active params, 16 layers, `d_model=1024`, 64 experts, `top_k=8`, `expert_hidden=256`, GQA 16/4 with QK-norm + output gate, `ZeroCenteredRMSNorm`, Muon + AdamW).
+> **Purpose:** Recurring multi-agent scratchpad for discussing, auditing, and refining the pre-Phase 2 design for `bubblspace-MoE0.9B-A2b` (≈915.6M total / ≈211M active params, 16 layers, `d_model=1024`, 64 experts, `top_k=8`, `expert_hidden=256`, GQA 16/4 with QK-norm + output gate, `ZeroCenteredRMSNorm`, Muon + AdamW).
 > **Convention:** Append new entries at the bottom with `**Speaker (YYYY-MM-DD HH:MM UTC+5:30):**`. Do not delete prior reasoning so all agents have full decision history, including rejected ideas and pushbacks.
 
 ---
@@ -38,9 +38,9 @@ Audited the full codebase (`configs/base.yaml`, `src/model/transformer.py`, `src
 
 Key findings:
 1. **No implementation bugs in Phase 1 model or optimizer:** `rope.py`, `ZeroCenteredRMSNorm`, GQA + QK-norm + sigmoid output gate, `MoEFFN`, and `Muon` Newton-Schulz are all mathematically clean.
-2. **MoE per-expert token starvation:** With 64 experts and `top_k=8`, each expert sees only `1/8` of the token stream (~1.25B tokens/expert by end of 10B Phase 1).
+2. **MoE per-expert token starvation:** With 64 experts and `top_k=8`, each expert sees only `1/8` of the token stream (≈1.25B tokens/expert by end of 10B Phase 1).
 3. **Single-source noisy web distribution:** Phase 1 is 100% `HuggingFaceFW/fineweb-edu` (`sample-10BT`) — 0% Wikipedia, 0% math/STEM, heavy web-scrape artifacts (essay mills, MCQs, broken tables).
-4. **Current Phase 2 plan (`doc/plan-02-phase-2-continual-training.md`) will not fix English semantics:** Pool A is only 26.0% overall (3.12B), half of which (1.60B) is reused Phase 1 FineWeb-Edu — adding only ~190M *new* English tokens per expert (`cosmopedia-v2`) — and Stage 2B anneal drops English to **16%** while putting 59% into Code and 25% into Agentic, still with 0% Wikipedia and 0% math/STEM.
+4. **Current Phase 2 plan (`doc/plan-02-phase-2-continual-training.md`) will not fix English semantics:** Pool A is only 26.0% overall (3.12B), half of which (1.60B) is reused Phase 1 FineWeb-Edu — adding only ≈190M *new* English tokens per expert (`cosmopedia-v2`) — and Stage 2B anneal drops English to **16%** while putting 59% into Code and 25% into Agentic, still with 0% Wikipedia and 0% math/STEM.
 5. **Cross-document attention contamination:** `src/model/attention.py` runs `F.scaled_dot_product_attention(..., is_causal=True)` with no document mask across `<|endoftext|>`, while `src/data/dataset.py` slices random 2048-token windows across concatenated documents. This also affects `scripts/prepare_agentic.py`, which packs multiple episodes into 2048-token blocks separated by `eot_id` (Episode 2 can attend to Episode 1's `<tools>` schema).
 6. **Diagnostic proposed:** Because all 7 prompts were conversational/question prompts fed to a base model, asked Amardeep to run 4 short declarative completions (`The capital of the United States is`, `The capital of India is`, `The Riemann hypothesis is a mathematical conjecture about`, `In Sanskrit, the word Kama means`) to separate base-model format-hijacking from genuine entity-binding failure.
 
@@ -49,7 +49,7 @@ Key findings:
 ### Amardeep (2026-11-21 11:23 & 11:43 UTC+5:30)
 Pushed back on a "data-only" fix: *"data wont help if it cant build sematic understanding properly and has loose connection in phase 01; in fact this is good that we can see how loose semantic understanding is in this case."*
 
-Ran the `step_18000` benchmark suite (~9.4B tokens seen) and the 4 declarative prompts:
+Ran the `step_18000` benchmark suite (≈9.4B tokens seen) and the 4 declarative prompts:
 
 #### `step_18000` Benchmark Results (vs. `step_9000`)
 | Task | Metric | `step_9000` | `step_18000` | Delta |
@@ -98,7 +98,7 @@ Accepted both points and updated the final plan:
 ### Guiding Principles
 1. **Zero inference-architecture bloat:** Keep the exact `0.9B-A0.2B` (`~915.6M` total / `~211M` active, 64 experts, `top_k=8`) backbone from `step_19073.pt` untouched at inference/export time.
 2. **Fix training mechanics & objective first, then feed dense semantic signal:** Do not run the original Phase 2 plan (63.2% Code / 16% English Stage 2B anneal) as-is, which would starve English entity bindings further.
-3. **Validate on CPU + 100-step H100 smoke gate before committing ~38–42h of H100 compute.**
+3. **Validate on CPU + 100-step H100 smoke gate before committing ≈38–42h of H100 compute.**
 
 ```mermaid
 flowchart LR
@@ -155,7 +155,7 @@ flowchart LR
 #### 1.3 Optional / Deferred Lever: Top-k KL Logit Distillation (SmolLM2-1.7B Teacher)
 - **Why it is uniquely clean for this repo:** `bubblspace-tokenizer` is **SmolLM2 base (49,152 tokens) + 12/14 special tokens**. That means `HuggingFaceTB/SmolLM2-1.7B` shares the **exact same base vocabulary IDs** — zero tokenizer alignment hack required.
 - **Why it targets the exact failure mode:** One-hot CE gives zero negative contrast between close concepts (`Kama` vs `Prana`, `Riemann hypothesis` vs `Riemann surfaces`, `British` vs `Mughal`). Soft teacher logits teach sharp entity separation on every single token.
-- **Why deferred to Stage 2B/2C (not Stage 2A):** Running a 1.7B teacher forward pass online on the same single H100 cuts throughput ~35–45% and adds VRAM/compile complexity on top of `flex_attention` + MTP + multi-pool data.
+- **Why deferred to Stage 2B/2C (not Stage 2A):** Running a 1.7B teacher forward pass online on the same single H100 cuts throughput ≈35–45% and adds VRAM/compile complexity on top of `flex_attention` + MTP + multi-pool data.
 - **Decision gate:** Evaluate `WinoGrande` + `MMLU/TriviaQA` + the 4 declarative probes mid-Stage 2A (around step 10k). If WinoGrande has broken cleanly upward and entity binding is sharpening, keep Stage 2B pure CE+MTP. If entity contrast is still soft, turn on top-k KL distillation (`k=64`, `T=2.0`, base vocab `[:49152]` masked off on special tokens) during the 2B-token Stage 2B anneal (or a short 1–2B token Stage 2C).
 
 ---
@@ -163,18 +163,18 @@ flowchart LR
 ### Part 2 — Phase 2 Data Rebalance & Pipeline Fixes
 
 #### 2.1 Revised 12B-Token Mixture (Rebalancing Knowledge + STEM vs. Raw Code)
-Update `doc/plan-02-phase-2-continual-training.md` to stay within the **12B-token (~38–42h H100)** budget while feeding high-density, contradiction-free factual and STEM prose instead of mostly raw StarCoder + noisy FineWeb-Edu:
+Update `doc/plan-02-phase-2-continual-training.md` to stay within the **12B-token (≈38–42h H100)** budget while feeding high-density, contradiction-free factual and STEM prose instead of mostly raw StarCoder + noisy FineWeb-Edu:
 
-- **Pool A — Knowledge + STEM + English (~40.0% overall / 4.80B tokens):**
-  - `wikimedia/wikipedia` (`20231101.en`, `text_field="text"`): **~1.50B tokens** — clean encyclopedic entity bindings (capitals, history, literature, Sanskrit/philosophy, geography).
-  - `HuggingFaceTB/smollm-corpus` (`cosmopedia-v2`, `text_field="text"`): **~1.50B tokens** — clean synthetic textbook explanations.
-  - `HuggingFaceTB/finemath` (`finemath-4plus`, `text_field="text"`): **~1.00B tokens** — mathematical/STEM conceptual prose and multi-step reasoning (fixes math/science grounding like Riemann hypothesis).
-  - FineWeb-Edu replay (reused Phase 1 shards): **~0.80B tokens** — lightweight anti-forgetting anchor (reduced from 1.60B since Wikipedia + Cosmopedia + FineMath already anchor English fluency).
-- **Pool B — Code (~49.2% overall / 5.90B tokens):**
+- **Pool A — Knowledge + STEM + English (≈40.0% overall / 4.80B tokens):**
+  - `wikimedia/wikipedia` (`20231101.en`, `text_field="text"`): **≈1.50B tokens** — clean encyclopedic entity bindings (capitals, history, literature, Sanskrit/philosophy, geography).
+  - `HuggingFaceTB/smollm-corpus` (`cosmopedia-v2`, `text_field="text"`): **≈1.50B tokens** — clean synthetic textbook explanations.
+  - `HuggingFaceTB/finemath` (`finemath-4plus`, `text_field="text"`): **≈1.00B tokens** — mathematical/STEM conceptual prose and multi-step reasoning (fixes math/science grounding like Riemann hypothesis).
+  - FineWeb-Edu replay (reused Phase 1 shards): **≈0.80B tokens** — lightweight anti-forgetting anchor (reduced from 1.60B since Wikipedia + Cosmopedia + FineMath already anchor English fluency).
+- **Pool B — Code (≈49.2% overall / 5.90B tokens):**
   - `Avelina/python-edu-cleaned`: **1.50B tokens** (curated/educational Python, upweighted in Stage 2B).
-  - `bigcode/starcoderdata` (5 focused languages: `python`, `typescript`, `javascript`, `go`, `sql/shell/config`): **~4.40B tokens** (trimmed proportionally from 4.98B to fund Wikipedia + FineMath).
-- **Pool C — Agentic (~10.8% overall / 1.30B tokens):**
-  - Unchanged: ~375M unique packed tokens (`Nanbeige/ToolMind` 270.4M, `glaiveai/glaive-function-calling-v2` 58.9M, `open-thoughts/OpenThoughts-114k` 17.3M, `NousResearch/hermes-function-calling-v1` 8.9M, `bespokelabs/Bespoke-Stratos-17k` 5.5M) drawn at ~3.47x oversampling, hard-filtered to `<= 2048` tokens and packed into 2048-aligned blocks.
+  - `bigcode/starcoderdata` (5 focused languages: `python`, `typescript`, `javascript`, `go`, `sql/shell/config`): **≈4.40B tokens** (trimmed proportionally from 4.98B to fund Wikipedia + FineMath).
+- **Pool C — Agentic (≈10.8% overall / 1.30B tokens):**
+  - Unchanged: ≈375M unique packed tokens (`Nanbeige/ToolMind` 270.4M, `glaiveai/glaive-function-calling-v2` 58.9M, `open-thoughts/OpenThoughts-114k` 17.3M, `NousResearch/hermes-function-calling-v1` 8.9M, `bespokelabs/Bespoke-Stratos-17k` 5.5M) drawn at ≈3.47x oversampling, hard-filtered to `<= 2048` tokens and packed into 2048-aligned blocks.
 
 #### 2.2 Revised Two-Stage WSD Schedule (22,888 steps, 12.0B tokens)
 - **LR schedule:** Continue from `step_19073.pt` via `--init_from`; linear re-warmup `6e-5 -> 2.4e-4` over 300 steps, stable plateau at `2.4e-4` through step `19,073` (10.0B tokens), linear/cosine anneal `2.4e-4 -> 6e-6` over final 3,815 steps (`19,073 -> 22,888`, 2.0B tokens).
@@ -201,7 +201,7 @@ Update `doc/plan-02-phase-2-continual-training.md` to stay within the **12B-toke
 4. **`scripts/train.py`, `src/config.py`, new `configs/phase2.yaml`:**
    - Add `--init_from <ckpt_path>` distinct from `--resume`: loads Phase 1 backbone weights (`strict=False` so training-only `mtp_head` initializes fresh cleanly), loads matching Muon/AdamW optimizer states for backbone parameters (fresh states for `mtp_head`), resets step counter to `0`, and attaches the Phase 2 WSD LR schedule.
    - Pass `ignore_index=-100` to `F.cross_entropy`.
-   - Add lightweight per-pool held-out validation loop (`val/wiki`, `val/math`, `val/en`, `val/code`, `val/agentic`) every ~250 steps.
+   - Add lightweight per-pool held-out validation loop (`val/wiki`, `val/math`, `val/en`, `val/code`, `val/agentic`) every ≈250 steps.
 
 ---
 
@@ -220,9 +220,9 @@ Update `doc/plan-02-phase-2-continual-training.md` to stay within the **12B-toke
    - `grad_norm`, `lb_loss`, and `z_loss` remain stable across the 300-step re-warmup to `2.4e-4`.
    - `mtp_loss` decreases monotonically alongside `ce_loss`.
 
-3. **Semantic-Binding Evaluation Cadence (every ~2,000 steps):**
+3. **Semantic-Binding Evaluation Cadence (every ≈2,000 steps):**
    - **Per-pool held-out val loss:** `val/wiki`, `val/math`, `val/en`, `val/code`, `val/agentic`.
-   - **Existing 6-task suite** (`hellaswag, piqa, arc_easy, arc_challenge, winogrande, lambada_openai`) with **WinoGrande** tracked as the primary relational-binding gate (target: break decisively above the `50.7%` random floor, while holding other English tasks within ~1 pt or improving).
+   - **Existing 6-task suite** (`hellaswag, piqa, arc_easy, arc_challenge, winogrande, lambada_openai`) with **WinoGrande** tracked as the primary relational-binding gate (target: break decisively above the `50.7%` random floor, while holding other English tasks within ≈1 pt or improving).
    - **Factual/knowledge eval:** add `mmlu` and/or `triviaqa` via `scripts/run_benchmarks.py`.
    - **Deterministic format check:** valid PSM/SPM infilling, valid JSON inside `<tool_call>...</tool_call>`, clean `</think>` closure within 2048 tokens.
    - **Fixed 10-prompt declarative entity-binding probe** (always including the 4 diagnostic prompts: US capital, India capital, Riemann hypothesis, Sanskrit Kama) logged side-by-side per checkpoint to visually verify entity-binding progress.
@@ -231,7 +231,7 @@ Update `doc/plan-02-phase-2-continual-training.md` to stay within the **12B-toke
 
 ### Part 4 — Post-Phase 2 Sequencing
 1. **After Phase 2 completes:** Package `transformers`-native (`config.json`, `configuration_bubblspace.py`, `modeling_bubblspace.py` with `attention_mask` support, BF16 `.safetensors` export stripping `mtp_head`, tokenizer files) per `doc/transformer-native.md`.
-2. **Phase 3 — SFT (~3h H100):** Assistant-only loss masking (`y = -100` on system/user/`<tool_response>`) combining general knowledge QA/chat + code + agentic trajectories so the model learns to retrieve and answer cleanly instead of continuing like web text.
+2. **Phase 3 — SFT (≈3h H100):** Assistant-only loss masking (`y = -100` on system/user/`<tool_response>`) combining general knowledge QA/chat + code + agentic trajectories so the model learns to retrieve and answer cleanly instead of continuing like web text.
 3. **Phase 4 — Optional RL/GRPO:** Only after Phase 3 SFT produces clean stops and valid tool-call JSON.
 
 ---

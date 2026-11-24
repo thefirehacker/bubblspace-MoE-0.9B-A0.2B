@@ -295,10 +295,13 @@ def main():
         if step % cfg.training.attn_logit_every == 0 and last_x is not None:
             raw_model = get_raw_model(model)
             with torch.no_grad():
-                seq_len = last_x.shape[1]
+                # unfused attention recompute: cap at 2,048 tokens. At 16k context (Phase 2.5b) the full
+                # score matrix would need ~17 GB per sequence (smoke test OOM'd); at 2,048 this is unchanged.
+                diag_x = last_x[:, :2048]
+                seq_len = diag_x.shape[1]
                 cos = raw_model.rope_cos[:seq_len].to(device)
                 sin = raw_model.rope_sin[:seq_len].to(device)
-                h = raw_model.embed(last_x)
+                h = raw_model.embed(diag_x)
                 max_logit = raw_model.blocks[0].attn.max_attn_logit(raw_model.blocks[0].norm1(h), cos, sin)
             wandb.log({"max_attn_logit": max_logit, "global_step": step + step_offset}, step=step)
 

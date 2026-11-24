@@ -1,0 +1,917 @@
+{
+ "checkpoint": "/lambda/nfs/us-west-1-eval-inference/step_19073.pt",
+ "step": 19073,
+ "facts": "benchmark/data/facts-closedbook/facts-simple-v1-20261123.json",
+ "summary": {
+  "correct": 81,
+  "n": 95,
+  "acc": 0.8526,
+  "by_category": {
+   "capitals": "20/25",
+   "people_works": "18/20",
+   "science": "16/20",
+   "geography": "14/15",
+   "history": "13/15"
+  }
+ },
+ "rows": [
+  {
+   "cat": "capitals",
+   "q": "What is the capital of France?",
+   "gold": [
+    "Paris"
+   ],
+   "answer": "Paris, France",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of India?",
+   "gold": [
+    "New Delhi",
+    "Delhi"
+   ],
+   "answer": "New Delhi",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Japan?",
+   "gold": [
+    "Tokyo"
+   ],
+   "answer": "Tokyo, Japan",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Germany?",
+   "gold": [
+    "Berlin"
+   ],
+   "answer": "Berlin, Germany",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Spain?",
+   "gold": [
+    "Madrid"
+   ],
+   "answer": "Madrid, Spain",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Russia?",
+   "gold": [
+    "Moscow"
+   ],
+   "answer": "Moscow, Russia",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of China?",
+   "gold": [
+    "Beijing",
+    "Peking"
+   ],
+   "answer": "Beijing, China",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Canada?",
+   "gold": [
+    "Ottawa"
+   ],
+   "answer": "Ottawa, Ontario",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Australia?",
+   "gold": [
+    "Canberra"
+   ],
+   "answer": "Sydney, Australia",
+   "correct": false
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Brazil?",
+   "gold": [
+    "Brasilia",
+    "Bras\u00edlia"
+   ],
+   "answer": "Rio de Janeiro",
+   "correct": false
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Egypt?",
+   "gold": [
+    "Cairo"
+   ],
+   "answer": "Alexandria, Egypt",
+   "correct": false
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of the United Kingdom?",
+   "gold": [
+    "London"
+   ],
+   "answer": "London, England",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of the United States?",
+   "gold": [
+    "Washington"
+   ],
+   "answer": "Washington DC",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Kenya?",
+   "gold": [
+    "Nairobi"
+   ],
+   "answer": "Nairobi, Kenya",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Argentina?",
+   "gold": [
+    "Buenos Aires"
+   ],
+   "answer": "Buenos Aires",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Turkey?",
+   "gold": [
+    "Ankara"
+   ],
+   "answer": "Istanbul, Turkey",
+   "correct": false
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of South Korea?",
+   "gold": [
+    "Seoul"
+   ],
+   "answer": "Seoul (capital)",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Greece?",
+   "gold": [
+    "Athens"
+   ],
+   "answer": "Athens, Greece",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Portugal?",
+   "gold": [
+    "Lisbon"
+   ],
+   "answer": "Lisbon (Portugal)",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Norway?",
+   "gold": [
+    "Oslo"
+   ],
+   "answer": "Bergen, Norway",
+   "correct": false
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Thailand?",
+   "gold": [
+    "Bangkok"
+   ],
+   "answer": "Bangkok, Thailand",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Mexico?",
+   "gold": [
+    "Mexico City"
+   ],
+   "answer": "Mexico City",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Nepal?",
+   "gold": [
+    "Kathmandu"
+   ],
+   "answer": "Kathmandu, Nepal",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Pakistan?",
+   "gold": [
+    "Islamabad"
+   ],
+   "answer": "Islamabad (Pakistan)",
+   "correct": true
+  },
+  {
+   "cat": "capitals",
+   "q": "What is the capital of Ireland?",
+   "gold": [
+    "Dublin"
+   ],
+   "answer": "Dublin, Ireland",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who wrote the novel Pride and Prejudice?",
+   "gold": [
+    "Jane Austen",
+    "Austen"
+   ],
+   "answer": "Jane Austen",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who painted the Mona Lisa?",
+   "gold": [
+    "Leonardo da Vinci",
+    "Leonardo",
+    "da Vinci"
+   ],
+   "answer": "Leonardo da Vinci",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who developed the theory of relativity?",
+   "gold": [
+    "Albert Einstein",
+    "Einstein"
+   ],
+   "answer": "Albert Einstein",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who wrote the novel 1984?",
+   "gold": [
+    "George Orwell",
+    "Orwell"
+   ],
+   "answer": "George Orwell",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who composed the Fifth Symphony that begins with four famous notes?",
+   "gold": [
+    "Beethoven"
+   ],
+   "answer": "Beethoven, Brahms, and Schubert",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who was the first person to walk on the Moon?",
+   "gold": [
+    "Neil Armstrong",
+    "Armstrong"
+   ],
+   "answer": "Neil Armstrong",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who wrote the national anthem of India, Jana Gana Mana?",
+   "gold": [
+    "Rabindranath Tagore",
+    "Tagore"
+   ],
+   "answer": "Mahatma Gandhi",
+   "correct": false
+  },
+  {
+   "cat": "people_works",
+   "q": "Who proposed the theory of evolution by natural selection?",
+   "gold": [
+    "Charles Darwin",
+    "Darwin"
+   ],
+   "answer": "Charles Darwin",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who wrote the novel War and Peace?",
+   "gold": [
+    "Leo Tolstoy",
+    "Tolstoy"
+   ],
+   "answer": "Leo Tolstoy",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who discovered penicillin?",
+   "gold": [
+    "Alexander Fleming",
+    "Fleming"
+   ],
+   "answer": "Alexander Fleming",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who was the first President of the United States?",
+   "gold": [
+    "George Washington",
+    "Washington"
+   ],
+   "answer": "John Adams",
+   "correct": false
+  },
+  {
+   "cat": "people_works",
+   "q": "Who was the first Prime Minister of India?",
+   "gold": [
+    "Jawaharlal Nehru",
+    "Nehru"
+   ],
+   "answer": "Jawaharlal Nehru",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who formulated the three laws of motion?",
+   "gold": [
+    "Isaac Newton",
+    "Newton"
+   ],
+   "answer": "Isaac Newton",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who painted The Starry Night?",
+   "gold": [
+    "Vincent van Gogh",
+    "van Gogh"
+   ],
+   "answer": "Vincent van Gogh",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who wrote the Harry Potter books?",
+   "gold": [
+    "J. K. Rowling",
+    "J.K. Rowling",
+    "Rowling"
+   ],
+   "answer": "JK Rowling",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who is known as the Father of the Nation in India?",
+   "gold": [
+    "Mahatma Gandhi",
+    "Gandhi"
+   ],
+   "answer": "Mahatma Gandhi",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who wrote the Origin of Species?",
+   "gold": [
+    "Charles Darwin",
+    "Darwin"
+   ],
+   "answer": "Charles Darwin",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Which scientist won Nobel Prizes in both physics and chemistry and studied radioactivity?",
+   "gold": [
+    "Marie Curie",
+    "Curie"
+   ],
+   "answer": "Marie Curie",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who invented the telephone?",
+   "gold": [
+    "Alexander Graham Bell",
+    "Graham Bell",
+    "Bell"
+   ],
+   "answer": "Alexander Graham Bell",
+   "correct": true
+  },
+  {
+   "cat": "people_works",
+   "q": "Who wrote The Adventures of Tom Sawyer?",
+   "gold": [
+    "Mark Twain",
+    "Twain"
+   ],
+   "answer": "Mark Twain",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What is the chemical symbol for gold?",
+   "gold": [
+    "Au"
+   ],
+   "answer": "Au (atomic symbol)",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What is the chemical formula for water?",
+   "gold": [
+    "H2O",
+    "H\u2082O"
+   ],
+   "answer": "H2O (water)",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What gas do plants absorb from the air for photosynthesis?",
+   "gold": [
+    "carbon dioxide",
+    "CO2"
+   ],
+   "answer": "Carbon dioxide",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What is the largest planet in the Solar System?",
+   "gold": [
+    "Jupiter"
+   ],
+   "answer": "Jupiter\u2019s moon Ganymede",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "Which planet is known as the Red Planet?",
+   "gold": [
+    "Mars"
+   ],
+   "answer": "Mars (Mars)",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What is the closest star to the Earth?",
+   "gold": [
+    "the Sun",
+    "Sun"
+   ],
+   "answer": "Alpha Centauri",
+   "correct": false
+  },
+  {
+   "cat": "science",
+   "q": "How many legs does an insect have?",
+   "gold": [
+    "six",
+    "6"
+   ],
+   "answer": "10 legs",
+   "correct": false
+  },
+  {
+   "cat": "science",
+   "q": "What is the hardest natural substance?",
+   "gold": [
+    "diamond"
+   ],
+   "answer": "Diamond (diamond)",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What is the boiling point of water at sea level in degrees Celsius?",
+   "gold": [
+    "100"
+   ],
+   "answer": "100 degrees Celsius",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What part of the cell contains the genetic material DNA in plants and animals?",
+   "gold": [
+    "nucleus"
+   ],
+   "answer": "The nucleus",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What is the chemical symbol for iron?",
+   "gold": [
+    "Fe"
+   ],
+   "answer": "Fe (ferrous)",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "Which organ pumps blood around the human body?",
+   "gold": [
+    "heart"
+   ],
+   "answer": "Heart and lungs",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What is the most abundant gas in Earth's atmosphere?",
+   "gold": [
+    "nitrogen"
+   ],
+   "answer": "Oxygen (O2)",
+   "correct": false
+  },
+  {
+   "cat": "science",
+   "q": "What is the freezing point of water in degrees Celsius?",
+   "gold": [
+    "0",
+    "zero"
+   ],
+   "answer": "0 degrees Celsius",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "Which planet is closest to the Sun?",
+   "gold": [
+    "Mercury"
+   ],
+   "answer": "Mercury and Venus",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "How many bones are in the adult human body?",
+   "gold": [
+    "206"
+   ],
+   "answer": "206 bones",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What is the speed of light in a vacuum, approximately, in kilometres per second?",
+   "gold": [
+    "300,000",
+    "300000",
+    "299,792",
+    "299792",
+    "3 x 10^5",
+    "3\u00d710^5"
+   ],
+   "answer": "300,000,000 metres per second",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What force keeps the planets in orbit around the Sun?",
+   "gold": [
+    "gravity",
+    "gravitation"
+   ],
+   "answer": "Gravity from the Sun",
+   "correct": true
+  },
+  {
+   "cat": "science",
+   "q": "What is the chemical symbol for oxygen?",
+   "gold": [
+    "O"
+   ],
+   "answer": "O2 (oxygen)",
+   "correct": false
+  },
+  {
+   "cat": "science",
+   "q": "What is the powerhouse of the cell?",
+   "gold": [
+    "mitochondria",
+    "mitochondrion"
+   ],
+   "answer": "mitochondria (the cell\u2019s power plant)",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "What is the tallest mountain in the world?",
+   "gold": [
+    "Mount Everest",
+    "Everest"
+   ],
+   "answer": "Mount Everest",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "In which country is Mount Everest's summit located, on the border with China?",
+   "gold": [
+    "Nepal"
+   ],
+   "answer": "Nepal, Bhutan",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "What is the longest river in Africa?",
+   "gold": [
+    "Nile"
+   ],
+   "answer": "Nile River",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "What is the largest ocean on Earth?",
+   "gold": [
+    "Pacific"
+   ],
+   "answer": "Pacific Ocean",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "What is the largest desert in Africa?",
+   "gold": [
+    "Sahara"
+   ],
+   "answer": "Sahara Desert",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "On which continent is Egypt?",
+   "gold": [
+    "Africa"
+   ],
+   "answer": "Africa and Asia",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "Which river flows through Paris?",
+   "gold": [
+    "Seine"
+   ],
+   "answer": "Seine River",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "Which country has the largest land area in the world?",
+   "gold": [
+    "Russia"
+   ],
+   "answer": "Russia and China",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "In which city is the Taj Mahal?",
+   "gold": [
+    "Agra"
+   ],
+   "answer": "Agra, India",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "What is the largest continent by area?",
+   "gold": [
+    "Asia"
+   ],
+   "answer": "Antarctica (4th)",
+   "correct": false
+  },
+  {
+   "cat": "geography",
+   "q": "Which river is considered the holiest in Hinduism?",
+   "gold": [
+    "Ganges",
+    "Ganga"
+   ],
+   "answer": "Ganges River",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "In which country are the pyramids of Giza?",
+   "gold": [
+    "Egypt"
+   ],
+   "answer": "Egypt and India",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "Which mountain range separates India from the Tibetan Plateau?",
+   "gold": [
+    "Himalaya",
+    "Himalayas"
+   ],
+   "answer": "The Himalayas",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "What is the smallest country in the world by area?",
+   "gold": [
+    "Vatican"
+   ],
+   "answer": "Vatican City",
+   "correct": true
+  },
+  {
+   "cat": "geography",
+   "q": "In which country is the city of Sydney?",
+   "gold": [
+    "Australia"
+   ],
+   "answer": "Australia, New Zealand",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "In what year did India gain independence from Britain?",
+   "gold": [
+    "1947"
+   ],
+   "answer": "1947 (India gained independence from Britain)",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "In what year did World War II end?",
+   "gold": [
+    "1945"
+   ],
+   "answer": "1945 (1945-1949)",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "In what year did World War I begin?",
+   "gold": [
+    "1914"
+   ],
+   "answer": "1914-1918",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "In what year did Rabindranath Tagore win the Nobel Prize in Literature?",
+   "gold": [
+    "1913"
+   ],
+   "answer": "1913 (1913)",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "In what year did humans first land on the Moon?",
+   "gold": [
+    "1969"
+   ],
+   "answer": "1969 (1st manned mission)",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "In what year did the Berlin Wall fall?",
+   "gold": [
+    "1989"
+   ],
+   "answer": "1989 (1990)",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "In what year did Christopher Columbus first reach the Americas?",
+   "gold": [
+    "1492"
+   ],
+   "answer": "1492 A.D.",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "In what year was the United States Declaration of Independence signed?",
+   "gold": [
+    "1776"
+   ],
+   "answer": "1776 (1776)",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "Which empire built the Colosseum in Rome?",
+   "gold": [
+    "Roman"
+   ],
+   "answer": "Roman Empire",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "Which ship sank in 1912 after hitting an iceberg?",
+   "gold": [
+    "Titanic"
+   ],
+   "answer": "RMS Titanic",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "In what year did the French Revolution begin?",
+   "gold": [
+    "1789"
+   ],
+   "answer": "1789 (1789)",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "Which Mughal emperor built the Taj Mahal?",
+   "gold": [
+    "Shah Jahan"
+   ],
+   "answer": "Shah Jahan",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "Who was the first emperor of the Maurya Empire?",
+   "gold": [
+    "Chandragupta"
+   ],
+   "answer": "Ashoka the Great",
+   "correct": false
+  },
+  {
+   "cat": "history",
+   "q": "In what year did the Soviet Union dissolve?",
+   "gold": [
+    "1991"
+   ],
+   "answer": "1991 (1991-1992)",
+   "correct": true
+  },
+  {
+   "cat": "history",
+   "q": "Which country first used atomic bombs in war?",
+   "gold": [
+    "United States",
+    "USA",
+    "U.S.",
+    "America"
+   ],
+   "answer": "Japan in World War II",
+   "correct": false
+  }
+ ]
+}

@@ -288,7 +288,7 @@ Because the windows do not overlap, the first tokens of chunk 2 are conditioned 
 
 If you later want an in-distribution held-out perplexity metric alongside `wikitext` (for example, a fixed FineWeb-Edu slice excluded from `src.data.prepare`), you have two lightweight options:
 
-- **Standalone script (~40 lines):** Read a held-out `.bin` shard with the same `uint16` memmap reader from `src/data/dataset.py`, run `model(x)` under `torch.no_grad()` and `bf16` autocast over fixed `2048`-token windows (slicing `:real_vocab_size` identically to `scripts/train.py`), and report `mean_ce` and `math.exp(mean_ce)`. Because it uses fixed `2048`-token blocks with no padding, you can batch it (`micro_batch=16`) without changing `Attention`.
+- **Standalone script (≈40 lines):** Read a held-out `.bin` shard with the same `uint16` memmap reader from `src/data/dataset.py`, run `model(x)` under `torch.no_grad()` and `bf16` autocast over fixed `2048`-token windows (slicing `:real_vocab_size` identically to `scripts/train.py`), and report `mean_ce` and `math.exp(mean_ce)`. Because it uses fixed `2048`-token blocks with no padding, you can batch it (`micro_batch=16`) without changing `Attention`.
 - **Custom harness task YAML:** Point a local `lm_eval` task YAML with `output_type: loglikelihood_rolling` at your held-out JSONL/Parquet file and pass `--include_path` to `lm_eval`.
 
 ---
@@ -297,7 +297,7 @@ If you later want an in-distribution held-out perplexity metric alongside `wikit
 
 ### step_7000 (2026-11-20)
 
-Checkpoint: `step_7000.pt` — step 7,000 / 19,073 planned steps (~37% through
+Checkpoint: `step_7000.pt` — step 7,000 / 19,073 planned steps (≈37% through
 the single 10B-token FineWeb-Edu pretraining run), loss ≈2.8 at this point.
 Tokens seen so far: 7,000 × 524,288 ≈ **3.67B** (of a 10B-token total planned
 for this entire run). Raw results: [`benchmark/step_7000.json`](../benchmark/step_7000.json).
@@ -305,9 +305,9 @@ for this entire run). Raw results: [`benchmark/step_7000.json`](../benchmark/ste
 | Task | Metric | Score | Random baseline |
 |---|---|---|---|
 | PIQA | acc_norm | 64.7% | 50% (2-choice) |
-| ARC-Easy | acc_norm | 51.1% | ~25% (multi-choice) |
+| ARC-Easy | acc_norm | 51.1% | ≈25% (multi-choice) |
 | HellaSwag | acc_norm | 37.0% | 25% (4-choice) |
-| LAMBADA (openai) | acc (exact last-word match) | 29.0% | ~0% (strict exact-match) |
+| LAMBADA (openai) | acc (exact last-word match) | 29.0% | ≈0% (strict exact-match) |
 | LAMBADA (openai) | perplexity | 58.1 | — |
 | WinoGrande | acc | 52.4% | 50% (2-choice) |
 | ARC-Challenge | acc_norm | 28.0% | 25% (4-choice) |
@@ -317,7 +317,7 @@ HellaSwag) are clearly above chance already. LAMBADA's strict exact-match
 accuracy (29%) is a genuinely positive signal of real language-modeling
 quality this early. The two hardest, most reasoning-heavy benchmarks
 (ARC-Challenge, WinoGrande) sitting near chance is expected at this model
-size (~915M total / ~211M active) and training stage — not a sign of a
+size (≈915M total / ≈211M active) and training stage — not a sign of a
 problem.
 
 #### Comparison against other models of similar scale
@@ -325,8 +325,8 @@ problem.
 | Task | **Ours (step_7000)** | GPT-2-124M (fully trained) | Pythia-160M (fully trained) | Pythia-410M (fully trained) | SmolLM2-360M (fully trained, curated data) |
 |---|---|---|---|---|---|
 | PIQA | 64.7% | 62.9% | 73.1% | 74.1% | 77.6% |
-| ARC-Easy | 51.1% | 39.5% | 46.3% | 51.2% | ~61.0%* |
-| ARC-Challenge | 28.0% | ~19%** | 19.2% | 21.8% | ~61.0%* |
+| ARC-Easy | 51.1% | 39.5% | 46.3% | 51.2% | ≈61.0%* |
+| ARC-Challenge | 28.0% | ≈19%** | 19.2% | 21.8% | ≈61.0%* |
 | HellaSwag | 37.0% | 31.1% | — | — | 69.3% |
 | WinoGrande | 52.4% | 51.6% | 59.2% | 59.3% | 61.1% |
 | LAMBADA acc | 29.0% | 32.6% | 63.3% | 65.7% | — |
@@ -340,10 +340,10 @@ in this table.
 
 | Model | Training tokens | Notes |
 |---|---|---|
-| **Ours (step_7000)** | ~3.67B seen so far (**10B planned total** for the entire run) | Single pass (not multiple epochs) over FineWeb-Edu `sample-10BT` |
-| GPT-2-124M | ~8-9B unique tokens (WebText), ~10-53B total across training | WebText itself is ~8-9B tokens; the original paper does not state an exact epoch count, so total tokens-seen estimates vary by source |
-| Pythia-160M / 410M | ~300B tokens (exactly 299,892,736,000) | 1 epoch over the Pile: 143,000 steps × 1024 batch × 2048 seq_len — precisely documented in the Pythia paper |
-| SmolLM2-360M | ~4T tokens (4,000B) | Multi-stage curated-data curriculum (same tokenizer family as ours) |
+| **Ours (step_7000)** | ≈3.67B seen so far (**10B planned total** for the entire run) | Single pass (not multiple epochs) over FineWeb-Edu `sample-10BT` |
+| GPT-2-124M | ≈8-9B unique tokens (WebText), ≈10-53B total across training | WebText itself is ≈8-9B tokens; the original paper does not state an exact epoch count, so total tokens-seen estimates vary by source |
+| Pythia-160M / 410M | ≈300B tokens (exactly 299,892,736,000) | 1 epoch over the Pile: 143,000 steps × 1024 batch × 2048 seq_len — precisely documented in the Pythia paper |
+| SmolLM2-360M | ≈4T tokens (4,000B) | Multi-stage curated-data curriculum (same tokenizer family as ours) |
 
 **Why this context matters:** our model is already ahead of GPT-2-124M on
 most tasks and competitive with the fully-trained Pythia-160M on ARC-Easy/
@@ -368,7 +368,7 @@ Sources: [Pythia paper](https://arxiv.org/pdf/2304.01373),
 
 ### step_8000 (2026-11-20)
 
-Checkpoint: `step_8000.pt` — step 8,000 / 19,073 planned steps (~42% through
+Checkpoint: `step_8000.pt` — step 8,000 / 19,073 planned steps (≈42% through
 the run). Tokens seen: 8,000 × 524,288 ≈ **4.19B**. Raw results:
 [`benchmark/step_8000.json`](../benchmark/step_8000.json).
 
@@ -383,7 +383,7 @@ the run). Tokens seen: 8,000 × 524,288 ≈ **4.19B**. Raw results:
 | ARC-Challenge | acc_norm | 28.0% | 27.6% | -0.4 (noise) |
 
 **Read:** most metrics are flat within statistical noise over just 1,000
-steps (stderr on most of these tasks is ~1-1.4%, so ±1 point swings aren't
+steps (stderr on most of these tasks is ≈1-1.4%, so ±1 point swings aren't
 meaningful on their own). LAMBADA is the exception — a real, consistent
 improvement. This is the exact metric flagged in the `step_7000` comparison
 above as most dependent on total tokens seen (vs. Pythia/SmolLM2's much
@@ -392,7 +392,7 @@ continues is a good, expected signal rather than a coincidence.
 
 ### step_9000 (2026-11-20)
 
-Checkpoint: `step_9000.pt` — step 9,000 / 19,073 planned steps (~47% through
+Checkpoint: `step_9000.pt` — step 9,000 / 19,073 planned steps (≈47% through
 the run). Tokens seen: 9,000 × 524,288 ≈ **4.72B**. Raw results:
 [`benchmark/step_9000.json`](../benchmark/step_9000.json).
 
@@ -406,7 +406,7 @@ the run). Tokens seen: 9,000 × 524,288 ≈ **4.72B**. Raw results:
 | WinoGrande | acc | 51.7% | 51.5% | -0.2 (noise) |
 | ARC-Challenge | acc_norm | 27.6% | 27.2% | -0.4 (noise) |
 
-**Read:** PIQA shows a real move this step (+1.4, clear of its ~1.1%
+**Read:** PIQA shows a real move this step (+1.4, clear of its ≈1.1%
 stderr), and HellaSwag keeps climbing steadily (+0.5, consistent with its
 trend since step_7000: 37.0% → 38.0% → 38.5%). LAMBADA perplexity continues
 its monotonic improvement (58.1 → 50.3 → 49.3), now 15% better than the
@@ -419,11 +419,11 @@ stage.
 
 ### step_18000 (2026-11-21)
 
-Checkpoint: `step_18000.pt` — step 18,000 / 19,073 planned steps (~94%
+Checkpoint: `step_18000.pt` — step 18,000 / 19,073 planned steps (≈94%
 through the run). Tokens seen: 18,000 × 524,288 ≈ **9.44B**. Raw results:
 [`benchmark/step_18000.json`](../benchmark/step_18000.json). This entry
 jumps 9,000 steps ahead of the last logged checkpoint (`step_9000`), so
-these deltas reflect ~4.7B additional tokens, not the usual 1,000-step
+these deltas reflect ≈4.7B additional tokens, not the usual 1,000-step
 increment.
 
 | Task | Metric | step_9000 | step_18000 | Δ |
@@ -437,7 +437,7 @@ increment.
 | ARC-Challenge | acc_norm | 27.2% | **29.9%** | **+2.7** |
 
 **Read:** every task except WinoGrande moves well clear of its stderr band
-(~1-1.4% on most tasks) — the clearest real-learning signal of the run so
+(≈1-1.4% on most tasks) — the clearest real-learning signal of the run so
 far, matching the near-doubling of tokens seen since step_9000. LAMBADA
 perplexity has now fallen 37% from the step_7000 baseline (58.1 → 31.0)
 with accuracy up 6.3 points (29.0% → 35.3%), confirming it as the most
@@ -472,7 +472,7 @@ to its `min_lr_ratio` floor well before this point -- there just isn't much
 room left for the last steps to move anything. This closes out Phase 1:
 the model plateaus at PIQA 68%, ARC-Easy 56%, HellaSwag 43%, LAMBADA acc
 35%/ppl 32, with WinoGrande and ARC-Challenge essentially at their
-model-size-appropriate floor (~50% and ~30%). Phase 2 continual training
+model-size-appropriate floor (≈50% and ≈30%). Phase 2 continual training
 is the next lever, not further steps on this run.
 
 ---
@@ -491,7 +491,7 @@ Phase 2's own counter. In W&B, `global_step` = Phase 2 step + 19,073.
 |---|---|---|---|
 | Binding probe v2 (100 cases, 10 categories) | `scripts/probe_entity_binding.py` | log-likelihood minimal pairs: correct only if the preference flips with the named entity | every 1,000 steps |
 | Binding probe v3 (70 cases) | same | same; sentence structures disjoint from v2 and from the contrastive training corpus | every 1,000 steps |
-| Binding probe v4 (112 cases, added at step 9,000) | same | same; built by `scripts/gen_contrastive_v2.py` only from sentence frames, entity pairs and names **held out** of all contrastive training data. A coin flip scores ~25% (both contexts must be right) | every 2,000 steps from 11,000 |
+| Binding probe v4 (112 cases, added at step 9,000) | same | same; built by `scripts/gen_contrastive_v2.py` only from sentence frames, entity pairs and names **held out** of all contrastive training data. A coin flip scores ≈25% (both contexts must be right) | every 2,000 steps from 11,000 |
 | Code fill-in-the-middle (60 held-out lines) | `scripts/eval_phase2_quick.py` | PSM prompt, greedy to end of line, exact match | every 1,000 steps |
 | Agentic tool-call format (23 held-out episodes) | same | emits `<tool_call>`, closes it, valid JSON, name = gold, argument keys = gold, ends the turn | every 1,000 steps |
 | Reasoning format (8 held-out episodes) | same | opens `<think>`, closes `</think>` within 512 tokens | every 1,000 steps |
@@ -506,7 +506,7 @@ Three measurement fixes came first, because the numbers aren't trustworthy
 without them:
 
 1. **Determinism.** Two identical forward passes of this MoE differed by up
-   to ~0.1 in the logits. Non-deterministic CUDA kernels flip near-tied top-8
+   to ≈0.1 in the logits. Non-deterministic CUDA kernels flip near-tied top-8
    router choices, so greedy generations diverged and close probe cases
    flipped between runs. `src/eval/determinism.py` (deterministic algorithms
    plus `CUBLAS_WORKSPACE_CONFIG=:4096:8`) makes repeated runs bit-identical.
@@ -539,7 +539,7 @@ Raw files: [`benchmark/phase2/`](../benchmark/phase2/).
 | Probe v4 (/112, chance ≈ 28) | 13 | 21 | — | — | — | 11 | 17 | 13 | 24 | 18 | 17 |
 | Routing: mean load CV | 0.623 | 0.385 | 0.318 | 0.293 | 0.285 | 0.274 | 0.264 | 0.260 | 0.252 | 0.252 | 0.246 |
 
-The agentic set has only 23 episodes, so one episode is ~4 points. Read it as a trend, not as exact percentages.
+The agentic set has only 23 episodes, so one episode is ≈4 points. Read it as a trend, not as exact percentages.
 
 **Milestones:**
 
@@ -562,7 +562,7 @@ Notes on how this was measured:
 - **No early-exit cheats.** Every pass, at both checkpoints, was checked for `exit()` / `sys.exit` / `os._exit` before the tests run. None found.
 - **Steps 9k → 19k:** HumanEval +6 new solves / −2 lost; MBPP +32 / −11. Syntax errors fell (HumanEval 23 → 17, MBPP 45 → 22). Most failures are code that runs but returns the wrong answer.
 - **Format failures on MBPP that SFT should fix:** NameError 36, and `input()` calls 21.
-- **Easy problems only so far.** Every HumanEval pass is in the first ~60 problems.
+- **Easy problems only so far.** Every HumanEval pass is in the first ≈60 problems.
 - **Contamination isn't ruled out.** `python-edu-cleaned` hasn't been checked against HumanEval/MBPP. StarCoderData was decontaminated by BigCode.
 
 **English forgetting gate** (every 2,000 steps):
@@ -590,14 +590,14 @@ Notes on how this was measured:
   in either phase (within its stderr). HellaSwag (−2.2) is the one task still
   clearly down. Phase 1 was measured after its learning-rate decay and these
   are at Phase 2's peak, so the anneal should add more. As insurance,
-  especially for HellaSwag, Stage 2B keeps FineWeb-Edu at ~5.7% instead of 0%
+  especially for HellaSwag, Stage 2B keeps FineWeb-Edu at ≈5.7% instead of 0%
   (applied by resuming from `step_19000.pt`; an exact continuation).
 - **Binding has not moved, and probe v4 explains why.** v2 stays 24–31 and v3
   3–6. Probe v4 uses only phrasings and entities that never appear in any
   contrastive training data. It scores 13/112 for Phase 1 and 11/112 at step
-  9,000, both **below** the ~28 a coin flip would get: the model picks the
+  9,000, both **below** the ≈28 a coin flip would get: the model picks the
   same attribute regardless of which entity is named. Contrastive validation
-  loss went flat at ~0.59 by step ~500, and the model began copying v1's
+  loss went flat at ≈0.59 by step ≈500, and the model began copying v1's
   fixed phrases ("Put the other way around:") into free generation. It
   learned the template, not the binding. For the anneal, v1 is replaced by
   `scripts/gen_contrastive_v2.py`:
@@ -611,6 +611,73 @@ Notes on how this was measured:
   overloaded experts since step 3,000. One layer-0 expert is briefly starved
   at some checkpoints, but a different one each time, which is rotation, not
   death.
+
+### Final results: Stage 2B anneal (steps 21,000 and 22,888)
+
+Stage 2B (steps 19,073–22,888, 2.0B tokens) linearly decays the learning rate to 6e-6, uses contrastive **v2** instead of v1, keeps FineWeb-Edu at ≈5.7%, and triples `code_python_edu`. Step 22,888 is the Phase 2 final checkpoint.
+
+| Eval | P2 19k (end of plateau) | P2 21k (mid-anneal) | **P2 22,888 (final)** |
+|---|---|---|---|
+| Probe v2 (/100) | 30 | 35 | **37** |
+| Probe v3 (/70, new structures) | 4 | 6 | 6 |
+| Probe v4 (/112, held out from contrastive v2; chance ≈ 28) | 17 | **82** | 77 |
+| Agentic: valid call, name = gold (23 episodes) | 35% | 39% | 39% |
+| Agentic: argument keys = gold | 30% | 35% | 39% |
+| Reasoning: closes `</think>` ≤512 tok | 0% | 0% | 0% |
+| FIM exact match | 3.3% | 3.3% | 5.0% |
+| Routing: mean load CV / starved / overloaded | 0.246 | 0.229 / 0 / 0 | **0.210 / 0 / 0** |
+| English 6-task average | 45.98 | 46.65 | **46.92** |
+
+**Milestones and execution** (Phase 1 final → P2 19k → **P2 22,888**):
+
+| Benchmark | Phase 1 | P2 19k | **P2 22,888** |
+|---|---|---|---|
+| CRUXEval-O pass@1 (800) | 0.0% | 17.7% | **20.7%** (96% parsable) |
+| BFCL simple / multiple / parallel (AST) | 0 / 0 / 0% | 25 / 13 / 0% | **25 / 17 / 1%** |
+| HumanEval pass@1 (sandbox) | 0/164 | 19/164 (11.6%) | **24/164 (14.6%)** |
+| MBPP pass@1 (full test, sandbox) | — | 63/500 (12.6%) | **91/500 (18.2%)** |
+
+- **No early-exit cheats** in any passing completion at 22,888.
+- The step-19k HumanEval run was repeated on the H100. It passed **exactly the same 19 problems** as the A10 run, so generation is reproducible across GPUs.
+
+**English forgetting gate at the end of the anneal:**
+
+| Task | Phase 1 | 19k | 21k | **22,888** |
+|---|---|---|---|---|
+| HellaSwag | 42.86 | 40.26 | 41.07 | 41.74 |
+| PIQA | 68.17 | 66.87 | 68.82 | 67.85 |
+| ARC-Easy | 56.10 | 55.09 | 54.92 | 54.12 |
+| ARC-Challenge | 29.78 | 29.18 | 29.10 | 28.58 |
+| WinoGrande | 51.38 | 52.25 | 52.96 | **54.30** |
+| LAMBADA (openai) | 34.80 | 32.21 | 33.01 | **34.91** |
+| **Average** | **47.18** | 45.98 | 46.65 | **46.92** |
+
+**Closed-book knowledge** (new eval, added for Phase 2.5; deterministic greedy generation):
+
+| | Phase 1 final | **P2 22,888** |
+|---|---|---|
+| Simple-facts probe (95 questions, `benchmark/data/facts-closedbook/`) | 81/95 | 82/95 |
+| TriviaQA (5-shot, first 2,000, exact match) | 8.5% | 11.6% |
+| NQ-open (5-shot, 3,610, exact match) | 2.9% | 3.9% |
+
+From Phase 2.5 on, generation evals use a **KV cache** in the lm-eval adapter (`generate_until`), which is about 3× faster. On step 22,888 it reproduces the facts probe exactly (82/95, 0 answers differ). TriviaQA and NQ each differ by one answer (11.55% / 3.82% with the cache vs 11.60% / 3.85%), from bf16 numerics on near-ties. All Phase 2.5 comparisons use the KV-cache baseline (`closedbook_*_phase2_step22888_kv.json`).
+
+**Code contamination check** (`scripts/contamination_check_code.py`; 20-token windows against the two Python training pools, 2.75B tokens):
+- 36/164 HumanEval and 105/500 MBPP reference solutions share at least one window with training.
+- **Passed problems are not more overlapping than failed ones:** HumanEval 14% vs 23%, MBPP 24% vs 20%. So the scores aren't inflated by memorization.
+- The worst case, HumanEval/105, is almost verbatim in Python-edu, and the model still fails it.
+- Raw results: `benchmark/phase2/contamination_code.json`.
+
+### Read (final)
+
+- **The anneal did what WSD promises.** Every axis is at or near its best at the final checkpoint:
+  - code execution: HumanEval +3.0 points, MBPP +5.6 over step 19k
+  - CRUXEval-O 20.7%
+  - English back to within 0.3 of Phase 1: WinoGrande and LAMBADA now above it, and HellaSwag recovered half its gap
+  - routing at its most balanced: CV 0.21, nothing starved or overloaded
+- **Binding transfers to new words, not to new structures.** Probe v4 jumped 17 → 82 as soon as contrastive v2 entered, then eased to 77 at the very end of the decay. Probe v3 stayed at 6. Contrastive v3, with new structures and held-out structures measured by probe v5, is built for Phase 2.5a ([plan-03](plan-03-phase-2.5-knowledge-context.md)).
+- **Facts barely moved across 12B tokens of Phase 2:** simple facts 81 → 82, TriviaQA 8.5 → 11.6%, NQ 2.9 → 3.9%. The errors are confusions between related concepts (oxygen vs CO₂, nucleus vs mitochondria). That's the motivation for Phase 2.5a's knowledge-dense mix.
+- **Tool use is format-limited, which SFT should fix.** BFCL multiple improved (13 → 17%) and parallel calls appeared (1%). The quick agentic check plateaued at ≈39%, and `</think>` is still never closed within 512 tokens.
 
 ---
 

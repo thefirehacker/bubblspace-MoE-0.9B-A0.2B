@@ -4,7 +4,7 @@ This covers everything from the first message to the debug run finishing success
 
 ## 1. The ask
 
-You had an H100 instance (`fire01`, Lambda Cloud, region `us-west-3`) already running and a hand-written architecture spec for a ~0.9B-total/~0.2B-active MoE language model (GQA + QK-norm + RoPE, 64-expert dropless top-8 SwiGLU MoE, ZeroCenteredRMSNorm, Muon + AdamW optimizers), to be trained on FineWeb-Edu. You also gave a persistent-storage filesystem ID and asked, up front, whether mounting it would involve any cross-region transfer cost.
+You had an H100 instance (`fire01`, Lambda Cloud, region `us-west-3`) already running and a hand-written architecture spec for a ≈0.9B-total/≈0.2B-active MoE language model (GQA + QK-norm + RoPE, 64-expert dropless top-8 SwiGLU MoE, ZeroCenteredRMSNorm, Muon + AdamW optimizers), to be trained on FineWeb-Edu. You also gave a persistent-storage filesystem ID and asked, up front, whether mounting it would involve any cross-region transfer cost.
 
 ## 2. Planning
 
@@ -60,7 +60,7 @@ Wrote `scripts/build_tokenizer.py`, ran it for real: base SmolLM2 tokenizer is 4
 
 Wired it through: `configs/base.yaml` updated, `src/data/prepare.py` rewritten to tokenize with this tokenizer instead of `tiktoken`/GPT-2, `src/data/fim.py` added (PSM fill-in-the-middle transform, applied only to code when explicitly enabled), `scripts/train.py` updated to slice the 116 padding vocab rows out of the loss entirely (not just rely on cross-entropy to ignore them — they're excluded from the softmax too), `scripts/sanity_check_data.py` added for round-trip / bytes-per-token / max-token-id checks.
 
-**A correction worth recording**: the first bytes-per-token comparison against GPT-2 used a 56-byte toy string and I misread my own output, telling you SmolLM2's tokenizer was "less efficient on code." It was backwards. Re-measured properly on ~800KB of *real* held-out text (real FineWeb-Edu docs, real Python stdlib source, real FineMath docs) and got the opposite, correct conclusion: SmolLM2-based tokenizer is **~1.7x more token-efficient on Python code** than GPT-2, roughly tied on general English, and only ~7% behind on math. No reason to switch.
+**A correction worth recording**: the first bytes-per-token comparison against GPT-2 used a 56-byte toy string and I misread my own output, telling you SmolLM2's tokenizer was "less efficient on code." It was backwards. Re-measured properly on ≈800KB of *real* held-out text (real FineWeb-Edu docs, real Python stdlib source, real FineMath docs) and got the opposite, correct conclusion: SmolLM2-based tokenizer is **≈1.7x more token-efficient on Python code** than GPT-2, roughly tied on general English, and only ≈7% behind on math. No reason to switch.
 
 Also added recommended datasets for the coding/agentic goal (English: FineWeb-Edu + Cosmopedia-v2; code: Python-Edu + Stack-v2 subsets for JS/frontend and multi-language backend, per your later ask; agentic: xLAM/Hermes function-calling + OpenThoughts reasoning traces) to the README as a documented plan — not yet downloaded or wired into the pipeline.
 
@@ -105,9 +105,9 @@ The training loop wraps the forward pass in `torch.autocast(dtype=torch.bfloat16
 
 Relaunched. This time it ran clean, start to finish:
 
-- **3051/3051 steps** completed, ~220–250k tokens/sec on the H100.
-- **Loss**: trended from ~4.2–4.3 down to ~3.8–4.0.
-- **Load-balance loss**: stayed at ~1.01–1.02 throughout — very close to the theoretical ideal of 1.0, meaning the 16 debug experts were being routed to almost perfectly evenly.
+- **3051/3051 steps** completed, ≈220–250k tokens/sec on the H100.
+- **Loss**: trended from ≈4.2–4.3 down to ≈3.8–4.0.
+- **Load-balance loss**: stayed at ≈1.01–1.02 throughout — very close to the theoretical ideal of 1.0, meaning the 16 debug experts were being routed to almost perfectly evenly.
 - **grad_norm**: stable the whole run, no spikes.
 - Checkpoints saved at steps 1400, 3000, and the final 3051.
 - W&B logged live, online, to your account the whole time.
@@ -117,4 +117,4 @@ Then ran the checkpoint-resume test explicitly: killed nothing, just loaded the 
 
 ## 10. Where things stand now
 
-Every Phase 7 "debug gate" criterion from the original plan is met. The `torch._grouped_mm` dtype fix is sitting on `fire01` (and in your local working tree) but not yet committed — that's next. After that, the open decision is whether to launch the full ~10B-token FineWeb-Edu-only run now, or wire in the expanded code/agentic data mixture (Python-Edu, Stack-v2 JS/backend subsets, function-calling + reasoning datasets) first.
+Every Phase 7 "debug gate" criterion from the original plan is met. The `torch._grouped_mm` dtype fix is sitting on `fire01` (and in your local working tree) but not yet committed — that's next. After that, the open decision is whether to launch the full ≈10B-token FineWeb-Edu-only run now, or wire in the expanded code/agentic data mixture (Python-Edu, Stack-v2 JS/backend subsets, function-calling + reasoning datasets) first.

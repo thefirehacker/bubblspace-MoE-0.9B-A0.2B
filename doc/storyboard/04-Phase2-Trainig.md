@@ -1,12 +1,12 @@
 # Storyboard 04 — Phase 2: continual training, from design to step 7,000
 
-This covers Phase 2 from the decision to start it through step ~7,000 of 22,888, roughly 13 hours into the run. It includes the data-mix design, the code changes, how the run is split into a plateau and an anneal for continual learning, the evals built to watch it, and what those evals show so far. It's chronological where that helps, and includes the mistakes. The pre-flight profiling has its own storyboard ([03](03-profiling-storyboard.md)), and Phase 1 is in [02.5](02.5-Phase1.md).
+This covers Phase 2 from the decision to start it through step ≈7,000 of 22,888, roughly 13 hours into the run. It includes the data-mix design, the code changes, how the run is split into a plateau and an anneal for continual learning, the evals built to watch it, and what those evals show so far. It's chronological where that helps, and includes the mistakes. The pre-flight profiling has its own storyboard ([03](03-profiling-storyboard.md)), and Phase 1 is in [02.5](02.5-Phase1.md).
 
 ## 1. Where Phase 1 left us
 
 Phase 1 finished at `step_19073`: 10B FineWeb-Edu tokens, a coherent English base model, with PIQA 68.2, ARC-Easy 56.1, HellaSwag 42.9 and LAMBADA 34.8. Phase 1 also exposed two problems that shaped every Phase 2 decision.
 
-1. **The model had never seen code, a tool call or a reasoning trace.** The 12 special tokens (FIM, `<tools>`, `<tool_call>`, `<think>`, …) were in the vocabulary but untrained. Worse, they were actively suppressed: on `step_9000` their embedding norms measured ~1.10, against ~1.28 for normal vocabulary. Nineteen thousand steps of softmax pressure and weight decay had pushed them down with nothing pulling them up.
+1. **The model had never seen code, a tool call or a reasoning trace.** The 12 special tokens (FIM, `<tools>`, `<tool_call>`, `<think>`, …) were in the vocabulary but untrained. Worse, they were actively suppressed: on `step_9000` their embedding norms measured ≈1.10, against ≈1.28 for normal vocabulary. Nineteen thousand steps of softmax pressure and weight decay had pushed them down with nothing pulling them up.
 2. **Entity-attribute binding was weak.** The model activated the right neighbourhood but bound the wrong edge. "The capital of the United States is" → "Washington, DC." followed by "This city is in California". WinoGrande stayed at chance (51%) all run. Our own 100-case minimal-pair probe scored 25/100, with three categories (comparative value, emotional attribution, possession/obligation) at a flat, confound-free zero.
 
 You rejected "small model capacity" as an explanation: if a model can't bind entities at this scale, scale alone won't fix it. So Phase 2 had two jobs: teach code and agentic formats, and attack binding directly. All without losing the English base.
@@ -17,7 +17,7 @@ The mix went through three versions. Each was corrected by evidence, not taste.
 
 ### Version 1 — the first draft (rejected)
 
-71.5% English, about 22% code and 6.6% agentic, on a 5B budget. The audit ([`issue-01-phase2.md`](../issue-01-phase2.md)) showed this would leave the finished model at >90% English overall, and would spread ~1.1B code tokens across 13 languages (~85M each). Continual-pretraining practice puts replay of the old distribution at roughly 20–30%, not 70%. The audit also found the planned code datasets unusable: `the-stack-v2-dedup` and `python-edu` ship only Software Heritage blob IDs, not file text.
+71.5% English, about 22% code and 6.6% agentic, on a 5B budget. The audit ([`issue-01-phase2.md`](../issue-01-phase2.md)) showed this would leave the finished model at >90% English overall, and would spread ≈1.1B code tokens across 13 languages (≈85M each). Continual-pretraining practice puts replay of the old distribution at roughly 20–30%, not 70%. The audit also found the planned code datasets unusable: `the-stack-v2-dedup` and `python-edu` ship only Software Heritage blob IDs, not file text.
 
 ### Version 2 — the audited plan
 
@@ -25,7 +25,7 @@ The mix went through three versions. Each was corrected by evidence, not taste.
 
 The budget tier was an explicit cost decision. 12B is enough for each of 64 experts to see roughly 1B code tokens under top-8 routing, without a multi-day commitment. It works out to about 39 hours on one H100.
 
-The agentic pool came in far smaller than estimated. Episodes are hard-filtered to ≤2048 tokens (dropped, never truncated), and OpenThoughts-114k kept only 8,575 of 114,000 traces because full chains of thought average ~8k tokens. Two sources were added to close the gap, glaive-function-calling-v2 (58.9M tokens, 0.5% dropped) and Bespoke-Stratos-17k (5.5M), for a total of ~375M unique tokens. Rather than repeat that 6×, the agentic target was cut to 1.3B (~3.5× repetition) and the difference moved to code.
+The agentic pool came in far smaller than estimated. Episodes are hard-filtered to ≤2048 tokens (dropped, never truncated), and OpenThoughts-114k kept only 8,575 of 114,000 traces because full chains of thought average ≈8k tokens. Two sources were added to close the gap, glaive-function-calling-v2 (58.9M tokens, 0.5% dropped) and Bespoke-Stratos-17k (5.5M), for a total of ≈375M unique tokens. Rather than repeat that 6×, the agentic target was cut to 1.3B (≈3.5× repetition) and the difference moved to code.
 
 Security checks changed the plan twice:
 - `OpenCoder-LLM/opc-annealing-corpus` was dropped entirely. Hugging Face's ClamAV scan flagged 59 of 85 sampled files in exactly the configs we'd selected.
@@ -46,16 +46,16 @@ Then a fourth group was added: **contrastive binding**. `scripts/gen_contrastive
 - Any document that pairs two entities appearing together in a probe context is removed.
 - Every probe name is removed (Carlos, Emma, Grace, Priya and Wei were dropped).
 
-The first test run was only 78% unique: the physical-fit family has only ~80 possible documents. So the generator now writes only unique documents (61.9M tokens), and repetition is controlled in one place, the sampling weight.
+The first test run was only 78% unique: the physical-fit family has only ≈80 possible documents. So the generator now writes only unique documents (61.9M tokens), and repetition is controlled in one place, the sampling weight.
 
 **Final group weights** (`configs/phase2.yaml`):
 
 | Group | Stage 2A (10B tokens) | Stage 2B (2B tokens) |
 |---|---|---|
-| English + knowledge + STEM | 41.5% | 34% (originally FineWeb-Edu boost 0; changed to ~5.7% at step 19,000) |
+| English + knowledge + STEM | 41.5% | 34% (originally FineWeb-Edu boost 0; changed to ≈5.7% at step 19,000) |
 | Code | 49% | 38% (python-edu boost ×3) |
 | Agentic | 8% | 22% |
-| Contrastive | 1.5% (~150M drawn) | 6% (~120M drawn; v2 corpus from step 19,000) |
+| Contrastive | 1.5% (≈150M drawn) | 6% (≈120M drawn; v2 corpus from step 19,000) |
 
 Two ideas from the review were deliberately left out:
 - **Shared-expert grafting** was rejected. As you pointed out, all 64 routed experts already share the residual stream and every attention layer, so there's no structural gap for a shared expert to fill.
@@ -84,11 +84,11 @@ Phase 2 isn't a fresh run. It continues a model that already went through a full
   - agentic 8% → 22%
   - contrastive 1.5% → 6%
   - code reweighted ×3 toward curated `python-edu-cleaned`
-  - English kept at 34%, but only Wikipedia, Cosmopedia and FineMath; raw FineWeb-Edu is switched off *(changed mid-run: FineWeb-Edu kept at ~5.7%, and contrastive v1 replaced by v2; see section 12)*
+  - English kept at 34%, but only Wikipedia, Cosmopedia and FineMath; raw FineWeb-Edu is switched off *(changed mid-run: FineWeb-Edu kept at ≈5.7%, and contrastive v1 replaced by v2; see section 12)*
 - The reasoning comes from Warmup-Stable-Decay training (used by SmolLM2 and others): data seen during the low-learning-rate tail has an outsized effect on the final checkpoint. Updates there are small and precise, so concentrated specialized data imprints its patterns without the large updates that cause forgetting at high learning rate.
 - This is why the anneal is a separate phase rather than just the end of a curve: the plateau builds broad competence on a mixed stream, and the anneal consolidates the skills we care about most at the point where the model is most receptive and least prone to drift.
 
-Splitting by token count: 10B in the plateau and 2B in the anneal (~17%), in line with the 10–20% decay fraction common in WSD schedules. Stage 2A and 2B are the same run with one config. The sampler reads the current step and switches mixtures at step 19,073 by itself.
+Splitting by token count: 10B in the plateau and 2B in the anneal (≈17%), in line with the 10–20% decay fraction common in WSD schedules. Stage 2A and 2B are the same run with one config. The sampler reads the current step and switches mixtures at step 19,073 by itself.
 
 ## 4. What files changed
 
@@ -113,9 +113,9 @@ Two bugs were caught before any GPU time:
 ## 5. Pre-flight: smoke test and profiling
 
 Covered in detail in [03](03-profiling-storyboard.md):
-- Smoke test #1 passed every correctness check but ran at ~70k tok/s, which projected ~48h.
-- Profiling showed the document mask costs only ~3.7%. My guess that it was the bottleneck was wrong. The real cause was serial data loading from network storage, 86 ms × 16 micro-batches per step with the GPU idle.
-- The background prefetcher brought throughput to ~85.5k tok/s on exactly the same data in the same order, saving ~9 hours.
+- Smoke test #1 passed every correctness check but ran at ≈70k tok/s, which projected ≈48h.
+- Profiling showed the document mask costs only ≈3.7%. My guess that it was the bottleneck was wrong. The real cause was serial data loading from network storage, 86 ms × 16 micro-batches per step with the GPU idle.
+- The background prefetcher brought throughput to ≈85.5k tok/s on exactly the same data in the same order, saving ≈9 hours.
 
 ## 6. Launch
 
@@ -142,9 +142,9 @@ It appears in W&B as run `moe0-9b-a0-2b-phase02` (`lec9ww5h`), in the same proje
 
 - No crashes and no restarts.
 - A liveness check (every 10, then 40 minutes) never fired.
-- The one grad-norm spike (3.1) is the re-warm, and it settled within ~80 steps, as in the smoke test.
-- Load-balance loss started at ~1.16 as the router adapted to code and agentic tokens, and is now back near the ideal 1.0.
-- The finish is projected for ~08:00–09:30 UTC, 23 Nov.
+- The one grad-norm spike (3.1) is the re-warm, and it settled within ≈80 steps, as in the smoke test.
+- Load-balance loss started at ≈1.16 as the router adapted to code and agentic tokens, and is now back near the ideal 1.0.
+- The finish is projected for ≈08:00–09:30 UTC, 23 Nov.
 
 **Per-pool validation loss** (held-out, every 250 steps):
 
@@ -168,9 +168,9 @@ You asked how to read W&B's `tokens_per_expert` histogram. Explaining it turned 
 | Overloaded experts | 21 | 5 | 0 | 0 | 0 |
 | Starved experts | 0 | 2 | 0 | 1 | 0 |
 
-At step 1,000, layer-0 experts 39 and 58 were starved (~0.09× load), and I flagged them as a death risk. They recovered. Since then one layer-0 expert is briefly starved at some checkpoints (17 at step 2,000, 31 at step 5,000), a different one each time. That's rotation, not death.
+At step 1,000, layer-0 experts 39 and 58 were starved (≈0.09× load), and I flagged them as a death risk. They recovered. Since then one layer-0 expert is briefly starved at some checkpoints (17 at step 2,000, 31 at step 5,000), a different one each time. That's rotation, not death.
 
-The analysis also shows real specialization emerging. For example, a layer-1 expert receives code tokens at ~16× the rate of other domains, and a layer-7 expert takes contrastive text at ~12×.
+The analysis also shows real specialization emerging. For example, a layer-1 expert receives code tokens at ≈16× the rate of other domains, and a layer-7 expert takes contrastive text at ≈12×.
 
 ## 9. Building the eval suite
 
@@ -186,7 +186,7 @@ Phase 1's six English benchmarks can't see code, tool calls or binding. You aske
 - `scripts/eval_phase2_milestone.py`: CRUXEval-O (predict a program's output, 2-shot official prompt) and BFCL v3 simple / multiple / parallel, converted to our `<tools>`/`<tool_call>` format and scored by AST match. Neither executes model-written code. HumanEval/MBPP do, so they wait for a sandbox.
 - `scripts/contamination_check.py`: 13-gram overlap of BFCL against the raw ToolMind, Hermes and Glaive files. It found 11 of 603 questions, which are excluded from scoring.
 
-**The determinism discovery.** While adding the KV cache for faster generation, cached and uncached greedy outputs diverged after a few tokens. That looked like a cache bug. It wasn't. Two *identical uncached* forward passes also differed by up to ~0.1 in the logits: non-deterministic CUDA kernels introduce tiny float differences, and those flip near-tied top-8 router choices (0–12 tokens per layer got a different expert set between runs). For evals that means the same checkpoint scores differently run to run. `src/eval/determinism.py` (deterministic algorithms plus a fixed cuBLAS workspace) makes runs bit-identical, and every eval script calls it first. The Phase 1 baseline was re-scored under it: v2 25 → 24/100, the honest number.
+**The determinism discovery.** While adding the KV cache for faster generation, cached and uncached greedy outputs diverged after a few tokens. That looked like a cache bug. It wasn't. Two *identical uncached* forward passes also differed by up to ≈0.1 in the logits: non-deterministic CUDA kernels introduce tiny float differences, and those flip near-tied top-8 router choices (0–12 tokens per layer got a different expert set between runs). For evals that means the same checkpoint scores differently run to run. `src/eval/determinism.py` (deterministic algorithms plus a fixed cuBLAS workspace) makes runs bit-identical, and every eval script calls it first. The Phase 1 baseline was re-scored under it: v2 25 → 24/100, the honest number.
 
 **The eval pipeline:**
 
@@ -220,7 +220,7 @@ The full tables are in [`eval-notes.md`](../eval-notes.md#phase-2-evaluation-con
 **Honest read:**
 1. **Code and agentic formats are being learned.** These moved off zero on external benchmarks. On held-out episodes, step 1,000 generations went from echoing the user to writing well-formed calls like `<tool_call>{"name": "generate_random_color", "arguments": {}}</tool_call>`.
 2. **Reasoning opens `<think>` and rambles.** Many BFCL misses are the model starting a ToolMind-style think block and never reaching the call.
-3. **Binding hasn't moved.** Contrastive validation loss flattened at ~0.59 by step ~500, so the model fitted the corpus's surface statistics almost immediately, but neither probe shows transfer. The anneal (contrastive ×4) is the last chance within this run. If it fails, binding needs a different approach after Phase 2, not more of the same data.
+3. **Binding hasn't moved.** Contrastive validation loss flattened at ≈0.59 by step ≈500, so the model fitted the corpus's surface statistics almost immediately, but neither probe shows transfer. The anneal (contrastive ×4) is the last chance within this run. If it fails, binding needs a different approach after Phase 2, not more of the same data.
 4. **English forgetting is real.**
    - HellaSwag −2.5 and ARC-Easy −3.3 are several standard errors.
    - FineWeb-Edu validation loss rose 0.26, while Wikipedia and Cosmopedia improved.
@@ -233,9 +233,9 @@ The full tables are in [`eval-notes.md`](../eval-notes.md#phase-2-evaluation-con
 - **Unbuffered logs:** use `python -u` for long runs, and monitor through W&B, not the log file.
 - **The KV-cache "bug" was MoE nondeterminism.** Measure the baseline's own variance before blaming new code.
 - **A watcher's exit code isn't a verdict.** The eval-queue watcher exited 1 because its final error-grep found no tracebacks. Read the output, not the status.
-- **Escalation discipline:** I first presented the FineWeb question as a decision needed today. When you asked what it rested on, the honest answer was one validation-loss signal and a decision ~20 hours away. Present watch items as watch items.
+- **Escalation discipline:** I first presented the FineWeb question as a decision needed today. When you asked what it rested on, the honest answer was one validation-loss signal and a decision ≈20 hours away. Present watch items as watch items.
 
-## 12. Mid-run changes at step ~9,000–10,000
+## 12. Mid-run changes at step ≈9,000–10,000
 
 ### The English trend turned
 
@@ -249,13 +249,13 @@ The loss happened early, when the data mix changed, then started recovering at p
 
 ### Decision: FineWeb-Edu back into the anneal
 
-You decided to keep FineWeb-Edu in Stage 2B at its Stage 2A weight: ~5.7% of the anneal's tokens, taken only from Wikipedia, Cosmopedia and FineMath. Code, agentic and contrastive are untouched. Total tokens and steps don't change.
+You decided to keep FineWeb-Edu in Stage 2B at its Stage 2A weight: ≈5.7% of the anneal's tokens, taken only from Wikipedia, Cosmopedia and FineMath. Code, agentic and contrastive are untouched. Total tokens and steps don't change.
 
 You asked whether stopping and restarting causes forgetting. It doesn't. `--resume` restores the weights, both optimizers' state, both learning-rate schedulers and the step counter, so it's an exact continuation, unlike the Phase 1 → 2 transition, which re-warmed the learning rate and changed the data. The only change is which data Stage 2B samples.
 
 ### Contrastive v2
 
-Free generations from the step-9,000 model showed the v1 phrase "Put the other way around:" being copied. Together with flat v3 and a validation loss that plateaued at step ~500, that showed v1 was teaching templates. `scripts/gen_contrastive_v2.py` rebuilds the corpus:
+Free generations from the step-9,000 model showed the v1 phrase "Put the other way around:" being copied. Together with flat v3 and a validation loss that plateaued at step ≈500, that showed v1 was teaching templates. `scripts/gen_contrastive_v2.py` rebuilds the corpus:
 
 | | v1 | v2 |
 |---|---|---|
@@ -263,15 +263,15 @@ Free generations from the step-9,000 model showed the v1 phrase "Put the other w
 | Reference resolution | none | "it" and "the former/latter", with explicit resolution |
 | Question formats | 1 | 9, including either/or |
 | Document shapes | 6 | 9 + possession chains, narrative distractors, two situations per document |
-| Most frequent wrapper phrase | ~17% of documents | 6.4% |
-| Unique tokens | 61.9M (~4.4× repetition over Phase 2) | 133.5M (~0.9× in the anneal) |
+| Most frequent wrapper phrase | ≈17% of documents | 6.4% |
+| Unique tokens | 61.9M (≈4.4× repetition over Phase 2) | 133.5M (≈0.9× in the anneal) |
 
 Its guards assert that:
 - no probe v2/v3 entity pair or name appears
 - no probe v3 frame phrase appears ("The one that was", "of the two", …)
 - no held-out frame appears
 
-The held-out frames, entity pairs and names build **probe v4** (112 cases), the first probe that is template-free by construction. Baselines: Phase 1 13/112, step 1,000 21/112, step 9,000 11/112, all below the ~28 a coin flip scores. That's the honest baseline the anneal has to beat.
+The held-out frames, entity pairs and names build **probe v4** (112 cases), the first probe that is template-free by construction. Baselines: Phase 1 13/112, step 1,000 21/112, step 9,000 11/112, all below the ≈28 a coin flip scores. That's the honest baseline the anneal has to beat.
 
 ### How the restart is set up
 
@@ -287,7 +287,7 @@ Before arming anything, `--resume` was tested on the A10 with a real Phase 2 che
 - **Test 2** passed: resumed at step 1,000 and trained 168 steps cleanly.
 - **Test 3** used the final config with the v2 pool loaded and passed.
 
-`~/switch_2b.sh` on fire01 runs at the step-19,000 checkpoint (~08:25 IST, 23 Nov):
+`~/switch_2b.sh` on fire01 runs at the step-19,000 checkpoint (≈08:25 IST, 23 Nov):
 1. Waits for the file to be complete.
 2. Checks that the process it will stop really is the training process, and that the final config and v2 data are in place.
 3. Stops training and resumes with the same W&B run id.
@@ -323,7 +323,7 @@ Before any model code ran, an adversarial self-test had to pass. It tries networ
 
 **Two snags:**
 - **Empty HumanEval completions.** The first test gave an empty completion for every HumanEval problem. HumanEval prompts end with a bare newline, but this tokenizer merges a newline with the following indentation, so the model treated the lone trailing newline as end of document. Stripping it fixed generation. Without that check the score would have been a false 0%.
-- **Lost work on reorder.** The run was reordered to put Phase 2 first, and you skipped Phase 1's MBPP as meaningless for a model that never saw code. That lost ~55 minutes of Phase 1 HumanEval generation, because the script only saved at the end. It now saves after each benchmark.
+- **Lost work on reorder.** The run was reordered to put Phase 2 first, and you skipped Phase 1's MBPP as meaningless for a model that never saw code. That lost ≈55 minutes of Phase 1 HumanEval generation, because the script only saved at the end. It now saves after each benchmark.
 
 | | Phase 1 final | Phase 2 step 9,000 |
 |---|---|---|
@@ -332,7 +332,7 @@ Before any model code ran, an adversarial self-test had to pass. It tries networ
 
 Checks on the result:
 - **All 57 passes are genuine.** None of the code calls `exit()` early, and none of the passing bodies is near-empty.
-- **The passes are on easier problems.** Every HumanEval pass is in the first ~60 problems.
+- **The passes are on easier problems.** Every HumanEval pass is in the first ≈60 problems.
 - **Contamination isn't ruled out yet.** `python-edu-cleaned` still needs a contamination check against HumanEval/MBPP. StarCoderData was decontaminated by BigCode.
 
 ## 13. Stage 2A complete, and the switch to the anneal
@@ -351,17 +351,17 @@ It ran unattended overnight:
 3. New process launched 2 seconds later with `--resume step_19000.pt` and the same W&B run id.
 4. Confirmed alive after 15 minutes.
 
-Total downtime was ~7 minutes, mostly recompiling. Checks afterwards:
+Total downtime was ≈7 minutes, mostly recompiling. Checks afterwards:
 - **Resume:** the log shows `resumed … at step 19000`, and W&B reports "Resuming run moe0-9b-a0-2b-phase02".
 - **Learning rate:** 2.27e-4 at step 19,280, exactly on the decay line.
 - **Stage 2B mix:** `contrastive_v2=0.060` and `en_fineweb=0.057` as configured.
 - **Loss:** steps 19,000–19,073 (same mix) matched the pre-restart loss.
 
 At the start of the anneal:
-- **Router adjustment:** z-loss rose 11% and load balance by 0.3%, both settling within ~500 steps.
+- **Router adjustment:** z-loss rose 11% and load balance by 0.3%, both settling within ≈500 steps.
 - **Training loss** dropped 1.41 → 1.30, because batches now hold more low-loss agentic and Python tokens.
 - **Validation loss** kept improving for English, code and agentic.
-- **v1 contrastive validation loss jumped 0.59 → 1.67** within ~180 steps of v1 leaving the mix. That's the clearest evidence yet that the model had memorized v1's surface templates rather than the binding behind them.
+- **v1 contrastive validation loss jumped 0.59 → 1.67** within ≈180 steps of v1 leaving the mix. That's the clearest evidence yet that the model had memorized v1's surface templates rather than the binding behind them.
 
 You also asked why the learning rate is flat and then linear, rather than cosine like Phase 1. It's WSD by design: a long plateau to absorb the new data, then a separate decay window paired with the anneal's data shift.
 
@@ -381,17 +381,47 @@ You also asked why the learning rate is flat and then linear, rather than cosine
 - **Binding didn't move.**
 - **Routing reached its best:** load CV 0.246, with no starved experts at the last four checkpoints.
 
-The step-19,000 weights went to HF `main`, with step 9,000 preserved on branch `phase2-step9000`. You decided to skip batched generation for now. HumanEval/MBPP for step 19,000 ran one-at-a-time in ~1.7h.
+The step-19,000 weights went to HF `main`, with step 9,000 preserved on branch `phase2-step9000`. You decided to skip batched generation for now. HumanEval/MBPP for step 19,000 ran one-at-a-time in ≈1.7h.
 
-## 14. Where things stand now
+## 14. The anneal and the final checkpoint
 
-- **Training:** in the anneal, step ~21,200 / 22,888, finishing ~15:20 IST on 23 Nov.
-- **Evals:** step 21,000 next. Then the final checkpoint: full suite plus CRUXEval/BFCL, and HumanEval/MBPP on request.
-- **Still pending with you:**
-  - A contamination check of `python-edu-cleaned` against HumanEval/MBPP.
-  - Batched generation, deferred.
-  - Fixing the eval's "name in tools" check, which scores below the stricter "name = gold".
-  - After Phase 2, the binding plan:
-    - knowledge augmentation (many paraphrases per fact)
-    - SmolLM2-1.7B distillation as a short Phase 2C
-    - SFT, then DPO on consistent vs. contradictory answers
+- **Training finished on 23 Nov at 15:21 IST** (step 22,888, 39h 50m in total). The full training states (weights, both optimizers, schedulers, RNG) for Phase 1 final, step 19,000 and step 22,888 went to [`bubblspace-moe0.9b-a0.2b-training-states`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states). Each export was checked bit-exact against the original `.pt`.
+- **The final evals all ran automatically** (A10 for English, probes, quick suite, routing, CRUXEval/BFCL; H100 for HumanEval/MBPP generation, then the sandbox on the A10):
+
+| | Step 19,000 | Step 21,000 | **Step 22,888** |
+|---|---|---|---|
+| HumanEval / MBPP | 11.6% / 12.6% | — | **14.6% / 18.2%** |
+| CRUXEval-O | 17.7% | — | **20.7%** |
+| BFCL simple / multiple / parallel | 25 / 13 / 0 | — | **25 / 17 / 1** |
+| English average | 45.98 | 46.65 | **46.92** |
+| Probe v2 / v3 / v4 | 30 / 4 / 17 | 35 / 6 / **82** | 37 / 6 / 77 |
+| Routing load CV | 0.246 | 0.229 | **0.210** |
+
+- **What the anneal showed:**
+  - The WSD schedule paid off on every axis.
+  - Contrastive v2 produced the first real binding transfer (probe v4 17 → 82), but **only to new words, not new structures** (probe v3 flat at 6).
+  - Facts barely moved over all of Phase 2: TriviaQA 8.5% → 11.6%, NQ 2.9% → 3.9%, simple facts 81 → 82 of 95.
+- **Two checks closed earlier open questions:**
+  - **Code contamination:** a 20-token-window check of HumanEval/MBPP against the Python pools. Problems the model passed are not more overlapping than the ones it failed, so the code scores are not memorization.
+  - **Reproducibility:** step 19,000's HumanEval run, repeated on the H100, passed exactly the same 19 problems as on the A10.
+- **The chat test after the final checkpoint was humbling.** In free generation the model rambled and mixed up facts ("Tagore won the Nobel in 1923"; "Everest in Uttar Pradesh"). A clean Q/A prompt answered 82/95 simple facts correctly, so part of the problem is base-model behaviour that SFT should fix. The rest is too little exposure to facts. That analysis became Phase 2.5.
+
+## 15. What came next
+
+Phase 2 is closed. The next stages are planned in [plan-03](../plan-03-phase-2.5-knowledge-context.md) and [plan-04](../plan-04-phase-3-sft.md), and every dataset is tracked in [data-pipeline.md](../data-pipeline.md).
+
+1. **Phase 2.5a (20B tokens, context 2048):**
+   - knowledge-dense English: full Wikipedia, fact Q&A (`fact_seeking`), SYNTH, FineWeb-Edu ≥ 4
+   - fresh, never-seen code
+   - relational data:
+     - contrastive v3, with held-out structures measured by the new probe v5
+     - Wikipedia-grounded, fact-checked passages from Qwen3-30B
+     - NLI, CommonsenseQA, ATOMIC and ConceptNet as text
+   - All new pools are decontaminated against the eval sets.
+2. **Phase 2.5b:** context extension to 16,384.
+3. **Phase 3:** SFT at 16k.
+4. **Phase 4:** RL with sandbox rewards.
+
+Two of the new datasets are published:
+- [`bubblspace-contrastive-binding`](https://huggingface.co/datasets/TheFireHacker/bubblspace-contrastive-binding): v1–v3 plus probes v2–v4
+- [`bubblspace-relational-passages-Qwen3-30B`](https://huggingface.co/datasets/TheFireHacker/bubblspace-relational-passages-Qwen3-30B)

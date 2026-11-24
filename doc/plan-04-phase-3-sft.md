@@ -18,10 +18,10 @@ Phase 3 turns it into an assistant that answers inside the chat template, writes
 | Eval | Base (22888) | Target after SFT |
 |---|---|---|
 | HumanEval / MBPP pass@1 (sandbox, chat-prompted) | 14.6% / 18.2% (step 22888) | ≥ base, completion-prompted; no format failures |
-| BFCL simple / multiple / parallel | from final run | clearly up (format errors → ~0) |
+| BFCL simple / multiple / parallel | from final run | clearly up (format errors → ≈0) |
 | **New:** IFEval-style instruction following | — | baseline + report |
 | **New:** stop rate (ends with `<|im_end|>` within budget) | low | ≥ 95% |
-| English 6-task average | ~46.6 | no drop > 1 point |
+| English 6-task average | ≈46.6 | no drop > 1 point |
 | Probe v4 | from final run | no drop |
 | Free-generation spot checks (chat REPL) | — | repetition-free, on-task |
 
@@ -50,19 +50,19 @@ Sizes are Marin's full-dataset token counts. **We'd use a small, filtered slice 
 | Function calling | `AmazonScience/massive` (rendered as OpenAI tool calls) | 11.4B | cc-by-4.0 | simple intent/slot calls; good for format, low diversity → small slice |
 | Terminal agent | `nvidia/Nemotron-Terminal-Corpus` | 6.1B | cc-by-4.0 | keep only traces ≤ 2048 |
 | Terminal agent | `open-thoughts/AgentTrove` | 9.0B | apache-2.0 | mostly long; short ones only |
-| Verified agent traces | penfever OT-Agent traces (qwen3.5-122b-32k etc.) | ~4.4B total | OpenMDW | verifier-valid; mostly long; short ones only |
+| Verified agent traces | penfever OT-Agent traces (qwen3.5-122b-32k etc.) | ≈4.4B total | OpenMDW | verifier-valid; mostly long; short ones only |
 | Reasoning | `Alibaba-Apsara/Superior-Reasoning-SFT-gpt-oss-120b` | 7.1B | cc-by-4.0 | long CoT; probably few fit. Decide on `<think>` use |
 | Reasoning / chat | `andyrdt/gpt-oss-20b-rollouts` | 3.2B | mit | inspect format |
 
 **Excluded:**
 - Raw code and web pools (stack-v3, nemotron_cc_*, starcoder2): pretraining text, not conversations.
-- `marin-community/identity-data`: Marin's identity. We write our own small BubblSpace identity set (~200 conversations).
+- `marin-community/identity-data`: Marin's identity. We write our own small BubblSpace identity set (≈200 conversations).
 - Legal, bio and DNA sets: off-target.
 - safety_pt (refuseweb / safeweb): pretraining-style rephrasings. Revisit if we want refusal behaviour.
 
 Phase 2 already used ToolMind, Glaive FC v2, Hermes FC, OpenThoughts and Bespoke-Stratos as pretraining text. **For SFT, held-out rows of the same sources are fine. Re-using the identical rows mostly re-teaches what the model already saw.**
 
-**Target size:** ~0.6–1.0B tokens, 1–2 epochs. At Phase 2 throughput (~84k tokens/s on the H100), that's **~2–4 h** of training.
+**Target size:** ≈0.6–1.0B tokens, 1–2 epochs. At Phase 2 throughput (≈84k tokens/s on the H100), that's **≈2–4 h** of training.
 
 | Starting mix (to tune after length scans) | Share |
 |---|---|
@@ -70,14 +70,14 @@ Phase 2 already used ToolMind, Glaive FC v2, Hermes FC, OpenThoughts and Bespoke
 | Tool calling + short agent traces | 25% |
 | General chat / instruction following | 25% |
 | Math / reasoning | 8% |
-| Identity | ~0.1% |
-| English replay (FineWeb-Edu, plain LM loss) to limit forgetting | ~2% |
+| Identity | ≈0.1% |
+| English replay (FineWeb-Edu, plain LM loss) to limit forgetting | ≈2% |
 
 ## 4. Data pipeline (per dataset)
 
 1. **HF security scan** (malware / pickle) before any download, as in Phase 2.
 2. **Inspect 50 rows:** format, roles, tool schema, whether the outcome is included.
-3. **Length scan** on ~5k streamed rows with our tokenizer and template → fraction ≤ 2048. Drop a dataset if too little fits.
+3. **Length scan** on ≈5k streamed rows with our tokenizer and template → fraction ≤ 2048. Drop a dataset if too little fits.
 4. **Render to one chat template:** `<|im_start|>system/user/assistant/tool … <|im_end|>`, tools in `<tools>`, calls in `<tool_call>`, results in `<tool_response>`.
 5. **Filter:**
    - drop proprietary-teacher rows where flagged
@@ -92,7 +92,7 @@ Phase 2 already used ToolMind, Glaive FC v2, Hermes FC, OpenThoughts and Bespoke
 - **Packing.** Whole examples only, never split across blocks. A per-example attention reset already exists (`build_doc_block_mask` with flex_attention, keyed on `<|endoftext|>`), so packed examples can't attend to each other.
 - **Config `configs/phase3.yaml`:**
   - `--init_from step_22888.pt`
-  - fresh schedule: warmup 100 steps, peak LR ~6e-5 (¼ of the Phase 2 plateau), linear decay to 0
+  - fresh schedule: warmup 100 steps, peak LR ≈6e-5 (¼ of the Phase 2 plateau), linear decay to 0
   - router aux loss kept; routing watched for collapse on the narrower data
 - **Tests:** a unit test that the mask covers exactly the assistant spans, plus a smoke run (200 steps) that overfits a tiny set.
 

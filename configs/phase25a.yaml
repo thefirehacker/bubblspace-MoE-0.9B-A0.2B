@@ -1,0 +1,154 @@
+# ============================================================
+# MoE-0.9B-A0.2B v2  —  PHASE 2.5a: knowledge + semantic relations + code (20B tokens, ctx 2048)
+# Qwen3-Next-inspired, single H100 80GB, Muon + AdamW
+# ============================================================
+
+run_name: moe0-9b-a0-2b-phase025a
+
+model:
+  n_layers: 16
+  d_model: 1024
+  vocab_size: 49280          # bubblspace-tokenizer real length 49164, padded to a multiple of 128
+  tie_embeddings: true
+  max_seq_len: 2048
+  norm_eps: 1.0e-6
+
+  attention:
+    n_heads: 16
+    head_dim: 64
+    n_kv_heads: 4
+    qk_norm: true
+    rope_theta: 10000
+    output_gate: true
+    bias: false
+
+  moe:
+    n_experts: 64
+    top_k: 8
+    expert_hidden: 256
+    activation: silu
+    router_init_std: 0.02
+    backend: auto              # auto | grouped_mm | fallback — resolved at startup by probing torch._grouped_mm
+    load_balance_coef: 0.01
+    router_z_loss_coef: 0.001
+
+  init:
+    std: 0.02
+    # residual_proj_std = std / sqrt(2 * n_layers), applied to attn.o_proj and experts.W_down
+
+optimizer:
+  muon:
+    lr: 6.0e-4
+    momentum: 0.95
+    nesterov: true
+    ns_steps: 5
+    weight_decay: 0.1
+  adamw:
+    lr: 6.0e-4
+    betas: [0.9, 0.95]
+    eps: 1.0e-8
+    weight_decay: 0.1
+  grad_clip: 1.0
+
+schedule:
+  warmup_steps: 2000
+  decay: cosine               # cosine | wsd
+  min_lr_ratio: 0.1
+  wsd_decay_frac: 0.2         # only used when decay: wsd
+
+training:
+  dataset: HuggingFaceFW/fineweb-edu
+  dataset_config: sample-10BT
+  total_tokens: 10_000_000_000
+  seq_len: 2048
+  global_batch_tokens: 524288
+  micro_batch: 16
+  precision: bf16
+  compile: true
+  checkpoint_every: 1000
+  log_every: 10
+  expert_hist_every: 100
+  attn_logit_every: 100
+
+data:
+  data_dir: /lambda/nfs/h100-f1/data
+  checkpoint_dir: /lambda/nfs/h100-f1/checkpoints
+
+tokenizer:
+  path: ./bubblspace-tokenizer
+  doc_separator: "<|endoftext|>"
+
+wandb:
+  project: moe0-9b-a0-2b
+  entity: null
+
+# ------------------------------------------------------------
+# Phase 2.5a: continue from the Phase 2 final checkpoint (step_22888.pt) via --init_from.
+# Model / optimizer blocks above are identical to Phases 1-2. The `phase2:` key is the
+# continual-training block train.py reads (same mechanism as Phase 2).
+# Plan: doc/plan-03-phase-2.5-knowledge-context.md · data: doc/data-pipeline.md §5
+# Every source is its own group, so group fractions = the planned per-source shares of 20B.
+# New pools are the DECONTAMINATED copies (scripts/decontaminate.py, 13-gram + frequency filter).
+# ------------------------------------------------------------
+phase2:
+  step_offset: 41961          # W&B global_step continues after Phase 1 (19,073) + Phase 2 (22,888)
+  wandb_group: moe0-9b-a0-2b
+  total_steps: 38147          # 20.0B tokens at 524,288 tokens/step
+  decay_start_step: 32424     # plateau = first 85%; linear decay over the last 15% (5,723 steps, ~3.0B tokens)
+  warmup_steps: 300
+  start_lr: 6.0e-6            # Phase 2's final lr (re-warm starts here)
+  peak_lr: 2.0e-4
+  end_lr: 6.0e-6
+  doc_mask: true
+  fim_rate: 0.5               # window-level FIM on pools marked fim: true
+  val_every: 250
+  val_tokens_per_pool: 2097152
+
+  pools:
+    # Knowledge (English) — 58.9%
+    en_wiki_full:   {path: /lambda/nfs/h100-f1/data/phase25_decon/en_wiki_full,  group: wiki}
+    fact_seeking:   {path: /lambda/nfs/h100-f1/data/phase25_decon/fact_seeking,  group: fact_seeking}
+    fwe_edu4:       {path: /lambda/nfs/h100-f1/data/phase25_decon/fwe_edu4,      group: fwe_edu4}
+    synth_en:       {path: /lambda/nfs/h100-f1/data/phase25_decon/synth_en,      group: synth}
+    # Code — 25% (fresh = never seen; replay = Phase 2 pools, weighted by unique tokens)
+    code_python_edu_fresh:       {path: /lambda/nfs/h100-f1/data/phase25_decon/code_python_edu_fresh,       group: code_pyedu_fresh,  fim: true}
+    code_starcoder_python_fresh: {path: /lambda/nfs/h100-f1/data/phase25_decon/code_starcoder_python_fresh, group: code_py_fresh,     fim: true}
+    code_starcoder_js_fresh:     {path: /lambda/nfs/h100-f1/data/phase25_decon/code_starcoder_js_fresh,     group: code_jsts_fresh,   fim: true}
+    code_starcoder_ts_fresh:     {path: /lambda/nfs/h100-f1/data/phase25_decon/code_starcoder_ts_fresh,     group: code_jsts_fresh,   fim: true}
+    code_python_edu:             {path: /lambda/nfs/h100-f1/data/phase2/code_python_edu,             group: code_replay, fim: true}
+    code_starcoder_python:       {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_python,       group: code_replay, fim: true}
+    code_starcoder_typescript:   {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_typescript,   group: code_replay, fim: true}
+    code_starcoder_javascript:   {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_javascript,   group: code_replay, fim: true}
+    code_starcoder_go:           {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_go,           group: code_replay, fim: true}
+    code_starcoder_sql_shell_cfg: {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_sql_shell_cfg, group: code_replay, fim: true}
+    # Relations (English) — 6.15%
+    contrastive_v3:  {path: /lambda/nfs/h100-f1/data/phase25_decon/contrastive_v3,  group: contrastive_v3}
+    relational_llm:  {path: /lambda/nfs/h100-f1/data/phase25_decon/relational_llm,  group: relational_llm}   # tokenized + decontaminated after generation
+    nli_commonsense: {path: /lambda/nfs/h100-f1/data/phase25_decon/nli_commonsense, group: nli_commonsense}
+    kg_text:         {path: /lambda/nfs/h100-f1/data/phase25_decon/kg_text,         group: kg_text}
+    # Agentic replay — 5% (block-aligned episodes)
+    agentic_toolmind:        {path: /lambda/nfs/h100-f1/data/phase2/agentic_toolmind,        group: agentic, kind: block}
+    agentic_glaive_fc_v2:    {path: /lambda/nfs/h100-f1/data/phase2/agentic_glaive_fc_v2,    group: agentic, kind: block}
+    agentic_openthoughts:    {path: /lambda/nfs/h100-f1/data/phase2/agentic_openthoughts,    group: agentic, kind: block}
+    agentic_hermes:          {path: /lambda/nfs/h100-f1/data/phase2/agentic_hermes,          group: agentic, kind: block}
+    agentic_bespoke_stratos: {path: /lambda/nfs/h100-f1/data/phase2/agentic_bespoke_stratos, group: agentic, kind: block}
+    # Math replay — 5%
+    en_finemath:     {path: /lambda/nfs/h100-f1/data/phase2/en_finemath,     group: math}
+
+  stages:
+    - until_step: 38147
+      groups:
+        wiki: 0.22
+        fact_seeking: 0.18
+        fwe_edu4: 0.0935
+        synth: 0.095
+        code_pyedu_fresh: 0.10
+        code_py_fresh: 0.05
+        code_jsts_fresh: 0.015
+        code_replay: 0.085
+        contrastive_v3: 0.045
+        relational_llm: 0.0075
+        nli_commonsense: 0.0075
+        kg_text: 0.0015
+        agentic: 0.05
+        math: 0.05
