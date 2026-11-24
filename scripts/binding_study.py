@@ -36,6 +36,10 @@ PLAN = {
     # same .bin sha256 at steps 1000/4000/20000 and main; identical scores). The deduped run is used instead.
     "h100": {"pythia": ["2.8b-deduped", "6.9b", "12b"], "olmo": ["allenai/OLMo-2-1124-7B"],
              "final": ["allenai/OLMo-2-1124-13B", "Qwen/Qwen2.5-7B"]},
+    # 24 Nov: the H100 went to Phase 2.5a, so the 7B jobs that fit in 24 GB moved to the A10
+    # (Pythia-12B and OLMo-2 13B don't fit and were finished on the H100 first)
+    "h100b": {"pythia": ["12b"], "olmo": [], "final": ["allenai/OLMo-2-1124-13B"]},  # what can't fit on the A10
+    "a10b": {"pythia": [], "olmo": ["allenai/OLMo-2-1124-7B"], "final": ["Qwen/Qwen2.5-7B"]},
 }
 
 
@@ -96,6 +100,7 @@ def main():
     ap.add_argument("--machine", required=True, choices=list(PLAN))
     ap.add_argument("--out_dir", default="benchmark/binding_levels")
     ap.add_argument("--dry_run", action="store_true")
+    ap.add_argument("--gpu_lock", default=None, help="flock file shared with the A10 eval watcher; each job holds it")
     a = ap.parse_args()
     js = jobs(a.machine)
     log = Path(a.out_dir) / f"study_{a.machine}.log"
@@ -106,7 +111,7 @@ def main():
         print(f"[{i + 1}/{len(js)}] {model} {rev or 'main'} -> {out}" + (" (done)" if out.exists() else ""), flush=True)
         if a.dry_run or out.exists():
             continue
-        cmd = [sys.executable, "scripts/binding_levels_hf.py", "--model", model, "--probes", *PROBES,
+        cmd = (["flock", a.gpu_lock] if a.gpu_lock else []) + [sys.executable, "scripts/binding_levels_hf.py", "--model", model, "--probes", *PROBES,
                "--winogrande", "--out", str(out)] + (["--revision", rev] if rev else [])
         t0 = time.time()
         r = subprocess.run(cmd, capture_output=True, text=True)

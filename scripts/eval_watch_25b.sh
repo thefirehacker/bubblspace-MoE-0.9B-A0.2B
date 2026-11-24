@@ -24,6 +24,7 @@ for f in $V2 $V3 $V4 $V5 $FACTS $DOCS $C; do [ -f $f ] || { echo "[$(date -u)] M
 for s in 1000 2000 2861; do
   CK=$CKD/step_$s.pt; T=phase25b_step$s
   until [ -f $CK ]; do sleep 60; done
+  exec 9>/tmp/a10_gpu.lock; flock 9   # GPU lock shared with the binding study (waits for its current job)
   echo "[$(date -u)] === $T ===" >> $LOG
   python3 scripts/eval_long_context.py eval --config $C --checkpoint $CK --docs $DOCS --output $OUT/long_context_$T.json > $OUT/long_context_$T.log 2>&1
   echo "[$(date -u)] long-context done $T" >> $LOG
@@ -54,6 +55,7 @@ for s in 1000 2000 2861; do
   fi
   python3 scripts/summarize_evals.py --dir $OUT --prefix phase25b_step --out $OUT/summary.md \
     --baseline benchmark/phase2:phase2_step22888 --baseline benchmark/phase25a:phase25a_step38147 --long_context > /dev/null 2>&1
+  flock -u 9; exec 9>&-
   echo "[$(date -u)] done $T" >> $LOG
 done
 echo "[$(date -u)] watch 25b finished" >> $LOG

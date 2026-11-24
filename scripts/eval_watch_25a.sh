@@ -29,6 +29,7 @@ STEPS="$(seq 2000 2000 38000) 38147"
 for s in $STEPS; do
   CK=$CKD/step_$s.pt; T=phase25a_step$s
   until [ -f $CK ]; do sleep 60; done
+  exec 9>/tmp/a10_gpu.lock; flock 9   # GPU lock shared with the binding study (waits for its current job)
   is_full=0; [[ "$FULL" == *" $s "* ]] && is_full=1
   echo "[$(date -u)] === $T (full=$is_full) ===" >> $LOG
 
@@ -59,13 +60,15 @@ for s in $STEPS; do
     mkdir -p $OUT/routing
     python3 scripts/analyze_routing.py --checkpoint $CK --pools_yaml configs/pools_a10.yaml --windows_per_group 48 --out $OUT/routing/routing_$T.json > $OUT/routing/routing_$T.log 2>&1
     python3 -u scripts/eval_code_gen.py --checkpoint $CK --tasks humaneval,mbpp --out $OUT/codegen_$T.json > $OUT/codegen_$T.log 2>&1
-    ( python3 scripts/sandbox_exec.py --codegen $OUT/codegen_$T.json --out $OUT/codeexec_$T.json > $OUT/codeexec_$T.log 2>&1
+    ( exec 9>&-   # CPU-only sandbox: don't hold the GPU lock
+      python3 scripts/sandbox_exec.py --codegen $OUT/codegen_$T.json --out $OUT/codeexec_$T.json > $OUT/codeexec_$T.log 2>&1
       python3 scripts/summarize_evals.py --dir $OUT --prefix phase25a_step --out $OUT/summary.md --baseline benchmark/phase2:phase2_step22888 > /dev/null 2>&1
       echo "[$(date -u)] code exec done $T" >> $LOG ) &
     echo "[$(date -u)] full tier GPU part done $T (code exec in background)" >> $LOG
   fi
 
   python3 scripts/summarize_evals.py --dir $OUT --prefix phase25a_step --out $OUT/summary.md --baseline benchmark/phase2:phase2_step22888 > /dev/null 2>&1
+  flock -u 9; exec 9>&-
   echo "[$(date -u)] done $T" >> $LOG
   [ $is_full = 0 ] && rm -f $CK
 done
