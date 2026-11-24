@@ -31,6 +31,10 @@ for s in 1000 2000 2861; do
     eval cf=\$V$v
     python3 scripts/probe_entity_binding.py --config $C --checkpoint $CK --cases_file $cf --output $OUT/probe_v${v}_$T.json > $OUT/probe_v${v}_$T.log 2>&1
   done
+  for v in 4 5; do  # does the model WRITE the bound answer? (doc/wsp-experiments.md §6.1)
+    eval cf=\$V$v
+    python3 scripts/eval_binding_generation.py --config $C --checkpoint $CK --cases_file $cf --output $OUT/gen_v${v}_$T.json > $OUT/gen_v${v}_$T.log 2>&1
+  done
   python3 scripts/eval_facts.py --config $C --checkpoint $CK --facts $FACTS --output $OUT/facts_$T.json > $OUT/facts_$T.log 2>&1
   if [ $s = 2861 ]; then
     python3 scripts/run_benchmarks.py --config $C --checkpoint $CK --tasks triviaqa --num_fewshot 5 --limit 2000 --output $OUT/closedbook_triviaqa_$T.json > $OUT/closedbook_$T.log 2>&1

@@ -135,6 +135,29 @@ So neither weight surgery nor contrastive pretraining text has fixed binding yet
 - **Evaluate on probe v4 and in free generation,** not on the probe whose cases the edit was solved from (attempt 2 solved on 30 probe cases and was scored on the same probe, which flatters it).
 - **Try it on the Phase 2 model.** A model with a stronger underlying signal might respond very differently to the same edit.
 
+### 6.1 Re-run harness, first used on the Phase 2 final checkpoint (24 Nov)
+
+`scripts/wsp_rerun.sh` puts four of the ideas above into one repeatable run:
+- **Solve and score on different cases.** The edit is solved on probe v2's three target categories, exactly as in attempt 2, but scored on v2 and v3 **and** on the held-out v4 and v5, which the edit never sees.
+- **λ sweep.** Default layers 6 / 8 / 10 and λ = 1 / 2 / 5 / 10.
+- **Generation check after every edit.** `scripts/eval_binding_generation.py` runs greedy decoding over the full vocabulary for both contexts of every v4 and v5 case. A case counts only if the model *writes* the correct completion, up to the first token where the two answers differ, in both contexts (the generation version of the probe's flip rule). It also reports the log-prob gap between the correct completion and the model's own greedy text.
+- Edited checkpoints are deleted after scoring.
+
+First test, on Phase 2 final (`step_22888`), H100, layer 6:
+
+| Edit | probe v2 (solve set) | v3 | v4 (held out) | v5 (held out) | generation flip v4 / gap | generation flip v5 / gap | ‖ΔW‖ |
+|---|---|---|---|---|---|---|---|
+| none | 36/100 | 3/70 | 79/112 | 8/120 | **7/112** / −3.17 | 0/120 / −4.47 | — |
+| layer 6, λ = 1 | 43/100 | 5/70 | 77/112 | 5/120 | 6/112 / −3.02 | 0/120 / −4.48 | 12.90 |
+| layer 6, λ = 5 | 43/100 | 4/70 | 80/112 | 5/120 | 6/112 / −3.03 | 0/120 / −4.51 | 8.98 |
+
+What it shows:
+1. **The same pattern as on Phase 1.** The edit gains +7 on the cases it was solved from (v2), does nothing on held-out v4, slightly hurts v5, and doesn't change generation. A larger λ (more protection) gives a smaller edit with the same solve-set gain and no v4 loss, so λ ≥ 5 is the better default.
+2. **The bigger finding concerns the probe, not the edit.** Probe v4 says 79/112, but the model *writes* the correct ending in both contexts for only **7/112** cases. The correct completion sits about 3 nats below the model's own greedy choice. The v4 gain from contrastive v2 (17 → 82) is real in log-prob ranking but barely reaches generation. From now on every binding result is reported as both numbers: probe and generation flip.
+3. **Generation flip is the metric to watch in 2.5a**, together with v5. Re-running this harness on the 2.5a final checkpoint tests the §9 idea directly: if training formed the circuit, the generation numbers should move, not only the probe.
+
+Results: `benchmark/wsp_rerun/phase2_step22888/`. The A10 and the H100 differ by 1–2 cases on the probes (bf16 kernels), so each sweep is run on one machine.
+
 ## 7. Literature review
 
 **Objective this reading serves:** don't assume model capacity is the problem. The model is poor at relations, so find ways to teach a *small* model relational structure, then carry what works to larger models and longer training runs.

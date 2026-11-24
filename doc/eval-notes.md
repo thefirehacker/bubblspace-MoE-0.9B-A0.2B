@@ -707,6 +707,15 @@ Like probe v4 before contrastive v2 arrived, this is below chance.
 
 Multi-hop with invented names is near chance (25%) even at 2k, so it measures more than reach.
 
+**Generation flip on the binding probes** (`scripts/eval_binding_generation.py`, A10): does the model *write* the correct ending in both contexts, not only rank it higher?
+
+| | Probe (log-prob ranking) | Generation flip | Gap to greedy text |
+|---|---|---|---|
+| v4 | 77/112 | **7/112** | −3.15 nats |
+| v5 | 10/120 | **0/120** | −4.43 nats |
+
+The v4 gain from Phase 2 shows up in ranking but barely in generation. Both numbers are tracked in 2.5a. Details: [wsp-experiments.md §6.1](wsp-experiments.md).
+
 **Hardware matters for small differences.** The same step-22888 checkpoint gives these scores:
 
 | | A10 | H100 |

@@ -4,8 +4,8 @@
  "cases_file": "benchmark/data/probefinding-winograndestyle/probefinding-winogrande-v5-heldout-structures-20261123.json",
  "summary": {
   "n_cases": 120,
-  "flip_hit": 5,
-  "first_token_hit_rate": 0.129,
+  "flip_hit": 0,
+  "hit_rate": 0.096,
   "mean_gap_nats": -4.466,
   "by_category": {
    "passive": {
@@ -17,7 +17,7 @@
     "mean_gap": -2.646
    },
    "respectively": {
-    "flip_hit": "5/40",
+    "flip_hit": "0/40",
     "mean_gap": -4.174
    }
   }
@@ -28,13 +28,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.688,
     "gold": " truly sorry.",
     "generation": " remorseful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.907,
     "gold": " big-hearted.",
     "generation": " remorseful."
@@ -47,13 +47,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.462,
     "gold": " talented.",
     "generation": " short-staffed."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.885,
     "gold": " in need of help.",
     "generation": " experienced."
@@ -66,13 +66,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.3,
     "gold": " out of practice.",
     "generation": " better prepared."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -10.607,
     "gold": " well trained.",
     "generation": " out of practice."
@@ -85,13 +85,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.201,
     "gold": " talented.",
     "generation": " short-staffed."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.566,
     "gold": " in need of help.",
     "generation": " experienced."
@@ -104,13 +104,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.125,
     "gold": " rude.",
     "generation": " frustrated."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -11.656,
     "gold": " frustrated.",
     "generation": " late again."
@@ -123,13 +123,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.625,
     "gold": " supportive.",
     "generation": " grateful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.187,
     "gold": " polite.",
     "generation": " generous."
@@ -142,13 +142,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.322,
     "gold": " new to the subject.",
     "generation": " patient."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.11,
     "gold": " experienced.",
     "generation": " struggling with it."
@@ -161,13 +161,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.25,
     "gold": " rude.",
     "generation": " frustrated."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -10.5,
     "gold": " frustrated.",
     "generation": " late again."
@@ -180,13 +180,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.812,
     "gold": " dishonest.",
     "generation": " busy."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.438,
     "gold": " shy.",
     "generation": " unpleasant."
@@ -199,13 +199,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.188,
     "gold": " careless.",
     "generation": " frustrated."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -10.75,
     "gold": " frustrated.",
     "generation": " careless."
@@ -218,13 +218,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.001,
     "gold": " carrying a heavy bag.",
     "generation": " faster."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.639,
     "gold": " well rested.",
     "generation": " slower."
@@ -237,13 +237,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": false,
     "gap": -4.249,
     "gold": " a slow reader.",
     "generation": " a former teacher."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.85,
     "gold": " a former teacher.",
     "generation": " behind in maths."
@@ -256,13 +256,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.125,
     "gold": " rude.",
     "generation": " busy."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.688,
     "gold": " uncomfortable.",
     "generation": " unpleasant."
@@ -275,13 +275,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.125,
     "gold": " eager to learn.",
     "generation": " patient."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.988,
     "gold": " an expert.",
     "generation": " struggling with it."
@@ -294,13 +294,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.25,
     "gold": " overconfident.",
     "generation": " better prepared."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.774,
     "gold": " better prepared.",
     "generation": " out of practice."
@@ -313,13 +313,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -1.543,
     "gold": " a beginner.",
     "generation": " patient."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.21,
     "gold": " qualified.",
     "generation": " struggling with it."
@@ -332,13 +332,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -1.035,
     "gold": " out of practice.",
     "generation": " better prepared."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.149,
     "gold": " well trained.",
     "generation": " out of practice."
@@ -351,13 +351,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.449,
     "gold": " new to the subject.",
     "generation": " patient."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.943,
     "gold": " qualified.",
     "generation": " struggling with it."
@@ -370,13 +370,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.884,
     "gold": " honest about it.",
     "generation": " remorseful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.127,
     "gold": " easygoing.",
     "generation": " remorseful."
@@ -389,13 +389,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.0,
     "gold": " lonely.",
     "generation": " kind."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.568,
     "gold": " gentle.",
     "generation": " lonely."
@@ -408,13 +408,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.283,
     "gold": " slower.",
     "generation": " a trained sprinter."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.0,
     "gold": " faster.",
     "generation": " slower."
@@ -427,13 +427,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.437,
     "gold": " supportive.",
     "generation": " grateful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.218,
     "gold": " polite.",
     "generation": " generous."
@@ -446,13 +446,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.247,
     "gold": " stranded.",
     "generation": " a trained lifeguard."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.146,
     "gold": " a trained lifeguard.",
     "generation": " lost."
@@ -465,13 +465,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.189,
     "gold": " heartbroken.",
     "generation": " patient."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.636,
     "gold": " gentle.",
     "generation": " heartbroken."
@@ -484,13 +484,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.531,
     "gold": " struggling with it.",
     "generation": " patient."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.944,
     "gold": " qualified.",
     "generation": " struggling with it."
@@ -503,13 +503,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.812,
     "gold": " nervous.",
     "generation": " experienced."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.503,
     "gold": " steady.",
     "generation": " worried."
@@ -522,13 +522,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.687,
     "gold": " rude.",
     "generation": " frustrated."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -11.531,
     "gold": " frustrated.",
     "generation": " late again."
@@ -541,13 +541,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.687,
     "gold": " lonely.",
     "generation": " kind."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.408,
     "gold": " gentle.",
     "generation": " heartbroken."
@@ -560,13 +560,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.234,
     "gold": " highly qualified.",
     "generation": " short-staffed."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -10.063,
     "gold": " expanding.",
     "generation": " reliable."
@@ -579,13 +579,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.261,
     "gold": " in danger.",
     "generation": " strong."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.084,
     "gold": " a trained lifeguard.",
     "generation": " lost."
@@ -598,13 +598,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.971,
     "gold": " slower.",
     "generation": " a trained sprinter."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.375,
     "gold": " fitter.",
     "generation": " carrying a heavy bag."
@@ -617,13 +617,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.087,
     "gold": " preparing for an exam.",
     "generation": " a former teacher."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.822,
     "gold": " a gifted student.",
     "generation": " behind in maths."
@@ -636,13 +636,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.376,
     "gold": " trapped.",
     "generation": " strong."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.747,
     "gold": " strong.",
     "generation": " lost."
@@ -655,13 +655,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.812,
     "gold": " worried.",
     "generation": " calm."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.023,
     "gold": " experienced.",
     "generation": " worried."
@@ -674,13 +674,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.438,
     "gold": " nervous.",
     "generation": " steady."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.816,
     "gold": " experienced.",
     "generation": " worried."
@@ -693,13 +693,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": false,
     "gap": -3.875,
     "gold": " a slow reader.",
     "generation": " a former teacher."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.035,
     "gold": " a former teacher.",
     "generation": " behind in maths."
@@ -712,13 +712,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.314,
     "gold": " out of practice.",
     "generation": " better prepared."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.711,
     "gold": " experienced.",
     "generation": " out of practice."
@@ -731,13 +731,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.362,
     "gold": " injured.",
     "generation": " a trained sprinter."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.646,
     "gold": " well rested.",
     "generation": " slower."
@@ -750,13 +750,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -2.873,
     "gold": " inexperienced.",
     "generation": " better prepared."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.884,
     "gold": " more skilled.",
     "generation": " out of practice."
@@ -769,13 +769,13 @@
    "category": "passive",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.077,
     "gold": " out of shape.",
     "generation": " a trained sprinter."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.976,
     "gold": " well rested.",
     "generation": " out of shape."
@@ -788,13 +788,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.247,
     "gold": " preparing for an exam",
     "generation": " behind in maths."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.562,
     "gold": " patient",
     "generation": " behind in maths."
@@ -807,13 +807,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " unpleasant",
     "generation": " boastful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.875,
     "gold": " busy",
     "generation": " unpleasant."
@@ -826,13 +826,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " anxious",
     "generation": " worried."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.062,
     "gold": " steady",
     "generation": " worried."
@@ -845,13 +845,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.124,
     "gold": " preparing for an exam",
     "generation": " behind in maths."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.329,
     "gold": " top of the class",
     "generation": " a slow reader."
@@ -864,13 +864,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.249,
     "gold": " preparing for an exam",
     "generation": " behind in maths."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.348,
     "gold": " top of the class",
     "generation": " a slow reader."
@@ -883,13 +883,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.0,
     "gold": " trapped",
     "generation": " lost."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -2.562,
     "gold": " brave",
     "generation": " lost."
@@ -902,13 +902,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.375,
     "gold": " preparing for an exam",
     "generation": " behind in maths."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " a gifted student",
     "generation": " a gifted student."
@@ -921,13 +921,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.124,
     "gold": " new to the subject",
     "generation": " a beginner."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.25,
     "gold": " qualified",
     "generation": " struggling at school."
@@ -940,13 +940,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.0,
     "gold": " dishonest",
     "generation": " boastful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.438,
     "gold": " wary",
     "generation": " unpleasant, so Jamal avoided Vikram."
@@ -959,13 +959,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " rude",
     "generation": " rude."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.312,
     "gold": " wary",
     "generation": " unpleasant, so Pia avoided Yosef."
@@ -978,13 +978,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.241,
     "gold": " highly qualified",
     "generation": " talented."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.736,
     "gold": " growing quickly",
     "generation": " talented, so Rafael hired Hana."
@@ -997,13 +997,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.0,
     "gold": " dishonest",
     "generation": " unpleasant."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.75,
     "gold": " shy",
     "generation": " unpleasant, so Nina avoided Karim."
@@ -1016,13 +1016,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " rude",
     "generation": " late again. The news spread quickly. Who was late again"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.563,
     "gold": " angry",
     "generation": " late again."
@@ -1035,13 +1035,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " overconfident",
     "generation": " overconfident."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.513,
     "gold": " well trained",
     "generation": " out of practice."
@@ -1054,13 +1054,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.624,
     "gold": " a slow reader",
     "generation": " behind in maths."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.688,
     "gold": " patient",
     "generation": " a slow reader."
@@ -1073,13 +1073,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.374,
     "gold": " struggling at school",
     "generation": " behind in maths."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.901,
     "gold": " top of the class",
     "generation": " struggling at school."
@@ -1092,13 +1092,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.001,
     "gold": " honest about it",
     "generation": " truly sorry."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.252,
     "gold": " easygoing",
     "generation": " remorseful."
@@ -1111,13 +1111,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.25,
     "gold": " inexperienced",
     "generation": " overconfident."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.94,
     "gold": " more skilled",
     "generation": " out of practice."
@@ -1130,13 +1130,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.01,
     "gold": " boastful",
     "generation": " unpleasant."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.375,
     "gold": " shy",
     "generation": " unpleasant."
@@ -1149,13 +1149,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.249,
     "gold": " highly qualified",
     "generation": " talented."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.108,
     "gold": " short-staffed",
     "generation": " talented, so Fatima hired Paula."
@@ -1168,13 +1168,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.501,
     "gold": " out of practice",
     "generation": " overconfident."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.127,
     "gold": " better prepared",
     "generation": " out of practice."
@@ -1187,13 +1187,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " late again",
     "generation": " late again. The street outside was quiet. Who was late"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.063,
     "gold": " angry",
     "generation": " late again."
@@ -1206,13 +1206,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.0,
     "gold": " dishonest",
     "generation": " boastful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.187,
     "gold": " uncomfortable",
     "generation": " unpleasant."
@@ -1225,13 +1225,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " tired",
     "generation": " overconfident."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.0,
     "gold": " experienced",
     "generation": " out of practice."
@@ -1244,13 +1244,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " dishonest",
     "generation": " boastful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.062,
     "gold": " busy",
     "generation": " unpleasant."
@@ -1263,13 +1263,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.0,
     "gold": " rude",
     "generation": " boastful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.312,
     "gold": " wary",
     "generation": " unpleasant."
@@ -1282,13 +1282,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " lost",
     "generation": " lost."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -1.76,
     "gold": " quick-thinking",
     "generation": " lost."
@@ -1301,13 +1301,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " trapped",
     "generation": " trapped. The news spread quickly. Who was trapped? Ke"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.125,
     "gold": " strong",
     "generation": " lost."
@@ -1320,13 +1320,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.251,
     "gold": " out of practice",
     "generation": " overconfident."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.25,
     "gold": " experienced",
     "generation": " out of practice."
@@ -1339,13 +1339,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " reckless",
     "generation": " late again. The street outside was quiet. Who was late"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.25,
     "gold": " impatient",
     "generation": " late again."
@@ -1358,13 +1358,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " worried",
     "generation": " worried."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.25,
     "gold": " experienced",
     "generation": " nervous."
@@ -1377,13 +1377,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " remorseful",
     "generation": " honest about it."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.156,
     "gold": " big-hearted",
     "generation": " remorseful."
@@ -1396,13 +1396,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.372,
     "gold": " highly qualified",
     "generation": " talented."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.741,
     "gold": " growing quickly",
     "generation": " experienced, so Camila hired Pedro."
@@ -1415,13 +1415,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.0,
     "gold": " apologetic",
     "generation": " honest about it."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.931,
     "gold": " big-hearted",
     "generation": " remorseful."
@@ -1434,13 +1434,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.124,
     "gold": " boastful",
     "generation": " rude. The news spread quickly. Who was rude? Sel"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.312,
     "gold": " busy",
     "generation": " unpleasant, so Selin avoided Quinn."
@@ -1453,13 +1453,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.0,
     "gold": " frightened",
     "generation": " heartbroken."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.437,
     "gold": " caring",
     "generation": " heartbroken."
@@ -1472,13 +1472,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " thoughtful",
     "generation": " thoughtful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.188,
     "gold": " relieved",
     "generation": " generous."
@@ -1491,13 +1491,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " honest about it",
     "generation": " remorseful."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.939,
     "gold": " easygoing",
     "generation": " remorseful."
@@ -1510,13 +1510,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " lost",
     "generation": " lost."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -2.812,
     "gold": " strong",
     "generation": " lost."
@@ -1529,13 +1529,13 @@
    "category": "relative_clause",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " frightened",
     "generation": " heartbroken. The street outside was quiet. Who was heart"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.0,
     "gold": " patient",
     "generation": " heartbroken."
@@ -1548,13 +1548,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 3.186,
     "gold": " too narrow and too wide.",
     "generation": " 100 meters and 200 meters long"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 1.614,
     "gold": " too wide and too narrow.",
     "generation": " 1000 meters and 2000"
@@ -1567,13 +1567,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 1.957,
     "gold": " too narrow and too wide.",
     "generation": " the doorframe and the dining table. The doorframe or"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -1.381,
     "gold": " too wide and too narrow.",
     "generation": " the dining table and the doorframe. The dining table or"
@@ -1586,13 +1586,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.599,
     "gold": " very hot and freezing.",
     "generation": " cold and hot. Which was much warmer, the marble floor"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -1.948,
     "gold": " freezing and very hot.",
     "generation": " cold and hot. Which was cold, the radiator or the"
@@ -1605,13 +1605,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -2.967,
     "gold": " noisy and faint.",
     "generation": " the first and the last notes of a song. Which was"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.687,
     "gold": " faint and noisy.",
     "generation": " barely audible and barely audible. Which was barely audible? The"
@@ -1624,13 +1624,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.646,
     "gold": " very lengthy and brief.",
     "generation": " shorter and more boring. Which was very lengthy? The lecture"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -2.16,
     "gold": " brief and very lengthy.",
     "generation": " shorter and more boring. Which was brief, the lecture or"
@@ -1643,13 +1643,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small and too big.",
     "generation": " too small and too big. The sofa or the lift"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 5.14,
     "gold": " too big and too small.",
     "generation": " 1.5 m and 2.5 m high"
@@ -1660,15 +1660,15 @@
   {
    "name": "v5-respectively-86",
    "category": "respectively",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small and too big.",
     "generation": " too small and too big. Which was too small, the"
    },
    "B": {
-    "first_token_hit": true,
+    "hit": false,
     "gap": -2.132,
     "gold": " too big and too small.",
     "generation": " too small and too big. Which was too small, the"
@@ -1679,15 +1679,15 @@
   {
    "name": "v5-respectively-87",
    "category": "respectively",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small and too long.",
     "generation": " too small and too long. Which was too small, the"
    },
    "B": {
-    "first_token_hit": true,
+    "hit": false,
     "gap": -0.229,
     "gold": " too long and too small.",
     "generation": " too small and too long. Which was too small, the"
@@ -1700,13 +1700,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 1.89,
     "gold": " too narrow and too wide.",
     "generation": " the front and back door. The fridge freezer or the back"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.302,
     "gold": " too wide and too narrow.",
     "generation": " the fridge and the back door. The fridge freezer or the"
@@ -1719,13 +1719,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -20.946,
     "gold": " the owner and finished with it.",
     "generation": " the owner and the one who had lent it. Who was"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -16.975,
     "gold": " finished with it and the owner.",
     "generation": " the owner and the owner of a ladder. Who was the"
@@ -1738,13 +1738,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.15,
     "gold": " upset and remorseful.",
     "generation": " the owners of a ladder and a ladder lay forgotten on the"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.242,
     "gold": " remorseful and upset.",
     "generation": " the owners of a ladder and a ladder lay forgotten on the"
@@ -1757,13 +1757,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.278,
     "gold": " massive and tiny.",
     "generation": " the largest and smallest ships in the Royal Navy. Which was"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -1.201,
     "gold": " tiny and massive.",
     "generation": " smaller and smaller. Which was much smaller, the galle"
@@ -1776,13 +1776,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 1.919,
     "gold": " too short and too long.",
     "generation": "  and  long. Which was too short? The lift"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 1.412,
     "gold": " too long and too short.",
     "generation": "  and  long. The surfboard or the lift:"
@@ -1795,13 +1795,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 1.767,
     "gold": " very heavy and almost weightless.",
     "generation": " a heavy burden and light support. Which was a heavy burden"
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -1.176,
     "gold": " almost weightless and very heavy.",
     "generation": " almost weightless and light. Which was almost weightless?"
@@ -1812,15 +1812,15 @@
   {
    "name": "v5-respectively-94",
    "category": "respectively",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small and too large.",
     "generation": " too small and too large. Which was too small, the"
    },
    "B": {
-    "first_token_hit": true,
+    "hit": false,
     "gap": -0.594,
     "gold": " too large and too small.",
     "generation": " too small and too large. Which was too small, the"
@@ -1833,13 +1833,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.319,
     "gold": " lonely and patient.",
     "generation": " the owners of a big house and a small one. Who"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.938,
     "gold": " patient and lonely.",
     "generation": " the owners of a big house and a small one. Who"
@@ -1852,13 +1852,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.819,
     "gold": " truly sorry and forgiving.",
     "generation": " the owner and the owner of a big house. Who was"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -11.483,
     "gold": " forgiving and truly sorry.",
     "generation": " the owner and the seller of a house. Who was the"
@@ -1871,13 +1871,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.569,
     "gold": " remorseful and forgiving.",
     "generation": " the owners of a big house and a small one. Who"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.755,
     "gold": " forgiving and remorseful.",
     "generation": " the owners of a big house and a small one. If"
@@ -1888,15 +1888,15 @@
   {
    "name": "v5-respectively-98",
    "category": "respectively",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too narrow and too bulky.",
     "generation": " too narrow and too bulky. The wardrobe or the stair"
    },
    "B": {
-    "first_token_hit": true,
+    "hit": false,
     "gap": -1.195,
     "gold": " too bulky and too narrow.",
     "generation": " too narrow and too bulky. The stairwell or the ward"
@@ -1909,13 +1909,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -1.73,
     "gold": " much heavier and light.",
     "generation": " much heavier and much lighter. Which was much heavier? The"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.764,
     "gold": " light and much heavier.",
     "generation": " much lighter and much heavier. Which was much heavier? The"
@@ -1928,13 +1928,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.617,
     "gold": " dazzling and weak.",
     "generation": " weak and strong. Which was weak? The night light."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -3.182,
     "gold": " weak and dazzling.",
     "generation": " weak and strong. Which was weak? The stadium floodlight"
@@ -1947,13 +1947,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -11.662,
     "gold": " a helpful neighbour and without a ladder.",
     "generation": " the owner and the owner of a ladder. Who was the"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -18.84,
     "gold": " without a ladder and a helpful neighbour.",
     "generation": " the owner and the owner of a ladder. Who was the"
@@ -1966,13 +1966,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.064,
     "gold": " much heavier and easy to lift.",
     "generation": " light and heavy. Which was light, the cardboard cutout"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -2.59,
     "gold": " easy to lift and much heavier.",
     "generation": " much heavier and much lighter. Which was much heavier? The"
@@ -1985,13 +1985,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.676,
     "gold": " far more time-consuming and quick.",
     "generation": " shorter and longer than the board meeting. The board meeting or"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.012,
     "gold": " quick and far more time-consuming.",
     "generation": " shorter and longer than the phone call. Which was much longer"
@@ -2004,13 +2004,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -1.974,
     "gold": " pricey and inexpensive.",
     "generation": " cheap and expensive. Which was cheap, the community hall or"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.341,
     "gold": " inexpensive and pricey.",
     "generation": " affordable and expensive. Which was affordable, the sports stadium or"
@@ -2023,13 +2023,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -9.929,
     "gold": " far more time-consuming and over quickly.",
     "generation": " shorter and more intensive. Which was much longer? The semester"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -16.813,
     "gold": " over quickly and far more time-consuming.",
     "generation": " shorter and therefore people spent more time on the semester than on"
@@ -2042,13 +2042,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 5.181,
     "gold": " too low and too tall.",
     "generation": " 1.5 m and 2.5 m tall"
    },
    "B": {
-    "first_token_hit": true,
+    "hit": false,
     "gap": -2.472,
     "gold": " too tall and too low.",
     "generation": " too low and too tall. Which was too low, the"
@@ -2061,13 +2061,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -5.852,
     "gold": " short of cash and trusting.",
     "generation": " short of cash and short of cash. Who was short of"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -10.479,
     "gold": " trusting and short of cash.",
     "generation": " short of cash and wealthy. Who was short of cash?"
@@ -2080,13 +2080,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.537,
     "gold": " grieving and patient.",
     "generation": " the owner and the owner of a big house. Who was"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -7.616,
     "gold": " patient and grieving.",
     "generation": " the owner and the owner of a big house. Who was"
@@ -2099,13 +2099,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.745,
     "gold": " rude and strict.",
     "generation": " the owners of a ladder and a ladder lay forgotten on the"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -13.29,
     "gold": " strict and rude.",
     "generation": " the owner and the owner of a big house. Who was"
@@ -2118,13 +2118,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -8.415,
     "gold": " ancient and much newer.",
     "generation": " centuries old and modern. Which was centuries old, the newspaper"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.322,
     "gold": " much newer and ancient.",
     "generation": " centuries old and modern. Which was centuries old, the fossil"
@@ -2137,13 +2137,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -5.931,
     "gold": " much warmer and chilly.",
     "generation": " much warmer and much colder. Which was much warmer, the"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.369,
     "gold": " chilly and much warmer.",
     "generation": " much warmer and much cooler. Which was much warmer, the"
@@ -2156,13 +2156,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.594,
     "gold": " booming and barely audible.",
     "generation": " deafening and quiet. Which was deafening, the desk"
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -4.022,
     "gold": " barely audible and booming.",
     "generation": " barely audible and barely audible. Which was barely audible? The"
@@ -2173,15 +2173,15 @@
   {
    "name": "v5-respectively-113",
    "category": "respectively",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small and too big.",
     "generation": " too small and too big. Which was too small, the"
    },
    "B": {
-    "first_token_hit": true,
+    "hit": false,
     "gap": -1.883,
     "gold": " too big and too small.",
     "generation": " too small and too big. The spare room or the double"
@@ -2194,13 +2194,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 1.525,
     "gold": " too narrow and too wide.",
     "generation": " the longest and shortest distances between them. The hallway or"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.03,
     "gold": " too wide and too narrow.",
     "generation": " the grand piano and the hallway. The grand piano or"
@@ -2213,13 +2213,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -4.228,
     "gold": " much faster and sluggish.",
     "generation": " 1000 km apart and 200"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -10.623,
     "gold": " sluggish and much faster.",
     "generation": " the fastest and the slowest. Which was much faster,"
@@ -2232,13 +2232,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 3.564,
     "gold": " too low and too high.",
     "generation": "  and  high. Which was too low? The multi"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.62,
     "gold": " too high and too low.",
     "generation": " 300 metres and 100 metres."
@@ -2251,13 +2251,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 3.546,
     "gold": " too narrow and too wide.",
     "generation": " 100 meters and 200 meters long"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 3.845,
     "gold": " too wide and too narrow.",
     "generation": " 100 meters and 200 meters long"
@@ -2270,13 +2270,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -6.244,
     "gold": " reliable and short-staffed.",
     "generation": " the owner and the seller of a house. Who was the"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -5.608,
     "gold": " short-staffed and reliable.",
     "generation": " the owner and the seller of a house. Who was the"
@@ -2289,13 +2289,13 @@
    "category": "respectively",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -14.931,
     "gold": " the owner of a ladder and fixing the roof.",
     "generation": " the owner and the owner of a ladder. Who was the"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -20.047,
     "gold": " fixing the roof and the owner of a ladder.",
     "generation": " the owner and the owner of a ladder. Who was the"

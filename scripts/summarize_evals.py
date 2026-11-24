@@ -41,6 +41,9 @@ def row_for(d, tag, long_context=False):
     for v in (2, 3, 4, 5):
         p = j(f"probe_v{v}")
         r[f"probe v{v}"] = f"{p['n_correct']}/{p['n_total']}" if p else "—"
+    for v in (4, 5):
+        g = j(f"gen_v{v}")
+        r[f"gen flip v{v}"] = f"{g['summary']['flip_hit']}/{g['summary']['n_cases']}" if g else "—"
     f = j("facts")
     r["facts"] = f"{f['summary']['correct']}/{f['summary']['n']}" if f else "—"
     for task, short in (("triviaqa", "TriviaQA"), ("nq", "NQ")):

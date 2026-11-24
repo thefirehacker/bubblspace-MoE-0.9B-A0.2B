@@ -4,29 +4,29 @@
  "cases_file": "benchmark/data/probefinding-winograndestyle/probefinding-winogrande-v4-heldout-20261122.json",
  "summary": {
   "n_cases": 112,
-  "flip_hit": 21,
-  "first_token_hit_rate": 0.326,
-  "mean_gap_nats": -3.07,
+  "flip_hit": 6,
+  "hit_rate": 0.232,
+  "mean_gap_nats": -3.023,
   "by_category": {
    "ability": {
     "flip_hit": "2/24",
-    "mean_gap": -3.332
+    "mean_gap": -3.327
    },
    "comparative": {
-    "flip_hit": "1/24",
-    "mean_gap": -0.862
+    "flip_hit": "2/24",
+    "mean_gap": -0.857
    },
    "emotional": {
     "flip_hit": "1/24",
-    "mean_gap": -4.493
+    "mean_gap": -4.4
    },
    "fit": {
-    "flip_hit": "16/16",
-    "mean_gap": -4.368
+    "flip_hit": "0/16",
+    "mean_gap": -4.338
    },
    "possession": {
     "flip_hit": "1/24",
-    "mean_gap": -2.726
+    "mean_gap": -2.63
    }
   }
  },
@@ -36,14 +36,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -1.674,
+    "hit": false,
+    "gap": -1.664,
     "gold": " mistaken.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -2.146,
+    "hit": false,
+    "gap": -2.04,
     "gold": " well informed.",
     "generation": " an expert."
    },
@@ -55,13 +55,13 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -1.304,
+    "hit": false,
+    "gap": -1.357,
     "gold": " mistaken.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " an expert.",
     "generation": " an expert."
@@ -74,14 +74,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.587,
+    "hit": false,
+    "gap": -2.797,
     "gold": " mistaken.",
     "generation": " confused. Who was confused? Basil. Who was an expert"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -4.02,
+    "hit": false,
+    "gap": -3.922,
     "gold": " certain.",
     "generation": " an expert. The street outside was quiet. Who was an"
    },
@@ -93,14 +93,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.645,
+    "hit": false,
+    "gap": -2.713,
     "gold": " mistaken.",
     "generation": " confused. Who was confused, Nadia or Basil? Nad"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -0.125,
+    "hit": true,
+    "gap": -0.25,
     "gold": " an expert.",
     "generation": " an expert, but who was an expert? Nadia."
    },
@@ -112,14 +112,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -1.353,
+    "hit": false,
+    "gap": -1.334,
     "gold": " wrong.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -6.367,
+    "hit": false,
+    "gap": -6.309,
     "gold": " careful.",
     "generation": " an expert."
    },
@@ -131,16 +131,16 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -6.08,
+    "hit": false,
+    "gap": -6.311,
     "gold": " careless with the figures.",
     "generation": " confused. Q: Who was confused? A: Nadia"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -2.665,
+    "hit": false,
+    "gap": -3.061,
     "gold": " well informed.",
-    "generation": " an expert. Q: Who was an expert? A:"
+    "generation": " an expert, but not Nadia. Q: Who was"
    },
    "ctxA": "Reza corrected Nadia. Anyone could tell that Nadia was",
    "ctxB": "Reza corrected Nadia. Anyone could tell that Reza was"
@@ -150,14 +150,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " confused.",
-    "generation": " confused. Who was confused? Astrid. Who was"
+    "generation": " confused. So who was confused? That would be Astr"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.871,
+    "hit": false,
+    "gap": -3.837,
     "gold": " certain.",
     "generation": " an expert. Who was an expert? Astrid."
    },
@@ -169,14 +169,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -8.084,
+    "hit": false,
+    "gap": -7.923,
     "gold": " careless with the figures.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -4.021,
+    "hit": false,
+    "gap": -4.083,
     "gold": " well informed.",
     "generation": " an expert."
    },
@@ -188,14 +188,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -7.972,
+    "hit": false,
+    "gap": -7.735,
     "gold": " careless with the figures.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -5.618,
+    "hit": false,
+    "gap": -5.528,
     "gold": " certain.",
     "generation": " an expert."
    },
@@ -207,14 +207,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -9.458,
+    "hit": false,
+    "gap": -9.347,
     "gold": " careless with the figures.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -6.791,
+    "hit": false,
+    "gap": -6.396,
     "gold": " well informed.",
     "generation": " confused."
    },
@@ -226,13 +226,13 @@
    "category": "ability",
    "flip_hit": true,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " confused.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " an expert.",
     "generation": " an expert."
@@ -245,14 +245,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " confused.",
     "generation": " confused. Who was confused? Hiro."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.816,
+    "hit": false,
+    "gap": -3.78,
     "gold": " certain.",
     "generation": " an expert, but Hiro was confused. Who was an expert"
    },
@@ -264,14 +264,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -5.993,
+    "hit": false,
+    "gap": -5.85,
     "gold": " careless with the figures.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.336,
+    "hit": false,
+    "gap": -3.18,
     "gold": " certain.",
     "generation": " an expert."
    },
@@ -283,14 +283,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.045,
+    "hit": false,
+    "gap": -2.11,
     "gold": " mistaken.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.06,
+    "hit": false,
+    "gap": -3.035,
     "gold": " well informed.",
     "generation": " an expert."
    },
@@ -302,13 +302,13 @@
    "category": "ability",
    "flip_hit": true,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " confused.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " an expert.",
     "generation": " an expert."
@@ -321,14 +321,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -7.199,
+    "hit": false,
+    "gap": -7.004,
     "gold": " careless with the figures.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -6.769,
+    "hit": false,
+    "gap": -6.891,
     "gold": " careful.",
     "generation": " an expert."
    },
@@ -340,14 +340,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " confused.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -4.656,
+    "hit": false,
+    "gap": -4.546,
     "gold": " certain.",
     "generation": " an expert."
    },
@@ -359,14 +359,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -1.653,
+    "hit": false,
+    "gap": -1.71,
     "gold": " wrong.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -4.087,
+    "hit": false,
+    "gap": -4.003,
     "gold": " certain.",
     "generation": " an expert."
    },
@@ -378,13 +378,13 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -4.918,
+    "hit": false,
+    "gap": -5.067,
     "gold": " careless with the figures.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " an expert.",
     "generation": " an expert."
@@ -397,14 +397,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -1.736,
+    "hit": false,
+    "gap": -1.696,
     "gold": " mistaken.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -6.505,
+    "hit": false,
+    "gap": -6.517,
     "gold": " certain.",
     "generation": " an expert."
    },
@@ -416,14 +416,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " confused.",
     "generation": " confused. Who was confused? Jana. Who was an"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.719,
+    "hit": false,
+    "gap": -1.813,
     "gold": " well informed.",
     "generation": " an expert, but Jana was confused. Who was an"
    },
@@ -435,14 +435,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -1.824,
+    "hit": false,
+    "gap": -1.853,
     "gold": " mistaken.",
     "generation": " confused. Who was confused? Hedda. Who was an"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -7.068,
+    "hit": false,
+    "gap": -7.131,
     "gold": " careful.",
     "generation": " an expert. Who was an expert? Kamala. Who"
    },
@@ -454,14 +454,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": 0.226,
+    "hit": true,
+    "gap": 0.0,
     "gold": " confused.",
-    "generation": " careless."
+    "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -6.724,
+    "hit": false,
+    "gap": -6.84,
     "gold": " careful.",
     "generation": " an expert."
    },
@@ -473,14 +473,14 @@
    "category": "ability",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -7.35,
+    "hit": false,
+    "gap": -7.212,
     "gold": " careless with the figures.",
     "generation": " confused."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -2.926,
+    "hit": false,
+    "gap": -2.846,
     "gold": " well informed.",
     "generation": " an expert."
    },
@@ -492,13 +492,13 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": 1.506,
+    "hit": false,
+    "gap": 1.563,
     "gold": " pricey.",
-    "generation": " expensive. The street outside was quiet. Which was expensive,"
+    "generation": " expensive. The street outside was quiet. Which was expensive?"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.0,
     "gold": " inexpensive.",
     "generation": " common and cheap. The street outside was quiet. Which was"
@@ -511,14 +511,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " far more valuable.",
     "generation": " far more valuable. Which was far more valuable? The designer"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -4.852,
+    "hit": false,
+    "gap": -5.423,
     "gold": " common and cheap.",
     "generation": " expensive, so buyers saved for months for the designer coat but"
    },
@@ -530,14 +530,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -0.751,
+    "hit": false,
+    "gap": -0.729,
     "gold": " built for speed.",
     "generation": " much slower. The street outside was quiet. Which was much"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.409,
+    "hit": false,
+    "gap": -0.544,
     "gold": " sluggish.",
     "generation": " unhurried. The street outside was quiet. Which was"
    },
@@ -549,14 +549,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -0.681,
+    "hit": false,
+    "gap": -0.62,
     "gold": " lofty.",
     "generation": " much taller. The street outside was quiet. Which was much"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.706,
+    "hit": false,
+    "gap": -0.714,
     "gold": " low.",
     "generation": " much shorter. The street outside was quiet. Which was much"
    },
@@ -568,14 +568,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " very lengthy.",
     "generation": " very lengthy. The street outside was quiet. Which was very"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.143,
+    "hit": false,
+    "gap": -0.021,
     "gold": " short.",
     "generation": " over quickly. The street outside was quiet. Which was over"
    },
@@ -587,16 +587,16 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": 1.379,
+    "hit": false,
+    "gap": 1.369,
     "gold": " very quick.",
     "generation": " rapid. The news spread quickly. Which was rapid, the"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": 1.517,
+    "hit": false,
+    "gap": 3.751,
     "gold": " unhurried.",
-    "generation": " much slower. The news spread quickly. Which was much slower"
+    "generation": " sluggish. The news spread quickly. Which was sluggish? The"
    },
    "ctxA": "The speedboat finished sooner than the rowing boat, given that the speedboat was",
    "ctxB": "The speedboat finished sooner than the rowing boat, given that the rowing boat was"
@@ -606,14 +606,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -0.252,
+    "hit": false,
+    "gap": -0.251,
     "gold": " much warmer.",
     "generation": " very hot. The street outside was quiet. Which was very"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": 1.214,
+    "hit": false,
+    "gap": 1.219,
     "gold": " much cooler.",
     "generation": " cold. The news spread quickly. Which was cold, the"
    },
@@ -625,14 +625,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " very tall.",
     "generation": " very tall. The street outside was quiet. Which was very"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.622,
+    "hit": false,
+    "gap": -0.621,
     "gold": " short.",
     "generation": " much shorter. The street outside was quiet. Which was much"
    },
@@ -644,13 +644,13 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.32,
+    "hit": false,
+    "gap": -2.313,
     "gold": " noisy.",
     "generation": " very loud. The news spread quickly. Which was very loud"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -1.426,
     "gold": " soft.",
     "generation": " much smaller. The news spread quickly. Which was much smaller"
@@ -663,13 +663,13 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " long and drawn out.",
     "generation": " long and drawn out. The street outside was quiet. Which"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.125,
     "gold": " short.",
     "generation": " over quickly. The street outside was quiet. Which was over"
@@ -682,16 +682,16 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -0.137,
+    "hit": false,
+    "gap": -0.255,
     "gold": " scorching.",
     "generation": " very hot. The street outside was quiet. Which was very"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": 1.49,
+    "hit": false,
+    "gap": 1.374,
     "gold": " much cooler.",
-    "generation": " chilly. The news spread quickly. Which was chilly, the"
+    "generation": " chilly. The street outside was quiet. Which was chilly,"
    },
    "ctxA": "The forge melted the butter faster than the cellar, owing to the fact that the forge was",
    "ctxB": "The forge melted the butter faster than the cellar, owing to the fact that the cellar was"
@@ -701,14 +701,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -0.125,
+    "hit": true,
+    "gap": -0.25,
     "gold": " very hot.",
     "generation": " very hot, but the cellar was chilly. Which was"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.183,
+    "hit": false,
+    "gap": -3.602,
     "gold": " cold.",
     "generation": " much cooler, but the forge was baking. Which was much"
    },
@@ -720,14 +720,14 @@
    "category": "comparative",
    "flip_hit": true,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -1.875,
     "gold": " very old.",
     "generation": " very old, but the text message was new. Which was"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -1.5,
+    "hit": true,
+    "gap": -1.625,
     "gold": " much newer.",
     "generation": " much newer, so the manuscript appeared in older records than the"
    },
@@ -739,14 +739,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -0.091,
+    "hit": false,
+    "gap": -0.073,
     "gold": " a real burden.",
     "generation": " dense and heavy. The box of tissues was light, and"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": 3.212,
+    "hit": false,
+    "gap": 3.251,
     "gold": " almost weightless.",
     "generation": " light. The box of books bent the shelf more than the"
    },
@@ -756,18 +756,18 @@
   {
    "name": "v4-comparative-38",
    "category": "comparative",
-   "flip_hit": false,
+   "flip_hit": true,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " far more valuable.",
     "generation": " far more valuable. The news spread quickly. Which was far"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.125,
+    "hit": true,
+    "gap": 0.0,
     "gold": " cheap.",
-    "generation": " affordable. The news spread quickly. Which was affordable, the"
+    "generation": " cheap. The news spread quickly. Which was cheap, the"
    },
    "ctxA": "The sports car cost more than the scooter, given that the sports car was",
    "ctxB": "The sports car cost more than the scooter, given that the scooter was"
@@ -777,13 +777,13 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -0.87,
+    "hit": false,
+    "gap": -0.853,
     "gold": " huge.",
     "generation": " much bigger. The street outside was quiet. Which was much"
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": 0.001,
     "gold": " tiny.",
     "generation": " much smaller. The street outside was quiet. Which was much"
@@ -796,14 +796,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.64,
+    "hit": false,
+    "gap": -2.699,
     "gold": " enormous.",
     "generation": " much smaller. The street outside was quiet. Which was much"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.804,
+    "hit": false,
+    "gap": -0.865,
     "gold": " tiny.",
     "generation": " much smaller. The street outside was quiet. Which was much"
    },
@@ -815,14 +815,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -5.706,
+    "hit": false,
+    "gap": -5.02,
     "gold": " rare and costly.",
     "generation": " far more valuable. Which was far more valuable? The sports"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -7.624,
+    "hit": false,
+    "gap": -7.821,
     "gold": " inexpensive.",
     "generation": " cheap, so buyers saved for months for the sports car but"
    },
@@ -834,14 +834,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -1.741,
+    "hit": false,
+    "gap": -1.84,
     "gold": " enormous.",
     "generation": " much bigger. The street outside was quiet. Which was much"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.464,
+    "hit": false,
+    "gap": -0.586,
     "gold": " tiny.",
     "generation": " much smaller. The street outside was quiet. Which was much"
    },
@@ -853,14 +853,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -2.812,
+    "hit": true,
+    "gap": -3.062,
     "gold": " very old.",
     "generation": " very old when it was written. Which was very old,"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -7.263,
+    "hit": false,
+    "gap": -7.757,
     "gold": " new.",
     "generation": " much older. Which was much older? The manuscript. Which"
    },
@@ -872,16 +872,16 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -0.215,
+    "hit": false,
+    "gap": -0.28,
     "gold": " much heavier.",
     "generation": " dense and heavy. The box of tissues was light, so"
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " light.",
-    "generation": " light. The box of books bent the shelf more than the"
+    "generation": " light. The box of tissues or the crate of books"
    },
    "ctxA": "The crate of books bent the shelf more than the box of tissues, given that the crate of books was",
    "ctxB": "The crate of books bent the shelf more than the box of tissues, given that the box of tissues was"
@@ -891,14 +891,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -0.032,
+    "hit": false,
+    "gap": -0.038,
     "gold": " very lengthy.",
     "generation": " long and drawn out. The street outside was quiet. Which"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.637,
+    "hit": false,
+    "gap": -0.792,
     "gold": " quick.",
     "generation": " over quickly. The street outside was quiet. Which was over"
    },
@@ -910,13 +910,13 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.375,
     "gold": " much longer.",
     "generation": " far more time-consuming. The street outside was quiet."
    },
    "B": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -0.375,
     "gold": " quick.",
     "generation": " over quickly. The street outside was quiet. Which was over"
@@ -929,14 +929,14 @@
    "category": "comparative",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " long and drawn out.",
     "generation": " long and drawn out. The street outside was quiet. Which"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.808,
+    "hit": false,
+    "gap": -0.832,
     "gold": " quick.",
     "generation": " short. The street outside was quiet. Which was short?"
    },
@@ -948,14 +948,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -7.446,
+    "hit": false,
+    "gap": -7.557,
     "gold": " lucky.",
     "generation": " a slow reader. Who was a slow reader, Omar or"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -4.44,
+    "hit": false,
+    "gap": -4.643,
     "gold": " jealous.",
     "generation": " a slow reader. Who was a slow reader? Omar."
    },
@@ -967,16 +967,16 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
+    "hit": false,
     "gap": -3.069,
     "gold": " successful.",
     "generation": " the winner. Q: Who was the winner? A:"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.613,
+    "hit": false,
+    "gap": -3.501,
     "gold": " sporting.",
-    "generation": " happy for him. Who was happy for Hiro? Farah"
+    "generation": " happy for him. Who was happy for Hiro? Hiro."
    },
    "ctxA": "Farah congratulated Hiro. Anyone could tell that Hiro was",
    "ctxB": "Farah congratulated Hiro. Anyone could tell that Farah was"
@@ -986,14 +986,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -3.754,
+    "hit": false,
+    "gap": -3.889,
     "gold": " victorious.",
     "generation": " the winner."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.768,
+    "hit": false,
+    "gap": -1.618,
     "gold": " sporting.",
     "generation": " happy."
    },
@@ -1005,14 +1005,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -6.068,
+    "hit": false,
+    "gap": -5.953,
     "gold": " admired by everyone.",
     "generation": " a beautiful young woman.\n\nReza was a young"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -4.666,
+    "hit": false,
+    "gap": -4.449,
     "gold": " jealous.",
     "generation": " a young man, and that Astrid was a young"
    },
@@ -1024,14 +1024,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -4.186,
+    "hit": false,
+    "gap": -4.287,
     "gold": " promoted.",
     "generation": " the winner. Who was the winner? Shreya."
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -1.196,
+    "hit": true,
+    "gap": -1.348,
     "gold": " happy for them.",
     "generation": " happy for Shreya. So who was happy for Sh"
    },
@@ -1043,14 +1043,14 @@
    "category": "emotional",
    "flip_hit": true,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " the winner.",
     "generation": " the winner."
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -2.265,
+    "hit": true,
+    "gap": -2.287,
     "gold": " happy for them.",
     "generation": " happy."
    },
@@ -1062,14 +1062,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -6.406,
+    "hit": false,
+    "gap": -6.147,
     "gold": " lucky.",
     "generation": " a woman. The reason: Farah was a woman."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.411,
+    "hit": false,
+    "gap": -1.565,
     "gold": " jealous.",
     "generation": " a student."
    },
@@ -1081,14 +1081,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -10.298,
+    "hit": false,
+    "gap": -10.26,
     "gold": " admired by everyone.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -20.849,
+    "hit": false,
+    "gap": -21.238,
     "gold": " unhappy with their own life.",
     "generation": " a student."
    },
@@ -1100,14 +1100,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -6.603,
+    "hit": false,
+    "gap": -3.187,
     "gold": " very successful.",
-    "generation": " the one who had the most money. So who was the"
+    "generation": " a very good student. So who was a good student?"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.297,
+    "hit": false,
+    "gap": -3.396,
     "gold": " jealous.",
     "generation": " a gifted student. \"Who was a gifted student?\" someone"
    },
@@ -1119,14 +1119,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -10.832,
+    "hit": false,
+    "gap": -10.81,
     "gold": " admired by everyone.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.975,
+    "hit": false,
+    "gap": -3.956,
     "gold": " insecure.",
     "generation": " a student."
    },
@@ -1138,14 +1138,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -3.72,
+    "hit": false,
+    "gap": -3.693,
     "gold": " promoted.",
     "generation": " the winner."
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -4.058,
+    "hit": true,
+    "gap": -4.121,
     "gold": " happy for them.",
     "generation": " happy."
    },
@@ -1157,14 +1157,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -3.584,
+    "hit": false,
+    "gap": -3.566,
     "gold": " promoted.",
     "generation": " the winner."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -5.226,
+    "hit": false,
+    "gap": -5.371,
     "gold": " happy for them.",
     "generation": " the winner."
    },
@@ -1176,16 +1176,16 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": 0.125,
+    "hit": true,
+    "gap": 0.0,
     "gold": " the winner.",
     "generation": " the winner, but not Hiro. Who was the winner?"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.039,
+    "hit": false,
+    "gap": -0.985,
     "gold": " proud.",
-    "generation": " happy for her. Who was happy for her? Hiro."
+    "generation": " happy for her. Who was happy for her, Hiro or"
    },
    "ctxA": "Hiro congratulated Kamala. Anyone could tell that Kamala was",
    "ctxB": "Hiro congratulated Kamala. Anyone could tell that Hiro was"
@@ -1195,16 +1195,16 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.01,
+    "hit": false,
+    "gap": -2.126,
     "gold": " successful.",
     "generation": " the winner."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -4.299,
+    "hit": true,
+    "gap": -3.756,
     "gold": " happy for them.",
-    "generation": " the winner."
+    "generation": " happy."
    },
    "ctxA": "Farah congratulated Ravi, owing to the fact that Ravi was",
    "ctxB": "Farah congratulated Ravi, owing to the fact that Farah was"
@@ -1214,14 +1214,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " the winner.",
     "generation": " the winner."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": 0.159,
+    "hit": false,
+    "gap": 0.173,
     "gold": " proud.",
     "generation": " happy."
    },
@@ -1233,14 +1233,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -6.112,
+    "hit": false,
+    "gap": -6.065,
     "gold": " popular.",
-    "generation": " a student. The reason: Felix was a student."
+    "generation": " a student. The news spread quickly. Q: Who was"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -16.77,
+    "hit": false,
+    "gap": -17.084,
     "gold": " unhappy with their own life.",
     "generation": " a gifted student. The reason: Nadia was a gifted"
    },
@@ -1252,14 +1252,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -6.571,
+    "hit": false,
+    "gap": -6.489,
     "gold": " very successful.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -7.231,
+    "hit": false,
+    "gap": -7.097,
     "gold": " resentful.",
     "generation": " a student. The news spread quickly. If you are asked"
    },
@@ -1271,14 +1271,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " the winner.",
     "generation": " the winner. Who was the winner? Reza. Who"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -2.383,
+    "hit": false,
+    "gap": -2.456,
     "gold": " warm.",
     "generation": " the winner. Who was the winner? Zoe."
    },
@@ -1290,14 +1290,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -8.394,
+    "hit": false,
+    "gap": -8.49,
     "gold": " admired by everyone.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -4.046,
+    "hit": false,
+    "gap": -4.084,
     "gold": " resentful.",
     "generation": " a student."
    },
@@ -1309,14 +1309,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -5.34,
+    "hit": false,
+    "gap": -5.285,
     "gold": " very successful.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -8.083,
+    "hit": false,
+    "gap": -7.878,
     "gold": " resentful.",
     "generation": " a student. The reason: Ravi was a student."
    },
@@ -1328,16 +1328,16 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.317,
+    "hit": false,
+    "gap": -2.427,
     "gold": " successful.",
     "generation": " the winner."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.207,
+    "hit": false,
+    "gap": 0.844,
     "gold": " warm.",
-    "generation": " the winner."
+    "generation": " happy for him."
    },
    "ctxA": "Hedda congratulated Lars, given that Lars was",
    "ctxB": "Hedda congratulated Lars, given that Hedda was"
@@ -1347,14 +1347,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -8.202,
+    "hit": false,
+    "gap": -8.044,
     "gold": " admired by everyone.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.697,
+    "hit": false,
+    "gap": -3.952,
     "gold": " jealous.",
     "generation": " a student. The reason: Farah was a student."
    },
@@ -1366,14 +1366,14 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -3.956,
+    "hit": false,
+    "gap": -3.877,
     "gold": " promoted.",
     "generation": " the winner."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.168,
+    "hit": false,
+    "gap": -1.021,
     "gold": " proud.",
     "generation": " the winner."
    },
@@ -1385,16 +1385,16 @@
    "category": "emotional",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " the winner.",
     "generation": " the winner, so Amara congratulated Lars."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.381,
+    "hit": false,
+    "gap": -1.208,
     "gold": " proud.",
-    "generation": " happy for Amara. Who was happy for Amara?"
+    "generation": " happy for Amara. Who was happy for Amara,"
    },
    "ctxA": "Lars congratulated Amara. Anyone could tell that Amara was",
    "ctxB": "Lars congratulated Amara. Anyone could tell that Lars was"
@@ -1402,16 +1402,16 @@
   {
    "name": "v4-fit-72",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -6.493,
+    "hit": false,
+    "gap": -6.631,
     "gold": " too low.",
     "generation": " too narrow. The street outside was quiet. Which was too"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -6.274,
+    "hit": false,
+    "gap": -6.135,
     "gold": " too tall.",
     "generation": " too wide. The street outside was quiet. Which was too"
    },
@@ -1421,16 +1421,16 @@
   {
    "name": "v4-fit-73",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small.",
     "generation": " too small. The street outside was quiet. Which was too"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -5.438,
+    "hit": false,
+    "gap": -5.0,
     "gold": " too bulky.",
     "generation": " too large. The street outside was quiet. Which was too"
    },
@@ -1440,16 +1440,16 @@
   {
    "name": "v4-fit-74",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -6.592,
+    "hit": false,
+    "gap": -6.649,
     "gold": " too low.",
     "generation": " too narrow. The street outside was quiet. Which was too"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -6.274,
+    "hit": false,
+    "gap": -6.2,
     "gold": " too tall.",
     "generation": " too wide. The street outside was quiet. Which was too"
    },
@@ -1459,16 +1459,16 @@
   {
    "name": "v4-fit-75",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -11.126,
+    "hit": false,
+    "gap": -11.313,
     "gold": " too short.",
     "generation": " too small. The street outside was quiet. Which was too"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -0.687,
+    "hit": false,
+    "gap": -1.062,
     "gold": " too long.",
     "generation": " too large. The street outside was quiet. Which was too"
    },
@@ -1478,18 +1478,18 @@
   {
    "name": "v4-fit-76",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -10.563,
+    "hit": false,
+    "gap": -10.625,
     "gold": " too short.",
     "generation": " too small. The news spread quickly. Which was too small"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -1.25,
+    "hit": false,
+    "gap": -1.313,
     "gold": " too long.",
-    "generation": " too wide. The street outside was quiet. Which was too"
+    "generation": " too big. The news spread quickly. Which was too big"
    },
    "ctxA": "The canoe would not fit in the garage, owing to the fact that the garage was",
    "ctxB": "The canoe would not fit in the garage, owing to the fact that the canoe was"
@@ -1497,18 +1497,18 @@
   {
    "name": "v4-fit-77",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -12.126,
+    "hit": false,
+    "gap": -12.087,
     "gold": " too short.",
     "generation": " too small. The aquarium would not fit in the alc"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -3.181,
+    "hit": false,
+    "gap": -2.417,
     "gold": " too long.",
-    "generation": " too big, so the canoe would not fit in the garage"
+    "generation": " too small, so the canoe would not fit in the garage"
    },
    "ctxA": "The canoe would not fit in the garage. Anyone could tell that the garage was",
    "ctxB": "The canoe would not fit in the garage. Anyone could tell that the canoe was"
@@ -1516,16 +1516,16 @@
   {
    "name": "v4-fit-78",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small.",
     "generation": " too small. The giraffe would not fit in the horse trailer"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -3.218,
+    "hit": false,
+    "gap": -3.031,
     "gold": " too tall.",
     "generation": " too large. The giraffe would not fit in the horse trailer"
    },
@@ -1535,16 +1535,16 @@
   {
    "name": "v4-fit-79",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -10.063,
+    "hit": false,
+    "gap": -10.125,
     "gold": " too short.",
-    "generation": " too small. The street outside was quiet. Which was too"
+    "generation": " too small. The news spread quickly. Which was too small"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -2.063,
+    "hit": false,
+    "gap": -2.0,
     "gold": " too long.",
     "generation": " too wide. The street outside was quiet. Which was too"
    },
@@ -1554,16 +1554,16 @@
   {
    "name": "v4-fit-80",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -8.564,
+    "hit": false,
+    "gap": -8.538,
     "gold": " too low.",
     "generation": " too narrow. The barge or the tunnel: which was"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -7.666,
+    "hit": false,
+    "gap": -7.715,
     "gold": " too tall.",
     "generation": " too wide. The barge or the tunnel: which was"
    },
@@ -1573,18 +1573,18 @@
   {
    "name": "v4-fit-81",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small.",
     "generation": " too small. The news spread quickly. Which was too small"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -1.848,
+    "hit": false,
+    "gap": -1.844,
     "gold": " too tall.",
-    "generation": " too big. The news spread quickly. Which was too big"
+    "generation": " too big. The giraffe would not fit in the horse trailer"
    },
    "ctxA": "The harp would not fit in the hatchback; the trouble was that the hatchback was",
    "ctxB": "The harp would not fit in the hatchback; the trouble was that the harp was"
@@ -1592,18 +1592,18 @@
   {
    "name": "v4-fit-82",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small.",
     "generation": " too small. The street outside was quiet. Which was too"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -5.813,
+    "hit": false,
+    "gap": -5.625,
     "gold": " too bulky.",
-    "generation": " too large. The giraffe would not fit in the horse trailer"
+    "generation": " too large. The street outside was quiet. Which was too"
    },
    "ctxA": "The cello case would not fit in the taxi, given that the taxi was",
    "ctxB": "The cello case would not fit in the taxi, given that the cello case was"
@@ -1611,16 +1611,16 @@
   {
    "name": "v4-fit-83",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small.",
     "generation": " too small. The reason: the cello was too wide"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -6.755,
+    "hit": false,
+    "gap": -6.871,
     "gold": " too bulky.",
     "generation": " too small. The reason: the taxi was too small."
    },
@@ -1630,16 +1630,16 @@
   {
    "name": "v4-fit-84",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": -0.75,
     "gold": " too small.",
     "generation": " too small, but the harp was too long. Which was"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -4.898,
+    "hit": false,
+    "gap": -4.891,
     "gold": " too tall.",
     "generation": " too big, but the hatchback was too small. Which"
    },
@@ -1649,16 +1649,16 @@
   {
    "name": "v4-fit-85",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -5.785,
+    "hit": false,
+    "gap": -5.777,
     "gold": " too low.",
     "generation": " too narrow. The street outside was quiet. Which was too"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -5.67,
+    "hit": false,
+    "gap": -5.71,
     "gold": " too tall.",
     "generation": " too wide. The street outside was quiet. Which was too"
    },
@@ -1668,16 +1668,16 @@
   {
    "name": "v4-fit-86",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small.",
     "generation": " too small. The street outside was quiet. Which was too"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -3.955,
+    "hit": false,
+    "gap": -3.887,
     "gold": " too bulky.",
     "generation": " too large. The street outside was quiet. Which was too"
    },
@@ -1687,16 +1687,16 @@
   {
    "name": "v4-fit-87",
    "category": "fit",
-   "flip_hit": true,
+   "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " too small.",
     "generation": " too small. The giraffe would not fit in the horse trailer"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -2.732,
+    "hit": false,
+    "gap": -2.61,
     "gold": " too tall.",
     "generation": " too large. The giraffe would not fit in the horse trailer"
    },
@@ -1708,14 +1708,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.846,
+    "hit": false,
+    "gap": -2.862,
     "gold": " recovering from illness.",
     "generation": " a student at the University of Tehran. Ravi gave a"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": 1.209,
+    "hit": false,
+    "gap": 1.239,
     "gold": " generous.",
     "generation": " a student."
    },
@@ -1727,14 +1727,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.743,
+    "hit": false,
+    "gap": -2.598,
     "gold": " leaving the company.",
     "generation": " a student. The reason: Amara was generous."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -6.304,
+    "hit": false,
+    "gap": -6.32,
     "gold": " fond of them.",
     "generation": " generous."
    },
@@ -1746,16 +1746,16 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -1.299,
+    "hit": true,
+    "gap": 0.143,
     "gold": " a close friend.",
-    "generation": " a student."
+    "generation": " a Muslim. Amara or Reza: who was a"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": 0.44,
+    "hit": false,
+    "gap": 0.726,
     "gold": " generous.",
-    "generation": " a former teacher. The news spread quickly. Q: Who"
+    "generation": " a former teacher."
    },
    "ctxA": "Amara gave a gift to Reza; the trouble was that Reza was",
    "ctxB": "Amara gave a gift to Reza; the trouble was that Amara was"
@@ -1765,14 +1765,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": -1.812,
+    "hit": true,
+    "gap": -1.93,
     "gold": " a close friend.",
     "generation": " a slow reader."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.461,
+    "hit": false,
+    "gap": -1.408,
     "gold": " grateful.",
     "generation": " generous."
    },
@@ -1784,16 +1784,16 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " a close friend.",
     "generation": " a close friend. Who was a close friend, Basil or"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.728,
+    "hit": false,
+    "gap": -1.77,
     "gold": " thoughtful.",
-    "generation": " generous. Who was generous? Samir. Who was a"
+    "generation": " generous. Who was generous, Basil or Samir? Basil"
    },
    "ctxA": "Samir gave a gift to Basil. Anyone could tell that Basil was",
    "ctxB": "Samir gave a gift to Basil. Anyone could tell that Samir was"
@@ -1803,13 +1803,13 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -4.307,
+    "hit": false,
+    "gap": -4.373,
     "gold": " celebrating a birthday.",
-    "generation": " a student."
+    "generation": " a slow reader."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " generous.",
     "generation": " generous."
@@ -1822,14 +1822,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -3.891,
+    "hit": false,
+    "gap": -3.875,
     "gold": " leaving the company.",
     "generation": " a close friend. Who was a close friend, Jana"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -3.687,
+    "hit": false,
+    "gap": -3.92,
     "gold": " fond of them.",
     "generation": " generous. Who was generous? Amara."
    },
@@ -1841,14 +1841,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -4.496,
+    "hit": false,
+    "gap": -4.375,
     "gold": " leaving the company.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.135,
+    "hit": false,
+    "gap": -1.069,
     "gold": " thoughtful.",
     "generation": " a close friend. The reason: Farah was generous."
    },
@@ -1860,14 +1860,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -5.331,
+    "hit": false,
+    "gap": -5.396,
     "gold": " recovering from illness.",
     "generation": " a close friend."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.517,
+    "hit": false,
+    "gap": -1.458,
     "gold": " grateful.",
     "generation": " generous."
    },
@@ -1879,13 +1879,13 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -5.246,
+    "hit": false,
+    "gap": -5.188,
     "gold": " celebrating a birthday.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " generous.",
     "generation": " generous."
@@ -1898,14 +1898,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -4.836,
+    "hit": false,
+    "gap": -4.75,
     "gold": " celebrating a birthday.",
     "generation": " a close friend. Who was a close friend, Astr"
    },
    "B": {
-    "first_token_hit": true,
-    "gap": -0.25,
+    "hit": true,
+    "gap": -0.125,
     "gold": " generous.",
     "generation": " generous, but Shreya was a slow reader. Who"
    },
@@ -1917,14 +1917,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -4.352,
+    "hit": false,
+    "gap": -4.224,
     "gold": " celebrating a birthday.",
     "generation": " a close friend."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -6.183,
+    "hit": false,
+    "gap": -5.952,
     "gold": " fond of them.",
     "generation": " generous."
    },
@@ -1936,16 +1936,16 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -6.024,
+    "hit": false,
+    "gap": -5.502,
     "gold": " celebrating a birthday.",
     "generation": " a close friend. Who was a close friend, Felix or"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.192,
+    "hit": false,
+    "gap": -1.257,
     "gold": " grateful.",
-    "generation": " generous, but not Felix. Who was generous, Felix or"
+    "generation": " generous. Who was generous, Felix or Lars? Lars."
    },
    "ctxA": "Lars gave a gift to Felix. Anyone could tell that Felix was",
    "ctxB": "Lars gave a gift to Felix. Anyone could tell that Lars was"
@@ -1955,14 +1955,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
-    "gap": 0.623,
+    "hit": true,
+    "gap": 0.632,
     "gold": " a close friend.",
     "generation": " a student at the University of Paris. Amara gave a"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -6.509,
+    "hit": false,
+    "gap": -6.538,
     "gold": " fond of them.",
     "generation": " generous."
    },
@@ -1974,16 +1974,16 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -5.971,
+    "hit": false,
+    "gap": -6.026,
     "gold": " leaving the company.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -5.29,
+    "hit": false,
+    "gap": -4.181,
     "gold": " fond of them.",
-    "generation": " a slow reader."
+    "generation": " a former teacher."
    },
    "ctxA": "Farah gave a gift to Wanjiru; the trouble was that Wanjiru was",
    "ctxB": "Farah gave a gift to Wanjiru; the trouble was that Farah was"
@@ -1993,13 +1993,13 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -2.845,
+    "hit": false,
+    "gap": -2.783,
     "gold": " leaving the company.",
     "generation": " a close friend."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " generous.",
     "generation": " generous."
@@ -2012,14 +2012,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -4.34,
+    "hit": false,
+    "gap": -4.415,
     "gold": " celebrating a birthday.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -2.435,
+    "hit": false,
+    "gap": -2.488,
     "gold": " grateful.",
     "generation": " generous."
    },
@@ -2031,14 +2031,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -3.205,
+    "hit": false,
+    "gap": -3.071,
     "gold": " leaving the company.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.329,
+    "hit": false,
+    "gap": -1.323,
     "gold": " grateful.",
     "generation": " generous."
    },
@@ -2050,14 +2050,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -4.189,
+    "hit": false,
+    "gap": -4.191,
     "gold": " leaving the company.",
     "generation": " a slow reader."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.675,
+    "hit": false,
+    "gap": -1.367,
     "gold": " grateful.",
     "generation": " generous."
    },
@@ -2069,14 +2069,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -3.986,
+    "hit": false,
+    "gap": -4.117,
     "gold": " recovering from illness.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -7.267,
+    "hit": false,
+    "gap": -7.294,
     "gold": " fond of them.",
     "generation": " generous."
    },
@@ -2088,13 +2088,13 @@
    "category": "possession",
    "flip_hit": true,
    "A": {
-    "first_token_hit": true,
-    "gap": -0.756,
+    "hit": true,
+    "gap": -0.698,
     "gold": " a close friend.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " generous.",
     "generation": " generous."
@@ -2107,14 +2107,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -4.939,
+    "hit": false,
+    "gap": -4.938,
     "gold": " celebrating a birthday.",
     "generation": " a student."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -0.943,
+    "hit": false,
+    "gap": -0.672,
     "gold": " thoughtful.",
     "generation": " a former teacher."
    },
@@ -2126,14 +2126,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": false,
-    "gap": -3.029,
+    "hit": false,
+    "gap": -2.94,
     "gold": " leaving the company.",
     "generation": " a close friend."
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -2.175,
+    "hit": false,
+    "gap": -2.144,
     "gold": " thoughtful.",
     "generation": " generous."
    },
@@ -2145,14 +2145,14 @@
    "category": "possession",
    "flip_hit": false,
    "A": {
-    "first_token_hit": true,
+    "hit": true,
     "gap": 0.0,
     "gold": " a close friend.",
     "generation": " a close friend. Who was a close friend, Lena"
    },
    "B": {
-    "first_token_hit": false,
-    "gap": -1.608,
+    "hit": false,
+    "gap": -1.438,
     "gold": " grateful.",
     "generation": " generous, so Lena gave it to Lotte. So"
    },

@@ -2,7 +2,7 @@
 # A10: two-tier eval watcher for Phase 2.5a (doc/plan-03-phase-2.5-knowledge-context.md §2.6).
 #
 #   FAST tier, every 2,000 steps (≈1B tokens), ≈1.5 h:
-#     probes v2 / v3 / v4 / v5, simple-facts probe, TriviaQA + NQ-open (first 1,000 each, 5-shot),
+#     probes v2 / v3 / v4 / v5 + generation flip on v4 / v5, simple-facts probe, TriviaQA + NQ-open (first 1,000 each, 5-shot),
 #     English 6 (forgetting check), quick suite (FIM / tool-call format / reasoning / greedy samples)
 #   FULL tier, at steps 8,000 / 16,000 / 24,000 / 32,000 and the final 38,147 (≈4B tokens apart), +≈3 h:
 #     full TriviaQA (2,000) and NQ-open (3,610) instead of the 1,000 slices, CRUXEval-O + BFCL
@@ -36,6 +36,10 @@ for s in $STEPS; do
   for v in 2 3 4 5; do
     eval cf=\$V$v
     python3 scripts/probe_entity_binding.py --checkpoint $CK --cases_file $cf --output $OUT/probe_v${v}_$T.json > $OUT/probe_v${v}_$T.log 2>&1
+  done
+  for v in 4 5; do  # does the model WRITE the bound answer? (doc/wsp-experiments.md §6.1)
+    eval cf=\$V$v
+    python3 scripts/eval_binding_generation.py --checkpoint $CK --cases_file $cf --output $OUT/gen_v${v}_$T.json > $OUT/gen_v${v}_$T.log 2>&1
   done
   python3 scripts/eval_facts.py --checkpoint $CK --facts $FACTS --output $OUT/facts_$T.json > $OUT/facts_$T.log 2>&1
   if [ $is_full = 1 ]; then
