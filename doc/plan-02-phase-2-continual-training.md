@@ -26,9 +26,9 @@ re-litigated if the language set is ever expanded.
 
 | | |
 |---|---|
-| Current step | 12,090 / 19,073 (~63%) |
-| Measured steady-state throughput | ~87,500 tok/s |
-| **Estimated time until Phase 1 completes** | **~11.6 hours** from current progress |
+| Current step | 12,090 / 19,073 (≈63%) |
+| Measured steady-state throughput | ≈87,500 tok/s |
+| **Estimated time until Phase 1 completes** | **≈11.6 hours** from current progress |
 
 Phase 2 continued-training cannot start on the training host until `step_19073.pt`
 exists. The training host must not be interrupted or shared with any other job while
@@ -42,7 +42,7 @@ on a separate host.
 without committing to a multi-day run). Scales linearly to 15B if more H100 time is
 approved later — same ratios, same datasets, just a longer Stage 2A.
 
-**GPU time estimate:** 12B tokens ÷ ~87,000 tok/s measured throughput ≈ **~38 hours**.
+**GPU time estimate:** 12B tokens ÷ ≈87,000 tok/s measured throughput ≈ **≈38 hours**.
 
 **Mixture — 26% English replay / 63.2% Code / 10.8% Agentic** (revised twice: first
 from the original draft's 71.5/21.9/6.6, which would have left the finished model at
@@ -51,22 +51,22 @@ in far short on the agentic pool — see "Agentic pool revision" below):
 
 | Pool | Overall share | Tokens | Unique tokens on disk | Oversampling |
 |---|---|---|---|---|
-| English replay | 26.0% | 3.12B | 3.12B (1.60B reused Phase 1 shards + 1.52B `cosmopedia-v2`) | ~1.0x |
-| Code | 63.2% | 7.58B | 6.48B | ~1.17x (trivial — `starcoderdata` has far more headroom if ever needed) |
-| Agentic (tool-use + reasoning) | 10.8% | 1.30B | ~375M (see revision below) | ~3.47x |
+| English replay | 26.0% | 3.12B | 3.12B (1.60B reused Phase 1 shards + 1.52B `cosmopedia-v2`) | ≈1.0x |
+| Code | 63.2% | 7.58B | 6.48B | ≈1.17x (trivial — `starcoderdata` has far more headroom if ever needed) |
+| Agentic (tool-use + reasoning) | 10.8% | 1.30B | ≈375M (see revision below) | ≈3.47x |
 
-**Agentic pool revision:** the original 20% (2.4B) target assumed ~1.1B unique
-agentic tokens after the ≤2048 filter. Real data-prep yield came in at only ~297M
+**Agentic pool revision:** the original 20% (2.4B) target assumed ≈1.1B unique
+agentic tokens after the ≤2048 filter. Real data-prep yield came in at only ≈297M
 across the first three sources (`hermes` 8.9M, `openthoughts` 17.3M, `toolmind`
 270.4M — `OpenThoughts-114k` in particular kept only 8,575 of 114,000 rows, 92.5%
-dropped, since full CoT traces average ~8k tokens). Two more sources were added
+dropped, since full CoT traces average ≈8k tokens). Two more sources were added
 specifically to close the gap: `glaiveai/glaive-function-calling-v2` (112,431
 episodes kept, only 0.47% dropped, **58.9M tokens** — mostly short single/few-turn
 function calls, a strong yield) and `bespokelabs/Bespoke-Stratos-17k` (3,450 kept,
 **5.5M tokens** — same `<|begin_of_thought|>`-tagged lineage as OpenThoughts but
-more concise, a smaller but free addition). New total: **~375M unique tokens**.
-Rather than force ~6.4x repetition to hit the original 2.4B target, the agentic
-target was lowered to 1.3B (~3.47x — a reasonable repetition factor, not an
+more concise, a smaller but free addition). New total: **≈375M unique tokens**.
+Rather than force ≈6.4x repetition to hit the original 2.4B target, the agentic
+target was lowered to 1.3B (≈3.47x — a reasonable repetition factor, not an
 overfitting risk) and the freed 1.1B moved into Code, which already has far more
 headroom than it needs.
 
@@ -88,7 +88,7 @@ security update above — so `python-edu-cleaned` carries that role alone.)
 Peak LR `2.4e-4` = 0.4x Phase 1's peak (`6e-4`) — large enough for Muon to
 meaningfully re-specialize experts and for AdamW to pull the 14 suppressed special
 tokens into real use (see Issue 7 in the audit — their embedding norms measured
-~1.10 on `step_9000.pt` vs. ~1.28 for normal vocabulary, confirming real but
+≈1.10 on `step_9000.pt` vs. ≈1.28 for normal vocabulary, confirming real but
 non-catastrophic suppression), without being so large it risks destabilizing what
 Phase 1 already learned. **These exact numbers (300-step warmup, `2.4e-4` peak, the
 19,073/3,815 split) are informed starting points, not settled — the Stage 2.1 smoke
@@ -122,9 +122,9 @@ blob-ID pointers, not file content (confirmed live — `python-edu`'s real schem
 
 Language scope was narrowed from the original 13-language spread
 (Python/JS/TS/JSX/TSX/HTML/CSS/Vue/Java/Go/PHP/C#/Ruby/SQL) to these 5, so each
-language gets 4-6x more signal rather than ~85M tokens apiece — see Issue 1.
+language gets 4-6x more signal rather than ≈85M tokens apiece — see Issue 1.
 
-`OpenCoder-LLM/opc-annealing-corpus` (originally slated here for ~0.98B curated
+`OpenCoder-LLM/opc-annealing-corpus` (originally slated here for ≈0.98B curated
 algorithmic/synthetic tokens) was dropped for pervasive ClamAV flags (see security
 update above) — its allocation was redistributed proportionally across the
 `starcoderdata` language pools, which have effectively unlimited headroom (250B+
@@ -133,7 +133,7 @@ flagged `starcoderdata` files were individually confirmed to sit outside these
 5 languages via Hugging Face's authenticated security API (`git-commits-cleaned/`
 ×3, `github-issues-filtered-structured/` ×1).
 
-### Pool C — Agentic tool-use + reasoning (~375M unique tokens, hard-filtered to ≤2048 tokens, 1.3B drawn via ~3.47x oversampling)
+### Pool C — Agentic tool-use + reasoning (≈375M unique tokens, hard-filtered to ≤2048 tokens, 1.3B drawn via ≈3.47x oversampling)
 
 All five sources formatted by `scripts/prepare_agentic.py` into one wire format
 (`<|im_start|>role\n...\n<|im_end|>`, tool schemas wrapped in `<tools>`, calls in
@@ -147,17 +147,17 @@ tails. Real measured yields, not pre-run estimates:
 | `glaiveai/glaive-function-calling-v2` | 112,431 | **58.9M** | 0.47% (of 112,960) | Added after the original 3 sources came in far short (see below). Mostly short single/few-turn function calls — by far the best keep-rate found. `{system, chat}` schema with a custom `USER:`/`ASSISTANT:`/`FUNCTION RESPONSE:` flat-text format, parsed with a dedicated regex rather than ShareGPT/OpenAI-style turns |
 | `NousResearch/hermes-function-calling-v1` | 9,717 | 8.9M | 16% (of 11,578, across all 5 configs) | ShareGPT-style; system messages already carry `<tools>...</tools>` XML natively |
 | `bespokelabs/Bespoke-Stratos-17k` | 3,450 | 5.5M | 79% (of 16,710) | Added alongside `glaive_fc_v2` — same `<|begin_of_thought|>`-tagged lineage as OpenThoughts, more concise, but still mostly long-form reasoning |
-| `open-thoughts/OpenThoughts-114k` | 8,575 | 17.3M | **92.5%** (of 114,000) | `<think>`/`</think>` reasoning content (`<|begin_of_thought|>`/`<|end_of_thought|>` remapped). Full traces average ~8,000 tokens (3.55GB / 114k rows), so the ≤2048 filter drops nearly all of them — this is the single biggest reason the original ~1.1B unique-token estimate turned out wrong |
+| `open-thoughts/OpenThoughts-114k` | 8,575 | 17.3M | **92.5%** (of 114,000) | `<think>`/`</think>` reasoning content (`<|begin_of_thought|>`/`<|end_of_thought|>` remapped). Full traces average ≈8,000 tokens (3.55GB / 114k rows), so the ≤2048 filter drops nearly all of them — this is the single biggest reason the original ≈1.1B unique-token estimate turned out wrong |
 
-**Combined unique agentic pool: ~375M tokens** (not the originally estimated
-~1.1B). `ToolMind` and `OpenThoughts-114k` were in the original plan; `glaive_fc_v2`
+**Combined unique agentic pool: ≈375M tokens** (not the originally estimated
+≈1.1B). `ToolMind` and `OpenThoughts-114k` were in the original plan; `glaive_fc_v2`
 and `Bespoke-Stratos-17k` were added specifically to close the gap once real yields
 came in short — `Salesforce/xlam-function-calling-60k` was dropped from the plan
 since `ToolMind` already incorporates a richer, reasoning-annotated version of the
 same underlying xLAM queries (confirmed by comparing file sizes: ToolMind's
 `xlam-function-calling-60k-query.jsonl` alone is 476MB vs. the standalone repo's
-97MB). At the revised 1.3B allocation (section 2), that's ~3.47x oversampling —
-a reasonable repetition factor, not an overfitting risk the way ~6-8x would have
+97MB). At the revised 1.3B allocation (section 2), that's ≈3.47x oversampling —
+a reasonable repetition factor, not an overfitting risk the way ≈6-8x would have
 been against the 2.4B target.
 
 ## 4. Confirmed bugs this plan fixes (full detail in `issue-01-phase2.md`)
@@ -166,7 +166,7 @@ been against the 2.4B target.
    tokenizes a whole file, applies `apply_fim()` to the full sequence, then writes
    flat shards; `src/data/dataset.py` slices a uniformly random 2048-token window
    with no document/FIM-boundary awareness (`start = random.randint(0, max_start)`,
-   confirmed by reading the code directly). For any file over ~2048 tokens, the three
+   confirmed by reading the code directly). For any file over ≈2048 tokens, the three
    FIM sentinels can land in different windows entirely.
    **Fix:** store raw `<|endoftext|>`-delimited code in shards; apply FIM dynamically
    inside `dataset.py`, per sampled document span, respecting `eot_token = 0`
@@ -200,7 +200,7 @@ been against the 2.4B target.
   Phase 1's English-only shard set.
 - Finished shards transfer to the training host's persistent filesystem via the same
   ephemeral-SSH-key + `rsync` pattern already used for checkpoint transfers this
-  project (~85-90MB/s measured, multi-GB files in ~1-2 minutes).
+  project (≈85-90MB/s measured, multi-GB files in ≈1-2 minutes).
 - `bigcode/starcoderdata`'s gate (accept ToS on its HF page) and an `HF_TOKEN` on the
   data-prep host are one-time setup steps before streaming it.
 
@@ -208,7 +208,7 @@ been against the 2.4B target.
 
 1. **`src/data/prepare.py`:** add `--data_dir`; stop applying file-level FIM (move
    that logic out); keep writing clean `<|endoftext|>`-delimited shards per pool;
-   write a small held-out `val.bin` (~10M tokens) per pool, excluded from training
+   write a small held-out `val.bin` (≈10M tokens) per pool, excluded from training
    shards.
 2. **`src/data/fim.py`:** add SPM alongside PSM, 50/50 split via `fim_rate=0.5`.
 3. **New `scripts/prepare_agentic.py`:** formats Pool C sources into one consistent
@@ -239,12 +239,12 @@ been against the 2.4B target.
 ## 7. Eval plan
 
 - **Must-have:** per-pool held-out validation loss (`val/en`, `val/code`,
-  `val/agentic`) every ~250 steps, plus a deterministic (non-executing) format check
-  every ~2,000 steps — valid PSM/SPM infilling, valid JSON inside
+  `val/agentic`) every ≈250 steps, plus a deterministic (non-executing) format check
+  every ≈2,000 steps — valid PSM/SPM infilling, valid JSON inside
   `<tool_call>...</tool_call>`, clean `</think>` closure within 2048 tokens.
 - **Anti-forgetting gate:** continue the existing `hellaswag / piqa / arc_easy /
   arc_challenge / winogrande / lambada_openai` suite at the same cadence used in
-  Phase 1 — these should hold within ~1-1.5 points of the `step_19073` baseline
+  Phase 1 — these should hold within ≈1-1.5 points of the `step_19073` baseline
   throughout Phase 2. A regression here is the signal the whole replay design exists
   to prevent.
 - **Deferred, out of scope for this plan:** `HumanEval`/`MBPP` `pass@1` requires
@@ -253,7 +253,7 @@ been against the 2.4B target.
 
 ## 8. Execution sequence
 
-1. **While Phase 1 finishes (~11.6h window):** implement section 6's items locally,
+1. **While Phase 1 finishes (≈11.6h window):** implement section 6's items locally,
    pass CPU unit tests; accept the `starcoderdata` gate and set `HF_TOKEN` on the
    data-prep host; run a short profiling pass (`--max_tokens 50_000_000` on one code
    subset) to get a real data-prep throughput number instead of trusting the earlier
@@ -266,7 +266,7 @@ been against the 2.4B target.
    in a sane range as the router adapts to new token distributions, and
    `torch.compile` doesn't recompile excessively on the new data shapes. Do not
    proceed to the full run until this passes.
-3. **Full run (22,888 steps, ~38h):** monitor the same signals as Phase 1 (loss,
+3. **Full run (22,888 steps, ≈38h):** monitor the same signals as Phase 1 (loss,
    `grad_norm`, `tokens_per_expert` balance) plus the new per-pool val losses and
    format checks from section 7.
 
@@ -275,16 +275,16 @@ been against the 2.4B target.
 Phase 2 is still base pretraining, not chat or instruction-following. Per-codebase
 sequencing after Phase 2:
 
-- **Phase 3 — SFT** (~3h on H100): same `train.py` + Muon/AdamW mechanics, with
+- **Phase 3 — SFT** (≈3h on H100): same `train.py` + Muon/AdamW mechanics, with
   assistant-only loss masking (`y = -100` on user/system/`<tool_response>` tokens) so
   the model learns turn-taking and to actually stop at `<|im_end|>`.
-- **Phase 4 — optional RL/GRPO** (~4-6h), only after Phase 3: multiple rollouts per
+- **Phase 4 — optional RL/GRPO** (≈4-6h), only after Phase 3: multiple rollouts per
   prompt scored with deterministic, verifiable rewards (valid tool-call JSON against
   schema, passing unit tests for code, correct final answers for math) — not
   attempted before SFT, since a base/Phase-2-only model rarely produces clean
   stops or valid tool-call JSON on its own, so RL would get near-zero reward signal
   without SFT first.
 
-At ~211M active parameters, the realistic goal remains learning the FIM/tool-call/
+At ≈211M active parameters, the realistic goal remains learning the FIM/tool-call/
 think *formats* and basic code/agentic patterns — not becoming a strong standalone
 coding model.

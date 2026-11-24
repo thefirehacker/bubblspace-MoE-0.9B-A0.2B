@@ -4,7 +4,7 @@ When you write a language model from scratch in pure PyTorch, the training code 
 
 The moment you try to evaluate that checkpoint with ecosystem tooling—`lm-evaluation-harness`, vLLM, TRL, or even a two-line `AutoModelForCausalLM.from_pretrained(...)` script—you hit a wall. None of those tools know how to load your checkpoint. That is why this repository currently carries a custom eval adapter (`BubblSpaceLM` in [`src/eval/lm_eval_adapter.py`](../src/eval/lm_eval_adapter.py)) and a custom runner ([`scripts/run_benchmarks.py`](../scripts/run_benchmarks.py)) instead of invoking `lm_eval --model hf` directly.
 
-This post breaks down what **"transformers-native"** actually means, the exact five artifacts required to package **BubblSpace MoE-0.9B-A0.2B** (~915.6M total / ~211M active parameters) as a native Hugging Face repo, the one genuine attention code change needed for batched evaluation, and why a `bf16` mixed-precision training run shows up as **Tensor type: F32** on the Hugging Face Hub.
+This post breaks down what **"transformers-native"** actually means, the exact five artifacts required to package **BubblSpace MoE-0.9B-A0.2B** (≈915.6M total / ≈211M active parameters) as a native Hugging Face repo, the one genuine attention code change needed for batched evaluation, and why a `bf16` mixed-precision training run shows up as **Tensor type: F32** on the Hugging Face Hub.
 
 ---
 
@@ -135,7 +135,7 @@ The Hugging Face model card reports the **storage dtype of the tensors inside th
 - All **915,573,760** master parameters live in **fp32** (`~3.41 GiB`). Muon and AdamW maintain their optimizer states against—and apply updates to—those fp32 weights.
 - Only the forward and backward matmuls run in `bf16` under `torch.autocast(dtype=torch.bfloat16)`. Those transient `bf16` casts are never what gets saved into `step_<n>.pt`.
 
-So if you extract `ckpt["model"]` and write it straight to `.safetensors` without casting, you upload a **~3.4 GiB fp32** file, and the Hub card accurately displays **Tensor type: F32**. Casting the weights down on export (`{k: v.to(torch.bfloat16) for k, v in state_dict.items()}`) cuts the download in half to **~1.7 GiB** (`BF16`). Both `F32` and `BF16` files load cleanly with `AutoModelForCausalLM.from_pretrained(..., dtype=torch.bfloat16)`.
+So if you extract `ckpt["model"]` and write it straight to `.safetensors` without casting, you upload a **≈3.4 GiB fp32** file, and the Hub card accurately displays **Tensor type: F32**. Casting the weights down on export (`{k: v.to(torch.bfloat16) for k, v in state_dict.items()}`) cuts the download in half to **≈1.7 GiB** (`BF16`). Both `F32` and `BF16` files load cleanly with `AutoModelForCausalLM.from_pretrained(..., dtype=torch.bfloat16)`.
 
 ### 5. Tokenizer Files
 

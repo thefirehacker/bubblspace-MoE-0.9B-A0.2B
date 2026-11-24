@@ -16,7 +16,7 @@ The closed-form edit moved a scored benchmark for the first time, but the model'
 
 ## 1. The problem we tried to fix
 
-The Phase 1 model (10B FineWeb-Edu tokens, ~915M total / ~211M active parameters) was fluent but bound attributes to the wrong entity. WinoGrande sat at chance (51%) for the whole run. To measure this directly, we built a probe: minimal pairs where only the named entity changes, scored by log-likelihood the same way lm-evaluation-harness scores WinoGrande.
+The Phase 1 model (10B FineWeb-Edu tokens, ≈915M total / ≈211M active parameters) was fluent but bound attributes to the wrong entity. WinoGrande sat at chance (51%) for the whole run. To measure this directly, we built a probe: minimal pairs where only the named entity changes, scored by log-likelihood the same way lm-evaluation-harness scores WinoGrande.
 
 ```
 The marathon took longer to finish than the sprint because the marathon was …  → "much longer in distance."
@@ -121,9 +121,9 @@ Your verdict: **"it's not a win if final output is bad."** The honest conclusion
 ## 5. What we did instead, and what happened
 
 The fix moved into training data. Phase 2 added a **synthetic contrastive corpus** of minimal-pair documents targeting the zero categories ([storyboard 04](storyboard/04-Phase2-Trainig.md)).
-- **Corpus v1 (1 sentence frame):** got memorized as a template. Its loss bottomed out at ~0.59 within 500 steps, the model began copying its phrases into answers, and no probe moved.
+- **Corpus v1 (1 sentence frame):** got memorized as a template. Its loss bottomed out at ≈0.59 within 500 steps, the model began copying its phrases into answers, and no probe moved.
 - **Corpus v2 (15 frames, pronoun resolution, varied questions):** replaced it for the final anneal. It's being measured with **probe v4**, built only from phrasings and entities that never appear in training, so templates can't help.
-- **Result so far:** probe v4 has stayed below chance (11–24 of 112, where guessing scores ~28) through step 19,000.
+- **Result so far:** probe v4 has stayed below chance (11–24 of 112, where guessing scores ≈28) through step 19,000.
 
 So neither weight surgery nor contrastive pretraining text has fixed binding yet at this scale. It's an open problem.
 

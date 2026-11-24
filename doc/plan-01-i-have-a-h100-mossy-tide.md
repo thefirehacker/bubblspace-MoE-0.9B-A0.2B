@@ -8,11 +8,11 @@ Local repo scaffolding and all of Phases 2–6's code have been written already:
 
 ## Context
 
-The user has a Lambda Cloud on-demand H100 80GB instance (`fire01`, region `us-west-3`) already running, and wants to train a from-scratch Mixture-of-Experts language model on it against FineWeb-Edu (~10B tokens). The repo (`bubblspace-MoE0.9B-A2b`) is confirmed completely empty — just `git init`, no commits, no remote — so this is a greenfield build, not a modification.
+The user has a Lambda Cloud on-demand H100 80GB instance (`fire01`, region `us-west-3`) already running, and wants to train a from-scratch Mixture-of-Experts language model on it against FineWeb-Edu (≈10B tokens). The repo (`bubblspace-MoE0.9B-A2b`) is confirmed completely empty — just `git init`, no commits, no remote — so this is a greenfield build, not a modification.
 
 Two architecture specs were given in chat; the user confirmed **v2** ("Qwen3-Next-inspired": 64 experts/top-8, ZeroCenteredRMSNorm, attention output-gate, global-batch load balancing) is the target, superseding v1. The user also flagged a real risk up front: their persistent storage filesystem (believed to be in "Utah") may or may not be in the same Lambda region as `fire01` (`us-west-3`) — and Lambda filesystems cannot be mounted across regions, so this must be resolved before any data download or paid GPU time is spent. The user also wants W&B logging, both a fast (`torch._grouped_mm`) and a portable fallback MoE kernel, and a README + .gitignore as explicit deliverables.
 
-**Outcome:** a working, debug-tested training pipeline for this exact architecture, with the storage question resolved first, that can be left running unattended for the full ~10B-token / ~19k-step run.
+**Outcome:** a working, debug-tested training pipeline for this exact architecture, with the storage question resolved first, that can be left running unattended for the full ≈10B-token / ≈19k-step run.
 
 ## Repository layout
 
@@ -59,7 +59,7 @@ Checkpoints and tokenized data live under the mounted persistent storage (e.g. `
 This blocks all downstream work since it governs whether data/checkpoints have anywhere durable to live.
 
 1. Check the filesystem's region via the Lambda console **Storage** tab (or `GET https://cloud.lambdalabs.com/api/v1/filesystems`) and compare against `fire01`'s region (`us-west-3`).
-2. **If they match:** copy the exact NFS mount command Lambda provides for that filesystem (don't hand-construct it — the DNS name is filesystem-specific) and mount at `/mnt/moe-storage`; add it to `/etc/fstab` or a mount step in `setup_fire01.sh` so it survives reboot. No transfer fee beyond the standard ~$0.20/GB/month storage rate.
+2. **If they match:** copy the exact NFS mount command Lambda provides for that filesystem (don't hand-construct it — the DNS name is filesystem-specific) and mount at `/mnt/moe-storage`; add it to `/etc/fstab` or a mount step in `setup_fire01.sh` so it survives reboot. No transfer fee beyond the standard ≈$0.20/GB/month storage rate.
 3. **If they don't match:** Lambda has no cross-region mount. Document two options in the README, recommending the first:
    - Relaunch an H100 instance in the filesystem's actual region and re-point SSH.
    - Stay on `fire01`, use local ephemeral NVMe (wiped on termination) and push checkpoints out periodically — flag this as materially riskier for a multi-hour paid run.
@@ -75,7 +75,7 @@ This blocks all downstream work since it governs whether data/checkpoints have a
 
 ## Phase 3 — Config system
 
-`configs/base.yaml` holds the full v2 spec verbatim; `configs/debug.yaml` holds only the differing keys (4 layers, d_model 512, 16 experts, top_k 4, expert_hidden 128, ~100M tokens) merged on top at load time — keeps debug and full runs from drifting apart on shared hyperparams. Plain dataclasses in `config.py`, no Hydra/OmegaConf.
+`configs/base.yaml` holds the full v2 spec verbatim; `configs/debug.yaml` holds only the differing keys (4 layers, d_model 512, 16 experts, top_k 4, expert_hidden 128, ≈100M tokens) merged on top at load time — keeps debug and full runs from drifting apart on shared hyperparams. Plain dataclasses in `config.py`, no Hydra/OmegaConf.
 
 ## Phase 4 — Model (`src/model/`)
 
@@ -99,13 +99,13 @@ Build bottom-up, testable on CPU with tiny shapes before touching the GPU:
 
 ## Phase 6 — Data, training loop, logging, checkpointing
 
-- **`data/prepare.py`**: stream `HuggingFaceFW/fineweb-edu` (`sample-10BT`), tokenize with `tiktoken` GPT-2 BPE + EOT separators, write `uint16` memmap shards (vocab 50304 < 65536). Tokenize a small ~100-200M token prefix first for the debug run; the full run just continues from the same ongoing tokenization (no re-download/re-tokenize).
+- **`data/prepare.py`**: stream `HuggingFaceFW/fineweb-edu` (`sample-10BT`), tokenize with `tiktoken` GPT-2 BPE + EOT separators, write `uint16` memmap shards (vocab 50304 < 65536). Tokenize a small ≈100-200M token prefix first for the debug run; the full run just continues from the same ongoing tokenization (no re-download/re-tokenize).
 - **`data/dataset.py`**: memmap reader yielding random `(micro_batch=16, seq_len=2048)` windows. Verify by decoding a sampled batch back to text.
-- **`scripts/train.py`**: builds model, splits params, constructs Muon+AdamW, runs 16-step grad-accumulation micro-batches (bf16 autocast) per optimizer step, clips grad norm to 1.0, steps both optimizers/schedules. `torch.compile` applied to the model — **real risk flagged**: dropless MoE has data-dependent per-expert token counts that can trigger excessive recompilation; watch this specifically during the debug run and have `compile:false` (or compiling only attention) ready as a fallback rather than discovering it mid-way through the paid full run. Checkpoints every 1000 steps to `/mnt/moe-storage/checkpoints/<run>/step_<n>.pt` (model + both optimizer states + step/RNG). `max_attn_logit` computed periodically (every ~100 steps) via an unfused attention recompute on one micro-batch, not every step. W&B logs: per-step loss/lb_loss/z_loss, per-optimizer-step grad_norm/tokens_per_sec, periodic tokens_per_expert histogram and max_attn_logit.
+- **`scripts/train.py`**: builds model, splits params, constructs Muon+AdamW, runs 16-step grad-accumulation micro-batches (bf16 autocast) per optimizer step, clips grad norm to 1.0, steps both optimizers/schedules. `torch.compile` applied to the model — **real risk flagged**: dropless MoE has data-dependent per-expert token counts that can trigger excessive recompilation; watch this specifically during the debug run and have `compile:false` (or compiling only attention) ready as a fallback rather than discovering it mid-way through the paid full run. Checkpoints every 1000 steps to `/mnt/moe-storage/checkpoints/<run>/step_<n>.pt` (model + both optimizer states + step/RNG). `max_attn_logit` computed periodically (every ≈100 steps) via an unfused attention recompute on one micro-batch, not every step. W&B logs: per-step loss/lb_loss/z_loss, per-optimizer-step grad_norm/tokens_per_sec, periodic tokens_per_expert histogram and max_attn_logit.
 
 ## Phase 7 — Debug run (gate before the full run)
 
-1. `tests/test_overfit_tiny.py` — tiny model, one fixed batch, loss → ~0 (wiring check, CPU-feasible, cheapest possible smoke test).
+1. `tests/test_overfit_tiny.py` — tiny model, one fixed batch, loss → ≈0 (wiring check, CPU-feasible, cheapest possible smoke test).
 2. Run `configs/debug.yaml` end-to-end on the H100 GPU with the small real data prefix: confirm data loading, forward/backward, Muon step, routing, checkpoint save, W&B logging all work together.
 3. Kill and `--resume` from a checkpoint — confirm step/token counters and loss continue smoothly, no spike.
 4. Confirm `tokens_per_expert` trends toward uniform across debug experts as load-balance loss takes effect.
@@ -117,7 +117,7 @@ Only proceed to Phase 8 once all of these pass.
 
 ## Phase 8 — Full run
 
-Launch `scripts/train.py configs/base.yaml` (no `--debug`) once the full ~10B-token dataset is tokenized and the Phase 7 gate has passed. Monitor the first few hundred steps closely (loss, grad_norm, routing balance, tokens/sec vs. expected H100 bf16 throughput for ~213M active params) before leaving it unattended.
+Launch `scripts/train.py configs/base.yaml` (no `--debug`) once the full ≈10B-token dataset is tokenized and the Phase 7 gate has passed. Monitor the first few hundred steps closely (loss, grad_norm, routing balance, tokens/sec vs. expected H100 bf16 throughput for ≈213M active params) before leaving it unattended.
 
 ## Deliverables
 

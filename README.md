@@ -4,12 +4,12 @@
 > Other checkpoints on HF branches: [`phase2-step9000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step9000) and [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final) (`step_19073`, English only).
 > **Full training checkpoints** (weights + optimizer + scheduler + RNG, to resume or branch training) for **3 specific checkpoints**: Phase 1 final `step_19073`, Phase 2 `step_19000` (end of plateau) and Phase 2 final `step_22888`, in [**bubblspace-moe0.9b-a0.2b-training-states**](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states). Restore with [`scripts/restore_checkpoint.py`](scripts/restore_checkpoint.py).
 
-A from-scratch Mixture-of-Experts language model (~915M total / ~211M active params), trained on a single Lambda Cloud H100 80GB. Architecture is Qwen3-Next-inspired: GQA + QK-norm + RoPE + an elementwise attention output-gate, 64-expert dropless top-8 SwiGLU MoE with ZeroCenteredRMSNorm, trained with Muon (hidden matrices) + AdamW (embedding/router/norms).
+A from-scratch Mixture-of-Experts language model (≈915M total / ≈211M active params), trained on a single Lambda Cloud H100 80GB. Architecture is Qwen3-Next-inspired: GQA + QK-norm + RoPE + an elementwise attention output-gate, 64-expert dropless top-8 SwiGLU MoE with ZeroCenteredRMSNorm, trained with Muon (hidden matrices) + AdamW (embedding/router/norms).
 
 **Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces). Phase 1 built an English base on FineWeb-Edu. Phase 2 (completed 23 Nov) continued it on English + code + agentic + contrastive-binding data.
 
 - **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (`main` = Phase 2 step 19,000; branches `phase2-step9000`, `phase1-final`)
-- **Full training states** (3 checkpoints, safetensors + JSON, ~7.5 GB each): [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states)
+- **Full training states** (3 checkpoints, safetensors + JSON, ≈7.5 GB each): [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states)
 - **Live training graphs/logs (W&B, public)**: Phase 1 [goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker), Phase 2 [lec9ww5h](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/lec9ww5h) (same project; Phase 2's `global_step` continues from 19,073)
 - **License**: [Apache 2.0](LICENSE)
 
@@ -17,26 +17,35 @@ A from-scratch Mixture-of-Experts language model (~915M total / ~211M active par
 
 | Phase | What | State |
 |---|---|---|
-| 1 | English base, FineWeb-Edu `sample-10BT`, 10B tokens, 19,073 steps | ✅ done (`step_19073`, ~32h 20m on one H100) |
-| 2 | Continual training: English + code + agentic + contrastive, 12B tokens, 22,888 steps | ✅ training done (step 22,888, 23 Nov, ~39h 50m); final-checkpoint evals running |
-| 3 | SFT (assistant-only loss masking) | planned |
+| 1 | English base, FineWeb-Edu `sample-10BT`, 10B tokens, 19,073 steps | ✅ done (`step_19073`, ≈32h 20m on one H100) |
+| 2 | Continual training: English + code + agentic + contrastive, 12B tokens, 22,888 steps | ✅ done (step 22,888, 23 Nov, ≈39h 50m); final evals complete |
+| 2.5a | Knowledge + semantic relations + code, 20B tokens (Wikipedia, fact Q&A, SYNTH, FineWeb-Edu ≥ 4, fresh code, contrastive v3, grounded relational passages) | 🔄 data prepared and decontaminated; generation of grounded passages finishing ([plan](doc/plan-03-phase-2.5-knowledge-context.md), [data](doc/data-pipeline.md)) |
+| 2.5b | Context extension 2048 → 16,384 (≈1.5B tokens) | planned |
+| 3 | SFT at 16k (assistant-only loss masking) | planned ([plan](doc/plan-04-phase-3-sft.md)) |
 
-**Phase 2 so far** (full table in [`benchmark/README.md`](benchmark/README.md)):
+**Phase 2 results** (full table in [`benchmark/README.md`](benchmark/README.md)):
 
-| | Phase 1 final | P2 step 5,000 | P2 step 9,000 | **P2 step 19,000** |
+| | Phase 1 final | P2 step 9,000 | P2 step 19,000 | **P2 final (22,888)** |
 |---|---|---|---|---|
-| CRUXEval-O pass@1 | 0.0% | 8.5% | — | **17.7%** |
-| BFCL simple / multiple / parallel (decontaminated) | 0 / 0 / 0% | 9 / 6 / 0% | — | **25 / 13 / 0%** |
-| **HumanEval pass@1** (164, sandboxed execution) | 0.0% | — | 9.1% | **11.6%** |
-| **MBPP pass@1** (500, sandboxed execution) | not run (no code training) | — | 8.4% | **12.6%** |
-| Held-out agentic tool-call format (valid, correct name) | 0% | 30% | 30% | 35% |
-| Reasoning: closes `</think>` within 512 tokens | 0% | 0% | 12% | 0% |
-| English 6-task average | 47.18 | 45.40 | 46.19 | 45.98 |
-| Binding probe v2 / v3 | 24/100, 4/70 | 25/100, 5/70 | 24/100, 3/70 | 30/100, 4/70 |
-| Binding probe v4 (held-out phrasings + entities; chance ≈ 28/112) | 13/112 | — | 11/112 | 17/112 |
+| CRUXEval-O pass@1 | 0.0% | — | 17.7% | **20.7%** |
+| BFCL simple / multiple / parallel (decontaminated) | 0 / 0 / 0% | — | 25 / 13 / 0% | **25 / 17 / 1%** |
+| **HumanEval pass@1** (164, sandboxed execution) | 0.0% | 9.1% | 11.6% | **14.6%** |
+| **MBPP pass@1** (500, sandboxed execution) | not run (no code training) | 8.4% | 12.6% | **18.2%** |
+| Held-out agentic tool-call format (valid, correct name) | 0% | 30% | 35% | 39% |
+| Reasoning: closes `</think>` within 512 tokens | 0% | 12% | 0% | 0% |
+| English 6-task average | 47.18 | 46.19 | 45.98 | **46.92** |
+| Binding probe v2 / v3 | 24/100, 4/70 | 24/100, 3/70 | 30/100, 4/70 | **37/100**, 6/70 |
+| Binding probe v4 (held-out phrasings + entities; chance ≈ 28/112) | 13/112 | 11/112 | 17/112 | **77/112** (82 at step 21k) |
+| TriviaQA / NQ-open (closed-book, 5-shot) | 8.5% / 2.9% | — | — | 11.6% / 3.9% |
+
+The code scores are not inflated by memorization: problems the model passed overlap the training data no more than ones it failed ([eval notes](doc/eval-notes.md)).
+
+**Published datasets** (ours):
+- [`bubblspace-contrastive-binding`](https://huggingface.co/datasets/TheFireHacker/bubblspace-contrastive-binding): template binding corpora v1–v3, plus the binding probes v2–v4 with a canary string. CC BY 4.0.
+- [`bubblspace-relational-passages-Qwen3-30B`](https://huggingface.co/datasets/TheFireHacker/bubblspace-relational-passages-Qwen3-30B): grounded, fact-checked relational passages. CC BY-SA 4.0, partial release while generation finishes.
 
 **Mid-run changes (applied at step 19,000 by resuming from the checkpoint; the switch ran automatically on 23 Nov and was verified):**
-- Stage 2B keeps FineWeb-Edu at ~5.7% instead of 0%.
+- Stage 2B keeps FineWeb-Edu at ≈5.7% instead of 0%.
 - The contrastive binding data switches to v2 ([`scripts/gen_contrastive_v2.py`](scripts/gen_contrastive_v2.py)): 15 sentence frames instead of 1, pronoun resolution, and varied question formats. The v1 corpus was being memorized as templates.
 
 See [`doc/eval-notes.md`](doc/eval-notes.md) for how every eval is wired up for this custom (non-`transformers`-native) architecture. Storyboards in [`doc/storyboard/`](doc/storyboard/) give the chronological build narrative.
@@ -58,7 +67,7 @@ See [`doc/eval-notes.md`](doc/eval-notes.md) for how every eval is wired up for 
 | Attention (incl. output gate) | 58.7M | 58.7M |
 | Routers | 1.05M | 1.05M |
 | Experts | 805.3M | 100.7M |
-| **Total** | **~915M** | **~211M** |
+| **Total** | **≈915M** | **≈211M** |
 
 Optimizer: Muon (lr 6e-4, momentum 0.95, Nesterov, 5 Newton-Schulz steps, update_scale `0.2*sqrt(max(rows,cols))`, weight_decay 0.1) on every 2D/per-expert-stacked hidden matrix (attn q/k/v/o/gate, expert gate/up/down); AdamW (lr 6e-4, betas 0.9/0.95, weight_decay 0.1) on the tied embedding, routers, and all norm weights. Cosine LR schedule, 2000-step warmup, min_lr_ratio 0.1. Global batch 524288 tokens (256×2048), bf16, `torch.compile`.
 
@@ -79,13 +88,13 @@ Result: 49,152 + 12 new = 49,164 real tokens, padded to **49,280** (multiple of 
 
 Document separator for pretraining: `<|endoftext|>` (the tokenizer's `eos_token`, id 0), appended after every document. Chat/tool/think tokens are **never** inserted into raw pretraining text; FIM tokens are inserted only into code samples when `--is_code --fim_rate > 0` is passed to `src/data/prepare.py` (see [src/data/fim.py](src/data/fim.py), standard PSM prefix/suffix/middle layout).
 
-Verified locally (`scripts/build_tokenizer.py` + `scripts/sanity_check_data.py`): all 15 special tokens encode to a single id each, round-trip (`decode(encode(x)) == x`) holds on web/Python/math samples. Bytes-per-token vs. GPT-2, measured on real ~800KB held-out samples (real FineWeb-Edu docs, real Python stdlib source, real FineMath docs — not toy strings):
+Verified locally (`scripts/build_tokenizer.py` + `scripts/sanity_check_data.py`): all 15 special tokens encode to a single id each, round-trip (`decode(encode(x)) == x`) holds on web/Python/math samples. Bytes-per-token vs. GPT-2, measured on real ≈800KB held-out samples (real FineWeb-Edu docs, real Python stdlib source, real FineMath docs — not toy strings):
 
 | Domain | bubblspace bytes/token | GPT-2 bytes/token | Result |
 |---|---|---|---|
-| Web (FineWeb-Edu) | 4.541 | 4.639 | ~parity (bubblspace ~2% more tokens) |
-| Python (stdlib) | 3.752 | 2.191 | **bubblspace ~1.7x more efficient** (~58% as many tokens as GPT-2) |
-| Math (FineMath) | 3.326 | 3.561 | bubblspace ~7% more tokens (slightly behind) |
+| Web (FineWeb-Edu) | 4.541 | 4.639 | ≈parity (bubblspace ≈2% more tokens) |
+| Python (stdlib) | 3.752 | 2.191 | **bubblspace ≈1.7x more efficient** (≈58% as many tokens as GPT-2) |
+| Math (FineMath) | 3.326 | 3.561 | bubblspace ≈7% more tokens (slightly behind) |
 
 Net: no efficiency reason to prefer GPT-2 for this model — bubblspace-tokenizer is clearly better on code, roughly tied on general English, marginally behind on math.
 
@@ -109,14 +118,14 @@ python scripts/run_benchmarks.py \
 
 | Group | Pools (sources) | Stage 2A (steps 0–19,073, 10B tok) | Stage 2B anneal (19,073–22,888, 2B tok) |
 |---|---|---|---|
-| English + knowledge + STEM | Wikipedia `20231101.en`, Cosmopedia-v2, FineMath-4plus, FineWeb-Edu replay | 41.5% | 34% (FineWeb-Edu ~5.7% of all 2B tokens) |
+| English + knowledge + STEM | Wikipedia `20231101.en`, Cosmopedia-v2, FineMath-4plus, FineWeb-Edu replay | 41.5% | 34% (FineWeb-Edu ≈5.7% of all 2B tokens) |
 | Code (window-level FIM, 50/50 PSM/SPM) | `Avelina/python-edu-cleaned`; `bigcode/starcoderdata` Python, TypeScript, JavaScript, Go, SQL/shell/config | 49% | 38% (python-edu ×3) |
 | Agentic (block-aligned episodes ≤2048 tokens, pad loss masked) | ToolMind, glaive-function-calling-v2, OpenThoughts-114k, hermes-function-calling-v1, Bespoke-Stratos-17k | 8% | 22% |
 | Contrastive binding (synthetic minimal pairs) | 2A: v1 `scripts/gen_contrastive.py`, 61.9M unique tokens; 2B: v2 `scripts/gen_contrastive_v2.py`, 133.5M unique tokens | 1.5% | 6% |
 
 Learning rate: re-warm 6e-5 → 2.4e-4 over 300 steps, hold, then linear decay to 6e-6 over the final 3,815 steps (the anneal). Attention uses a causal + same-document mask (`flex_attention`) so packed documents can't attend to each other. Every dataset was checked with Hugging Face's malware scan before use. `OpenCoder-LLM/opc-annealing-corpus` was dropped after 69% of sampled files came back flagged.
 
-Caveat: at ~211M active params the realistic Phase 2 goal is learning the FIM / tool-call / think formats and basic code and agentic patterns, not a strong standalone coding model.
+Caveat: at ≈211M active params the realistic Phase 2 goal is learning the FIM / tool-call / think formats and basic code and agentic patterns, not a strong standalone coding model.
 
 ## Design notes
 
@@ -127,7 +136,7 @@ The architecture spec was a one-line gloss on a few details; these were resolved
 3. **MoE fallback backend**: a dense-masked variant exists only as a correctness oracle in `tests/test_moe_backends.py` (computes every token through every expert — never used in training); the actual fallback is a gather + per-expert Python loop in the forward pass (`src/model/moe.py`). That loop is fine — only the Muon optimizer's Newton-Schulz step is required to avoid a per-expert loop, and it does (batched via `bmm`).
 4. **`torch._grouped_mm`** is a private, experimental PyTorch API whose signature can shift between versions. `moe.backend: auto` probes it at startup (`src/model/moe.py:probe_grouped_mm`) and falls back automatically if it's unavailable or errors.
 5. **`torch.compile`** + dropless MoE's data-dependent per-expert token counts can trigger excessive recompilation. Watch for this during the debug run; `training.compile: false` in the config is the documented escape hatch.
-6. **Tokenizer vs. GPT-2**: measured for real (see "Tokenizer" above) — bubblspace-tokenizer is ~1.7x more token-efficient on Python code, ~parity on general English, ~7% behind on math. No change needed; resolved in favor of keeping the SmolLM2-based tokenizer.
+6. **Tokenizer vs. GPT-2**: measured for real (see "Tokenizer" above) — bubblspace-tokenizer is ≈1.7x more token-efficient on Python code, ≈parity on general English, ≈7% behind on math. No change needed; resolved in favor of keeping the SmolLM2-based tokenizer.
 
 ## Reproducing training (Lambda Cloud / any CUDA host)
 
@@ -169,7 +178,7 @@ python -m src.data.prepare --out_dir /lambda/nfs/h100-f1/data/full --max_tokens 
 python scripts/train.py configs/base.yaml
 ```
 
-~19k optimizer steps at 524288 tokens/step. Checkpoints land in `/lambda/nfs/h100-f1/checkpoints/<run_name>/` every 1000 steps. Monitor the first few hundred steps closely before leaving it unattended.
+≈19k optimizer steps at 524288 tokens/step. Checkpoints land in `/lambda/nfs/h100-f1/checkpoints/<run_name>/` every 1000 steps. Monitor the first few hundred steps closely before leaving it unattended.
 
 ### 5. Inference / benchmarking a checkpoint
 
@@ -207,7 +216,7 @@ doc/storyboard/ chronological narrative of how this project was built
 tests/          CPU-feasible unit tests (param count, Muon math, MoE backend equivalence, tiny overfit wiring check)
 ```
 
-Checkpoints and tokenized data live on the mounted persistent storage (`/lambda/nfs/h100-f1/...`), never in this repo. `bubblspace-tokenizer/` is the one data artifact that *is* committed (it's ~3.4MB and defines the model's vocabulary, not training data).
+Checkpoints and tokenized data live on the mounted persistent storage (`/lambda/nfs/h100-f1/...`), never in this repo. `bubblspace-tokenizer/` is the one data artifact that *is* committed (it's ≈3.4MB and defines the model's vocabulary, not training data).
 
 ## License
 
