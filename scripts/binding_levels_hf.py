@@ -66,7 +66,12 @@ WEIGHT_SHA = {}
 class LM:
     def __init__(self, name, revision, cache_dir, dtype):
         path, self.weights_format = fetch(name, revision, cache_dir)
-        self.tok = AutoTokenizer.from_pretrained(path)
+        try:
+            self.tok = AutoTokenizer.from_pretrained(path)
+        except (ValueError, OSError):
+            # some intermediate branches ship no tokenizer files (e.g. OLMo-2-1124-7B stage1-step101000);
+            # the tokenizer is fixed for the whole run, so take it from the main branch
+            self.tok = AutoTokenizer.from_pretrained(name)
         self.model = AutoModelForCausalLM.from_pretrained(path, dtype=dtype)
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model.to(self.device).eval()

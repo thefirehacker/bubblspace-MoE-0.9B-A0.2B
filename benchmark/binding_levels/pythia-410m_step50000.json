@@ -1,0 +1,571 @@
+{
+ "model": "EleutherAI/pythia-410m",
+ "revision": "step50000",
+ "n_params": 405334016,
+ "gpu": "NVIDIA A10",
+ "weights_format": "safetensors",
+ "weight_sha256": {
+  "model.safetensors": "85a0ac341159a93073069271612de4b77c49179e701ee65d597902ca9925f587"
+ },
+ "suites": {
+  "v2": {
+   "n_pairs": 100,
+   "L1": 0.635,
+   "L2": 0.28,
+   "L3_rows": 0.13,
+   "L3": 0.03,
+   "by_category": {
+    "spatial_size": {
+     "n": 10,
+     "L2": 0.3,
+     "L3": 0.3
+    },
+    "spatial_width": {
+     "n": 10,
+     "L2": 0.4,
+     "L3": 0.0
+    },
+    "spatial_height": {
+     "n": 10,
+     "L2": 0.7,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 10,
+     "L2": 0.2,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 10,
+     "L2": 0.3,
+     "L3": 0.0
+    },
+    "agent_patient_causation": {
+     "n": 10,
+     "L2": 0.3,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 10,
+     "L2": 0.2,
+     "L3": 0.0
+    },
+    "material_property": {
+     "n": 10,
+     "L2": 0.3,
+     "L3": 0.0
+    },
+    "comparative_value": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "gen": " too small.\n\n\"I'm"
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "gen": " too big.\n\n\"I'm"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "gen": " too small.\n\n\"I'm"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too small.\n\n\"I'm"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "gen": " too small.\n\n\"I'm"
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "gen": " too big.\n\n\"I'm"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " too big.\n\n\"I'm"
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "gen": " too big.\n\n\"I'm"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "gen": " too small.\n\n\"I'm"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too tall.\n\nI was in"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "gen": " too small.\n\nThe van was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too small.\n\nThe delivery van"
+     }
+    }
+   ]
+  },
+  "v3": {
+   "n_pairs": 70,
+   "L1": 0.5286,
+   "L2": 0.0571,
+   "L3_rows": 0.0143,
+   "L3": 0.0,
+   "by_category": {
+    "comparative_value": {
+     "n": 24,
+     "L2": 0.083,
+     "L3": 0.0
+    },
+    "spatial_fit": {
+     "n": 20,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was the fastest.\n\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was the most difficult to get"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " more valuable.\n\nThe drone was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " more valuable.\n\nThe courier"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "gen": " banquet, and the one that was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " banquet, which was held at the"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " more important.\n\nThe banquet"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " more important.\n\nThe banquet"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that had been in the water for"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was the most dangerous.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "gen": " more powerful.\n\n\"I'm"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " more dangerous.\n\n\"I don"
+     }
+    }
+   ]
+  },
+  "v4": {
+   "n_pairs": 112,
+   "L1": 0.5045,
+   "L2": 0.0446,
+   "L3_rows": 0.0357,
+   "L3": 0.0,
+   "by_category": {
+    "ability": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "comparative": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "emotional": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "fit": {
+     "n": 16,
+     "L2": 0.25,
+     "L3": 0.0
+    },
+    "possession": {
+     "n": 24,
+     "L2": 0.042,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a woman, and that he was a"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a woman.\n\n\"I'm"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not a member of the group.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not a member of the family.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good man, but he was a"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good man, but he was a"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of the family.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of Nadia's."
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a woman.\n\n\"I'm"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a woman.\n\n\"I'm"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of the family.\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good man, but he was a"
+     }
+    }
+   ]
+  },
+  "v5": {
+   "n_pairs": 120,
+   "L1": 0.5417,
+   "L2": 0.1,
+   "L3_rows": 0.0333,
+   "L3": 0.0,
+   "by_category": {
+    "passive": {
+     "n": 40,
+     "L2": 0.175,
+     "L3": 0.0
+    },
+    "relative_clause": {
+     "n": 40,
+     "L2": 0.075,
+     "L3": 0.0
+    },
+    "respectively": {
+     "n": 40,
+     "L2": 0.05,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of his mother.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a friend of the family.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of his.\n\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of his.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good fighter.\n\nYara"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a woman.\n\nYara was"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a friend of his.\n\nAn"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a friend of her father's.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the same class as her."
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not a good friend of her mother."
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of her.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the one who had the idea of the"
+     }
+    }
+   ]
+  },
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.5141,
+   "L2": 0.1373,
+   "L3_rows": 0.3856,
+   "L3": 0.0035,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.137,
+     "L3": 0.004
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "home"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "home"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Joe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Joe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "story"
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "story"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "He went to the cafe"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "He went to the cafe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Michael"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Michael"
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.5233,
+   "l3_all_rows": 0.3828,
+   "answered_with_option": 0.7893,
+   "rows_outside_pairs": 699
+  }
+ },
+ "elapsed_s": 282.6
+}

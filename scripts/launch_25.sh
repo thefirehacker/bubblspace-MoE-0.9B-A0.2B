@@ -41,7 +41,7 @@ $SSH $A10 "test -f moe0.9b-a0.2b/benchmark/data/long-context/long_docs_heldout.n
 say "preflight ok"
 
 # ---- 2. watchers and relays
-$SSH $A10 "cd moe0.9b-a0.2b && nohup bash scripts/eval_watch_25a.sh > /dev/null 2>&1 < /dev/null &"
+$SSH -n -f $A10 "cd moe0.9b-a0.2b && nohup bash scripts/eval_watch_25a.sh > /dev/null 2>&1 < /dev/null &"
 A10=$A10 nohup bash scripts/relay_ckpts_25a.sh > /dev/null 2>&1 < /dev/null &
 say "A10 watcher 25a + relay 25a started"
 
@@ -55,7 +55,7 @@ if [ $rc -ne 0 ] || [ ! -f $FINAL_A ]; then say "2.5a did not finish cleanly; NO
 [ "$CHAIN_25B" = 1 ] || { say "CHAIN_25B=0: stopping after 2.5a"; exit 0; }
 
 # ---- 4. Phase 2.5b
-$SSH $A10 "cd moe0.9b-a0.2b && nohup bash scripts/eval_watch_25b.sh > /dev/null 2>&1 < /dev/null &"
+$SSH -n -f $A10 "cd moe0.9b-a0.2b && nohup bash scripts/eval_watch_25b.sh > /dev/null 2>&1 < /dev/null &"
 A10=$A10 nohup bash scripts/relay_ckpts_25b.sh > /dev/null 2>&1 < /dev/null &
 say "launching 2.5b from $FINAL_A"
 python3 scripts/train.py configs/phase25b.yaml --init_from $FINAL_A > /lambda/nfs/h100-f1/train_phase25b.log 2>&1 < /dev/null

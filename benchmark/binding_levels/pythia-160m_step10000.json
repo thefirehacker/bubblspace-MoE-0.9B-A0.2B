@@ -1,0 +1,568 @@
+{
+ "model": "EleutherAI/pythia-160m",
+ "revision": "step10000",
+ "n_params": 162322944,
+ "gpu": "NVIDIA A10",
+ "weights_format": "safetensors",
+ "suites": {
+  "v2": {
+   "n_pairs": 100,
+   "L1": 0.545,
+   "L2": 0.1,
+   "L3_rows": 0.045,
+   "L3": 0.0,
+   "by_category": {
+    "spatial_size": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "spatial_width": {
+     "n": 10,
+     "L2": 0.4,
+     "L3": 0.0
+    },
+    "spatial_height": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "agent_patient_causation": {
+     "n": 10,
+     "L2": 0.2,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "material_property": {
+     "n": 10,
+     "L2": 0.2,
+     "L3": 0.0
+    },
+    "comparative_value": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the car.\n\nThe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the trunk.\n\nThe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " too large.\n\nThe next day"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too small.\n\nThe piano was"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " too heavy.\n\nThe mattress was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too heavy.\n\nThe mattress was"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " too heavy.\n\n\"I'm"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too heavy.\n\n\"I'm"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the main room.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too large.\n\nThe bookstore"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the delivery van.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the delivery van.\n\n"
+     }
+    }
+   ]
+  },
+  "v3": {
+   "n_pairs": 70,
+   "L1": 0.5143,
+   "L2": 0.0429,
+   "L3_rows": 0.0214,
+   "L3": 0.0,
+   "by_category": {
+    "comparative_value": {
+     "n": 24,
+     "L2": 0.083,
+     "L3": 0.0
+    },
+    "spatial_fit": {
+     "n": 20,
+     "L2": 0.05,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was the most efficient.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " one that was the only one that was"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " only one left.\n\nThe drone"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " only one left.\n\nThe cou"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was served at the wedding."
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " dessert.\n\nThe banquet was"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " most important part of the wedding.\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " most important part of the meal.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " one that was the only one that was"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was still in the water."
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " only one in the boat.\n\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " same.\n\n\"What's the"
+     }
+    }
+   ]
+  },
+  "v4": {
+   "n_pairs": 112,
+   "L1": 0.5,
+   "L2": 0.0089,
+   "L3_rows": 0.0134,
+   "L3": 0.0,
+   "by_category": {
+    "ability": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "comparative": {
+     "n": 24,
+     "L2": 0.042,
+     "L3": 0.0
+    },
+    "emotional": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "fit": {
+     "n": 16,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the same family.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the family.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the same family.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the only one who was the only one"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a bit more intelligent than Basil, but"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good student, but I don't"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good girl, but Nadia was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good man, but I don't"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the tribe of the tribe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the same tribe as the"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good girl, but Nadia was"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good man, but he was a"
+     }
+    }
+   ]
+  },
+  "v5": {
+   "n_pairs": 120,
+   "L1": 0.5042,
+   "L2": 0.05,
+   "L3_rows": 0.0208,
+   "L3": 0.0,
+   "by_category": {
+    "passive": {
+     "n": 40,
+     "L2": 0.025,
+     "L3": 0.0
+    },
+    "relative_clause": {
+     "n": 40,
+     "L2": 0.075,
+     "L3": 0.0
+    },
+    "respectively": {
+     "n": 40,
+     "L2": 0.05,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not allowed to speak to him.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not allowed to speak.\n\nThe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the team.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the team that had been"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the team.\n\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the family.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a student at the school. She was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the family.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a \"good\" person.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a \"good\" person.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of Ayesha's"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of the family.\n"
+     }
+    }
+   ]
+  },
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.5299,
+   "L2": 0.162,
+   "L3_rows": 0.419,
+   "L3": 0.0106,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.162,
+     "L3": 0.011
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "home"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "house"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Joe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Joe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "story"
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "story"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "He"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "He"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Michael"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Michael"
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.5154,
+   "l3_all_rows": 0.4104,
+   "answered_with_option": 0.8374,
+   "rows_outside_pairs": 699
+  }
+ },
+ "elapsed_s": 163.5
+}

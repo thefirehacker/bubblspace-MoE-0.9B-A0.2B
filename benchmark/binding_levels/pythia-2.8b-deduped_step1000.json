@@ -1,0 +1,573 @@
+{
+ "model": "EleutherAI/pythia-2.8b-deduped",
+ "revision": "step1000",
+ "n_params": 2775208960,
+ "gpu": "NVIDIA H100 PCIe",
+ "weights_format": "safetensors",
+ "weight_sha256": {
+  "model-00001-of-00003.safetensors": "889010a2d914c2f58c469b3e82b2467e600369b571b3ad835039e9926aff0288",
+  "model-00002-of-00003.safetensors": "e071f58f960eba21ebf7ff7b740b0f65fc765cb60548b57ae542ee832530b897",
+  "model-00003-of-00003.safetensors": "47f2fa818fefa077d35efc0dc88c29884d4f3d78d6e3f5aaf0d176ef00902bc6"
+ },
+ "suites": {
+  "v2": {
+   "n_pairs": 100,
+   "L1": 0.49,
+   "L2": 0.0,
+   "L3_rows": 0.03,
+   "L3": 0.0,
+   "by_category": {
+    "spatial_size": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "spatial_width": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "spatial_height": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "agent_patient_causation": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "material_property": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "comparative_value": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the car.\n\nThe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the car.\n\nThe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the car.\n\nThe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the car.\n\nThe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the van.\n\nThe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the car.\n\nThe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " in the car.\n\nThe car"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " in the car.\n\nThe car"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the most popular and most popular and most"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the best of the books.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the same position.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the refrigerator.\n\nThe"
+     }
+    }
+   ]
+  },
+  "v3": {
+   "n_pairs": 70,
+   "L1": 0.5143,
+   "L2": 0.0286,
+   "L3_rows": 0.0071,
+   "L3": 0.0,
+   "by_category": {
+    "comparative_value": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "spatial_fit": {
+     "n": 20,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " first to the second and the second to"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " first to the second and the second to"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " first and the first, and the second"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " first and the second, and the second"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " most popular and most popular and most popular"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " other, and the other was the other"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " only one who had been in the room"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " most important part of the year.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was the one that was the"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " other.\n\nThe other was the"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " only one, and the other, the"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " same as the other two, and the"
+     }
+    }
+   ]
+  },
+  "v4": {
+   "n_pairs": 112,
+   "L1": 0.5,
+   "L2": 0.0268,
+   "L3_rows": 0.0268,
+   "L3": 0.0,
+   "by_category": {
+    "ability": {
+     "n": 24,
+     "L2": 0.042,
+     "L3": 0.0
+    },
+    "comparative": {
+     "n": 24,
+     "L2": 0.083,
+     "L3": 0.0
+    },
+    "emotional": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "fit": {
+     "n": 16,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not aware of the fact that Zoe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not only a member of the Zoe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not aware of the fact that Reza"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the family.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the only person who was the only person"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the Dmitri family"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the group.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the only person who was the only person"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not only a member of the family,"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not only a member of the family,"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the board.\n\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the board, and that"
+     }
+    }
+   ]
+  },
+  "v5": {
+   "n_pairs": 120,
+   "L1": 0.5125,
+   "L2": 0.0583,
+   "L3_rows": 0.0208,
+   "L3": 0.0,
+   "by_category": {
+    "passive": {
+     "n": 40,
+     "L2": 0.05,
+     "L3": 0.0
+    },
+    "relative_clause": {
+     "n": 40,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "respectively": {
+     "n": 40,
+     "L2": 0.025,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not a member of the Pia."
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the Pia.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not a member of the Sana."
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not a member of the Sana."
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " killed by Yara because Joao was"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " killed by Yara because Yara was"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the team.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the team.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a very good friend.\n\n\""
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the Aiko.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " asked by Ayesha because Thabo"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " asked by Ayesha and Ayes"
+     }
+    }
+   ]
+  },
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.507,
+   "L2": 0.0951,
+   "L3_rows": 0.0,
+   "L3": 0.0,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.095,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "John"
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.4957,
+   "l3_all_rows": 0.0,
+   "answered_with_option": 0.0,
+   "rows_outside_pairs": 699
+  }
+ },
+ "elapsed_s": 285.1
+}
