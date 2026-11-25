@@ -1,6 +1,6 @@
 # Binding study 01: ranking vs writing across public pretraining checkpoints
 
-Status: **main study complete (24–25 Nov 2026); controls running; one checkpoint being re-run.** Preliminary: read §6 before quoting any number.
+Status: **main study and controls complete (24–25 Nov 2026).** Preliminary: read §6 before quoting any number.
 
 Background and motivation: [wsp-experiments.md §6.1, §7.6 and §9](wsp-experiments.md). Scripts: `scripts/binding_levels_hf.py` (scoring), `scripts/binding_study.py` (job lists), `scripts/binding_study_report.py` (table), `scripts/binding_controls_hf.py` (controls). Full table: [`benchmark/binding_levels/report.md`](../benchmark/binding_levels/report.md), raw JSON in `benchmark/binding_levels/`.
 
@@ -92,6 +92,8 @@ So larger models leave the habit sooner, measured in tokens.
 
 ## 3. A problem with our own probes at L3
 
+> **Update, 25 Nov:** a re-analysis of the per-case probe scores ([binding-study-02](binding-study-02-priors-and-word-order.md)) changes the reading of BubblSpace's probe numbers below. Sensitivity to the entity is right in 96% of v4 pairs once the model's general preference for an ending is removed, and v5's low score comes mostly from passive voice being read by word order. "Familiarity, not binding" was too strong.
+
 On probes v4 / v5, **L3 is 0–2% for every public model**, including Qwen2.5-7B and OLMo-2 13B, which reach 35% L3 on WinoGrande. Our probe's writing level is too strict. It requires the model to produce our exact endings (" mistaken.", " well informed."), which even strong models rarely write word for word.
 
 Consequences:
@@ -101,7 +103,14 @@ Consequences:
 
 ## 4. Where BubblSpace stands
 
-Not yet measured on the same scale. BubblSpace isn't a `transformers` model, so `binding_levels_hf.py` can't load it. To do: a WinoGrande L1/L2/L3 path for our model, run on Phase 2 final and the 2.5a checkpoints, so it can sit in §2.1's table. Comparable public checkpoints at 42B tokens (BubblSpace has ≈42B after 2.5a):
+Measured on the same scale on 25 Nov with `scripts/binding_levels_bubbl.py` (same prompts and scoring as the public models):
+
+| BubblSpace checkpoint | Tokens | L1 (all rows) | L2 | L3 | Same name for both twins |
+|---|---|---|---|---|---|
+| Phase 2 final (step 22,888) | 22B | 54.3% | 18.3% | 1.8% | 78% |
+| 2.5a step 8,000 | 26B | 52.9% | 16.9% | 2.8% | 92% |
+
+At equal tokens (≈21B), OLMo-2 1B is at L2 17% / L3 1% and Pythia 410M–1.4B at 14–15% / 1%, so Phase 2 final is slightly ahead, within noise against OLMo-2 1B. Results: `benchmark/binding_levels/bubblspace/`. Comparable public checkpoints at 42B tokens (BubblSpace has ≈42B after 2.5a):
 
 | Model @ 42B tokens | L2 | L3 |
 |---|---|---|
@@ -109,7 +118,7 @@ Not yet measured on the same scale. BubblSpace isn't a `transformers` model, so 
 | OLMo-2 1B | 19% | 1% |
 | Pythia 1B–12B | 12–19% | 0–4% |
 
-## 5. Controls (running on the A10)
+## 5. Controls
 
 For 12 checkpoints (Pythia-1B, Pythia-6.9B, OLMo-2 1B and OLMo-2 7B, each early / middle / final):
 - **Prompt shuffle:** three different 5-shot prompts. Does the same-name habit survive?
@@ -117,11 +126,24 @@ For 12 checkpoints (Pythia-1B, Pythia-6.9B, OLMo-2 1B and OLMo-2 7B, each early 
 
 The first test (Pythia-160M @ 42B) kept the same name 74% of the time after the swap, pointing to name preference at that size.
 
+**Results (all 12 done, 25 Nov).** "Keeps the name" = after the swap the model writes the same name as before (a name preference). "Keeps the position" = it writes whichever name now sits in the same place.
+
+| Checkpoint | Keeps the name | Keeps the position | Same name for both twins (3 prompts) |
+|---|---|---|---|
+| OLMo-2 7B @ 9B / 42B / final | 72 / 52 / 57% | 28 / 48 / 43% | 45–57 / 92–95 / 71–75% |
+| OLMo-2 1B @ 21B / 42B / final | 46 / 53 / 69% | 54 / 47 / 31% | 66–73 / 77–87 / 93–94% |
+| Pythia-1B @ 8B / 42B / 300B | 73 / 75 / 72% | 27 / 25 / 28% | 74–88 / 73–94 / 93–94% |
+| Pythia-6.9B @ 8B / 42B / 300B | 82 / 62 / 72% | 18 / 38 / 28% | 74–94 / 84–90 / 88–93% |
+
+- **The same-name habit survives all three prompts**, so it isn't caused by one prompt's examples.
+- **Name preference dominates early** (72–82% at 8–9B tokens) and in the small models throughout. A position phase shows up only in OLMo-2 around 21–42B tokens (≈50/50).
+- **No clean frequency → position → correct order.** OLMo-2 1B goes from position back to name preference, and Pythia stays on names. This partly corroborates Chan et al. 2026, with differences: a different task (in-context binding), and the habit shows in writing, not ranking.
+- Raw files: `benchmark/binding_levels/controls/`.
+
 ## 6. Caveats
 
-- **Prompt dependence:** WinoGrande L3 uses one 5-shot prompt until the controls finish. Recency and majority-label effects (Zhao et al. 2021) could inflate the same-name rate.
+- **Prompt dependence:** the main table uses one 5-shot prompt. The controls (§5) re-ran 12 checkpoints with three prompts, and the same-name habit held in all of them.
 - **Hardware:** OLMo-2 7B ran on the A10 and the 12B/13B models on the H100. bf16 kernels differ by 1–2 cases between the machines.
 - **Corrupt Hub checkpoints:** EleutherAI `pythia-2.8b` stores identical weights under different revisions (same SHA-256), so 2.8B-deduped was used instead. Every result now records weight hashes, and the report flags duplicates.
-- **Pending:** one checkpoint (OLMo-2 7B, 424B tokens) failed because its branch ships no tokenizer and is being re-run with the fixed loader.
 - **Sample size:** 284 WinoGrande twin pairs and 112/120 probe pairs. Differences of a few points are within noise.
 - **Novelty:** not yet a citable novelty claim; see [wsp-experiments §7.6](wsp-experiments.md). The closest published work is Chan et al. 2026 (phases over training, ranking only) and Elazar et al. 2021 (pair scoring).

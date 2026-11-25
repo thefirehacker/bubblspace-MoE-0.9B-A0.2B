@@ -263,6 +263,8 @@ Ending the plateau at ≈15k would leave over half of Wikipedia unseen, which de
 4. Checks the run after 15 min and falls back to the launch config if it failed.
 5. Chains 2.5b itself.
 
+**Open question on contrastive data (25 Nov evening).** A re-analysis of the probe scores ([binding-study-02](binding-study-02-priors-and-word-order.md)) shows the binding signal is intact in 2.5a but shrinking, and that the contrastive data's passive-voice ban taught a word-order rule. An A10 test of corrected data is running. If it works, the corrected data is a candidate for this decay stage, which needs the user's data review and approval before step 32,424.
+
 The plateau is unchanged, so the switch can happen at any checkpoint before 32,424. Proposed: the step-12,000 checkpoint (≈20:00 IST, 25 Nov), so nothing is left until Thursday night. The overnight monitor must then watch `train_phase25a_decay.log`.
 
 ## 3. Phase 2.5b: context extension to 16384

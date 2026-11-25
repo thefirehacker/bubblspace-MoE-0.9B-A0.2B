@@ -165,7 +165,11 @@ def run_winogrande(lm, n_shot=5, seed=0):
         pos1 = r["sentence"].find(r["option1"]); pos2 = r["sentence"].find(r["option2"])
         first, second = (r["option1"], r["option2"]) if (pos1 != -1 and (pos2 == -1 or pos1 <= pos2)) else (r["option2"], r["option1"])
         wrote = first if g.startswith(first.lower()) else (second if g.startswith(second.lower()) else None)
+        # margin = score(correct option) - score(wrong option); saved so pairs can be re-scored without the
+        # model's general preference for one name (doc/binding-study-02-priors-and-word-order.md)
+        margin = scores[r["answer"]] - scores["2" if r["answer"] == "1" else "1"]
         res[i] = {"l1": l1, "l3": hit, "answered_with_option": wrote is not None, "gen": gen[:40], "wrote": wrote,
+                  "margin": round(margin, 4),
                   "wrote_first_mentioned": wrote == first, "wrote_second_mentioned": wrote == second,
                   "l1_prefers_first": scores["1" if first == r["option1"] else "2"] > scores["2" if first == r["option1"] else "1"]}
     rows = []
@@ -179,6 +183,12 @@ def run_winogrande(lm, n_shot=5, seed=0):
     out["l3_all_rows"] = round(sum(v["l3"] for v in res.values()) / len(res), 4)
     out["answered_with_option"] = round(sum(v["answered_with_option"] for v in res.values()) / len(res), 4)
     out["rows_outside_pairs"] = len(val) - len(in_pair)
+    # prior-free pair score: the twins share their two options and have opposite answers, so a general preference for
+    # one name adds to one twin's margin and subtracts from the other's. Their SUM is > 0 only if the differing word
+    # moves the preference the right way. Chance 50%.
+    pf = [res[a]["margin"] + res[b]["margin"] for a, b in pairs]
+    out["prior_free_pairs"] = round(sum(x > 0 for x in pf) / len(pf), 4)
+    out["prior_free_median_effect_nats"] = round(sorted(pf)[len(pf) // 2], 4)
     # shortcut phases (Chan et al. 2026: frequency -> position -> correct)
     answered = [v for v in res.values() if v["answered_with_option"]]
     out["shortcuts"] = {
@@ -188,7 +198,7 @@ def run_winogrande(lm, n_shot=5, seed=0):
         "same_name_for_both_twins": round(sum(1 for a, b in pairs if res[a]["wrote"] and res[a]["wrote"] == res[b]["wrote"]) / len(pairs), 4),
         "l1_prefers_first_mentioned": round(sum(v["l1_prefers_first"] for v in res.values()) / len(res), 4),
     }
-    out["rows"] = [{"i": i, **{k: v[k] for k in ("l1", "l3", "wrote", "gen")}} for i, v in res.items()]
+    out["rows"] = [{"i": i, **{k: v[k] for k in ("l1", "l3", "wrote", "gen", "margin")}} for i, v in res.items()]
     return out
 
 

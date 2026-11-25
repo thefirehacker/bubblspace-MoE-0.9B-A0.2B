@@ -104,7 +104,7 @@ def main():
     if a.winogrande:
         res["suites"]["winogrande"] = s = bl.run_winogrande(lm)
         print(f"winogrande: L1 {s['L1']:.3f} (all rows {s['l1_all_rows']:.3f})  L2 {s['L2']:.3f}  L3 {s['L3']:.3f}  "
-              f"answered_with_option {s['answered_with_option']:.3f}  shortcuts {s['shortcuts']}", flush=True)
+              f"answered_with_option {s['answered_with_option']:.3f}  prior_free {s['prior_free_pairs']:.3f}  shortcuts {s['shortcuts']}", flush=True)
     res["elapsed_s"] = round(time.time() - t0, 1)
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     Path(a.out).write_text(json.dumps(res, indent=1))
