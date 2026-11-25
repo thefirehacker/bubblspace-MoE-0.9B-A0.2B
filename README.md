@@ -1,5 +1,7 @@
 # MoE-0.9B-A0.2B
 
+> **🏆 BubblSpace MoE-0.9B-A0.2B is ahead of OLMo-2 1B and Pythia on WinoGrande twin pairs at the same token count:** 18.3% of twin pairs ranked right and 1.8% written right at 22B tokens, with 211M active parameters, vs OLMo-2 1B 17% / 1% and Pythia 410M–1.4B 14–15% / 1% at 21B tokens (Phase 2 final, step 22,888, the weights on Hugging Face `main`). [Details and caveats](#winogrande-twin-pairs-at-three-levels-phase-2-final-step-22888).
+
 > **📌 Current checkpoint on Hugging Face (`main`): Phase 2 final, step 22,888** (after the Stage 2B anneal). The end-of-plateau step 19,000 is on branch `phase2-step19000`.
 > Other checkpoints on HF branches: [`phase2-step9000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step9000) and [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final) (`step_19073`, English only).
 > **Full training checkpoints** (weights + optimizer + scheduler + RNG, to resume or branch training) for **3 specific checkpoints**: Phase 1 final `step_19073`, Phase 2 `step_19000` (end of plateau) and Phase 2 final `step_22888`, in [**bubblspace-moe0.9b-a0.2b-training-states**](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states). Restore with [`scripts/restore_checkpoint.py`](scripts/restore_checkpoint.py).
@@ -109,6 +111,34 @@ python scripts/run_benchmarks.py \
     --tasks hellaswag,piqa,arc_easy,arc_challenge,winogrande,lambada_openai \
     --output benchmark/step_N.json
 ```
+
+### WinoGrande twin pairs at three levels (Phase 2 final, step 22,888)
+
+**BubblSpace MoE-0.9B-A0.2B is ahead of OLMo-2 1B and Pythia on WinoGrande twin pairs at the same token count**, with a fraction of their active parameters. It also matches OLMo-2 1B at 42B tokens, about twice the data.
+
+| Model | Tokens | Active params | L2: both twins ranked right | L3: both twins written right |
+|---|---|---|---|---|
+| **BubblSpace MoE-0.9B-A0.2B** (Phase 2 final) | **22B** | **211M** | **18.3%** | **1.8%** |
+| OLMo-2-0425-1B (stage-1 checkpoint) | 21B | ≈1.5B | 17% | 1% |
+| Pythia-1.4B / 1B / 410M | 21B | 1.4B / 1B / 410M | 15% / 14% / 14% | 1% / 1% / 1% |
+| OLMo-2-0425-1B (stage-1 checkpoint) | 42B | ≈1.5B | 19% | 1% |
+
+**How it's scored.** WinoGrande sentences come in twin pairs: change one word and the correct answer flips.
+- **L2:** both twins ranked correctly, Elazar et al. 2021's group scoring. Chance is 25%, and a model with a fixed habit scores below it.
+- **L3:** the model *writes* the correct answer itself in both twins (5-shot, greedy).
+
+Single-row WinoGrande (L1) is 52.6%. The harness is the same as our 85-checkpoint cross-model study ([`doc/binding-study-01-cross-model.md`](doc/binding-study-01-cross-model.md)), with 284 twin pairs from WinoGrande-XL validation.
+
+**Caveats:**
+- The gaps are 1–4 points on 284 pairs (±≈2.3 points), so the lead over OLMo-2 1B is within noise.
+- Phase 2 included synthetic contrastive entity-binding data, which the public models didn't have.
+- Every model here is still **below the 25% chance level**, with mostly the same name written for both twins (78% of pairs for BubblSpace). That's a habit, not yet binding.
+
+Raw results:
+- [`benchmark/binding_levels/bubblspace/phase2_step22888.json`](benchmark/binding_levels/bubblspace/phase2_step22888.json)
+- [`benchmark/binding_levels/report.md`](benchmark/binding_levels/report.md) (public models)
+
+Scripts: `scripts/binding_levels_bubbl.py` (ours) and `scripts/binding_levels_hf.py` (HF models).
 
 ## Training objective / data mixture
 
