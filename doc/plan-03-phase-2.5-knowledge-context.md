@@ -215,6 +215,56 @@ Expected: facts and probes v4/v5 rise. **v3 is the honest test and isn't promise
 
 **Timeline.** The decay starts at step 32,424, ≈Fri 27 Nov 07:00 IST on the current schedule, so the latest decision point is Thursday night.
 
+#### Step-8k result and the proposed decay mix (25 Nov, awaiting the user's approval)
+
+**Step 8,000** (fast tier; full tier running), against Phase 2 final:
+- English 6: 46.31 (−0.61). LAMBADA recovered to 34.4 (31.6 at 6k); HellaSwag 40.2 (−1.5) and PIQA 65.8 (−2.0) still lower.
+- FIM back to 5.0% (1.7% at 4k). Tool-call name 26%: it alternates 39 / 26 / 39 / 39 / 26 across checkpoints, so it's noisy.
+- TriviaQA, full 2,000 questions: 12.8% (+1.2). NQ 3.8% (flat). Facts 79/95. Probe v5 8/120.
+- Val loss (step 9,640): code replay 1.118, still creeping up by ≈0.002 per 2k steps; math 1.926; relational 2.017 and fact_seeking 1.16, still falling slowly.
+
+**Decision: branch 2 of the rule.** The drift has flattened, so keep the plateau to step 32,424 and add the decay stage. Don't start the decay early, because the knowledge pools haven't even been seen once yet:
+
+| Pool | Pool size | Seen by step 9,640 | Seen by step 32,424 |
+|---|---|---|---|
+| Wikipedia (`en_wiki_full`) | 5.06B | 1.1B (22%) | 3.7B (74%) |
+| `fact_seeking` | 5.42B | 0.9B (17%) | 3.1B (56%) |
+
+Ending the plateau at ≈15k would leave over half of Wikipedia unseen, which defeats 2.5a's purpose.
+
+**Proposed decay mix** (steps 32,424 → 38,147, ≈3.0B tokens), in `configs/phase25a.yaml` as a second stage. The launch config is kept as `configs/phase25a_before_decay.yaml`.
+
+| Group | Plateau | Decay | Why |
+|---|---|---|---|
+| wiki | 22% | 15% | Absorbed fastest; still +0.45B in the decay |
+| fact_seeking | 18% | 12% | Same |
+| fwe_edu4 | 9.35% | 11% | General English (HellaSwag, PIQA) |
+| synth | 9.5% | 7% | |
+| **cosmo** (Cosmopedia, Phase 2 pool, 1.52B) | 0 | **4%** | Stories and how-tos, for narrative English |
+| code: pyedu / py / js-ts fresh | 10 / 5 / 1.5% | 10 / 6 / 2% | |
+| code replay | 8.5% | **12%** | The one code signal still rising |
+| *code total* | *25%* | ***30%*** | |
+| agentic | 5% | **8%** | Tool calling into Phase 3. 8%, not 10%, because of the repetition cap: ≈2.9 passes in 2.5a, plus ≈3.3 in Phase 2. |
+| math | 5% | 7% | |
+| relational_llm | 0.75% | 3% | 3.35 passes in total |
+| contrastive_v3 | 4.5% | 2% | At its template floor |
+| nli_commonsense / kg_text | 0.75 / 0.15% | 0.8 / 0.2% | 3.2 / 3.75 passes in total |
+
+**Validated on fire01 (CPU only, staging copy):**
+- everything except the new stage and the `en_cosmo` pool is identical to the running config;
+- stage 0 reproduces the running plateau mix exactly;
+- stage 1 samples the weights above;
+- `en_cosmo` loads.
+
+**Switch:** `scripts/switch_25a_decay.sh` (the Phase 2B switch pattern).
+1. Waits for a complete `step_$STEP.pt`.
+2. Stops `launch_25.sh` and the handover guard first, so they don't skip 2.5b, then stops training.
+3. Resumes with `--resume` in the same W&B run.
+4. Checks the run after 15 min and falls back to the launch config if it failed.
+5. Chains 2.5b itself.
+
+The plateau is unchanged, so the switch can happen at any checkpoint before 32,424. Proposed: the step-12,000 checkpoint (≈20:00 IST, 25 Nov), so nothing is left until Thursday night. The overnight monitor must then watch `train_phase25a_decay.log`.
+
 ## 3. Phase 2.5b: context extension to 16384
 
 **How it works.**

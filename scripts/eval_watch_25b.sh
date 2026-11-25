@@ -52,6 +52,8 @@ for s in 1000 2000 2861; do
     python3 scripts/analyze_routing.py --config $C --checkpoint $CK --pools_yaml configs/pools_a10.yaml --windows_per_group 48 --out $OUT/routing/routing_$T.json > $OUT/routing/routing_$T.log 2>&1
     python3 -u scripts/eval_code_gen.py --config $C --checkpoint $CK --tasks humaneval,mbpp --out $OUT/codegen_$T.json > $OUT/codegen_$T.log 2>&1
     python3 scripts/sandbox_exec.py --codegen $OUT/codegen_$T.json --out $OUT/codeexec_$T.json > $OUT/codeexec_$T.log 2>&1
+    # bits per byte on post-cutoff text (doc/plan-05-bits-per-byte-eval.md); 2,048-token chunks, same as every other model
+    python3 scripts/eval_bpb.py --config $C --checkpoint $CK --data $HOME/eval_data/uncheatable-2026-10.parquet --out $OUT/bpb_$T.json > $OUT/bpb_$T.log 2>&1
   fi
   python3 scripts/summarize_evals.py --dir $OUT --prefix phase25b_step --out $OUT/summary.md \
     --baseline benchmark/phase2:phase2_step22888 --baseline benchmark/phase25a:phase25a_step38147 --long_context > /dev/null 2>&1

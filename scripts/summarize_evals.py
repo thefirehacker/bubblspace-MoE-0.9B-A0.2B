@@ -67,6 +67,13 @@ def row_for(d, tag, long_context=False):
     c = j("codeexec")
     pa = lambda t: f"{100 * c['summary'][t]['pass_at_1']:.1f}%" if c and t in c["summary"] else "—"
     r["HumanEval / MBPP"] = f"{pa('humaneval')} / {pa('mbpp')}"
+    bp = j("bpb")  # UncheatableEval-2026-10 bits per byte, full tier only (scripts/eval_bpb.py)
+    if bp:
+        cats = bp["by_category"]
+        code = [cats[k]["bpb"] for k in ("github_python", "github_javascript", "github_cpp") if k in cats]
+        r["BPB en / code"] = f"{bp['mean_over_english_categories_bpb']:.3f} / {sum(code) / len(code):.3f}"
+    else:
+        r["BPB en / code"] = "—"
     m = j("milestone")
     if m:
         b = m["bfcl"]
