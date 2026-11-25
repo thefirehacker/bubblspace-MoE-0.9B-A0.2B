@@ -1,0 +1,573 @@
+{
+ "model": "EleutherAI/pythia-2.8b-deduped",
+ "revision": "step4000",
+ "n_params": 2775208960,
+ "gpu": "NVIDIA H100 PCIe",
+ "weights_format": "safetensors",
+ "weight_sha256": {
+  "model-00001-of-00003.safetensors": "61a9d88cc41275526fbcc509469b877a272f91cfe87f4afdeb99a00f006512de",
+  "model-00002-of-00003.safetensors": "6c26dbc10b8a841e3165e455f0372e8fa83a75653bdfff55326675542f8df301",
+  "model-00003-of-00003.safetensors": "a5072308a58a2fa143c55b553cc91f62bbdb6fe1a34ead8396873bbe5b53b80c"
+ },
+ "suites": {
+  "v2": {
+   "n_pairs": 100,
+   "L1": 0.55,
+   "L2": 0.13,
+   "L3_rows": 0.095,
+   "L3": 0.01,
+   "by_category": {
+    "spatial_size": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.1
+    },
+    "spatial_width": {
+     "n": 10,
+     "L2": 0.3,
+     "L3": 0.0
+    },
+    "spatial_height": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "agent_patient_causation": {
+     "n": 10,
+     "L2": 0.3,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "material_property": {
+     "n": 10,
+     "L2": 0.3,
+     "L3": 0.0
+    },
+    "comparative_value": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "gen": " too small.\n\n\"I'm"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "gen": " too big.\n\n\"I'm"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " too high.\n\nThe elevator was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too heavy.\n\nThe elevator was"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " too big.\n\nThe van was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too heavy.\n\nThe van was"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " too heavy.\n\nThe truck was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too heavy.\n\nThe sofa was"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "gen": " too small.\n\nThe bookshelf"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too small.\n\nThe bookshelf"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " too big.\n\nThe van was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " too small.\n\nThe van was"
+     }
+    }
+   ]
+  },
+  "v3": {
+   "n_pairs": 70,
+   "L1": 0.5071,
+   "L2": 0.0429,
+   "L3_rows": 0.0071,
+   "L3": 0.0,
+   "by_category": {
+    "comparative_value": {
+     "n": 24,
+     "L2": 0.042,
+     "L3": 0.0
+    },
+    "spatial_fit": {
+     "n": 20,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " one that was faster.\n\nThe"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was faster.\n\nThe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " same.\n\nThe courier drone"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " same.\n\nThe train was a"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was served at the banquet"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " one that was served at the banquet"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " most popular.\n\nThe banquet"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " most popular.\n\nThe banquet"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was still in the water."
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " one that was still in the water."
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " one to be used.\n\n\""
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " same.\n\n\"I'm sorry"
+     }
+    }
+   ]
+  },
+  "v4": {
+   "n_pairs": 112,
+   "L1": 0.5312,
+   "L2": 0.0714,
+   "L3_rows": 0.0223,
+   "L3": 0.0,
+   "by_category": {
+    "ability": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "comparative": {
+     "n": 24,
+     "L2": 0.042,
+     "L3": 0.0
+    },
+    "emotional": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "fit": {
+     "n": 16,
+     "L2": 0.25,
+     "L3": 0.0
+    },
+    "possession": {
+     "n": 24,
+     "L2": 0.125,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not a real person.\n\nThe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not able to identify the source of the"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not a Muslim.\n\nThe Re"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not the first to be born in the"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a man of great strength.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a man of great intelligence, but he"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a little bit of a bitch.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a little bit of a nutter."
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not a member of the group.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the room when she was killed"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a little bit of a bitch.\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a man of great strength and courage."
+     }
+    }
+   ]
+  },
+  "v5": {
+   "n_pairs": 120,
+   "L1": 0.5208,
+   "L2": 0.05,
+   "L3_rows": 0.0292,
+   "L3": 0.0,
+   "by_category": {
+    "passive": {
+     "n": 40,
+     "L2": 0.05,
+     "L3": 0.0
+    },
+    "relative_clause": {
+     "n": 40,
+     "L2": 0.075,
+     "L3": 0.0
+    },
+    "respectively": {
+     "n": 40,
+     "L2": 0.025,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a woman.\n\nThe film was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not the one who was responsible for the"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of his.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of his.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a woman.\n\nThe next day"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " jealous of her.\n\n\"I"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of the family.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of the family.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a \"silly\" girl.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a \"snowball\" and \""
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " the first to be given the gift."
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the first to be given the gift."
+     }
+    }
+   ]
+  },
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.5106,
+   "L2": 0.1268,
+   "L3_rows": 0.4454,
+   "L3": 0.0211,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.127,
+     "L3": 0.021
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "house"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "house"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Joe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "bakery"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "story"
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "story"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "library"
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "library"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Michael"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Michael"
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.5059,
+   "l3_all_rows": 0.4333,
+   "answered_with_option": 0.899,
+   "rows_outside_pairs": 699
+  }
+ },
+ "elapsed_s": 272.9
+}

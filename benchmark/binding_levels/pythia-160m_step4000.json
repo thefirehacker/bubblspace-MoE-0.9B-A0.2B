@@ -1,0 +1,568 @@
+{
+ "model": "EleutherAI/pythia-160m",
+ "revision": "step4000",
+ "n_params": 162322944,
+ "gpu": "NVIDIA A10",
+ "weights_format": "safetensors",
+ "suites": {
+  "v2": {
+   "n_pairs": 100,
+   "L1": 0.515,
+   "L2": 0.05,
+   "L3_rows": 0.05,
+   "L3": 0.0,
+   "by_category": {
+    "spatial_size": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "spatial_width": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "spatial_height": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "agent_patient_causation": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "material_property": {
+     "n": 10,
+     "L2": 0.2,
+     "L3": 0.0
+    },
+    "comparative_value": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the trunk.\n\nThe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the trunk.\n\nThe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the elevator.\n\nThe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the elevator.\n\nThe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the van.\n\nThe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not designed to fit in the van."
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not moving.\n\nThe sofa was"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the truck.\n\nThe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the alcove. The floor"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the alcove.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " not in the same condition.\n\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not in the delivery van.\n\n"
+     }
+    }
+   ]
+  },
+  "v3": {
+   "n_pairs": 70,
+   "L1": 0.5214,
+   "L2": 0.0429,
+   "L3_rows": 0.0143,
+   "L3": 0.0,
+   "by_category": {
+    "comparative_value": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "spatial_fit": {
+     "n": 20,
+     "L2": 0.15,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was faster, and the other"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " one that was slower, and the other"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " first to be delivered to the depot"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " first to reach the depot.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " dinner, and the other was the dessert"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " one that was shorter, and the one"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " best of the bunch.\n\nThe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " best.\n\nThe banquet was"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " one that was more powerful.\n\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " one that was more powerful than the other"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " only one.\n\n\"I'm"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " same.\n\n\"I'm sorry"
+     }
+    }
+   ]
+  },
+  "v4": {
+   "n_pairs": 112,
+   "L1": 0.4955,
+   "L2": 0.0357,
+   "L3_rows": 0.0268,
+   "L3": 0.0,
+   "by_category": {
+    "ability": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "comparative": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "emotional": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "fit": {
+     "n": 16,
+     "L2": 0.25,
+     "L3": 0.0
+    },
+    "possession": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the *Hirosh"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the group of the group"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the group of the group"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a member of the group of the group"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of the late-night"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good fit for the team.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good fit for the team.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good fit for the team.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the House of Lords,"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " not a member of the family.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good fit for the team.\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good fit for the team.\n"
+     }
+    }
+   ]
+  },
+  "v5": {
+   "n_pairs": 120,
+   "L1": 0.5083,
+   "L2": 0.0333,
+   "L3_rows": 0.025,
+   "L3": 0.0,
+   "by_category": {
+    "passive": {
+     "n": 40,
+     "L2": 0.05,
+     "L3": 0.0
+    },
+    "relative_clause": {
+     "n": 40,
+     "L2": 0.025,
+     "L3": 0.0
+    },
+    "respectively": {
+     "n": 40,
+     "L2": 0.025,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the only one who could be trusted."
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of Pia.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good fit for the team.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of his.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of Yara.\n"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of Yara.\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a member of the team that was part"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of Xavier.\n\n"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good friend of the family.\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a \"good\" and \"bad\""
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the first to be selected as the first"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good friend of the family.\n"
+     }
+    }
+   ]
+  },
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.5352,
+   "L2": 0.1725,
+   "L3_rows": 0.3011,
+   "L3": 0.0035,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.173,
+     "L3": 0.004
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "home or house"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "home"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Joe"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Joe"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Nick"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Nick"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Nick"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Nick"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Michael"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Michael"
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.5335,
+   "l3_all_rows": 0.3054,
+   "answered_with_option": 0.6314,
+   "rows_outside_pairs": 699
+  }
+ },
+ "elapsed_s": 154.9
+}

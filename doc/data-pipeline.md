@@ -184,12 +184,13 @@ Measured with `scripts/measure_doc_lengths.py` (`benchmark/phase2/doc_lengths.js
 | Binding probes | `benchmark/data/probefinding-winograndestyle/`: v2 (100), v3 (70, new structures), v4 (112, held out from contrastive v2), v5 (120, held-out structures of contrastive v3: passive, relative clause, respectively; private until used). v2–v4 published on HF with a canary GUID | log-likelihood, minimal pairs |
 | Code | HumanEval (164), MBPP full test (500), Docker sandbox; CRUXEval-O (800) | greedy |
 | Tool use | BFCL simple / multiple / parallel (11 contaminated ids excluded) | AST match |
-| Long context (2.5b) | needle/passkey + multi-hop retrieval at 2k–16k, loss by position | to build |
+| Long context (2.5b) | `scripts/eval_long_context.py`: passkey + multi-hop retrieval (invented names, 3 distractor chains) at 2k–16k, with real text as filler; loss by position. Documents: 94 held-out docs ≥ 8k tokens (24 each from long wiki / FineWeb / FineMath, 22 from long code), cut from the validation tail of each 2.5b long pool (`make_docs`), kept on fire01 and the A10 only (derived from gated StarCoder data, so not in the repo) | greedy generation; per-position loss |
 
 ## 8. Changelog
 
 | Date | Change |
 |---|---|
+| 24 Nov 2026 | Long-context eval documents built (94 held-out docs, 1.14M tokens) for Phase 2.5b |
 | 24 Nov 2026 | Qwen3 relational generation complete (222,088 passages, 65.05M tokens after decontamination); all 2.5a pools ready |
 | 24 Nov 2026 | Decontamination of all new 2.5a pools (13-gram + frequency filter); removals 0.001–0.17% of documents per pool |
 | 23 Nov 2026 | Relations rebalanced (1.8B → 1.23B; +0.57B to SYNTH and FineWeb-Edu ≥ 4) because ConceptNet (8.4M) and NLI/commonsense (47M) came out smaller than planned; Wikidata5M dropped (noisy entity names) |

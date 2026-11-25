@@ -1,0 +1,9498 @@
+{
+ "model": "allenai/OLMo-2-0425-1B",
+ "revision": "stage1-step300-tokens1B",
+ "n_params": 1484916736,
+ "gpu": "NVIDIA A10",
+ "weights_format": "safetensors",
+ "weight_sha256": {
+  "model-00001-of-00002.safetensors": "e96d10287ca0daefdbdb76578d11b519b21695250de2a6f6857968773c1a6966",
+  "model-00002-of-00002.safetensors": "411754780f32910ff4d35875db2440ad1c18a7964fcaece82817e36bf53771cb"
+ },
+ "suites": {
+  "v2": {
+   "n_pairs": 100,
+   "L1": 0.49,
+   "L2": 0.03,
+   "L3_rows": 0.0,
+   "L3": 0.0,
+   "by_category": {
+    "spatial_size": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "spatial_width": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "spatial_height": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "agent_patient_causation": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 10,
+     "L2": 0.1,
+     "L3": 0.0
+    },
+    "material_property": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "comparative_value": {
+     "n": 10,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the 2-----"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the 4. 4. "
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the 1. 1. "
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the 1. 1. "
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the 2. 4. "
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the 1 to the 1."
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the 2-----"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the 1. The the 1"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the 1. 1. "
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the 1. 1. "
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the 1. 1. "
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the 1. 1. "
+     }
+    }
+   ]
+  },
+  "v3": {
+   "n_pairs": 70,
+   "L1": 0.4929,
+   "L2": 0.0,
+   "L3_rows": 0.0,
+   "L3": 0.0,
+   "by_category": {
+    "comparative_value": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "spatial_fit": {
+     "n": 20,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "emotional_attribution": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession_obligation": {
+     "n": 8,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "ability_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "social_attribution": {
+     "n": 5,
+     "L2": 0.0,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " most of the 1. The "
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " first and the first was the first."
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " most of the most of the most of"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " most of the most of the most of"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " most of the other, the most of"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " most of the other, the other,"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " most of the most of the government,"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " most of the government, and the other"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " same. The not the way of the"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " same. It's the same is the"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " same, the only the world, the"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " \"the \"the \"The \"The"
+     }
+    }
+   ]
+  },
+  "v4": {
+   "n_pairs": 112,
+   "L1": 0.5045,
+   "L2": 0.0089,
+   "L3_rows": 0.0134,
+   "L3": 0.0,
+   "by_category": {
+    "ability": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "comparative": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "emotional": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "fit": {
+     "n": 16,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "possession": {
+     "n": 24,
+     "L2": 0.042,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " the same, and the other of the"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the same, and the other of the"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a way to the same, and the"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a way to the way of the "
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good. I was a good good"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a good. I was a good thing"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " of the same. I had the way"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a good. I had a good."
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a very to the next, and the"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " the only of the first of the two"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": ", I was a little of the world"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " the other. I was the way of"
+     }
+    }
+   ]
+  },
+  "v5": {
+   "n_pairs": 120,
+   "L1": 0.5083,
+   "L2": 0.0583,
+   "L3_rows": 0.0,
+   "L3": 0.0,
+   "by_category": {
+    "passive": {
+     "n": 40,
+     "L2": 0.05,
+     "L3": 0.0
+    },
+    "relative_clause": {
+     "n": 40,
+     "L2": 0.025,
+     "L3": 0.0
+    },
+    "respectively": {
+     "n": 40,
+     "L2": 0.1,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": ". The. The. The. The"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": ", and the other is the same and"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": ", the only of the first, and"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": ", the way of the other, the"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " the       "
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": "        "
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " 0 0 0 0"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": ", the first was the way of the"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": ", and the first of the world,"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": ". I was a little. I was"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": ". I, I, I, I"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": ". I, I, I, I"
+     }
+    }
+   ]
+  },
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.5035,
+   "L2": 0.1197,
+   "L3_rows": 0.0,
+   "L3": 0.0,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.12,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm a good, but I",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm a good, but I",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm a lot of the time",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm a lot of the time",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm not a good, but",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm a lot of the time",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "I'm a lot of the time I",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "I'm a lot of the time I",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm not a good, but",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm not a good, but",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm a good, but I",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": false
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "\"I'm a good, but I",
+      "wrote": null,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.4878,
+   "l3_all_rows": 0.0,
+   "answered_with_option": 0.0,
+   "rows_outside_pairs": 699,
+   "shortcuts": {
+    "wrote_first_mentioned": 0.0,
+    "wrote_second_mentioned": 0.0,
+    "first_mentioned_share_of_answers": 0.0,
+    "same_name_for_both_twins": 0.0,
+    "l1_prefers_first_mentioned": 0.5004
+   },
+   "rows": [
+    {
+     "i": 0,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 2,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 3,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 4,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 5,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 6,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 7,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 8,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 9,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 10,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 11,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the time I"
+    },
+    {
+     "i": 12,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the time I"
+    },
+    {
+     "i": 13,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 14,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 15,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 16,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 17,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 18,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 19,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 20,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1:"
+    },
+    {
+     "i": 21,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 22,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 23,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 24,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 25,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "The first is the most of the world"
+    },
+    {
+     "i": 26,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 27,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 28,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 29,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 30,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 31,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 32,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good time, but"
+    },
+    {
+     "i": 33,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 34,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 35,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the world,"
+    },
+    {
+     "i": 36,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 37,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 38,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 39,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 40,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 41,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 42,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 43,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 44,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 45,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 46,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 47,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 48,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 49,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time of the world:"
+    },
+    {
+     "i": 50,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 51,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 52,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a lot of the world"
+    },
+    {
+     "i": 53,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the best thing."
+    },
+    {
+     "i": 54,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the best thing."
+    },
+    {
+     "i": 55,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 56,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 57,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 58,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 59,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 60,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 61,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 62,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 63,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 64,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 65,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 66,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 67,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 68,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 69,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 70,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 71,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 72,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 73,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 74,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 75,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1:"
+    },
+    {
+     "i": 76,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:00"
+    },
+    {
+     "i": 77,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing."
+    },
+    {
+     "i": 78,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 79,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 80,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 81,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 82,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 83,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 84,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 85,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 86,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 87,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 88,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 89,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 90,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 91,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 92,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 93,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 94,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 95,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 96,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 97,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 98,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I don't know what the best"
+    },
+    {
+     "i": 99,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 100,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\": \"I'm a good,"
+    },
+    {
+     "i": 101,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 102,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5:00:"
+    },
+    {
+     "i": 103,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 104,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:00"
+    },
+    {
+     "i": 105,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 106,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 107,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 108,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 109,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 110,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 111,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 112,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 113,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 114,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 115,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 116,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 117,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 118,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 119,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 120,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 121,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 122,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 123,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 124,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 125,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 126,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 127,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 128,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 129,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 130,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing."
+    },
+    {
+     "i": 131,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 132,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 133,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 134,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 135,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 136,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 137,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 138,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 139,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 140,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 141,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 142,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 143,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 144,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 145,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 146,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 147,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 148,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 149,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 150,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 151,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 152,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 153,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 154,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 155,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 156,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1."
+    },
+    {
+     "i": 157,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 158,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 159,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 160,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 161,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 162,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 163,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 164,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 165,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 166,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 167,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 168,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:00"
+    },
+    {
+     "i": 169,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 170,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 171,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 172,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 173,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 174,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 175,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 176,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 177,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 178,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 179,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a good, but I'm"
+    },
+    {
+     "i": 180,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1. I'm not a lot"
+    },
+    {
+     "i": 181,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 182,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 183,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 184,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 185,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 186,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 187,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 188,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 189,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 190,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 191,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1:"
+    },
+    {
+     "i": 192,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 193,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 194,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 195,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 196,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 197,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 198,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 199,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 200,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 201,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 202,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 203,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 204,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 205,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 206,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 207,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 208,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 209,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 210,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 211,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 212,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 213,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 214,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 215,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a good, but I"
+    },
+    {
+     "i": 216,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 217,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 218,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 219,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 220,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 221,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 222,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 223,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 224,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 225,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 226,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 227,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 228,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "The first is the most of the world"
+    },
+    {
+     "i": 229,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "The first is the most of the world"
+    },
+    {
+     "i": 230,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a good, I was a"
+    },
+    {
+     "i": 231,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the"
+    },
+    {
+     "i": 232,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1."
+    },
+    {
+     "i": 233,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time of the world:"
+    },
+    {
+     "i": 234,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time of the world:"
+    },
+    {
+     "i": 235,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 236,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 237,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 238,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 239,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 240,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 241,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 242,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 243,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 244,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 245,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 246,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 247,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 248,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 249,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 250,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 251,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 252,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 253,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 254,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 255,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 256,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 257,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a lot of the time"
+    },
+    {
+     "i": 258,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 259,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 260,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 261,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing."
+    },
+    {
+     "i": 262,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 263,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 264,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 265,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 266,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 267,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 268,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 269,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 270,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 271,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 272,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 273,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 274,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 275,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 276,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 277,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 278,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 279,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 280,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 281,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 282,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 283,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:00"
+    },
+    {
+     "i": 284,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 285,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 286,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 287,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 288,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 289,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 290,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 291,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 292,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 293,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 294,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 295,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 296,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 297,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 298,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 299,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 300,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good time to the"
+    },
+    {
+     "i": 301,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 302,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 303,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 304,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 305,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 306,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 307,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 308,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 309,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 310,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a lot of the world"
+    },
+    {
+     "i": 311,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 312,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 313,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 314,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 315,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 316,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first of the world, the"
+    },
+    {
+     "i": 317,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 318,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 319,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 320,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 321,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 322,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 323,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 324,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 325,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 326,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 327,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 328,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 329,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first of the world: \""
+    },
+    {
+     "i": 330,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 331,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing,"
+    },
+    {
+     "i": 332,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 333,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 334,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I don't know what I'm"
+    },
+    {
+     "i": 335,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 336,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time of the world:"
+    },
+    {
+     "i": 337,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 338,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 339,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 340,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 341,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 342,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 343,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time, the other,"
+    },
+    {
+     "i": 344,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time, the other,"
+    },
+    {
+     "i": 345,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the world,"
+    },
+    {
+     "i": 346,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 347,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 348,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 349,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 350,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 351,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 352,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 353,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 354,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 355,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 356,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 357,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 358,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 359,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 360,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 361,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 362,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 363,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 364,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 365,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 366,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 367,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 368,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 369,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 370,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 371,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:"
+    },
+    {
+     "i": 372,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 373,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 374,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 375,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 376,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 377,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 378,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 379,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 380,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 381,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 382,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 383,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 384,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 385,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 386,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 387,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 388,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 389,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1:"
+    },
+    {
+     "i": 390,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 391,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 392,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 393,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 394,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 395,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 396,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 397,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 398,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 399,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 400,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 401,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 402,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 403,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 404,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 405,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 406,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 407,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 408,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 409,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 410,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 411,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 412,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 413,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 414,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 415,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a lot of the time"
+    },
+    {
+     "i": 416,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a lot of the time"
+    },
+    {
+     "i": 417,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 418,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 419,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 420,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 421,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 422,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 423,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 424,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the"
+    },
+    {
+     "i": 425,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 426,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 427,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 428,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 429,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 430,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the"
+    },
+    {
+     "i": 431,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 432,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 433,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 434,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 435,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 436,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 437,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 438,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 439,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 440,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing:"
+    },
+    {
+     "i": 441,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 442,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 443,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:00"
+    },
+    {
+     "i": 444,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 445,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 446,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing:"
+    },
+    {
+     "i": 447,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 448,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 449,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 450,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing,"
+    },
+    {
+     "i": 451,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 452,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 453,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 454,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 455,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 456,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 457,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1:"
+    },
+    {
+     "i": 458,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1:"
+    },
+    {
+     "i": 459,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 460,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 461,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 462,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 463,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 464,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 465,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the 20"
+    },
+    {
+     "i": 466,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 467,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 468,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 469,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 470,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 471,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 472,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 473,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 474,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 475,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 476,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 477,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 478,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 479,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "The first is the most of the world"
+    },
+    {
+     "i": 480,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 481,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 482,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 483,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 484,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the first time of the world, the"
+    },
+    {
+     "i": 485,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the other hand, the other hand,"
+    },
+    {
+     "i": 486,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 487,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 488,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 489,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 490,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 491,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 492,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 493,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 494,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 495,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 496,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 497,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 498,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 499,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 500,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 501,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5:00:00"
+    },
+    {
+     "i": 502,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 503,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 504,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 505,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 506,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 507,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 508,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 509,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 510,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 511,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing."
+    },
+    {
+     "i": 512,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 513,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 514,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 515,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 516,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 517,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 518,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 519,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 520,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 521,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 522,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 523,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 524,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the other hand, the other, the"
+    },
+    {
+     "i": 525,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 526,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 527,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 528,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 529,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 530,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 531,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 532,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the world,"
+    },
+    {
+     "i": 533,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the time I"
+    },
+    {
+     "i": 534,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 535,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 536,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 537,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 538,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 539,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 540,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 541,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 542,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 543,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 544,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 545,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 546,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 547,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 548,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the"
+    },
+    {
+     "i": 549,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 550,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 551,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 552,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 553,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 554,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 555,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 556,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 557,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 558,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 559,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 560,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 561,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 562,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 563,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:00"
+    },
+    {
+     "i": 564,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 565,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 566,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 567,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 568,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 569,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 570,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 571,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 572,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 573,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 574,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 575,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a lot of the same"
+    },
+    {
+     "i": 576,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 577,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 578,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the time I"
+    },
+    {
+     "i": 579,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the time I"
+    },
+    {
+     "i": 580,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 581,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 582,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 583,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 584,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 585,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1:"
+    },
+    {
+     "i": 586,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 587,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 588,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 589,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 590,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 591,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 592,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 593,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 594,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 595,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 596,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 597,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 598,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 599,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 600,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00: 1:"
+    },
+    {
+     "i": 601,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00: 1:"
+    },
+    {
+     "i": 602,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:00"
+    },
+    {
+     "i": 603,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 604,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 605,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 606,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1."
+    },
+    {
+     "i": 607,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 608,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 609,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the"
+    },
+    {
+     "i": 610,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 611,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 612,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 613,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 614,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 615,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 616,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 617,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 618,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:00"
+    },
+    {
+     "i": 619,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 620,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 621,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 622,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 623,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 624,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 625,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 626,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 627,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 628,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 629,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 630,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 631,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 632,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 633,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 634,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 635,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 636,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 637,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 638,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 639,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 640,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 641,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 642,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 643,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 644,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first of the 20:"
+    },
+    {
+     "i": 645,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 646,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 647,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 648,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 649,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 650,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 651,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 652,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 653,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 654,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 655,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 656,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 657,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 658,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 659,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 660,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the time I"
+    },
+    {
+     "i": 661,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the time I"
+    },
+    {
+     "i": 662,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 663,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 664,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 665,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 666,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 667,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 668,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 669,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good time."
+    },
+    {
+     "i": 670,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time of the world:"
+    },
+    {
+     "i": 671,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 672,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good thing."
+    },
+    {
+     "i": 673,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 674,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 675,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 676,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 677,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 678,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good time."
+    },
+    {
+     "i": 679,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 680,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a good, but I'm"
+    },
+    {
+     "i": 681,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 682,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 683,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 684,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 685,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time of the world:"
+    },
+    {
+     "i": 686,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 687,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5:00:00"
+    },
+    {
+     "i": 688,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good time."
+    },
+    {
+     "i": 689,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 690,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 691,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 692,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 693,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 694,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 695,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 696,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 697,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 698,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 699,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 700,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 701,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 702,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 703,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 704,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 705,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 706,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:00"
+    },
+    {
+     "i": 707,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 708,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 709,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 710,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a lot of the time"
+    },
+    {
+     "i": 711,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a lot of the time"
+    },
+    {
+     "i": 712,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 713,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 714,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"It's a good, but it"
+    },
+    {
+     "i": 715,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 716,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 717,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 718,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 719,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 720,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 721,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 722,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 723,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 724,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good time. I"
+    },
+    {
+     "i": 725,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 726,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 727,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 728,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 729,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good time, but"
+    },
+    {
+     "i": 730,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 731,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 732,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 733,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 734,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 735,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 736,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 737,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 738,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 739,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 740,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 741,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 742,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 743,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 744,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 745,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 746,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 747,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 748,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"It's a good, but it"
+    },
+    {
+     "i": 749,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 750,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 751,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 752,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 753,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 754,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 755,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 756,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 757,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 758,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 759,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 760,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 761,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 762,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 763,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 764,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 765,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 766,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 767,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 768,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 769,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 770,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 771,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 772,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 773,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 774,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 775,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 776,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 777,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the time I"
+    },
+    {
+     "i": 778,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 779,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 780,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 781,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 782,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 783,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 784,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 785,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 786,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 787,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 788,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 789,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 790,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 791,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 792,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 793,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 794,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00: 1:"
+    },
+    {
+     "i": 795,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00: 1:"
+    },
+    {
+     "i": 796,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 797,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 798,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 799,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 800,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing."
+    },
+    {
+     "i": 801,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 802,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 803,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 804,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 805,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 806,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 807,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 808,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 809,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 810,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 811,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 812,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 813,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 814,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 815,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 816,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm not a lot of the world"
+    },
+    {
+     "i": 817,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 818,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 819,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5:00:00"
+    },
+    {
+     "i": 820,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 821,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 822,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the"
+    },
+    {
+     "i": 823,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 824,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 825,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 826,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 827,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 828,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 829,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 830,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 831,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 832,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 833,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 834,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:"
+    },
+    {
+     "i": 835,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 836,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 837,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 838,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 839,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 840,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 841,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1."
+    },
+    {
+     "i": 842,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 843,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"It's a good, but it"
+    },
+    {
+     "i": 844,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 845,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 846,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 847,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the first time of the world, the"
+    },
+    {
+     "i": 848,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the first time of the world, the"
+    },
+    {
+     "i": 849,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 850,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 851,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 852,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 853,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 854,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 855,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 856,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 857,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 858,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 859,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 860,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I don't know what the best"
+    },
+    {
+     "i": 861,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 862,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 863,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 864,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 865,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 866,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 867,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 868,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 869,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 870,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 871,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 872,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 873,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 874,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 875,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 876,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 877,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 878,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 879,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 880,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 881,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 882,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 883,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 884,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 885,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 886,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing:"
+    },
+    {
+     "i": 887,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 888,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 889,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 890,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 891,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 892,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 893,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 894,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 895,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 896,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 897,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 898,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 899,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the other hand, the other, the"
+    },
+    {
+     "i": 900,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 901,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 902,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 903,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 904,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 905,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 906,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 907,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 908,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5:00:00"
+    },
+    {
+     "i": 909,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5:00:00"
+    },
+    {
+     "i": 910,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 911,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 912,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 913,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 914,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time of the world:"
+    },
+    {
+     "i": 915,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 916,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 917,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 918,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 919,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 920,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 921,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 922,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 923,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 924,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 925,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 926,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 927,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 928,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 929,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 930,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 931,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 932,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 933,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 934,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 935,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 936,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 937,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the"
+    },
+    {
+     "i": 938,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good idea that"
+    },
+    {
+     "i": 939,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 940,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 941,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 942,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 943,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 944,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 945,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 946,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 947,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 948,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 949,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 950,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 951,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 952,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 953,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 954,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 955,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 956,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 957,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 958,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 959,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 960,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 961,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 962,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 963,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 964,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1:00:00:"
+    },
+    {
+     "i": 965,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 966,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 967,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 968,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 969,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 970,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 971,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 972,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 973,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 974,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 975,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 976,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 977,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 978,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 979,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 980,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 981,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 982,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 983,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 984,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 985,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 986,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good time, but"
+    },
+    {
+     "i": 987,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 988,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 989,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 990,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 991,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 992,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 993,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 994,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 995,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 996,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 997,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 998,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 999,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1000,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good to do the"
+    },
+    {
+     "i": 1001,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1002,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1003,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1004,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1005,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1006,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1007,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1008,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 1009,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 1010,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1011,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1012,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1013,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1014,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1015,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1016,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 1017,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1018,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1019,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1020,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1021,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"It's a good, but it"
+    },
+    {
+     "i": 1022,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"It's a good, but it"
+    },
+    {
+     "i": 1023,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1024,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1025,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1026,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1027,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1028,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1029,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1030,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1031,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1032,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1033,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1034,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1035,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1036,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1037,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1038,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1039,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1040,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1041,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 1042,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1043,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1044,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1045,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good time. I"
+    },
+    {
+     "i": 1046,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1047,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1048,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1049,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1050,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1051,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1052,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1053,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1054,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1055,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1056,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1057,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1058,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1059,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1060,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1061,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1062,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1063,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1064,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1065,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1066,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1067,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1068,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1069,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1070,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 1071,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good time, but"
+    },
+    {
+     "i": 1072,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1073,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5: 1:"
+    },
+    {
+     "i": 1074,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1075,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1076,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1077,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1078,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1079,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1080,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1081,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1082,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 1083,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a good, but I'm"
+    },
+    {
+     "i": 1084,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1085,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1086,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1087,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1088,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good time."
+    },
+    {
+     "i": 1089,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1090,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1091,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1092,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1093,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1094,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1095,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1096,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1097,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1098,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1099,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1100,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1101,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1102,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1103,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1104,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1105,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1106,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1107,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1108,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1109,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1110,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1111,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1112,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1113,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1114,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1115,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1116,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1117,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1118,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1119,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good time. I"
+    },
+    {
+     "i": 1120,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1121,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1122,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first of the world: \""
+    },
+    {
+     "i": 1123,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first of the world: \""
+    },
+    {
+     "i": 1124,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1125,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1126,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1127,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1128,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1129,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1130,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1131,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 1132,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 1133,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1134,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1135,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1136,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1137,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1138,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1139,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1140,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1141,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1142,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1143,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1144,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1145,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1146,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1147,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first of the world: \""
+    },
+    {
+     "i": 1148,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1149,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1150,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1151,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1152,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1153,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1154,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1155,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5:00:00"
+    },
+    {
+     "i": 1156,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "1.5:00:00"
+    },
+    {
+     "i": 1157,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1158,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1159,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the same thing of"
+    },
+    {
+     "i": 1160,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1161,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1162,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 1163,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I don't know what I'm"
+    },
+    {
+     "i": 1164,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1165,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the best thing of"
+    },
+    {
+     "i": 1166,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the best thing of"
+    },
+    {
+     "i": 1167,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1168,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The \"The \"The \"The"
+    },
+    {
+     "i": 1169,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1170,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1171,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1172,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1173,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 1174,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1175,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1176,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1177,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1178,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1179,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1180,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1181,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1182,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1183,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1184,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1185,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1186,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1187,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1188,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1189,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1190,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1191,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1192,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1193,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1194,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1195,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1196,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1197,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1198,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1199,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1200,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1201,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1202,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1203,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1204,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good time."
+    },
+    {
+     "i": 1205,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good time."
+    },
+    {
+     "i": 1206,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1207,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1208,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1209,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1210,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1211,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1212,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1213,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1214,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "I'm a lot of the world,"
+    },
+    {
+     "i": 1215,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1216,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1217,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1218,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1219,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1220,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1221,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1222,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1223,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1224,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1225,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1226,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1227,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1228,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1229,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1230,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1231,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1232,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1233,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1234,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1235,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1236,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first is the most of the"
+    },
+    {
+     "i": 1237,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1238,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1239,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1240,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1241,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good time, but"
+    },
+    {
+     "i": 1242,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the world"
+    },
+    {
+     "i": 1243,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1244,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1245,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1246,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1247,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1248,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1249,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1250,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the same"
+    },
+    {
+     "i": 1251,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1252,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1253,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1254,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1255,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good time."
+    },
+    {
+     "i": 1256,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1257,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"The first time is the best thing"
+    },
+    {
+     "i": 1258,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1259,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1260,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1261,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a good, but"
+    },
+    {
+     "i": 1262,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1263,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a lot of the time"
+    },
+    {
+     "i": 1264,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm not a lot of the"
+    },
+    {
+     "i": 1265,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    },
+    {
+     "i": 1266,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "\"I'm a good, but I"
+    }
+   ]
+  }
+ },
+ "elapsed_s": 364.0
+}

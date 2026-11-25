@@ -50,7 +50,7 @@ Part of what looked like missing knowledge in the REPL is base-model rambling, w
 | Throughput | ≈84k tokens/s (Phase 2 measured) → 1B tokens ≈ 3.3 h, ≈1,907 steps of 524,288 tokens |
 | Length | **20B tokens = 38,147 steps, ≈66 h** |
 | Schedule | WSD: re-warm 300 steps → plateau at 2.0e-4 to step ≈32,400 → linear decay over the final ≈15% (≈5,700 steps) to 6e-6 |
-| Guard rule | fast-tier eval every 2,000 steps (≈1B tokens). If facts, probes, code or English drop clearly, pause and adjust the mix (an exact resume, as in the Phase 2 Stage 2B switch). If everything has flattened well before 20B, the decay can start earlier. |
+| Guard rule | fast-tier eval every 2,000 steps (≈1B tokens). If facts, probes, code or English drop clearly, pause and adjust the mix (an exact resume, as in the Phase 2 Stage 2B switch). If everything has flattened well before 20B, the decay can start earlier. The decay gets its own data mix (§2.7). |
 
 ### 2.2 Mix
 
@@ -172,6 +172,101 @@ The extend-or-decay rule uses the fast tier. Probes are cheap (≈1–2 min each
 
 Expected: facts and probes v4/v5 rise. **v3 is the honest test and isn't promised.** If it stays flat, structural generalization is the open problem, and that gets reported as such.
 
+**Implemented (24 Nov):**
+- `scripts/relay_ckpts_25a.sh` (fire01) copies every 2,000th checkpoint and the final one to the A10, bandwidth-limited.
+- `scripts/eval_watch_25a.sh` (A10) runs both tiers: fast at every 2,000 steps; full at 8k / 16k / 24k / 32k and the final 38,147. Fast-only checkpoints are deleted on the A10 after scoring; originals stay on fire01.
+- `scripts/summarize_evals.py` rewrites `benchmark/phase25a/summary.md` after each checkpoint: one row per step, with Phase 2 final as the reference row.
+- Both start at launch, together with the training run.
+
+**Phase 2 final baseline for probe v5** (held-out structures, measured 24 Nov): **10/120** (passive 0/40, relative clause 1/40, respectively 9/40). That is below chance, as probe v4 was before contrastive v2 arrived.
+
+### 2.7 Decay-stage mix (anneal), added 25 Nov; weights to be set after the step-8k eval
+
+**Gap.** As launched, 2.5a has one data stage: the decay (steps 32,424 → 38,147, the last ≈3B tokens) uses the same mix as the plateau. Phase 2 did not do this. Its Stage 2B anneal had its own mix: agentic 8% → 22%, contrastive v2 at 6%, and code_python_edu boosted 3×. It was applied by an exact resume from `step_19000.pt` ([configs/phase2.yaml](../configs/phase2.yaml), stages).
+
+**Why the decay mix matters.** At a constant learning rate the model is still learning, but the loss stays above the floor of the "valley" because each update overshoots. Decay removes that, so the loss drops quickly (Hägele et al. 2024; Wen et al. 2024, "river valley" view of WSD). With small steps at the end, the model settles into the data it sees last, and nothing later overwrites it. That is why OLMo-2 (ingredient mixes), MiniCPM and Llama 3 put their best data in the anneal. Our binding study saw the same effect: OLMo-2 7B's anneal raised WinoGrande writing from 16% to 25% in about 5B tokens, while ranking stayed flat ([binding-study-01 §2.2](binding-study-01-cross-model.md)).
+
+**What the plateau shows so far (steps 0 → 6,000)**
+
+| Signal | Change | Read |
+|---|---|---|
+| Val loss: contrastive_v3 | 2.17 → 0.71 by step 250, then flat at 0.70 | At its template floor after 0.4 passes over the pool. Loss can't teach more; probe v5 hasn't moved (10 → 2–4/120). |
+| Val loss: kg_text, fact_seeking, relational | 2.94 → 0.98, 2.08 → 1.19, 2.66 → 2.05 | Most of the gain came early; still improving slowly |
+| Val loss: code replay, math | 1.05 → 1.11, 1.87 → 1.94 | Slow, steady drift up. FIM 5.0% → 1.7% (step 4k). |
+| English 6 vs Phase 2 final | 46.92 → 46.06 (step 4k) | LAMBADA −2.6 and HellaSwag −1.2 (narrative text); ARC-Challenge +2.0 |
+| Tool-call name | 39 → 26 → 39% | Recovered |
+
+**Draft direction (exact weights after the 8k full eval).** The decay keeps the plateau's groups and shifts weight as follows:
+- **Up:**
+  - code replay and fresh code (FIM, code loss);
+  - math;
+  - narrative and general English (LAMBADA, HellaSwag): `fwe_edu4`, plus `en_cosmo` from Phase 2 if needed (it contains stories; already scanned and used);
+  - relational_llm;
+  - agentic (hand-off to Phase 3 SFT).
+- **Down:** wiki and fact_seeking (40% of the plateau and well absorbed). contrastive_v3 stays small, since it's at its floor.
+- **Keep it consistent with 2.5b.** 2.5b re-warms to 1e-4 and decays again on its own mix, so the 2.5a anneal should move toward that mix, not away from it. Otherwise 2.5b undoes part of it.
+- **Check passes over each pool.** The decay is ≈3B tokens. For example, relational_llm (65M) at 3% adds ≈1.4 passes. Keep every small pool under ≈4 passes in total.
+
+**Decision rule at the 8k eval** (≈Wed 25 Nov evening IST)
+1. If code / FIM, LAMBADA / HellaSwag or the English average are still falling, set the decay weights above. Also consider starting the decay early (≈step 15k instead of 32,424; saves ≈1 day of H100, ≈$90).
+2. If they've flattened and facts and relations are still improving, keep the plateau to step 32,424, but still add the decay stage. A decay on the plateau mix is the one choice no reference run makes.
+
+**Mechanics.** Add a second entry to `phase2.stages` in [configs/phase25a.yaml](../configs/phase25a.yaml) (`until_step: 38147`, new groups), and set `decay_start_step` if it moves. Then stop training and `--resume` from the latest checkpoint before the decay begins, as in Phase 2. That loses a few minutes plus the steps since that checkpoint. The 2.5b chain in `scripts/launch_25.sh` is unaffected. The user approves the weights before the restart.
+
+**Timeline.** The decay starts at step 32,424, ≈Fri 27 Nov 07:00 IST on the current schedule, so the latest decision point is Thursday night.
+
+#### Step-8k result and the proposed decay mix (25 Nov, awaiting the user's approval)
+
+**Step 8,000** (fast tier; full tier running), against Phase 2 final:
+- English 6: 46.31 (−0.61). LAMBADA recovered to 34.4 (31.6 at 6k); HellaSwag 40.2 (−1.5) and PIQA 65.8 (−2.0) still lower.
+- FIM back to 5.0% (1.7% at 4k). Tool-call name 26%: it alternates 39 / 26 / 39 / 39 / 26 across checkpoints, so it's noisy.
+- TriviaQA, full 2,000 questions: 12.8% (+1.2). NQ 3.8% (flat). Facts 79/95. Probe v5 8/120.
+- Val loss (step 9,640): code replay 1.118, still creeping up by ≈0.002 per 2k steps; math 1.926; relational 2.017 and fact_seeking 1.16, still falling slowly.
+
+**Decision: branch 2 of the rule.** The drift has flattened, so keep the plateau to step 32,424 and add the decay stage. Don't start the decay early, because the knowledge pools haven't even been seen once yet:
+
+| Pool | Pool size | Seen by step 9,640 | Seen by step 32,424 |
+|---|---|---|---|
+| Wikipedia (`en_wiki_full`) | 5.06B | 1.1B (22%) | 3.7B (74%) |
+| `fact_seeking` | 5.42B | 0.9B (17%) | 3.1B (56%) |
+
+Ending the plateau at ≈15k would leave over half of Wikipedia unseen, which defeats 2.5a's purpose.
+
+**Proposed decay mix** (steps 32,424 → 38,147, ≈3.0B tokens), in `configs/phase25a.yaml` as a second stage. The launch config is kept as `configs/phase25a_before_decay.yaml`.
+
+| Group | Plateau | Decay | Why |
+|---|---|---|---|
+| wiki | 22% | 15% | Absorbed fastest; still +0.45B in the decay |
+| fact_seeking | 18% | 12% | Same |
+| fwe_edu4 | 9.35% | 11% | General English (HellaSwag, PIQA) |
+| synth | 9.5% | 7% | |
+| **cosmo** (Cosmopedia, Phase 2 pool, 1.52B) | 0 | **4%** | Stories and how-tos, for narrative English |
+| code: pyedu / py / js-ts fresh | 10 / 5 / 1.5% | 10 / 6 / 2% | |
+| code replay | 8.5% | **12%** | The one code signal still rising |
+| *code total* | *25%* | ***30%*** | |
+| agentic | 5% | **8%** | Tool calling into Phase 3. 8%, not 10%, because of the repetition cap: ≈2.9 passes in 2.5a, plus ≈3.3 in Phase 2. |
+| math | 5% | 7% | |
+| relational_llm | 0.75% | 3% | 3.35 passes in total |
+| contrastive_v3 | 4.5% | 2% | At its template floor |
+| nli_commonsense / kg_text | 0.75 / 0.15% | 0.8 / 0.2% | 3.2 / 3.75 passes in total |
+
+**Validated on fire01 (CPU only, staging copy):**
+- everything except the new stage and the `en_cosmo` pool is identical to the running config;
+- stage 0 reproduces the running plateau mix exactly;
+- stage 1 samples the weights above;
+- `en_cosmo` loads.
+
+**Switch:** `scripts/switch_25a_decay.sh` (the Phase 2B switch pattern).
+1. Waits for a complete `step_$STEP.pt`.
+2. Stops `launch_25.sh` and the handover guard first, so they don't skip 2.5b, then stops training.
+3. Resumes with `--resume` in the same W&B run.
+4. Checks the run after 15 min and falls back to the launch config if it failed.
+5. Chains 2.5b itself.
+
+**Open question on contrastive data (25 Nov evening).** A re-analysis of the probe scores ([binding-study-02](binding-study-02-priors-and-word-order.md)) shows the binding signal is intact in 2.5a but shrinking, and that the contrastive data's passive-voice ban taught a word-order rule. An A10 test of corrected data is running. If it works, the corrected data is a candidate for this decay stage, which needs the user's data review and approval before step 32,424.
+
+The plateau is unchanged, so the switch can happen at any checkpoint before 32,424. Proposed: the step-12,000 checkpoint (≈20:00 IST, 25 Nov), so nothing is left until Thursday night. The overnight monitor must then watch `train_phase25a_decay.log`.
+
 ## 3. Phase 2.5b: context extension to 16384
 
 **How it works.**
@@ -195,12 +290,18 @@ This follows ProLong ("How to Train Long-Context LMs (Effectively)", Gao et al. 
 | FineMath | 1.00B | 0.37B | 0.22B | 0.11B |
 | Wikipedia (Phase 2 pool) | 1.50B | 0.38B | 0.18B | 0.06B |
 | Python-edu | 1.50B | 0.18B | 0.07B | 0.03B |
-| Cosmopedia, all agentic pools | — | 0 | 0 | 0 |
+| Cosmopedia, all agentic pools (short only; agentic is in the short replay, see below) | — | 0 | 0 | 0 |
 | **Total** | | **≈5.2B** | **≈3.1B** | **≈1.6B** |
 
 The need is ≈0.5B long tokens, so ≈1.6B in documents over 16k is enough without new downloads.
 
 Full Wikipedia (2.5a) adds more long articles. The Phase 2 agentic pools were capped at ≈3k tokens during prep, so long tool-use traces must come from new sources (Nemotron-Terminal, AgentTrove, penfever traces), after the length and security scans.
+
+**Agentic replay added to 2.5b (25 Nov, user-approved).** As first drafted, 2.5b had no agentic data. Its re-warm and decay would then have partly undone function calling right before Phase 3 SFT (the same decay-data effect as §2.7). The short agentic pools are now in the replay at **5%** (≈75M tokens, ≈0.2 passes over the 0.38B pools), taken from wiki (15.4% → 12.4%) and fact_seeking (12% → 10%).
+- **Packing at 16k.** These pools are packed as 2,048-token blocks. `src/data/dataset.py` (`_Pool`) now builds each 16,384-token sample from 8 randomly drawn blocks. Pad tokens in the input become `<|endoftext|>`, so the doc mask starts every episode as a fresh document, and pad targets stay masked.
+- **2.5a is unaffected.** At the native 2,048 length, sampling is byte-identical to the old code (tested against the previous version for training and validation batches), so 2.5a and its decay resume don't change.
+- **Checked on fire01 (CPU only)** with the real 2.5b config: all 5 agentic pools return 16,384-token samples with no pads in the input. About 15–30% of their targets are masked padding, the same waste as in 2.5a.
+- **Cap check for the 2.5a decay mix.** The agentic pools are 0.38B tokens and have already had ≈3.3 passes in Phase 2 plus ≈2.3 on the 2.5a plateau. 10% in the decay adds ≈0.8 more. Prefer ≈8% if the 8k eval allows it.
 
 **Mix** (≈1.5B tokens, ≈9–10 h at an expected ≈50% of Phase 2 throughput; attention cost per token grows with context, and doc masking makes the short share cheaper):
 
@@ -224,6 +325,24 @@ Full Wikipedia (2.5a) adds more long articles. The Phase 2 agentic pools were ca
 - **multi-hop retrieval** at the same lengths (two or more facts spread far apart, combined in one answer). Needle tests alone would overstate how well the model *uses* long context.
 - loss by position on held-out long documents (should keep falling past 2048)
 - the full 2.5a suite: no drop > 1 point
+
+**Implemented (24 Nov):** `scripts/eval_long_context.py`.
+- **passkey:** 5 depths × 8 trials per length.
+- **multi-hop:** a person→town fact and a town→bakery fact placed far apart, plus 3 distractor chains, with invented names. Chance is 25%. A 1-hop control separates finding a fact from combining facts.
+- **loss by position:** on 94 held-out long documents (wiki, FineWeb, code, FineMath), cut from the validation tail that `train.py` never trains on.
+
+**Baseline, Phase 2 final (trained at 2k, RoPE theta 1e4, cache raised to 16k):**
+
+| | 2k | 4k | 8k | 16k |
+|---|---|---|---|---|
+| passkey | 85% | 15% | 0% | 0% |
+| multi-hop 2-hop / 1-hop | 33% / 25% | 0 / 0 | 0 / 0 | 0 / 0 |
+
+| Loss by position | 0–512 | 512–1k | 1k–2k | 2k–4k | 4k–8k | 8k–16k |
+|---|---|---|---|---|---|---|
+| Phase 2 final | 2.59 | 2.60 | 2.60 | 2.75 | 3.25 | 4.26 |
+
+As expected, retrieval collapses past 2k and loss rises with position. 2.5b passes if passkey and multi-hop hold out to 16k and the loss keeps falling past 2,048. Multi-hop at 2k is already near chance, so a 2.5b gain there would also show a reasoning gain, not only longer reach.
 
 **Go/no-go:**
 - Retrieval works at 16k and short evals hold → Phase 3 runs at 16384.

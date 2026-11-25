@@ -134,9 +134,11 @@ phase2:
     agentic_bespoke_stratos: {path: /lambda/nfs/h100-f1/data/phase2/agentic_bespoke_stratos, group: agentic, kind: block}
     # Math replay — 5%
     en_finemath:     {path: /lambda/nfs/h100-f1/data/phase2/en_finemath,     group: math}
+    # Decay stage only (added 25 Nov, plan-03 §2.7): Cosmopedia (stories, how-tos) for narrative English (LAMBADA/HellaSwag)
+    en_cosmo:        {path: /lambda/nfs/h100-f1/data/phase2/en_cosmo,        group: cosmo}
 
   stages:
-    - until_step: 38147
+    - until_step: 32424         # plateau (unchanged from launch); decay_start_step = 32424
       groups:
         wiki: 0.22
         fact_seeking: 0.18
@@ -152,3 +154,21 @@ phase2:
         kg_text: 0.0015
         agentic: 0.05
         math: 0.05
+        cosmo: 0.0
+    - until_step: 38147         # decay mix (25 Nov, plan-03 §2.7): code, tool calling, math, narrative English up;
+      groups:                   # wiki / fact_seeking down (absorbed); contrastive_v3 down (at its template floor)
+        wiki: 0.15
+        fact_seeking: 0.12
+        fwe_edu4: 0.11
+        synth: 0.07
+        cosmo: 0.04
+        code_pyedu_fresh: 0.10
+        code_py_fresh: 0.06
+        code_jsts_fresh: 0.02
+        code_replay: 0.12
+        contrastive_v3: 0.02
+        relational_llm: 0.03
+        nli_commonsense: 0.008
+        kg_text: 0.002
+        agentic: 0.08
+        math: 0.07

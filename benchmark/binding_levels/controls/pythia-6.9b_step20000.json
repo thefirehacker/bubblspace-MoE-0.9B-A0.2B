@@ -1,0 +1,60 @@
+{
+ "model": "EleutherAI/pythia-6.9b",
+ "revision": "step20000",
+ "weights_format": "bin+clamav",
+ "weight_sha256": {
+  "pytorch_model-00001-of-00002.bin": "b86a403ade974e4470f8d742519db3f3d4d1f118d854b52bdb575e1b0c679896",
+  "pytorch_model-00002-of-00002.bin": "1ad3d92c1803c6ad27928f33ad66688805dc6ca19dfb98efdc79732e4b37e751"
+ },
+ "n_rows": 1267,
+ "n_pairs": 284,
+ "prompt_shuffle": {
+  "seed0": {
+   "answered": 0.9747,
+   "row_acc": 0.5004,
+   "L3_pairs": 0.0387,
+   "same_name_both_twins": 0.9049,
+   "first_mentioned_share": 0.2235
+  },
+  "seed1": {
+   "answered": 0.9013,
+   "row_acc": 0.4649,
+   "L3_pairs": 0.0352,
+   "same_name_both_twins": 0.8415,
+   "first_mentioned_share": 0.2828
+  },
+  "seed2": {
+   "answered": 0.9605,
+   "row_acc": 0.4815,
+   "L3_pairs": 0.0387,
+   "same_name_both_twins": 0.8838,
+   "first_mentioned_share": 0.3254
+  },
+  "same_written_name_as_seed0": [
+   0.7695,
+   0.8058
+  ]
+ },
+ "order_swap": {
+  "n_rows_swapped": 1236,
+  "n_pairs_swapped": 277,
+  "original": {
+   "answered": 0.9741,
+   "row_acc": 0.4976,
+   "L3_pairs": 0.0397,
+   "same_name_both_twins": 0.9061,
+   "first_mentioned_share": 0.2143
+  },
+  "swapped": {
+   "answered": 0.9773,
+   "row_acc": 0.5162,
+   "L3_pairs": 0.0433,
+   "same_name_both_twins": 0.8953,
+   "first_mentioned_share": 0.4346
+  },
+  "n_rows_answered_both": 1195,
+  "kept_same_name": 0.6151,
+  "kept_same_position": 0.3849
+ },
+ "elapsed_s": 1558.3
+}

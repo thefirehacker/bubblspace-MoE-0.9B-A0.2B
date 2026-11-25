@@ -1,0 +1,59 @@
+{
+ "model": "EleutherAI/pythia-1b",
+ "revision": "step4000",
+ "weights_format": "safetensors",
+ "weight_sha256": {
+  "model.safetensors": "185219d5f766280769d4c5bed04ab6cca1ad0eab23f5962af3d54e378da4eb7c"
+ },
+ "n_rows": 1267,
+ "n_pairs": 284,
+ "prompt_shuffle": {
+  "seed0": {
+   "answered": 0.9006,
+   "row_acc": 0.4515,
+   "L3_pairs": 0.0035,
+   "same_name_both_twins": 0.8768,
+   "first_mentioned_share": 0.8221
+  },
+  "seed1": {
+   "answered": 0.7545,
+   "row_acc": 0.3796,
+   "L3_pairs": 0.0035,
+   "same_name_both_twins": 0.7359,
+   "first_mentioned_share": 0.8243
+  },
+  "seed2": {
+   "answered": 0.809,
+   "row_acc": 0.4025,
+   "L3_pairs": 0.0,
+   "same_name_both_twins": 0.7852,
+   "first_mentioned_share": 0.7971
+  },
+  "same_written_name_as_seed0": [
+   0.7735,
+   0.8248
+  ]
+ },
+ "order_swap": {
+  "n_rows_swapped": 1236,
+  "n_pairs_swapped": 277,
+  "original": {
+   "answered": 0.9021,
+   "row_acc": 0.4515,
+   "L3_pairs": 0.0036,
+   "same_name_both_twins": 0.8736,
+   "first_mentioned_share": 0.8287
+  },
+  "swapped": {
+   "answered": 0.9021,
+   "row_acc": 0.445,
+   "L3_pairs": 0.0036,
+   "same_name_both_twins": 0.8628,
+   "first_mentioned_share": 0.4179
+  },
+  "n_rows_answered_both": 1105,
+  "kept_same_name": 0.7339,
+  "kept_same_position": 0.2661
+ },
+ "elapsed_s": 380.1
+}
