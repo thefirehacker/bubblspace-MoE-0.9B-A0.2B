@@ -85,7 +85,8 @@ wandb:
 # ------------------------------------------------------------
 # Phase 2.5b (DRAFT): continue from the Phase 2.5a final checkpoint via --init_from.
 # Context 16,384 with RoPE base 1e6; ~35% naturally long documents (8k-16k+), ~65% short replay
-# from the 2.5a mix with doc masking. Agentic block pools (2,048-token blocks) are excluded here.
+# from the 2.5a mix with doc masking. Agentic pools (packed as 2,048-token blocks) are included at 5%:
+# each 16k sample joins 8 random blocks, and pads become document boundaries (src/data/dataset.py, _Pool).
 # Long pools are built with scripts/extract_long_docs.py (min 4,096 tokens) before launch.
 # Plan: doc/plan-03-phase-2.5-knowledge-context.md §3
 # ------------------------------------------------------------
@@ -125,6 +126,12 @@ phase2:
     nli_commonsense: {path: /lambda/nfs/h100-f1/data/phase25_decon/nli_commonsense, group: nli_commonsense}
     kg_text:         {path: /lambda/nfs/h100-f1/data/phase25_decon/kg_text,         group: kg_text}
     en_finemath:     {path: /lambda/nfs/h100-f1/data/phase2/en_finemath,     group: math}
+    # Agentic / tool-call replay (added 25 Nov) so 2.5b's re-warm doesn't undo function calling before Phase 3 SFT
+    agentic_toolmind:        {path: /lambda/nfs/h100-f1/data/phase2/agentic_toolmind,        group: agentic, kind: block}
+    agentic_glaive_fc_v2:    {path: /lambda/nfs/h100-f1/data/phase2/agentic_glaive_fc_v2,    group: agentic, kind: block}
+    agentic_openthoughts:    {path: /lambda/nfs/h100-f1/data/phase2/agentic_openthoughts,    group: agentic, kind: block}
+    agentic_hermes:          {path: /lambda/nfs/h100-f1/data/phase2/agentic_hermes,          group: agentic, kind: block}
+    agentic_bespoke_stratos: {path: /lambda/nfs/h100-f1/data/phase2/agentic_bespoke_stratos, group: agentic, kind: block}
 
   stages:
     - until_step: 2861
@@ -133,8 +140,8 @@ phase2:
         long_wiki: 0.08
         long_code: 0.12
         long_finemath: 0.03
-        wiki: 0.154
-        fact_seeking: 0.12
+        wiki: 0.124       # was 0.154; -0.03 to agentic
+        fact_seeking: 0.10  # was 0.12; -0.02 to agentic
         synth: 0.075
         fwe_edu4: 0.06
         code_fresh: 0.13
@@ -144,3 +151,4 @@ phase2:
         nli_commonsense: 0.005
         kg_text: 0.001
         math: 0.025
+        agentic: 0.05     # added 25 Nov (≈75M tokens, ≈0.2 passes over the 375M agentic pools)

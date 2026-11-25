@@ -60,6 +60,12 @@ class _Pool:
                   seq_len-token blocks, tail-padded with pad_id), so every
                   sample begins at an episode start. Padding targets and the
                   cross-block last target are masked to IGNORE_INDEX.
+                  If the pool was packed with a shorter block (meta seq_len, e.g.
+                  2,048) than the training seq_len (e.g. 16,384 in 2.5b), each
+                  sample concatenates seq_len // block_len randomly drawn blocks,
+                  and pad tokens in the INPUT become <|endoftext|> so doc masking
+                  starts every episode as a fresh document (pads are never
+                  attended to by the next episode; their targets stay masked).
 
     The final `val_tokens` of the last shard are held out from training and
     served deterministically by val_batch().
@@ -86,7 +92,11 @@ class _Pool:
         self.shards = [np.memmap(p, dtype=np.uint16, mode="r") for p in shard_paths]
         lengths = np.array([len(s) for s in self.shards], dtype=np.int64)
 
+        self.block_len = seq_len
         if self.kind == "block":
+            self.block_len = int(self.meta.get("seq_len", seq_len))
+            if seq_len % self.block_len:
+                raise ValueError(f"[{name}] seq_len {seq_len} is not a multiple of the pool's block length {self.block_len}")
             val_tokens = (val_tokens // seq_len) * seq_len
         # hold out the tail of the last shard (shrink if the shard is tiny)
         val_tokens = min(val_tokens, int(lengths[-1]) // 4 // seq_len * seq_len)
@@ -99,21 +109,36 @@ class _Pool:
     def _window(self, shard: np.ndarray, start: int) -> np.ndarray:
         return shard[start : start + self.seq_len + 1].astype(np.int64)
 
+    def _block_xy(self, block: np.ndarray, pad_id: int):
+        y = np.empty(len(block), dtype=np.int64)
+        y[:-1] = block[1:]
+        y[-1] = IGNORE_INDEX  # next token belongs to a different block
+        y[y == pad_id] = IGNORE_INDEX
+        return block, y
+
+    def _join_blocks(self, xys, pad_id: int, eot_id: int):
+        if len(xys) == 1:  # native block length: unchanged behaviour (2.5a and earlier)
+            return xys[0]
+        x = np.concatenate([b for b, _ in xys])
+        y = np.concatenate([t for _, t in xys])
+        x[x == pad_id] = eot_id  # pad runs become document boundaries for the doc mask
+        return x, y
+
     def sample(self, rng: random.Random, pad_id: int, fim_ids, eot_id: int, fim_rate: float):
         shard_idx = np.random.choice(len(self.shards), p=self.shard_weights)
         shard, train_len = self.shards[shard_idx], int(self.train_lengths[shard_idx])
         L = self.seq_len
 
         if self.kind == "block":
-            n_blocks = train_len // L
-            k = rng.randrange(n_blocks)
-            block = shard[k * L : (k + 1) * L].astype(np.int64)
-            x = block
-            y = np.empty(L, dtype=np.int64)
-            y[:-1] = block[1:]
-            y[-1] = IGNORE_INDEX  # next token belongs to a different block
-            y[y == pad_id] = IGNORE_INDEX
-            return x, y
+            B = self.block_len
+            xys = []
+            for j in range(L // B):
+                if j:  # every extra block is drawn independently (random episodes, not neighbours)
+                    shard_idx = np.random.choice(len(self.shards), p=self.shard_weights)
+                    shard, train_len = self.shards[shard_idx], int(self.train_lengths[shard_idx])
+                k = rng.randrange(train_len // B)
+                xys.append(self._block_xy(shard[k * B : (k + 1) * B].astype(np.int64), pad_id))
+            return self._join_blocks(xys, pad_id, eot_id)
 
         start = rng.randint(0, train_len - L - 1)
         window = self._window(shard, start)
@@ -128,15 +153,15 @@ class _Pool:
         L = self.seq_len
         xs, ys = [], []
         if self.kind == "block":
+            B = self.block_len
             n_blocks = self.val_tokens // L
+            eot_id = self.meta.get("eot_token")
             for i in range(min(n, n_blocks)):
                 k = i * n_blocks // max(1, min(n, n_blocks))
-                block = shard[base + k * L : base + (k + 1) * L].astype(np.int64)
-                y = np.empty(L, dtype=np.int64)
-                y[:-1] = block[1:]
-                y[-1] = IGNORE_INDEX
-                y[y == pad_id] = IGNORE_INDEX
-                xs.append(block)
+                win = shard[base + k * L : base + (k + 1) * L].astype(np.int64)
+                xys = [self._block_xy(win[j : j + B], pad_id) for j in range(0, L, B)]
+                x, y = self._join_blocks(xys, pad_id, eot_id)
+                xs.append(x)
                 ys.append(y)
         else:
             span = self.val_tokens - L - 1
