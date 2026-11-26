@@ -154,7 +154,9 @@ Single-row WinoGrande (L1) is 52.6%. The harness is the same as our 85-checkpoin
 - **It answers and stops:** our checkpoints end after a short answer on 6–8 prompts. OLMo-2 1B ends on none, at any checkpoint, and mostly loops.
 - **Targeted data fixes what scale doesn't:** five items (time order, counting, exclusion, "respectively", the agent of a "taught by" passive) fail in every model, including OLMo-2 1B at 4T. A related failure, passive roles, went from 0 to 40/40 written answers with our order-alternation data in a test fine-tune ([`doc/binding-study-02-priors-and-word-order.md`](doc/binding-study-02-priors-and-word-order.md) §6.1).
 
-**Caveats:** 18 prompts, scored by hand, one greedy run each, so single items are noisy. OLMo-2 1B gets the "beaten by" passive from 42B on, and our checkpoints don't yet: the 2.5a decay includes the order-alternation data aimed at it.
+**Calculation, 16 simple prompts** (time, counting, ages, prices, days): **BubblSpace 2.5a at 32.5B tokens: 5/16.** OLMo-2 1B base: 1/16 at 42B, 2/16 at 168B, 10/16 at 4T (10/16 for its final base). OLMo-2 1B Instruct (SFT + DPO + RL): 14/16 raw, 16/16 with its chat template, mostly by writing out the steps. Even that fully post-trained model still says "Maria was helped by Joon, so the one who needed help was… Joon".
+
+**Caveats:** 18 + 16 prompts, scored by hand, one greedy run each, so single items are noisy. OLMo-2 1B gets the "beaten by" passive from 42B on, and our checkpoints don't yet: the 2.5a decay includes the order-alternation data aimed at it.
 
 Raw results:
 - [`benchmark/handtest/relational18_raw_greedy_20261126.txt`](benchmark/handtest/relational18_raw_greedy_20261126.txt) (relational prompts, all seven models)

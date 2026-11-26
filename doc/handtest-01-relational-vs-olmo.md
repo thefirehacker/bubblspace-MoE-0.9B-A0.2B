@@ -1,6 +1,9 @@
-# Hand test 01: relational prompts, BubblSpace vs OLMo-2 1B across its training
+# Hand test 01: relational and calculation prompts, BubblSpace vs OLMo-2 1B across its training
 
-Status: **26 Nov 2026, preliminary** (18 prompts, one greedy run each). Raw outputs: [`benchmark/handtest/relational18_raw_greedy_20261126.txt`](../benchmark/handtest/relational18_raw_greedy_20261126.txt).
+Status: **26 Nov 2026, preliminary** (18 relational + 16 calculation prompts, one greedy run each). Raw outputs in [`benchmark/handtest/`](../benchmark/handtest/):
+- [`relational18_raw_greedy_20261126.txt`](../benchmark/handtest/relational18_raw_greedy_20261126.txt): relational prompts, all base checkpoints
+- [`calculation16_raw_greedy_20261126.txt`](../benchmark/handtest/calculation16_raw_greedy_20261126.txt) and [`calculation16_olmo_main_base_20261126.txt`](../benchmark/handtest/calculation16_olmo_main_base_20261126.txt): calculation prompts
+- [`instruct_all_raw_and_chat_20261126.txt`](../benchmark/handtest/instruct_all_raw_and_chat_20261126.txt) and [`instruct_chat_200tok_20261126.txt`](../benchmark/handtest/instruct_chat_200tok_20261126.txt): OLMo-2 1B Instruct, every set, raw and with its chat template
 
 ## 1. Question
 
@@ -25,7 +28,9 @@ Scored benchmarks rank pre-written answers. This test looks at what each model *
 | OLMo-2-0425-1B | `stage1-step1907359-tokens4001B` (end of pretraining) | 4.0T | 1.48B |
 | OLMo-2-0425-1B | `main` (final base, after its 50B-token stage-2 anneal; no SFT) | ≈4.05T | 1.48B |
 
-All OLMo checkpoints are base models from [allenai/OLMo-2-0425-1B](https://huggingface.co/allenai/OLMo-2-0425-1B) (safetensors).
+| OLMo-2-0425-1B-Instruct | `main` of [allenai/OLMo-2-0425-1B-Instruct](https://huggingface.co/allenai/OLMo-2-0425-1B-Instruct): base `main` + SFT + DPO + RL | ≈4.05T + post-training | 1.48B |
+
+The OLMo base checkpoints come from [allenai/OLMo-2-0425-1B](https://huggingface.co/allenai/OLMo-2-0425-1B) (safetensors). The Instruct model was run two ways: raw (the prompt as plain text, like the base models) and with its chat template (`scripts/chat_repl_hf.py --chat`, 200 new tokens, because it reasons step by step).
 
 ## 3. Results
 
@@ -52,6 +57,30 @@ All OLMo checkpoints are base models from [allenai/OLMo-2-0425-1B](https://huggi
 | | **Score** | | **6/18** | **6/18** | 3/18 | 4/18 | 8/18 | **10/18** | 9/18 |
 | | **Answer, then stop** (ended within 40 tokens) | | **8/18** | **6/18** | 0/18 | 0/18 | 0/18 | 0/18 | 0/18 |
 
+OLMo-2 1B **Instruct** on the same 18: **12/18 raw, 14/18 with its chat template**. With the template it still writes "Joon" for #5 ("Maria was helped by Joon… the one who needed help was"), declines #7 as "incomplete", says breakfast came first (#12), and doesn't reach an answer on #2 within 200 tokens.
+
+**Calculation, 16 prompts** (time addition, counting, ages, prices, days of the week, bare arithmetic; same settings):
+
+| # | Prompt (shortened) | Right | BS 2.5a 32.5B | OLMo 42B | OLMo 168B | OLMo 4T | OLMo final base | Instruct raw | Instruct chat |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | film 7 + 2 hours | 9 | ✗ 12:00 | ✗ 10:30 | ✗ 10:30 | ✓ | ✗ 9:30 | ✓ | ✓ |
+| 2 | meeting 3 + 4 hours | 7 | ✗ 3:00 | ✗ 6 | ✗ 5:30 | ✓ | ✗ 7.30 | ✓ | ✓ |
+| 3 | train 9 + 3 hours | 12 | ✗ 10 | ✗ 10 | ✗ 10:30 | ✗ 12:30 | ✓ | ✓ | ✓ |
+| 4 | three apples, gave one, ate one | 1 | ✗ three | ✗ three | ✗ two | ✗ two | ✗ 2 | ✗ 2 | ✓ (writes 3−1=2, 2−1=1) |
+| 5 | 5 pencils + 2 | 7 | ✓ | ✗ 6 | ✗ 6 | ✓ | ✓ | ✓ | ✓ |
+| 6 | 8 birds − 3 | 5 | ✓ | ✗ 8 | ✗ 7 | ✓ | ✓ | ✓ | ✓ |
+| 7 | 10 coins − 4 | 6 | ✗ 4 | ✗ 10 | ✓ | ✓ | ✓ | ✓ | ✓ |
+| 8 | age 10, sister 3 older | 13 | ✗ | ✗ 4 | ✗ | ✓ | ✓ | ✓ | ✓ |
+| 9 | three pens at $2 | 6 | ✗ 3 | ✗ 3 | ✗ 3 | ✓ | ✓ | ✓ | ✓ |
+| 10 | two weeks | 14 | ✓ | ✗ 28 | ✗ 28 | ✓ | ✓ | ✓ | ✓ |
+| 11 | Monday + 2 days | Wednesday | ✗ | ✗ | ✗ | ✗ Tuesday | ✗ | ✓ | ✓ |
+| 12 | today Friday → tomorrow | Saturday | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ |
+| 13 | yesterday Tuesday → today | Wednesday | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| 14 | twelve minus five | 7 | ✗ 17 | ✗ 12.5 | ✗ twelve | ✗ ten | ✓ | ✓ | ✓ |
+| 15 | four plus three | 7 | ✗ | ✗ | ✗ four | ✗ 10 | ✗ six | ✗ 8 | ✓ |
+| 16 | half of ten | 5 | ✗ | ✗ | ✗ | ✗ | ✗ 10 | ✓ | ✓ |
+| | **Score** | | **5/16** | 1/16 | 2/16 | 10/16 | 10/16 | 14/16 | **16/16** |
+
 **Bare facts, four prompt forms** (same settings):
 
 | Prompt | BS P2 | BS 2.5a | OLMo 168B | OLMo 4T | OLMo final |
@@ -69,7 +98,9 @@ All OLMo checkpoints are base models from [allenai/OLMo-2-0425-1B](https://huggi
 3. **One item only BubblSpace solves.** The two-step chain (#2, "shortest of Ravi > Meera > Sam") is right in both our checkpoints and wrong in all five OLMo checkpoints, up to the final model.
 4. **BubblSpace answers and stops; OLMo-2 1B never stops.** Ours ended after a short answer on 6–8 of 18 prompts. OLMo-2 1B ended on none, at any checkpoint, and mostly looped.
 5. **Five items fail in every model at every scale, including OLMo-2 1B at 4T:** time order (#12), counting (#14), exclusion (#16), "respectively" (#17), and the agent of a "taught by" passive (#7). Swapping (#15) is right only at OLMo 21B, which looks like luck. These need keeping and updating a state, or mapping roles through syntax. 4T tokens of general web text didn't teach that to a 1B model in a single pass. They are candidates for targeted data, as the v4 order-alternation data was for passive ([binding-study-02 §6.1](binding-study-02-priors-and-word-order.md): passive 0 → 40/40 written in a test fine-tune).
-6. **Passive with "beaten by" (#3) is our main gap.** OLMo gets it from 42B on; ours writes "not Kofi" (the doer-first habit from the word-order confound). The 2.5a decay now includes the v4 data aimed at this; rerun #3, #5, #6, #7 on the decay checkpoints.
+6. **Calculation comes mostly from pretraining, and post-training makes it reliable.** OLMo-2 1B base goes 1 → 2 → 10 of 16 from 42B to 168B to 4T tokens, with no SFT. Its final base model also scores 10. SFT + DPO + RL take it to 14 (raw) and 16 (chat template), mainly by writing out the steps: two-step problems (#4) and bare arithmetic (#15) are solved only when the model writes the intermediate result. BubblSpace at 32.5B tokens scores 5/16, above OLMo-2 1B at 42B and 168B. Whether SFT can lift a 5/16 base the same way can't be read from OLMo, which was never fine-tuned at 168B.
+7. **Post-training doesn't fix binding at 1B.** OLMo-2 1B Instruct still answers "Joon" for "Maria was helped by Joon, so the one who needed help was". It gets none of the three twin pairs right raw, and declines them as "incomplete" with the chat template. It also writes "Chair" for the cap/room prompt and "RMJ LLC" for the JMB renaming.
+8. **Passive with "beaten by" (#3) is our main gap.** OLMo gets it from 42B on; ours writes "not Kofi" (the doer-first habit from the word-order confound). The 2.5a decay now includes the v4 data aimed at this; rerun #3, #5, #6, #7 on the decay checkpoints.
 
 ## 5. Format habits seen on the way (2.5a), with their sources
 
@@ -79,6 +110,9 @@ All OLMo checkpoints are base models from [allenai/OLMo-2-0425-1B](https://huggi
 | Hedging assistant voice ("I'm unsure about the specific…") | a request ("give me…") | `synth_en` (PleIAs SYNTH) | ≈19.5% of documents |
 | Relation-explanation essay ("a clear agent-patient relationship… a common confusion arises…") | some role prompts | `relational_llm` | style match |
 | Contrastive template ("Which was too narrow, the door or the …? The door.") | fit prompts | contrastive v2/v3 | template |
+| ConceptNet template ("Four plus three is a kind of number. Is number a kind of four plus three? No; …") | "X is" prompts | `kg_text` | template |
+
+OLMo's anneal left the same kind of fingerprint: its final base model answers calculation prompts as classroom dialogue ("Student A: Got it…").
 
 SYNTH also gives 2.5a a useful habit: it answers bare queries directly. OLMo-2 1B base continues a bare question as a list of more questions unless the prompt has a "Q: … A:" scaffold (stage-1 checkpoints).
 
