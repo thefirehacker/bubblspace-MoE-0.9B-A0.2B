@@ -24,8 +24,14 @@ from chat_repl import _banned_by_ngram  # noqa: E402
 
 
 @torch.no_grad()
-def generate(model, tok, device, prompt, max_new_tokens, temperature, top_p, greedy, rep_penalty, no_repeat_ngram, min_p):
-    ids = tok(prompt, add_special_tokens=True)["input_ids"]  # BOS where the model expects one (as binding_levels_hf)
+def generate(model, tok, device, prompt, max_new_tokens, temperature, top_p, greedy, rep_penalty, no_repeat_ngram, min_p,
+             chat=False, stop_ids=None):
+    if chat:  # post-trained models: wrap the prompt as one user turn with the model's own chat template
+        text = tok.apply_chat_template([{"role": "user", "content": prompt}], add_generation_prompt=True, tokenize=False)
+        ids = tok(text, add_special_tokens=False)["input_ids"]  # the template already holds any BOS
+    else:
+        ids = tok(prompt, add_special_tokens=True)["input_ids"]  # BOS where the model expects one (as binding_levels_hf)
+    stop_ids = stop_ids or {tok.eos_token_id}
     input_ids = torch.tensor([ids], device=device)
     past, generated, vocab = None, [], len(tok)
     for _ in range(max_new_tokens):
@@ -52,7 +58,7 @@ def generate(model, tok, device, prompt, max_new_tokens, temperature, top_p, gre
             mask = torch.zeros_like(probs)
             mask[keep] = probs[keep]
             next_id = torch.multinomial(mask / mask.sum(), 1).item()
-        if next_id == tok.eos_token_id:
+        if next_id in stop_ids:
             break
         generated.append(next_id)
         input_ids = torch.tensor([[next_id]], device=device)
@@ -70,6 +76,7 @@ def main():
     ap.add_argument("--rep_penalty", type=float, default=1.15)
     ap.add_argument("--no_repeat_ngram", type=int, default=4)
     ap.add_argument("--min_p", type=float, default=0.0)
+    ap.add_argument("--chat", action="store_true", help="wrap each prompt in the model's chat template (Instruct/SFT models)")
     a = ap.parse_args()
 
     path, fmt = fetch(a.model, a.revision, os.path.expanduser(a.cache_dir))
@@ -80,14 +87,16 @@ def main():
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = AutoModelForCausalLM.from_pretrained(path, dtype=torch.bfloat16 if device == "cuda" else torch.float32)
     model.to(device).eval()
+    gen_eos = getattr(model.generation_config, "eos_token_id", None)
+    stop_ids = {tok.eos_token_id} | set(gen_eos if isinstance(gen_eos, list) else [gen_eos] if gen_eos is not None else [])
     print(f"[ckpt] loaded {a.model}@{a.revision or 'main'} ({fmt}, {sum(p.numel() for p in model.parameters()) / 1e9:.2f}B params)")
     print(f"[device] {device}\n\nBASE model: it continues text. Each prompt is independent (no history).")
     print("Commands: /temp <f>  /topp <f>  /tokens <n>  /greedy  /sample  /rep <f>  /ngram <n>  /minp <f>  /settings  exit")
 
     s = dict(temperature=a.temperature, top_p=a.top_p, max_new_tokens=a.max_new_tokens, greedy=False,
-             rep_penalty=a.rep_penalty, no_repeat_ngram=a.no_repeat_ngram, min_p=a.min_p)
+             rep_penalty=a.rep_penalty, no_repeat_ngram=a.no_repeat_ngram, min_p=a.min_p, chat=a.chat)
     show = lambda: print("Current: mode={} temperature={temperature} top_p={top_p} min_p={min_p} rep_penalty={rep_penalty} "
-                         "no_repeat_ngram={no_repeat_ngram} max_new_tokens={max_new_tokens}".format(
+                         "no_repeat_ngram={no_repeat_ngram} max_new_tokens={max_new_tokens} chat={chat}".format(
                              "greedy" if s["greedy"] else "sample", **s))
     show()
     setters = {"/temp": ("temperature", float), "/topp": ("top_p", float), "/tokens": ("max_new_tokens", int),
@@ -116,7 +125,11 @@ def main():
         if st == "/settings":
             show()
             continue
-        print(f"=> {generate(model, tok, device, prompt, s['max_new_tokens'], s['temperature'], s['top_p'], s['greedy'], s['rep_penalty'], s['no_repeat_ngram'], s['min_p'])}\n")
+        if st == "/chat":
+            s["chat"] = not s["chat"]
+            print(f"[set] chat={s['chat']}")
+            continue
+        print(f"=> {generate(model, tok, device, prompt, s['max_new_tokens'], s['temperature'], s['top_p'], s['greedy'], s['rep_penalty'], s['no_repeat_ngram'], s['min_p'], s['chat'], stop_ids)}\n")
 
 
 if __name__ == "__main__":
