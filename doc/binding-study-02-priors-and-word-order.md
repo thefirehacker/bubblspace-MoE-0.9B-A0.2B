@@ -1,6 +1,6 @@
 # Binding study 02: the model does bind; priors and a word-order rule hide it
 
-Status: **re-analysis of saved results, 25 Nov 2026. Preliminary.** No new model runs went into §2–§4. The A10 test in §6 is the follow-up.
+Status: **re-analysis 25 Nov; A10 test results 26 Nov (§6.1). Preliminary.** §2–§4 use saved results only; §3.3 and §6.1 use new runs.
 
 Related: [binding-study-01-cross-model.md](binding-study-01-cross-model.md) (public checkpoints), [wsp-experiments.md](wsp-experiments.md) (background), [plan-03 §2.7](plan-03-phase-2.5-knowledge-context.md) (2.5a decay mix). Script: `scripts/probe_prior_free.py`. Inputs: `benchmark/phase2/probe_v*_*.json`, `benchmark/phase25a/probe_v*_phase25a_step*.json`.
 
@@ -14,6 +14,8 @@ Until today we read the probe and WinoGrande results as "the model doesn't bind;
    - **Passive voice is read with a word-order rule.** In 39–40 of 40 pairs, the model confidently gives the reversed answer. Our contrastive data contains no passive sentences, so "first-mentioned name = the doer" was true 100% of the time in training.
    - **Priors hide the rest.** On relative clauses the direction is right in 40/40 pairs, but the pair rule scores 0–1/40 because the model prefers one ending in both contexts.
 4. **The binding signal is weaker than the model's general preferences** (for an ending, for a name). The pair rule and written answers need the signal to be larger than those preferences, so both fail. The signal is also getting smaller during 2.5a.
+
+5. **Tested on 26 Nov (§6.1):** fixing the word-order confound in the data, with the same steps and settings as a control run, turned passive from 40/40 reversed into 40/40 right, in ranking and in written answers. It also lifted a held-out structure (relative clauses, 1 → 33 of 40 written right). It didn't help every structure ("respectively", object relatives). The control run changed nothing.
 
 None of these is a model-size argument. Each one points to a change in data or scoring.
 
@@ -62,14 +64,24 @@ Failure types under the pair rule:
 
 ### 3.3 WinoGrande
 
-Not yet re-analysed: the saved rows hold only right/wrong, not the scores. What the saved numbers allow:
+Re-scored on 25–26 Nov with per-row margins saved. For a twin pair, the two margins (score of the correct option minus the wrong one) are added. A general preference for one name adds to one twin's margin and subtracts from the other's, so the sum is positive only if the differing word moves the preference the right way. Chance is 50%; with 284 pairs, ±3 points is one standard error.
 
-| Checkpoint | Twins given different answers | of those, both right / both wrong |
-|---|---|---|
-| Phase 2 final | 31% of 284 pairs | 52 / 37 |
-| 2.5a step 8,000 | 29% | 48 / 35 |
+| Model | Tokens | Pair rule (L2) | Prior-free | Median effect (nats) | Written, both twins (L3) |
+|---|---|---|---|---|---|
+| **BubblSpace, Phase 2 final** | 22B | 18.3% | **57.4%** | +0.12 | 1.8% |
+| BubblSpace, 2.5a step 8,000 | 26B | 16.9% | 57.0% | +0.13 | 2.8% |
+| OLMo-2 1B | 21B | 16.6% | **49.6%** | −0.01 | 1.1% |
+| Pythia-1B | 21B | 14.4% | 59.5% | +0.08 | 1.1% |
+| Pythia-1B, final | 300B | 15.1% | 59.2% | +0.16 | 1.8% |
+| SmolLM2-360M, final | 4T | 25.7% | 59.2% | +0.30 | 3.9% |
+| Qwen2.5-1.5B, final | 18T | 31.7% | 70.8% | +1.11 | 12.0% |
+| **OLMo-2 1B, final** | 4T | 34.5% | **71.8%** | +0.75 | **3.2%** |
 
-When the model does tell the twins apart, it's right more often than wrong (58%), which is a hint of signal under a name preference. It isn't significant on its own. Re-running with scores saved (§6) settles it.
+- **Below-chance pair scores hide a real signal, in public models too.** BubblSpace and Pythia-1B are at 57–60% prior-free while their pair scores are 14–18%.
+- **At equal tokens BubblSpace has a signal that OLMo-2 1B doesn't yet:** 57% against 50% at 21–22B.
+- **A strong signal doesn't produce correct written answers by itself.** OLMo-2 1B final reaches 72% prior-free but writes the right answer in both twins only 3% of the time, and writes the same name for both twins in 94% of pairs. Its preferences decide what it writes. This is Cause B (§4) measured on a public model.
+
+Results: `benchmark/binding_levels/scores/`.
 
 ## 4. Why binding looked absent
 
@@ -77,7 +89,7 @@ When the model does tell the twins apart, it's right more often than wrong (58%)
 
 **Cause B: general preferences are larger than the binding signal.**
 - The pair rule needs the signal to beat the model's preference for an ending. WinoGrande's ranking needs it to beat the preference for a name. Greedy writing needs it to beat both.
-- That would explain "same name for both twins" and "writing lags ranking" in study 01 as the same effect. It's a hypothesis until WinoGrande is re-scored.
+- That explains "same name for both twins" and "writing lags ranking" in study 01 as the same effect. §3.3 supports it: OLMo-2 1B final has a strong signal (72% prior-free) but writes the right answer in both twins 3% of the time.
 - The signal shrinks when the data that built it is reduced: 2.5a has no contrastive v2, and v3's share is 4.5% at a high learning rate.
 
 **Cause C (inference, not measured): binding decides very little of the training loss.** Contrastive data is 1.5–6% of tokens, and only the few answer tokens in each document depend on binding. In natural text almost no next token depends on resolving who did what. Frequency-based preferences reduce far more loss, so they're learned first and stay larger. This matches the "frequency first" phase of Chan et al. 2026.
@@ -90,7 +102,7 @@ When the model does tell the twins apart, it's right more often than wrong (58%)
 | "Probe v5 (10/120) is the honest number: no structural transfer." | v5's pair score is dominated by passive (a word-order rule, 40 cases) and by ending priors. Without passive, direction is right in 91%. |
 | "2.5a hurt binding (v4: 77 → 38)." | Direction is unchanged at 96%. The effect is smaller and the ending priors moved. |
 | "Our contrastive data isn't making an impact." | It took prior-free sensitivity from 66% to 96%. Its flaw is the passive ban, plus too little weight to beat the priors. |
-| "Below-chance pair scores are a habit, not binding." (study 01) | For our probes, "habit" means a prior on top of a real signal. Whether that also holds for the public models needs their scores re-saved. |
+| "Below-chance pair scores are a habit, not binding." (study 01) | It's a prior on top of a real signal, for our model and for Pythia-1B and OLMo-2 1B (§3.3). |
 
 Still true: the model rarely *writes* the right answer in both twins, and WinoGrande pair scores are below chance.
 
@@ -116,6 +128,37 @@ Still true: the model rarely *writes* the right answer in both twins, and WinoGr
 4. **Fine-tune:** `scripts/binding_finetune_test.py`, from Phase 2 final, 400 steps of 192 documents (≈2.5M tokens), learning rate 1e-4 decaying to 6e-6, with the project's Muon + AdamW. One document per row, so no document sees another.
 5. **Scoring** (`scripts/run_binding_test.sh`), for the base checkpoint and both arms: probes v4 / v5 / v6 with the pair rule and the prior-free metric, written answers on v5 / v6, WinoGrande at three levels with margins, and LAMBADA + PIQA as a damage check. Results: `benchmark/binding_test/`.
 
+**Results (26 Nov).** Probes, pair rule / prior-free:
+
+| Probe and structure | In fix-arm training? | Base (Phase 2 final) | Control (v3) | **Fix (v3 + order alternation)** |
+|---|---|---|---|---|
+| v5 passive | passive yes; these exact sentences no | 0/40 / 0/40 (39 reversed) | 0/40 / 0/40 (40 reversed) | **40/40 / 40/40** |
+| v6 passive, held-out frame | passive yes; frame no | 0/40 / 0/40 | 0/40 / 0/40 | **39/40 / 40/40** |
+| v5 relative clause | **no** (held out of both arms) | 1/40 / 40/40 | 0/40 / 40/40 | **35/40 / 40/40** |
+| v5 "respectively" | no | 9/40 / 33/40 | 8/40 / 37/40 | 12/40 / 37/40 |
+| v6 object relative ("Y, whom X forgave, was") | no | 24/40 / 39/40 | 28/40 / 39/40 | 22/40 / 40/40 |
+| v6 inverse fit, held-out frame | inverse fit yes; frame no | 40/40 / 40/40 | 35/40 / 40/40 | 40/40 / 40/40 |
+| v4 (held-out phrasings, structures seen) | – | 77/112 / 108/112 | 50/112 / 105/112 | 45/112 / 105/112 |
+
+**Written answers, judged by role.** The exact-match check only accepts the probe's own ending, and the model often writes the right role in other words: "a beginner" for the learner, "experienced" for the teacher. So written answers were also scored by which of the generator's two attribute lists (receiver's or doer's) the first written attribute comes from:
+
+| Structure | Base | Control | **Fix** |
+|---|---|---|---|
+| v5 passive, both twins right | 0/40 (38 reversed) | 0/40 (39 reversed) | **40/40** |
+| v6 passive, held-out frame | 0/40 (22 reversed) | 0/40 (23 reversed) | **40/40** |
+| v5 relative clause | 1/40 (38 same role in both) | 0/40 | **33/40** |
+| v6 object relative | 5/40 | 5/40 | 11/40 (22 unlisted words) |
+
+(Exact-match flip on v5 / v6: base 0 / 41, control 0 / 37, fix 8 / 43 of 120.)
+
+**Damage check:** both arms broke general language modelling the same way. LAMBADA fell from 34.9% to 5.2% (perplexity from 33 to 12,000–19,000), PIQA from 67.8 to 60–62, and the model stopped answering WinoGrande in the expected format (85% → 26–34%). That's expected from 2.5M tokens of nothing but 34-token synthetic documents at a learning rate of 1e-4. The damage is equal in both arms, so the control-vs-fix comparison stands. WinoGrande numbers after the fine-tune aren't meaningful, and this recipe is a test, not a training method.
+
+**What it shows:**
+1. **The word-order confound was the cause of the passive failure.** The same number of steps on contrastive v3 changes nothing (still 40/40 reversed). Adding receiver-first sentences flips passive to 40/40, both in ranking and in **written answers**.
+2. **It carries over beyond the exact training form:** to passive sentences in frames never trained (39/40 ranked, 40/40 written), and to **relative clauses, a structure held out of both arms** (0 → 35/40 ranked, 1 → 33/40 written). One caveat: the relative-clause probe's second context is itself passive ("Emil was tutored by Hana, who was…"), so part of this gain may come from reading passive correctly.
+3. **It does not carry over to everything.** "Respectively" barely moves (9 → 12/40), and object relatives don't improve. The model learned "passive means the receiver comes first", not a general rule for mapping any syntax to roles.
+4. **Writing follows ranking once the signal is large.** Where the fix made the effect large (+13 nats), written answers were right in both twins in 40/40. Where the effect stayed small (object relatives, +2 nats), writing didn't follow. That supports Cause B: correct answers need a signal bigger than the preferences, not a bigger model.
+
 **Reading the result:**
 - **Passive fixed and held-out structures up, in the fix arm only:** the confound was the problem. The corrected data goes to the user for review, as a candidate for the 2.5a decay and Phase 3.
 - **Passive fixed but no transfer:** the model learns each structure separately. The next lever is the number of distinct structures.
@@ -125,7 +168,9 @@ Still true: the model rarely *writes* the right answer in both twins, and WinoGr
 
 - **Scoring:** report the prior-free metric next to the pair rule in the eval watchers and `scripts/summarize_evals.py`. Keep both; they answer different questions.
 - **More loss on binding:** continuations where several sentences depend on the resolution, or a higher loss weight on answer tokens. Test after §6.1.
-- **2.5a decay mix:** contrastive v3 is set to 2% for the decay ([plan-03 §2.7](plan-03-phase-2.5-knowledge-context.md)). Given the shrinking effect sizes in §3.1, revisit that once the A10 test is in. Any change needs the user's approval before the decay starts (step 32,424, ≈Fri 27 Nov 07:00 IST).
+- **2.5a decay mix (proposal, awaiting the user's approval):** replace contrastive v3 in the decay stage with the fix-arm data (v3 + order alternation), at the same 2% or slightly more. In real training it's a small share mixed with everything else, so the damage seen in the fine-tune doesn't apply. It needs a full-size corpus (tokenized shards), the user's data review, and one more stop-and-resume before step 32,424 (≈Fri 27 Nov 06:15–07:00 IST).
+- **Next data generation (v5 of the generator):** order alternation for every structure, not just passive and fit (object relatives, "respectively" with both orders, clefts), since point 3 shows each structure has to be covered.
+- **Probe scoring:** add the role-based written-answer check (above) to `scripts/eval_binding_generation.py`. Exact match understates writing.
 - **Study 01:** re-run a few public checkpoints with scores saved, to see whether their below-chance pair scores are also a prior over a real signal.
 
 ## 7. Caveats

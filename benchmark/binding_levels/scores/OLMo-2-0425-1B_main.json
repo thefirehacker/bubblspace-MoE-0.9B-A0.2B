@@ -1,0 +1,10327 @@
+{
+ "model": "allenai/OLMo-2-0425-1B",
+ "revision": "main",
+ "n_params": 1484916736,
+ "gpu": "NVIDIA A10",
+ "weights_format": "safetensors",
+ "weight_sha256": {
+  "model-00001-of-00002.safetensors": "c52e4ac8bf4867e698d908f9e8c2b84aa891b91dff066d46bf2a7cf453ad77fb",
+  "model-00002-of-00002.safetensors": "5f80762572fe28aca49b01b98895d96ca529b9792fc10925a977a161ad768d30"
+ },
+ "suites": {
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.618,
+   "L2": 0.3451,
+   "L3_rows": 0.5035,
+   "L3": 0.0317,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.345,
+     "L3": 0.032
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Maria<|endoftext|>",
+      "wrote": "Maria",
+      "margin": -0.8894,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Maria<|endoftext|>",
+      "wrote": "Maria",
+      "margin": 0.8933,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "home<|endoftext|>",
+      "wrote": "home",
+      "margin": 0.7278,
+      "wrote_first_mentioned": true,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "home<|endoftext|>",
+      "wrote": "home",
+      "margin": 1.6399,
+      "wrote_first_mentioned": true,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": false
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "bakery<|endoftext|>",
+      "wrote": "bakery",
+      "margin": 3.9989,
+      "wrote_first_mentioned": true,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "bakery<|endoftext|>",
+      "wrote": "bakery",
+      "margin": -4.4256,
+      "wrote_first_mentioned": true,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "class<|endoftext|>",
+      "wrote": "class",
+      "margin": 4.426,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "class<|endoftext|>",
+      "wrote": "class",
+      "margin": 2.6408,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "library<|endoftext|>",
+      "wrote": "library",
+      "margin": 0.0074,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "library<|endoftext|>",
+      "wrote": "library",
+      "margin": 0.8779,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Leslie<|endoftext|>",
+      "wrote": "Leslie",
+      "margin": -2.5735,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Leslie<|endoftext|>",
+      "wrote": "Leslie",
+      "margin": -1.0558,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.6417,
+   "l3_all_rows": 0.4925,
+   "answered_with_option": 1.0,
+   "rows_outside_pairs": 699,
+   "prior_free_pairs": 0.7183,
+   "prior_free_median_effect_nats": 0.7478,
+   "shortcuts": {
+    "wrote_first_mentioned": 0.4175,
+    "wrote_second_mentioned": 0.5825,
+    "first_mentioned_share_of_answers": 0.4175,
+    "same_name_for_both_twins": 0.9437,
+    "l1_prefers_first_mentioned": 0.5107
+   },
+   "rows": [
+    {
+     "i": 0,
+     "l1": false,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": -0.8894
+    },
+    {
+     "i": 1,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 0.8933
+    },
+    {
+     "i": 2,
+     "l1": false,
+     "l3": false,
+     "wrote": "blanket",
+     "gen": "blanket<|endoftext|>",
+     "margin": -0.5597
+    },
+    {
+     "i": 3,
+     "l1": true,
+     "l3": false,
+     "wrote": "toaster",
+     "gen": "toaster<|endoftext|>",
+     "margin": 3.0612
+    },
+    {
+     "i": 4,
+     "l1": false,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter<|endoftext|>",
+     "margin": -2.5257
+    },
+    {
+     "i": 5,
+     "l1": true,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": 2.7464
+    },
+    {
+     "i": 6,
+     "l1": true,
+     "l3": true,
+     "wrote": "home",
+     "gen": "home<|endoftext|>",
+     "margin": 0.7278
+    },
+    {
+     "i": 7,
+     "l1": true,
+     "l3": false,
+     "wrote": "home",
+     "gen": "home<|endoftext|>",
+     "margin": 1.6399
+    },
+    {
+     "i": 8,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer<|endoftext|>",
+     "margin": 2.2008
+    },
+    {
+     "i": 9,
+     "l1": true,
+     "l3": true,
+     "wrote": "bakery",
+     "gen": "bakery<|endoftext|>",
+     "margin": 3.9989
+    },
+    {
+     "i": 10,
+     "l1": false,
+     "l3": false,
+     "wrote": "bakery",
+     "gen": "bakery<|endoftext|>",
+     "margin": -4.4256
+    },
+    {
+     "i": 11,
+     "l1": true,
+     "l3": true,
+     "wrote": "class",
+     "gen": "class<|endoftext|>",
+     "margin": 4.426
+    },
+    {
+     "i": 12,
+     "l1": true,
+     "l3": false,
+     "wrote": "class",
+     "gen": "class<|endoftext|>",
+     "margin": 2.6408
+    },
+    {
+     "i": 13,
+     "l1": true,
+     "l3": false,
+     "wrote": "library",
+     "gen": "library<|endoftext|>",
+     "margin": 0.0074
+    },
+    {
+     "i": 14,
+     "l1": true,
+     "l3": true,
+     "wrote": "library",
+     "gen": "library<|endoftext|>",
+     "margin": 0.8779
+    },
+    {
+     "i": 15,
+     "l1": true,
+     "l3": false,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 0.0694
+    },
+    {
+     "i": 16,
+     "l1": false,
+     "l3": true,
+     "wrote": "Leslie",
+     "gen": "Leslie<|endoftext|>",
+     "margin": -2.5735
+    },
+    {
+     "i": 17,
+     "l1": false,
+     "l3": false,
+     "wrote": "Leslie",
+     "gen": "Leslie<|endoftext|>",
+     "margin": -1.0558
+    },
+    {
+     "i": 18,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -0.008
+    },
+    {
+     "i": 19,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 0.4955
+    },
+    {
+     "i": 20,
+     "l1": false,
+     "l3": false,
+     "wrote": "pudding",
+     "gen": "pudding<|endoftext|>",
+     "margin": -2.065
+    },
+    {
+     "i": 21,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": 0.866
+    },
+    {
+     "i": 22,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": -1.7715
+    },
+    {
+     "i": 23,
+     "l1": true,
+     "l3": false,
+     "wrote": "strength",
+     "gen": "strength<|endoftext|>",
+     "margin": 1.9521
+    },
+    {
+     "i": 24,
+     "l1": true,
+     "l3": true,
+     "wrote": "strength",
+     "gen": "strength<|endoftext|>",
+     "margin": 1.0332
+    },
+    {
+     "i": 25,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 0.2573
+    },
+    {
+     "i": 26,
+     "l1": false,
+     "l3": true,
+     "wrote": "Leslie",
+     "gen": "Leslie<|endoftext|>",
+     "margin": -0.7471
+    },
+    {
+     "i": 27,
+     "l1": true,
+     "l3": true,
+     "wrote": "portions",
+     "gen": "portions<|endoftext|>",
+     "margin": 3.3179
+    },
+    {
+     "i": 28,
+     "l1": true,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin<|endoftext|>",
+     "margin": 3.3882
+    },
+    {
+     "i": 29,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 3.012
+    },
+    {
+     "i": 30,
+     "l1": true,
+     "l3": false,
+     "wrote": "pencils",
+     "gen": "pencils<|endoftext|>",
+     "margin": 1.3634
+    },
+    {
+     "i": 31,
+     "l1": true,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 0.207
+    },
+    {
+     "i": 32,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 1.5872
+    },
+    {
+     "i": 33,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle<|endoftext|>",
+     "margin": 0.056
+    },
+    {
+     "i": 34,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": -0.8585
+    },
+    {
+     "i": 35,
+     "l1": true,
+     "l3": true,
+     "wrote": "floor",
+     "gen": "floor<|endoftext|>",
+     "margin": 0.1186
+    },
+    {
+     "i": 36,
+     "l1": false,
+     "l3": false,
+     "wrote": "Joel",
+     "gen": "Joel<|endoftext|>",
+     "margin": -1.9194
+    },
+    {
+     "i": 37,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": 4.0303
+    },
+    {
+     "i": 38,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 1.3714
+    },
+    {
+     "i": 39,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 2.4038
+    },
+    {
+     "i": 40,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": 3.2307
+    },
+    {
+     "i": 41,
+     "l1": true,
+     "l3": false,
+     "wrote": "eyes",
+     "gen": "eyes<|endoftext|>",
+     "margin": 4.2437
+    },
+    {
+     "i": 42,
+     "l1": true,
+     "l3": false,
+     "wrote": "dress",
+     "gen": "dress<|endoftext|>",
+     "margin": 1.4012
+    },
+    {
+     "i": 43,
+     "l1": true,
+     "l3": true,
+     "wrote": "dress",
+     "gen": "dress<|endoftext|>",
+     "margin": 2.0971
+    },
+    {
+     "i": 44,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 0.5843
+    },
+    {
+     "i": 45,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.2237
+    },
+    {
+     "i": 46,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -0.9872
+    },
+    {
+     "i": 47,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 0.795
+    },
+    {
+     "i": 48,
+     "l1": true,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter<|endoftext|>",
+     "margin": 1.317
+    },
+    {
+     "i": 49,
+     "l1": true,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 0.4002
+    },
+    {
+     "i": 50,
+     "l1": false,
+     "l3": false,
+     "wrote": "crack",
+     "gen": "crack<|endoftext|>",
+     "margin": -1.5115
+    },
+    {
+     "i": 51,
+     "l1": true,
+     "l3": true,
+     "wrote": "crack",
+     "gen": "crack<|endoftext|>",
+     "margin": 0.4504
+    },
+    {
+     "i": 52,
+     "l1": true,
+     "l3": false,
+     "wrote": "comics",
+     "gen": "comics<|endoftext|>",
+     "margin": 0.103
+    },
+    {
+     "i": 53,
+     "l1": false,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": -0.8409
+    },
+    {
+     "i": 54,
+     "l1": true,
+     "l3": false,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 1.581
+    },
+    {
+     "i": 55,
+     "l1": true,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 1.9784
+    },
+    {
+     "i": 56,
+     "l1": true,
+     "l3": true,
+     "wrote": "distance",
+     "gen": "distance<|endoftext|>",
+     "margin": 1.7554
+    },
+    {
+     "i": 57,
+     "l1": true,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": 1.9852
+    },
+    {
+     "i": 58,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 0.3252
+    },
+    {
+     "i": 59,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 1.7971
+    },
+    {
+     "i": 60,
+     "l1": true,
+     "l3": true,
+     "wrote": "war",
+     "gen": "war<|endoftext|>",
+     "margin": 0.6799
+    },
+    {
+     "i": 61,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": 1.7301
+    },
+    {
+     "i": 62,
+     "l1": true,
+     "l3": true,
+     "wrote": "table",
+     "gen": "table<|endoftext|>",
+     "margin": 2.6172
+    },
+    {
+     "i": 63,
+     "l1": false,
+     "l3": false,
+     "wrote": "table",
+     "gen": "table<|endoftext|>",
+     "margin": -2.8282
+    },
+    {
+     "i": 64,
+     "l1": false,
+     "l3": true,
+     "wrote": "air",
+     "gen": "air<|endoftext|>",
+     "margin": -0.6403
+    },
+    {
+     "i": 65,
+     "l1": true,
+     "l3": true,
+     "wrote": "rags",
+     "gen": "rags<|endoftext|>",
+     "margin": 4.0024
+    },
+    {
+     "i": 66,
+     "l1": true,
+     "l3": false,
+     "wrote": "piercing",
+     "gen": "piercing<|endoftext|>",
+     "margin": 0.5598
+    },
+    {
+     "i": 67,
+     "l1": true,
+     "l3": true,
+     "wrote": "piercing",
+     "gen": "piercing<|endoftext|>",
+     "margin": 1.275
+    },
+    {
+     "i": 68,
+     "l1": false,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": -0.9999
+    },
+    {
+     "i": 69,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": 0.6971
+    },
+    {
+     "i": 70,
+     "l1": true,
+     "l3": false,
+     "wrote": "t-shirt",
+     "gen": "t-shirt<|endoftext|>",
+     "margin": 5.8086
+    },
+    {
+     "i": 71,
+     "l1": true,
+     "l3": false,
+     "wrote": "varnish",
+     "gen": "varnish<|endoftext|>",
+     "margin": 2.2371
+    },
+    {
+     "i": 72,
+     "l1": true,
+     "l3": true,
+     "wrote": "glow sticks",
+     "gen": "glow sticks<|endoftext|>",
+     "margin": 1.631
+    },
+    {
+     "i": 73,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph<|endoftext|>",
+     "margin": -0.9463
+    },
+    {
+     "i": 74,
+     "l1": false,
+     "l3": false,
+     "wrote": "Joseph",
+     "gen": "Joseph<|endoftext|>",
+     "margin": -1.0514
+    },
+    {
+     "i": 75,
+     "l1": false,
+     "l3": false,
+     "wrote": "hat",
+     "gen": "hat<|endoftext|>",
+     "margin": -0.8847
+    },
+    {
+     "i": 76,
+     "l1": true,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 1.0491
+    },
+    {
+     "i": 77,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 1.9657
+    },
+    {
+     "i": 78,
+     "l1": false,
+     "l3": true,
+     "wrote": "house",
+     "gen": "house<|endoftext|>",
+     "margin": -0.6034
+    },
+    {
+     "i": 79,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 1.5732
+    },
+    {
+     "i": 80,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 0.7086
+    },
+    {
+     "i": 81,
+     "l1": true,
+     "l3": false,
+     "wrote": "night",
+     "gen": "night<|endoftext|>",
+     "margin": 1.8531
+    },
+    {
+     "i": 82,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": 0.4524
+    },
+    {
+     "i": 83,
+     "l1": true,
+     "l3": false,
+     "wrote": "bedroom",
+     "gen": "bedroom<|endoftext|>",
+     "margin": 2.4702
+    },
+    {
+     "i": 84,
+     "l1": true,
+     "l3": true,
+     "wrote": "bedroom",
+     "gen": "bedroom<|endoftext|>",
+     "margin": 1.5984
+    },
+    {
+     "i": 85,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": -0.1817
+    },
+    {
+     "i": 86,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 3.286
+    },
+    {
+     "i": 87,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 0.0869
+    },
+    {
+     "i": 88,
+     "l1": true,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 0.4445
+    },
+    {
+     "i": 89,
+     "l1": true,
+     "l3": false,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 1.3781
+    },
+    {
+     "i": 90,
+     "l1": false,
+     "l3": false,
+     "wrote": "ball",
+     "gen": "ball<|endoftext|>",
+     "margin": -3.4635
+    },
+    {
+     "i": 91,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": 4.391
+    },
+    {
+     "i": 92,
+     "l1": true,
+     "l3": false,
+     "wrote": "desks",
+     "gen": "desks<|endoftext|>",
+     "margin": 0.465
+    },
+    {
+     "i": 93,
+     "l1": true,
+     "l3": true,
+     "wrote": "desks",
+     "gen": "desks<|endoftext|>",
+     "margin": 1.7332
+    },
+    {
+     "i": 94,
+     "l1": true,
+     "l3": false,
+     "wrote": "stone",
+     "gen": "stone<|endoftext|>",
+     "margin": 2.543
+    },
+    {
+     "i": 95,
+     "l1": true,
+     "l3": true,
+     "wrote": "stone",
+     "gen": "stone<|endoftext|>",
+     "margin": 2.4851
+    },
+    {
+     "i": 96,
+     "l1": false,
+     "l3": true,
+     "wrote": "body",
+     "gen": "body<|endoftext|>",
+     "margin": -0.6142
+    },
+    {
+     "i": 97,
+     "l1": true,
+     "l3": false,
+     "wrote": "space",
+     "gen": "space<|endoftext|>",
+     "margin": 2.0405
+    },
+    {
+     "i": 98,
+     "l1": true,
+     "l3": true,
+     "wrote": "space",
+     "gen": "space<|endoftext|>",
+     "margin": 1.2369
+    },
+    {
+     "i": 99,
+     "l1": true,
+     "l3": true,
+     "wrote": "couch",
+     "gen": "couch<|endoftext|>",
+     "margin": 1.5898
+    },
+    {
+     "i": 100,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.0978
+    },
+    {
+     "i": 101,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.1672
+    },
+    {
+     "i": 102,
+     "l1": true,
+     "l3": false,
+     "wrote": "cornhole",
+     "gen": "cornhole<|endoftext|>",
+     "margin": 2.7623
+    },
+    {
+     "i": 103,
+     "l1": false,
+     "l3": true,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": -0.7003
+    },
+    {
+     "i": 104,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 3.3479
+    },
+    {
+     "i": 105,
+     "l1": true,
+     "l3": false,
+     "wrote": "card",
+     "gen": "card<|endoftext|>",
+     "margin": 4.0332
+    },
+    {
+     "i": 106,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": 2.7961
+    },
+    {
+     "i": 107,
+     "l1": true,
+     "l3": false,
+     "wrote": "cookie",
+     "gen": "cookie<|endoftext|>",
+     "margin": 1.4772
+    },
+    {
+     "i": 108,
+     "l1": true,
+     "l3": true,
+     "wrote": "surgery",
+     "gen": "surgery<|endoftext|>",
+     "margin": 0.7015
+    },
+    {
+     "i": 109,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 1.574
+    },
+    {
+     "i": 110,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 0.2334
+    },
+    {
+     "i": 111,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": -4.4846
+    },
+    {
+     "i": 112,
+     "l1": true,
+     "l3": true,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": 1.4529
+    },
+    {
+     "i": 113,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey<|endoftext|>",
+     "margin": -0.9366
+    },
+    {
+     "i": 114,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": 0.1828
+    },
+    {
+     "i": 115,
+     "l1": true,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": 1.1377
+    },
+    {
+     "i": 116,
+     "l1": true,
+     "l3": true,
+     "wrote": "sofa",
+     "gen": "sofa<|endoftext|>",
+     "margin": 6.8193
+    },
+    {
+     "i": 117,
+     "l1": false,
+     "l3": false,
+     "wrote": "leaves",
+     "gen": "leaves<|endoftext|>",
+     "margin": -0.5363
+    },
+    {
+     "i": 118,
+     "l1": true,
+     "l3": true,
+     "wrote": "leaves",
+     "gen": "leaves<|endoftext|>",
+     "margin": 1.3426
+    },
+    {
+     "i": 119,
+     "l1": true,
+     "l3": true,
+     "wrote": "auditorium",
+     "gen": "auditorium<|endoftext|>",
+     "margin": 6.0721
+    },
+    {
+     "i": 120,
+     "l1": false,
+     "l3": false,
+     "wrote": "auditorium",
+     "gen": "auditorium<|endoftext|>",
+     "margin": -2.258
+    },
+    {
+     "i": 121,
+     "l1": true,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert<|endoftext|>",
+     "margin": 0.1635
+    },
+    {
+     "i": 122,
+     "l1": true,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert<|endoftext|>",
+     "margin": 0.6874
+    },
+    {
+     "i": 123,
+     "l1": false,
+     "l3": false,
+     "wrote": "brownie",
+     "gen": "brownie<|endoftext|>",
+     "margin": -2.5721
+    },
+    {
+     "i": 124,
+     "l1": true,
+     "l3": true,
+     "wrote": "braces",
+     "gen": "braces<|endoftext|>",
+     "margin": 3.9073
+    },
+    {
+     "i": 125,
+     "l1": false,
+     "l3": false,
+     "wrote": "braces",
+     "gen": "braces<|endoftext|>",
+     "margin": -1.9561
+    },
+    {
+     "i": 126,
+     "l1": false,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": -0.3644
+    },
+    {
+     "i": 127,
+     "l1": false,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": -0.1086
+    },
+    {
+     "i": 128,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 0.0961
+    },
+    {
+     "i": 129,
+     "l1": false,
+     "l3": true,
+     "wrote": "factory",
+     "gen": "factory<|endoftext|>",
+     "margin": -0.0352
+    },
+    {
+     "i": 130,
+     "l1": false,
+     "l3": false,
+     "wrote": "Joel",
+     "gen": "Joel<|endoftext|>",
+     "margin": -0.0234
+    },
+    {
+     "i": 131,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": -0.2082
+    },
+    {
+     "i": 132,
+     "l1": true,
+     "l3": true,
+     "wrote": "rattle",
+     "gen": "rattle<|endoftext|>",
+     "margin": 4.0195
+    },
+    {
+     "i": 133,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 0.2638
+    },
+    {
+     "i": 134,
+     "l1": false,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": -0.7173
+    },
+    {
+     "i": 135,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer<|endoftext|>",
+     "margin": 0.7513
+    },
+    {
+     "i": 136,
+     "l1": true,
+     "l3": true,
+     "wrote": "room",
+     "gen": "room<|endoftext|>",
+     "margin": 3.5117
+    },
+    {
+     "i": 137,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 3.727
+    },
+    {
+     "i": 138,
+     "l1": false,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": -0.4185
+    },
+    {
+     "i": 139,
+     "l1": false,
+     "l3": true,
+     "wrote": "Ryan",
+     "gen": "Ryan<|endoftext|>",
+     "margin": -0.444
+    },
+    {
+     "i": 140,
+     "l1": true,
+     "l3": false,
+     "wrote": "wind",
+     "gen": "wind<|endoftext|>",
+     "margin": 2.6215
+    },
+    {
+     "i": 141,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": 2.1299
+    },
+    {
+     "i": 142,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 0.7649
+    },
+    {
+     "i": 143,
+     "l1": true,
+     "l3": true,
+     "wrote": "jewelry",
+     "gen": "jewelry<|endoftext|>",
+     "margin": 0.3706
+    },
+    {
+     "i": 144,
+     "l1": true,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": 0.2974
+    },
+    {
+     "i": 145,
+     "l1": true,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": 0.6406
+    },
+    {
+     "i": 146,
+     "l1": false,
+     "l3": false,
+     "wrote": "cable",
+     "gen": "cable<|endoftext|>",
+     "margin": -1.9285
+    },
+    {
+     "i": 147,
+     "l1": true,
+     "l3": true,
+     "wrote": "cable",
+     "gen": "cable<|endoftext|>",
+     "margin": 1.895
+    },
+    {
+     "i": 148,
+     "l1": false,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": -0.1515
+    },
+    {
+     "i": 149,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 1.4838
+    },
+    {
+     "i": 150,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 1.4849
+    },
+    {
+     "i": 151,
+     "l1": true,
+     "l3": true,
+     "wrote": "eyelashes",
+     "gen": "eyelashes<|endoftext|>",
+     "margin": 2.5149
+    },
+    {
+     "i": 152,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": -1.789
+    },
+    {
+     "i": 153,
+     "l1": true,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": 1.6488
+    },
+    {
+     "i": 154,
+     "l1": true,
+     "l3": true,
+     "wrote": "watch",
+     "gen": "watch<|endoftext|>",
+     "margin": 0.1082
+    },
+    {
+     "i": 155,
+     "l1": true,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter<|endoftext|>",
+     "margin": 0.5315
+    },
+    {
+     "i": 156,
+     "l1": true,
+     "l3": true,
+     "wrote": "house",
+     "gen": "house<|endoftext|>",
+     "margin": 0.7891
+    },
+    {
+     "i": 157,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -0.1354
+    },
+    {
+     "i": 158,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 1.5501
+    },
+    {
+     "i": 159,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 1.3134
+    },
+    {
+     "i": 160,
+     "l1": false,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": -0.0374
+    },
+    {
+     "i": 161,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": 0.1213
+    },
+    {
+     "i": 162,
+     "l1": true,
+     "l3": false,
+     "wrote": "raft",
+     "gen": "raft<|endoftext|>",
+     "margin": 0.2728
+    },
+    {
+     "i": 163,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.9894
+    },
+    {
+     "i": 164,
+     "l1": false,
+     "l3": false,
+     "wrote": "cloth",
+     "gen": "cloth<|endoftext|>",
+     "margin": -3.8135
+    },
+    {
+     "i": 165,
+     "l1": true,
+     "l3": true,
+     "wrote": "cloth",
+     "gen": "cloth<|endoftext|>",
+     "margin": 2.8562
+    },
+    {
+     "i": 166,
+     "l1": false,
+     "l3": false,
+     "wrote": "screwdriver",
+     "gen": "screwdriver<|endoftext|>",
+     "margin": -0.9708
+    },
+    {
+     "i": 167,
+     "l1": true,
+     "l3": true,
+     "wrote": "screwdriver",
+     "gen": "screwdriver<|endoftext|>",
+     "margin": 1.2652
+    },
+    {
+     "i": 168,
+     "l1": true,
+     "l3": false,
+     "wrote": "summer",
+     "gen": "summer<|endoftext|>",
+     "margin": 3.2521
+    },
+    {
+     "i": 169,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric<|endoftext|>",
+     "margin": -0.5077
+    },
+    {
+     "i": 170,
+     "l1": false,
+     "l3": true,
+     "wrote": "Vase",
+     "gen": "Vase<|endoftext|>",
+     "margin": -0.7701
+    },
+    {
+     "i": 171,
+     "l1": false,
+     "l3": false,
+     "wrote": "Vase",
+     "gen": "Vase<|endoftext|>",
+     "margin": -0.0169
+    },
+    {
+     "i": 172,
+     "l1": false,
+     "l3": false,
+     "wrote": "work",
+     "gen": "work<|endoftext|>",
+     "margin": -3.052
+    },
+    {
+     "i": 173,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": -2.431
+    },
+    {
+     "i": 174,
+     "l1": true,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car<|endoftext|>",
+     "margin": 0.6935
+    },
+    {
+     "i": 175,
+     "l1": true,
+     "l3": true,
+     "wrote": "city",
+     "gen": "city<|endoftext|>",
+     "margin": 4.2002
+    },
+    {
+     "i": 176,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -0.8311
+    },
+    {
+     "i": 177,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -1.3509
+    },
+    {
+     "i": 178,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samuel",
+     "gen": "Samuel<|endoftext|>",
+     "margin": -0.1025
+    },
+    {
+     "i": 179,
+     "l1": true,
+     "l3": false,
+     "wrote": "wedding",
+     "gen": "wedding<|endoftext|>",
+     "margin": 6.5864
+    },
+    {
+     "i": 180,
+     "l1": false,
+     "l3": false,
+     "wrote": "room",
+     "gen": "room<|endoftext|>",
+     "margin": -1.2177
+    },
+    {
+     "i": 181,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 5.9439
+    },
+    {
+     "i": 182,
+     "l1": true,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": 0.8154
+    },
+    {
+     "i": 183,
+     "l1": true,
+     "l3": false,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": 2.05
+    },
+    {
+     "i": 184,
+     "l1": true,
+     "l3": false,
+     "wrote": "limbs",
+     "gen": "limbs<|endoftext|>",
+     "margin": 3.4507
+    },
+    {
+     "i": 185,
+     "l1": true,
+     "l3": true,
+     "wrote": "blanket",
+     "gen": "blanket<|endoftext|>",
+     "margin": 0.7333
+    },
+    {
+     "i": 186,
+     "l1": true,
+     "l3": true,
+     "wrote": "PVC",
+     "gen": "PVC<|endoftext|>",
+     "margin": 0.4345
+    },
+    {
+     "i": 187,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 2.4162
+    },
+    {
+     "i": 188,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 2.0851
+    },
+    {
+     "i": 189,
+     "l1": true,
+     "l3": false,
+     "wrote": "cut",
+     "gen": "cut<|endoftext|>",
+     "margin": 0.7288
+    },
+    {
+     "i": 190,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 0.8365
+    },
+    {
+     "i": 191,
+     "l1": false,
+     "l3": false,
+     "wrote": "silk",
+     "gen": "silk<|endoftext|>",
+     "margin": -0.3039
+    },
+    {
+     "i": 192,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": -0.8759
+    },
+    {
+     "i": 193,
+     "l1": true,
+     "l3": true,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": 0.442
+    },
+    {
+     "i": 194,
+     "l1": false,
+     "l3": false,
+     "wrote": "tray",
+     "gen": "tray<|endoftext|>",
+     "margin": -1.9884
+    },
+    {
+     "i": 195,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nelson",
+     "gen": "Nelson<|endoftext|>",
+     "margin": -0.5609
+    },
+    {
+     "i": 196,
+     "l1": true,
+     "l3": true,
+     "wrote": "Nelson",
+     "gen": "Nelson<|endoftext|>",
+     "margin": 0.9167
+    },
+    {
+     "i": 197,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 0.1718
+    },
+    {
+     "i": 198,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -2.3571
+    },
+    {
+     "i": 199,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 2.1025
+    },
+    {
+     "i": 200,
+     "l1": true,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": 5.9243
+    },
+    {
+     "i": 201,
+     "l1": true,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": 1.9513
+    },
+    {
+     "i": 202,
+     "l1": false,
+     "l3": true,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": -0.169
+    },
+    {
+     "i": 203,
+     "l1": false,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": -0.9724
+    },
+    {
+     "i": 204,
+     "l1": true,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": 1.5517
+    },
+    {
+     "i": 205,
+     "l1": false,
+     "l3": true,
+     "wrote": "tables",
+     "gen": "tables<|endoftext|>",
+     "margin": -0.5302
+    },
+    {
+     "i": 206,
+     "l1": true,
+     "l3": false,
+     "wrote": "tables",
+     "gen": "tables<|endoftext|>",
+     "margin": 0.8934
+    },
+    {
+     "i": 207,
+     "l1": true,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 1.2927
+    },
+    {
+     "i": 208,
+     "l1": true,
+     "l3": false,
+     "wrote": "nail",
+     "gen": "nail<|endoftext|>",
+     "margin": 3.1321
+    },
+    {
+     "i": 209,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jason",
+     "gen": "Jason<|endoftext|>",
+     "margin": 2.1755
+    },
+    {
+     "i": 210,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason<|endoftext|>",
+     "margin": 2.2078
+    },
+    {
+     "i": 211,
+     "l1": false,
+     "l3": true,
+     "wrote": "rock",
+     "gen": "rock<|endoftext|>",
+     "margin": -1.8012
+    },
+    {
+     "i": 212,
+     "l1": false,
+     "l3": true,
+     "wrote": "fruits",
+     "gen": "fruits<|endoftext|>",
+     "margin": -1.7879
+    },
+    {
+     "i": 213,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": -0.0254
+    },
+    {
+     "i": 214,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 3.5236
+    },
+    {
+     "i": 215,
+     "l1": false,
+     "l3": true,
+     "wrote": "hookup",
+     "gen": "hookup<|endoftext|>",
+     "margin": -2.0035
+    },
+    {
+     "i": 216,
+     "l1": false,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -1.1933
+    },
+    {
+     "i": 217,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 1.7156
+    },
+    {
+     "i": 218,
+     "l1": false,
+     "l3": true,
+     "wrote": "tomatoes",
+     "gen": "tomatoes<|endoftext|>",
+     "margin": -0.342
+    },
+    {
+     "i": 219,
+     "l1": true,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence<|endoftext|>",
+     "margin": 0.4774
+    },
+    {
+     "i": 220,
+     "l1": true,
+     "l3": true,
+     "wrote": "store",
+     "gen": "store<|endoftext|>",
+     "margin": 3.032
+    },
+    {
+     "i": 221,
+     "l1": true,
+     "l3": true,
+     "wrote": "garden",
+     "gen": "garden<|endoftext|>",
+     "margin": 3.7942
+    },
+    {
+     "i": 222,
+     "l1": false,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": -0.2787
+    },
+    {
+     "i": 223,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": 0.8586
+    },
+    {
+     "i": 224,
+     "l1": true,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": 0.9298
+    },
+    {
+     "i": 225,
+     "l1": true,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 1.4204
+    },
+    {
+     "i": 226,
+     "l1": true,
+     "l3": true,
+     "wrote": "garage",
+     "gen": "garage<|endoftext|>",
+     "margin": 0.4668
+    },
+    {
+     "i": 227,
+     "l1": false,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": -3.6007
+    },
+    {
+     "i": 228,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -1.6064
+    },
+    {
+     "i": 229,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -1.3054
+    },
+    {
+     "i": 230,
+     "l1": true,
+     "l3": true,
+     "wrote": "gym",
+     "gen": "gym<|endoftext|>",
+     "margin": 2.0164
+    },
+    {
+     "i": 231,
+     "l1": false,
+     "l3": false,
+     "wrote": "gym",
+     "gen": "gym<|endoftext|>",
+     "margin": -0.1214
+    },
+    {
+     "i": 232,
+     "l1": false,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": -0.3431
+    },
+    {
+     "i": 233,
+     "l1": true,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": 0.0241
+    },
+    {
+     "i": 234,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": -0.3941
+    },
+    {
+     "i": 235,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ryan",
+     "gen": "Ryan<|endoftext|>",
+     "margin": 0.0723
+    },
+    {
+     "i": 236,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer<|endoftext|>",
+     "margin": 0.3011
+    },
+    {
+     "i": 237,
+     "l1": false,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria<|endoftext|>",
+     "margin": -0.4553
+    },
+    {
+     "i": 238,
+     "l1": false,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria<|endoftext|>",
+     "margin": -0.3829
+    },
+    {
+     "i": 239,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": -0.0647
+    },
+    {
+     "i": 240,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 1.1306
+    },
+    {
+     "i": 241,
+     "l1": true,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 1.2513
+    },
+    {
+     "i": 242,
+     "l1": true,
+     "l3": true,
+     "wrote": "court",
+     "gen": "court<|endoftext|>",
+     "margin": 0.2729
+    },
+    {
+     "i": 243,
+     "l1": false,
+     "l3": true,
+     "wrote": "Tablet",
+     "gen": "Tablet<|endoftext|>",
+     "margin": -0.1911
+    },
+    {
+     "i": 244,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tablet",
+     "gen": "Tablet<|endoftext|>",
+     "margin": 1.0497
+    },
+    {
+     "i": 245,
+     "l1": true,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": 3.1842
+    },
+    {
+     "i": 246,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": 0.3669
+    },
+    {
+     "i": 247,
+     "l1": false,
+     "l3": false,
+     "wrote": "people",
+     "gen": "people<|endoftext|>",
+     "margin": -1.6018
+    },
+    {
+     "i": 248,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": -0.8139
+    },
+    {
+     "i": 249,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason<|endoftext|>",
+     "margin": -0.8392
+    },
+    {
+     "i": 250,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jason",
+     "gen": "Jason<|endoftext|>",
+     "margin": 1.3415
+    },
+    {
+     "i": 251,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": 1.124
+    },
+    {
+     "i": 252,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -1.4621
+    },
+    {
+     "i": 253,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -1.4197
+    },
+    {
+     "i": 254,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.6309
+    },
+    {
+     "i": 255,
+     "l1": false,
+     "l3": false,
+     "wrote": "cotton",
+     "gen": "cotton<|endoftext|>",
+     "margin": -0.5427
+    },
+    {
+     "i": 256,
+     "l1": true,
+     "l3": true,
+     "wrote": "cotton",
+     "gen": "cotton<|endoftext|>",
+     "margin": 0.6364
+    },
+    {
+     "i": 257,
+     "l1": true,
+     "l3": true,
+     "wrote": "contacts",
+     "gen": "contacts<|endoftext|>",
+     "margin": 3.1473
+    },
+    {
+     "i": 258,
+     "l1": true,
+     "l3": false,
+     "wrote": "exam",
+     "gen": "exam<|endoftext|>",
+     "margin": 3.8037
+    },
+    {
+     "i": 259,
+     "l1": false,
+     "l3": true,
+     "wrote": "diner",
+     "gen": "diner<|endoftext|>",
+     "margin": -0.6335
+    },
+    {
+     "i": 260,
+     "l1": false,
+     "l3": false,
+     "wrote": "paper",
+     "gen": "paper<|endoftext|>",
+     "margin": -0.3474
+    },
+    {
+     "i": 261,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": 1.1411
+    },
+    {
+     "i": 262,
+     "l1": true,
+     "l3": false,
+     "wrote": "vase",
+     "gen": "vase<|endoftext|>",
+     "margin": 0.3504
+    },
+    {
+     "i": 263,
+     "l1": false,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": -0.4453
+    },
+    {
+     "i": 264,
+     "l1": true,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": 1.6051
+    },
+    {
+     "i": 265,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -0.2458
+    },
+    {
+     "i": 266,
+     "l1": true,
+     "l3": true,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": 1.2754
+    },
+    {
+     "i": 267,
+     "l1": true,
+     "l3": true,
+     "wrote": "house",
+     "gen": "house<|endoftext|>",
+     "margin": 0.0092
+    },
+    {
+     "i": 268,
+     "l1": false,
+     "l3": false,
+     "wrote": "house",
+     "gen": "house<|endoftext|>",
+     "margin": -1.8398
+    },
+    {
+     "i": 269,
+     "l1": true,
+     "l3": false,
+     "wrote": "vial",
+     "gen": "vial<|endoftext|>",
+     "margin": 1.498
+    },
+    {
+     "i": 270,
+     "l1": false,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": -1.5113
+    },
+    {
+     "i": 271,
+     "l1": false,
+     "l3": false,
+     "wrote": "garage",
+     "gen": "garage<|endoftext|>",
+     "margin": -0.048
+    },
+    {
+     "i": 272,
+     "l1": true,
+     "l3": false,
+     "wrote": "chain",
+     "gen": "chain<|endoftext|>",
+     "margin": 4.6106
+    },
+    {
+     "i": 273,
+     "l1": true,
+     "l3": false,
+     "wrote": "horror movies",
+     "gen": "horror movies<|endoftext|>",
+     "margin": 3.1052
+    },
+    {
+     "i": 274,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": -0.955
+    },
+    {
+     "i": 275,
+     "l1": true,
+     "l3": true,
+     "wrote": "bikini",
+     "gen": "bikini<|endoftext|>",
+     "margin": 1.4377
+    },
+    {
+     "i": 276,
+     "l1": false,
+     "l3": false,
+     "wrote": "bikini",
+     "gen": "bikini<|endoftext|>",
+     "margin": -0.4847
+    },
+    {
+     "i": 277,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 0.7561
+    },
+    {
+     "i": 278,
+     "l1": true,
+     "l3": true,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 0.4376
+    },
+    {
+     "i": 279,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": -0.208
+    },
+    {
+     "i": 280,
+     "l1": false,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": -1.4769
+    },
+    {
+     "i": 281,
+     "l1": false,
+     "l3": false,
+     "wrote": "cup",
+     "gen": "cup<|endoftext|>",
+     "margin": -1.5962
+    },
+    {
+     "i": 282,
+     "l1": false,
+     "l3": true,
+     "wrote": "pie",
+     "gen": "pie<|endoftext|>",
+     "margin": -1.5454
+    },
+    {
+     "i": 283,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": -0.7198
+    },
+    {
+     "i": 284,
+     "l1": true,
+     "l3": false,
+     "wrote": "conversation",
+     "gen": "conversation<|endoftext|>",
+     "margin": 2.3631
+    },
+    {
+     "i": 285,
+     "l1": true,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": 0.934
+    },
+    {
+     "i": 286,
+     "l1": true,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan<|endoftext|>",
+     "margin": 1.2391
+    },
+    {
+     "i": 287,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": 1.7032
+    },
+    {
+     "i": 288,
+     "l1": true,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": 0.0946
+    },
+    {
+     "i": 289,
+     "l1": true,
+     "l3": false,
+     "wrote": "pen",
+     "gen": "pencil<|endoftext|>",
+     "margin": 0.0563
+    },
+    {
+     "i": 290,
+     "l1": false,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": -0.1962
+    },
+    {
+     "i": 291,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -0.91
+    },
+    {
+     "i": 292,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -0.7682
+    },
+    {
+     "i": 293,
+     "l1": true,
+     "l3": false,
+     "wrote": "cars",
+     "gen": "cars<|endoftext|>",
+     "margin": 2.8934
+    },
+    {
+     "i": 294,
+     "l1": true,
+     "l3": true,
+     "wrote": "bike",
+     "gen": "bike<|endoftext|>",
+     "margin": 1.2494
+    },
+    {
+     "i": 295,
+     "l1": false,
+     "l3": false,
+     "wrote": "bike",
+     "gen": "bike<|endoftext|>",
+     "margin": -0.7965
+    },
+    {
+     "i": 296,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 0.4731
+    },
+    {
+     "i": 297,
+     "l1": true,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 0.3972
+    },
+    {
+     "i": 298,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -2.039
+    },
+    {
+     "i": 299,
+     "l1": true,
+     "l3": true,
+     "wrote": "Leslie",
+     "gen": "Leslie<|endoftext|>",
+     "margin": 5.9888
+    },
+    {
+     "i": 300,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 1.63
+    },
+    {
+     "i": 301,
+     "l1": false,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": -1.8466
+    },
+    {
+     "i": 302,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": 0.6662
+    },
+    {
+     "i": 303,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": 1.2043
+    },
+    {
+     "i": 304,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": 1.6776
+    },
+    {
+     "i": 305,
+     "l1": true,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": 0.7079
+    },
+    {
+     "i": 306,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel<|endoftext|>",
+     "margin": 0.402
+    },
+    {
+     "i": 307,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca<|endoftext|>",
+     "margin": -0.1999
+    },
+    {
+     "i": 308,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph<|endoftext|>",
+     "margin": -2.5472
+    },
+    {
+     "i": 309,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": 1.5129
+    },
+    {
+     "i": 310,
+     "l1": true,
+     "l3": false,
+     "wrote": "medication",
+     "gen": "medication<|endoftext|>",
+     "margin": 2.7118
+    },
+    {
+     "i": 311,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jason",
+     "gen": "Jason<|endoftext|>",
+     "margin": -0.6551
+    },
+    {
+     "i": 312,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason<|endoftext|>",
+     "margin": -1.0061
+    },
+    {
+     "i": 313,
+     "l1": true,
+     "l3": true,
+     "wrote": "caramel",
+     "gen": "caramel<|endoftext|>",
+     "margin": 0.9325
+    },
+    {
+     "i": 314,
+     "l1": false,
+     "l3": false,
+     "wrote": "caramel",
+     "gen": "caramel<|endoftext|>",
+     "margin": -0.0019
+    },
+    {
+     "i": 315,
+     "l1": false,
+     "l3": false,
+     "wrote": "meeting",
+     "gen": "meeting<|endoftext|>",
+     "margin": -4.336
+    },
+    {
+     "i": 316,
+     "l1": true,
+     "l3": true,
+     "wrote": "meeting",
+     "gen": "meeting<|endoftext|>",
+     "margin": 7.3276
+    },
+    {
+     "i": 317,
+     "l1": false,
+     "l3": false,
+     "wrote": "cloths",
+     "gen": "cloths<|endoftext|>",
+     "margin": -0.2655
+    },
+    {
+     "i": 318,
+     "l1": true,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 0.6903
+    },
+    {
+     "i": 319,
+     "l1": true,
+     "l3": true,
+     "wrote": "bedroom",
+     "gen": "bedroom<|endoftext|>",
+     "margin": 1.6601
+    },
+    {
+     "i": 320,
+     "l1": true,
+     "l3": false,
+     "wrote": "bedroom",
+     "gen": "bedroom<|endoftext|>",
+     "margin": 1.7105
+    },
+    {
+     "i": 321,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kevin",
+     "gen": "Kevin<|endoftext|>",
+     "margin": 1.4156
+    },
+    {
+     "i": 322,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kevin",
+     "gen": "Kevin<|endoftext|>",
+     "margin": 0.5975
+    },
+    {
+     "i": 323,
+     "l1": false,
+     "l3": true,
+     "wrote": "comb",
+     "gen": "comb<|endoftext|>",
+     "margin": -1.3013
+    },
+    {
+     "i": 324,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -0.1063
+    },
+    {
+     "i": 325,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": 0.8393
+    },
+    {
+     "i": 326,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 1.0504
+    },
+    {
+     "i": 327,
+     "l1": true,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert<|endoftext|>",
+     "margin": 2.3635
+    },
+    {
+     "i": 328,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -0.2441
+    },
+    {
+     "i": 329,
+     "l1": false,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": -0.203
+    },
+    {
+     "i": 330,
+     "l1": false,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": -1.5316
+    },
+    {
+     "i": 331,
+     "l1": true,
+     "l3": true,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 0.0711
+    },
+    {
+     "i": 332,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": -0.6703
+    },
+    {
+     "i": 333,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.9815
+    },
+    {
+     "i": 334,
+     "l1": false,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": -0.1818
+    },
+    {
+     "i": 335,
+     "l1": true,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": 2.9477
+    },
+    {
+     "i": 336,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.0399
+    },
+    {
+     "i": 337,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -0.6689
+    },
+    {
+     "i": 338,
+     "l1": true,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": 1.3483
+    },
+    {
+     "i": 339,
+     "l1": false,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": -0.9456
+    },
+    {
+     "i": 340,
+     "l1": false,
+     "l3": false,
+     "wrote": "hotel",
+     "gen": "hotel<|endoftext|>",
+     "margin": -0.0339
+    },
+    {
+     "i": 341,
+     "l1": true,
+     "l3": true,
+     "wrote": "hotel",
+     "gen": "hotel<|endoftext|>",
+     "margin": 1.6319
+    },
+    {
+     "i": 342,
+     "l1": false,
+     "l3": false,
+     "wrote": "sport",
+     "gen": "sport<|endoftext|>",
+     "margin": -0.0609
+    },
+    {
+     "i": 343,
+     "l1": false,
+     "l3": true,
+     "wrote": "truck",
+     "gen": "truck<|endoftext|>",
+     "margin": -1.6084
+    },
+    {
+     "i": 344,
+     "l1": true,
+     "l3": false,
+     "wrote": "truck",
+     "gen": "truck<|endoftext|>",
+     "margin": 1.2348
+    },
+    {
+     "i": 345,
+     "l1": false,
+     "l3": true,
+     "wrote": "glasses",
+     "gen": "glasses<|endoftext|>",
+     "margin": -0.5433
+    },
+    {
+     "i": 346,
+     "l1": true,
+     "l3": false,
+     "wrote": "letter",
+     "gen": "letter<|endoftext|>",
+     "margin": 1.3837
+    },
+    {
+     "i": 347,
+     "l1": true,
+     "l3": true,
+     "wrote": "tea",
+     "gen": "tea<|endoftext|>",
+     "margin": 1.9956
+    },
+    {
+     "i": 348,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer<|endoftext|>",
+     "margin": 0.884
+    },
+    {
+     "i": 349,
+     "l1": false,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": -0.3111
+    },
+    {
+     "i": 350,
+     "l1": false,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -0.5734
+    },
+    {
+     "i": 351,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -0.6756
+    },
+    {
+     "i": 352,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": -0.4591
+    },
+    {
+     "i": 353,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kevin",
+     "gen": "Kevin<|endoftext|>",
+     "margin": -0.0217
+    },
+    {
+     "i": 354,
+     "l1": true,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 0.8611
+    },
+    {
+     "i": 355,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.578
+    },
+    {
+     "i": 356,
+     "l1": true,
+     "l3": false,
+     "wrote": "burger",
+     "gen": "burger<|endoftext|>",
+     "margin": 2.5831
+    },
+    {
+     "i": 357,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -0.628
+    },
+    {
+     "i": 358,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 1.2645
+    },
+    {
+     "i": 359,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": 3.2946
+    },
+    {
+     "i": 360,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin<|endoftext|>",
+     "margin": -1.8718
+    },
+    {
+     "i": 361,
+     "l1": true,
+     "l3": false,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": 1.2423
+    },
+    {
+     "i": 362,
+     "l1": false,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": -0.2514
+    },
+    {
+     "i": 363,
+     "l1": true,
+     "l3": false,
+     "wrote": "pole",
+     "gen": "pole<|endoftext|>",
+     "margin": 2.1813
+    },
+    {
+     "i": 364,
+     "l1": true,
+     "l3": true,
+     "wrote": "pole",
+     "gen": "pole<|endoftext|>",
+     "margin": 0.1705
+    },
+    {
+     "i": 365,
+     "l1": true,
+     "l3": true,
+     "wrote": "paper cups",
+     "gen": "paper cups<|endoftext|>",
+     "margin": 1.7936
+    },
+    {
+     "i": 366,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": -1.4959
+    },
+    {
+     "i": 367,
+     "l1": false,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert<|endoftext|>",
+     "margin": -0.9015
+    },
+    {
+     "i": 368,
+     "l1": false,
+     "l3": false,
+     "wrote": "skin",
+     "gen": "skin<|endoftext|>",
+     "margin": -1.0229
+    },
+    {
+     "i": 369,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kevin",
+     "gen": "Kevin<|endoftext|>",
+     "margin": 2.7433
+    },
+    {
+     "i": 370,
+     "l1": true,
+     "l3": false,
+     "wrote": "potatoes",
+     "gen": "potatoes<|endoftext|>",
+     "margin": 0.2862
+    },
+    {
+     "i": 371,
+     "l1": true,
+     "l3": true,
+     "wrote": "door",
+     "gen": "door<|endoftext|>",
+     "margin": 1.5339
+    },
+    {
+     "i": 372,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": 1.7551
+    },
+    {
+     "i": 373,
+     "l1": true,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert<|endoftext|>",
+     "margin": 0.8434
+    },
+    {
+     "i": 374,
+     "l1": false,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": -0.7537
+    },
+    {
+     "i": 375,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": -0.6002
+    },
+    {
+     "i": 376,
+     "l1": true,
+     "l3": true,
+     "wrote": "truck",
+     "gen": "truck<|endoftext|>",
+     "margin": 0.7813
+    },
+    {
+     "i": 377,
+     "l1": false,
+     "l3": false,
+     "wrote": "truck",
+     "gen": "truck<|endoftext|>",
+     "margin": -0.2913
+    },
+    {
+     "i": 378,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": 0.0955
+    },
+    {
+     "i": 379,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -0.8215
+    },
+    {
+     "i": 380,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 1.1455
+    },
+    {
+     "i": 381,
+     "l1": true,
+     "l3": false,
+     "wrote": "faucet",
+     "gen": "faucet<|endoftext|>",
+     "margin": 4.6938
+    },
+    {
+     "i": 382,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": -0.3145
+    },
+    {
+     "i": 383,
+     "l1": true,
+     "l3": true,
+     "wrote": "washer",
+     "gen": "washer<|endoftext|>",
+     "margin": 0.0382
+    },
+    {
+     "i": 384,
+     "l1": false,
+     "l3": true,
+     "wrote": "cake",
+     "gen": "cake<|endoftext|>",
+     "margin": -1.8132
+    },
+    {
+     "i": 385,
+     "l1": false,
+     "l3": false,
+     "wrote": "pit",
+     "gen": "pit<|endoftext|>",
+     "margin": -0.3302
+    },
+    {
+     "i": 386,
+     "l1": false,
+     "l3": true,
+     "wrote": "pit",
+     "gen": "pit<|endoftext|>",
+     "margin": -0.0701
+    },
+    {
+     "i": 387,
+     "l1": false,
+     "l3": true,
+     "wrote": "container",
+     "gen": "container<|endoftext|>",
+     "margin": -0.6214
+    },
+    {
+     "i": 388,
+     "l1": true,
+     "l3": false,
+     "wrote": "country",
+     "gen": "country<|endoftext|>",
+     "margin": 2.1625
+    },
+    {
+     "i": 389,
+     "l1": true,
+     "l3": false,
+     "wrote": "part",
+     "gen": "part<|endoftext|>",
+     "margin": 4.6562
+    },
+    {
+     "i": 390,
+     "l1": true,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 0.4447
+    },
+    {
+     "i": 391,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -0.3871
+    },
+    {
+     "i": 392,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": 1.5851
+    },
+    {
+     "i": 393,
+     "l1": true,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 1.4164
+    },
+    {
+     "i": 394,
+     "l1": true,
+     "l3": false,
+     "wrote": "clothes",
+     "gen": "clothes<|endoftext|>",
+     "margin": 1.8182
+    },
+    {
+     "i": 395,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.6009
+    },
+    {
+     "i": 396,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey<|endoftext|>",
+     "margin": 1.9711
+    },
+    {
+     "i": 397,
+     "l1": false,
+     "l3": false,
+     "wrote": "dishes",
+     "gen": "dishes<|endoftext|>",
+     "margin": -0.0217
+    },
+    {
+     "i": 398,
+     "l1": false,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": -0.9042
+    },
+    {
+     "i": 399,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -0.3427
+    },
+    {
+     "i": 400,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 1.2864
+    },
+    {
+     "i": 401,
+     "l1": true,
+     "l3": true,
+     "wrote": "clothes",
+     "gen": "clothes<|endoftext|>",
+     "margin": 0.5599
+    },
+    {
+     "i": 402,
+     "l1": false,
+     "l3": false,
+     "wrote": "clothes",
+     "gen": "clothes<|endoftext|>",
+     "margin": -1.067
+    },
+    {
+     "i": 403,
+     "l1": true,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 0.3711
+    },
+    {
+     "i": 404,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 0.2875
+    },
+    {
+     "i": 405,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 3.2117
+    },
+    {
+     "i": 406,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 3.4091
+    },
+    {
+     "i": 407,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 2.0627
+    },
+    {
+     "i": 408,
+     "l1": true,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": 2.3682
+    },
+    {
+     "i": 409,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 0.2438
+    },
+    {
+     "i": 410,
+     "l1": true,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 1.1105
+    },
+    {
+     "i": 411,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": 0.7532
+    },
+    {
+     "i": 412,
+     "l1": true,
+     "l3": false,
+     "wrote": "glove",
+     "gen": "glove<|endoftext|>",
+     "margin": 1.1279
+    },
+    {
+     "i": 413,
+     "l1": true,
+     "l3": true,
+     "wrote": "glove",
+     "gen": "glove<|endoftext|>",
+     "margin": 0.666
+    },
+    {
+     "i": 414,
+     "l1": false,
+     "l3": true,
+     "wrote": "steel",
+     "gen": "steel<|endoftext|>",
+     "margin": -0.0656
+    },
+    {
+     "i": 415,
+     "l1": true,
+     "l3": true,
+     "wrote": "water bottles",
+     "gen": "water bottles<|endoftext|>",
+     "margin": 1.9944
+    },
+    {
+     "i": 416,
+     "l1": true,
+     "l3": false,
+     "wrote": "water bottles",
+     "gen": "water bottles<|endoftext|>",
+     "margin": 2.7822
+    },
+    {
+     "i": 417,
+     "l1": true,
+     "l3": false,
+     "wrote": "book",
+     "gen": "book<|endoftext|>",
+     "margin": 4.5864
+    },
+    {
+     "i": 418,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 2.2456
+    },
+    {
+     "i": 419,
+     "l1": true,
+     "l3": true,
+     "wrote": "recycling",
+     "gen": "recycling<|endoftext|>",
+     "margin": 1.6606
+    },
+    {
+     "i": 420,
+     "l1": false,
+     "l3": true,
+     "wrote": "burn",
+     "gen": "burn<|endoftext|>",
+     "margin": -3.3197
+    },
+    {
+     "i": 421,
+     "l1": false,
+     "l3": true,
+     "wrote": "restaurant",
+     "gen": "restaurant<|endoftext|>",
+     "margin": -0.8345
+    },
+    {
+     "i": 422,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle<|endoftext|>",
+     "margin": -0.507
+    },
+    {
+     "i": 423,
+     "l1": false,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": -2.1694
+    },
+    {
+     "i": 424,
+     "l1": false,
+     "l3": false,
+     "wrote": "card",
+     "gen": "card<|endoftext|>",
+     "margin": -0.5912
+    },
+    {
+     "i": 425,
+     "l1": true,
+     "l3": false,
+     "wrote": "lotion",
+     "gen": "lotion<|endoftext|>",
+     "margin": 1.443
+    },
+    {
+     "i": 426,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey<|endoftext|>",
+     "margin": -0.1239
+    },
+    {
+     "i": 427,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey<|endoftext|>",
+     "margin": 0.7223
+    },
+    {
+     "i": 428,
+     "l1": true,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 0.2628
+    },
+    {
+     "i": 429,
+     "l1": true,
+     "l3": true,
+     "wrote": "pot",
+     "gen": "pot<|endoftext|>",
+     "margin": 0.9319
+    },
+    {
+     "i": 430,
+     "l1": false,
+     "l3": false,
+     "wrote": "pot",
+     "gen": "pot<|endoftext|>",
+     "margin": -0.4777
+    },
+    {
+     "i": 431,
+     "l1": false,
+     "l3": false,
+     "wrote": "sausage",
+     "gen": "sausage<|endoftext|>",
+     "margin": -1.5104
+    },
+    {
+     "i": 432,
+     "l1": false,
+     "l3": true,
+     "wrote": "plant",
+     "gen": "plant<|endoftext|>",
+     "margin": -4.0652
+    },
+    {
+     "i": 433,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": -1.0004
+    },
+    {
+     "i": 434,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": 1.135
+    },
+    {
+     "i": 435,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 0.5776
+    },
+    {
+     "i": 436,
+     "l1": false,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": -0.9456
+    },
+    {
+     "i": 437,
+     "l1": true,
+     "l3": true,
+     "wrote": "beaches",
+     "gen": "beaches<|endoftext|>",
+     "margin": 1.0589
+    },
+    {
+     "i": 438,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": 0.0743
+    },
+    {
+     "i": 439,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": -0.8272
+    },
+    {
+     "i": 440,
+     "l1": true,
+     "l3": false,
+     "wrote": "Joel",
+     "gen": "Joel<|endoftext|>",
+     "margin": 0.4209
+    },
+    {
+     "i": 441,
+     "l1": false,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -0.1348
+    },
+    {
+     "i": 442,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -0.3163
+    },
+    {
+     "i": 443,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": 0.5261
+    },
+    {
+     "i": 444,
+     "l1": true,
+     "l3": true,
+     "wrote": "Hunter",
+     "gen": "Hunter<|endoftext|>",
+     "margin": 1.5844
+    },
+    {
+     "i": 445,
+     "l1": true,
+     "l3": true,
+     "wrote": "air",
+     "gen": "air<|endoftext|>",
+     "margin": 0.6402
+    },
+    {
+     "i": 446,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian<|endoftext|>",
+     "margin": 0.514
+    },
+    {
+     "i": 447,
+     "l1": false,
+     "l3": true,
+     "wrote": "ball",
+     "gen": "ball<|endoftext|>",
+     "margin": -0.3323
+    },
+    {
+     "i": 448,
+     "l1": false,
+     "l3": false,
+     "wrote": "food wholesale",
+     "gen": "food wholesale<|endoftext|>",
+     "margin": -0.3396
+    },
+    {
+     "i": 449,
+     "l1": true,
+     "l3": true,
+     "wrote": "food wholesale",
+     "gen": "food wholesale<|endoftext|>",
+     "margin": 0.4706
+    },
+    {
+     "i": 450,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.0905
+    },
+    {
+     "i": 451,
+     "l1": true,
+     "l3": true,
+     "wrote": "cleaner",
+     "gen": "cleaner<|endoftext|>",
+     "margin": 4.0902
+    },
+    {
+     "i": 452,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 1.6682
+    },
+    {
+     "i": 453,
+     "l1": false,
+     "l3": false,
+     "wrote": "Blade",
+     "gen": "Blade<|endoftext|>",
+     "margin": -1.2709
+    },
+    {
+     "i": 454,
+     "l1": true,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": 0.4221
+    },
+    {
+     "i": 455,
+     "l1": true,
+     "l3": true,
+     "wrote": "shoes",
+     "gen": "shoes<|endoftext|>",
+     "margin": 0.1512
+    },
+    {
+     "i": 456,
+     "l1": false,
+     "l3": false,
+     "wrote": "shoes",
+     "gen": "shoes<|endoftext|>",
+     "margin": -0.8381
+    },
+    {
+     "i": 457,
+     "l1": false,
+     "l3": false,
+     "wrote": "iced",
+     "gen": "iced<|endoftext|>",
+     "margin": -0.7254
+    },
+    {
+     "i": 458,
+     "l1": true,
+     "l3": true,
+     "wrote": "iced",
+     "gen": "iced<|endoftext|>",
+     "margin": 0.9963
+    },
+    {
+     "i": 459,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 1.3822
+    },
+    {
+     "i": 460,
+     "l1": false,
+     "l3": true,
+     "wrote": "bag",
+     "gen": "bag<|endoftext|>",
+     "margin": -0.2452
+    },
+    {
+     "i": 461,
+     "l1": true,
+     "l3": false,
+     "wrote": "bag",
+     "gen": "bag<|endoftext|>",
+     "margin": 0.5915
+    },
+    {
+     "i": 462,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": 3.4828
+    },
+    {
+     "i": 463,
+     "l1": false,
+     "l3": true,
+     "wrote": "mansion",
+     "gen": "mansion<|endoftext|>",
+     "margin": -0.7039
+    },
+    {
+     "i": 464,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kevin",
+     "gen": "Kevin<|endoftext|>",
+     "margin": -0.987
+    },
+    {
+     "i": 465,
+     "l1": true,
+     "l3": true,
+     "wrote": "billboard",
+     "gen": "billboard<|endoftext|>",
+     "margin": 0.3107
+    },
+    {
+     "i": 466,
+     "l1": true,
+     "l3": false,
+     "wrote": "billboard",
+     "gen": "billboard<|endoftext|>",
+     "margin": 1.1556
+    },
+    {
+     "i": 467,
+     "l1": false,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": -0.0021
+    },
+    {
+     "i": 468,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 0.5462
+    },
+    {
+     "i": 469,
+     "l1": false,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian<|endoftext|>",
+     "margin": -0.7609
+    },
+    {
+     "i": 470,
+     "l1": true,
+     "l3": true,
+     "wrote": "dresser",
+     "gen": "dresser<|endoftext|>",
+     "margin": 2.5595
+    },
+    {
+     "i": 471,
+     "l1": true,
+     "l3": false,
+     "wrote": "dresser",
+     "gen": "dresser<|endoftext|>",
+     "margin": 0.1363
+    },
+    {
+     "i": 472,
+     "l1": true,
+     "l3": true,
+     "wrote": "pad",
+     "gen": "pad<|endoftext|>",
+     "margin": 2.7387
+    },
+    {
+     "i": 473,
+     "l1": true,
+     "l3": true,
+     "wrote": "ice",
+     "gen": "ice<|endoftext|>",
+     "margin": 4.9532
+    },
+    {
+     "i": 474,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": 2.0026
+    },
+    {
+     "i": 475,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle<|endoftext|>",
+     "margin": 1.2169
+    },
+    {
+     "i": 476,
+     "l1": true,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter<|endoftext|>",
+     "margin": 1.09
+    },
+    {
+     "i": 477,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -0.7537
+    },
+    {
+     "i": 478,
+     "l1": true,
+     "l3": false,
+     "wrote": "office",
+     "gen": "office<|endoftext|>",
+     "margin": 0.1372
+    },
+    {
+     "i": 479,
+     "l1": true,
+     "l3": true,
+     "wrote": "Instrument",
+     "gen": "Instrument<|endoftext|>",
+     "margin": 3.8401
+    },
+    {
+     "i": 480,
+     "l1": false,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": -2.5717
+    },
+    {
+     "i": 481,
+     "l1": true,
+     "l3": false,
+     "wrote": "yelling",
+     "gen": "yelling<|endoftext|>",
+     "margin": 0.8286
+    },
+    {
+     "i": 482,
+     "l1": false,
+     "l3": false,
+     "wrote": "tripod",
+     "gen": "tripod<|endoftext|>",
+     "margin": -0.2436
+    },
+    {
+     "i": 483,
+     "l1": false,
+     "l3": true,
+     "wrote": "tripod",
+     "gen": "tripod<|endoftext|>",
+     "margin": -0.3408
+    },
+    {
+     "i": 484,
+     "l1": true,
+     "l3": false,
+     "wrote": "bedroom",
+     "gen": "bedroom<|endoftext|>",
+     "margin": 0.3383
+    },
+    {
+     "i": 485,
+     "l1": false,
+     "l3": true,
+     "wrote": "bedroom",
+     "gen": "bedroom<|endoftext|>",
+     "margin": -0.2945
+    },
+    {
+     "i": 486,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": -2.7418
+    },
+    {
+     "i": 487,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": -1.0625
+    },
+    {
+     "i": 488,
+     "l1": true,
+     "l3": true,
+     "wrote": "party",
+     "gen": "party<|endoftext|>",
+     "margin": 1.4783
+    },
+    {
+     "i": 489,
+     "l1": true,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": 0.882
+    },
+    {
+     "i": 490,
+     "l1": false,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -0.9456
+    },
+    {
+     "i": 491,
+     "l1": true,
+     "l3": false,
+     "wrote": "toy car",
+     "gen": "toy car<|endoftext|>",
+     "margin": 4.9512
+    },
+    {
+     "i": 492,
+     "l1": true,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 1.7485
+    },
+    {
+     "i": 493,
+     "l1": true,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert<|endoftext|>",
+     "margin": 1.4231
+    },
+    {
+     "i": 494,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": 0.6561
+    },
+    {
+     "i": 495,
+     "l1": false,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron<|endoftext|>",
+     "margin": -0.1214
+    },
+    {
+     "i": 496,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 0.9752
+    },
+    {
+     "i": 497,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 0.1428
+    },
+    {
+     "i": 498,
+     "l1": true,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 0.1401
+    },
+    {
+     "i": 499,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": 3.1483
+    },
+    {
+     "i": 500,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -0.6138
+    },
+    {
+     "i": 501,
+     "l1": true,
+     "l3": true,
+     "wrote": "barn",
+     "gen": "barn<|endoftext|>",
+     "margin": 0.7701
+    },
+    {
+     "i": 502,
+     "l1": false,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": -0.2072
+    },
+    {
+     "i": 503,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": -1.4982
+    },
+    {
+     "i": 504,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian<|endoftext|>",
+     "margin": 1.3003
+    },
+    {
+     "i": 505,
+     "l1": false,
+     "l3": false,
+     "wrote": "Ian",
+     "gen": "Ian<|endoftext|>",
+     "margin": -0.5229
+    },
+    {
+     "i": 506,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": -0.4734
+    },
+    {
+     "i": 507,
+     "l1": true,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": 1.2633
+    },
+    {
+     "i": 508,
+     "l1": false,
+     "l3": true,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": -0.5355
+    },
+    {
+     "i": 509,
+     "l1": false,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": -0.9861
+    },
+    {
+     "i": 510,
+     "l1": false,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": -0.1861
+    },
+    {
+     "i": 511,
+     "l1": false,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": -0.2755
+    },
+    {
+     "i": 512,
+     "l1": false,
+     "l3": false,
+     "wrote": "television",
+     "gen": "television<|endoftext|>",
+     "margin": -1.1403
+    },
+    {
+     "i": 513,
+     "l1": false,
+     "l3": true,
+     "wrote": "television",
+     "gen": "television<|endoftext|>",
+     "margin": -0.6333
+    },
+    {
+     "i": 514,
+     "l1": true,
+     "l3": true,
+     "wrote": "brush",
+     "gen": "brush<|endoftext|>",
+     "margin": 1.3047
+    },
+    {
+     "i": 515,
+     "l1": true,
+     "l3": false,
+     "wrote": "brush",
+     "gen": "brush<|endoftext|>",
+     "margin": 3.0965
+    },
+    {
+     "i": 516,
+     "l1": false,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": -0.0309
+    },
+    {
+     "i": 517,
+     "l1": true,
+     "l3": true,
+     "wrote": "video",
+     "gen": "video<|endoftext|>",
+     "margin": 3.3249
+    },
+    {
+     "i": 518,
+     "l1": true,
+     "l3": false,
+     "wrote": "video",
+     "gen": "video<|endoftext|>",
+     "margin": 0.357
+    },
+    {
+     "i": 519,
+     "l1": false,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": -1.5324
+    },
+    {
+     "i": 520,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": 0.4365
+    },
+    {
+     "i": 521,
+     "l1": true,
+     "l3": true,
+     "wrote": "tarps",
+     "gen": "tarps<|endoftext|>",
+     "margin": 1.6672
+    },
+    {
+     "i": 522,
+     "l1": true,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": 1.1387
+    },
+    {
+     "i": 523,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -2.9722
+    },
+    {
+     "i": 524,
+     "l1": true,
+     "l3": true,
+     "wrote": "windows",
+     "gen": "windows<|endoftext|>",
+     "margin": 2.1
+    },
+    {
+     "i": 525,
+     "l1": false,
+     "l3": false,
+     "wrote": "windows",
+     "gen": "windows<|endoftext|>",
+     "margin": -0.1611
+    },
+    {
+     "i": 526,
+     "l1": true,
+     "l3": true,
+     "wrote": "notes",
+     "gen": "notes<|endoftext|>",
+     "margin": 2.2617
+    },
+    {
+     "i": 527,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": -0.6045
+    },
+    {
+     "i": 528,
+     "l1": true,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria<|endoftext|>",
+     "margin": 0.4684
+    },
+    {
+     "i": 529,
+     "l1": true,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria<|endoftext|>",
+     "margin": 0.9224
+    },
+    {
+     "i": 530,
+     "l1": true,
+     "l3": true,
+     "wrote": "wheel",
+     "gen": "wheel<|endoftext|>",
+     "margin": 2.0394
+    },
+    {
+     "i": 531,
+     "l1": false,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": -0.4168
+    },
+    {
+     "i": 532,
+     "l1": false,
+     "l3": false,
+     "wrote": "wood",
+     "gen": "wood<|endoftext|>",
+     "margin": -1.7775
+    },
+    {
+     "i": 533,
+     "l1": true,
+     "l3": true,
+     "wrote": "wood",
+     "gen": "wood<|endoftext|>",
+     "margin": 4.023
+    },
+    {
+     "i": 534,
+     "l1": true,
+     "l3": false,
+     "wrote": "pork",
+     "gen": "pork<|endoftext|>",
+     "margin": 2.5054
+    },
+    {
+     "i": 535,
+     "l1": true,
+     "l3": true,
+     "wrote": "pan",
+     "gen": "pan<|endoftext|>",
+     "margin": 1.8798
+    },
+    {
+     "i": 536,
+     "l1": true,
+     "l3": false,
+     "wrote": "pan",
+     "gen": "pan<|endoftext|>",
+     "margin": 5.9797
+    },
+    {
+     "i": 537,
+     "l1": true,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 0.9937
+    },
+    {
+     "i": 538,
+     "l1": true,
+     "l3": true,
+     "wrote": "sink",
+     "gen": "sink<|endoftext|>",
+     "margin": 1.503
+    },
+    {
+     "i": 539,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 0.3843
+    },
+    {
+     "i": 540,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 0.9862
+    },
+    {
+     "i": 541,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": 0.1353
+    },
+    {
+     "i": 542,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": -0.4202
+    },
+    {
+     "i": 543,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey<|endoftext|>",
+     "margin": -0.8198
+    },
+    {
+     "i": 544,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 0.8867
+    },
+    {
+     "i": 545,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 0.1441
+    },
+    {
+     "i": 546,
+     "l1": true,
+     "l3": true,
+     "wrote": "glass",
+     "gen": "glass<|endoftext|>",
+     "margin": 3.8449
+    },
+    {
+     "i": 547,
+     "l1": false,
+     "l3": false,
+     "wrote": "glass",
+     "gen": "glass<|endoftext|>",
+     "margin": -0.2104
+    },
+    {
+     "i": 548,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": -2.4932
+    },
+    {
+     "i": 549,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.9413
+    },
+    {
+     "i": 550,
+     "l1": true,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 0.8689
+    },
+    {
+     "i": 551,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 1.3966
+    },
+    {
+     "i": 552,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": 0.1154
+    },
+    {
+     "i": 553,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": -0.9809
+    },
+    {
+     "i": 554,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 1.9448
+    },
+    {
+     "i": 555,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 4.1702
+    },
+    {
+     "i": 556,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": -2.3472
+    },
+    {
+     "i": 557,
+     "l1": true,
+     "l3": true,
+     "wrote": "dentures",
+     "gen": "dentures<|endoftext|>",
+     "margin": 4.0595
+    },
+    {
+     "i": 558,
+     "l1": true,
+     "l3": false,
+     "wrote": "dentures",
+     "gen": "dentures<|endoftext|>",
+     "margin": 4.1481
+    },
+    {
+     "i": 559,
+     "l1": false,
+     "l3": false,
+     "wrote": "dock",
+     "gen": "dock<|endoftext|>",
+     "margin": -1.6516
+    },
+    {
+     "i": 560,
+     "l1": false,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": -0.1695
+    },
+    {
+     "i": 561,
+     "l1": false,
+     "l3": true,
+     "wrote": "pine trees",
+     "gen": "pine trees<|endoftext|>",
+     "margin": -2.1116
+    },
+    {
+     "i": 562,
+     "l1": true,
+     "l3": false,
+     "wrote": "pine trees",
+     "gen": "pine trees<|endoftext|>",
+     "margin": 2.2
+    },
+    {
+     "i": 563,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": 0.2137
+    },
+    {
+     "i": 564,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -0.4992
+    },
+    {
+     "i": 565,
+     "l1": false,
+     "l3": true,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -0.3719
+    },
+    {
+     "i": 566,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.7375
+    },
+    {
+     "i": 567,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.4356
+    },
+    {
+     "i": 568,
+     "l1": true,
+     "l3": false,
+     "wrote": "Steven",
+     "gen": "Steven<|endoftext|>",
+     "margin": 0.9386
+    },
+    {
+     "i": 569,
+     "l1": false,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": -2.4617
+    },
+    {
+     "i": 570,
+     "l1": true,
+     "l3": false,
+     "wrote": "ointment",
+     "gen": "ointment<|endoftext|>",
+     "margin": 3.1018
+    },
+    {
+     "i": 571,
+     "l1": true,
+     "l3": true,
+     "wrote": "table",
+     "gen": "table<|endoftext|>",
+     "margin": 1.2013
+    },
+    {
+     "i": 572,
+     "l1": true,
+     "l3": true,
+     "wrote": "burglary",
+     "gen": "burglary<|endoftext|>",
+     "margin": 0.4177
+    },
+    {
+     "i": 573,
+     "l1": true,
+     "l3": false,
+     "wrote": "burglary",
+     "gen": "burglary<|endoftext|>",
+     "margin": 0.1253
+    },
+    {
+     "i": 574,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian<|endoftext|>",
+     "margin": -0.488
+    },
+    {
+     "i": 575,
+     "l1": true,
+     "l3": false,
+     "wrote": "bicycle",
+     "gen": "bicycle<|endoftext|>",
+     "margin": 1.6534
+    },
+    {
+     "i": 576,
+     "l1": true,
+     "l3": false,
+     "wrote": "skin",
+     "gen": "skin<|endoftext|>",
+     "margin": 4.2391
+    },
+    {
+     "i": 577,
+     "l1": true,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": 1.8732
+    },
+    {
+     "i": 578,
+     "l1": true,
+     "l3": false,
+     "wrote": "Peter Pan",
+     "gen": "Peter Pan<|endoftext|>",
+     "margin": 1.5023
+    },
+    {
+     "i": 579,
+     "l1": true,
+     "l3": false,
+     "wrote": "Snow White",
+     "gen": "Snow White<|endoftext|>",
+     "margin": 1.7325
+    },
+    {
+     "i": 580,
+     "l1": false,
+     "l3": false,
+     "wrote": "purse",
+     "gen": "purse<|endoftext|>",
+     "margin": -0.0145
+    },
+    {
+     "i": 581,
+     "l1": true,
+     "l3": true,
+     "wrote": "purse",
+     "gen": "purse<|endoftext|>",
+     "margin": 1.0585
+    },
+    {
+     "i": 582,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 0.3925
+    },
+    {
+     "i": 583,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 2.4635
+    },
+    {
+     "i": 584,
+     "l1": true,
+     "l3": true,
+     "wrote": "spoon",
+     "gen": "spoon<|endoftext|>",
+     "margin": 1.3735
+    },
+    {
+     "i": 585,
+     "l1": true,
+     "l3": true,
+     "wrote": "office",
+     "gen": "office<|endoftext|>",
+     "margin": 0.532
+    },
+    {
+     "i": 586,
+     "l1": false,
+     "l3": true,
+     "wrote": "truck",
+     "gen": "truck<|endoftext|>",
+     "margin": -0.9122
+    },
+    {
+     "i": 587,
+     "l1": true,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car<|endoftext|>",
+     "margin": 0.0726
+    },
+    {
+     "i": 588,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 0.6439
+    },
+    {
+     "i": 589,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": 0.3401
+    },
+    {
+     "i": 590,
+     "l1": true,
+     "l3": false,
+     "wrote": "soap",
+     "gen": "soap<|endoftext|>",
+     "margin": 3.9815
+    },
+    {
+     "i": 591,
+     "l1": true,
+     "l3": false,
+     "wrote": "office",
+     "gen": "office<|endoftext|>",
+     "margin": 0.2488
+    },
+    {
+     "i": 592,
+     "l1": true,
+     "l3": false,
+     "wrote": "medicine",
+     "gen": "medicine<|endoftext|>",
+     "margin": 5.9018
+    },
+    {
+     "i": 593,
+     "l1": true,
+     "l3": false,
+     "wrote": "food truck",
+     "gen": "food truck<|endoftext|>",
+     "margin": 2.0935
+    },
+    {
+     "i": 594,
+     "l1": false,
+     "l3": true,
+     "wrote": "food truck",
+     "gen": "food truck<|endoftext|>",
+     "margin": -0.2988
+    },
+    {
+     "i": 595,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 4.3437
+    },
+    {
+     "i": 596,
+     "l1": true,
+     "l3": true,
+     "wrote": "hash brown",
+     "gen": "hash brown<|endoftext|>",
+     "margin": 2.4564
+    },
+    {
+     "i": 597,
+     "l1": false,
+     "l3": false,
+     "wrote": "hash brown",
+     "gen": "hash brown<|endoftext|>",
+     "margin": -0.0568
+    },
+    {
+     "i": 598,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": 3.5112
+    },
+    {
+     "i": 599,
+     "l1": false,
+     "l3": false,
+     "wrote": "therapy",
+     "gen": "therapy<|endoftext|>",
+     "margin": -0.8875
+    },
+    {
+     "i": 600,
+     "l1": false,
+     "l3": true,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -0.4206
+    },
+    {
+     "i": 601,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -0.6415
+    },
+    {
+     "i": 602,
+     "l1": true,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": 0.2489
+    },
+    {
+     "i": 603,
+     "l1": true,
+     "l3": false,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": 2.2704
+    },
+    {
+     "i": 604,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": -0.2321
+    },
+    {
+     "i": 605,
+     "l1": true,
+     "l3": true,
+     "wrote": "denim",
+     "gen": "denim<|endoftext|>",
+     "margin": 3.3114
+    },
+    {
+     "i": 606,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca<|endoftext|>",
+     "margin": 0.5947
+    },
+    {
+     "i": 607,
+     "l1": true,
+     "l3": false,
+     "wrote": "pushups",
+     "gen": "pushups<|endoftext|>",
+     "margin": 1.6067
+    },
+    {
+     "i": 608,
+     "l1": true,
+     "l3": true,
+     "wrote": "pushups",
+     "gen": "pushups<|endoftext|>",
+     "margin": 3.3414
+    },
+    {
+     "i": 609,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel<|endoftext|>",
+     "margin": -4.6051
+    },
+    {
+     "i": 610,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph<|endoftext|>",
+     "margin": 0.9591
+    },
+    {
+     "i": 611,
+     "l1": true,
+     "l3": false,
+     "wrote": "orphanage",
+     "gen": "orphanage<|endoftext|>",
+     "margin": 0.2751
+    },
+    {
+     "i": 612,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca<|endoftext|>",
+     "margin": 1.4989
+    },
+    {
+     "i": 613,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 0.9299
+    },
+    {
+     "i": 614,
+     "l1": false,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": -0.9296
+    },
+    {
+     "i": 615,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 0.6483
+    },
+    {
+     "i": 616,
+     "l1": true,
+     "l3": false,
+     "wrote": "wet",
+     "gen": "wet<|endoftext|>",
+     "margin": 3.7733
+    },
+    {
+     "i": 617,
+     "l1": true,
+     "l3": true,
+     "wrote": "pick",
+     "gen": "pick<|endoftext|>",
+     "margin": 0.4786
+    },
+    {
+     "i": 618,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 1.2071
+    },
+    {
+     "i": 619,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": -0.3833
+    },
+    {
+     "i": 620,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 3.926
+    },
+    {
+     "i": 621,
+     "l1": true,
+     "l3": false,
+     "wrote": "spring",
+     "gen": "spring<|endoftext|>",
+     "margin": 4.1861
+    },
+    {
+     "i": 622,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.6645
+    },
+    {
+     "i": 623,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -1.1237
+    },
+    {
+     "i": 624,
+     "l1": true,
+     "l3": false,
+     "wrote": "painting",
+     "gen": "painting<|endoftext|>",
+     "margin": 2.186
+    },
+    {
+     "i": 625,
+     "l1": true,
+     "l3": true,
+     "wrote": "painting",
+     "gen": "painting<|endoftext|>",
+     "margin": 0.5974
+    },
+    {
+     "i": 626,
+     "l1": false,
+     "l3": true,
+     "wrote": "house",
+     "gen": "house<|endoftext|>",
+     "margin": -0.872
+    },
+    {
+     "i": 627,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 3.0759
+    },
+    {
+     "i": 628,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": -0.1961
+    },
+    {
+     "i": 629,
+     "l1": false,
+     "l3": false,
+     "wrote": "plaque",
+     "gen": "plaque<|endoftext|>",
+     "margin": -0.2822
+    },
+    {
+     "i": 630,
+     "l1": false,
+     "l3": true,
+     "wrote": "Ryan",
+     "gen": "Ryan<|endoftext|>",
+     "margin": -0.3934
+    },
+    {
+     "i": 631,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 2.0728
+    },
+    {
+     "i": 632,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 1.9016
+    },
+    {
+     "i": 633,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": -0.578
+    },
+    {
+     "i": 634,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": -0.0333
+    },
+    {
+     "i": 635,
+     "l1": true,
+     "l3": true,
+     "wrote": "tongue",
+     "gen": "tongue<|endoftext|>",
+     "margin": 1.8293
+    },
+    {
+     "i": 636,
+     "l1": false,
+     "l3": false,
+     "wrote": "tongue",
+     "gen": "tongue<|endoftext|>",
+     "margin": -1.4213
+    },
+    {
+     "i": 637,
+     "l1": true,
+     "l3": false,
+     "wrote": "truck",
+     "gen": "truck<|endoftext|>",
+     "margin": 1.0718
+    },
+    {
+     "i": 638,
+     "l1": true,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": 1.4501
+    },
+    {
+     "i": 639,
+     "l1": false,
+     "l3": false,
+     "wrote": "pants",
+     "gen": "pants<|endoftext|>",
+     "margin": -6.8313
+    },
+    {
+     "i": 640,
+     "l1": true,
+     "l3": true,
+     "wrote": "pants",
+     "gen": "pants<|endoftext|>",
+     "margin": 5.6218
+    },
+    {
+     "i": 641,
+     "l1": true,
+     "l3": false,
+     "wrote": "rock",
+     "gen": "rock<|endoftext|>",
+     "margin": 0.7205
+    },
+    {
+     "i": 642,
+     "l1": false,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": -4.5014
+    },
+    {
+     "i": 643,
+     "l1": false,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": -3.0929
+    },
+    {
+     "i": 644,
+     "l1": true,
+     "l3": false,
+     "wrote": "package",
+     "gen": "package<|endoftext|>",
+     "margin": 0.094
+    },
+    {
+     "i": 645,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 2.0631
+    },
+    {
+     "i": 646,
+     "l1": true,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": 0.7646
+    },
+    {
+     "i": 647,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 0.547
+    },
+    {
+     "i": 648,
+     "l1": false,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": -0.4138
+    },
+    {
+     "i": 649,
+     "l1": true,
+     "l3": false,
+     "wrote": "oranges",
+     "gen": "oranges<|endoftext|>",
+     "margin": 1.0705
+    },
+    {
+     "i": 650,
+     "l1": false,
+     "l3": true,
+     "wrote": "oranges",
+     "gen": "oranges<|endoftext|>",
+     "margin": -0.2888
+    },
+    {
+     "i": 651,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": -1.2518
+    },
+    {
+     "i": 652,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": -1.6276
+    },
+    {
+     "i": 653,
+     "l1": true,
+     "l3": true,
+     "wrote": "jacket",
+     "gen": "jacket<|endoftext|>",
+     "margin": 0.3765
+    },
+    {
+     "i": 654,
+     "l1": false,
+     "l3": true,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -3.4075
+    },
+    {
+     "i": 655,
+     "l1": true,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": 5.4841
+    },
+    {
+     "i": 656,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 0.7642
+    },
+    {
+     "i": 657,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 0.2639
+    },
+    {
+     "i": 658,
+     "l1": false,
+     "l3": true,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": -0.9038
+    },
+    {
+     "i": 659,
+     "l1": true,
+     "l3": false,
+     "wrote": "job",
+     "gen": "job<|endoftext|>",
+     "margin": 0.6333
+    },
+    {
+     "i": 660,
+     "l1": true,
+     "l3": false,
+     "wrote": "socks",
+     "gen": "socks<|endoftext|>",
+     "margin": 0.3878
+    },
+    {
+     "i": 661,
+     "l1": true,
+     "l3": true,
+     "wrote": "socks",
+     "gen": "socks<|endoftext|>",
+     "margin": 0.3063
+    },
+    {
+     "i": 662,
+     "l1": true,
+     "l3": false,
+     "wrote": "computers",
+     "gen": "computers<|endoftext|>",
+     "margin": 1.5205
+    },
+    {
+     "i": 663,
+     "l1": false,
+     "l3": true,
+     "wrote": "computers",
+     "gen": "computers<|endoftext|>",
+     "margin": -2.7533
+    },
+    {
+     "i": 664,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": 0.1613
+    },
+    {
+     "i": 665,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 0.2453
+    },
+    {
+     "i": 666,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -0.5382
+    },
+    {
+     "i": 667,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -0.4569
+    },
+    {
+     "i": 668,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason<|endoftext|>",
+     "margin": 1.8561
+    },
+    {
+     "i": 669,
+     "l1": true,
+     "l3": true,
+     "wrote": "epaulette shirt",
+     "gen": "epaulette shirt<|endoftext|>",
+     "margin": 2.2896
+    },
+    {
+     "i": 670,
+     "l1": true,
+     "l3": false,
+     "wrote": "energy",
+     "gen": "energy<|endoftext|>",
+     "margin": 2.5685
+    },
+    {
+     "i": 671,
+     "l1": true,
+     "l3": true,
+     "wrote": "toys",
+     "gen": "toys<|endoftext|>",
+     "margin": 3.2796
+    },
+    {
+     "i": 672,
+     "l1": true,
+     "l3": false,
+     "wrote": "steak",
+     "gen": "steak<|endoftext|>",
+     "margin": 2.9342
+    },
+    {
+     "i": 673,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": 2.0308
+    },
+    {
+     "i": 674,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": 1.4187
+    },
+    {
+     "i": 675,
+     "l1": true,
+     "l3": true,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": 0.221
+    },
+    {
+     "i": 676,
+     "l1": true,
+     "l3": false,
+     "wrote": "sad",
+     "gen": "sad<|endoftext|>",
+     "margin": 1.4983
+    },
+    {
+     "i": 677,
+     "l1": true,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan<|endoftext|>",
+     "margin": 0.2515
+    },
+    {
+     "i": 678,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -2.7499
+    },
+    {
+     "i": 679,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": -0.3125
+    },
+    {
+     "i": 680,
+     "l1": true,
+     "l3": false,
+     "wrote": "playground",
+     "gen": "playground<|endoftext|>",
+     "margin": 2.9959
+    },
+    {
+     "i": 681,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 1.175
+    },
+    {
+     "i": 682,
+     "l1": false,
+     "l3": false,
+     "wrote": "fields",
+     "gen": "fields<|endoftext|>",
+     "margin": -1.2868
+    },
+    {
+     "i": 683,
+     "l1": true,
+     "l3": false,
+     "wrote": "sport",
+     "gen": "sport<|endoftext|>",
+     "margin": 3.6685
+    },
+    {
+     "i": 684,
+     "l1": true,
+     "l3": false,
+     "wrote": "tap",
+     "gen": "tap<|endoftext|>",
+     "margin": 0.2074
+    },
+    {
+     "i": 685,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 0.6856
+    },
+    {
+     "i": 686,
+     "l1": true,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 0.1393
+    },
+    {
+     "i": 687,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 0.6919
+    },
+    {
+     "i": 688,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 0.0405
+    },
+    {
+     "i": 689,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 1.0686
+    },
+    {
+     "i": 690,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.1454
+    },
+    {
+     "i": 691,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 4.2173
+    },
+    {
+     "i": 692,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": 3.7497
+    },
+    {
+     "i": 693,
+     "l1": false,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": -0.5081
+    },
+    {
+     "i": 694,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 1.1817
+    },
+    {
+     "i": 695,
+     "l1": false,
+     "l3": false,
+     "wrote": "mountain",
+     "gen": "mountain<|endoftext|>",
+     "margin": -0.7781
+    },
+    {
+     "i": 696,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": 1.0415
+    },
+    {
+     "i": 697,
+     "l1": true,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": 0.6317
+    },
+    {
+     "i": 698,
+     "l1": false,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": -0.9331
+    },
+    {
+     "i": 699,
+     "l1": true,
+     "l3": false,
+     "wrote": "barbecue",
+     "gen": "barbecue<|endoftext|>",
+     "margin": 0.6299
+    },
+    {
+     "i": 700,
+     "l1": true,
+     "l3": true,
+     "wrote": "Glaciers",
+     "gen": "Glaciers<|endoftext|>",
+     "margin": 1.1097
+    },
+    {
+     "i": 701,
+     "l1": true,
+     "l3": true,
+     "wrote": "pen",
+     "gen": "pencil<|endoftext|>",
+     "margin": 1.0651
+    },
+    {
+     "i": 702,
+     "l1": false,
+     "l3": false,
+     "wrote": "pen",
+     "gen": "pencil<|endoftext|>",
+     "margin": -1.0575
+    },
+    {
+     "i": 703,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": 0.1373
+    },
+    {
+     "i": 704,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": 0.4691
+    },
+    {
+     "i": 705,
+     "l1": false,
+     "l3": false,
+     "wrote": "bucket",
+     "gen": "bucket<|endoftext|>",
+     "margin": -1.4166
+    },
+    {
+     "i": 706,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": 1.136
+    },
+    {
+     "i": 707,
+     "l1": false,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": -1.0746
+    },
+    {
+     "i": 708,
+     "l1": true,
+     "l3": false,
+     "wrote": "tofu",
+     "gen": "tofu<|endoftext|>",
+     "margin": 6.8187
+    },
+    {
+     "i": 709,
+     "l1": false,
+     "l3": true,
+     "wrote": "fever",
+     "gen": "fever<|endoftext|>",
+     "margin": -0.3245
+    },
+    {
+     "i": 710,
+     "l1": false,
+     "l3": true,
+     "wrote": "pressure cook",
+     "gen": "pressure cook<|endoftext|>",
+     "margin": -0.3717
+    },
+    {
+     "i": 711,
+     "l1": true,
+     "l3": false,
+     "wrote": "pressure cook",
+     "gen": "pressure cook<|endoftext|>",
+     "margin": 0.2355
+    },
+    {
+     "i": 712,
+     "l1": false,
+     "l3": false,
+     "wrote": "computer",
+     "gen": "computer<|endoftext|>",
+     "margin": -0.9677
+    },
+    {
+     "i": 713,
+     "l1": false,
+     "l3": true,
+     "wrote": "toys",
+     "gen": "toys<|endoftext|>",
+     "margin": -1.5388
+    },
+    {
+     "i": 714,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": 1.4958
+    },
+    {
+     "i": 715,
+     "l1": true,
+     "l3": true,
+     "wrote": "machinery",
+     "gen": "machinery<|endoftext|>",
+     "margin": 1.0691
+    },
+    {
+     "i": 716,
+     "l1": true,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 1.1333
+    },
+    {
+     "i": 717,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel<|endoftext|>",
+     "margin": 2.1433
+    },
+    {
+     "i": 718,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eyes",
+     "gen": "Eyes<|endoftext|>",
+     "margin": -1.6759
+    },
+    {
+     "i": 719,
+     "l1": true,
+     "l3": true,
+     "wrote": "rings",
+     "gen": "rings<|endoftext|>",
+     "margin": 2.0702
+    },
+    {
+     "i": 720,
+     "l1": true,
+     "l3": false,
+     "wrote": "black",
+     "gen": "black<|endoftext|>",
+     "margin": 0.9627
+    },
+    {
+     "i": 721,
+     "l1": true,
+     "l3": true,
+     "wrote": "black",
+     "gen": "black<|endoftext|>",
+     "margin": 1.4221
+    },
+    {
+     "i": 722,
+     "l1": true,
+     "l3": true,
+     "wrote": "gym",
+     "gen": "gym<|endoftext|>",
+     "margin": 4.1881
+    },
+    {
+     "i": 723,
+     "l1": true,
+     "l3": true,
+     "wrote": "ear ache",
+     "gen": "ear ache<|endoftext|>",
+     "margin": 1.5992
+    },
+    {
+     "i": 724,
+     "l1": false,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": -1.4635
+    },
+    {
+     "i": 725,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": -0.0873
+    },
+    {
+     "i": 726,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.5185
+    },
+    {
+     "i": 727,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 1.6075
+    },
+    {
+     "i": 728,
+     "l1": true,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 0.3629
+    },
+    {
+     "i": 729,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": 3.2679
+    },
+    {
+     "i": 730,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": 1.4365
+    },
+    {
+     "i": 731,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": -0.8397
+    },
+    {
+     "i": 732,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.7433
+    },
+    {
+     "i": 733,
+     "l1": false,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": -0.1822
+    },
+    {
+     "i": 734,
+     "l1": true,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 0.0564
+    },
+    {
+     "i": 735,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kevin",
+     "gen": "Kevin<|endoftext|>",
+     "margin": 0.9947
+    },
+    {
+     "i": 736,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kevin",
+     "gen": "Kevin<|endoftext|>",
+     "margin": -0.4323
+    },
+    {
+     "i": 737,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": 0.2668
+    },
+    {
+     "i": 738,
+     "l1": true,
+     "l3": true,
+     "wrote": "aquarium",
+     "gen": "aquarium<|endoftext|>",
+     "margin": 1.3706
+    },
+    {
+     "i": 739,
+     "l1": false,
+     "l3": true,
+     "wrote": "lots",
+     "gen": "lots<|endoftext|>",
+     "margin": -0.989
+    },
+    {
+     "i": 740,
+     "l1": true,
+     "l3": false,
+     "wrote": "lots",
+     "gen": "lots<|endoftext|>",
+     "margin": 0.8138
+    },
+    {
+     "i": 741,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 7.4413
+    },
+    {
+     "i": 742,
+     "l1": false,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": -0.0054
+    },
+    {
+     "i": 743,
+     "l1": true,
+     "l3": true,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": 0.0343
+    },
+    {
+     "i": 744,
+     "l1": true,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": 0.163
+    },
+    {
+     "i": 745,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": -0.0608
+    },
+    {
+     "i": 746,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 5.8795
+    },
+    {
+     "i": 747,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca<|endoftext|>",
+     "margin": -0.4836
+    },
+    {
+     "i": 748,
+     "l1": true,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 2.506
+    },
+    {
+     "i": 749,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 1.0404
+    },
+    {
+     "i": 750,
+     "l1": false,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": -0.6002
+    },
+    {
+     "i": 751,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.9154
+    },
+    {
+     "i": 752,
+     "l1": false,
+     "l3": true,
+     "wrote": "light",
+     "gen": "light<|endoftext|>",
+     "margin": -0.7643
+    },
+    {
+     "i": 753,
+     "l1": true,
+     "l3": true,
+     "wrote": "suitcase",
+     "gen": "suitcase<|endoftext|>",
+     "margin": 3.7126
+    },
+    {
+     "i": 754,
+     "l1": false,
+     "l3": false,
+     "wrote": "suitcase",
+     "gen": "suitcase<|endoftext|>",
+     "margin": -3.4124
+    },
+    {
+     "i": 755,
+     "l1": true,
+     "l3": true,
+     "wrote": "desk",
+     "gen": "desk<|endoftext|>",
+     "margin": 3.2349
+    },
+    {
+     "i": 756,
+     "l1": true,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert<|endoftext|>",
+     "margin": 1.2339
+    },
+    {
+     "i": 757,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.1501
+    },
+    {
+     "i": 758,
+     "l1": true,
+     "l3": false,
+     "wrote": "Joseph",
+     "gen": "Joseph<|endoftext|>",
+     "margin": 0.6807
+    },
+    {
+     "i": 759,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": 0.504
+    },
+    {
+     "i": 760,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.3641
+    },
+    {
+     "i": 761,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 2.647
+    },
+    {
+     "i": 762,
+     "l1": true,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria<|endoftext|>",
+     "margin": 1.1087
+    },
+    {
+     "i": 763,
+     "l1": true,
+     "l3": false,
+     "wrote": "auditorium",
+     "gen": "auditorium<|endoftext|>",
+     "margin": 0.0685
+    },
+    {
+     "i": 764,
+     "l1": false,
+     "l3": true,
+     "wrote": "auditorium",
+     "gen": "auditorium<|endoftext|>",
+     "margin": -0.097
+    },
+    {
+     "i": 765,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brandy",
+     "gen": "Brandy<|endoftext|>",
+     "margin": 1.0064
+    },
+    {
+     "i": 766,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brandy",
+     "gen": "Brandy<|endoftext|>",
+     "margin": -0.725
+    },
+    {
+     "i": 767,
+     "l1": true,
+     "l3": false,
+     "wrote": "beef",
+     "gen": "beef<|endoftext|>",
+     "margin": 3.1759
+    },
+    {
+     "i": 768,
+     "l1": true,
+     "l3": true,
+     "wrote": "beef",
+     "gen": "beef<|endoftext|>",
+     "margin": 1.2698
+    },
+    {
+     "i": 769,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": -0.1537
+    },
+    {
+     "i": 770,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": 0.0318
+    },
+    {
+     "i": 771,
+     "l1": true,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 1.6838
+    },
+    {
+     "i": 772,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": -0.6044
+    },
+    {
+     "i": 773,
+     "l1": false,
+     "l3": true,
+     "wrote": "Hunter",
+     "gen": "Hunter<|endoftext|>",
+     "margin": -2.0187
+    },
+    {
+     "i": 774,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca<|endoftext|>",
+     "margin": -0.9451
+    },
+    {
+     "i": 775,
+     "l1": true,
+     "l3": false,
+     "wrote": "email",
+     "gen": "email<|endoftext|>",
+     "margin": 0.7768
+    },
+    {
+     "i": 776,
+     "l1": false,
+     "l3": false,
+     "wrote": "hot water",
+     "gen": "hot water<|endoftext|>",
+     "margin": -0.6611
+    },
+    {
+     "i": 777,
+     "l1": true,
+     "l3": false,
+     "wrote": "gift",
+     "gen": "gift<|endoftext|>",
+     "margin": 0.3774
+    },
+    {
+     "i": 778,
+     "l1": false,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": -0.3188
+    },
+    {
+     "i": 779,
+     "l1": true,
+     "l3": false,
+     "wrote": "clothing",
+     "gen": "clothing<|endoftext|>",
+     "margin": 0.7478
+    },
+    {
+     "i": 780,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": 0.384
+    },
+    {
+     "i": 781,
+     "l1": false,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": -0.2337
+    },
+    {
+     "i": 782,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.2614
+    },
+    {
+     "i": 783,
+     "l1": true,
+     "l3": false,
+     "wrote": "carpet",
+     "gen": "carpet<|endoftext|>",
+     "margin": 0.3845
+    },
+    {
+     "i": 784,
+     "l1": true,
+     "l3": false,
+     "wrote": "cottage",
+     "gen": "cottage<|endoftext|>",
+     "margin": 1.4392
+    },
+    {
+     "i": 785,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 0.0267
+    },
+    {
+     "i": 786,
+     "l1": true,
+     "l3": false,
+     "wrote": "peripherals",
+     "gen": "peripherals<|endoftext|>",
+     "margin": 0.7735
+    },
+    {
+     "i": 787,
+     "l1": false,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": -3.268
+    },
+    {
+     "i": 788,
+     "l1": true,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 1.2826
+    },
+    {
+     "i": 789,
+     "l1": true,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": 1.2292
+    },
+    {
+     "i": 790,
+     "l1": false,
+     "l3": true,
+     "wrote": "bed",
+     "gen": "bed<|endoftext|>",
+     "margin": -0.9665
+    },
+    {
+     "i": 791,
+     "l1": false,
+     "l3": true,
+     "wrote": "screw",
+     "gen": "screw<|endoftext|>",
+     "margin": -0.3286
+    },
+    {
+     "i": 792,
+     "l1": true,
+     "l3": true,
+     "wrote": "mask",
+     "gen": "mask<|endoftext|>",
+     "margin": 0.369
+    },
+    {
+     "i": 793,
+     "l1": true,
+     "l3": false,
+     "wrote": "mask",
+     "gen": "mask<|endoftext|>",
+     "margin": 3.0752
+    },
+    {
+     "i": 794,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": 1.1055
+    },
+    {
+     "i": 795,
+     "l1": true,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": 1.661
+    },
+    {
+     "i": 796,
+     "l1": true,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert<|endoftext|>",
+     "margin": 1.0691
+    },
+    {
+     "i": 797,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.9315
+    },
+    {
+     "i": 798,
+     "l1": false,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": -0.5031
+    },
+    {
+     "i": 799,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 1.6487
+    },
+    {
+     "i": 800,
+     "l1": false,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": -0.8163
+    },
+    {
+     "i": 801,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 0.3728
+    },
+    {
+     "i": 802,
+     "l1": false,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela<|endoftext|>",
+     "margin": -1.6448
+    },
+    {
+     "i": 803,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -1.0205
+    },
+    {
+     "i": 804,
+     "l1": true,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 2.7271
+    },
+    {
+     "i": 805,
+     "l1": true,
+     "l3": true,
+     "wrote": "chest",
+     "gen": "chest<|endoftext|>",
+     "margin": 1.8719
+    },
+    {
+     "i": 806,
+     "l1": true,
+     "l3": false,
+     "wrote": "chest",
+     "gen": "chest<|endoftext|>",
+     "margin": 2.8063
+    },
+    {
+     "i": 807,
+     "l1": false,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": -0.3222
+    },
+    {
+     "i": 808,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.3828
+    },
+    {
+     "i": 809,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph<|endoftext|>",
+     "margin": -0.4926
+    },
+    {
+     "i": 810,
+     "l1": true,
+     "l3": false,
+     "wrote": "fertilizer",
+     "gen": "fertilizer<|endoftext|>",
+     "margin": 1.9126
+    },
+    {
+     "i": 811,
+     "l1": false,
+     "l3": true,
+     "wrote": "fertilizer",
+     "gen": "fertilizer<|endoftext|>",
+     "margin": -0.5771
+    },
+    {
+     "i": 812,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": 2.2698
+    },
+    {
+     "i": 813,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samuel",
+     "gen": "Samuel<|endoftext|>",
+     "margin": 2.1685
+    },
+    {
+     "i": 814,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel<|endoftext|>",
+     "margin": -0.6784
+    },
+    {
+     "i": 815,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": 1.7795
+    },
+    {
+     "i": 816,
+     "l1": true,
+     "l3": false,
+     "wrote": "textbook",
+     "gen": "textbook<|endoftext|>",
+     "margin": 1.7608
+    },
+    {
+     "i": 817,
+     "l1": false,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": -3.068
+    },
+    {
+     "i": 818,
+     "l1": true,
+     "l3": false,
+     "wrote": "exam",
+     "gen": "exam<|endoftext|>",
+     "margin": 1.1611
+    },
+    {
+     "i": 819,
+     "l1": true,
+     "l3": true,
+     "wrote": "exam",
+     "gen": "exam<|endoftext|>",
+     "margin": 10.4178
+    },
+    {
+     "i": 820,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brian",
+     "gen": "Brian<|endoftext|>",
+     "margin": 2.6561
+    },
+    {
+     "i": 821,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian<|endoftext|>",
+     "margin": -0.3071
+    },
+    {
+     "i": 822,
+     "l1": false,
+     "l3": true,
+     "wrote": "kid",
+     "gen": "kid<|endoftext|>",
+     "margin": -2.6706
+    },
+    {
+     "i": 823,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 1.194
+    },
+    {
+     "i": 824,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 1.2626
+    },
+    {
+     "i": 825,
+     "l1": true,
+     "l3": false,
+     "wrote": "number",
+     "gen": "number<|endoftext|>",
+     "margin": 0.3492
+    },
+    {
+     "i": 826,
+     "l1": true,
+     "l3": false,
+     "wrote": "coffee",
+     "gen": "coffee<|endoftext|>",
+     "margin": 5.9139
+    },
+    {
+     "i": 827,
+     "l1": true,
+     "l3": false,
+     "wrote": "cake",
+     "gen": "cake<|endoftext|>",
+     "margin": 1.4889
+    },
+    {
+     "i": 828,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": 1.1037
+    },
+    {
+     "i": 829,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": -0.9385
+    },
+    {
+     "i": 830,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 0.8181
+    },
+    {
+     "i": 831,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 0.4628
+    },
+    {
+     "i": 832,
+     "l1": true,
+     "l3": false,
+     "wrote": "Nelson",
+     "gen": "Nelson<|endoftext|>",
+     "margin": 2.0368
+    },
+    {
+     "i": 833,
+     "l1": false,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": -0.0317
+    },
+    {
+     "i": 834,
+     "l1": true,
+     "l3": false,
+     "wrote": "Paintshop software",
+     "gen": "Paintshop software<|endoftext|>",
+     "margin": 2.0636
+    },
+    {
+     "i": 835,
+     "l1": true,
+     "l3": true,
+     "wrote": "work shift",
+     "gen": "work shift<|endoftext|>",
+     "margin": 0.6894
+    },
+    {
+     "i": 836,
+     "l1": true,
+     "l3": false,
+     "wrote": "groceries",
+     "gen": "groceries<|endoftext|>",
+     "margin": 4.4495
+    },
+    {
+     "i": 837,
+     "l1": false,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": -0.618
+    },
+    {
+     "i": 838,
+     "l1": false,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": -0.2354
+    },
+    {
+     "i": 839,
+     "l1": true,
+     "l3": true,
+     "wrote": "pen",
+     "gen": "pen<|endoftext|>",
+     "margin": 1.0102
+    },
+    {
+     "i": 840,
+     "l1": true,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence<|endoftext|>",
+     "margin": 0.0079
+    },
+    {
+     "i": 841,
+     "l1": true,
+     "l3": false,
+     "wrote": "cleaner",
+     "gen": "cleaner<|endoftext|>",
+     "margin": 0.7415
+    },
+    {
+     "i": 842,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.5226
+    },
+    {
+     "i": 843,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": -0.0886
+    },
+    {
+     "i": 844,
+     "l1": false,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": -0.7104
+    },
+    {
+     "i": 845,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin<|endoftext|>",
+     "margin": -2.5935
+    },
+    {
+     "i": 846,
+     "l1": false,
+     "l3": false,
+     "wrote": "laundry room",
+     "gen": "laundry room<|endoftext|>",
+     "margin": -1.3425
+    },
+    {
+     "i": 847,
+     "l1": true,
+     "l3": true,
+     "wrote": "north",
+     "gen": "north<|endoftext|>",
+     "margin": 0.2006
+    },
+    {
+     "i": 848,
+     "l1": false,
+     "l3": true,
+     "wrote": "south",
+     "gen": "south<|endoftext|>",
+     "margin": -0.0808
+    },
+    {
+     "i": 849,
+     "l1": true,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan<|endoftext|>",
+     "margin": 0.019
+    },
+    {
+     "i": 850,
+     "l1": false,
+     "l3": true,
+     "wrote": "thief",
+     "gen": "thief<|endoftext|>",
+     "margin": -9.7887
+    },
+    {
+     "i": 851,
+     "l1": true,
+     "l3": false,
+     "wrote": "steak",
+     "gen": "steak<|endoftext|>",
+     "margin": 0.3581
+    },
+    {
+     "i": 852,
+     "l1": true,
+     "l3": true,
+     "wrote": "steak",
+     "gen": "steak<|endoftext|>",
+     "margin": 1.889
+    },
+    {
+     "i": 853,
+     "l1": true,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": 0.8406
+    },
+    {
+     "i": 854,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": 1.284
+    },
+    {
+     "i": 855,
+     "l1": true,
+     "l3": true,
+     "wrote": "hose",
+     "gen": "hose<|endoftext|>",
+     "margin": 0.4585
+    },
+    {
+     "i": 856,
+     "l1": true,
+     "l3": true,
+     "wrote": "tank",
+     "gen": "tank<|endoftext|>",
+     "margin": 3.2232
+    },
+    {
+     "i": 857,
+     "l1": true,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": 2.1185
+    },
+    {
+     "i": 858,
+     "l1": true,
+     "l3": true,
+     "wrote": "home",
+     "gen": "home<|endoftext|>",
+     "margin": 0.474
+    },
+    {
+     "i": 859,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 4.5497
+    },
+    {
+     "i": 860,
+     "l1": true,
+     "l3": true,
+     "wrote": "lawn",
+     "gen": "lawn<|endoftext|>",
+     "margin": 0.491
+    },
+    {
+     "i": 861,
+     "l1": true,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": 2.4213
+    },
+    {
+     "i": 862,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": 2.8826
+    },
+    {
+     "i": 863,
+     "l1": false,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": -0.5604
+    },
+    {
+     "i": 864,
+     "l1": true,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 1.3082
+    },
+    {
+     "i": 865,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey<|endoftext|>",
+     "margin": -0.0152
+    },
+    {
+     "i": 866,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey<|endoftext|>",
+     "margin": 0.5766
+    },
+    {
+     "i": 867,
+     "l1": false,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": -1.0191
+    },
+    {
+     "i": 868,
+     "l1": true,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 0.6464
+    },
+    {
+     "i": 869,
+     "l1": true,
+     "l3": false,
+     "wrote": "hall",
+     "gen": "hall<|endoftext|>",
+     "margin": 0.7728
+    },
+    {
+     "i": 870,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": -0.3474
+    },
+    {
+     "i": 871,
+     "l1": true,
+     "l3": true,
+     "wrote": "thighs",
+     "gen": "thighs<|endoftext|>",
+     "margin": 1.3486
+    },
+    {
+     "i": 872,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": -1.4468
+    },
+    {
+     "i": 873,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": 1.1469
+    },
+    {
+     "i": 874,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -0.7698
+    },
+    {
+     "i": 875,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.6705
+    },
+    {
+     "i": 876,
+     "l1": true,
+     "l3": true,
+     "wrote": "rags",
+     "gen": "rags<|endoftext|>",
+     "margin": 2.8555
+    },
+    {
+     "i": 877,
+     "l1": true,
+     "l3": false,
+     "wrote": "essay",
+     "gen": "essay<|endoftext|>",
+     "margin": 0.4516
+    },
+    {
+     "i": 878,
+     "l1": true,
+     "l3": false,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 0.2182
+    },
+    {
+     "i": 879,
+     "l1": false,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William<|endoftext|>",
+     "margin": -0.6462
+    },
+    {
+     "i": 880,
+     "l1": false,
+     "l3": true,
+     "wrote": "concrete",
+     "gen": "concrete<|endoftext|>",
+     "margin": -0.128
+    },
+    {
+     "i": 881,
+     "l1": true,
+     "l3": false,
+     "wrote": "concrete",
+     "gen": "concrete<|endoftext|>",
+     "margin": 0.1555
+    },
+    {
+     "i": 882,
+     "l1": false,
+     "l3": false,
+     "wrote": "generator",
+     "gen": "generator<|endoftext|>",
+     "margin": -3.6539
+    },
+    {
+     "i": 883,
+     "l1": false,
+     "l3": false,
+     "wrote": "high",
+     "gen": "high<|endoftext|>",
+     "margin": -0.5438
+    },
+    {
+     "i": 884,
+     "l1": false,
+     "l3": true,
+     "wrote": "high",
+     "gen": "high<|endoftext|>",
+     "margin": -1.2409
+    },
+    {
+     "i": 885,
+     "l1": true,
+     "l3": true,
+     "wrote": "hair",
+     "gen": "hair<|endoftext|>",
+     "margin": 0.4005
+    },
+    {
+     "i": 886,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": 1.5584
+    },
+    {
+     "i": 887,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 2.2951
+    },
+    {
+     "i": 888,
+     "l1": false,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": -0.3925
+    },
+    {
+     "i": 889,
+     "l1": false,
+     "l3": true,
+     "wrote": "Lindsey",
+     "gen": "Lindsey<|endoftext|>",
+     "margin": -0.1796
+    },
+    {
+     "i": 890,
+     "l1": true,
+     "l3": true,
+     "wrote": "lease",
+     "gen": "lease<|endoftext|>",
+     "margin": 2.4173
+    },
+    {
+     "i": 891,
+     "l1": false,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin<|endoftext|>",
+     "margin": -0.0433
+    },
+    {
+     "i": 892,
+     "l1": false,
+     "l3": true,
+     "wrote": "shirt",
+     "gen": "shirt<|endoftext|>",
+     "margin": -0.2309
+    },
+    {
+     "i": 893,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": -1.1545
+    },
+    {
+     "i": 894,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": 0.4405
+    },
+    {
+     "i": 895,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.4905
+    },
+    {
+     "i": 896,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 1.6607
+    },
+    {
+     "i": 897,
+     "l1": true,
+     "l3": false,
+     "wrote": "store",
+     "gen": "store<|endoftext|>",
+     "margin": 0.3744
+    },
+    {
+     "i": 898,
+     "l1": true,
+     "l3": true,
+     "wrote": "carrots",
+     "gen": "carrots<|endoftext|>",
+     "margin": 1.2013
+    },
+    {
+     "i": 899,
+     "l1": true,
+     "l3": false,
+     "wrote": "compost",
+     "gen": "compost<|endoftext|>",
+     "margin": 0.6901
+    },
+    {
+     "i": 900,
+     "l1": true,
+     "l3": false,
+     "wrote": "jacket",
+     "gen": "jacket<|endoftext|>",
+     "margin": 3.7016
+    },
+    {
+     "i": 901,
+     "l1": false,
+     "l3": true,
+     "wrote": "jacket",
+     "gen": "jacket<|endoftext|>",
+     "margin": -1.0007
+    },
+    {
+     "i": 902,
+     "l1": false,
+     "l3": true,
+     "wrote": "Ryan",
+     "gen": "Ryan<|endoftext|>",
+     "margin": -1.0589
+    },
+    {
+     "i": 903,
+     "l1": true,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan<|endoftext|>",
+     "margin": 0.4921
+    },
+    {
+     "i": 904,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 1.4928
+    },
+    {
+     "i": 905,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -0.8372
+    },
+    {
+     "i": 906,
+     "l1": true,
+     "l3": true,
+     "wrote": "boots",
+     "gen": "boots<|endoftext|>",
+     "margin": 0.1808
+    },
+    {
+     "i": 907,
+     "l1": true,
+     "l3": false,
+     "wrote": "boots",
+     "gen": "boots<|endoftext|>",
+     "margin": 0.7232
+    },
+    {
+     "i": 908,
+     "l1": false,
+     "l3": true,
+     "wrote": "bowls",
+     "gen": "bowls<|endoftext|>",
+     "margin": -0.4556
+    },
+    {
+     "i": 909,
+     "l1": false,
+     "l3": false,
+     "wrote": "bowls",
+     "gen": "bowls<|endoftext|>",
+     "margin": -1.0356
+    },
+    {
+     "i": 910,
+     "l1": false,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": -0.3288
+    },
+    {
+     "i": 911,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": -0.0071
+    },
+    {
+     "i": 912,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.5573
+    },
+    {
+     "i": 913,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.1491
+    },
+    {
+     "i": 914,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 1.8775
+    },
+    {
+     "i": 915,
+     "l1": true,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": 1.0917
+    },
+    {
+     "i": 916,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 3.7092
+    },
+    {
+     "i": 917,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron<|endoftext|>",
+     "margin": 3.5449
+    },
+    {
+     "i": 918,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle<|endoftext|>",
+     "margin": -0.134
+    },
+    {
+     "i": 919,
+     "l1": true,
+     "l3": true,
+     "wrote": "toy",
+     "gen": "toy<|endoftext|>",
+     "margin": 1.0218
+    },
+    {
+     "i": 920,
+     "l1": true,
+     "l3": false,
+     "wrote": "toy",
+     "gen": "toy<|endoftext|>",
+     "margin": 0.0442
+    },
+    {
+     "i": 921,
+     "l1": true,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": 0.6594
+    },
+    {
+     "i": 922,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey<|endoftext|>",
+     "margin": 1.5985
+    },
+    {
+     "i": 923,
+     "l1": false,
+     "l3": true,
+     "wrote": "apple",
+     "gen": "apple<|endoftext|>",
+     "margin": -0.3329
+    },
+    {
+     "i": 924,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 2.8402
+    },
+    {
+     "i": 925,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -0.2608
+    },
+    {
+     "i": 926,
+     "l1": true,
+     "l3": false,
+     "wrote": "creams",
+     "gen": "creams<|endoftext|>",
+     "margin": 0.0882
+    },
+    {
+     "i": 927,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": 1.0718
+    },
+    {
+     "i": 928,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca<|endoftext|>",
+     "margin": 0.2189
+    },
+    {
+     "i": 929,
+     "l1": true,
+     "l3": false,
+     "wrote": "page",
+     "gen": "page<|endoftext|>",
+     "margin": 2.7059
+    },
+    {
+     "i": 930,
+     "l1": false,
+     "l3": true,
+     "wrote": "page",
+     "gen": "page<|endoftext|>",
+     "margin": -2.5561
+    },
+    {
+     "i": 931,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 0.3978
+    },
+    {
+     "i": 932,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": -0.0319
+    },
+    {
+     "i": 933,
+     "l1": false,
+     "l3": false,
+     "wrote": "fork",
+     "gen": "fork<|endoftext|>",
+     "margin": -0.4721
+    },
+    {
+     "i": 934,
+     "l1": true,
+     "l3": false,
+     "wrote": "couch",
+     "gen": "couch<|endoftext|>",
+     "margin": 0.463
+    },
+    {
+     "i": 935,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": -0.5884
+    },
+    {
+     "i": 936,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": 1.0878
+    },
+    {
+     "i": 937,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": -0.5073
+    },
+    {
+     "i": 938,
+     "l1": true,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car<|endoftext|>",
+     "margin": 7.7495
+    },
+    {
+     "i": 939,
+     "l1": false,
+     "l3": true,
+     "wrote": "motorcycle",
+     "gen": "motorcycle<|endoftext|>",
+     "margin": -1.2711
+    },
+    {
+     "i": 940,
+     "l1": true,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 0.1838
+    },
+    {
+     "i": 941,
+     "l1": true,
+     "l3": true,
+     "wrote": "Nelson",
+     "gen": "Nelson<|endoftext|>",
+     "margin": 3.1949
+    },
+    {
+     "i": 942,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": -0.9082
+    },
+    {
+     "i": 943,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": 1.1179
+    },
+    {
+     "i": 944,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": 0.6974
+    },
+    {
+     "i": 945,
+     "l1": false,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": -1.6554
+    },
+    {
+     "i": 946,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": -0.2059
+    },
+    {
+     "i": 947,
+     "l1": true,
+     "l3": true,
+     "wrote": "diet",
+     "gen": "diet<|endoftext|>",
+     "margin": 0.3363
+    },
+    {
+     "i": 948,
+     "l1": true,
+     "l3": false,
+     "wrote": "sugar",
+     "gen": "sugar<|endoftext|>",
+     "margin": 2.9742
+    },
+    {
+     "i": 949,
+     "l1": false,
+     "l3": true,
+     "wrote": "sugar",
+     "gen": "sugar<|endoftext|>",
+     "margin": -1.9293
+    },
+    {
+     "i": 950,
+     "l1": false,
+     "l3": false,
+     "wrote": "sapling",
+     "gen": "sapling<|endoftext|>",
+     "margin": -0.7023
+    },
+    {
+     "i": 951,
+     "l1": true,
+     "l3": true,
+     "wrote": "sapling",
+     "gen": "sapling<|endoftext|>",
+     "margin": 0.4959
+    },
+    {
+     "i": 952,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -1.0453
+    },
+    {
+     "i": 953,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 1.9132
+    },
+    {
+     "i": 954,
+     "l1": true,
+     "l3": false,
+     "wrote": "computer",
+     "gen": "computer<|endoftext|>",
+     "margin": 1.7825
+    },
+    {
+     "i": 955,
+     "l1": false,
+     "l3": true,
+     "wrote": "computer",
+     "gen": "computer<|endoftext|>",
+     "margin": -3.1739
+    },
+    {
+     "i": 956,
+     "l1": false,
+     "l3": false,
+     "wrote": "bottle",
+     "gen": "bottle<|endoftext|>",
+     "margin": -0.2488
+    },
+    {
+     "i": 957,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": 0.3347
+    },
+    {
+     "i": 958,
+     "l1": true,
+     "l3": false,
+     "wrote": "herbs",
+     "gen": "herbs<|endoftext|>",
+     "margin": 3.3089
+    },
+    {
+     "i": 959,
+     "l1": true,
+     "l3": true,
+     "wrote": "herbs",
+     "gen": "herbs<|endoftext|>",
+     "margin": 3.0005
+    },
+    {
+     "i": 960,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -0.8259
+    },
+    {
+     "i": 961,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 0.0629
+    },
+    {
+     "i": 962,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 1.0046
+    },
+    {
+     "i": 963,
+     "l1": true,
+     "l3": true,
+     "wrote": "Aaron",
+     "gen": "Aaron<|endoftext|>",
+     "margin": 0.1554
+    },
+    {
+     "i": 964,
+     "l1": true,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 2.6912
+    },
+    {
+     "i": 965,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": 0.4011
+    },
+    {
+     "i": 966,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca<|endoftext|>",
+     "margin": -1.2908
+    },
+    {
+     "i": 967,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": 0.9965
+    },
+    {
+     "i": 968,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -0.6387
+    },
+    {
+     "i": 969,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": -1.6958
+    },
+    {
+     "i": 970,
+     "l1": false,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": -0.1183
+    },
+    {
+     "i": 971,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel<|endoftext|>",
+     "margin": -0.4085
+    },
+    {
+     "i": 972,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 1.7247
+    },
+    {
+     "i": 973,
+     "l1": false,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": -0.3382
+    },
+    {
+     "i": 974,
+     "l1": true,
+     "l3": true,
+     "wrote": "shoes",
+     "gen": "shoes<|endoftext|>",
+     "margin": 2.4902
+    },
+    {
+     "i": 975,
+     "l1": false,
+     "l3": false,
+     "wrote": "shoes",
+     "gen": "shoes<|endoftext|>",
+     "margin": -0.6203
+    },
+    {
+     "i": 976,
+     "l1": true,
+     "l3": true,
+     "wrote": "pocket",
+     "gen": "pocket<|endoftext|>",
+     "margin": 0.7546
+    },
+    {
+     "i": 977,
+     "l1": false,
+     "l3": false,
+     "wrote": "pocket",
+     "gen": "pocket<|endoftext|>",
+     "margin": -0.1623
+    },
+    {
+     "i": 978,
+     "l1": true,
+     "l3": true,
+     "wrote": "pen",
+     "gen": "pen<|endoftext|>",
+     "margin": 0.0406
+    },
+    {
+     "i": 979,
+     "l1": true,
+     "l3": true,
+     "wrote": "field",
+     "gen": "field<|endoftext|>",
+     "margin": 0.0098
+    },
+    {
+     "i": 980,
+     "l1": true,
+     "l3": true,
+     "wrote": "door",
+     "gen": "door<|endoftext|>",
+     "margin": 1.3976
+    },
+    {
+     "i": 981,
+     "l1": true,
+     "l3": false,
+     "wrote": "door",
+     "gen": "door<|endoftext|>",
+     "margin": 0.1464
+    },
+    {
+     "i": 982,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 0.9902
+    },
+    {
+     "i": 983,
+     "l1": false,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron<|endoftext|>",
+     "margin": -0.2179
+    },
+    {
+     "i": 984,
+     "l1": true,
+     "l3": true,
+     "wrote": "Aaron",
+     "gen": "Aaron<|endoftext|>",
+     "margin": 0.0881
+    },
+    {
+     "i": 985,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 3.7087
+    },
+    {
+     "i": 986,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": -0.1751
+    },
+    {
+     "i": 987,
+     "l1": true,
+     "l3": true,
+     "wrote": "ice",
+     "gen": "ice<|endoftext|>",
+     "margin": 3.6844
+    },
+    {
+     "i": 988,
+     "l1": true,
+     "l3": false,
+     "wrote": "ice",
+     "gen": "ice<|endoftext|>",
+     "margin": 1.028
+    },
+    {
+     "i": 989,
+     "l1": true,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": 0.2275
+    },
+    {
+     "i": 990,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph<|endoftext|>",
+     "margin": 0.205
+    },
+    {
+     "i": 991,
+     "l1": false,
+     "l3": true,
+     "wrote": "boots",
+     "gen": "boots<|endoftext|>",
+     "margin": -0.0107
+    },
+    {
+     "i": 992,
+     "l1": false,
+     "l3": false,
+     "wrote": "boots",
+     "gen": "boots<|endoftext|>",
+     "margin": -0.0212
+    },
+    {
+     "i": 993,
+     "l1": true,
+     "l3": false,
+     "wrote": "party",
+     "gen": "party<|endoftext|>",
+     "margin": 2.2545
+    },
+    {
+     "i": 994,
+     "l1": false,
+     "l3": false,
+     "wrote": "plane",
+     "gen": "plane<|endoftext|>",
+     "margin": -1.2353
+    },
+    {
+     "i": 995,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": 1.1199
+    },
+    {
+     "i": 996,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": -0.7599
+    },
+    {
+     "i": 997,
+     "l1": false,
+     "l3": false,
+     "wrote": "hat",
+     "gen": "hat<|endoftext|>",
+     "margin": -2.1207
+    },
+    {
+     "i": 998,
+     "l1": true,
+     "l3": true,
+     "wrote": "Hunter",
+     "gen": "Hunter<|endoftext|>",
+     "margin": 0.384
+    },
+    {
+     "i": 999,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -0.2214
+    },
+    {
+     "i": 1000,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron<|endoftext|>",
+     "margin": 0.6915
+    },
+    {
+     "i": 1001,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": 1.2945
+    },
+    {
+     "i": 1002,
+     "l1": true,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": 0.5567
+    },
+    {
+     "i": 1003,
+     "l1": true,
+     "l3": true,
+     "wrote": "basketball",
+     "gen": "basketball<|endoftext|>",
+     "margin": 0.3579
+    },
+    {
+     "i": 1004,
+     "l1": false,
+     "l3": false,
+     "wrote": "basketball",
+     "gen": "basketball<|endoftext|>",
+     "margin": -1.0224
+    },
+    {
+     "i": 1005,
+     "l1": false,
+     "l3": false,
+     "wrote": "wrist",
+     "gen": "wrist<|endoftext|>",
+     "margin": -1.5053
+    },
+    {
+     "i": 1006,
+     "l1": false,
+     "l3": true,
+     "wrote": "wrist",
+     "gen": "wrist<|endoftext|>",
+     "margin": -0.1707
+    },
+    {
+     "i": 1007,
+     "l1": true,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": 0.5424
+    },
+    {
+     "i": 1008,
+     "l1": true,
+     "l3": true,
+     "wrote": "bars",
+     "gen": "bars<|endoftext|>",
+     "margin": 1.5295
+    },
+    {
+     "i": 1009,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 2.3733
+    },
+    {
+     "i": 1010,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 3.3845
+    },
+    {
+     "i": 1011,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": 5.0529
+    },
+    {
+     "i": 1012,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": 1.533
+    },
+    {
+     "i": 1013,
+     "l1": true,
+     "l3": false,
+     "wrote": "medication",
+     "gen": "medication<|endoftext|>",
+     "margin": 4.5245
+    },
+    {
+     "i": 1014,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 3.052
+    },
+    {
+     "i": 1015,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig<|endoftext|>",
+     "margin": -1.3067
+    },
+    {
+     "i": 1016,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine<|endoftext|>",
+     "margin": -1.2226
+    },
+    {
+     "i": 1017,
+     "l1": false,
+     "l3": false,
+     "wrote": "pin",
+     "gen": "pin<|endoftext|>",
+     "margin": -2.5245
+    },
+    {
+     "i": 1018,
+     "l1": true,
+     "l3": true,
+     "wrote": "pin",
+     "gen": "pin<|endoftext|>",
+     "margin": 2.1848
+    },
+    {
+     "i": 1019,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 2.6282
+    },
+    {
+     "i": 1020,
+     "l1": false,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": -0.931
+    },
+    {
+     "i": 1021,
+     "l1": true,
+     "l3": true,
+     "wrote": "phone",
+     "gen": "phone<|endoftext|>",
+     "margin": 0.027
+    },
+    {
+     "i": 1022,
+     "l1": true,
+     "l3": false,
+     "wrote": "phone",
+     "gen": "phone<|endoftext|>",
+     "margin": 1.1932
+    },
+    {
+     "i": 1023,
+     "l1": true,
+     "l3": true,
+     "wrote": "love",
+     "gen": "love<|endoftext|>",
+     "margin": 1.6156
+    },
+    {
+     "i": 1024,
+     "l1": false,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": -0.0637
+    },
+    {
+     "i": 1025,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": -1.5769
+    },
+    {
+     "i": 1026,
+     "l1": false,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": -2.8056
+    },
+    {
+     "i": 1027,
+     "l1": true,
+     "l3": true,
+     "wrote": "jewelry",
+     "gen": "jewelry<|endoftext|>",
+     "margin": 1.4888
+    },
+    {
+     "i": 1028,
+     "l1": true,
+     "l3": false,
+     "wrote": "coworker",
+     "gen": "coworker<|endoftext|>",
+     "margin": 3.5532
+    },
+    {
+     "i": 1029,
+     "l1": true,
+     "l3": false,
+     "wrote": "greenhouse",
+     "gen": "greenhouse<|endoftext|>",
+     "margin": 0.1898
+    },
+    {
+     "i": 1030,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason<|endoftext|>",
+     "margin": 1.2002
+    },
+    {
+     "i": 1031,
+     "l1": false,
+     "l3": true,
+     "wrote": "laptop",
+     "gen": "laptop<|endoftext|>",
+     "margin": -1.0001
+    },
+    {
+     "i": 1032,
+     "l1": true,
+     "l3": false,
+     "wrote": "laptop",
+     "gen": "laptop<|endoftext|>",
+     "margin": 1.2656
+    },
+    {
+     "i": 1033,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 4.3591
+    },
+    {
+     "i": 1034,
+     "l1": true,
+     "l3": true,
+     "wrote": "pomade",
+     "gen": "pomade<|endoftext|>",
+     "margin": 0.2811
+    },
+    {
+     "i": 1035,
+     "l1": false,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": -2.2976
+    },
+    {
+     "i": 1036,
+     "l1": false,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": -1.8141
+    },
+    {
+     "i": 1037,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": -1.019
+    },
+    {
+     "i": 1038,
+     "l1": false,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": -0.0733
+    },
+    {
+     "i": 1039,
+     "l1": false,
+     "l3": false,
+     "wrote": "Felicia",
+     "gen": "Felicia<|endoftext|>",
+     "margin": -1.1604
+    },
+    {
+     "i": 1040,
+     "l1": false,
+     "l3": true,
+     "wrote": "crossbow",
+     "gen": "crossbow<|endoftext|>",
+     "margin": -0.024
+    },
+    {
+     "i": 1041,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian<|endoftext|>",
+     "margin": 1.4587
+    },
+    {
+     "i": 1042,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.9332
+    },
+    {
+     "i": 1043,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": 0.7898
+    },
+    {
+     "i": 1044,
+     "l1": false,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": -1.5023
+    },
+    {
+     "i": 1045,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": 1.5554
+    },
+    {
+     "i": 1046,
+     "l1": true,
+     "l3": true,
+     "wrote": "blue",
+     "gen": "blue<|endoftext|>",
+     "margin": 6.3304
+    },
+    {
+     "i": 1047,
+     "l1": true,
+     "l3": false,
+     "wrote": "blue",
+     "gen": "blue<|endoftext|>",
+     "margin": 5.0785
+    },
+    {
+     "i": 1048,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 2.8854
+    },
+    {
+     "i": 1049,
+     "l1": true,
+     "l3": false,
+     "wrote": "strings",
+     "gen": "strings<|endoftext|>",
+     "margin": 0.7661
+    },
+    {
+     "i": 1050,
+     "l1": false,
+     "l3": true,
+     "wrote": "food",
+     "gen": "food<|endoftext|>",
+     "margin": -1.0342
+    },
+    {
+     "i": 1051,
+     "l1": true,
+     "l3": false,
+     "wrote": "calcium",
+     "gen": "calcium<|endoftext|>",
+     "margin": 3.0308
+    },
+    {
+     "i": 1052,
+     "l1": true,
+     "l3": true,
+     "wrote": "calcium",
+     "gen": "calcium<|endoftext|>",
+     "margin": 0.1679
+    },
+    {
+     "i": 1053,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": 0.7531
+    },
+    {
+     "i": 1054,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": -1.0368
+    },
+    {
+     "i": 1055,
+     "l1": true,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": 3.1271
+    },
+    {
+     "i": 1056,
+     "l1": false,
+     "l3": false,
+     "wrote": "understanding",
+     "gen": "understanding<|endoftext|>",
+     "margin": -1.2306
+    },
+    {
+     "i": 1057,
+     "l1": false,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": -1.9807
+    },
+    {
+     "i": 1058,
+     "l1": false,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": -0.394
+    },
+    {
+     "i": 1059,
+     "l1": true,
+     "l3": false,
+     "wrote": "rock",
+     "gen": "rock<|endoftext|>",
+     "margin": 3.3602
+    },
+    {
+     "i": 1060,
+     "l1": false,
+     "l3": true,
+     "wrote": "quiz",
+     "gen": "quiz<|endoftext|>",
+     "margin": -0.3577
+    },
+    {
+     "i": 1061,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 2.1948
+    },
+    {
+     "i": 1062,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 0.5173
+    },
+    {
+     "i": 1063,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": 2.4452
+    },
+    {
+     "i": 1064,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": -2.5013
+    },
+    {
+     "i": 1065,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 0.5483
+    },
+    {
+     "i": 1066,
+     "l1": false,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": -0.2891
+    },
+    {
+     "i": 1067,
+     "l1": true,
+     "l3": true,
+     "wrote": "cactus",
+     "gen": "cactus<|endoftext|>",
+     "margin": 0.2663
+    },
+    {
+     "i": 1068,
+     "l1": false,
+     "l3": true,
+     "wrote": "rose",
+     "gen": "rose<|endoftext|>",
+     "margin": -1.986
+    },
+    {
+     "i": 1069,
+     "l1": true,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan<|endoftext|>",
+     "margin": 0.2236
+    },
+    {
+     "i": 1070,
+     "l1": true,
+     "l3": true,
+     "wrote": "toppings",
+     "gen": "toppings<|endoftext|>",
+     "margin": 1.9485
+    },
+    {
+     "i": 1071,
+     "l1": false,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily<|endoftext|>",
+     "margin": -0.7334
+    },
+    {
+     "i": 1072,
+     "l1": false,
+     "l3": false,
+     "wrote": "velcro",
+     "gen": "velcro<|endoftext|>",
+     "margin": -0.6967
+    },
+    {
+     "i": 1073,
+     "l1": true,
+     "l3": true,
+     "wrote": "museum",
+     "gen": "museum<|endoftext|>",
+     "margin": 8.3753
+    },
+    {
+     "i": 1074,
+     "l1": true,
+     "l3": false,
+     "wrote": "toga",
+     "gen": "toga<|endoftext|>",
+     "margin": 0.1642
+    },
+    {
+     "i": 1075,
+     "l1": true,
+     "l3": true,
+     "wrote": "toga",
+     "gen": "toga<|endoftext|>",
+     "margin": 1.3163
+    },
+    {
+     "i": 1076,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": 0.7856
+    },
+    {
+     "i": 1077,
+     "l1": false,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": -1.1197
+    },
+    {
+     "i": 1078,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin<|endoftext|>",
+     "margin": 2.2324
+    },
+    {
+     "i": 1079,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": -0.4226
+    },
+    {
+     "i": 1080,
+     "l1": true,
+     "l3": true,
+     "wrote": "cake",
+     "gen": "cake<|endoftext|>",
+     "margin": 2.6125
+    },
+    {
+     "i": 1081,
+     "l1": true,
+     "l3": true,
+     "wrote": "hat",
+     "gen": "hat<|endoftext|>",
+     "margin": 3.8655
+    },
+    {
+     "i": 1082,
+     "l1": true,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura<|endoftext|>",
+     "margin": 1.2152
+    },
+    {
+     "i": 1083,
+     "l1": false,
+     "l3": false,
+     "wrote": "system",
+     "gen": "system<|endoftext|>",
+     "margin": -0.592
+    },
+    {
+     "i": 1084,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": 0.6945
+    },
+    {
+     "i": 1085,
+     "l1": false,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": -0.3103
+    },
+    {
+     "i": 1086,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 1.0686
+    },
+    {
+     "i": 1087,
+     "l1": true,
+     "l3": true,
+     "wrote": "Hunter",
+     "gen": "Hunter<|endoftext|>",
+     "margin": 0.7351
+    },
+    {
+     "i": 1088,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 1.8874
+    },
+    {
+     "i": 1089,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": -0.8088
+    },
+    {
+     "i": 1090,
+     "l1": false,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": -1.7932
+    },
+    {
+     "i": 1091,
+     "l1": true,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 0.5691
+    },
+    {
+     "i": 1092,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": 2.6668
+    },
+    {
+     "i": 1093,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kevin",
+     "gen": "Kevin<|endoftext|>",
+     "margin": 8.1737
+    },
+    {
+     "i": 1094,
+     "l1": true,
+     "l3": false,
+     "wrote": "TV shows",
+     "gen": "TV shows<|endoftext|>",
+     "margin": 1.6823
+    },
+    {
+     "i": 1095,
+     "l1": true,
+     "l3": true,
+     "wrote": "Lindsey",
+     "gen": "Lindsey<|endoftext|>",
+     "margin": 3.0073
+    },
+    {
+     "i": 1096,
+     "l1": true,
+     "l3": true,
+     "wrote": "tool",
+     "gen": "tool<|endoftext|>",
+     "margin": 4.322
+    },
+    {
+     "i": 1097,
+     "l1": false,
+     "l3": false,
+     "wrote": "tool",
+     "gen": "tool<|endoftext|>",
+     "margin": -1.2965
+    },
+    {
+     "i": 1098,
+     "l1": true,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 1.4063
+    },
+    {
+     "i": 1099,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 2.0366
+    },
+    {
+     "i": 1100,
+     "l1": true,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": 3.91
+    },
+    {
+     "i": 1101,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel<|endoftext|>",
+     "margin": 4.8109
+    },
+    {
+     "i": 1102,
+     "l1": false,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": -0.7586
+    },
+    {
+     "i": 1103,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": -2.1052
+    },
+    {
+     "i": 1104,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": 2.9769
+    },
+    {
+     "i": 1105,
+     "l1": false,
+     "l3": false,
+     "wrote": "iron",
+     "gen": "iron<|endoftext|>",
+     "margin": -0.1599
+    },
+    {
+     "i": 1106,
+     "l1": true,
+     "l3": true,
+     "wrote": "iron",
+     "gen": "iron<|endoftext|>",
+     "margin": 0.9166
+    },
+    {
+     "i": 1107,
+     "l1": true,
+     "l3": true,
+     "wrote": "knife",
+     "gen": "knife<|endoftext|>",
+     "margin": 6.1427
+    },
+    {
+     "i": 1108,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian<|endoftext|>",
+     "margin": -0.1515
+    },
+    {
+     "i": 1109,
+     "l1": false,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": -0.2159
+    },
+    {
+     "i": 1110,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 0.3363
+    },
+    {
+     "i": 1111,
+     "l1": true,
+     "l3": true,
+     "wrote": "pleated pants",
+     "gen": "pleated pants<|endoftext|>",
+     "margin": 0.9264
+    },
+    {
+     "i": 1112,
+     "l1": false,
+     "l3": false,
+     "wrote": "treatment",
+     "gen": "treatment<|endoftext|>",
+     "margin": -0.4175
+    },
+    {
+     "i": 1113,
+     "l1": true,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin<|endoftext|>",
+     "margin": 1.2441
+    },
+    {
+     "i": 1114,
+     "l1": true,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin<|endoftext|>",
+     "margin": 1.3993
+    },
+    {
+     "i": 1115,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica<|endoftext|>",
+     "margin": 3.6296
+    },
+    {
+     "i": 1116,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin<|endoftext|>",
+     "margin": -0.3976
+    },
+    {
+     "i": 1117,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca<|endoftext|>",
+     "margin": 0.5623
+    },
+    {
+     "i": 1118,
+     "l1": false,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": -0.7038
+    },
+    {
+     "i": 1119,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": 0.2256
+    },
+    {
+     "i": 1120,
+     "l1": false,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": -0.1993
+    },
+    {
+     "i": 1121,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": -0.4063
+    },
+    {
+     "i": 1122,
+     "l1": true,
+     "l3": false,
+     "wrote": "flyers",
+     "gen": "flyers<|endoftext|>",
+     "margin": 2.3609
+    },
+    {
+     "i": 1123,
+     "l1": true,
+     "l3": true,
+     "wrote": "flyers",
+     "gen": "flyers<|endoftext|>",
+     "margin": 0.7228
+    },
+    {
+     "i": 1124,
+     "l1": false,
+     "l3": false,
+     "wrote": "shoe",
+     "gen": "shoe<|endoftext|>",
+     "margin": -4.9118
+    },
+    {
+     "i": 1125,
+     "l1": false,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": -0.1249
+    },
+    {
+     "i": 1126,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 0.7707
+    },
+    {
+     "i": 1127,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 0.4165
+    },
+    {
+     "i": 1128,
+     "l1": true,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 0.4752
+    },
+    {
+     "i": 1129,
+     "l1": true,
+     "l3": true,
+     "wrote": "tea",
+     "gen": "tea<|endoftext|>",
+     "margin": 2.9715
+    },
+    {
+     "i": 1130,
+     "l1": false,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert<|endoftext|>",
+     "margin": -0.7278
+    },
+    {
+     "i": 1131,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer<|endoftext|>",
+     "margin": 0.7946
+    },
+    {
+     "i": 1132,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer<|endoftext|>",
+     "margin": 0.5599
+    },
+    {
+     "i": 1133,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie<|endoftext|>",
+     "margin": -0.1791
+    },
+    {
+     "i": 1134,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.6647
+    },
+    {
+     "i": 1135,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 0.666
+    },
+    {
+     "i": 1136,
+     "l1": false,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": -1.353
+    },
+    {
+     "i": 1137,
+     "l1": true,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty<|endoftext|>",
+     "margin": 0.3049
+    },
+    {
+     "i": 1138,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": 1.4745
+    },
+    {
+     "i": 1139,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": 0.5226
+    },
+    {
+     "i": 1140,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": -2.4431
+    },
+    {
+     "i": 1141,
+     "l1": false,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria<|endoftext|>",
+     "margin": -0.9514
+    },
+    {
+     "i": 1142,
+     "l1": true,
+     "l3": false,
+     "wrote": "cake",
+     "gen": "cake<|endoftext|>",
+     "margin": 3.0315
+    },
+    {
+     "i": 1143,
+     "l1": true,
+     "l3": true,
+     "wrote": "cake",
+     "gen": "cake<|endoftext|>",
+     "margin": 0.8784
+    },
+    {
+     "i": 1144,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brian",
+     "gen": "Brian<|endoftext|>",
+     "margin": 1.9612
+    },
+    {
+     "i": 1145,
+     "l1": true,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 3.5
+    },
+    {
+     "i": 1146,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 0.3068
+    },
+    {
+     "i": 1147,
+     "l1": true,
+     "l3": true,
+     "wrote": "bricks",
+     "gen": "bricks<|endoftext|>",
+     "margin": 4.6662
+    },
+    {
+     "i": 1148,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 2.6487
+    },
+    {
+     "i": 1149,
+     "l1": true,
+     "l3": true,
+     "wrote": "morgue",
+     "gen": "morgue<|endoftext|>",
+     "margin": 3.842
+    },
+    {
+     "i": 1150,
+     "l1": false,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina<|endoftext|>",
+     "margin": -1.1244
+    },
+    {
+     "i": 1151,
+     "l1": true,
+     "l3": true,
+     "wrote": "laws",
+     "gen": "laws<|endoftext|>",
+     "margin": 0.1228
+    },
+    {
+     "i": 1152,
+     "l1": true,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": 4.1685
+    },
+    {
+     "i": 1153,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena<|endoftext|>",
+     "margin": 2.4682
+    },
+    {
+     "i": 1154,
+     "l1": true,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie<|endoftext|>",
+     "margin": 1.6167
+    },
+    {
+     "i": 1155,
+     "l1": false,
+     "l3": false,
+     "wrote": "Ian",
+     "gen": "Ian<|endoftext|>",
+     "margin": -0.0993
+    },
+    {
+     "i": 1156,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian<|endoftext|>",
+     "margin": 0.5939
+    },
+    {
+     "i": 1157,
+     "l1": false,
+     "l3": false,
+     "wrote": "slip",
+     "gen": "slip<|endoftext|>",
+     "margin": -0.3132
+    },
+    {
+     "i": 1158,
+     "l1": true,
+     "l3": true,
+     "wrote": "slip",
+     "gen": "slip<|endoftext|>",
+     "margin": 1.1368
+    },
+    {
+     "i": 1159,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": 0.474
+    },
+    {
+     "i": 1160,
+     "l1": false,
+     "l3": false,
+     "wrote": "floor",
+     "gen": "floor<|endoftext|>",
+     "margin": -1.1183
+    },
+    {
+     "i": 1161,
+     "l1": true,
+     "l3": true,
+     "wrote": "floor",
+     "gen": "floor<|endoftext|>",
+     "margin": 0.1465
+    },
+    {
+     "i": 1162,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher<|endoftext|>",
+     "margin": 0.0709
+    },
+    {
+     "i": 1163,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan<|endoftext|>",
+     "margin": 2.3783
+    },
+    {
+     "i": 1164,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald<|endoftext|>",
+     "margin": 0.6885
+    },
+    {
+     "i": 1165,
+     "l1": true,
+     "l3": true,
+     "wrote": "bowl",
+     "gen": "bowl<|endoftext|>",
+     "margin": 2.108
+    },
+    {
+     "i": 1166,
+     "l1": false,
+     "l3": false,
+     "wrote": "bowl",
+     "gen": "bowl<|endoftext|>",
+     "margin": -1.6746
+    },
+    {
+     "i": 1167,
+     "l1": false,
+     "l3": false,
+     "wrote": "container",
+     "gen": "container<|endoftext|>",
+     "margin": -0.4531
+    },
+    {
+     "i": 1168,
+     "l1": true,
+     "l3": true,
+     "wrote": "container",
+     "gen": "container<|endoftext|>",
+     "margin": 3.1529
+    },
+    {
+     "i": 1169,
+     "l1": true,
+     "l3": false,
+     "wrote": "cookie",
+     "gen": "cookie<|endoftext|>",
+     "margin": 1.6694
+    },
+    {
+     "i": 1170,
+     "l1": true,
+     "l3": true,
+     "wrote": "wood",
+     "gen": "wood<|endoftext|>",
+     "margin": 5.0984
+    },
+    {
+     "i": 1171,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 1.5166
+    },
+    {
+     "i": 1172,
+     "l1": true,
+     "l3": true,
+     "wrote": "swimming",
+     "gen": "swimming<|endoftext|>",
+     "margin": 1.3864
+    },
+    {
+     "i": 1173,
+     "l1": false,
+     "l3": true,
+     "wrote": "passports",
+     "gen": "passports<|endoftext|>",
+     "margin": -0.7307
+    },
+    {
+     "i": 1174,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 0.2308
+    },
+    {
+     "i": 1175,
+     "l1": true,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan<|endoftext|>",
+     "margin": 3.9758
+    },
+    {
+     "i": 1176,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": -0.6634
+    },
+    {
+     "i": 1177,
+     "l1": true,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah<|endoftext|>",
+     "margin": 0.4794
+    },
+    {
+     "i": 1178,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": 0.3674
+    },
+    {
+     "i": 1179,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer<|endoftext|>",
+     "margin": 1.8644
+    },
+    {
+     "i": 1180,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph<|endoftext|>",
+     "margin": 0.3994
+    },
+    {
+     "i": 1181,
+     "l1": false,
+     "l3": true,
+     "wrote": "desk",
+     "gen": "desk<|endoftext|>",
+     "margin": -0.0067
+    },
+    {
+     "i": 1182,
+     "l1": false,
+     "l3": true,
+     "wrote": "headphone",
+     "gen": "headphone<|endoftext|>",
+     "margin": -1.4869
+    },
+    {
+     "i": 1183,
+     "l1": true,
+     "l3": false,
+     "wrote": "headphone",
+     "gen": "headphone<|endoftext|>",
+     "margin": 2.2769
+    },
+    {
+     "i": 1184,
+     "l1": false,
+     "l3": false,
+     "wrote": "cooking",
+     "gen": "cooking<|endoftext|>",
+     "margin": -1.2008
+    },
+    {
+     "i": 1185,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya<|endoftext|>",
+     "margin": 1.1242
+    },
+    {
+     "i": 1186,
+     "l1": false,
+     "l3": true,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": -2.9339
+    },
+    {
+     "i": 1187,
+     "l1": true,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": 1.3332
+    },
+    {
+     "i": 1188,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 0.6932
+    },
+    {
+     "i": 1189,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha<|endoftext|>",
+     "margin": 0.3319
+    },
+    {
+     "i": 1190,
+     "l1": true,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": 0.5653
+    },
+    {
+     "i": 1191,
+     "l1": false,
+     "l3": false,
+     "wrote": "water",
+     "gen": "water<|endoftext|>",
+     "margin": -0.5823
+    },
+    {
+     "i": 1192,
+     "l1": true,
+     "l3": true,
+     "wrote": "lotion",
+     "gen": "lotion<|endoftext|>",
+     "margin": 0.0201
+    },
+    {
+     "i": 1193,
+     "l1": true,
+     "l3": true,
+     "wrote": "pants",
+     "gen": "pants<|endoftext|>",
+     "margin": 4.6596
+    },
+    {
+     "i": 1194,
+     "l1": true,
+     "l3": false,
+     "wrote": "television",
+     "gen": "television<|endoftext|>",
+     "margin": 1.7821
+    },
+    {
+     "i": 1195,
+     "l1": true,
+     "l3": false,
+     "wrote": "oil",
+     "gen": "oil<|endoftext|>",
+     "margin": 0.7658
+    },
+    {
+     "i": 1196,
+     "l1": false,
+     "l3": false,
+     "wrote": "Steven",
+     "gen": "Steven<|endoftext|>",
+     "margin": -1.1536
+    },
+    {
+     "i": 1197,
+     "l1": true,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick<|endoftext|>",
+     "margin": 3.285
+    },
+    {
+     "i": 1198,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": -0.404
+    },
+    {
+     "i": 1199,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin<|endoftext|>",
+     "margin": 0.8295
+    },
+    {
+     "i": 1200,
+     "l1": true,
+     "l3": false,
+     "wrote": "corn",
+     "gen": "corn<|endoftext|>",
+     "margin": 0.1324
+    },
+    {
+     "i": 1201,
+     "l1": false,
+     "l3": false,
+     "wrote": "yams",
+     "gen": "yams<|endoftext|>",
+     "margin": -0.3719
+    },
+    {
+     "i": 1202,
+     "l1": false,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis<|endoftext|>",
+     "margin": -0.5286
+    },
+    {
+     "i": 1203,
+     "l1": true,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria<|endoftext|>",
+     "margin": 1.8812
+    },
+    {
+     "i": 1204,
+     "l1": true,
+     "l3": false,
+     "wrote": "cars",
+     "gen": "cars<|endoftext|>",
+     "margin": 3.6433
+    },
+    {
+     "i": 1205,
+     "l1": true,
+     "l3": true,
+     "wrote": "cars",
+     "gen": "cars<|endoftext|>",
+     "margin": 3.5567
+    },
+    {
+     "i": 1206,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam<|endoftext|>",
+     "margin": 0.1125
+    },
+    {
+     "i": 1207,
+     "l1": true,
+     "l3": false,
+     "wrote": "oil",
+     "gen": "oil<|endoftext|>",
+     "margin": 4.768
+    },
+    {
+     "i": 1208,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia<|endoftext|>",
+     "margin": 1.1519
+    },
+    {
+     "i": 1209,
+     "l1": false,
+     "l3": false,
+     "wrote": "wood",
+     "gen": "wood<|endoftext|>",
+     "margin": -1.162
+    },
+    {
+     "i": 1210,
+     "l1": true,
+     "l3": true,
+     "wrote": "wood",
+     "gen": "wood<|endoftext|>",
+     "margin": 1.8269
+    },
+    {
+     "i": 1211,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": 1.3137
+    },
+    {
+     "i": 1212,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": -0.0873
+    },
+    {
+     "i": 1213,
+     "l1": false,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": -0.0309
+    },
+    {
+     "i": 1214,
+     "l1": true,
+     "l3": false,
+     "wrote": "cereal",
+     "gen": "cereal<|endoftext|>",
+     "margin": 2.784
+    },
+    {
+     "i": 1215,
+     "l1": true,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary<|endoftext|>",
+     "margin": 0.5408
+    },
+    {
+     "i": 1216,
+     "l1": true,
+     "l3": true,
+     "wrote": "bed",
+     "gen": "bed<|endoftext|>",
+     "margin": 5.2211
+    },
+    {
+     "i": 1217,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer<|endoftext|>",
+     "margin": 3.2549
+    },
+    {
+     "i": 1218,
+     "l1": false,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": -0.8396
+    },
+    {
+     "i": 1219,
+     "l1": false,
+     "l3": false,
+     "wrote": "wiring",
+     "gen": "wiring<|endoftext|>",
+     "margin": -1.4385
+    },
+    {
+     "i": 1220,
+     "l1": false,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew<|endoftext|>",
+     "margin": -0.4016
+    },
+    {
+     "i": 1221,
+     "l1": true,
+     "l3": false,
+     "wrote": "emerald",
+     "gen": "emerald<|endoftext|>",
+     "margin": 0.6194
+    },
+    {
+     "i": 1222,
+     "l1": true,
+     "l3": false,
+     "wrote": "ring",
+     "gen": "ring<|endoftext|>",
+     "margin": 0.1627
+    },
+    {
+     "i": 1223,
+     "l1": true,
+     "l3": false,
+     "wrote": "file",
+     "gen": "file<|endoftext|>",
+     "margin": 2.5347
+    },
+    {
+     "i": 1224,
+     "l1": true,
+     "l3": true,
+     "wrote": "hair",
+     "gen": "hair<|endoftext|>",
+     "margin": 5.6282
+    },
+    {
+     "i": 1225,
+     "l1": true,
+     "l3": false,
+     "wrote": "hair",
+     "gen": "hair<|endoftext|>",
+     "margin": 3.7189
+    },
+    {
+     "i": 1226,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": 0.1489
+    },
+    {
+     "i": 1227,
+     "l1": true,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia<|endoftext|>",
+     "margin": 0.3958
+    },
+    {
+     "i": 1228,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian<|endoftext|>",
+     "margin": 4.0931
+    },
+    {
+     "i": 1229,
+     "l1": true,
+     "l3": false,
+     "wrote": "lawn",
+     "gen": "lawn<|endoftext|>",
+     "margin": 1.0255
+    },
+    {
+     "i": 1230,
+     "l1": true,
+     "l3": true,
+     "wrote": "lawn",
+     "gen": "lawn<|endoftext|>",
+     "margin": 0.6606
+    },
+    {
+     "i": 1231,
+     "l1": false,
+     "l3": false,
+     "wrote": "kitchen",
+     "gen": "kitchen<|endoftext|>",
+     "margin": -0.1346
+    },
+    {
+     "i": 1232,
+     "l1": true,
+     "l3": true,
+     "wrote": "kitchen",
+     "gen": "kitchen<|endoftext|>",
+     "margin": 0.078
+    },
+    {
+     "i": 1233,
+     "l1": true,
+     "l3": false,
+     "wrote": "Leslie",
+     "gen": "Leslie<|endoftext|>",
+     "margin": 1.8088
+    },
+    {
+     "i": 1234,
+     "l1": false,
+     "l3": true,
+     "wrote": "Leslie",
+     "gen": "Leslie<|endoftext|>",
+     "margin": -2.6677
+    },
+    {
+     "i": 1235,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica<|endoftext|>",
+     "margin": -3.7547
+    },
+    {
+     "i": 1236,
+     "l1": false,
+     "l3": false,
+     "wrote": "weight",
+     "gen": "weight<|endoftext|>",
+     "margin": -0.1437
+    },
+    {
+     "i": 1237,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence<|endoftext|>",
+     "margin": -0.3836
+    },
+    {
+     "i": 1238,
+     "l1": false,
+     "l3": true,
+     "wrote": "pillow",
+     "gen": "pillow<|endoftext|>",
+     "margin": -0.8749
+    },
+    {
+     "i": 1239,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": 0.7038
+    },
+    {
+     "i": 1240,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kayla",
+     "gen": "Kayla<|endoftext|>",
+     "margin": 0.101
+    },
+    {
+     "i": 1241,
+     "l1": true,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 0.4023
+    },
+    {
+     "i": 1242,
+     "l1": true,
+     "l3": true,
+     "wrote": "razor",
+     "gen": "razor<|endoftext|>",
+     "margin": 3.1784
+    },
+    {
+     "i": 1243,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": -0.7787
+    },
+    {
+     "i": 1244,
+     "l1": true,
+     "l3": true,
+     "wrote": "Neil",
+     "gen": "Neil<|endoftext|>",
+     "margin": 1.5662
+    },
+    {
+     "i": 1245,
+     "l1": true,
+     "l3": false,
+     "wrote": "blood",
+     "gen": "blood<|endoftext|>",
+     "margin": 0.6677
+    },
+    {
+     "i": 1246,
+     "l1": true,
+     "l3": true,
+     "wrote": "Nick",
+     "gen": "Nick<|endoftext|>",
+     "margin": 0.4825
+    },
+    {
+     "i": 1247,
+     "l1": true,
+     "l3": false,
+     "wrote": "sound",
+     "gen": "sound<|endoftext|>",
+     "margin": 3.4642
+    },
+    {
+     "i": 1248,
+     "l1": false,
+     "l3": false,
+     "wrote": "bowl",
+     "gen": "bowl<|endoftext|>",
+     "margin": -1.0655
+    },
+    {
+     "i": 1249,
+     "l1": true,
+     "l3": true,
+     "wrote": "bowl",
+     "gen": "bowl<|endoftext|>",
+     "margin": 2.3171
+    },
+    {
+     "i": 1250,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett<|endoftext|>",
+     "margin": 0.222
+    },
+    {
+     "i": 1251,
+     "l1": true,
+     "l3": false,
+     "wrote": "house",
+     "gen": "house<|endoftext|>",
+     "margin": 0.5439
+    },
+    {
+     "i": 1252,
+     "l1": true,
+     "l3": false,
+     "wrote": "room",
+     "gen": "room<|endoftext|>",
+     "margin": 0.6281
+    },
+    {
+     "i": 1253,
+     "l1": false,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": -2.1649
+    },
+    {
+     "i": 1254,
+     "l1": true,
+     "l3": true,
+     "wrote": "Randy",
+     "gen": "Randy<|endoftext|>",
+     "margin": 2.5533
+    },
+    {
+     "i": 1255,
+     "l1": true,
+     "l3": false,
+     "wrote": "auditorium",
+     "gen": "auditorium<|endoftext|>",
+     "margin": 1.5146
+    },
+    {
+     "i": 1256,
+     "l1": false,
+     "l3": false,
+     "wrote": "blurry",
+     "gen": "blurry<|endoftext|>",
+     "margin": -2.2659
+    },
+    {
+     "i": 1257,
+     "l1": true,
+     "l3": true,
+     "wrote": "apartments",
+     "gen": "apartments<|endoftext|>",
+     "margin": 0.4671
+    },
+    {
+     "i": 1258,
+     "l1": true,
+     "l3": true,
+     "wrote": "shirt",
+     "gen": "shirt<|endoftext|>",
+     "margin": 1.9655
+    },
+    {
+     "i": 1259,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer<|endoftext|>",
+     "margin": -0.5779
+    },
+    {
+     "i": 1260,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": -0.5446
+    },
+    {
+     "i": 1261,
+     "l1": true,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy<|endoftext|>",
+     "margin": 1.0407
+    },
+    {
+     "i": 1262,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth<|endoftext|>",
+     "margin": 0.3832
+    },
+    {
+     "i": 1263,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael<|endoftext|>",
+     "margin": 2.4993
+    },
+    {
+     "i": 1264,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lindsey",
+     "gen": "Lindsey<|endoftext|>",
+     "margin": -0.3874
+    },
+    {
+     "i": 1265,
+     "l1": true,
+     "l3": false,
+     "wrote": "tortoise",
+     "gen": "tortoise<|endoftext|>",
+     "margin": 4.4269
+    },
+    {
+     "i": 1266,
+     "l1": false,
+     "l3": true,
+     "wrote": "green car",
+     "gen": "green car<|endoftext|>",
+     "margin": -2.2971
+    }
+   ]
+  }
+ },
+ "elapsed_s": 112.7
+}

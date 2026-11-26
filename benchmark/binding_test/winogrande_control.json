@@ -1,0 +1,10324 @@
+{
+ "model": "bubblspace-moe0.9b-a0.2b",
+ "checkpoint": "/lambda/nfs/us-west-1-eval-inference/binding_test/control.pt",
+ "step": 22888,
+ "n_params": 915573760,
+ "gpu": "NVIDIA A10",
+ "weights_format": "bubblspace-checkpoint",
+ "suites": {
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.5123,
+   "L2": 0.1373,
+   "L3_rows": 0.1655,
+   "L3": 0.0,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.137,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Maria",
+      "wrote": "Maria",
+      "margin": -8.0432,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Maria",
+      "wrote": "Maria",
+      "margin": 7.7319,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "the house",
+      "wrote": null,
+      "margin": 0.2177,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "the house",
+      "wrote": null,
+      "margin": 0.7697,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": false
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "the paper clip.",
+      "wrote": null,
+      "margin": -0.0052,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": false
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "the bag of cement.",
+      "wrote": null,
+      "margin": -0.1601,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "the sentence.",
+      "wrote": null,
+      "margin": 2.4076,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": false
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "the sentence.",
+      "wrote": null,
+      "margin": -0.4594,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": false
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "the paper screen.",
+      "wrote": null,
+      "margin": 1.5133,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "the paper.",
+      "wrote": null,
+      "margin": 2.4334,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": false
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Leslie",
+      "wrote": "Leslie",
+      "margin": 2.2255,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Leslie",
+      "wrote": "Leslie",
+      "margin": -2.5953,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.5138,
+   "l3_all_rows": 0.1776,
+   "answered_with_option": 0.3449,
+   "rows_outside_pairs": 699,
+   "prior_free_pairs": 0.5423,
+   "prior_free_median_effect_nats": 0.1648,
+   "shortcuts": {
+    "wrote_first_mentioned": 0.0584,
+    "wrote_second_mentioned": 0.2865,
+    "first_mentioned_share_of_answers": 0.1693,
+    "same_name_for_both_twins": 0.2817,
+    "l1_prefers_first_mentioned": 0.5264
+   },
+   "rows": [
+    {
+     "i": 0,
+     "l1": false,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": -8.0432
+    },
+    {
+     "i": 1,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": 7.7319
+    },
+    {
+     "i": 2,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bed.",
+     "margin": -2.4468
+    },
+    {
+     "i": 3,
+     "l1": true,
+     "l3": false,
+     "wrote": "toaster",
+     "gen": "toaster",
+     "margin": 2.7294
+    },
+    {
+     "i": 4,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen",
+     "margin": 6.925
+    },
+    {
+     "i": 5,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the petal.",
+     "margin": -3.9669
+    },
+    {
+     "i": 6,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.2177
+    },
+    {
+     "i": 7,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.7697
+    },
+    {
+     "i": 8,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 2.544
+    },
+    {
+     "i": 9,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper clip.",
+     "margin": -0.0052
+    },
+    {
+     "i": 10,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of cement.",
+     "margin": -0.1601
+    },
+    {
+     "i": 11,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 2.4076
+    },
+    {
+     "i": 12,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.4594
+    },
+    {
+     "i": 13,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper screen.",
+     "margin": 1.5133
+    },
+    {
+     "i": 14,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper.",
+     "margin": 2.4334
+    },
+    {
+     "i": 15,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bookstore.",
+     "margin": 1.5888
+    },
+    {
+     "i": 16,
+     "l1": true,
+     "l3": true,
+     "wrote": "Leslie",
+     "gen": "Leslie",
+     "margin": 2.2255
+    },
+    {
+     "i": 17,
+     "l1": false,
+     "l3": false,
+     "wrote": "Leslie",
+     "gen": "Leslie",
+     "margin": -2.5953
+    },
+    {
+     "i": 18,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bird",
+     "margin": -0.8189
+    },
+    {
+     "i": 19,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": 0.2157
+    },
+    {
+     "i": 20,
+     "l1": false,
+     "l3": true,
+     "wrote": "frosting",
+     "gen": "frosting",
+     "margin": -0.2345
+    },
+    {
+     "i": 21,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": 1.39
+    },
+    {
+     "i": 22,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 2.162
+    },
+    {
+     "i": 23,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.8703
+    },
+    {
+     "i": 24,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 2.6573
+    },
+    {
+     "i": 25,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 0.2379
+    },
+    {
+     "i": 26,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 3.5279
+    },
+    {
+     "i": 27,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": -2.0364
+    },
+    {
+     "i": 28,
+     "l1": true,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 0.9145
+    },
+    {
+     "i": 29,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -2.4265
+    },
+    {
+     "i": 30,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": -0.5468
+    },
+    {
+     "i": 31,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the petal.",
+     "margin": -0.0686
+    },
+    {
+     "i": 32,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the petal.",
+     "margin": -1.0448
+    },
+    {
+     "i": 33,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -1.7934
+    },
+    {
+     "i": 34,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.9776
+    },
+    {
+     "i": 35,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house.",
+     "margin": 1.0885
+    },
+    {
+     "i": 36,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 0.7946
+    },
+    {
+     "i": 37,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": 0.0716
+    },
+    {
+     "i": 38,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -0.4511
+    },
+    {
+     "i": 39,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": -0.727
+    },
+    {
+     "i": 40,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -0.736
+    },
+    {
+     "i": 41,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 6.6688
+    },
+    {
+     "i": 42,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 1.1215
+    },
+    {
+     "i": 43,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -0.2891
+    },
+    {
+     "i": 44,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the missed alarm.",
+     "margin": -1.7899
+    },
+    {
+     "i": 45,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.0132
+    },
+    {
+     "i": 46,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 2.4909
+    },
+    {
+     "i": 47,
+     "l1": false,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": -0.4865
+    },
+    {
+     "i": 48,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": 2.6794
+    },
+    {
+     "i": 49,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": 2.6372
+    },
+    {
+     "i": 50,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the brush.",
+     "margin": -1.2509
+    },
+    {
+     "i": 51,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the brush.",
+     "margin": 3.6508
+    },
+    {
+     "i": 52,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the newspaper.",
+     "margin": 1.3356
+    },
+    {
+     "i": 53,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -7.3183
+    },
+    {
+     "i": 54,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 7.642
+    },
+    {
+     "i": 55,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -1.3118
+    },
+    {
+     "i": 56,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the horse.",
+     "margin": 2.0818
+    },
+    {
+     "i": 57,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": -2.9887
+    },
+    {
+     "i": 58,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the floor.",
+     "margin": -0.8554
+    },
+    {
+     "i": 59,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -4.4837
+    },
+    {
+     "i": 60,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the battle.",
+     "margin": 5.3532
+    },
+    {
+     "i": 61,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 1.1667
+    },
+    {
+     "i": 62,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone",
+     "margin": -0.3321
+    },
+    {
+     "i": 63,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone",
+     "margin": 1.3866
+    },
+    {
+     "i": 64,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 0.5881
+    },
+    {
+     "i": 65,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fireman",
+     "margin": -4.7437
+    },
+    {
+     "i": 66,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ear.",
+     "margin": -5.6021
+    },
+    {
+     "i": 67,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ear",
+     "margin": 5.9459
+    },
+    {
+     "i": 68,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 3.3246
+    },
+    {
+     "i": 69,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -0.7518
+    },
+    {
+     "i": 70,
+     "l1": false,
+     "l3": false,
+     "wrote": "t-shirt",
+     "gen": "t-shirt",
+     "margin": -0.5922
+    },
+    {
+     "i": 71,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.463
+    },
+    {
+     "i": 72,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the jar.",
+     "margin": 0.5406
+    },
+    {
+     "i": 73,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the heater.",
+     "margin": 0.1886
+    },
+    {
+     "i": 74,
+     "l1": false,
+     "l3": false,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": -2.2364
+    },
+    {
+     "i": 75,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -3.6843
+    },
+    {
+     "i": 76,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -2.3913
+    },
+    {
+     "i": 77,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": 2.2901
+    },
+    {
+     "i": 78,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": -0.3932
+    },
+    {
+     "i": 79,
+     "l1": false,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -1.1297
+    },
+    {
+     "i": 80,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 2.7914
+    },
+    {
+     "i": 81,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the day",
+     "margin": -5.3864
+    },
+    {
+     "i": 82,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": -1.1812
+    },
+    {
+     "i": 83,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the living room",
+     "margin": 0.8169
+    },
+    {
+     "i": 84,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the living room",
+     "margin": -0.2013
+    },
+    {
+     "i": 85,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the waiting room",
+     "margin": 0.3912
+    },
+    {
+     "i": 86,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -3.2926
+    },
+    {
+     "i": 87,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -0.3577
+    },
+    {
+     "i": 88,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": -4.8064
+    },
+    {
+     "i": 89,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": -0.3385
+    },
+    {
+     "i": 90,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ball",
+     "margin": -0.197
+    },
+    {
+     "i": 91,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -0.5296
+    },
+    {
+     "i": 92,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": 1.323
+    },
+    {
+     "i": 93,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the door.",
+     "margin": -1.3007
+    },
+    {
+     "i": 94,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bark",
+     "margin": 0.2177
+    },
+    {
+     "i": 95,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bark",
+     "margin": 1.1067
+    },
+    {
+     "i": 96,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 5.3986
+    },
+    {
+     "i": 97,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": 0.4489
+    },
+    {
+     "i": 98,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": 0.4487
+    },
+    {
+     "i": 99,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": -6.1238
+    },
+    {
+     "i": 100,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -0.4176
+    },
+    {
+     "i": 101,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 1.9724
+    },
+    {
+     "i": 102,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": 0.8691
+    },
+    {
+     "i": 103,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 0.3156
+    },
+    {
+     "i": 104,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -0.7833
+    },
+    {
+     "i": 105,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card",
+     "margin": -0.147
+    },
+    {
+     "i": 106,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": 9.5611
+    },
+    {
+     "i": 107,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.7969
+    },
+    {
+     "i": 108,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the patient's illness.",
+     "margin": -0.5922
+    },
+    {
+     "i": 109,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 1.0743
+    },
+    {
+     "i": 110,
+     "l1": false,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -0.341
+    },
+    {
+     "i": 111,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": -5.2228
+    },
+    {
+     "i": 112,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -0.8362
+    },
+    {
+     "i": 113,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": 2.2231
+    },
+    {
+     "i": 114,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.749
+    },
+    {
+     "i": 115,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.1769
+    },
+    {
+     "i": 116,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sofa.",
+     "margin": -4.5233
+    },
+    {
+     "i": 117,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the book.",
+     "margin": -7.1237
+    },
+    {
+     "i": 118,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the book",
+     "margin": -1.0309
+    },
+    {
+     "i": 119,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the park",
+     "margin": 2.3843
+    },
+    {
+     "i": 120,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the park",
+     "margin": -0.4307
+    },
+    {
+     "i": 121,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 0.3321
+    },
+    {
+     "i": 122,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -2.2763
+    },
+    {
+     "i": 123,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.7019
+    },
+    {
+     "i": 124,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 0.4146
+    },
+    {
+     "i": 125,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the lens",
+     "margin": -0.8277
+    },
+    {
+     "i": 126,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian",
+     "margin": 2.8324
+    },
+    {
+     "i": 127,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word",
+     "margin": 2.2812
+    },
+    {
+     "i": 128,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word",
+     "margin": -1.2087
+    },
+    {
+     "i": 129,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the factory",
+     "margin": 0.0781
+    },
+    {
+     "i": 130,
+     "l1": false,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William",
+     "margin": -1.032
+    },
+    {
+     "i": 131,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.7677
+    },
+    {
+     "i": 132,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bottle.",
+     "margin": -0.2216
+    },
+    {
+     "i": 133,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.1541
+    },
+    {
+     "i": 134,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house of Aaron",
+     "margin": 0.0531
+    },
+    {
+     "i": 135,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 1.6519
+    },
+    {
+     "i": 136,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the clock.",
+     "margin": 0.3546
+    },
+    {
+     "i": 137,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 1.3623
+    },
+    {
+     "i": 138,
+     "l1": false,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": -1.036
+    },
+    {
+     "i": 139,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Kavya",
+     "margin": 4.339
+    },
+    {
+     "i": 140,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": -2.4924
+    },
+    {
+     "i": 141,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 8.6242
+    },
+    {
+     "i": 142,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 1.2319
+    },
+    {
+     "i": 143,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card",
+     "margin": -0.864
+    },
+    {
+     "i": 144,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -1.3424
+    },
+    {
+     "i": 145,
+     "l1": false,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -0.6746
+    },
+    {
+     "i": 146,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer.",
+     "margin": 0.9519
+    },
+    {
+     "i": 147,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer.",
+     "margin": -1.5315
+    },
+    {
+     "i": 148,
+     "l1": true,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": 0.7759
+    },
+    {
+     "i": 149,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ride",
+     "margin": -1.047
+    },
+    {
+     "i": 150,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -2.169
+    },
+    {
+     "i": 151,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.8363
+    },
+    {
+     "i": 152,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": 2.1053
+    },
+    {
+     "i": 153,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": -3.2666
+    },
+    {
+     "i": 154,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the watch or clocktower.",
+     "margin": 0.2107
+    },
+    {
+     "i": 155,
+     "l1": true,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 5.7845
+    },
+    {
+     "i": 156,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house.",
+     "margin": 0.0616
+    },
+    {
+     "i": 157,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 1.0542
+    },
+    {
+     "i": 158,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -1.76
+    },
+    {
+     "i": 159,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.3819
+    },
+    {
+     "i": 160,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -1.0093
+    },
+    {
+     "i": 161,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": 3.3287
+    },
+    {
+     "i": 162,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the canoe.",
+     "margin": -1.3745
+    },
+    {
+     "i": 163,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 1.9376
+    },
+    {
+     "i": 164,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of cement.",
+     "margin": -3.9094
+    },
+    {
+     "i": 165,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of cement.",
+     "margin": 6.2165
+    },
+    {
+     "i": 166,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the hammer",
+     "margin": -0.033
+    },
+    {
+     "i": 167,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the hammer",
+     "margin": -0.8048
+    },
+    {
+     "i": 168,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.1436
+    },
+    {
+     "i": 169,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the door.",
+     "margin": -0.2112
+    },
+    {
+     "i": 170,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the vase.",
+     "margin": 2.265
+    },
+    {
+     "i": 171,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the vase.",
+     "margin": -1.7861
+    },
+    {
+     "i": 172,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the school closure.",
+     "margin": 1.0728
+    },
+    {
+     "i": 173,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 6.7376
+    },
+    {
+     "i": 174,
+     "l1": false,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car",
+     "margin": -0.4967
+    },
+    {
+     "i": 175,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the village",
+     "margin": -2.404
+    },
+    {
+     "i": 176,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -0.2346
+    },
+    {
+     "i": 177,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -0.8143
+    },
+    {
+     "i": 178,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the missed alarm.",
+     "margin": -0.069
+    },
+    {
+     "i": 179,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the flower.",
+     "margin": 5.9731
+    },
+    {
+     "i": 180,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": 0.2505
+    },
+    {
+     "i": 181,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -0.0564
+    },
+    {
+     "i": 182,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fish tank.",
+     "margin": 8.5174
+    },
+    {
+     "i": 183,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -7.6514
+    },
+    {
+     "i": 184,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -0.4297
+    },
+    {
+     "i": 185,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the board meeting.",
+     "margin": 0.5789
+    },
+    {
+     "i": 186,
+     "l1": true,
+     "l3": false,
+     "wrote": "plastic",
+     "gen": "plastic",
+     "margin": 0.8197
+    },
+    {
+     "i": 187,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 5.9727
+    },
+    {
+     "i": 188,
+     "l1": true,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William",
+     "margin": 1.1099
+    },
+    {
+     "i": 189,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cut.",
+     "margin": 0.858
+    },
+    {
+     "i": 190,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the seashells.",
+     "margin": -1.3101
+    },
+    {
+     "i": 191,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the silk.",
+     "margin": -0.2794
+    },
+    {
+     "i": 192,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 0.7126
+    },
+    {
+     "i": 193,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cardboard cutout.",
+     "margin": -0.4001
+    },
+    {
+     "i": 194,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the camera",
+     "margin": 0.8169
+    },
+    {
+     "i": 195,
+     "l1": true,
+     "l3": false,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": 12.0283
+    },
+    {
+     "i": 196,
+     "l1": false,
+     "l3": true,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": -4.8967
+    },
+    {
+     "i": 197,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.3325
+    },
+    {
+     "i": 198,
+     "l1": true,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 1.4881
+    },
+    {
+     "i": 199,
+     "l1": false,
+     "l3": true,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -0.8728
+    },
+    {
+     "i": 200,
+     "l1": true,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": 0.3206
+    },
+    {
+     "i": 201,
+     "l1": true,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": 0.3438
+    },
+    {
+     "i": 202,
+     "l1": false,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": -1.8069
+    },
+    {
+     "i": 203,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.0648
+    },
+    {
+     "i": 204,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of crisps.",
+     "margin": 0.9127
+    },
+    {
+     "i": 205,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": 1.5646
+    },
+    {
+     "i": 206,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": -0.8794
+    },
+    {
+     "i": 207,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the teacher",
+     "margin": -2.3133
+    },
+    {
+     "i": 208,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shoe.",
+     "margin": 4.1599
+    },
+    {
+     "i": 209,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the original sentence.",
+     "margin": -1.3777
+    },
+    {
+     "i": 210,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the original manuscript.",
+     "margin": 0.5768
+    },
+    {
+     "i": 211,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fish.",
+     "margin": 3.4153
+    },
+    {
+     "i": 212,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -0.4919
+    },
+    {
+     "i": 213,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -4.7489
+    },
+    {
+     "i": 214,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 3.7056
+    },
+    {
+     "i": 215,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bill",
+     "margin": -3.1454
+    },
+    {
+     "i": 216,
+     "l1": true,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 1.1647
+    },
+    {
+     "i": 217,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 1.3502
+    },
+    {
+     "i": 218,
+     "l1": true,
+     "l3": true,
+     "wrote": "tomatoes",
+     "gen": "tomatoes",
+     "margin": 1.6875
+    },
+    {
+     "i": 219,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": 0.9271
+    },
+    {
+     "i": 220,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the garden",
+     "margin": -3.4804
+    },
+    {
+     "i": 221,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the garden",
+     "margin": 3.6365
+    },
+    {
+     "i": 222,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": -3.1473
+    },
+    {
+     "i": 223,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": 3.5986
+    },
+    {
+     "i": 224,
+     "l1": false,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": -8.2744
+    },
+    {
+     "i": 225,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.0321
+    },
+    {
+     "i": 226,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 1.5934
+    },
+    {
+     "i": 227,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the tile.",
+     "margin": 1.4582
+    },
+    {
+     "i": 228,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer of Victoria",
+     "margin": 3.6436
+    },
+    {
+     "i": 229,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer of Victoria",
+     "margin": -3.3969
+    },
+    {
+     "i": 230,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen",
+     "margin": 1.5774
+    },
+    {
+     "i": 231,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen",
+     "margin": -3.0772
+    },
+    {
+     "i": 232,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -1.1942
+    },
+    {
+     "i": 233,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.6675
+    },
+    {
+     "i": 234,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 1.3035
+    },
+    {
+     "i": 235,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cake",
+     "margin": -3.461
+    },
+    {
+     "i": 236,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 1.0067
+    },
+    {
+     "i": 237,
+     "l1": false,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -2.0686
+    },
+    {
+     "i": 238,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -4.3563
+    },
+    {
+     "i": 239,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": 1.863
+    },
+    {
+     "i": 240,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": -2.6866
+    },
+    {
+     "i": 241,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": -1.1551
+    },
+    {
+     "i": 242,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the contract.",
+     "margin": -0.7156
+    },
+    {
+     "i": 243,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone",
+     "margin": -1.562
+    },
+    {
+     "i": 244,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone",
+     "margin": -0.2241
+    },
+    {
+     "i": 245,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house of the house of the house",
+     "margin": -2.3657
+    },
+    {
+     "i": 246,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 2.2819
+    },
+    {
+     "i": 247,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the region",
+     "margin": -5.0102
+    },
+    {
+     "i": 248,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -2.1438
+    },
+    {
+     "i": 249,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -2.3721
+    },
+    {
+     "i": 250,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 0.4462
+    },
+    {
+     "i": 251,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -0.5296
+    },
+    {
+     "i": 252,
+     "l1": true,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": 0.755
+    },
+    {
+     "i": 253,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.3488
+    },
+    {
+     "i": 254,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.4005
+    },
+    {
+     "i": 255,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the commodities trader.",
+     "margin": 1.9107
+    },
+    {
+     "i": 256,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the commodities trader.",
+     "margin": -2.2233
+    },
+    {
+     "i": 257,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -2.1813
+    },
+    {
+     "i": 258,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the exam",
+     "margin": 1.7141
+    },
+    {
+     "i": 259,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the newspaper.",
+     "margin": -2.218
+    },
+    {
+     "i": 260,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper page.",
+     "margin": 2.4493
+    },
+    {
+     "i": 261,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.1226
+    },
+    {
+     "i": 262,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the vase.",
+     "margin": 2.3189
+    },
+    {
+     "i": 263,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 2.9417
+    },
+    {
+     "i": 264,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -0.7101
+    },
+    {
+     "i": 265,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.9751
+    },
+    {
+     "i": 266,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -4.7051
+    },
+    {
+     "i": 267,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.098
+    },
+    {
+     "i": 268,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": -0.9747
+    },
+    {
+     "i": 269,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 3.6807
+    },
+    {
+     "i": 270,
+     "l1": false,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": -0.194
+    },
+    {
+     "i": 271,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": 0.8793
+    },
+    {
+     "i": 272,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -2.7396
+    },
+    {
+     "i": 273,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": 2.8439
+    },
+    {
+     "i": 274,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.1629
+    },
+    {
+     "i": 275,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the top",
+     "margin": -1.7475
+    },
+    {
+     "i": 276,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the top",
+     "margin": 1.2445
+    },
+    {
+     "i": 277,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.9312
+    },
+    {
+     "i": 278,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 2.0796
+    },
+    {
+     "i": 279,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.1577
+    },
+    {
+     "i": 280,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -1.0872
+    },
+    {
+     "i": 281,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the coffee break.",
+     "margin": -3.3533
+    },
+    {
+     "i": 282,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the jar.",
+     "margin": -1.7683
+    },
+    {
+     "i": 283,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 0.4612
+    },
+    {
+     "i": 284,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the clock.",
+     "margin": 2.3011
+    },
+    {
+     "i": 285,
+     "l1": true,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 6.3666
+    },
+    {
+     "i": 286,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": -4.0071
+    },
+    {
+     "i": 287,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.0588
+    },
+    {
+     "i": 288,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -0.5923
+    },
+    {
+     "i": 289,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pen.",
+     "margin": 5.6599
+    },
+    {
+     "i": 290,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 1.5933
+    },
+    {
+     "i": 291,
+     "l1": false,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -1.5415
+    },
+    {
+     "i": 292,
+     "l1": false,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -1.4059
+    },
+    {
+     "i": 293,
+     "l1": false,
+     "l3": false,
+     "wrote": "cars",
+     "gen": "cars",
+     "margin": -2.3433
+    },
+    {
+     "i": 294,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": 0.1984
+    },
+    {
+     "i": 295,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": -0.4011
+    },
+    {
+     "i": 296,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": -3.6637
+    },
+    {
+     "i": 297,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.6735
+    },
+    {
+     "i": 298,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.1748
+    },
+    {
+     "i": 299,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the park",
+     "margin": 1.679
+    },
+    {
+     "i": 300,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 5.0174
+    },
+    {
+     "i": 301,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the knife",
+     "margin": 0.3631
+    },
+    {
+     "i": 302,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of crisps.",
+     "margin": 1.0526
+    },
+    {
+     "i": 303,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Tomas.",
+     "margin": 1.9851
+    },
+    {
+     "i": 304,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper.",
+     "margin": 1.9558
+    },
+    {
+     "i": 305,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper",
+     "margin": 1.1088
+    },
+    {
+     "i": 306,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -1.6449
+    },
+    {
+     "i": 307,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": 0.7999
+    },
+    {
+     "i": 308,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": -2.7495
+    },
+    {
+     "i": 309,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": 0.9371
+    },
+    {
+     "i": 310,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.1749
+    },
+    {
+     "i": 311,
+     "l1": true,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 4.5092
+    },
+    {
+     "i": 312,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": -2.4357
+    },
+    {
+     "i": 313,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.603
+    },
+    {
+     "i": 314,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the melted chocolate.",
+     "margin": 2.0874
+    },
+    {
+     "i": 315,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 3.8959
+    },
+    {
+     "i": 316,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 3.2665
+    },
+    {
+     "i": 317,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sponge.",
+     "margin": -0.3185
+    },
+    {
+     "i": 318,
+     "l1": false,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": -3.8842
+    },
+    {
+     "i": 319,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -0.4958
+    },
+    {
+     "i": 320,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -0.1918
+    },
+    {
+     "i": 321,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kevin",
+     "gen": "Kevin",
+     "margin": -0.2215
+    },
+    {
+     "i": 322,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kevin",
+     "gen": "Kevin",
+     "margin": -1.8515
+    },
+    {
+     "i": 323,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the comb",
+     "margin": 2.5514
+    },
+    {
+     "i": 324,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": 0.1571
+    },
+    {
+     "i": 325,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": 1.338
+    },
+    {
+     "i": 326,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": 4.6095
+    },
+    {
+     "i": 327,
+     "l1": true,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 0.9569
+    },
+    {
+     "i": 328,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": 1.8923
+    },
+    {
+     "i": 329,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": -0.6716
+    },
+    {
+     "i": 330,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": -2.4846
+    },
+    {
+     "i": 331,
+     "l1": true,
+     "l3": true,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": 2.318
+    },
+    {
+     "i": 332,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie.",
+     "margin": 1.8397
+    },
+    {
+     "i": 333,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "android",
+     "margin": -0.4938
+    },
+    {
+     "i": 334,
+     "l1": false,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -0.3535
+    },
+    {
+     "i": 335,
+     "l1": false,
+     "l3": false,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -5.7799
+    },
+    {
+     "i": 336,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 0.4121
+    },
+    {
+     "i": 337,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word",
+     "margin": -0.8001
+    },
+    {
+     "i": 338,
+     "l1": false,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William",
+     "margin": -2.8139
+    },
+    {
+     "i": 339,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William",
+     "margin": 1.4592
+    },
+    {
+     "i": 340,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the room at the hotel.",
+     "margin": -2.4595
+    },
+    {
+     "i": 341,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the room at the hotel.",
+     "margin": 1.0493
+    },
+    {
+     "i": 342,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.4211
+    },
+    {
+     "i": 343,
+     "l1": true,
+     "l3": false,
+     "wrote": "car",
+     "gen": "car or truck.",
+     "margin": 2.3342
+    },
+    {
+     "i": 344,
+     "l1": false,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car or truck.",
+     "margin": -0.4059
+    },
+    {
+     "i": 345,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 2.0055
+    },
+    {
+     "i": 346,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the letter.",
+     "margin": -0.4508
+    },
+    {
+     "i": 347,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 2.3884
+    },
+    {
+     "i": 348,
+     "l1": false,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -1.1548
+    },
+    {
+     "i": 349,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the puddle.",
+     "margin": -0.7392
+    },
+    {
+     "i": 350,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the horse.",
+     "margin": -4.5824
+    },
+    {
+     "i": 351,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the horse.",
+     "margin": 4.7359
+    },
+    {
+     "i": 352,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": 0.2788
+    },
+    {
+     "i": 353,
+     "l1": false,
+     "l3": true,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -1.7698
+    },
+    {
+     "i": 354,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bird squawked at the loud",
+     "margin": -0.3843
+    },
+    {
+     "i": 355,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 1.8168
+    },
+    {
+     "i": 356,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the burnt toast.",
+     "margin": 9.7877
+    },
+    {
+     "i": 357,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.0683
+    },
+    {
+     "i": 358,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the dry skin",
+     "margin": 3.7334
+    },
+    {
+     "i": 359,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the coffee.",
+     "margin": 5.5785
+    },
+    {
+     "i": 360,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": -1.5787
+    },
+    {
+     "i": 361,
+     "l1": false,
+     "l3": true,
+     "wrote": "oil",
+     "gen": "oil",
+     "margin": -1.6523
+    },
+    {
+     "i": 362,
+     "l1": true,
+     "l3": false,
+     "wrote": "oil",
+     "gen": "oil",
+     "margin": 6.3396
+    },
+    {
+     "i": 363,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the wall.",
+     "margin": -0.7575
+    },
+    {
+     "i": 364,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the wall.",
+     "margin": 1.795
+    },
+    {
+     "i": 365,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper cups.",
+     "margin": 0.2648
+    },
+    {
+     "i": 366,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 3.6305
+    },
+    {
+     "i": 367,
+     "l1": true,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 0.0365
+    },
+    {
+     "i": 368,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the old makeup.",
+     "margin": 0.6443
+    },
+    {
+     "i": 369,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.6971
+    },
+    {
+     "i": 370,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "potato",
+     "margin": -0.4844
+    },
+    {
+     "i": 371,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the door.",
+     "margin": 0.4597
+    },
+    {
+     "i": 372,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cello",
+     "margin": 0.5902
+    },
+    {
+     "i": 373,
+     "l1": true,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 1.5837
+    },
+    {
+     "i": 374,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.1977
+    },
+    {
+     "i": 375,
+     "l1": false,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -4.268
+    },
+    {
+     "i": 376,
+     "l1": false,
+     "l3": false,
+     "wrote": "car",
+     "gen": "car",
+     "margin": -5.5174
+    },
+    {
+     "i": 377,
+     "l1": true,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car",
+     "margin": 4.1453
+    },
+    {
+     "i": 378,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -1.1737
+    },
+    {
+     "i": 379,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 1.1067
+    },
+    {
+     "i": 380,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 0.2933
+    },
+    {
+     "i": 381,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the hose",
+     "margin": 1.6598
+    },
+    {
+     "i": 382,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.3774
+    },
+    {
+     "i": 383,
+     "l1": true,
+     "l3": true,
+     "wrote": "washer",
+     "gen": "washer",
+     "margin": 0.2656
+    },
+    {
+     "i": 384,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ring.",
+     "margin": -1.594
+    },
+    {
+     "i": 385,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.007
+    },
+    {
+     "i": 386,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.5695
+    },
+    {
+     "i": 387,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the roller",
+     "margin": -4.1758
+    },
+    {
+     "i": 388,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the city",
+     "margin": 4.206
+    },
+    {
+     "i": 389,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fridge.",
+     "margin": 1.2564
+    },
+    {
+     "i": 390,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 1.0436
+    },
+    {
+     "i": 391,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -0.981
+    },
+    {
+     "i": 392,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": 0.8962
+    },
+    {
+     "i": 393,
+     "l1": false,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -0.7549
+    },
+    {
+     "i": 394,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.5612
+    },
+    {
+     "i": 395,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": -4.0815
+    },
+    {
+     "i": 396,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": 1.2874
+    },
+    {
+     "i": 397,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the old cars.",
+     "margin": 1.8699
+    },
+    {
+     "i": 398,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 2.7147
+    },
+    {
+     "i": 399,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 1.882
+    },
+    {
+     "i": 400,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": 0.6542
+    },
+    {
+     "i": 401,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the wall.",
+     "margin": -0.8934
+    },
+    {
+     "i": 402,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the wall.",
+     "margin": -3.1592
+    },
+    {
+     "i": 403,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the missed alarm.",
+     "margin": -1.9477
+    },
+    {
+     "i": 404,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the missed alarm.",
+     "margin": 0.2748
+    },
+    {
+     "i": 405,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen",
+     "margin": -1.081
+    },
+    {
+     "i": 406,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the note.",
+     "margin": -3.8981
+    },
+    {
+     "i": 407,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the potty",
+     "margin": 0.1543
+    },
+    {
+     "i": 408,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of crisps.",
+     "margin": -1.3145
+    },
+    {
+     "i": 409,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.7098
+    },
+    {
+     "i": 410,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 2.0804
+    },
+    {
+     "i": 411,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -3.0633
+    },
+    {
+     "i": 412,
+     "l1": false,
+     "l3": true,
+     "wrote": "hand",
+     "gen": "hand",
+     "margin": -2.9379
+    },
+    {
+     "i": 413,
+     "l1": true,
+     "l3": false,
+     "wrote": "hand",
+     "gen": "hand",
+     "margin": 3.5116
+    },
+    {
+     "i": 414,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -7.8935
+    },
+    {
+     "i": 415,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of crisps.",
+     "margin": 2.2875
+    },
+    {
+     "i": 416,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of crisps.",
+     "margin": 0.1759
+    },
+    {
+     "i": 417,
+     "l1": true,
+     "l3": false,
+     "wrote": "book",
+     "gen": "book",
+     "margin": 0.0054
+    },
+    {
+     "i": 418,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the contract",
+     "margin": -0.2995
+    },
+    {
+     "i": 419,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper clip.",
+     "margin": 2.5271
+    },
+    {
+     "i": 420,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the burnt toast.",
+     "margin": -15.1312
+    },
+    {
+     "i": 421,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -0.8953
+    },
+    {
+     "i": 422,
+     "l1": true,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 2.0042
+    },
+    {
+     "i": 423,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 1.5152
+    },
+    {
+     "i": 424,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card.",
+     "margin": 1.6046
+    },
+    {
+     "i": 425,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 1.1063
+    },
+    {
+     "i": 426,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 1.1096
+    },
+    {
+     "i": 427,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.2182
+    },
+    {
+     "i": 428,
+     "l1": false,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": -6.2666
+    },
+    {
+     "i": 429,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the teacup on the shelf.",
+     "margin": 1.5533
+    },
+    {
+     "i": 430,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the teacup on the shelf.",
+     "margin": -0.7993
+    },
+    {
+     "i": 431,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of cement.",
+     "margin": 1.5435
+    },
+    {
+     "i": 432,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the plant.",
+     "margin": -0.6258
+    },
+    {
+     "i": 433,
+     "l1": true,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 0.4953
+    },
+    {
+     "i": 434,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 0.5524
+    },
+    {
+     "i": 435,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 2.5299
+    },
+    {
+     "i": 436,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 0.0762
+    },
+    {
+     "i": 437,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the low battery.",
+     "margin": -1.5535
+    },
+    {
+     "i": 438,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 3.1453
+    },
+    {
+     "i": 439,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": -0.6507
+    },
+    {
+     "i": 440,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kevin",
+     "gen": "Kevin",
+     "margin": -0.3079
+    },
+    {
+     "i": 441,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 0.7368
+    },
+    {
+     "i": 442,
+     "l1": false,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -2.9117
+    },
+    {
+     "i": 443,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": 4.0158
+    },
+    {
+     "i": 444,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": 2.3136
+    },
+    {
+     "i": 445,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the window.",
+     "margin": -1.7835
+    },
+    {
+     "i": 446,
+     "l1": false,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": -0.4277
+    },
+    {
+     "i": 447,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ball.",
+     "margin": -2.6204
+    },
+    {
+     "i": 448,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -2.342
+    },
+    {
+     "i": 449,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 2.2386
+    },
+    {
+     "i": 450,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.3669
+    },
+    {
+     "i": 451,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the mold",
+     "margin": -0.1494
+    },
+    {
+     "i": 452,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the jar.",
+     "margin": -0.2312
+    },
+    {
+     "i": 453,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the watch.",
+     "margin": -0.263
+    },
+    {
+     "i": 454,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.2928
+    },
+    {
+     "i": 455,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": 0.7719
+    },
+    {
+     "i": 456,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": -1.2891
+    },
+    {
+     "i": 457,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the coffee break.",
+     "margin": -0.4219
+    },
+    {
+     "i": 458,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the coffee break.",
+     "margin": 2.4729
+    },
+    {
+     "i": 459,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 0.8021
+    },
+    {
+     "i": 460,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag.",
+     "margin": 1.434
+    },
+    {
+     "i": 461,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag.",
+     "margin": -2.4926
+    },
+    {
+     "i": 462,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.1572
+    },
+    {
+     "i": 463,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.5336
+    },
+    {
+     "i": 464,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William",
+     "margin": 1.076
+    },
+    {
+     "i": 465,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the billboard.",
+     "margin": -3.5054
+    },
+    {
+     "i": 466,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the billboard.",
+     "margin": 3.6833
+    },
+    {
+     "i": 467,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ball",
+     "margin": 0.5945
+    },
+    {
+     "i": 468,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -5.1603
+    },
+    {
+     "i": 469,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house.",
+     "margin": -2.4627
+    },
+    {
+     "i": 470,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fan",
+     "margin": 1.8366
+    },
+    {
+     "i": 471,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fan.",
+     "margin": -1.3598
+    },
+    {
+     "i": 472,
+     "l1": true,
+     "l3": false,
+     "wrote": "ice",
+     "gen": "ice",
+     "margin": 5.2347
+    },
+    {
+     "i": 473,
+     "l1": false,
+     "l3": true,
+     "wrote": "ice",
+     "gen": "ice",
+     "margin": -5.7678
+    },
+    {
+     "i": 474,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 4.2414
+    },
+    {
+     "i": 475,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Kavya",
+     "margin": -1.5881
+    },
+    {
+     "i": 476,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 0.7879
+    },
+    {
+     "i": 477,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -3.2397
+    },
+    {
+     "i": 478,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.719
+    },
+    {
+     "i": 479,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": 1.3821
+    },
+    {
+     "i": 480,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -5.8513
+    },
+    {
+     "i": 481,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 4.7142
+    },
+    {
+     "i": 482,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the camera.",
+     "margin": 3.5659
+    },
+    {
+     "i": 483,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the camera",
+     "margin": -2.4921
+    },
+    {
+     "i": 484,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the kitchen.",
+     "margin": -0.2887
+    },
+    {
+     "i": 485,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the kitchen.",
+     "margin": 1.2829
+    },
+    {
+     "i": 486,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the flower.",
+     "margin": 0.0686
+    },
+    {
+     "i": 487,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": -3.6911
+    },
+    {
+     "i": 488,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the party",
+     "margin": 4.8486
+    },
+    {
+     "i": 489,
+     "l1": true,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 0.8599
+    },
+    {
+     "i": 490,
+     "l1": false,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.381
+    },
+    {
+     "i": 491,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the battery.",
+     "margin": 0.8075
+    },
+    {
+     "i": 492,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -2.426
+    },
+    {
+     "i": 493,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": 1.516
+    },
+    {
+     "i": 494,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -0.4277
+    },
+    {
+     "i": 495,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 1.2212
+    },
+    {
+     "i": 496,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.2789
+    },
+    {
+     "i": 497,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 1.6944
+    },
+    {
+     "i": 498,
+     "l1": true,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": 0.4146
+    },
+    {
+     "i": 499,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the rabbit.",
+     "margin": 2.4914
+    },
+    {
+     "i": 500,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -2.6828
+    },
+    {
+     "i": 501,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": -0.3405
+    },
+    {
+     "i": 502,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -4.1406
+    },
+    {
+     "i": 503,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": 0.8581
+    },
+    {
+     "i": 504,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 3.4693
+    },
+    {
+     "i": 505,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 1.7577
+    },
+    {
+     "i": 506,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.4339
+    },
+    {
+     "i": 507,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 3.5818
+    },
+    {
+     "i": 508,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the missed alarm.",
+     "margin": -3.4158
+    },
+    {
+     "i": 509,
+     "l1": false,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -3.2788
+    },
+    {
+     "i": 510,
+     "l1": false,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": -0.1056
+    },
+    {
+     "i": 511,
+     "l1": true,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": 0.1
+    },
+    {
+     "i": 512,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone or the television.",
+     "margin": 0.555
+    },
+    {
+     "i": 513,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone or the television.",
+     "margin": -4.7542
+    },
+    {
+     "i": 514,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the brush.",
+     "margin": -1.7167
+    },
+    {
+     "i": 515,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the brush.",
+     "margin": 3.9198
+    },
+    {
+     "i": 516,
+     "l1": true,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 1.6327
+    },
+    {
+     "i": 517,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": 3.0268
+    },
+    {
+     "i": 518,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": -0.1309
+    },
+    {
+     "i": 519,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 0.6675
+    },
+    {
+     "i": 520,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -2.5867
+    },
+    {
+     "i": 521,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the roof",
+     "margin": -1.8392
+    },
+    {
+     "i": 522,
+     "l1": false,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": -0.7933
+    },
+    {
+     "i": 523,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the petal.",
+     "margin": 5.0603
+    },
+    {
+     "i": 524,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the door.",
+     "margin": 5.7109
+    },
+    {
+     "i": 525,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the door.",
+     "margin": -2.962
+    },
+    {
+     "i": 526,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the note.",
+     "margin": 0.6678
+    },
+    {
+     "i": 527,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.3002
+    },
+    {
+     "i": 528,
+     "l1": false,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -1.1865
+    },
+    {
+     "i": 529,
+     "l1": false,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -0.8621
+    },
+    {
+     "i": 530,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": -2.7869
+    },
+    {
+     "i": 531,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 3.9882
+    },
+    {
+     "i": 532,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the wheel.",
+     "margin": -1.4916
+    },
+    {
+     "i": 533,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the wheel.",
+     "margin": 3.4143
+    },
+    {
+     "i": 534,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fence post.",
+     "margin": 8.1932
+    },
+    {
+     "i": 535,
+     "l1": true,
+     "l3": false,
+     "wrote": "butter",
+     "gen": "butter",
+     "margin": 0.6621
+    },
+    {
+     "i": 536,
+     "l1": true,
+     "l3": true,
+     "wrote": "butter",
+     "gen": "butter",
+     "margin": 0.713
+    },
+    {
+     "i": 537,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 0.5286
+    },
+    {
+     "i": 538,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the kitchen.",
+     "margin": -0.0689
+    },
+    {
+     "i": 539,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -0.4621
+    },
+    {
+     "i": 540,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": -0.7732
+    },
+    {
+     "i": 541,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word",
+     "margin": 4.2806
+    },
+    {
+     "i": 542,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -2.1499
+    },
+    {
+     "i": 543,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": -0.9053
+    },
+    {
+     "i": 544,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 3.1189
+    },
+    {
+     "i": 545,
+     "l1": false,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -4.0271
+    },
+    {
+     "i": 546,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the glass",
+     "margin": -1.4883
+    },
+    {
+     "i": 547,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the glass",
+     "margin": 0.9744
+    },
+    {
+     "i": 548,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 1.9595
+    },
+    {
+     "i": 549,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -8.7883
+    },
+    {
+     "i": 550,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen",
+     "margin": -0.5009
+    },
+    {
+     "i": 551,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": 0.6382
+    },
+    {
+     "i": 552,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.3424
+    },
+    {
+     "i": 553,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 1.0837
+    },
+    {
+     "i": 554,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Tomas.",
+     "margin": 1.7045
+    },
+    {
+     "i": 555,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 10.3866
+    },
+    {
+     "i": 556,
+     "l1": false,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -2.6655
+    },
+    {
+     "i": 557,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.3582
+    },
+    {
+     "i": 558,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 2.4076
+    },
+    {
+     "i": 559,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the boat.",
+     "margin": 0.0575
+    },
+    {
+     "i": 560,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the petal.",
+     "margin": -1.0201
+    },
+    {
+     "i": 561,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -3.2965
+    },
+    {
+     "i": 562,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 2.3471
+    },
+    {
+     "i": 563,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -1.2438
+    },
+    {
+     "i": 564,
+     "l1": true,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil",
+     "margin": 0.3022
+    },
+    {
+     "i": 565,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -1.6636
+    },
+    {
+     "i": 566,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -0.507
+    },
+    {
+     "i": 567,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.3385
+    },
+    {
+     "i": 568,
+     "l1": false,
+     "l3": false,
+     "wrote": "Steven",
+     "gen": "Steven",
+     "margin": -0.9752
+    },
+    {
+     "i": 569,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the lid.",
+     "margin": 2.1117
+    },
+    {
+     "i": 570,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the oil spill.",
+     "margin": 1.306
+    },
+    {
+     "i": 571,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the table",
+     "margin": -1.9885
+    },
+    {
+     "i": 572,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.7841
+    },
+    {
+     "i": 573,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.3868
+    },
+    {
+     "i": 574,
+     "l1": false,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": -1.6477
+    },
+    {
+     "i": 575,
+     "l1": true,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car",
+     "margin": 1.2105
+    },
+    {
+     "i": 576,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": -0.7969
+    },
+    {
+     "i": 577,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": 0.5278
+    },
+    {
+     "i": 578,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": 0.0715
+    },
+    {
+     "i": 579,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": 0.7445
+    },
+    {
+     "i": 580,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the purse.",
+     "margin": 0.9782
+    },
+    {
+     "i": 581,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the purse.",
+     "margin": -1.2431
+    },
+    {
+     "i": 582,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -2.9205
+    },
+    {
+     "i": 583,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 3.1931
+    },
+    {
+     "i": 584,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the handle of the door.",
+     "margin": -6.1236
+    },
+    {
+     "i": 585,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.7092
+    },
+    {
+     "i": 586,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": -3.9894
+    },
+    {
+     "i": 587,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": 3.7183
+    },
+    {
+     "i": 588,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": 0.8874
+    },
+    {
+     "i": 589,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -0.027
+    },
+    {
+     "i": 590,
+     "l1": false,
+     "l3": true,
+     "wrote": "oil",
+     "gen": "oil",
+     "margin": -4.4358
+    },
+    {
+     "i": 591,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": -0.5722
+    },
+    {
+     "i": 592,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.6311
+    },
+    {
+     "i": 593,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the dinner table.",
+     "margin": 2.3505
+    },
+    {
+     "i": 594,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the dinner table.",
+     "margin": -0.7043
+    },
+    {
+     "i": 595,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.4915
+    },
+    {
+     "i": 596,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.643
+    },
+    {
+     "i": 597,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the board meeting.",
+     "margin": -1.1499
+    },
+    {
+     "i": 598,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -0.2253
+    },
+    {
+     "i": 599,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.7244
+    },
+    {
+     "i": 600,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": -0.0022
+    },
+    {
+     "i": 601,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 0.4704
+    },
+    {
+     "i": 602,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 5.2571
+    },
+    {
+     "i": 603,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.3095
+    },
+    {
+     "i": 604,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 0.7318
+    },
+    {
+     "i": 605,
+     "l1": true,
+     "l3": false,
+     "wrote": "silk",
+     "gen": "silk",
+     "margin": 3.225
+    },
+    {
+     "i": 606,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -1.143
+    },
+    {
+     "i": 607,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.5169
+    },
+    {
+     "i": 608,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.5384
+    },
+    {
+     "i": 609,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": -2.2748
+    },
+    {
+     "i": 610,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 2.3514
+    },
+    {
+     "i": 611,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.6821
+    },
+    {
+     "i": 612,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -4.7614
+    },
+    {
+     "i": 613,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -2.3576
+    },
+    {
+     "i": 614,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 2.6516
+    },
+    {
+     "i": 615,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 1.3249
+    },
+    {
+     "i": 616,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the dry riverbed.",
+     "margin": -0.3393
+    },
+    {
+     "i": 617,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the soil loosened up with the pick",
+     "margin": 0.3856
+    },
+    {
+     "i": 618,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 2.9215
+    },
+    {
+     "i": 619,
+     "l1": true,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": 3.5176
+    },
+    {
+     "i": 620,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -0.1314
+    },
+    {
+     "i": 621,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the summer months.",
+     "margin": -1.0035
+    },
+    {
+     "i": 622,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "carrie",
+     "margin": 8.2463
+    },
+    {
+     "i": 623,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "carrie",
+     "margin": -9.2301
+    },
+    {
+     "i": 624,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shape.",
+     "margin": 3.8501
+    },
+    {
+     "i": 625,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shape.",
+     "margin": -0.2175
+    },
+    {
+     "i": 626,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 2.0261
+    },
+    {
+     "i": 627,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -0.1065
+    },
+    {
+     "i": 628,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 4.6912
+    },
+    {
+     "i": 629,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the team",
+     "margin": -4.0701
+    },
+    {
+     "i": 630,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -3.0707
+    },
+    {
+     "i": 631,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the book.",
+     "margin": 4.6593
+    },
+    {
+     "i": 632,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the book",
+     "margin": -1.1752
+    },
+    {
+     "i": 633,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -1.7594
+    },
+    {
+     "i": 634,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -1.566
+    },
+    {
+     "i": 635,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.2807
+    },
+    {
+     "i": 636,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.9489
+    },
+    {
+     "i": 637,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the engine of the car.",
+     "margin": 5.963
+    },
+    {
+     "i": 638,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the tree",
+     "margin": 1.7212
+    },
+    {
+     "i": 639,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -5.3925
+    },
+    {
+     "i": 640,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt",
+     "margin": 4.3851
+    },
+    {
+     "i": 641,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the manuscript.",
+     "margin": 1.6025
+    },
+    {
+     "i": 642,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 1.5439
+    },
+    {
+     "i": 643,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen",
+     "margin": -2.1237
+    },
+    {
+     "i": 644,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the package.",
+     "margin": -0.6875
+    },
+    {
+     "i": 645,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 1.1274
+    },
+    {
+     "i": 646,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 1.7384
+    },
+    {
+     "i": 647,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the afternoon.",
+     "margin": 2.904
+    },
+    {
+     "i": 648,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the afternoon.",
+     "margin": -2.5447
+    },
+    {
+     "i": 649,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the candle.",
+     "margin": -0.4961
+    },
+    {
+     "i": 650,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the candle.",
+     "margin": 3.6222
+    },
+    {
+     "i": 651,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.2318
+    },
+    {
+     "i": 652,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 1.3816
+    },
+    {
+     "i": 653,
+     "l1": false,
+     "l3": true,
+     "wrote": "jacket",
+     "gen": "jacket",
+     "margin": -1.6242
+    },
+    {
+     "i": 654,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "android",
+     "margin": -5.0796
+    },
+    {
+     "i": 655,
+     "l1": true,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 0.9788
+    },
+    {
+     "i": 656,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 2.0232
+    },
+    {
+     "i": 657,
+     "l1": true,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": 2.3289
+    },
+    {
+     "i": 658,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -2.166
+    },
+    {
+     "i": 659,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.7262
+    },
+    {
+     "i": 660,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.8911
+    },
+    {
+     "i": 661,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.5786
+    },
+    {
+     "i": 662,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer.",
+     "margin": -3.2735
+    },
+    {
+     "i": 663,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer.",
+     "margin": -5.2598
+    },
+    {
+     "i": 664,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the hair stylist.",
+     "margin": 4.9369
+    },
+    {
+     "i": 665,
+     "l1": false,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": -1.3099
+    },
+    {
+     "i": 666,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 0.7612
+    },
+    {
+     "i": 667,
+     "l1": false,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -1.0228
+    },
+    {
+     "i": 668,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": -0.7626
+    },
+    {
+     "i": 669,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the top.",
+     "margin": -1.5416
+    },
+    {
+     "i": 670,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -5.5193
+    },
+    {
+     "i": 671,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the book",
+     "margin": 1.0539
+    },
+    {
+     "i": 672,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the salad.",
+     "margin": 1.3381
+    },
+    {
+     "i": 673,
+     "l1": false,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": -13.5605
+    },
+    {
+     "i": 674,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pond",
+     "margin": 0.7384
+    },
+    {
+     "i": 675,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": 4.6304
+    },
+    {
+     "i": 676,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.1236
+    },
+    {
+     "i": 677,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pen.",
+     "margin": 2.4256
+    },
+    {
+     "i": 678,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Tomas",
+     "margin": 8.2545
+    },
+    {
+     "i": 679,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -5.3137
+    },
+    {
+     "i": 680,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the play",
+     "margin": 5.0451
+    },
+    {
+     "i": 681,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.5809
+    },
+    {
+     "i": 682,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the field.",
+     "margin": 0.7673
+    },
+    {
+     "i": 683,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 1.3393
+    },
+    {
+     "i": 684,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -1.1943
+    },
+    {
+     "i": 685,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": -1.1131
+    },
+    {
+     "i": 686,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 3.6975
+    },
+    {
+     "i": 687,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 0.3457
+    },
+    {
+     "i": 688,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -1.5036
+    },
+    {
+     "i": 689,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -3.2585
+    },
+    {
+     "i": 690,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 5.9716
+    },
+    {
+     "i": 691,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -1.7839
+    },
+    {
+     "i": 692,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 0.3835
+    },
+    {
+     "i": 693,
+     "l1": false,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -2.0853
+    },
+    {
+     "i": 694,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 1.9184
+    },
+    {
+     "i": 695,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the park.",
+     "margin": -1.9938
+    },
+    {
+     "i": 696,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the new RV.",
+     "margin": -2.1485
+    },
+    {
+     "i": 697,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 2.2329
+    },
+    {
+     "i": 698,
+     "l1": false,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -0.0001
+    },
+    {
+     "i": 699,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the burnt toast.",
+     "margin": -1.244
+    },
+    {
+     "i": 700,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the glacier.",
+     "margin": -1.1307
+    },
+    {
+     "i": 701,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pen.",
+     "margin": 0.4641
+    },
+    {
+     "i": 702,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pen.",
+     "margin": 2.0192
+    },
+    {
+     "i": 703,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": 0.901
+    },
+    {
+     "i": 704,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -2.4939
+    },
+    {
+     "i": 705,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag.",
+     "margin": 1.3757
+    },
+    {
+     "i": 706,
+     "l1": false,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -1.001
+    },
+    {
+     "i": 707,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": 0.2118
+    },
+    {
+     "i": 708,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 5.1419
+    },
+    {
+     "i": 709,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fever",
+     "margin": -5.5012
+    },
+    {
+     "i": 710,
+     "l1": true,
+     "l3": false,
+     "wrote": "smoke",
+     "gen": "smoke",
+     "margin": 1.6218
+    },
+    {
+     "i": 711,
+     "l1": true,
+     "l3": true,
+     "wrote": "smoke",
+     "gen": "smoke",
+     "margin": 0.4657
+    },
+    {
+     "i": 712,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer.",
+     "margin": -2.2925
+    },
+    {
+     "i": 713,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -2.8968
+    },
+    {
+     "i": 714,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the errand.",
+     "margin": -17.7637
+    },
+    {
+     "i": 715,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the camera.",
+     "margin": 3.8963
+    },
+    {
+     "i": 716,
+     "l1": false,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": -3.0228
+    },
+    {
+     "i": 717,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": -0.1139
+    },
+    {
+     "i": 718,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.0582
+    },
+    {
+     "i": 719,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pen.",
+     "margin": -0.07
+    },
+    {
+     "i": 720,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the lid.",
+     "margin": 0.3031
+    },
+    {
+     "i": 721,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the lid.",
+     "margin": 4.0496
+    },
+    {
+     "i": 722,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the park",
+     "margin": 2.6752
+    },
+    {
+     "i": 723,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the hand.",
+     "margin": 0.6221
+    },
+    {
+     "i": 724,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": -1.9597
+    },
+    {
+     "i": 725,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": -0.3381
+    },
+    {
+     "i": 726,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Kavya.",
+     "margin": -0.6125
+    },
+    {
+     "i": 727,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fever.",
+     "margin": 1.4107
+    },
+    {
+     "i": 728,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": 0.6327
+    },
+    {
+     "i": 729,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 2.1677
+    },
+    {
+     "i": 730,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": 2.6243
+    },
+    {
+     "i": 731,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -4.0
+    },
+    {
+     "i": 732,
+     "l1": false,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": -7.1403
+    },
+    {
+     "i": 733,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the doorframe.",
+     "margin": -0.7671
+    },
+    {
+     "i": 734,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the doorframe.",
+     "margin": 0.4819
+    },
+    {
+     "i": 735,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the dog",
+     "margin": -6.5559
+    },
+    {
+     "i": 736,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the dog treats.",
+     "margin": 6.7004
+    },
+    {
+     "i": 737,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the kitty",
+     "margin": -2.381
+    },
+    {
+     "i": 738,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the aquarium.",
+     "margin": 0.5338
+    },
+    {
+     "i": 739,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the market",
+     "margin": -0.2812
+    },
+    {
+     "i": 740,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the market",
+     "margin": 0.8136
+    },
+    {
+     "i": 741,
+     "l1": false,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -1.0365
+    },
+    {
+     "i": 742,
+     "l1": false,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William",
+     "margin": -1.9943
+    },
+    {
+     "i": 743,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": -1.143
+    },
+    {
+     "i": 744,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": 0.3871
+    },
+    {
+     "i": 745,
+     "l1": false,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": -2.1525
+    },
+    {
+     "i": 746,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 3.7647
+    },
+    {
+     "i": 747,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 3.7558
+    },
+    {
+     "i": 748,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 0.9762
+    },
+    {
+     "i": 749,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": 0.4137
+    },
+    {
+     "i": 750,
+     "l1": true,
+     "l3": true,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 2.0434
+    },
+    {
+     "i": 751,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -0.1013
+    },
+    {
+     "i": 752,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": 2.2328
+    },
+    {
+     "i": 753,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the suitcase.",
+     "margin": 0.0347
+    },
+    {
+     "i": 754,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the suitcase.",
+     "margin": 3.4673
+    },
+    {
+     "i": 755,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk",
+     "margin": -0.0417
+    },
+    {
+     "i": 756,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the player.",
+     "margin": 2.0592
+    },
+    {
+     "i": 757,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the blizzard.",
+     "margin": -0.6928
+    },
+    {
+     "i": 758,
+     "l1": true,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 2.654
+    },
+    {
+     "i": 759,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 3.4675
+    },
+    {
+     "i": 760,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the missed alarm.",
+     "margin": -0.3446
+    },
+    {
+     "i": 761,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.8396
+    },
+    {
+     "i": 762,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.7339
+    },
+    {
+     "i": 763,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the park",
+     "margin": 0.1716
+    },
+    {
+     "i": 764,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the park",
+     "margin": 0.0166
+    },
+    {
+     "i": 765,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.8727
+    },
+    {
+     "i": 766,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -0.9325
+    },
+    {
+     "i": 767,
+     "l1": true,
+     "l3": false,
+     "wrote": "beef",
+     "gen": "beef",
+     "margin": 0.8732
+    },
+    {
+     "i": 768,
+     "l1": true,
+     "l3": true,
+     "wrote": "beef",
+     "gen": "beef",
+     "margin": 2.8472
+    },
+    {
+     "i": 769,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -5.3903
+    },
+    {
+     "i": 770,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the chess tournament.",
+     "margin": 4.1236
+    },
+    {
+     "i": 771,
+     "l1": false,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -0.1993
+    },
+    {
+     "i": 772,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": -0.6087
+    },
+    {
+     "i": 773,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -4.3902
+    },
+    {
+     "i": 774,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the way of the house.",
+     "margin": 0.3591
+    },
+    {
+     "i": 775,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -2.299
+    },
+    {
+     "i": 776,
+     "l1": true,
+     "l3": true,
+     "wrote": "cold water",
+     "gen": "cold water",
+     "margin": 1.1112
+    },
+    {
+     "i": 777,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card.",
+     "margin": -0.0147
+    },
+    {
+     "i": 778,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 0.1616
+    },
+    {
+     "i": 779,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cleavage",
+     "margin": 0.3331
+    },
+    {
+     "i": 780,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 4.6462
+    },
+    {
+     "i": 781,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.8158
+    },
+    {
+     "i": 782,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 0.7777
+    },
+    {
+     "i": 783,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the tile.",
+     "margin": 0.5592
+    },
+    {
+     "i": 784,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.0982
+    },
+    {
+     "i": 785,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 0.4326
+    },
+    {
+     "i": 786,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer.",
+     "margin": -1.9172
+    },
+    {
+     "i": 787,
+     "l1": false,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": -1.4742
+    },
+    {
+     "i": 788,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 0.3776
+    },
+    {
+     "i": 789,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the movie trilogy.",
+     "margin": -2.8217
+    },
+    {
+     "i": 790,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk fan.",
+     "margin": -1.0302
+    },
+    {
+     "i": 791,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.055
+    },
+    {
+     "i": 792,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": 3.6411
+    },
+    {
+     "i": 793,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": 5.5748
+    },
+    {
+     "i": 794,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.4185
+    },
+    {
+     "i": 795,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -0.5424
+    },
+    {
+     "i": 796,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -6.0302
+    },
+    {
+     "i": 797,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the porch",
+     "margin": -0.5998
+    },
+    {
+     "i": 798,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 3.5949
+    },
+    {
+     "i": 799,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.1586
+    },
+    {
+     "i": 800,
+     "l1": false,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.2407
+    },
+    {
+     "i": 801,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -2.23
+    },
+    {
+     "i": 802,
+     "l1": false,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": -1.9022
+    },
+    {
+     "i": 803,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": -1.3243
+    },
+    {
+     "i": 804,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.6964
+    },
+    {
+     "i": 805,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the path.",
+     "margin": 0.524
+    },
+    {
+     "i": 806,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the path.",
+     "margin": 7.0229
+    },
+    {
+     "i": 807,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.3689
+    },
+    {
+     "i": 808,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -0.1572
+    },
+    {
+     "i": 809,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -1.7185
+    },
+    {
+     "i": 810,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -3.7458
+    },
+    {
+     "i": 811,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 3.6414
+    },
+    {
+     "i": 812,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -3.4191
+    },
+    {
+     "i": 813,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -2.7516
+    },
+    {
+     "i": 814,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": 1.8777
+    },
+    {
+     "i": 815,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 3.2824
+    },
+    {
+     "i": 816,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the essay.",
+     "margin": 2.4699
+    },
+    {
+     "i": 817,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 2.1408
+    },
+    {
+     "i": 818,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the exam",
+     "margin": 0.2882
+    },
+    {
+     "i": 819,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the exam",
+     "margin": 0.8853
+    },
+    {
+     "i": 820,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 3.0751
+    },
+    {
+     "i": 821,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 3.2136
+    },
+    {
+     "i": 822,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ancient Egyptian dress.",
+     "margin": -1.8237
+    },
+    {
+     "i": 823,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 6.7172
+    },
+    {
+     "i": 824,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 1.8711
+    },
+    {
+     "i": 825,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone numbers.",
+     "margin": -0.3978
+    },
+    {
+     "i": 826,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -5.5115
+    },
+    {
+     "i": 827,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cake.",
+     "margin": 4.7678
+    },
+    {
+     "i": 828,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": -0.0136
+    },
+    {
+     "i": 829,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": -0.3573
+    },
+    {
+     "i": 830,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.8429
+    },
+    {
+     "i": 831,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 1.0077
+    },
+    {
+     "i": 832,
+     "l1": true,
+     "l3": false,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": 3.3926
+    },
+    {
+     "i": 833,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 3.439
+    },
+    {
+     "i": 834,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the puddle.",
+     "margin": -0.505
+    },
+    {
+     "i": 835,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper",
+     "margin": 0.2118
+    },
+    {
+     "i": 836,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper bag.",
+     "margin": 1.7642
+    },
+    {
+     "i": 837,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the rollercoaster.",
+     "margin": -1.0461
+    },
+    {
+     "i": 838,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the rollercoaster.",
+     "margin": -0.611
+    },
+    {
+     "i": 839,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pen.",
+     "margin": -1.8287
+    },
+    {
+     "i": 840,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": -3.1784
+    },
+    {
+     "i": 841,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cardboard cutout.",
+     "margin": 1.6257
+    },
+    {
+     "i": 842,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -1.1519
+    },
+    {
+     "i": 843,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the teacher.",
+     "margin": -1.4006
+    },
+    {
+     "i": 844,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the teacher.",
+     "margin": 1.6854
+    },
+    {
+     "i": 845,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": -3.4356
+    },
+    {
+     "i": 846,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the kitchen",
+     "margin": 3.532
+    },
+    {
+     "i": 847,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -0.167
+    },
+    {
+     "i": 848,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 1.4863
+    },
+    {
+     "i": 849,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the houseplant",
+     "margin": 4.5166
+    },
+    {
+     "i": 850,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fence",
+     "margin": -2.5122
+    },
+    {
+     "i": 851,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.6726
+    },
+    {
+     "i": 852,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.5995
+    },
+    {
+     "i": 853,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -3.3064
+    },
+    {
+     "i": 854,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 2.7624
+    },
+    {
+     "i": 855,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the gas leak.",
+     "margin": -2.933
+    },
+    {
+     "i": 856,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the gas",
+     "margin": 3.2258
+    },
+    {
+     "i": 857,
+     "l1": true,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 1.2869
+    },
+    {
+     "i": 858,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 0.6949
+    },
+    {
+     "i": 859,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -7.747
+    },
+    {
+     "i": 860,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the street.",
+     "margin": 0.0032
+    },
+    {
+     "i": 861,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 1.3319
+    },
+    {
+     "i": 862,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 0.6074
+    },
+    {
+     "i": 863,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -1.4328
+    },
+    {
+     "i": 864,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -0.117
+    },
+    {
+     "i": 865,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the date set for the wedding.",
+     "margin": 2.4576
+    },
+    {
+     "i": 866,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the date set for the wedding.",
+     "margin": -6.0981
+    },
+    {
+     "i": 867,
+     "l1": false,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": -2.6192
+    },
+    {
+     "i": 868,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 0.7093
+    },
+    {
+     "i": 869,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the hall",
+     "margin": 0.3627
+    },
+    {
+     "i": 870,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the baby bib.",
+     "margin": 0.3326
+    },
+    {
+     "i": 871,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the hand",
+     "margin": -2.972
+    },
+    {
+     "i": 872,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.3935
+    },
+    {
+     "i": 873,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.2136
+    },
+    {
+     "i": 874,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the first-class ticket.",
+     "margin": -1.8437
+    },
+    {
+     "i": 875,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the first-class ticket.",
+     "margin": 1.4417
+    },
+    {
+     "i": 876,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the tile.",
+     "margin": -0.5252
+    },
+    {
+     "i": 877,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the essay",
+     "margin": 2.2491
+    },
+    {
+     "i": 878,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the movie trilogy.",
+     "margin": -1.7081
+    },
+    {
+     "i": 879,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William",
+     "margin": 1.3625
+    },
+    {
+     "i": 880,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper clip.",
+     "margin": 0.5292
+    },
+    {
+     "i": 881,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper clip.",
+     "margin": -1.174
+    },
+    {
+     "i": 882,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the small generator.",
+     "margin": -0.7852
+    },
+    {
+     "i": 883,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the low battery.",
+     "margin": -0.1708
+    },
+    {
+     "i": 884,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the low battery.",
+     "margin": -0.4178
+    },
+    {
+     "i": 885,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the band.",
+     "margin": 4.2857
+    },
+    {
+     "i": 886,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -0.4906
+    },
+    {
+     "i": 887,
+     "l1": false,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -3.8439
+    },
+    {
+     "i": 888,
+     "l1": false,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": -0.6547
+    },
+    {
+     "i": 889,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": 0.8618
+    },
+    {
+     "i": 890,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the landlord.",
+     "margin": -0.6094
+    },
+    {
+     "i": 891,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -1.0751
+    },
+    {
+     "i": 892,
+     "l1": false,
+     "l3": true,
+     "wrote": "shirt",
+     "gen": "shirt",
+     "margin": -4.639
+    },
+    {
+     "i": 893,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -0.8381
+    },
+    {
+     "i": 894,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -1.8194
+    },
+    {
+     "i": 895,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.58
+    },
+    {
+     "i": 896,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.2298
+    },
+    {
+     "i": 897,
+     "l1": false,
+     "l3": true,
+     "wrote": "kiosk",
+     "gen": "kiosk",
+     "margin": -8.6289
+    },
+    {
+     "i": 898,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": 0.4594
+    },
+    {
+     "i": 899,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pool.",
+     "margin": -4.7027
+    },
+    {
+     "i": 900,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the book",
+     "margin": 3.3333
+    },
+    {
+     "i": 901,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the book",
+     "margin": -2.8398
+    },
+    {
+     "i": 902,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the table top tree.",
+     "margin": -1.6336
+    },
+    {
+     "i": 903,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.1237
+    },
+    {
+     "i": 904,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": -5.8316
+    },
+    {
+     "i": 905,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -4.0827
+    },
+    {
+     "i": 906,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": -2.6952
+    },
+    {
+     "i": 907,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": 0.9302
+    },
+    {
+     "i": 908,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -1.6801
+    },
+    {
+     "i": 909,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 1.4851
+    },
+    {
+     "i": 910,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 7.8006
+    },
+    {
+     "i": 911,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -3.7779
+    },
+    {
+     "i": 912,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 2.0623
+    },
+    {
+     "i": 913,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.5781
+    },
+    {
+     "i": 914,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.218
+    },
+    {
+     "i": 915,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 0.7765
+    },
+    {
+     "i": 916,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen",
+     "margin": -1.8013
+    },
+    {
+     "i": 917,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Kavya",
+     "margin": 5.1148
+    },
+    {
+     "i": 918,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Kavya",
+     "margin": -6.1374
+    },
+    {
+     "i": 919,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the toddler.",
+     "margin": 3.6586
+    },
+    {
+     "i": 920,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the toddler.",
+     "margin": -3.828
+    },
+    {
+     "i": 921,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 0.5742
+    },
+    {
+     "i": 922,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": 1.2794
+    },
+    {
+     "i": 923,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the book",
+     "margin": -1.9026
+    },
+    {
+     "i": 924,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.9248
+    },
+    {
+     "i": 925,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the wall.",
+     "margin": -2.1781
+    },
+    {
+     "i": 926,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the lotions",
+     "margin": -0.2452
+    },
+    {
+     "i": 927,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.09
+    },
+    {
+     "i": 928,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -1.2627
+    },
+    {
+     "i": 929,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": -1.4442
+    },
+    {
+     "i": 930,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": 0.5145
+    },
+    {
+     "i": 931,
+     "l1": true,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 0.2074
+    },
+    {
+     "i": 932,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 2.4628
+    },
+    {
+     "i": 933,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the knife.",
+     "margin": 1.8813
+    },
+    {
+     "i": 934,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the box.",
+     "margin": 0.7131
+    },
+    {
+     "i": 935,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -4.054
+    },
+    {
+     "i": 936,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": -1.92
+    },
+    {
+     "i": 937,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -0.0944
+    },
+    {
+     "i": 938,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": 4.4928
+    },
+    {
+     "i": 939,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": -5.7204
+    },
+    {
+     "i": 940,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -4.7681
+    },
+    {
+     "i": 941,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Kavya",
+     "margin": -3.5991
+    },
+    {
+     "i": 942,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -0.4049
+    },
+    {
+     "i": 943,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": 0.7187
+    },
+    {
+     "i": 944,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the blown fuse.",
+     "margin": 0.2258
+    },
+    {
+     "i": 945,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 3.9614
+    },
+    {
+     "i": 946,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 0.7004
+    },
+    {
+     "i": 947,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 0.662
+    },
+    {
+     "i": 948,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the coffee break.",
+     "margin": 0.4614
+    },
+    {
+     "i": 949,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the coffee break.",
+     "margin": -4.2366
+    },
+    {
+     "i": 950,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sapling.",
+     "margin": 2.9733
+    },
+    {
+     "i": 951,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sapling.",
+     "margin": -1.2854
+    },
+    {
+     "i": 952,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fever.",
+     "margin": 0.1483
+    },
+    {
+     "i": 953,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the piano.",
+     "margin": 0.6025
+    },
+    {
+     "i": 954,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer.",
+     "margin": 1.8358
+    },
+    {
+     "i": 955,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the computer.",
+     "margin": 2.0576
+    },
+    {
+     "i": 956,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bottle",
+     "margin": 4.3545
+    },
+    {
+     "i": 957,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 3.2039
+    },
+    {
+     "i": 958,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of cement.",
+     "margin": -9.0959
+    },
+    {
+     "i": 959,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of cement.",
+     "margin": 15.5774
+    },
+    {
+     "i": 960,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.9003
+    },
+    {
+     "i": 961,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the diapers.",
+     "margin": -1.4551
+    },
+    {
+     "i": 962,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the diapers.",
+     "margin": 0.5407
+    },
+    {
+     "i": 963,
+     "l1": true,
+     "l3": true,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 0.4357
+    },
+    {
+     "i": 964,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.9518
+    },
+    {
+     "i": 965,
+     "l1": true,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 0.8788
+    },
+    {
+     "i": 966,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -0.3869
+    },
+    {
+     "i": 967,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -2.4869
+    },
+    {
+     "i": 968,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 3.3523
+    },
+    {
+     "i": 969,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 5.9025
+    },
+    {
+     "i": 970,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pond.",
+     "margin": 1.581
+    },
+    {
+     "i": 971,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -4.8549
+    },
+    {
+     "i": 972,
+     "l1": false,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -2.8265
+    },
+    {
+     "i": 973,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 0.5578
+    },
+    {
+     "i": 974,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 2.6616
+    },
+    {
+     "i": 975,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -1.2171
+    },
+    {
+     "i": 976,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of crisps.",
+     "margin": 4.4172
+    },
+    {
+     "i": 977,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of crisps.",
+     "margin": -5.9239
+    },
+    {
+     "i": 978,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pen.",
+     "margin": 3.4307
+    },
+    {
+     "i": 979,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the field.",
+     "margin": 0.8908
+    },
+    {
+     "i": 980,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the door.",
+     "margin": -0.577
+    },
+    {
+     "i": 981,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the door.",
+     "margin": 0.5927
+    },
+    {
+     "i": 982,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the blizzard.",
+     "margin": 1.1336
+    },
+    {
+     "i": 983,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 0.6356
+    },
+    {
+     "i": 984,
+     "l1": false,
+     "l3": true,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": -0.4157
+    },
+    {
+     "i": 985,
+     "l1": false,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -0.1585
+    },
+    {
+     "i": 986,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 6.2449
+    },
+    {
+     "i": 987,
+     "l1": false,
+     "l3": true,
+     "wrote": "ice",
+     "gen": "ice",
+     "margin": -0.408
+    },
+    {
+     "i": 988,
+     "l1": true,
+     "l3": false,
+     "wrote": "ice",
+     "gen": "ice",
+     "margin": 0.7839
+    },
+    {
+     "i": 989,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": -1.2289
+    },
+    {
+     "i": 990,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the night shift.",
+     "margin": 2.1977
+    },
+    {
+     "i": 991,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 0.0059
+    },
+    {
+     "i": 992,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -0.6314
+    },
+    {
+     "i": 993,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the party",
+     "margin": 8.0092
+    },
+    {
+     "i": 994,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the piano.",
+     "margin": -0.3196
+    },
+    {
+     "i": 995,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 0.8299
+    },
+    {
+     "i": 996,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -2.5018
+    },
+    {
+     "i": 997,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the long hair.",
+     "margin": -1.5534
+    },
+    {
+     "i": 998,
+     "l1": true,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 1.3659
+    },
+    {
+     "i": 999,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the petal.",
+     "margin": -0.2056
+    },
+    {
+     "i": 1000,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the patient",
+     "margin": 1.0609
+    },
+    {
+     "i": 1001,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.0665
+    },
+    {
+     "i": 1002,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the newspaper.",
+     "margin": -1.4927
+    },
+    {
+     "i": 1003,
+     "l1": false,
+     "l3": true,
+     "wrote": "basketball",
+     "gen": "basketball",
+     "margin": -3.8575
+    },
+    {
+     "i": 1004,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 2.3936
+    },
+    {
+     "i": 1005,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": -2.1613
+    },
+    {
+     "i": 1006,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": -5.7547
+    },
+    {
+     "i": 1007,
+     "l1": true,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 0.2845
+    },
+    {
+     "i": 1008,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the strike.",
+     "margin": 2.3324
+    },
+    {
+     "i": 1009,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 1.7434
+    },
+    {
+     "i": 1010,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -0.9697
+    },
+    {
+     "i": 1011,
+     "l1": false,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy",
+     "margin": -0.7536
+    },
+    {
+     "i": 1012,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the wall.",
+     "margin": -2.2241
+    },
+    {
+     "i": 1013,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 4.8261
+    },
+    {
+     "i": 1014,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of cement.",
+     "margin": -1.7582
+    },
+    {
+     "i": 1015,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.5733
+    },
+    {
+     "i": 1016,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": 0.9347
+    },
+    {
+     "i": 1017,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 3.346
+    },
+    {
+     "i": 1018,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the novel.",
+     "margin": -2.1616
+    },
+    {
+     "i": 1019,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 1.6986
+    },
+    {
+     "i": 1020,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 1.1275
+    },
+    {
+     "i": 1021,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone",
+     "margin": -0.9075
+    },
+    {
+     "i": 1022,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone",
+     "margin": 0.1341
+    },
+    {
+     "i": 1023,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the love relationship.",
+     "margin": 0.3032
+    },
+    {
+     "i": 1024,
+     "l1": true,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": 1.9211
+    },
+    {
+     "i": 1025,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -1.1611
+    },
+    {
+     "i": 1026,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.8887
+    },
+    {
+     "i": 1027,
+     "l1": true,
+     "l3": true,
+     "wrote": "jewelry",
+     "gen": "jewelry",
+     "margin": 3.7706
+    },
+    {
+     "i": 1028,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": 2.341
+    },
+    {
+     "i": 1029,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the crop failure.",
+     "margin": 0.9036
+    },
+    {
+     "i": 1030,
+     "l1": false,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -0.2134
+    },
+    {
+     "i": 1031,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone",
+     "margin": -0.5261
+    },
+    {
+     "i": 1032,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone",
+     "margin": 1.754
+    },
+    {
+     "i": 1033,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -0.3257
+    },
+    {
+     "i": 1034,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.0608
+    },
+    {
+     "i": 1035,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the lid.",
+     "margin": 1.6126
+    },
+    {
+     "i": 1036,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the oil spill.",
+     "margin": -3.8677
+    },
+    {
+     "i": 1037,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 0.645
+    },
+    {
+     "i": 1038,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -6.274
+    },
+    {
+     "i": 1039,
+     "l1": false,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -4.1825
+    },
+    {
+     "i": 1040,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the violin.",
+     "margin": 2.1806
+    },
+    {
+     "i": 1041,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the chess tournament.",
+     "margin": -0.6502
+    },
+    {
+     "i": 1042,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the gerbil",
+     "margin": -0.2624
+    },
+    {
+     "i": 1043,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the gerbil",
+     "margin": 0.3091
+    },
+    {
+     "i": 1044,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Kavya",
+     "margin": 0.3513
+    },
+    {
+     "i": 1045,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the booked trip",
+     "margin": 0.0444
+    },
+    {
+     "i": 1046,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": 13.0761
+    },
+    {
+     "i": 1047,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": 3.736
+    },
+    {
+     "i": 1048,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": -4.282
+    },
+    {
+     "i": 1049,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the string",
+     "margin": -0.3952
+    },
+    {
+     "i": 1050,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fruit.",
+     "margin": 0.0009
+    },
+    {
+     "i": 1051,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the patient",
+     "margin": 2.8764
+    },
+    {
+     "i": 1052,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the patient",
+     "margin": -1.8827
+    },
+    {
+     "i": 1053,
+     "l1": false,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -3.1183
+    },
+    {
+     "i": 1054,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -0.1183
+    },
+    {
+     "i": 1055,
+     "l1": true,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": 2.8846
+    },
+    {
+     "i": 1056,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the contract.",
+     "margin": 13.444
+    },
+    {
+     "i": 1057,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 5.5119
+    },
+    {
+     "i": 1058,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -4.381
+    },
+    {
+     "i": 1059,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pond",
+     "margin": 3.8967
+    },
+    {
+     "i": 1060,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the quiz",
+     "margin": -0.3426
+    },
+    {
+     "i": 1061,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 1.8254
+    },
+    {
+     "i": 1062,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -4.8735
+    },
+    {
+     "i": 1063,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the karate form of karate.",
+     "margin": 0.142
+    },
+    {
+     "i": 1064,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the horse.",
+     "margin": -2.9584
+    },
+    {
+     "i": 1065,
+     "l1": false,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.7146
+    },
+    {
+     "i": 1066,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -0.0415
+    },
+    {
+     "i": 1067,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the soil of the plant.",
+     "margin": -0.18
+    },
+    {
+     "i": 1068,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the soil of the plant.",
+     "margin": 0.1056
+    },
+    {
+     "i": 1069,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.5019
+    },
+    {
+     "i": 1070,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -5.9594
+    },
+    {
+     "i": 1071,
+     "l1": false,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -2.6772
+    },
+    {
+     "i": 1072,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.2708
+    },
+    {
+     "i": 1073,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the class.",
+     "margin": 10.5128
+    },
+    {
+     "i": 1074,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the toga.",
+     "margin": 0.8241
+    },
+    {
+     "i": 1075,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the toga.",
+     "margin": -3.7928
+    },
+    {
+     "i": 1076,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": -1.5517
+    },
+    {
+     "i": 1077,
+     "l1": true,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": 0.5058
+    },
+    {
+     "i": 1078,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.054
+    },
+    {
+     "i": 1079,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": -1.0217
+    },
+    {
+     "i": 1080,
+     "l1": true,
+     "l3": false,
+     "wrote": "heat",
+     "gen": "heat",
+     "margin": 8.0374
+    },
+    {
+     "i": 1081,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 2.2618
+    },
+    {
+     "i": 1082,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -8.9615
+    },
+    {
+     "i": 1083,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the system",
+     "margin": 0.0526
+    },
+    {
+     "i": 1084,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.1263
+    },
+    {
+     "i": 1085,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Tomas",
+     "margin": -1.8666
+    },
+    {
+     "i": 1086,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Tomas",
+     "margin": 1.161
+    },
+    {
+     "i": 1087,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -0.3043
+    },
+    {
+     "i": 1088,
+     "l1": false,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -2.5132
+    },
+    {
+     "i": 1089,
+     "l1": false,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -1.1398
+    },
+    {
+     "i": 1090,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": 0.9085
+    },
+    {
+     "i": 1091,
+     "l1": true,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 1.9811
+    },
+    {
+     "i": 1092,
+     "l1": false,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -2.3657
+    },
+    {
+     "i": 1093,
+     "l1": true,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 0.0931
+    },
+    {
+     "i": 1094,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen",
+     "margin": -1.5678
+    },
+    {
+     "i": 1095,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.3428
+    },
+    {
+     "i": 1096,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 10.0991
+    },
+    {
+     "i": 1097,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the screen.",
+     "margin": -5.0991
+    },
+    {
+     "i": 1098,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.5493
+    },
+    {
+     "i": 1099,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -2.9296
+    },
+    {
+     "i": 1100,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.9878
+    },
+    {
+     "i": 1101,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 5.2045
+    },
+    {
+     "i": 1102,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": 2.6979
+    },
+    {
+     "i": 1103,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the apartment",
+     "margin": -5.7712
+    },
+    {
+     "i": 1104,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the apartment",
+     "margin": 3.3625
+    },
+    {
+     "i": 1105,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -3.3197
+    },
+    {
+     "i": 1106,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 1.6075
+    },
+    {
+     "i": 1107,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the knife.",
+     "margin": -3.0183
+    },
+    {
+     "i": 1108,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": -4.509
+    },
+    {
+     "i": 1109,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 0.5751
+    },
+    {
+     "i": 1110,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 0.4742
+    },
+    {
+     "i": 1111,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the hot pants",
+     "margin": -3.2535
+    },
+    {
+     "i": 1112,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the petal.",
+     "margin": 0.2067
+    },
+    {
+     "i": 1113,
+     "l1": true,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 1.0243
+    },
+    {
+     "i": 1114,
+     "l1": false,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": -0.265
+    },
+    {
+     "i": 1115,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 5.9694
+    },
+    {
+     "i": 1116,
+     "l1": true,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 2.2393
+    },
+    {
+     "i": 1117,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -0.3213
+    },
+    {
+     "i": 1118,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the back door.",
+     "margin": -1.5716
+    },
+    {
+     "i": 1119,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.4853
+    },
+    {
+     "i": 1120,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.0614
+    },
+    {
+     "i": 1121,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 7.0107
+    },
+    {
+     "i": 1122,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": -1.2746
+    },
+    {
+     "i": 1123,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the page.",
+     "margin": 0.7696
+    },
+    {
+     "i": 1124,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shoe.",
+     "margin": -10.4848
+    },
+    {
+     "i": 1125,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": 3.6523
+    },
+    {
+     "i": 1126,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 0.9925
+    },
+    {
+     "i": 1127,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": -2.3045
+    },
+    {
+     "i": 1128,
+     "l1": true,
+     "l3": false,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": 7.0191
+    },
+    {
+     "i": 1129,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.6287
+    },
+    {
+     "i": 1130,
+     "l1": true,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 1.1122
+    },
+    {
+     "i": 1131,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -0.8934
+    },
+    {
+     "i": 1132,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 1.155
+    },
+    {
+     "i": 1133,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the lady",
+     "margin": -1.5455
+    },
+    {
+     "i": 1134,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house.",
+     "margin": -2.2479
+    },
+    {
+     "i": 1135,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 1.5054
+    },
+    {
+     "i": 1136,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.8362
+    },
+    {
+     "i": 1137,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -5.9968
+    },
+    {
+     "i": 1138,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the antique pictures.",
+     "margin": 4.1906
+    },
+    {
+     "i": 1139,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 2.8673
+    },
+    {
+     "i": 1140,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -2.0811
+    },
+    {
+     "i": 1141,
+     "l1": false,
+     "l3": true,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": -0.4649
+    },
+    {
+     "i": 1142,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cake.",
+     "margin": 1.09
+    },
+    {
+     "i": 1143,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cake.",
+     "margin": -0.1586
+    },
+    {
+     "i": 1144,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kevin",
+     "gen": "Kevin",
+     "margin": 1.3841
+    },
+    {
+     "i": 1145,
+     "l1": true,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": 3.9386
+    },
+    {
+     "i": 1146,
+     "l1": false,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": -2.3538
+    },
+    {
+     "i": 1147,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the board",
+     "margin": 2.4006
+    },
+    {
+     "i": 1148,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 1.0102
+    },
+    {
+     "i": 1149,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene",
+     "margin": 3.7876
+    },
+    {
+     "i": 1150,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the nursery.",
+     "margin": 0.68
+    },
+    {
+     "i": 1151,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.2726
+    },
+    {
+     "i": 1152,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag of crisps.",
+     "margin": 1.6361
+    },
+    {
+     "i": 1153,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 3.7316
+    },
+    {
+     "i": 1154,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 5.2444
+    },
+    {
+     "i": 1155,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the note.",
+     "margin": -1.3425
+    },
+    {
+     "i": 1156,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone system",
+     "margin": 1.4359
+    },
+    {
+     "i": 1157,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the slip.",
+     "margin": 0.0428
+    },
+    {
+     "i": 1158,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the slip",
+     "margin": -1.3223
+    },
+    {
+     "i": 1159,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": -5.8471
+    },
+    {
+     "i": 1160,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the floor",
+     "margin": -3.7794
+    },
+    {
+     "i": 1161,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the floor",
+     "margin": 4.3682
+    },
+    {
+     "i": 1162,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 0.601
+    },
+    {
+     "i": 1163,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -5.9767
+    },
+    {
+     "i": 1164,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 0.1604
+    },
+    {
+     "i": 1165,
+     "l1": false,
+     "l3": false,
+     "wrote": "teacup",
+     "gen": "teacup",
+     "margin": -1.5416
+    },
+    {
+     "i": 1166,
+     "l1": true,
+     "l3": true,
+     "wrote": "teacup",
+     "gen": "teacup",
+     "margin": 1.7773
+    },
+    {
+     "i": 1167,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 2.0576
+    },
+    {
+     "i": 1168,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -3.5214
+    },
+    {
+     "i": 1169,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cookie.",
+     "margin": -2.8504
+    },
+    {
+     "i": 1170,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fence.",
+     "margin": -0.2478
+    },
+    {
+     "i": 1171,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the plant.",
+     "margin": -1.3038
+    },
+    {
+     "i": 1172,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -0.4412
+    },
+    {
+     "i": 1173,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the passport",
+     "margin": 1.1345
+    },
+    {
+     "i": 1174,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 1.3534
+    },
+    {
+     "i": 1175,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": 0.4391
+    },
+    {
+     "i": 1176,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": -2.097
+    },
+    {
+     "i": 1177,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Sara",
+     "margin": 0.7789
+    },
+    {
+     "i": 1178,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 2.5417
+    },
+    {
+     "i": 1179,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -1.5012
+    },
+    {
+     "i": 1180,
+     "l1": true,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 6.1191
+    },
+    {
+     "i": 1181,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the desk.",
+     "margin": 3.9354
+    },
+    {
+     "i": 1182,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone.",
+     "margin": -7.5012
+    },
+    {
+     "i": 1183,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 8.7268
+    },
+    {
+     "i": 1184,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": -1.0914
+    },
+    {
+     "i": 1185,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 0.0719
+    },
+    {
+     "i": 1186,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the salad",
+     "margin": -0.3134
+    },
+    {
+     "i": 1187,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the salad",
+     "margin": 1.3396
+    },
+    {
+     "i": 1188,
+     "l1": true,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 0.9994
+    },
+    {
+     "i": 1189,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 2.7611
+    },
+    {
+     "i": 1190,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 0.7813
+    },
+    {
+     "i": 1191,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -0.8438
+    },
+    {
+     "i": 1192,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the lotion.",
+     "margin": 1.25
+    },
+    {
+     "i": 1193,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": -0.4844
+    },
+    {
+     "i": 1194,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 0.2254
+    },
+    {
+     "i": 1195,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the oil.",
+     "margin": 6.9706
+    },
+    {
+     "i": 1196,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 0.1448
+    },
+    {
+     "i": 1197,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": -0.2671
+    },
+    {
+     "i": 1198,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -0.9249
+    },
+    {
+     "i": 1199,
+     "l1": false,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -2.7197
+    },
+    {
+     "i": 1200,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the crop failure.",
+     "margin": -3.9962
+    },
+    {
+     "i": 1201,
+     "l1": true,
+     "l3": true,
+     "wrote": "corn",
+     "gen": "corn",
+     "margin": 2.0667
+    },
+    {
+     "i": 1202,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 0.8316
+    },
+    {
+     "i": 1203,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the card trick.",
+     "margin": -2.7192
+    },
+    {
+     "i": 1204,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": 1.0329
+    },
+    {
+     "i": 1205,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car park.",
+     "margin": 0.4594
+    },
+    {
+     "i": 1206,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -0.1377
+    },
+    {
+     "i": 1207,
+     "l1": false,
+     "l3": false,
+     "wrote": "oil",
+     "gen": "oil",
+     "margin": -4.8686
+    },
+    {
+     "i": 1208,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -3.4681
+    },
+    {
+     "i": 1209,
+     "l1": false,
+     "l3": true,
+     "wrote": "bag",
+     "gen": "bag",
+     "margin": -1.647
+    },
+    {
+     "i": 1210,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bag.",
+     "margin": 4.7984
+    },
+    {
+     "i": 1211,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -1.4108
+    },
+    {
+     "i": 1212,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the surface",
+     "margin": 1.9702
+    },
+    {
+     "i": 1213,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": 4.0898
+    },
+    {
+     "i": 1214,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the milk.",
+     "margin": 2.4261
+    },
+    {
+     "i": 1215,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the yorkie.",
+     "margin": 0.0438
+    },
+    {
+     "i": 1216,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bed.",
+     "margin": -4.7328
+    },
+    {
+     "i": 1217,
+     "l1": true,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 4.6434
+    },
+    {
+     "i": 1218,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -4.448
+    },
+    {
+     "i": 1219,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": -1.5616
+    },
+    {
+     "i": 1220,
+     "l1": false,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": -0.1762
+    },
+    {
+     "i": 1221,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ring.",
+     "margin": -0.2742
+    },
+    {
+     "i": 1222,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the ring.",
+     "margin": 0.9988
+    },
+    {
+     "i": 1223,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the box.",
+     "margin": -6.0793
+    },
+    {
+     "i": 1224,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 4.1657
+    },
+    {
+     "i": 1225,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 7.8188
+    },
+    {
+     "i": 1226,
+     "l1": false,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -1.0085
+    },
+    {
+     "i": 1227,
+     "l1": true,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 0.7793
+    },
+    {
+     "i": 1228,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the plant.",
+     "margin": 3.2167
+    },
+    {
+     "i": 1229,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the street.",
+     "margin": -2.0468
+    },
+    {
+     "i": 1230,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the street.",
+     "margin": 1.9769
+    },
+    {
+     "i": 1231,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the kitchen.",
+     "margin": -0.7187
+    },
+    {
+     "i": 1232,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the kitchen.",
+     "margin": 1.3332
+    },
+    {
+     "i": 1233,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -4.2321
+    },
+    {
+     "i": 1234,
+     "l1": true,
+     "l3": true,
+     "wrote": "Leslie",
+     "gen": "Leslie",
+     "margin": 6.8825
+    },
+    {
+     "i": 1235,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -3.9243
+    },
+    {
+     "i": 1236,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the skid.",
+     "margin": -1.1636
+    },
+    {
+     "i": 1237,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -1.076
+    },
+    {
+     "i": 1238,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the tile.",
+     "margin": 1.4401
+    },
+    {
+     "i": 1239,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bulletproof vest.",
+     "margin": -2.5049
+    },
+    {
+     "i": 1240,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bulletproof vest.",
+     "margin": 0.5895
+    },
+    {
+     "i": 1241,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the kitchen.",
+     "margin": -1.268
+    },
+    {
+     "i": 1242,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": 4.0752
+    },
+    {
+     "i": 1243,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the city",
+     "margin": -3.1618
+    },
+    {
+     "i": 1244,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the forest fire.",
+     "margin": 3.0196
+    },
+    {
+     "i": 1245,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the nib.",
+     "margin": 1.6954
+    },
+    {
+     "i": 1246,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the word.",
+     "margin": -2.2775
+    },
+    {
+     "i": 1247,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the scene.",
+     "margin": -2.9668
+    },
+    {
+     "i": 1248,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pen.",
+     "margin": -3.2478
+    },
+    {
+     "i": 1249,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pen.",
+     "margin": -0.0406
+    },
+    {
+     "i": 1250,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": 3.8829
+    },
+    {
+     "i": 1251,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": -3.3289
+    },
+    {
+     "i": 1252,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the house",
+     "margin": -1.2676
+    },
+    {
+     "i": 1253,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -1.223
+    },
+    {
+     "i": 1254,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": 4.1702
+    },
+    {
+     "i": 1255,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the school",
+     "margin": -4.6281
+    },
+    {
+     "i": 1256,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the paper clip.",
+     "margin": -7.4859
+    },
+    {
+     "i": 1257,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the phone call.",
+     "margin": -4.321
+    },
+    {
+     "i": 1258,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt.",
+     "margin": 0.5893
+    },
+    {
+     "i": 1259,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -2.5676
+    },
+    {
+     "i": 1260,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": 2.2715
+    },
+    {
+     "i": 1261,
+     "l1": false,
+     "l3": true,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": -2.9212
+    },
+    {
+     "i": 1262,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the sentence.",
+     "margin": -2.9572
+    },
+    {
+     "i": 1263,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 0.0809
+    },
+    {
+     "i": 1264,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the new restaurant.",
+     "margin": 1.9452
+    },
+    {
+     "i": 1265,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the pet tortoise.",
+     "margin": 0.5718
+    },
+    {
+     "i": 1266,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the car.",
+     "margin": 1.1071
+    }
+   ]
+  }
+ },
+ "elapsed_s": 536.5
+}

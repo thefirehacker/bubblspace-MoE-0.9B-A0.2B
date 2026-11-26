@@ -1,0 +1,10324 @@
+{
+ "model": "bubblspace-moe0.9b-a0.2b",
+ "checkpoint": "/lambda/nfs/us-west-1-eval-inference/phase25a/step_8000.pt",
+ "step": 8000,
+ "n_params": 915573760,
+ "gpu": "NVIDIA A10",
+ "weights_format": "bubblspace-checkpoint",
+ "suites": {
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.5229,
+   "L2": 0.169,
+   "L3_rows": 0.493,
+   "L3": 0.0282,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.169,
+     "L3": 0.028
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Maria",
+      "wrote": "Maria",
+      "margin": -0.3062,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Maria",
+      "wrote": "Maria",
+      "margin": 0.4986,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "house",
+      "wrote": "house",
+      "margin": -0.5157,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "house",
+      "wrote": "house",
+      "margin": 1.0488,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "bakery",
+      "wrote": "bakery",
+      "margin": 2.1561,
+      "wrote_first_mentioned": true,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "bakery",
+      "wrote": "bakery",
+      "margin": -2.1755,
+      "wrote_first_mentioned": true,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "class",
+      "wrote": "class",
+      "margin": 2.542,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "class",
+      "wrote": "class",
+      "margin": 1.0659,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": true
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "cafe or library",
+      "wrote": "cafe",
+      "margin": -0.1061,
+      "wrote_first_mentioned": true,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": false
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "the cafe or the library",
+      "wrote": null,
+      "margin": 0.2408,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": false,
+      "l1_prefers_first": false
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Leslie",
+      "wrote": "Leslie",
+      "margin": 0.7828,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Leslie",
+      "wrote": "Leslie",
+      "margin": -0.5584,
+      "wrote_first_mentioned": false,
+      "wrote_second_mentioned": true,
+      "l1_prefers_first": false
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.5288,
+   "l3_all_rows": 0.4925,
+   "answered_with_option": 0.9692,
+   "rows_outside_pairs": 699,
+   "prior_free_pairs": 0.5704,
+   "prior_free_median_effect_nats": 0.1312,
+   "shortcuts": {
+    "wrote_first_mentioned": 0.1839,
+    "wrote_second_mentioned": 0.7853,
+    "first_mentioned_share_of_answers": 0.1897,
+    "same_name_for_both_twins": 0.9225,
+    "l1_prefers_first_mentioned": 0.4846
+   },
+   "rows": [
+    {
+     "i": 0,
+     "l1": false,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": -0.3062
+    },
+    {
+     "i": 1,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": 0.4986
+    },
+    {
+     "i": 2,
+     "l1": true,
+     "l3": true,
+     "wrote": "bed",
+     "gen": "bed",
+     "margin": 1.7078
+    },
+    {
+     "i": 3,
+     "l1": true,
+     "l3": false,
+     "wrote": "toaster",
+     "gen": "toaster",
+     "margin": 2.7276
+    },
+    {
+     "i": 4,
+     "l1": false,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": -2.5424
+    },
+    {
+     "i": 5,
+     "l1": false,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": -2.8085
+    },
+    {
+     "i": 6,
+     "l1": false,
+     "l3": false,
+     "wrote": "house",
+     "gen": "house",
+     "margin": -0.5157
+    },
+    {
+     "i": 7,
+     "l1": true,
+     "l3": true,
+     "wrote": "house",
+     "gen": "house",
+     "margin": 1.0488
+    },
+    {
+     "i": 8,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -1.4555
+    },
+    {
+     "i": 9,
+     "l1": true,
+     "l3": true,
+     "wrote": "bakery",
+     "gen": "bakery",
+     "margin": 2.1561
+    },
+    {
+     "i": 10,
+     "l1": false,
+     "l3": false,
+     "wrote": "bakery",
+     "gen": "bakery",
+     "margin": -2.1755
+    },
+    {
+     "i": 11,
+     "l1": true,
+     "l3": true,
+     "wrote": "class",
+     "gen": "class",
+     "margin": 2.542
+    },
+    {
+     "i": 12,
+     "l1": true,
+     "l3": false,
+     "wrote": "class",
+     "gen": "class",
+     "margin": 1.0659
+    },
+    {
+     "i": 13,
+     "l1": false,
+     "l3": true,
+     "wrote": "cafe",
+     "gen": "cafe or library",
+     "margin": -0.1061
+    },
+    {
+     "i": 14,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cafe or the library",
+     "margin": 0.2408
+    },
+    {
+     "i": 15,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Frank Miller",
+     "margin": -0.2876
+    },
+    {
+     "i": 16,
+     "l1": true,
+     "l3": true,
+     "wrote": "Leslie",
+     "gen": "Leslie",
+     "margin": 0.7828
+    },
+    {
+     "i": 17,
+     "l1": false,
+     "l3": false,
+     "wrote": "Leslie",
+     "gen": "Leslie",
+     "margin": -0.5584
+    },
+    {
+     "i": 18,
+     "l1": true,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil",
+     "margin": 0.174
+    },
+    {
+     "i": 19,
+     "l1": false,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": -0.2657
+    },
+    {
+     "i": 20,
+     "l1": false,
+     "l3": true,
+     "wrote": "frosting",
+     "gen": "frosting",
+     "margin": -0.7604
+    },
+    {
+     "i": 21,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -0.127
+    },
+    {
+     "i": 22,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": -0.0876
+    },
+    {
+     "i": 23,
+     "l1": true,
+     "l3": false,
+     "wrote": "strength",
+     "gen": "strength",
+     "margin": 2.7003
+    },
+    {
+     "i": 24,
+     "l1": false,
+     "l3": true,
+     "wrote": "strength",
+     "gen": "strength",
+     "margin": -0.7127
+    },
+    {
+     "i": 25,
+     "l1": false,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.718
+    },
+    {
+     "i": 26,
+     "l1": true,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 1.677
+    },
+    {
+     "i": 27,
+     "l1": true,
+     "l3": true,
+     "wrote": "portions",
+     "gen": "portions",
+     "margin": 1.4131
+    },
+    {
+     "i": 28,
+     "l1": true,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 0.0257
+    },
+    {
+     "i": 29,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 2.1024
+    },
+    {
+     "i": 30,
+     "l1": true,
+     "l3": false,
+     "wrote": "pencils",
+     "gen": "pencils",
+     "margin": 0.9215
+    },
+    {
+     "i": 31,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": 0.3365
+    },
+    {
+     "i": 32,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Great Danes",
+     "margin": 1.0192
+    },
+    {
+     "i": 33,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": 1.4395
+    },
+    {
+     "i": 34,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.9776
+    },
+    {
+     "i": 35,
+     "l1": false,
+     "l3": true,
+     "wrote": "floor",
+     "gen": "floor",
+     "margin": -4.6434
+    },
+    {
+     "i": 36,
+     "l1": false,
+     "l3": true,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -1.6135
+    },
+    {
+     "i": 37,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": 0.8588
+    },
+    {
+     "i": 38,
+     "l1": true,
+     "l3": true,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": 3.7222
+    },
+    {
+     "i": 39,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": 0.9799
+    },
+    {
+     "i": 40,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -1.1755
+    },
+    {
+     "i": 41,
+     "l1": true,
+     "l3": false,
+     "wrote": "eyes",
+     "gen": "eyes",
+     "margin": 1.765
+    },
+    {
+     "i": 42,
+     "l1": true,
+     "l3": false,
+     "wrote": "dress",
+     "gen": "dress",
+     "margin": 2.0854
+    },
+    {
+     "i": 43,
+     "l1": false,
+     "l3": true,
+     "wrote": "dress",
+     "gen": "dress or hat",
+     "margin": -0.8975
+    },
+    {
+     "i": 44,
+     "l1": true,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": 0.7003
+    },
+    {
+     "i": 45,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.4751
+    },
+    {
+     "i": 46,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -0.8498
+    },
+    {
+     "i": 47,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": 0.604
+    },
+    {
+     "i": 48,
+     "l1": false,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": -0.1715
+    },
+    {
+     "i": 49,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "Magician",
+     "margin": 1.3395
+    },
+    {
+     "i": 50,
+     "l1": false,
+     "l3": false,
+     "wrote": "crack",
+     "gen": "crack",
+     "margin": -0.5928
+    },
+    {
+     "i": 51,
+     "l1": true,
+     "l3": true,
+     "wrote": "crack",
+     "gen": "crack",
+     "margin": 0.3982
+    },
+    {
+     "i": 52,
+     "l1": false,
+     "l3": false,
+     "wrote": "comics",
+     "gen": "comics",
+     "margin": -0.4082
+    },
+    {
+     "i": 53,
+     "l1": false,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": -1.8637
+    },
+    {
+     "i": 54,
+     "l1": true,
+     "l3": false,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": 5.6907
+    },
+    {
+     "i": 55,
+     "l1": false,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": -0.0553
+    },
+    {
+     "i": 56,
+     "l1": true,
+     "l3": true,
+     "wrote": "distance",
+     "gen": "distance",
+     "margin": 1.9268
+    },
+    {
+     "i": 57,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": 0.2429
+    },
+    {
+     "i": 58,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 0.4571
+    },
+    {
+     "i": 59,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.9151
+    },
+    {
+     "i": 60,
+     "l1": true,
+     "l3": false,
+     "wrote": "battle",
+     "gen": "battle",
+     "margin": 2.4807
+    },
+    {
+     "i": 61,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 1.0942
+    },
+    {
+     "i": 62,
+     "l1": true,
+     "l3": true,
+     "wrote": "table",
+     "gen": "table",
+     "margin": 0.2293
+    },
+    {
+     "i": 63,
+     "l1": true,
+     "l3": false,
+     "wrote": "table",
+     "gen": "table",
+     "margin": 1.0869
+    },
+    {
+     "i": 64,
+     "l1": false,
+     "l3": true,
+     "wrote": "air",
+     "gen": "air",
+     "margin": -0.6286
+    },
+    {
+     "i": 65,
+     "l1": false,
+     "l3": false,
+     "wrote": "nozzles",
+     "gen": "nozzles or rags",
+     "margin": -2.6568
+    },
+    {
+     "i": 66,
+     "l1": false,
+     "l3": false,
+     "wrote": "piercing",
+     "gen": "piercing",
+     "margin": -1.9417
+    },
+    {
+     "i": 67,
+     "l1": true,
+     "l3": false,
+     "wrote": "ear",
+     "gen": "ear",
+     "margin": 0.8794
+    },
+    {
+     "i": 68,
+     "l1": false,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -1.2085
+    },
+    {
+     "i": 69,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.3013
+    },
+    {
+     "i": 70,
+     "l1": true,
+     "l3": false,
+     "wrote": "t-shirt",
+     "gen": "t-shirt",
+     "margin": 0.1248
+    },
+    {
+     "i": 71,
+     "l1": true,
+     "l3": false,
+     "wrote": "varnish",
+     "gen": "varnish",
+     "margin": 1.2931
+    },
+    {
+     "i": 72,
+     "l1": false,
+     "l3": false,
+     "wrote": "jars",
+     "gen": "jars",
+     "margin": -0.3002
+    },
+    {
+     "i": 73,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": 0.0238
+    },
+    {
+     "i": 74,
+     "l1": false,
+     "l3": false,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": -1.1465
+    },
+    {
+     "i": 75,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the new hat",
+     "margin": 0.5888
+    },
+    {
+     "i": 76,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -1.7122
+    },
+    {
+     "i": 77,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": 0.8821
+    },
+    {
+     "i": 78,
+     "l1": true,
+     "l3": true,
+     "wrote": "house",
+     "gen": "house",
+     "margin": 0.633
+    },
+    {
+     "i": 79,
+     "l1": false,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -1.6703
+    },
+    {
+     "i": 80,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 1.8014
+    },
+    {
+     "i": 81,
+     "l1": false,
+     "l3": true,
+     "wrote": "day",
+     "gen": "day or night",
+     "margin": -1.7761
+    },
+    {
+     "i": 82,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": -0.9224
+    },
+    {
+     "i": 83,
+     "l1": true,
+     "l3": false,
+     "wrote": "bedroom",
+     "gen": "bedroom",
+     "margin": 0.6024
+    },
+    {
+     "i": 84,
+     "l1": true,
+     "l3": true,
+     "wrote": "bedroom",
+     "gen": "bedroom",
+     "margin": 0.3625
+    },
+    {
+     "i": 85,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.4
+    },
+    {
+     "i": 86,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -2.0604
+    },
+    {
+     "i": 87,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 0.7265
+    },
+    {
+     "i": 88,
+     "l1": true,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": 1.0523
+    },
+    {
+     "i": 89,
+     "l1": false,
+     "l3": false,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": -0.061
+    },
+    {
+     "i": 90,
+     "l1": false,
+     "l3": false,
+     "wrote": "ball",
+     "gen": "ball",
+     "margin": -0.0287
+    },
+    {
+     "i": 91,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 0.6075
+    },
+    {
+     "i": 92,
+     "l1": false,
+     "l3": true,
+     "wrote": "doors",
+     "gen": "doors",
+     "margin": -0.9461
+    },
+    {
+     "i": 93,
+     "l1": true,
+     "l3": false,
+     "wrote": "doors",
+     "gen": "doors",
+     "margin": 1.0922
+    },
+    {
+     "i": 94,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the arrow",
+     "margin": 1.7414
+    },
+    {
+     "i": 95,
+     "l1": false,
+     "l3": true,
+     "wrote": "stone",
+     "gen": "stone",
+     "margin": -1.3742
+    },
+    {
+     "i": 96,
+     "l1": false,
+     "l3": false,
+     "wrote": "grave",
+     "gen": "grave",
+     "margin": -1.0628
+    },
+    {
+     "i": 97,
+     "l1": true,
+     "l3": false,
+     "wrote": "space",
+     "gen": "space",
+     "margin": 0.6312
+    },
+    {
+     "i": 98,
+     "l1": true,
+     "l3": true,
+     "wrote": "space",
+     "gen": "space",
+     "margin": 2.3631
+    },
+    {
+     "i": 99,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the other decorations",
+     "margin": -1.6665
+    },
+    {
+     "i": 100,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.5746
+    },
+    {
+     "i": 101,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -0.1718
+    },
+    {
+     "i": 102,
+     "l1": true,
+     "l3": true,
+     "wrote": "dinner",
+     "gen": "dinner",
+     "margin": 1.2282
+    },
+    {
+     "i": 103,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 0.3523
+    },
+    {
+     "i": 104,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -1.5235
+    },
+    {
+     "i": 105,
+     "l1": true,
+     "l3": false,
+     "wrote": "card",
+     "gen": "card",
+     "margin": 0.6121
+    },
+    {
+     "i": 106,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": 0.4232
+    },
+    {
+     "i": 107,
+     "l1": true,
+     "l3": true,
+     "wrote": "pie",
+     "gen": "pie",
+     "margin": 0.9873
+    },
+    {
+     "i": 108,
+     "l1": false,
+     "l3": true,
+     "wrote": "surgery",
+     "gen": "surgery",
+     "margin": -0.2077
+    },
+    {
+     "i": 109,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 1.1168
+    },
+    {
+     "i": 110,
+     "l1": false,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -0.5093
+    },
+    {
+     "i": 111,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": -1.035
+    },
+    {
+     "i": 112,
+     "l1": false,
+     "l3": true,
+     "wrote": "Randy",
+     "gen": "Randy",
+     "margin": -2.3537
+    },
+    {
+     "i": 113,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": 2.7463
+    },
+    {
+     "i": 114,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.127
+    },
+    {
+     "i": 115,
+     "l1": false,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.5297
+    },
+    {
+     "i": 116,
+     "l1": true,
+     "l3": true,
+     "wrote": "sofa",
+     "gen": "sofa",
+     "margin": 4.1531
+    },
+    {
+     "i": 117,
+     "l1": false,
+     "l3": true,
+     "wrote": "books",
+     "gen": "books",
+     "margin": -0.7923
+    },
+    {
+     "i": 118,
+     "l1": false,
+     "l3": false,
+     "wrote": "books",
+     "gen": "books",
+     "margin": -0.4725
+    },
+    {
+     "i": 119,
+     "l1": true,
+     "l3": false,
+     "wrote": "park",
+     "gen": "park",
+     "margin": 2.7297
+    },
+    {
+     "i": 120,
+     "l1": false,
+     "l3": true,
+     "wrote": "park",
+     "gen": "park",
+     "margin": -1.4746
+    },
+    {
+     "i": 121,
+     "l1": false,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": -0.0757
+    },
+    {
+     "i": 122,
+     "l1": true,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 0.04
+    },
+    {
+     "i": 123,
+     "l1": false,
+     "l3": false,
+     "wrote": "brownie",
+     "gen": "brownie",
+     "margin": -0.1751
+    },
+    {
+     "i": 124,
+     "l1": true,
+     "l3": true,
+     "wrote": "braces",
+     "gen": "braces",
+     "margin": 1.2274
+    },
+    {
+     "i": 125,
+     "l1": false,
+     "l3": false,
+     "wrote": "braces",
+     "gen": "braces",
+     "margin": -0.1166
+    },
+    {
+     "i": 126,
+     "l1": true,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy",
+     "margin": 1.1955
+    },
+    {
+     "i": 127,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": 3.6091
+    },
+    {
+     "i": 128,
+     "l1": false,
+     "l3": false,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": -2.891
+    },
+    {
+     "i": 129,
+     "l1": true,
+     "l3": true,
+     "wrote": "factory",
+     "gen": "factory",
+     "margin": 0.1024
+    },
+    {
+     "i": 130,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William",
+     "margin": 0.7279
+    },
+    {
+     "i": 131,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": 0.4523
+    },
+    {
+     "i": 132,
+     "l1": true,
+     "l3": true,
+     "wrote": "rattle",
+     "gen": "rattle",
+     "margin": 0.309
+    },
+    {
+     "i": 133,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -1.3387
+    },
+    {
+     "i": 134,
+     "l1": true,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 1.1732
+    },
+    {
+     "i": 135,
+     "l1": false,
+     "l3": false,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -0.1553
+    },
+    {
+     "i": 136,
+     "l1": true,
+     "l3": true,
+     "wrote": "room",
+     "gen": "room",
+     "margin": 3.5875
+    },
+    {
+     "i": 137,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 0.0934
+    },
+    {
+     "i": 138,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 0.6845
+    },
+    {
+     "i": 139,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": 3.1899
+    },
+    {
+     "i": 140,
+     "l1": false,
+     "l3": false,
+     "wrote": "wind",
+     "gen": "wind",
+     "margin": -3.7689
+    },
+    {
+     "i": 141,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.8747
+    },
+    {
+     "i": 142,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 0.7245
+    },
+    {
+     "i": 143,
+     "l1": false,
+     "l3": true,
+     "wrote": "jewelry",
+     "gen": "jewelry",
+     "margin": -0.5344
+    },
+    {
+     "i": 144,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -0.9881
+    },
+    {
+     "i": 145,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 1.8046
+    },
+    {
+     "i": 146,
+     "l1": false,
+     "l3": false,
+     "wrote": "cable",
+     "gen": "cable",
+     "margin": -0.7741
+    },
+    {
+     "i": 147,
+     "l1": true,
+     "l3": true,
+     "wrote": "cable",
+     "gen": "cable",
+     "margin": 1.5664
+    },
+    {
+     "i": 148,
+     "l1": true,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": 1.8619
+    },
+    {
+     "i": 149,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": 1.5391
+    },
+    {
+     "i": 150,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -2.8412
+    },
+    {
+     "i": 151,
+     "l1": true,
+     "l3": true,
+     "wrote": "eyelashes",
+     "gen": "eyelashes",
+     "margin": 0.2072
+    },
+    {
+     "i": 152,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -1.5461
+    },
+    {
+     "i": 153,
+     "l1": true,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 0.0065
+    },
+    {
+     "i": 154,
+     "l1": true,
+     "l3": true,
+     "wrote": "watch",
+     "gen": "watch or clocktower",
+     "margin": 0.0028
+    },
+    {
+     "i": 155,
+     "l1": true,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 1.2992
+    },
+    {
+     "i": 156,
+     "l1": true,
+     "l3": false,
+     "wrote": "office",
+     "gen": "office",
+     "margin": 0.2021
+    },
+    {
+     "i": 157,
+     "l1": false,
+     "l3": false,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -0.8769
+    },
+    {
+     "i": 158,
+     "l1": true,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": 1.8648
+    },
+    {
+     "i": 159,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.5435
+    },
+    {
+     "i": 160,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -0.3491
+    },
+    {
+     "i": 161,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -0.0484
+    },
+    {
+     "i": 162,
+     "l1": true,
+     "l3": true,
+     "wrote": "canoe",
+     "gen": "canoe",
+     "margin": 0.0492
+    },
+    {
+     "i": 163,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 2.2961
+    },
+    {
+     "i": 164,
+     "l1": false,
+     "l3": true,
+     "wrote": "gun",
+     "gen": "gun",
+     "margin": -3.7402
+    },
+    {
+     "i": 165,
+     "l1": true,
+     "l3": false,
+     "wrote": "gun",
+     "gen": "gun",
+     "margin": 4.1705
+    },
+    {
+     "i": 166,
+     "l1": true,
+     "l3": false,
+     "wrote": "screwdriver",
+     "gen": "screwdriver",
+     "margin": 0.1295
+    },
+    {
+     "i": 167,
+     "l1": true,
+     "l3": true,
+     "wrote": "screwdriver",
+     "gen": "screwdriver",
+     "margin": 0.3084
+    },
+    {
+     "i": 168,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "temperature",
+     "margin": 0.9825
+    },
+    {
+     "i": 169,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -1.4574
+    },
+    {
+     "i": 170,
+     "l1": false,
+     "l3": true,
+     "wrote": "Vase",
+     "gen": "vase",
+     "margin": -0.869
+    },
+    {
+     "i": 171,
+     "l1": true,
+     "l3": false,
+     "wrote": "Vase",
+     "gen": "vase",
+     "margin": 0.6996
+    },
+    {
+     "i": 172,
+     "l1": true,
+     "l3": true,
+     "wrote": "school",
+     "gen": "school",
+     "margin": 0.9205
+    },
+    {
+     "i": 173,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.8754
+    },
+    {
+     "i": 174,
+     "l1": false,
+     "l3": false,
+     "wrote": "taxi",
+     "gen": "taxi",
+     "margin": -0.2049
+    },
+    {
+     "i": 175,
+     "l1": true,
+     "l3": true,
+     "wrote": "city",
+     "gen": "city",
+     "margin": 0.5792
+    },
+    {
+     "i": 176,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -1.2251
+    },
+    {
+     "i": 177,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -0.2598
+    },
+    {
+     "i": 178,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -0.1347
+    },
+    {
+     "i": 179,
+     "l1": true,
+     "l3": false,
+     "wrote": "wedding",
+     "gen": "wedding",
+     "margin": 8.9944
+    },
+    {
+     "i": 180,
+     "l1": false,
+     "l3": true,
+     "wrote": "garage",
+     "gen": "garage",
+     "margin": -0.4151
+    },
+    {
+     "i": 181,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": 1.1709
+    },
+    {
+     "i": 182,
+     "l1": true,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water",
+     "margin": 1.2347
+    },
+    {
+     "i": 183,
+     "l1": false,
+     "l3": true,
+     "wrote": "sand",
+     "gen": "sand or water",
+     "margin": -1.135
+    },
+    {
+     "i": 184,
+     "l1": true,
+     "l3": false,
+     "wrote": "limbs",
+     "gen": "limbs",
+     "margin": 1.4657
+    },
+    {
+     "i": 185,
+     "l1": true,
+     "l3": true,
+     "wrote": "blanket",
+     "gen": "blanket",
+     "margin": 0.695
+    },
+    {
+     "i": 186,
+     "l1": false,
+     "l3": true,
+     "wrote": "PVC",
+     "gen": "PVC",
+     "margin": -0.6933
+    },
+    {
+     "i": 187,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -5.6608
+    },
+    {
+     "i": 188,
+     "l1": false,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William",
+     "margin": -1.5014
+    },
+    {
+     "i": 189,
+     "l1": true,
+     "l3": true,
+     "wrote": "puncture",
+     "gen": "puncture",
+     "margin": 4.5752
+    },
+    {
+     "i": 190,
+     "l1": false,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": -0.7453
+    },
+    {
+     "i": 191,
+     "l1": true,
+     "l3": false,
+     "wrote": "silk",
+     "gen": "silk",
+     "margin": 0.3117
+    },
+    {
+     "i": 192,
+     "l1": true,
+     "l3": true,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": 0.3557
+    },
+    {
+     "i": 193,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": -0.3028
+    },
+    {
+     "i": 194,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the Polaroid",
+     "margin": -1.0308
+    },
+    {
+     "i": 195,
+     "l1": true,
+     "l3": false,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": 1.4262
+    },
+    {
+     "i": 196,
+     "l1": false,
+     "l3": true,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": -1.6794
+    },
+    {
+     "i": 197,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": 0.9232
+    },
+    {
+     "i": 198,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -0.4387
+    },
+    {
+     "i": 199,
+     "l1": true,
+     "l3": true,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 0.7825
+    },
+    {
+     "i": 200,
+     "l1": false,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -0.4002
+    },
+    {
+     "i": 201,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -1.1496
+    },
+    {
+     "i": 202,
+     "l1": false,
+     "l3": true,
+     "wrote": "Randy",
+     "gen": "Randy",
+     "margin": -1.1191
+    },
+    {
+     "i": 203,
+     "l1": false,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": -0.0491
+    },
+    {
+     "i": 204,
+     "l1": false,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": -0.6985
+    },
+    {
+     "i": 205,
+     "l1": true,
+     "l3": true,
+     "wrote": "tables",
+     "gen": "tables",
+     "margin": 0.2136
+    },
+    {
+     "i": 206,
+     "l1": false,
+     "l3": false,
+     "wrote": "tables",
+     "gen": "tables",
+     "margin": -0.47
+    },
+    {
+     "i": 207,
+     "l1": true,
+     "l3": true,
+     "wrote": "Steven",
+     "gen": "Steven",
+     "margin": 0.013
+    },
+    {
+     "i": 208,
+     "l1": true,
+     "l3": false,
+     "wrote": "nail",
+     "gen": "nail",
+     "margin": 3.4255
+    },
+    {
+     "i": 209,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": -1.9002
+    },
+    {
+     "i": 210,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": 3.3577
+    },
+    {
+     "i": 211,
+     "l1": true,
+     "l3": true,
+     "wrote": "rock",
+     "gen": "rock",
+     "margin": 0.0661
+    },
+    {
+     "i": 212,
+     "l1": true,
+     "l3": false,
+     "wrote": "vegetables",
+     "gen": "vegetables",
+     "margin": 0.5586
+    },
+    {
+     "i": 213,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.5418
+    },
+    {
+     "i": 214,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 1.4944
+    },
+    {
+     "i": 215,
+     "l1": true,
+     "l3": false,
+     "wrote": "past due",
+     "gen": "past due",
+     "margin": 1.0175
+    },
+    {
+     "i": 216,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 2.7458
+    },
+    {
+     "i": 217,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 1.2891
+    },
+    {
+     "i": 218,
+     "l1": true,
+     "l3": true,
+     "wrote": "tomatoes",
+     "gen": "tomatoes",
+     "margin": 0.8807
+    },
+    {
+     "i": 219,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": -0.5949
+    },
+    {
+     "i": 220,
+     "l1": false,
+     "l3": true,
+     "wrote": "store",
+     "gen": "store",
+     "margin": -1.3536
+    },
+    {
+     "i": 221,
+     "l1": true,
+     "l3": false,
+     "wrote": "store",
+     "gen": "store",
+     "margin": 1.6445
+    },
+    {
+     "i": 222,
+     "l1": false,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -1.8256
+    },
+    {
+     "i": 223,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": 0.1385
+    },
+    {
+     "i": 224,
+     "l1": false,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": -1.8104
+    },
+    {
+     "i": 225,
+     "l1": true,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": 0.8267
+    },
+    {
+     "i": 226,
+     "l1": true,
+     "l3": true,
+     "wrote": "garage",
+     "gen": "garage",
+     "margin": 0.8733
+    },
+    {
+     "i": 227,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": 0.8924
+    },
+    {
+     "i": 228,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 2.3646
+    },
+    {
+     "i": 229,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -1.9197
+    },
+    {
+     "i": 230,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the bar",
+     "margin": 0.9584
+    },
+    {
+     "i": 231,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the gym",
+     "margin": -1.3693
+    },
+    {
+     "i": 232,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": 0.3387
+    },
+    {
+     "i": 233,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.6696
+    },
+    {
+     "i": 234,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 1.0444
+    },
+    {
+     "i": 235,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": 0.3991
+    },
+    {
+     "i": 236,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 4.2904
+    },
+    {
+     "i": 237,
+     "l1": true,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": 0.1879
+    },
+    {
+     "i": 238,
+     "l1": false,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -0.0511
+    },
+    {
+     "i": 239,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": -0.5018
+    },
+    {
+     "i": 240,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": 0.273
+    },
+    {
+     "i": 241,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": -0.0714
+    },
+    {
+     "i": 242,
+     "l1": false,
+     "l3": true,
+     "wrote": "court",
+     "gen": "court",
+     "margin": -5.2562
+    },
+    {
+     "i": 243,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the man",
+     "margin": -1.2678
+    },
+    {
+     "i": 244,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the man",
+     "margin": -1.1436
+    },
+    {
+     "i": 245,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": 0.0499
+    },
+    {
+     "i": 246,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 2.2258
+    },
+    {
+     "i": 247,
+     "l1": false,
+     "l3": false,
+     "wrote": "people",
+     "gen": "people",
+     "margin": -3.714
+    },
+    {
+     "i": 248,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -2.6184
+    },
+    {
+     "i": 249,
+     "l1": false,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": -3.047
+    },
+    {
+     "i": 250,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 3.3419
+    },
+    {
+     "i": 251,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.7262
+    },
+    {
+     "i": 252,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.2576
+    },
+    {
+     "i": 253,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 1.084
+    },
+    {
+     "i": 254,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -1.339
+    },
+    {
+     "i": 255,
+     "l1": true,
+     "l3": true,
+     "wrote": "wool",
+     "gen": "wool or cotton",
+     "margin": 1.1691
+    },
+    {
+     "i": 256,
+     "l1": false,
+     "l3": true,
+     "wrote": "cotton",
+     "gen": "cotton",
+     "margin": -0.8354
+    },
+    {
+     "i": 257,
+     "l1": false,
+     "l3": true,
+     "wrote": "contacts",
+     "gen": "contacts",
+     "margin": -0.2218
+    },
+    {
+     "i": 258,
+     "l1": false,
+     "l3": false,
+     "wrote": "exam",
+     "gen": "exam",
+     "margin": -0.5917
+    },
+    {
+     "i": 259,
+     "l1": false,
+     "l3": true,
+     "wrote": "diner",
+     "gen": "diner",
+     "margin": -0.0844
+    },
+    {
+     "i": 260,
+     "l1": false,
+     "l3": false,
+     "wrote": "paper",
+     "gen": "paper",
+     "margin": -0.9905
+    },
+    {
+     "i": 261,
+     "l1": true,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 0.6018
+    },
+    {
+     "i": 262,
+     "l1": false,
+     "l3": false,
+     "wrote": "vase",
+     "gen": "vase",
+     "margin": -0.5948
+    },
+    {
+     "i": 263,
+     "l1": true,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": 6.3695
+    },
+    {
+     "i": 264,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -0.5326
+    },
+    {
+     "i": 265,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil",
+     "margin": -0.4049
+    },
+    {
+     "i": 266,
+     "l1": false,
+     "l3": true,
+     "wrote": "Neil",
+     "gen": "Neil",
+     "margin": -0.9976
+    },
+    {
+     "i": 267,
+     "l1": true,
+     "l3": true,
+     "wrote": "house",
+     "gen": "house",
+     "margin": 1.0552
+    },
+    {
+     "i": 268,
+     "l1": false,
+     "l3": false,
+     "wrote": "house",
+     "gen": "house",
+     "margin": -1.5702
+    },
+    {
+     "i": 269,
+     "l1": false,
+     "l3": false,
+     "wrote": "vial",
+     "gen": "vial",
+     "margin": -0.2136
+    },
+    {
+     "i": 270,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 0.0037
+    },
+    {
+     "i": 271,
+     "l1": true,
+     "l3": true,
+     "wrote": "shop",
+     "gen": "shop",
+     "margin": 0.3191
+    },
+    {
+     "i": 272,
+     "l1": false,
+     "l3": false,
+     "wrote": "chain",
+     "gen": "chain",
+     "margin": -0.6794
+    },
+    {
+     "i": 273,
+     "l1": true,
+     "l3": true,
+     "wrote": "sci-fi movies",
+     "gen": "sci-fi movies",
+     "margin": 1.4702
+    },
+    {
+     "i": 274,
+     "l1": true,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": 3.3048
+    },
+    {
+     "i": 275,
+     "l1": false,
+     "l3": false,
+     "wrote": "top",
+     "gen": "top",
+     "margin": -1.9161
+    },
+    {
+     "i": 276,
+     "l1": true,
+     "l3": true,
+     "wrote": "top",
+     "gen": "top",
+     "margin": 2.499
+    },
+    {
+     "i": 277,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -2.6308
+    },
+    {
+     "i": 278,
+     "l1": false,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": -0.4441
+    },
+    {
+     "i": 279,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": 0.7202
+    },
+    {
+     "i": 280,
+     "l1": false,
+     "l3": true,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -2.1962
+    },
+    {
+     "i": 281,
+     "l1": true,
+     "l3": false,
+     "wrote": "cup",
+     "gen": "cup",
+     "margin": 6.406
+    },
+    {
+     "i": 282,
+     "l1": false,
+     "l3": true,
+     "wrote": "pie",
+     "gen": "pies",
+     "margin": -1.0404
+    },
+    {
+     "i": 283,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick",
+     "margin": -1.5528
+    },
+    {
+     "i": 284,
+     "l1": true,
+     "l3": false,
+     "wrote": "conversation",
+     "gen": "conversation",
+     "margin": 2.4351
+    },
+    {
+     "i": 285,
+     "l1": false,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": -1.2337
+    },
+    {
+     "i": 286,
+     "l1": true,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": 0.5257
+    },
+    {
+     "i": 287,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": 0.055
+    },
+    {
+     "i": 288,
+     "l1": true,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 0.2236
+    },
+    {
+     "i": 289,
+     "l1": true,
+     "l3": false,
+     "wrote": "pen",
+     "gen": "pencil",
+     "margin": 0.9787
+    },
+    {
+     "i": 290,
+     "l1": true,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": 1.3647
+    },
+    {
+     "i": 291,
+     "l1": true,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": 0.1563
+    },
+    {
+     "i": 292,
+     "l1": true,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": 0.2942
+    },
+    {
+     "i": 293,
+     "l1": true,
+     "l3": false,
+     "wrote": "cars",
+     "gen": "cars",
+     "margin": 1.4757
+    },
+    {
+     "i": 294,
+     "l1": true,
+     "l3": false,
+     "wrote": "car",
+     "gen": "car",
+     "margin": 0.7903
+    },
+    {
+     "i": 295,
+     "l1": false,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car",
+     "margin": -0.1732
+    },
+    {
+     "i": 296,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": -1.8675
+    },
+    {
+     "i": 297,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 0.1958
+    },
+    {
+     "i": 298,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.3722
+    },
+    {
+     "i": 299,
+     "l1": true,
+     "l3": true,
+     "wrote": "Leslie",
+     "gen": "Leslie's house",
+     "margin": 0.1257
+    },
+    {
+     "i": 300,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": 2.3734
+    },
+    {
+     "i": 301,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": 0.2017
+    },
+    {
+     "i": 302,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": -1.5412
+    },
+    {
+     "i": 303,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 1.3057
+    },
+    {
+     "i": 304,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 2.8127
+    },
+    {
+     "i": 305,
+     "l1": false,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": -0.7845
+    },
+    {
+     "i": 306,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -1.1428
+    },
+    {
+     "i": 307,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": -2.4417
+    },
+    {
+     "i": 308,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": 0.161
+    },
+    {
+     "i": 309,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": 0.1982
+    },
+    {
+     "i": 310,
+     "l1": false,
+     "l3": true,
+     "wrote": "mediation",
+     "gen": "mediation",
+     "margin": -1.7553
+    },
+    {
+     "i": 311,
+     "l1": true,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 0.822
+    },
+    {
+     "i": 312,
+     "l1": true,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 1.1009
+    },
+    {
+     "i": 313,
+     "l1": false,
+     "l3": true,
+     "wrote": "caramel",
+     "gen": "caramel",
+     "margin": -0.0813
+    },
+    {
+     "i": 314,
+     "l1": true,
+     "l3": false,
+     "wrote": "caramel",
+     "gen": "caramel",
+     "margin": 0.4389
+    },
+    {
+     "i": 315,
+     "l1": false,
+     "l3": false,
+     "wrote": "meeting",
+     "gen": "meeting",
+     "margin": -3.2731
+    },
+    {
+     "i": 316,
+     "l1": true,
+     "l3": true,
+     "wrote": "meeting",
+     "gen": "meeting",
+     "margin": 9.3912
+    },
+    {
+     "i": 317,
+     "l1": false,
+     "l3": false,
+     "wrote": "cloths",
+     "gen": "cloths",
+     "margin": -1.8321
+    },
+    {
+     "i": 318,
+     "l1": false,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": -1.0791
+    },
+    {
+     "i": 319,
+     "l1": true,
+     "l3": true,
+     "wrote": "bedroom",
+     "gen": "bedroom",
+     "margin": 0.3245
+    },
+    {
+     "i": 320,
+     "l1": false,
+     "l3": true,
+     "wrote": "bathroom",
+     "gen": "bathroom",
+     "margin": -0.3138
+    },
+    {
+     "i": 321,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kevin",
+     "gen": "Kevin",
+     "margin": -0.6619
+    },
+    {
+     "i": 322,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kevin",
+     "gen": "Kevin",
+     "margin": 0.041
+    },
+    {
+     "i": 323,
+     "l1": false,
+     "l3": false,
+     "wrote": "hair",
+     "gen": "hair",
+     "margin": -1.7279
+    },
+    {
+     "i": 324,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -0.2749
+    },
+    {
+     "i": 325,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 0.6343
+    },
+    {
+     "i": 326,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 1.3014
+    },
+    {
+     "i": 327,
+     "l1": true,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 0.4226
+    },
+    {
+     "i": 328,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -0.0829
+    },
+    {
+     "i": 329,
+     "l1": true,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": 1.233
+    },
+    {
+     "i": 330,
+     "l1": false,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": -2.7187
+    },
+    {
+     "i": 331,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -1.0553
+    },
+    {
+     "i": 332,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.5354
+    },
+    {
+     "i": 333,
+     "l1": false,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": -0.0696
+    },
+    {
+     "i": 334,
+     "l1": false,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -2.2339
+    },
+    {
+     "i": 335,
+     "l1": true,
+     "l3": false,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": 1.9688
+    },
+    {
+     "i": 336,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -0.0271
+    },
+    {
+     "i": 337,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil",
+     "margin": -0.5084
+    },
+    {
+     "i": 338,
+     "l1": false,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": -2.4438
+    },
+    {
+     "i": 339,
+     "l1": false,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": -1.2207
+    },
+    {
+     "i": 340,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the room at the hotel",
+     "margin": 0.9718
+    },
+    {
+     "i": 341,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the room at the hotel",
+     "margin": 1.3626
+    },
+    {
+     "i": 342,
+     "l1": true,
+     "l3": false,
+     "wrote": "sport",
+     "gen": "sport",
+     "margin": 1.725
+    },
+    {
+     "i": 343,
+     "l1": false,
+     "l3": true,
+     "wrote": "truck",
+     "gen": "truck or car",
+     "margin": -1.2211
+    },
+    {
+     "i": 344,
+     "l1": true,
+     "l3": false,
+     "wrote": "truck",
+     "gen": "truck or car",
+     "margin": 0.6448
+    },
+    {
+     "i": 345,
+     "l1": true,
+     "l3": false,
+     "wrote": "contacts",
+     "gen": "contacts",
+     "margin": 0.2622
+    },
+    {
+     "i": 346,
+     "l1": false,
+     "l3": true,
+     "wrote": "e-mail",
+     "gen": "e-mail",
+     "margin": -0.5373
+    },
+    {
+     "i": 347,
+     "l1": true,
+     "l3": true,
+     "wrote": "tea",
+     "gen": "tea",
+     "margin": 1.5846
+    },
+    {
+     "i": 348,
+     "l1": false,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.9523
+    },
+    {
+     "i": 349,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": 0.6531
+    },
+    {
+     "i": 350,
+     "l1": false,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -0.2221
+    },
+    {
+     "i": 351,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -0.2568
+    },
+    {
+     "i": 352,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": -0.3995
+    },
+    {
+     "i": 353,
+     "l1": false,
+     "l3": true,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -0.7061
+    },
+    {
+     "i": 354,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 0.0494
+    },
+    {
+     "i": 355,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 1.0075
+    },
+    {
+     "i": 356,
+     "l1": true,
+     "l3": false,
+     "wrote": "burger",
+     "gen": "burger",
+     "margin": 1.3617
+    },
+    {
+     "i": 357,
+     "l1": false,
+     "l3": true,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": -0.6017
+    },
+    {
+     "i": 358,
+     "l1": true,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": 1.1355
+    },
+    {
+     "i": 359,
+     "l1": true,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": 2.7614
+    },
+    {
+     "i": 360,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": -1.6655
+    },
+    {
+     "i": 361,
+     "l1": true,
+     "l3": true,
+     "wrote": "oil",
+     "gen": "oil or water",
+     "margin": 1.7991
+    },
+    {
+     "i": 362,
+     "l1": false,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water",
+     "margin": -0.0448
+    },
+    {
+     "i": 363,
+     "l1": true,
+     "l3": true,
+     "wrote": "frame",
+     "gen": "frame",
+     "margin": 1.3653
+    },
+    {
+     "i": 364,
+     "l1": false,
+     "l3": false,
+     "wrote": "frame",
+     "gen": "frame",
+     "margin": -0.6212
+    },
+    {
+     "i": 365,
+     "l1": true,
+     "l3": false,
+     "wrote": "styrofoam cups",
+     "gen": "styrofoam cups",
+     "margin": 0.5187
+    },
+    {
+     "i": 366,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -1.0334
+    },
+    {
+     "i": 367,
+     "l1": false,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": -0.6946
+    },
+    {
+     "i": 368,
+     "l1": false,
+     "l3": false,
+     "wrote": "skin",
+     "gen": "skin",
+     "margin": -0.0859
+    },
+    {
+     "i": 369,
+     "l1": false,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian",
+     "margin": -0.6615
+    },
+    {
+     "i": 370,
+     "l1": false,
+     "l3": false,
+     "wrote": "potatoes",
+     "gen": "potatoes",
+     "margin": -0.296
+    },
+    {
+     "i": 371,
+     "l1": true,
+     "l3": true,
+     "wrote": "door",
+     "gen": "door",
+     "margin": 0.941
+    },
+    {
+     "i": 372,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -1.4432
+    },
+    {
+     "i": 373,
+     "l1": true,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 0.6404
+    },
+    {
+     "i": 374,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -1.433
+    },
+    {
+     "i": 375,
+     "l1": false,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.872
+    },
+    {
+     "i": 376,
+     "l1": true,
+     "l3": true,
+     "wrote": "truck",
+     "gen": "truck",
+     "margin": 0.7736
+    },
+    {
+     "i": 377,
+     "l1": false,
+     "l3": false,
+     "wrote": "truck",
+     "gen": "truck",
+     "margin": -0.8218
+    },
+    {
+     "i": 378,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 2.3683
+    },
+    {
+     "i": 379,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -0.7223
+    },
+    {
+     "i": 380,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -0.6153
+    },
+    {
+     "i": 381,
+     "l1": true,
+     "l3": true,
+     "wrote": "hose",
+     "gen": "hose",
+     "margin": 3.4481
+    },
+    {
+     "i": 382,
+     "l1": true,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 1.2638
+    },
+    {
+     "i": 383,
+     "l1": true,
+     "l3": true,
+     "wrote": "washer",
+     "gen": "washer",
+     "margin": 0.4651
+    },
+    {
+     "i": 384,
+     "l1": false,
+     "l3": false,
+     "wrote": "water",
+     "gen": "water",
+     "margin": -1.3886
+    },
+    {
+     "i": 385,
+     "l1": false,
+     "l3": true,
+     "wrote": "hole",
+     "gen": "hole",
+     "margin": -1.0654
+    },
+    {
+     "i": 386,
+     "l1": true,
+     "l3": false,
+     "wrote": "hole",
+     "gen": "hole",
+     "margin": 1.1954
+    },
+    {
+     "i": 387,
+     "l1": true,
+     "l3": true,
+     "wrote": "container",
+     "gen": "container",
+     "margin": 0.5613
+    },
+    {
+     "i": 388,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "value",
+     "margin": 1.1303
+    },
+    {
+     "i": 389,
+     "l1": false,
+     "l3": false,
+     "wrote": "part",
+     "gen": "part",
+     "margin": -1.1452
+    },
+    {
+     "i": 390,
+     "l1": false,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -2.1316
+    },
+    {
+     "i": 391,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": 2.3862
+    },
+    {
+     "i": 392,
+     "l1": true,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": 0.6828
+    },
+    {
+     "i": 393,
+     "l1": true,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 0.7332
+    },
+    {
+     "i": 394,
+     "l1": true,
+     "l3": true,
+     "wrote": "closets",
+     "gen": "closets",
+     "margin": 1.1388
+    },
+    {
+     "i": 395,
+     "l1": true,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 1.2173
+    },
+    {
+     "i": 396,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": -0.5518
+    },
+    {
+     "i": 397,
+     "l1": true,
+     "l3": false,
+     "wrote": "dishes",
+     "gen": "dishes",
+     "margin": 0.2107
+    },
+    {
+     "i": 398,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 3.3508
+    },
+    {
+     "i": 399,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.2151
+    },
+    {
+     "i": 400,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "music",
+     "margin": 0.6588
+    },
+    {
+     "i": 401,
+     "l1": true,
+     "l3": true,
+     "wrote": "clothes",
+     "gen": "clothes",
+     "margin": 0.2739
+    },
+    {
+     "i": 402,
+     "l1": false,
+     "l3": false,
+     "wrote": "clothes",
+     "gen": "clothes",
+     "margin": -0.4837
+    },
+    {
+     "i": 403,
+     "l1": false,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": -0.6511
+    },
+    {
+     "i": 404,
+     "l1": false,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": -0.4853
+    },
+    {
+     "i": 405,
+     "l1": true,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": 0.3623
+    },
+    {
+     "i": 406,
+     "l1": true,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": 5.4492
+    },
+    {
+     "i": 407,
+     "l1": true,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": 1.0989
+    },
+    {
+     "i": 408,
+     "l1": false,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water",
+     "margin": -0.3447
+    },
+    {
+     "i": 409,
+     "l1": true,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": 0.0001
+    },
+    {
+     "i": 410,
+     "l1": true,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": 0.1311
+    },
+    {
+     "i": 411,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 1.2232
+    },
+    {
+     "i": 412,
+     "l1": false,
+     "l3": false,
+     "wrote": "glove",
+     "gen": "glove",
+     "margin": -0.3469
+    },
+    {
+     "i": 413,
+     "l1": false,
+     "l3": true,
+     "wrote": "glove",
+     "gen": "glove",
+     "margin": -0.353
+    },
+    {
+     "i": 414,
+     "l1": false,
+     "l3": true,
+     "wrote": "steel",
+     "gen": "steel",
+     "margin": -4.6868
+    },
+    {
+     "i": 415,
+     "l1": true,
+     "l3": true,
+     "wrote": "water bottles",
+     "gen": "water bottles",
+     "margin": 2.522
+    },
+    {
+     "i": 416,
+     "l1": true,
+     "l3": false,
+     "wrote": "water bottles",
+     "gen": "water bottles",
+     "margin": 0.2862
+    },
+    {
+     "i": 417,
+     "l1": true,
+     "l3": false,
+     "wrote": "book",
+     "gen": "book",
+     "margin": 2.8824
+    },
+    {
+     "i": 418,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": 1.4482
+    },
+    {
+     "i": 419,
+     "l1": true,
+     "l3": false,
+     "wrote": "garbage",
+     "gen": "garbage",
+     "margin": 0.1976
+    },
+    {
+     "i": 420,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Joe",
+     "margin": -0.8784
+    },
+    {
+     "i": 421,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the hotel",
+     "margin": -1.83
+    },
+    {
+     "i": 422,
+     "l1": true,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 0.4222
+    },
+    {
+     "i": 423,
+     "l1": false,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -0.0594
+    },
+    {
+     "i": 424,
+     "l1": true,
+     "l3": false,
+     "wrote": "card",
+     "gen": "card",
+     "margin": 0.6515
+    },
+    {
+     "i": 425,
+     "l1": false,
+     "l3": true,
+     "wrote": "cream",
+     "gen": "cream",
+     "margin": -0.4809
+    },
+    {
+     "i": 426,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": 0.4216
+    },
+    {
+     "i": 427,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": 0.1022
+    },
+    {
+     "i": 428,
+     "l1": false,
+     "l3": true,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": -1.6945
+    },
+    {
+     "i": 429,
+     "l1": true,
+     "l3": false,
+     "wrote": "glass",
+     "gen": "glass",
+     "margin": 1.1123
+    },
+    {
+     "i": 430,
+     "l1": false,
+     "l3": true,
+     "wrote": "glass",
+     "gen": "glass",
+     "margin": -0.7018
+    },
+    {
+     "i": 431,
+     "l1": true,
+     "l3": true,
+     "wrote": "ball",
+     "gen": "ball",
+     "margin": 0.5738
+    },
+    {
+     "i": 432,
+     "l1": false,
+     "l3": false,
+     "wrote": "garden",
+     "gen": "garden",
+     "margin": -1.9951
+    },
+    {
+     "i": 433,
+     "l1": true,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 0.1542
+    },
+    {
+     "i": 434,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 0.1656
+    },
+    {
+     "i": 435,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 0.7804
+    },
+    {
+     "i": 436,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 0.6491
+    },
+    {
+     "i": 437,
+     "l1": false,
+     "l3": true,
+     "wrote": "beaches",
+     "gen": "beaches",
+     "margin": -3.9054
+    },
+    {
+     "i": 438,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 0.4553
+    },
+    {
+     "i": 439,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": 1.0298
+    },
+    {
+     "i": 440,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kevin",
+     "gen": "Kevin",
+     "margin": -1.4379
+    },
+    {
+     "i": 441,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -1.9426
+    },
+    {
+     "i": 442,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 1.0596
+    },
+    {
+     "i": 443,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": -1.2907
+    },
+    {
+     "i": 444,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -0.8735
+    },
+    {
+     "i": 445,
+     "l1": true,
+     "l3": false,
+     "wrote": "bedroom",
+     "gen": "bedroom",
+     "margin": 2.8794
+    },
+    {
+     "i": 446,
+     "l1": false,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": -1.0225
+    },
+    {
+     "i": 447,
+     "l1": false,
+     "l3": true,
+     "wrote": "ball",
+     "gen": "ball",
+     "margin": -0.424
+    },
+    {
+     "i": 448,
+     "l1": true,
+     "l3": false,
+     "wrote": "food wholesale",
+     "gen": "food wholesale",
+     "margin": 0.3178
+    },
+    {
+     "i": 449,
+     "l1": false,
+     "l3": true,
+     "wrote": "food wholesale",
+     "gen": "food wholesale",
+     "margin": -0.2751
+    },
+    {
+     "i": 450,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 0.3523
+    },
+    {
+     "i": 451,
+     "l1": false,
+     "l3": false,
+     "wrote": "mold",
+     "gen": "mold",
+     "margin": -2.7075
+    },
+    {
+     "i": 452,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 1.1285
+    },
+    {
+     "i": 453,
+     "l1": false,
+     "l3": false,
+     "wrote": "Blade",
+     "gen": "Blade",
+     "margin": -0.1225
+    },
+    {
+     "i": 454,
+     "l1": true,
+     "l3": true,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": 0.4188
+    },
+    {
+     "i": 455,
+     "l1": true,
+     "l3": true,
+     "wrote": "shoes",
+     "gen": "shoes",
+     "margin": 0.1865
+    },
+    {
+     "i": 456,
+     "l1": false,
+     "l3": false,
+     "wrote": "shoes",
+     "gen": "shoes",
+     "margin": -0.5451
+    },
+    {
+     "i": 457,
+     "l1": false,
+     "l3": true,
+     "wrote": "hot",
+     "gen": "hot",
+     "margin": -0.097
+    },
+    {
+     "i": 458,
+     "l1": true,
+     "l3": false,
+     "wrote": "hot",
+     "gen": "hot",
+     "margin": 0.739
+    },
+    {
+     "i": 459,
+     "l1": false,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -0.2823
+    },
+    {
+     "i": 460,
+     "l1": true,
+     "l3": true,
+     "wrote": "bag",
+     "gen": "bag",
+     "margin": 0.1835
+    },
+    {
+     "i": 461,
+     "l1": true,
+     "l3": false,
+     "wrote": "bag",
+     "gen": "bag",
+     "margin": 0.2347
+    },
+    {
+     "i": 462,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 1.5099
+    },
+    {
+     "i": 463,
+     "l1": true,
+     "l3": true,
+     "wrote": "mansion",
+     "gen": "mansion",
+     "margin": 0.2692
+    },
+    {
+     "i": 464,
+     "l1": false,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William",
+     "margin": -1.9948
+    },
+    {
+     "i": 465,
+     "l1": true,
+     "l3": true,
+     "wrote": "billboard",
+     "gen": "billboard",
+     "margin": 0.7962
+    },
+    {
+     "i": 466,
+     "l1": true,
+     "l3": false,
+     "wrote": "billboard",
+     "gen": "billboard",
+     "margin": 0.1025
+    },
+    {
+     "i": 467,
+     "l1": false,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": -0.4255
+    },
+    {
+     "i": 468,
+     "l1": true,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 3.7433
+    },
+    {
+     "i": 469,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian",
+     "margin": 0.7709
+    },
+    {
+     "i": 470,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fan",
+     "margin": -0.1535
+    },
+    {
+     "i": 471,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the fan",
+     "margin": 1.1274
+    },
+    {
+     "i": 472,
+     "l1": false,
+     "l3": false,
+     "wrote": "ice",
+     "gen": "ice",
+     "margin": -0.5283
+    },
+    {
+     "i": 473,
+     "l1": true,
+     "l3": true,
+     "wrote": "ice",
+     "gen": "ice",
+     "margin": 2.4047
+    },
+    {
+     "i": 474,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 0.4737
+    },
+    {
+     "i": 475,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -2.1904
+    },
+    {
+     "i": 476,
+     "l1": true,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": 0.11
+    },
+    {
+     "i": 477,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -1.2937
+    },
+    {
+     "i": 478,
+     "l1": false,
+     "l3": false,
+     "wrote": "office",
+     "gen": "office",
+     "margin": -0.4117
+    },
+    {
+     "i": 479,
+     "l1": true,
+     "l3": true,
+     "wrote": "Instrument",
+     "gen": "Instrument",
+     "margin": 3.957
+    },
+    {
+     "i": 480,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": -0.527
+    },
+    {
+     "i": 481,
+     "l1": true,
+     "l3": true,
+     "wrote": "communication",
+     "gen": "communication",
+     "margin": 0.898
+    },
+    {
+     "i": 482,
+     "l1": false,
+     "l3": false,
+     "wrote": "tripod",
+     "gen": "tripod",
+     "margin": -0.362
+    },
+    {
+     "i": 483,
+     "l1": false,
+     "l3": true,
+     "wrote": "tripod",
+     "gen": "tripod",
+     "margin": -0.4943
+    },
+    {
+     "i": 484,
+     "l1": true,
+     "l3": false,
+     "wrote": "bedroom",
+     "gen": "bedroom",
+     "margin": 0.059
+    },
+    {
+     "i": 485,
+     "l1": false,
+     "l3": true,
+     "wrote": "bedroom",
+     "gen": "bedroom",
+     "margin": -0.1125
+    },
+    {
+     "i": 486,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 3.1726
+    },
+    {
+     "i": 487,
+     "l1": false,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": -0.8879
+    },
+    {
+     "i": 488,
+     "l1": true,
+     "l3": false,
+     "wrote": "sleepover",
+     "gen": "sleepover",
+     "margin": 1.294
+    },
+    {
+     "i": 489,
+     "l1": true,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 0.428
+    },
+    {
+     "i": 490,
+     "l1": false,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.3647
+    },
+    {
+     "i": 491,
+     "l1": true,
+     "l3": false,
+     "wrote": "toy car",
+     "gen": "toy car",
+     "margin": 1.5765
+    },
+    {
+     "i": 492,
+     "l1": false,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": -0.0798
+    },
+    {
+     "i": 493,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": -0.0848
+    },
+    {
+     "i": 494,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 1.0281
+    },
+    {
+     "i": 495,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -0.1616
+    },
+    {
+     "i": 496,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 0.7325
+    },
+    {
+     "i": 497,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 1.1858
+    },
+    {
+     "i": 498,
+     "l1": true,
+     "l3": true,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": 1.1441
+    },
+    {
+     "i": 499,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.1821
+    },
+    {
+     "i": 500,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 0.151
+    },
+    {
+     "i": 501,
+     "l1": true,
+     "l3": true,
+     "wrote": "barn",
+     "gen": "barn",
+     "margin": 0.8509
+    },
+    {
+     "i": 502,
+     "l1": true,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": 3.1374
+    },
+    {
+     "i": 503,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -1.0918
+    },
+    {
+     "i": 504,
+     "l1": true,
+     "l3": false,
+     "wrote": "Steven",
+     "gen": "Steven",
+     "margin": 1.3591
+    },
+    {
+     "i": 505,
+     "l1": true,
+     "l3": true,
+     "wrote": "Steven",
+     "gen": "Steven",
+     "margin": 0.4139
+    },
+    {
+     "i": 506,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.6522
+    },
+    {
+     "i": 507,
+     "l1": false,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian",
+     "margin": -0.2642
+    },
+    {
+     "i": 508,
+     "l1": true,
+     "l3": false,
+     "wrote": "Ian",
+     "gen": "Ian",
+     "margin": 0.6062
+    },
+    {
+     "i": 509,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.5009
+    },
+    {
+     "i": 510,
+     "l1": false,
+     "l3": false,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": -0.1781
+    },
+    {
+     "i": 511,
+     "l1": false,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": -0.9905
+    },
+    {
+     "i": 512,
+     "l1": true,
+     "l3": true,
+     "wrote": "phone",
+     "gen": "phone or television",
+     "margin": 1.7349
+    },
+    {
+     "i": 513,
+     "l1": false,
+     "l3": false,
+     "wrote": "phone",
+     "gen": "phone or television",
+     "margin": -2.5886
+    },
+    {
+     "i": 514,
+     "l1": true,
+     "l3": true,
+     "wrote": "brush",
+     "gen": "brush",
+     "margin": 2.239
+    },
+    {
+     "i": 515,
+     "l1": false,
+     "l3": false,
+     "wrote": "brush",
+     "gen": "brush",
+     "margin": -1.219
+    },
+    {
+     "i": 516,
+     "l1": false,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -0.1761
+    },
+    {
+     "i": 517,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "therapy video",
+     "margin": 3.4224
+    },
+    {
+     "i": 518,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "therapy video",
+     "margin": 1.0935
+    },
+    {
+     "i": 519,
+     "l1": true,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": 3.6218
+    },
+    {
+     "i": 520,
+     "l1": false,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": -4.7336
+    },
+    {
+     "i": 521,
+     "l1": false,
+     "l3": false,
+     "wrote": "shingles",
+     "gen": "shingles",
+     "margin": -2.7825
+    },
+    {
+     "i": 522,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.8175
+    },
+    {
+     "i": 523,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -1.9485
+    },
+    {
+     "i": 524,
+     "l1": true,
+     "l3": true,
+     "wrote": "windows",
+     "gen": "windows",
+     "margin": 1.193
+    },
+    {
+     "i": 525,
+     "l1": true,
+     "l3": false,
+     "wrote": "windows",
+     "gen": "windows",
+     "margin": 1.7742
+    },
+    {
+     "i": 526,
+     "l1": true,
+     "l3": true,
+     "wrote": "notes",
+     "gen": "notes",
+     "margin": 1.6845
+    },
+    {
+     "i": 527,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": -1.6777
+    },
+    {
+     "i": 528,
+     "l1": false,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -0.8364
+    },
+    {
+     "i": 529,
+     "l1": true,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": 0.3032
+    },
+    {
+     "i": 530,
+     "l1": true,
+     "l3": true,
+     "wrote": "wheel",
+     "gen": "wheel",
+     "margin": 0.2105
+    },
+    {
+     "i": 531,
+     "l1": false,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": -0.828
+    },
+    {
+     "i": 532,
+     "l1": true,
+     "l3": true,
+     "wrote": "tire",
+     "gen": "tire",
+     "margin": 0.0958
+    },
+    {
+     "i": 533,
+     "l1": true,
+     "l3": false,
+     "wrote": "tire",
+     "gen": "tire",
+     "margin": 0.0453
+    },
+    {
+     "i": 534,
+     "l1": false,
+     "l3": false,
+     "wrote": "pork",
+     "gen": "pork",
+     "margin": -0.4849
+    },
+    {
+     "i": 535,
+     "l1": true,
+     "l3": false,
+     "wrote": "butter",
+     "gen": "butter",
+     "margin": 1.8422
+    },
+    {
+     "i": 536,
+     "l1": true,
+     "l3": true,
+     "wrote": "butter",
+     "gen": "butter",
+     "margin": 2.1625
+    },
+    {
+     "i": 537,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -0.8456
+    },
+    {
+     "i": 538,
+     "l1": false,
+     "l3": true,
+     "wrote": "sink",
+     "gen": "sink",
+     "margin": -0.1509
+    },
+    {
+     "i": 539,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 0.3671
+    },
+    {
+     "i": 540,
+     "l1": false,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": -0.2077
+    },
+    {
+     "i": 541,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": -0.0937
+    },
+    {
+     "i": 542,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": 1.5458
+    },
+    {
+     "i": 543,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": -0.5612
+    },
+    {
+     "i": 544,
+     "l1": false,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -0.1808
+    },
+    {
+     "i": 545,
+     "l1": false,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -0.0148
+    },
+    {
+     "i": 546,
+     "l1": true,
+     "l3": true,
+     "wrote": "glass",
+     "gen": "glass",
+     "margin": 0.8003
+    },
+    {
+     "i": 547,
+     "l1": false,
+     "l3": false,
+     "wrote": "glass",
+     "gen": "glass",
+     "margin": -0.9264
+    },
+    {
+     "i": 548,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -1.035
+    },
+    {
+     "i": 549,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 2.2569
+    },
+    {
+     "i": 550,
+     "l1": false,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": -0.5199
+    },
+    {
+     "i": 551,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": 1.2784
+    },
+    {
+     "i": 552,
+     "l1": false,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": -1.4422
+    },
+    {
+     "i": 553,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": 0.8195
+    },
+    {
+     "i": 554,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 1.1262
+    },
+    {
+     "i": 555,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -1.7927
+    },
+    {
+     "i": 556,
+     "l1": false,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -0.388
+    },
+    {
+     "i": 557,
+     "l1": false,
+     "l3": true,
+     "wrote": "dentures",
+     "gen": "dentures or implants",
+     "margin": -0.9284
+    },
+    {
+     "i": 558,
+     "l1": true,
+     "l3": false,
+     "wrote": "dentures",
+     "gen": "dentures or implants",
+     "margin": 1.5266
+    },
+    {
+     "i": 559,
+     "l1": false,
+     "l3": true,
+     "wrote": "boat",
+     "gen": "boat",
+     "margin": -0.795
+    },
+    {
+     "i": 560,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": 0.4824
+    },
+    {
+     "i": 561,
+     "l1": false,
+     "l3": true,
+     "wrote": "pine trees",
+     "gen": "pine trees",
+     "margin": -0.3388
+    },
+    {
+     "i": 562,
+     "l1": false,
+     "l3": false,
+     "wrote": "pine trees",
+     "gen": "pine trees",
+     "margin": -0.0223
+    },
+    {
+     "i": 563,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Fiction",
+     "margin": -0.1872
+    },
+    {
+     "i": 564,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil",
+     "margin": -1.4757
+    },
+    {
+     "i": 565,
+     "l1": true,
+     "l3": true,
+     "wrote": "Neil",
+     "gen": "Neil",
+     "margin": 0.6478
+    },
+    {
+     "i": 566,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 1.6833
+    },
+    {
+     "i": 567,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -1.9924
+    },
+    {
+     "i": 568,
+     "l1": true,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 2.8937
+    },
+    {
+     "i": 569,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": 1.0327
+    },
+    {
+     "i": 570,
+     "l1": true,
+     "l3": false,
+     "wrote": "ointment",
+     "gen": "ointment",
+     "margin": 0.3154
+    },
+    {
+     "i": 571,
+     "l1": true,
+     "l3": true,
+     "wrote": "table",
+     "gen": "table",
+     "margin": 0.6367
+    },
+    {
+     "i": 572,
+     "l1": true,
+     "l3": true,
+     "wrote": "burglary",
+     "gen": "burglary",
+     "margin": 0.1471
+    },
+    {
+     "i": 573,
+     "l1": true,
+     "l3": false,
+     "wrote": "burglary",
+     "gen": "burglary",
+     "margin": 0.3402
+    },
+    {
+     "i": 574,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 0.7027
+    },
+    {
+     "i": 575,
+     "l1": true,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car",
+     "margin": 2.4483
+    },
+    {
+     "i": 576,
+     "l1": true,
+     "l3": true,
+     "wrote": "spot",
+     "gen": "spot",
+     "margin": 2.2992
+    },
+    {
+     "i": 577,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": 1.3981
+    },
+    {
+     "i": 578,
+     "l1": true,
+     "l3": true,
+     "wrote": "Snow White",
+     "gen": "Snow White",
+     "margin": 1.0409
+    },
+    {
+     "i": 579,
+     "l1": false,
+     "l3": false,
+     "wrote": "Snow White",
+     "gen": "Snow White",
+     "margin": -1.2751
+    },
+    {
+     "i": 580,
+     "l1": true,
+     "l3": false,
+     "wrote": "purse",
+     "gen": "purse",
+     "margin": 0.0644
+    },
+    {
+     "i": 581,
+     "l1": true,
+     "l3": true,
+     "wrote": "purse",
+     "gen": "purse",
+     "margin": 0.8961
+    },
+    {
+     "i": 582,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -0.4166
+    },
+    {
+     "i": 583,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -0.5429
+    },
+    {
+     "i": 584,
+     "l1": true,
+     "l3": true,
+     "wrote": "spoon",
+     "gen": "spoon",
+     "margin": 1.5327
+    },
+    {
+     "i": 585,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "weekday convenience",
+     "margin": 0.2813
+    },
+    {
+     "i": 586,
+     "l1": false,
+     "l3": false,
+     "wrote": "car",
+     "gen": "car",
+     "margin": -0.011
+    },
+    {
+     "i": 587,
+     "l1": false,
+     "l3": true,
+     "wrote": "car",
+     "gen": "car",
+     "margin": -0.0459
+    },
+    {
+     "i": 588,
+     "l1": false,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": -1.2521
+    },
+    {
+     "i": 589,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -0.9834
+    },
+    {
+     "i": 590,
+     "l1": false,
+     "l3": true,
+     "wrote": "oil",
+     "gen": "oil",
+     "margin": -0.4426
+    },
+    {
+     "i": 591,
+     "l1": true,
+     "l3": false,
+     "wrote": "office",
+     "gen": "office",
+     "margin": 0.0537
+    },
+    {
+     "i": 592,
+     "l1": false,
+     "l3": true,
+     "wrote": "therapy",
+     "gen": "therapy",
+     "margin": -1.1926
+    },
+    {
+     "i": 593,
+     "l1": true,
+     "l3": false,
+     "wrote": "food truck",
+     "gen": "food truck",
+     "margin": 1.6141
+    },
+    {
+     "i": 594,
+     "l1": false,
+     "l3": true,
+     "wrote": "food truck",
+     "gen": "food truck",
+     "margin": -2.0171
+    },
+    {
+     "i": 595,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William",
+     "margin": 1.9519
+    },
+    {
+     "i": 596,
+     "l1": false,
+     "l3": true,
+     "wrote": "hash brown",
+     "gen": "hash brown",
+     "margin": -0.7445
+    },
+    {
+     "i": 597,
+     "l1": true,
+     "l3": false,
+     "wrote": "hash brown",
+     "gen": "hash brown",
+     "margin": 1.7912
+    },
+    {
+     "i": 598,
+     "l1": true,
+     "l3": false,
+     "wrote": "Leslie",
+     "gen": "Leslie",
+     "margin": 1.3765
+    },
+    {
+     "i": 599,
+     "l1": false,
+     "l3": false,
+     "wrote": "therapy",
+     "gen": "therapy",
+     "margin": -0.2752
+    },
+    {
+     "i": 600,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": -1.5889
+    },
+    {
+     "i": 601,
+     "l1": true,
+     "l3": true,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": 3.3249
+    },
+    {
+     "i": 602,
+     "l1": false,
+     "l3": false,
+     "wrote": "hole",
+     "gen": "hole",
+     "margin": -1.8451
+    },
+    {
+     "i": 603,
+     "l1": true,
+     "l3": true,
+     "wrote": "hole",
+     "gen": "hole",
+     "margin": 0.417
+    },
+    {
+     "i": 604,
+     "l1": true,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": 1.3647
+    },
+    {
+     "i": 605,
+     "l1": false,
+     "l3": true,
+     "wrote": "denim",
+     "gen": "denim",
+     "margin": -2.1598
+    },
+    {
+     "i": 606,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -0.7464
+    },
+    {
+     "i": 607,
+     "l1": false,
+     "l3": true,
+     "wrote": "sit-ups",
+     "gen": "sit-ups or pushups",
+     "margin": -0.5378
+    },
+    {
+     "i": 608,
+     "l1": true,
+     "l3": false,
+     "wrote": "sit-ups",
+     "gen": "sit-ups or pushups",
+     "margin": 0.5393
+    },
+    {
+     "i": 609,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": 2.1655
+    },
+    {
+     "i": 610,
+     "l1": true,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": 0.1848
+    },
+    {
+     "i": 611,
+     "l1": true,
+     "l3": true,
+     "wrote": "guardian",
+     "gen": "guardian",
+     "margin": 0.1311
+    },
+    {
+     "i": 612,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 1.705
+    },
+    {
+     "i": 613,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -0.7027
+    },
+    {
+     "i": 614,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 0.377
+    },
+    {
+     "i": 615,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": -0.236
+    },
+    {
+     "i": 616,
+     "l1": true,
+     "l3": false,
+     "wrote": "wet",
+     "gen": "wet",
+     "margin": 1.5616
+    },
+    {
+     "i": 617,
+     "l1": true,
+     "l3": true,
+     "wrote": "pick",
+     "gen": "pick",
+     "margin": 0.5838
+    },
+    {
+     "i": 618,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.5068
+    },
+    {
+     "i": 619,
+     "l1": false,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -0.0898
+    },
+    {
+     "i": 620,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -0.9111
+    },
+    {
+     "i": 621,
+     "l1": true,
+     "l3": false,
+     "wrote": "spring",
+     "gen": "spring",
+     "margin": 0.5353
+    },
+    {
+     "i": 622,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 0.9137
+    },
+    {
+     "i": 623,
+     "l1": false,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.4635
+    },
+    {
+     "i": 624,
+     "l1": true,
+     "l3": false,
+     "wrote": "painting",
+     "gen": "painting",
+     "margin": 2.6737
+    },
+    {
+     "i": 625,
+     "l1": true,
+     "l3": true,
+     "wrote": "painting",
+     "gen": "painting",
+     "margin": 0.1621
+    },
+    {
+     "i": 626,
+     "l1": false,
+     "l3": true,
+     "wrote": "house",
+     "gen": "house",
+     "margin": -1.1312
+    },
+    {
+     "i": 627,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.5781
+    },
+    {
+     "i": 628,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -0.4943
+    },
+    {
+     "i": 629,
+     "l1": true,
+     "l3": false,
+     "wrote": "plaque",
+     "gen": "plaque",
+     "margin": 0.1959
+    },
+    {
+     "i": 630,
+     "l1": false,
+     "l3": true,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": -1.6439
+    },
+    {
+     "i": 631,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 1.7176
+    },
+    {
+     "i": 632,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.0384
+    },
+    {
+     "i": 633,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -0.1381
+    },
+    {
+     "i": 634,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 0.0793
+    },
+    {
+     "i": 635,
+     "l1": false,
+     "l3": false,
+     "wrote": "nose",
+     "gen": "nose",
+     "margin": -0.3389
+    },
+    {
+     "i": 636,
+     "l1": true,
+     "l3": true,
+     "wrote": "nose",
+     "gen": "nose",
+     "margin": 1.7671
+    },
+    {
+     "i": 637,
+     "l1": false,
+     "l3": false,
+     "wrote": "truck",
+     "gen": "truck",
+     "margin": -0.6342
+    },
+    {
+     "i": 638,
+     "l1": true,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William",
+     "margin": 3.009
+    },
+    {
+     "i": 639,
+     "l1": false,
+     "l3": false,
+     "wrote": "pants",
+     "gen": "pants",
+     "margin": -2.5563
+    },
+    {
+     "i": 640,
+     "l1": true,
+     "l3": true,
+     "wrote": "pants",
+     "gen": "pants",
+     "margin": 3.9439
+    },
+    {
+     "i": 641,
+     "l1": true,
+     "l3": true,
+     "wrote": "log",
+     "gen": "log",
+     "margin": 1.6783
+    },
+    {
+     "i": 642,
+     "l1": false,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -1.0616
+    },
+    {
+     "i": 643,
+     "l1": false,
+     "l3": false,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -2.6782
+    },
+    {
+     "i": 644,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the package",
+     "margin": -0.1505
+    },
+    {
+     "i": 645,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.4415
+    },
+    {
+     "i": 646,
+     "l1": false,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": -0.4532
+    },
+    {
+     "i": 647,
+     "l1": false,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": -1.1763
+    },
+    {
+     "i": 648,
+     "l1": true,
+     "l3": true,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": 1.2768
+    },
+    {
+     "i": 649,
+     "l1": true,
+     "l3": false,
+     "wrote": "oranges",
+     "gen": "oranges",
+     "margin": 0.3507
+    },
+    {
+     "i": 650,
+     "l1": false,
+     "l3": true,
+     "wrote": "oranges",
+     "gen": "oranges",
+     "margin": -0.8382
+    },
+    {
+     "i": 651,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.4667
+    },
+    {
+     "i": 652,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.0193
+    },
+    {
+     "i": 653,
+     "l1": false,
+     "l3": false,
+     "wrote": "dress",
+     "gen": "dress",
+     "margin": -1.4747
+    },
+    {
+     "i": 654,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": -0.1966
+    },
+    {
+     "i": 655,
+     "l1": true,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 0.2266
+    },
+    {
+     "i": 656,
+     "l1": false,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -1.9505
+    },
+    {
+     "i": 657,
+     "l1": false,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -0.3335
+    },
+    {
+     "i": 658,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -0.496
+    },
+    {
+     "i": 659,
+     "l1": true,
+     "l3": true,
+     "wrote": "interview",
+     "gen": "interview",
+     "margin": 1.2029
+    },
+    {
+     "i": 660,
+     "l1": false,
+     "l3": false,
+     "wrote": "socks",
+     "gen": "socks",
+     "margin": -0.8389
+    },
+    {
+     "i": 661,
+     "l1": true,
+     "l3": true,
+     "wrote": "socks",
+     "gen": "socks",
+     "margin": 0.4888
+    },
+    {
+     "i": 662,
+     "l1": false,
+     "l3": false,
+     "wrote": "computers",
+     "gen": "computers",
+     "margin": -2.9668
+    },
+    {
+     "i": 663,
+     "l1": false,
+     "l3": true,
+     "wrote": "computers",
+     "gen": "computers",
+     "margin": -0.2161
+    },
+    {
+     "i": 664,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 0.6216
+    },
+    {
+     "i": 665,
+     "l1": true,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": 0.5591
+    },
+    {
+     "i": 666,
+     "l1": false,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -0.3759
+    },
+    {
+     "i": 667,
+     "l1": false,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -0.2654
+    },
+    {
+     "i": 668,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": 0.3365
+    },
+    {
+     "i": 669,
+     "l1": true,
+     "l3": false,
+     "wrote": "flannel shirt",
+     "gen": "flannel shirt",
+     "margin": 0.2534
+    },
+    {
+     "i": 670,
+     "l1": true,
+     "l3": false,
+     "wrote": "energy",
+     "gen": "energy",
+     "margin": 1.767
+    },
+    {
+     "i": 671,
+     "l1": true,
+     "l3": true,
+     "wrote": "toys",
+     "gen": "toys or books",
+     "margin": 0.4408
+    },
+    {
+     "i": 672,
+     "l1": false,
+     "l3": false,
+     "wrote": "steak",
+     "gen": "steak",
+     "margin": -0.846
+    },
+    {
+     "i": 673,
+     "l1": false,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": -2.7409
+    },
+    {
+     "i": 674,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 1.335
+    },
+    {
+     "i": 675,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -1.115
+    },
+    {
+     "i": 676,
+     "l1": false,
+     "l3": false,
+     "wrote": "sad",
+     "gen": "sad or happy",
+     "margin": -1.0392
+    },
+    {
+     "i": 677,
+     "l1": false,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": -0.8969
+    },
+    {
+     "i": 678,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 1.1007
+    },
+    {
+     "i": 679,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick",
+     "margin": -0.2205
+    },
+    {
+     "i": 680,
+     "l1": false,
+     "l3": false,
+     "wrote": "playground",
+     "gen": "playground",
+     "margin": -0.4341
+    },
+    {
+     "i": 681,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.1129
+    },
+    {
+     "i": 682,
+     "l1": false,
+     "l3": false,
+     "wrote": "fields",
+     "gen": "fields",
+     "margin": -0.0927
+    },
+    {
+     "i": 683,
+     "l1": false,
+     "l3": true,
+     "wrote": "dress",
+     "gen": "dress or sport",
+     "margin": -0.4776
+    },
+    {
+     "i": 684,
+     "l1": false,
+     "l3": false,
+     "wrote": "tap",
+     "gen": "tap water",
+     "margin": -2.318
+    },
+    {
+     "i": 685,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 0.5704
+    },
+    {
+     "i": 686,
+     "l1": false,
+     "l3": false,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": -0.8906
+    },
+    {
+     "i": 687,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -2.8781
+    },
+    {
+     "i": 688,
+     "l1": false,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": -1.6201
+    },
+    {
+     "i": 689,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.1784
+    },
+    {
+     "i": 690,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.4729
+    },
+    {
+     "i": 691,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 0.279
+    },
+    {
+     "i": 692,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": -0.7057
+    },
+    {
+     "i": 693,
+     "l1": false,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -0.3141
+    },
+    {
+     "i": 694,
+     "l1": true,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 0.2382
+    },
+    {
+     "i": 695,
+     "l1": false,
+     "l3": true,
+     "wrote": "park",
+     "gen": "park",
+     "margin": -0.2452
+    },
+    {
+     "i": 696,
+     "l1": true,
+     "l3": true,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": 0.3035
+    },
+    {
+     "i": 697,
+     "l1": true,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": 0.2596
+    },
+    {
+     "i": 698,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -2.7211
+    },
+    {
+     "i": 699,
+     "l1": true,
+     "l3": true,
+     "wrote": "burger",
+     "gen": "burger",
+     "margin": 0.8214
+    },
+    {
+     "i": 700,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mountains",
+     "gen": "mountains",
+     "margin": 0.085
+    },
+    {
+     "i": 701,
+     "l1": true,
+     "l3": true,
+     "wrote": "pen",
+     "gen": "pencil",
+     "margin": 1.3775
+    },
+    {
+     "i": 702,
+     "l1": false,
+     "l3": false,
+     "wrote": "pen",
+     "gen": "pencil",
+     "margin": -2.2902
+    },
+    {
+     "i": 703,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": 1.8014
+    },
+    {
+     "i": 704,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 9.087
+    },
+    {
+     "i": 705,
+     "l1": false,
+     "l3": true,
+     "wrote": "bag",
+     "gen": "bag",
+     "margin": -0.2433
+    },
+    {
+     "i": 706,
+     "l1": false,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -0.3211
+    },
+    {
+     "i": 707,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": 1.7327
+    },
+    {
+     "i": 708,
+     "l1": false,
+     "l3": false,
+     "wrote": "tofu",
+     "gen": "tofu",
+     "margin": -1.6671
+    },
+    {
+     "i": 709,
+     "l1": true,
+     "l3": true,
+     "wrote": "fever",
+     "gen": "fever or flu",
+     "margin": 0.2204
+    },
+    {
+     "i": 710,
+     "l1": false,
+     "l3": false,
+     "wrote": "smoke",
+     "gen": "smoke",
+     "margin": -0.5424
+    },
+    {
+     "i": 711,
+     "l1": true,
+     "l3": true,
+     "wrote": "smoke",
+     "gen": "smoke",
+     "margin": 0.4494
+    },
+    {
+     "i": 712,
+     "l1": false,
+     "l3": false,
+     "wrote": "computer",
+     "gen": "computer",
+     "margin": -1.14
+    },
+    {
+     "i": 713,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "Ben",
+     "margin": -3.0912
+    },
+    {
+     "i": 714,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": 0.1168
+    },
+    {
+     "i": 715,
+     "l1": true,
+     "l3": false,
+     "wrote": "camera",
+     "gen": "camera",
+     "margin": 2.565
+    },
+    {
+     "i": 716,
+     "l1": false,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": -0.5038
+    },
+    {
+     "i": 717,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": -0.2557
+    },
+    {
+     "i": 718,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eyes",
+     "gen": "Eyes",
+     "margin": -0.1931
+    },
+    {
+     "i": 719,
+     "l1": true,
+     "l3": true,
+     "wrote": "rings",
+     "gen": "rings",
+     "margin": 0.6708
+    },
+    {
+     "i": 720,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "eyeliner",
+     "margin": 0.9467
+    },
+    {
+     "i": 721,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "eyeliner",
+     "margin": -0.4028
+    },
+    {
+     "i": 722,
+     "l1": false,
+     "l3": false,
+     "wrote": "park",
+     "gen": "park",
+     "margin": -0.6337
+    },
+    {
+     "i": 723,
+     "l1": false,
+     "l3": true,
+     "wrote": "ear ache",
+     "gen": "ear ache",
+     "margin": -0.8157
+    },
+    {
+     "i": 724,
+     "l1": true,
+     "l3": false,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": 0.705
+    },
+    {
+     "i": 725,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": -2.0541
+    },
+    {
+     "i": 726,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -4.647
+    },
+    {
+     "i": 727,
+     "l1": false,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -0.7894
+    },
+    {
+     "i": 728,
+     "l1": false,
+     "l3": true,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": -0.0619
+    },
+    {
+     "i": 729,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 2.9371
+    },
+    {
+     "i": 730,
+     "l1": true,
+     "l3": false,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": 1.4812
+    },
+    {
+     "i": 731,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -1.7401
+    },
+    {
+     "i": 732,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 0.3572
+    },
+    {
+     "i": 733,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": 0.0457
+    },
+    {
+     "i": 734,
+     "l1": false,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": -0.0891
+    },
+    {
+     "i": 735,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 0.9109
+    },
+    {
+     "i": 736,
+     "l1": false,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": -0.8071
+    },
+    {
+     "i": 737,
+     "l1": false,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -0.3468
+    },
+    {
+     "i": 738,
+     "l1": true,
+     "l3": false,
+     "wrote": "zoo",
+     "gen": "zoo",
+     "margin": 0.0262
+    },
+    {
+     "i": 739,
+     "l1": true,
+     "l3": true,
+     "wrote": "lots",
+     "gen": "lots",
+     "margin": 0.4104
+    },
+    {
+     "i": 740,
+     "l1": true,
+     "l3": false,
+     "wrote": "lots",
+     "gen": "lots",
+     "margin": 0.484
+    },
+    {
+     "i": 741,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 0.5012
+    },
+    {
+     "i": 742,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -0.6544
+    },
+    {
+     "i": 743,
+     "l1": true,
+     "l3": true,
+     "wrote": "Nick",
+     "gen": "Nick",
+     "margin": 0.4273
+    },
+    {
+     "i": 744,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick",
+     "margin": -0.7853
+    },
+    {
+     "i": 745,
+     "l1": true,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 0.7393
+    },
+    {
+     "i": 746,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 2.0515
+    },
+    {
+     "i": 747,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 2.236
+    },
+    {
+     "i": 748,
+     "l1": true,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": 1.371
+    },
+    {
+     "i": 749,
+     "l1": false,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -0.0131
+    },
+    {
+     "i": 750,
+     "l1": true,
+     "l3": true,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 0.2958
+    },
+    {
+     "i": 751,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -1.5865
+    },
+    {
+     "i": 752,
+     "l1": false,
+     "l3": false,
+     "wrote": "car",
+     "gen": "car",
+     "margin": -4.298
+    },
+    {
+     "i": 753,
+     "l1": false,
+     "l3": true,
+     "wrote": "suitcase",
+     "gen": "suitcase",
+     "margin": -0.1717
+    },
+    {
+     "i": 754,
+     "l1": true,
+     "l3": false,
+     "wrote": "suitcase",
+     "gen": "suitcase",
+     "margin": 1.317
+    },
+    {
+     "i": 755,
+     "l1": true,
+     "l3": false,
+     "wrote": "table",
+     "gen": "table",
+     "margin": 0.4756
+    },
+    {
+     "i": 756,
+     "l1": true,
+     "l3": false,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": 0.9779
+    },
+    {
+     "i": 757,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian",
+     "margin": 0.8189
+    },
+    {
+     "i": 758,
+     "l1": true,
+     "l3": true,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 0.2206
+    },
+    {
+     "i": 759,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": 0.183
+    },
+    {
+     "i": 760,
+     "l1": true,
+     "l3": true,
+     "wrote": "Nick",
+     "gen": "Nick",
+     "margin": 1.8191
+    },
+    {
+     "i": 761,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick",
+     "margin": -1.2107
+    },
+    {
+     "i": 762,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": -0.233
+    },
+    {
+     "i": 763,
+     "l1": false,
+     "l3": true,
+     "wrote": "park",
+     "gen": "park",
+     "margin": -0.6612
+    },
+    {
+     "i": 764,
+     "l1": true,
+     "l3": false,
+     "wrote": "park",
+     "gen": "park",
+     "margin": 0.6039
+    },
+    {
+     "i": 765,
+     "l1": false,
+     "l3": true,
+     "wrote": "Scotch",
+     "gen": "Scotch",
+     "margin": -2.7058
+    },
+    {
+     "i": 766,
+     "l1": true,
+     "l3": false,
+     "wrote": "Scotch",
+     "gen": "Scotch",
+     "margin": 2.1372
+    },
+    {
+     "i": 767,
+     "l1": true,
+     "l3": false,
+     "wrote": "beef",
+     "gen": "beef",
+     "margin": 1.3055
+    },
+    {
+     "i": 768,
+     "l1": true,
+     "l3": true,
+     "wrote": "beef",
+     "gen": "beef",
+     "margin": 0.6109
+    },
+    {
+     "i": 769,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -1.2038
+    },
+    {
+     "i": 770,
+     "l1": false,
+     "l3": true,
+     "wrote": "Ian",
+     "gen": "Ian",
+     "margin": -1.0994
+    },
+    {
+     "i": 771,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 0.3532
+    },
+    {
+     "i": 772,
+     "l1": false,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": -0.8781
+    },
+    {
+     "i": 773,
+     "l1": false,
+     "l3": true,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": -1.0244
+    },
+    {
+     "i": 774,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": 0.6111
+    },
+    {
+     "i": 775,
+     "l1": true,
+     "l3": true,
+     "wrote": "textbook",
+     "gen": "textbook",
+     "margin": 0.8489
+    },
+    {
+     "i": 776,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "clothes",
+     "margin": -0.2374
+    },
+    {
+     "i": 777,
+     "l1": false,
+     "l3": false,
+     "wrote": "gift",
+     "gen": "gift",
+     "margin": -0.0136
+    },
+    {
+     "i": 778,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 0.1076
+    },
+    {
+     "i": 779,
+     "l1": false,
+     "l3": false,
+     "wrote": "clothing",
+     "gen": "clothing",
+     "margin": -1.9638
+    },
+    {
+     "i": 780,
+     "l1": false,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -0.1725
+    },
+    {
+     "i": 781,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 1.2167
+    },
+    {
+     "i": 782,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 1.4384
+    },
+    {
+     "i": 783,
+     "l1": false,
+     "l3": true,
+     "wrote": "towel",
+     "gen": "towel",
+     "margin": -2.302
+    },
+    {
+     "i": 784,
+     "l1": true,
+     "l3": false,
+     "wrote": "cottage",
+     "gen": "cottage",
+     "margin": 0.2149
+    },
+    {
+     "i": 785,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -1.7296
+    },
+    {
+     "i": 786,
+     "l1": false,
+     "l3": true,
+     "wrote": "computers",
+     "gen": "computers",
+     "margin": -2.2142
+    },
+    {
+     "i": 787,
+     "l1": false,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": -0.4251
+    },
+    {
+     "i": 788,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 0.4472
+    },
+    {
+     "i": 789,
+     "l1": true,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil",
+     "margin": 0.1854
+    },
+    {
+     "i": 790,
+     "l1": true,
+     "l3": false,
+     "wrote": "couch",
+     "gen": "couch",
+     "margin": 0.6035
+    },
+    {
+     "i": 791,
+     "l1": false,
+     "l3": true,
+     "wrote": "screw",
+     "gen": "screw",
+     "margin": -2.0987
+    },
+    {
+     "i": 792,
+     "l1": true,
+     "l3": false,
+     "wrote": "toothpaste",
+     "gen": "toothpaste",
+     "margin": 0.719
+    },
+    {
+     "i": 793,
+     "l1": true,
+     "l3": true,
+     "wrote": "toothpaste",
+     "gen": "toothpaste",
+     "margin": 0.8852
+    },
+    {
+     "i": 794,
+     "l1": false,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": -0.4775
+    },
+    {
+     "i": 795,
+     "l1": true,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": 0.0648
+    },
+    {
+     "i": 796,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": -1.4078
+    },
+    {
+     "i": 797,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": 0.1151
+    },
+    {
+     "i": 798,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -0.4276
+    },
+    {
+     "i": 799,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -1.1922
+    },
+    {
+     "i": 800,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.852
+    },
+    {
+     "i": 801,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -4.4805
+    },
+    {
+     "i": 802,
+     "l1": false,
+     "l3": false,
+     "wrote": "Angela",
+     "gen": "Angela",
+     "margin": -0.9943
+    },
+    {
+     "i": 803,
+     "l1": false,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -0.0299
+    },
+    {
+     "i": 804,
+     "l1": true,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": 1.7546
+    },
+    {
+     "i": 805,
+     "l1": true,
+     "l3": false,
+     "wrote": "path",
+     "gen": "path",
+     "margin": 5.2352
+    },
+    {
+     "i": 806,
+     "l1": true,
+     "l3": true,
+     "wrote": "path",
+     "gen": "path",
+     "margin": 1.8856
+    },
+    {
+     "i": 807,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.2482
+    },
+    {
+     "i": 808,
+     "l1": false,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -0.314
+    },
+    {
+     "i": 809,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": -3.6327
+    },
+    {
+     "i": 810,
+     "l1": true,
+     "l3": false,
+     "wrote": "fertilizer",
+     "gen": "fertilizer",
+     "margin": 0.6736
+    },
+    {
+     "i": 811,
+     "l1": false,
+     "l3": true,
+     "wrote": "fertilizer",
+     "gen": "fertilizer",
+     "margin": -1.3284
+    },
+    {
+     "i": 812,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -1.1677
+    },
+    {
+     "i": 813,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -0.6767
+    },
+    {
+     "i": 814,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": 1.547
+    },
+    {
+     "i": 815,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.7978
+    },
+    {
+     "i": 816,
+     "l1": true,
+     "l3": false,
+     "wrote": "textbook",
+     "gen": "textbook",
+     "margin": 0.6508
+    },
+    {
+     "i": 817,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -2.6651
+    },
+    {
+     "i": 818,
+     "l1": false,
+     "l3": true,
+     "wrote": "schedule",
+     "gen": "schedule",
+     "margin": -1.4311
+    },
+    {
+     "i": 819,
+     "l1": true,
+     "l3": false,
+     "wrote": "schedule",
+     "gen": "schedule",
+     "margin": 5.0687
+    },
+    {
+     "i": 820,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": 0.468
+    },
+    {
+     "i": 821,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": 0.0738
+    },
+    {
+     "i": 822,
+     "l1": false,
+     "l3": true,
+     "wrote": "kid",
+     "gen": "kid",
+     "margin": -2.1604
+    },
+    {
+     "i": 823,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": 1.972
+    },
+    {
+     "i": 824,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 5.611
+    },
+    {
+     "i": 825,
+     "l1": true,
+     "l3": false,
+     "wrote": "number",
+     "gen": "number",
+     "margin": 0.1718
+    },
+    {
+     "i": 826,
+     "l1": true,
+     "l3": false,
+     "wrote": "coffee",
+     "gen": "coffee",
+     "margin": 3.176
+    },
+    {
+     "i": 827,
+     "l1": true,
+     "l3": false,
+     "wrote": "cake",
+     "gen": "cake",
+     "margin": 3.2367
+    },
+    {
+     "i": 828,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": -0.016
+    },
+    {
+     "i": 829,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": -0.9218
+    },
+    {
+     "i": 830,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.4162
+    },
+    {
+     "i": 831,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 1.6448
+    },
+    {
+     "i": 832,
+     "l1": false,
+     "l3": false,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": -1.2133
+    },
+    {
+     "i": 833,
+     "l1": true,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 1.2836
+    },
+    {
+     "i": 834,
+     "l1": true,
+     "l3": false,
+     "wrote": "Paintshop software",
+     "gen": "Paintshop software",
+     "margin": 0.7118
+    },
+    {
+     "i": 835,
+     "l1": false,
+     "l3": true,
+     "wrote": "work shift",
+     "gen": "work shift",
+     "margin": -0.2731
+    },
+    {
+     "i": 836,
+     "l1": true,
+     "l3": false,
+     "wrote": "groceries",
+     "gen": "groceries",
+     "margin": 2.654
+    },
+    {
+     "i": 837,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 0.0704
+    },
+    {
+     "i": 838,
+     "l1": false,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": -0.3746
+    },
+    {
+     "i": 839,
+     "l1": true,
+     "l3": true,
+     "wrote": "pen",
+     "gen": "pen",
+     "margin": 0.0457
+    },
+    {
+     "i": 840,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": -1.7427
+    },
+    {
+     "i": 841,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "wood cleaner",
+     "margin": 0.1905
+    },
+    {
+     "i": 842,
+     "l1": true,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.8848
+    },
+    {
+     "i": 843,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 0.5475
+    },
+    {
+     "i": 844,
+     "l1": false,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -0.737
+    },
+    {
+     "i": 845,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": -0.0147
+    },
+    {
+     "i": 846,
+     "l1": false,
+     "l3": false,
+     "wrote": "laundry room",
+     "gen": "laundry room",
+     "margin": -1.2169
+    },
+    {
+     "i": 847,
+     "l1": false,
+     "l3": true,
+     "wrote": "north",
+     "gen": "north",
+     "margin": -0.0463
+    },
+    {
+     "i": 848,
+     "l1": false,
+     "l3": false,
+     "wrote": "north",
+     "gen": "north",
+     "margin": -0.0462
+    },
+    {
+     "i": 849,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": 1.3497
+    },
+    {
+     "i": 850,
+     "l1": false,
+     "l3": false,
+     "wrote": "fence",
+     "gen": "fence",
+     "margin": -4.8041
+    },
+    {
+     "i": 851,
+     "l1": false,
+     "l3": true,
+     "wrote": "pepper",
+     "gen": "pepper",
+     "margin": -0.6585
+    },
+    {
+     "i": 852,
+     "l1": true,
+     "l3": false,
+     "wrote": "pepper",
+     "gen": "pepper",
+     "margin": 0.125
+    },
+    {
+     "i": 853,
+     "l1": false,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William",
+     "margin": -0.365
+    },
+    {
+     "i": 854,
+     "l1": true,
+     "l3": true,
+     "wrote": "William",
+     "gen": "William",
+     "margin": 0.6617
+    },
+    {
+     "i": 855,
+     "l1": false,
+     "l3": false,
+     "wrote": "tank",
+     "gen": "tank",
+     "margin": -0.4544
+    },
+    {
+     "i": 856,
+     "l1": true,
+     "l3": true,
+     "wrote": "tank",
+     "gen": "tank",
+     "margin": 2.1995
+    },
+    {
+     "i": 857,
+     "l1": false,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": -0.5837
+    },
+    {
+     "i": 858,
+     "l1": true,
+     "l3": false,
+     "wrote": "house",
+     "gen": "house",
+     "margin": 5.0956
+    },
+    {
+     "i": 859,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": 3.1438
+    },
+    {
+     "i": 860,
+     "l1": false,
+     "l3": true,
+     "wrote": "lawn",
+     "gen": "lawn",
+     "margin": -2.0445
+    },
+    {
+     "i": 861,
+     "l1": true,
+     "l3": true,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 1.7088
+    },
+    {
+     "i": 862,
+     "l1": true,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": 0.4953
+    },
+    {
+     "i": 863,
+     "l1": true,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": 0.088
+    },
+    {
+     "i": 864,
+     "l1": false,
+     "l3": true,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": -0.0675
+    },
+    {
+     "i": 865,
+     "l1": true,
+     "l3": true,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": 1.0578
+    },
+    {
+     "i": 866,
+     "l1": false,
+     "l3": false,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": -1.3709
+    },
+    {
+     "i": 867,
+     "l1": false,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": -1.6939
+    },
+    {
+     "i": 868,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": -0.2583
+    },
+    {
+     "i": 869,
+     "l1": false,
+     "l3": false,
+     "wrote": "hall",
+     "gen": "hall",
+     "margin": -1.819
+    },
+    {
+     "i": 870,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": 0.4395
+    },
+    {
+     "i": 871,
+     "l1": true,
+     "l3": true,
+     "wrote": "thighs",
+     "gen": "thighs",
+     "margin": 1.1035
+    },
+    {
+     "i": 872,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.9799
+    },
+    {
+     "i": 873,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.4169
+    },
+    {
+     "i": 874,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": -2.8335
+    },
+    {
+     "i": 875,
+     "l1": true,
+     "l3": true,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": 3.0656
+    },
+    {
+     "i": 876,
+     "l1": true,
+     "l3": false,
+     "wrote": "washcloths",
+     "gen": "washcloths",
+     "margin": 0.2804
+    },
+    {
+     "i": 877,
+     "l1": true,
+     "l3": false,
+     "wrote": "essay",
+     "gen": "essay",
+     "margin": 0.2971
+    },
+    {
+     "i": 878,
+     "l1": false,
+     "l3": true,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": -0.1005
+    },
+    {
+     "i": 879,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 0.3756
+    },
+    {
+     "i": 880,
+     "l1": true,
+     "l3": true,
+     "wrote": "concrete",
+     "gen": "concrete",
+     "margin": 0.4485
+    },
+    {
+     "i": 881,
+     "l1": false,
+     "l3": false,
+     "wrote": "concrete",
+     "gen": "concrete",
+     "margin": -0.8196
+    },
+    {
+     "i": 882,
+     "l1": false,
+     "l3": false,
+     "wrote": "generator",
+     "gen": "generator",
+     "margin": -2.6689
+    },
+    {
+     "i": 883,
+     "l1": true,
+     "l3": false,
+     "wrote": "high",
+     "gen": "high or low",
+     "margin": 0.8515
+    },
+    {
+     "i": 884,
+     "l1": false,
+     "l3": true,
+     "wrote": "high",
+     "gen": "high or low",
+     "margin": -1.3545
+    },
+    {
+     "i": 885,
+     "l1": true,
+     "l3": true,
+     "wrote": "hair",
+     "gen": "hair",
+     "margin": 5.048
+    },
+    {
+     "i": 886,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -0.0087
+    },
+    {
+     "i": 887,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 0.5387
+    },
+    {
+     "i": 888,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": 1.2833
+    },
+    {
+     "i": 889,
+     "l1": false,
+     "l3": true,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": -0.4349
+    },
+    {
+     "i": 890,
+     "l1": true,
+     "l3": true,
+     "wrote": "lease",
+     "gen": "lease",
+     "margin": 0.0817
+    },
+    {
+     "i": 891,
+     "l1": false,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": -0.6675
+    },
+    {
+     "i": 892,
+     "l1": false,
+     "l3": false,
+     "wrote": "jeans",
+     "gen": "jeans",
+     "margin": -0.6019
+    },
+    {
+     "i": 893,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 0.9789
+    },
+    {
+     "i": 894,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -1.299
+    },
+    {
+     "i": 895,
+     "l1": false,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -0.4104
+    },
+    {
+     "i": 896,
+     "l1": true,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 0.1529
+    },
+    {
+     "i": 897,
+     "l1": false,
+     "l3": true,
+     "wrote": "kiosk",
+     "gen": "kiosk",
+     "margin": -1.3643
+    },
+    {
+     "i": 898,
+     "l1": false,
+     "l3": true,
+     "wrote": "carrots",
+     "gen": "carrots",
+     "margin": -1.6968
+    },
+    {
+     "i": 899,
+     "l1": false,
+     "l3": true,
+     "wrote": "pool",
+     "gen": "pool",
+     "margin": -0.8707
+    },
+    {
+     "i": 900,
+     "l1": true,
+     "l3": false,
+     "wrote": "jacket",
+     "gen": "jacket",
+     "margin": 2.0324
+    },
+    {
+     "i": 901,
+     "l1": false,
+     "l3": false,
+     "wrote": "book",
+     "gen": "book",
+     "margin": -1.8484
+    },
+    {
+     "i": 902,
+     "l1": true,
+     "l3": true,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": 0.5755
+    },
+    {
+     "i": 903,
+     "l1": false,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": -1.8637
+    },
+    {
+     "i": 904,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": -0.503
+    },
+    {
+     "i": 905,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -0.1709
+    },
+    {
+     "i": 906,
+     "l1": true,
+     "l3": false,
+     "wrote": "shoes",
+     "gen": "shoes",
+     "margin": 0.3195
+    },
+    {
+     "i": 907,
+     "l1": false,
+     "l3": true,
+     "wrote": "shoes",
+     "gen": "shoes",
+     "margin": -0.6937
+    },
+    {
+     "i": 908,
+     "l1": false,
+     "l3": false,
+     "wrote": "platters",
+     "gen": "platters or bowls",
+     "margin": -0.0595
+    },
+    {
+     "i": 909,
+     "l1": true,
+     "l3": true,
+     "wrote": "platters",
+     "gen": "platters or bowls",
+     "margin": 0.1825
+    },
+    {
+     "i": 910,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 0.4534
+    },
+    {
+     "i": 911,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -1.1491
+    },
+    {
+     "i": 912,
+     "l1": true,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": 0.6025
+    },
+    {
+     "i": 913,
+     "l1": false,
+     "l3": false,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -0.3675
+    },
+    {
+     "i": 914,
+     "l1": true,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 1.448
+    },
+    {
+     "i": 915,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -0.411
+    },
+    {
+     "i": 916,
+     "l1": false,
+     "l3": false,
+     "wrote": "Mary",
+     "gen": "Mary",
+     "margin": -0.0519
+    },
+    {
+     "i": 917,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 3.2488
+    },
+    {
+     "i": 918,
+     "l1": false,
+     "l3": true,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": -2.294
+    },
+    {
+     "i": 919,
+     "l1": true,
+     "l3": true,
+     "wrote": "toy",
+     "gen": "toy",
+     "margin": 0.0931
+    },
+    {
+     "i": 920,
+     "l1": true,
+     "l3": false,
+     "wrote": "toy",
+     "gen": "toy",
+     "margin": 0.1038
+    },
+    {
+     "i": 921,
+     "l1": true,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": 1.7052
+    },
+    {
+     "i": 922,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": -0.15
+    },
+    {
+     "i": 923,
+     "l1": false,
+     "l3": true,
+     "wrote": "apple",
+     "gen": "apple",
+     "margin": -0.2225
+    },
+    {
+     "i": 924,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.4391
+    },
+    {
+     "i": 925,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": -0.3094
+    },
+    {
+     "i": 926,
+     "l1": true,
+     "l3": true,
+     "wrote": "lotions",
+     "gen": "lotions",
+     "margin": 0.3856
+    },
+    {
+     "i": 927,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 1.1646
+    },
+    {
+     "i": 928,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 0.9099
+    },
+    {
+     "i": 929,
+     "l1": true,
+     "l3": false,
+     "wrote": "page",
+     "gen": "pages",
+     "margin": 1.9559
+    },
+    {
+     "i": 930,
+     "l1": false,
+     "l3": true,
+     "wrote": "page",
+     "gen": "pages",
+     "margin": -1.4494
+    },
+    {
+     "i": 931,
+     "l1": true,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 1.3434
+    },
+    {
+     "i": 932,
+     "l1": false,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -1.2468
+    },
+    {
+     "i": 933,
+     "l1": false,
+     "l3": true,
+     "wrote": "chopstick",
+     "gen": "chopstick",
+     "margin": -0.2766
+    },
+    {
+     "i": 934,
+     "l1": true,
+     "l3": false,
+     "wrote": "couch",
+     "gen": "couch",
+     "margin": 1.1372
+    },
+    {
+     "i": 935,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -0.4922
+    },
+    {
+     "i": 936,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": 0.0955
+    },
+    {
+     "i": 937,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": -0.4245
+    },
+    {
+     "i": 938,
+     "l1": false,
+     "l3": false,
+     "wrote": "motorcycle",
+     "gen": "motorcycle",
+     "margin": -0.7016
+    },
+    {
+     "i": 939,
+     "l1": true,
+     "l3": true,
+     "wrote": "motorcycle",
+     "gen": "motorcycle",
+     "margin": 0.5693
+    },
+    {
+     "i": 940,
+     "l1": false,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": -0.1874
+    },
+    {
+     "i": 941,
+     "l1": false,
+     "l3": true,
+     "wrote": "Nelson",
+     "gen": "Nelson",
+     "margin": -0.8238
+    },
+    {
+     "i": 942,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": 1.7803
+    },
+    {
+     "i": 943,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -1.734
+    },
+    {
+     "i": 944,
+     "l1": true,
+     "l3": true,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 0.2369
+    },
+    {
+     "i": 945,
+     "l1": false,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -1.6233
+    },
+    {
+     "i": 946,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": -0.2012
+    },
+    {
+     "i": 947,
+     "l1": true,
+     "l3": true,
+     "wrote": "diet",
+     "gen": "diet",
+     "margin": 0.2442
+    },
+    {
+     "i": 948,
+     "l1": true,
+     "l3": true,
+     "wrote": "caffeine",
+     "gen": "caffeine",
+     "margin": 0.2006
+    },
+    {
+     "i": 949,
+     "l1": true,
+     "l3": false,
+     "wrote": "caffeine",
+     "gen": "caffeine",
+     "margin": 0.8108
+    },
+    {
+     "i": 950,
+     "l1": true,
+     "l3": false,
+     "wrote": "sapling",
+     "gen": "sapling",
+     "margin": 1.7431
+    },
+    {
+     "i": 951,
+     "l1": true,
+     "l3": true,
+     "wrote": "sapling",
+     "gen": "sapling",
+     "margin": 0.9234
+    },
+    {
+     "i": 952,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.5088
+    },
+    {
+     "i": 953,
+     "l1": false,
+     "l3": true,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": -0.5734
+    },
+    {
+     "i": 954,
+     "l1": true,
+     "l3": false,
+     "wrote": "computer",
+     "gen": "computer",
+     "margin": 2.1039
+    },
+    {
+     "i": 955,
+     "l1": false,
+     "l3": true,
+     "wrote": "computer",
+     "gen": "computer",
+     "margin": -1.4379
+    },
+    {
+     "i": 956,
+     "l1": true,
+     "l3": false,
+     "wrote": "bottle",
+     "gen": "bottle",
+     "margin": 1.3225
+    },
+    {
+     "i": 957,
+     "l1": false,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": -2.6983
+    },
+    {
+     "i": 958,
+     "l1": true,
+     "l3": true,
+     "wrote": "bags",
+     "gen": "bags",
+     "margin": 3.4962
+    },
+    {
+     "i": 959,
+     "l1": true,
+     "l3": false,
+     "wrote": "bags",
+     "gen": "bags",
+     "margin": 0.0729
+    },
+    {
+     "i": 960,
+     "l1": true,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": 0.5732
+    },
+    {
+     "i": 961,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": -1.2997
+    },
+    {
+     "i": 962,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": 2.6056
+    },
+    {
+     "i": 963,
+     "l1": false,
+     "l3": true,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": -1.329
+    },
+    {
+     "i": 964,
+     "l1": true,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": 1.1956
+    },
+    {
+     "i": 965,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": 1.5523
+    },
+    {
+     "i": 966,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 1.6781
+    },
+    {
+     "i": 967,
+     "l1": true,
+     "l3": false,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": 0.8537
+    },
+    {
+     "i": 968,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -1.2134
+    },
+    {
+     "i": 969,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": 3.3175
+    },
+    {
+     "i": 970,
+     "l1": true,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 0.2616
+    },
+    {
+     "i": 971,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": 1.7584
+    },
+    {
+     "i": 972,
+     "l1": false,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -4.9121
+    },
+    {
+     "i": 973,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 2.8654
+    },
+    {
+     "i": 974,
+     "l1": true,
+     "l3": true,
+     "wrote": "shoes",
+     "gen": "shoes",
+     "margin": 1.6316
+    },
+    {
+     "i": 975,
+     "l1": false,
+     "l3": true,
+     "wrote": "shirt",
+     "gen": "shirt",
+     "margin": -0.7739
+    },
+    {
+     "i": 976,
+     "l1": true,
+     "l3": true,
+     "wrote": "pocket",
+     "gen": "pocket",
+     "margin": 2.2048
+    },
+    {
+     "i": 977,
+     "l1": false,
+     "l3": false,
+     "wrote": "pocket",
+     "gen": "pocket",
+     "margin": -2.3167
+    },
+    {
+     "i": 978,
+     "l1": true,
+     "l3": false,
+     "wrote": "pencil",
+     "gen": "pencil",
+     "margin": 0.7148
+    },
+    {
+     "i": 979,
+     "l1": true,
+     "l3": false,
+     "wrote": "track",
+     "gen": "track or field",
+     "margin": 0.4168
+    },
+    {
+     "i": 980,
+     "l1": false,
+     "l3": false,
+     "wrote": "tent",
+     "gen": "tent",
+     "margin": -0.5611
+    },
+    {
+     "i": 981,
+     "l1": false,
+     "l3": true,
+     "wrote": "tent",
+     "gen": "tent",
+     "margin": -0.1295
+    },
+    {
+     "i": 982,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jeffrey",
+     "gen": "Jeffrey",
+     "margin": 0.0972
+    },
+    {
+     "i": 983,
+     "l1": false,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": -0.9235
+    },
+    {
+     "i": 984,
+     "l1": true,
+     "l3": true,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 0.8621
+    },
+    {
+     "i": 985,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 0.4225
+    },
+    {
+     "i": 986,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 0.5104
+    },
+    {
+     "i": 987,
+     "l1": false,
+     "l3": true,
+     "wrote": "ice",
+     "gen": "ice",
+     "margin": -0.1637
+    },
+    {
+     "i": 988,
+     "l1": true,
+     "l3": false,
+     "wrote": "ice",
+     "gen": "ice",
+     "margin": 0.3875
+    },
+    {
+     "i": 989,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": 0.0793
+    },
+    {
+     "i": 990,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joseph",
+     "gen": "Joseph",
+     "margin": -0.5357
+    },
+    {
+     "i": 991,
+     "l1": false,
+     "l3": true,
+     "wrote": "boots",
+     "gen": "boots",
+     "margin": -0.1457
+    },
+    {
+     "i": 992,
+     "l1": true,
+     "l3": true,
+     "wrote": "shirts",
+     "gen": "shirts",
+     "margin": 0.9927
+    },
+    {
+     "i": 993,
+     "l1": true,
+     "l3": true,
+     "wrote": "dish",
+     "gen": "dish",
+     "margin": 2.8395
+    },
+    {
+     "i": 994,
+     "l1": false,
+     "l3": false,
+     "wrote": "plane",
+     "gen": "plane",
+     "margin": -0.8914
+    },
+    {
+     "i": 995,
+     "l1": true,
+     "l3": false,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 0.2079
+    },
+    {
+     "i": 996,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.6827
+    },
+    {
+     "i": 997,
+     "l1": false,
+     "l3": true,
+     "wrote": "hair",
+     "gen": "hair",
+     "margin": -0.7205
+    },
+    {
+     "i": 998,
+     "l1": false,
+     "l3": false,
+     "wrote": "Eric",
+     "gen": "Eric",
+     "margin": -0.5703
+    },
+    {
+     "i": 999,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -0.5194
+    },
+    {
+     "i": 1000,
+     "l1": false,
+     "l3": true,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": -4.7445
+    },
+    {
+     "i": 1001,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 0.7671
+    },
+    {
+     "i": 1002,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -0.7046
+    },
+    {
+     "i": 1003,
+     "l1": true,
+     "l3": true,
+     "wrote": "basketball",
+     "gen": "basketball",
+     "margin": 0.5219
+    },
+    {
+     "i": 1004,
+     "l1": false,
+     "l3": false,
+     "wrote": "basketball",
+     "gen": "basketball",
+     "margin": -0.5607
+    },
+    {
+     "i": 1005,
+     "l1": false,
+     "l3": true,
+     "wrote": "corsage",
+     "gen": "corsage",
+     "margin": -0.9882
+    },
+    {
+     "i": 1006,
+     "l1": false,
+     "l3": false,
+     "wrote": "corsage",
+     "gen": "corsage",
+     "margin": -1.2375
+    },
+    {
+     "i": 1007,
+     "l1": true,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": 1.0805
+    },
+    {
+     "i": 1008,
+     "l1": true,
+     "l3": false,
+     "wrote": "restaurants",
+     "gen": "restaurants",
+     "margin": 0.3003
+    },
+    {
+     "i": 1009,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 0.6748
+    },
+    {
+     "i": 1010,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": -0.1186
+    },
+    {
+     "i": 1011,
+     "l1": true,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy or Kenneth",
+     "margin": 0.017
+    },
+    {
+     "i": 1012,
+     "l1": false,
+     "l3": true,
+     "wrote": "Nick",
+     "gen": "Nick",
+     "margin": -2.2149
+    },
+    {
+     "i": 1013,
+     "l1": true,
+     "l3": false,
+     "wrote": "medication",
+     "gen": "medication",
+     "margin": 4.0034
+    },
+    {
+     "i": 1014,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": 1.2847
+    },
+    {
+     "i": 1015,
+     "l1": false,
+     "l3": true,
+     "wrote": "Craig",
+     "gen": "Craig",
+     "margin": -1.6974
+    },
+    {
+     "i": 1016,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christine",
+     "gen": "Christine",
+     "margin": 0.7005
+    },
+    {
+     "i": 1017,
+     "l1": false,
+     "l3": true,
+     "wrote": "piercing",
+     "gen": "piercing",
+     "margin": -0.172
+    },
+    {
+     "i": 1018,
+     "l1": true,
+     "l3": false,
+     "wrote": "piercing",
+     "gen": "piercing",
+     "margin": 0.4939
+    },
+    {
+     "i": 1019,
+     "l1": false,
+     "l3": false,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": -0.6
+    },
+    {
+     "i": 1020,
+     "l1": true,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": 0.8546
+    },
+    {
+     "i": 1021,
+     "l1": false,
+     "l3": true,
+     "wrote": "phone",
+     "gen": "phone",
+     "margin": -0.2271
+    },
+    {
+     "i": 1022,
+     "l1": false,
+     "l3": false,
+     "wrote": "phone",
+     "gen": "phone",
+     "margin": -0.2553
+    },
+    {
+     "i": 1023,
+     "l1": false,
+     "l3": true,
+     "wrote": "love",
+     "gen": "love or hate",
+     "margin": -3.6188
+    },
+    {
+     "i": 1024,
+     "l1": false,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": -0.0002
+    },
+    {
+     "i": 1025,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -0.4357
+    },
+    {
+     "i": 1026,
+     "l1": false,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -1.2252
+    },
+    {
+     "i": 1027,
+     "l1": true,
+     "l3": true,
+     "wrote": "jewelry",
+     "gen": "jewelry",
+     "margin": 0.9047
+    },
+    {
+     "i": 1028,
+     "l1": true,
+     "l3": true,
+     "wrote": "painting company",
+     "gen": "painting company",
+     "margin": 3.3846
+    },
+    {
+     "i": 1029,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "the facility",
+     "margin": -0.3502
+    },
+    {
+     "i": 1030,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 0.7237
+    },
+    {
+     "i": 1031,
+     "l1": false,
+     "l3": true,
+     "wrote": "laptop",
+     "gen": "laptop",
+     "margin": -0.1493
+    },
+    {
+     "i": 1032,
+     "l1": true,
+     "l3": false,
+     "wrote": "laptop",
+     "gen": "laptop",
+     "margin": 1.3739
+    },
+    {
+     "i": 1033,
+     "l1": true,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": 0.717
+    },
+    {
+     "i": 1034,
+     "l1": true,
+     "l3": false,
+     "wrote": "hairspray",
+     "gen": "hairspray",
+     "margin": 0.6767
+    },
+    {
+     "i": 1035,
+     "l1": true,
+     "l3": false,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": 6.606
+    },
+    {
+     "i": 1036,
+     "l1": false,
+     "l3": true,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": -4.1002
+    },
+    {
+     "i": 1037,
+     "l1": true,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 1.0621
+    },
+    {
+     "i": 1038,
+     "l1": false,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": -0.5737
+    },
+    {
+     "i": 1039,
+     "l1": false,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -2.1778
+    },
+    {
+     "i": 1040,
+     "l1": true,
+     "l3": true,
+     "wrote": "crossbow",
+     "gen": "crossbow",
+     "margin": 1.8207
+    },
+    {
+     "i": 1041,
+     "l1": true,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William",
+     "margin": 1.5424
+    },
+    {
+     "i": 1042,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 0.5154
+    },
+    {
+     "i": 1043,
+     "l1": false,
+     "l3": true,
+     "wrote": "Laura",
+     "gen": "Laura",
+     "margin": -0.3377
+    },
+    {
+     "i": 1044,
+     "l1": true,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": 0.458
+    },
+    {
+     "i": 1045,
+     "l1": false,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": -1.0035
+    },
+    {
+     "i": 1046,
+     "l1": true,
+     "l3": false,
+     "wrote": "red",
+     "gen": "red",
+     "margin": 11.7648
+    },
+    {
+     "i": 1047,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the blue car",
+     "margin": 0.828
+    },
+    {
+     "i": 1048,
+     "l1": false,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": -0.4386
+    },
+    {
+     "i": 1049,
+     "l1": false,
+     "l3": true,
+     "wrote": "reeds",
+     "gen": "reeds or strings",
+     "margin": -1.2013
+    },
+    {
+     "i": 1050,
+     "l1": false,
+     "l3": false,
+     "wrote": "fruit",
+     "gen": "fruits",
+     "margin": -0.7138
+    },
+    {
+     "i": 1051,
+     "l1": true,
+     "l3": true,
+     "wrote": "bone",
+     "gen": "bone",
+     "margin": 2.0879
+    },
+    {
+     "i": 1052,
+     "l1": true,
+     "l3": false,
+     "wrote": "bone",
+     "gen": "bone",
+     "margin": 0.7659
+    },
+    {
+     "i": 1053,
+     "l1": false,
+     "l3": true,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": -0.1528
+    },
+    {
+     "i": 1054,
+     "l1": false,
+     "l3": false,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -3.0312
+    },
+    {
+     "i": 1055,
+     "l1": true,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": 0.8806
+    },
+    {
+     "i": 1056,
+     "l1": false,
+     "l3": true,
+     "wrote": "language",
+     "gen": "language",
+     "margin": -0.0835
+    },
+    {
+     "i": 1057,
+     "l1": true,
+     "l3": true,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": 0.1017
+    },
+    {
+     "i": 1058,
+     "l1": false,
+     "l3": false,
+     "wrote": "Monica",
+     "gen": "Monica",
+     "margin": -0.4614
+    },
+    {
+     "i": 1059,
+     "l1": true,
+     "l3": false,
+     "wrote": "rock",
+     "gen": "rock",
+     "margin": 1.0547
+    },
+    {
+     "i": 1060,
+     "l1": false,
+     "l3": false,
+     "wrote": "test",
+     "gen": "test",
+     "margin": -0.9189
+    },
+    {
+     "i": 1061,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 0.7701
+    },
+    {
+     "i": 1062,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 0.4576
+    },
+    {
+     "i": 1063,
+     "l1": false,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": -0.5192
+    },
+    {
+     "i": 1064,
+     "l1": true,
+     "l3": false,
+     "wrote": "Nick",
+     "gen": "Nick",
+     "margin": 0.2466
+    },
+    {
+     "i": 1065,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": 1.2967
+    },
+    {
+     "i": 1066,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kyle",
+     "gen": "Kyle",
+     "margin": 0.3921
+    },
+    {
+     "i": 1067,
+     "l1": true,
+     "l3": true,
+     "wrote": "cactus",
+     "gen": "cactus",
+     "margin": 0.4
+    },
+    {
+     "i": 1068,
+     "l1": false,
+     "l3": false,
+     "wrote": "cactus",
+     "gen": "cactus",
+     "margin": -0.3395
+    },
+    {
+     "i": 1069,
+     "l1": true,
+     "l3": false,
+     "wrote": "Ryan",
+     "gen": "Ryan",
+     "margin": 0.538
+    },
+    {
+     "i": 1070,
+     "l1": false,
+     "l3": true,
+     "wrote": "toppings",
+     "gen": "toppings",
+     "margin": -0.6801
+    },
+    {
+     "i": 1071,
+     "l1": false,
+     "l3": true,
+     "wrote": "Emily",
+     "gen": "Emily",
+     "margin": -2.4692
+    },
+    {
+     "i": 1072,
+     "l1": true,
+     "l3": true,
+     "wrote": "zipper",
+     "gen": "zipper",
+     "margin": 0.5026
+    },
+    {
+     "i": 1073,
+     "l1": true,
+     "l3": false,
+     "wrote": "bus",
+     "gen": "bus or museum",
+     "margin": 0.3912
+    },
+    {
+     "i": 1074,
+     "l1": true,
+     "l3": true,
+     "wrote": "underwear",
+     "gen": "underwear",
+     "margin": 0.0525
+    },
+    {
+     "i": 1075,
+     "l1": false,
+     "l3": false,
+     "wrote": "underwear",
+     "gen": "underwear",
+     "margin": -0.1413
+    },
+    {
+     "i": 1076,
+     "l1": false,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": -3.9749
+    },
+    {
+     "i": 1077,
+     "l1": true,
+     "l3": true,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": 0.5306
+    },
+    {
+     "i": 1078,
+     "l1": false,
+     "l3": false,
+     "wrote": "Justin",
+     "gen": "Justin",
+     "margin": -0.8221
+    },
+    {
+     "i": 1079,
+     "l1": false,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -0.9345
+    },
+    {
+     "i": 1080,
+     "l1": true,
+     "l3": false,
+     "wrote": "heat",
+     "gen": "heat",
+     "margin": 0.7159
+    },
+    {
+     "i": 1081,
+     "l1": true,
+     "l3": true,
+     "wrote": "hat",
+     "gen": "hat",
+     "margin": 1.256
+    },
+    {
+     "i": 1082,
+     "l1": true,
+     "l3": true,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": 0.3188
+    },
+    {
+     "i": 1083,
+     "l1": true,
+     "l3": false,
+     "wrote": "system",
+     "gen": "system",
+     "margin": 1.3755
+    },
+    {
+     "i": 1084,
+     "l1": true,
+     "l3": false,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": 0.8338
+    },
+    {
+     "i": 1085,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 0.0891
+    },
+    {
+     "i": 1086,
+     "l1": true,
+     "l3": true,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 0.7708
+    },
+    {
+     "i": 1087,
+     "l1": true,
+     "l3": true,
+     "wrote": "Hunter",
+     "gen": "Hunter",
+     "margin": 0.2962
+    },
+    {
+     "i": 1088,
+     "l1": true,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 1.8115
+    },
+    {
+     "i": 1089,
+     "l1": true,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": 0.586
+    },
+    {
+     "i": 1090,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": -0.4008
+    },
+    {
+     "i": 1091,
+     "l1": true,
+     "l3": true,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": 1.9483
+    },
+    {
+     "i": 1092,
+     "l1": false,
+     "l3": true,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": -0.0931
+    },
+    {
+     "i": 1093,
+     "l1": true,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 1.3753
+    },
+    {
+     "i": 1094,
+     "l1": false,
+     "l3": false,
+     "wrote": "TV shows",
+     "gen": "TV shows",
+     "margin": -0.0466
+    },
+    {
+     "i": 1095,
+     "l1": true,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 5.5345
+    },
+    {
+     "i": 1096,
+     "l1": true,
+     "l3": true,
+     "wrote": "tool",
+     "gen": "tool",
+     "margin": 4.6177
+    },
+    {
+     "i": 1097,
+     "l1": false,
+     "l3": false,
+     "wrote": "tool",
+     "gen": "tool",
+     "margin": -2.7443
+    },
+    {
+     "i": 1098,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": -0.8976
+    },
+    {
+     "i": 1099,
+     "l1": true,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 2.0914
+    },
+    {
+     "i": 1100,
+     "l1": true,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": 0.4802
+    },
+    {
+     "i": 1101,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": 3.8876
+    },
+    {
+     "i": 1102,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": 0.5914
+    },
+    {
+     "i": 1103,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": -2.1492
+    },
+    {
+     "i": 1104,
+     "l1": false,
+     "l3": true,
+     "wrote": "Jason",
+     "gen": "Jason",
+     "margin": -1.7433
+    },
+    {
+     "i": 1105,
+     "l1": false,
+     "l3": false,
+     "wrote": "iron",
+     "gen": "iron or shirt",
+     "margin": -0.7561
+    },
+    {
+     "i": 1106,
+     "l1": true,
+     "l3": false,
+     "wrote": "shirt",
+     "gen": "shirt",
+     "margin": 1.9411
+    },
+    {
+     "i": 1107,
+     "l1": true,
+     "l3": true,
+     "wrote": "knife",
+     "gen": "knife",
+     "margin": 2.5309
+    },
+    {
+     "i": 1108,
+     "l1": false,
+     "l3": true,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": -2.6126
+    },
+    {
+     "i": 1109,
+     "l1": true,
+     "l3": false,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": 0.4569
+    },
+    {
+     "i": 1110,
+     "l1": true,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": 0.049
+    },
+    {
+     "i": 1111,
+     "l1": false,
+     "l3": true,
+     "wrote": "pleated pants",
+     "gen": "pleated pants",
+     "margin": -0.3607
+    },
+    {
+     "i": 1112,
+     "l1": false,
+     "l3": false,
+     "wrote": "treatment",
+     "gen": "treatment",
+     "margin": -0.0393
+    },
+    {
+     "i": 1113,
+     "l1": true,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 0.049
+    },
+    {
+     "i": 1114,
+     "l1": false,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": -0.1083
+    },
+    {
+     "i": 1115,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jessica",
+     "gen": "Jessica",
+     "margin": 1.6563
+    },
+    {
+     "i": 1116,
+     "l1": false,
+     "l3": true,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": -0.0251
+    },
+    {
+     "i": 1117,
+     "l1": false,
+     "l3": false,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": -0.484
+    },
+    {
+     "i": 1118,
+     "l1": true,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 0.2815
+    },
+    {
+     "i": 1119,
+     "l1": true,
+     "l3": true,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 0.8951
+    },
+    {
+     "i": 1120,
+     "l1": false,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": -0.9366
+    },
+    {
+     "i": 1121,
+     "l1": true,
+     "l3": false,
+     "wrote": "Felicia",
+     "gen": "Felicia",
+     "margin": 1.7801
+    },
+    {
+     "i": 1122,
+     "l1": true,
+     "l3": false,
+     "wrote": "flyers",
+     "gen": "flyers",
+     "margin": 1.4801
+    },
+    {
+     "i": 1123,
+     "l1": true,
+     "l3": true,
+     "wrote": "flyers",
+     "gen": "flyers",
+     "margin": 0.0301
+    },
+    {
+     "i": 1124,
+     "l1": false,
+     "l3": false,
+     "wrote": "shoe",
+     "gen": "shoe",
+     "margin": -3.6479
+    },
+    {
+     "i": 1125,
+     "l1": false,
+     "l3": true,
+     "wrote": "Adam",
+     "gen": "Adam",
+     "margin": -1.9027
+    },
+    {
+     "i": 1126,
+     "l1": true,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 1.4722
+    },
+    {
+     "i": 1127,
+     "l1": false,
+     "l3": true,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": -1.0412
+    },
+    {
+     "i": 1128,
+     "l1": true,
+     "l3": false,
+     "wrote": "Joel",
+     "gen": "Joel",
+     "margin": 0.261
+    },
+    {
+     "i": 1129,
+     "l1": false,
+     "l3": false,
+     "wrote": "nausea",
+     "gen": "nausea",
+     "margin": -0.2389
+    },
+    {
+     "i": 1130,
+     "l1": true,
+     "l3": false,
+     "wrote": "Robert",
+     "gen": "Robert",
+     "margin": 0.4139
+    },
+    {
+     "i": 1131,
+     "l1": true,
+     "l3": true,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": 0.8858
+    },
+    {
+     "i": 1132,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -0.5205
+    },
+    {
+     "i": 1133,
+     "l1": true,
+     "l3": false,
+     "wrote": "Carrie",
+     "gen": "Carrie",
+     "margin": 0.9112
+    },
+    {
+     "i": 1134,
+     "l1": false,
+     "l3": true,
+     "wrote": "Donald",
+     "gen": "Donald",
+     "margin": -0.4619
+    },
+    {
+     "i": 1135,
+     "l1": true,
+     "l3": false,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": 1.4531
+    },
+    {
+     "i": 1136,
+     "l1": false,
+     "l3": true,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": -0.9752
+    },
+    {
+     "i": 1137,
+     "l1": false,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": -0.658
+    },
+    {
+     "i": 1138,
+     "l1": false,
+     "l3": true,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": -0.1103
+    },
+    {
+     "i": 1139,
+     "l1": true,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": 0.4652
+    },
+    {
+     "i": 1140,
+     "l1": false,
+     "l3": false,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": -3.1682
+    },
+    {
+     "i": 1141,
+     "l1": true,
+     "l3": false,
+     "wrote": "Victoria",
+     "gen": "Victoria",
+     "margin": 0.1493
+    },
+    {
+     "i": 1142,
+     "l1": true,
+     "l3": false,
+     "wrote": "cake",
+     "gen": "cake",
+     "margin": 0.7462
+    },
+    {
+     "i": 1143,
+     "l1": false,
+     "l3": true,
+     "wrote": "cake",
+     "gen": "cake",
+     "margin": -0.6495
+    },
+    {
+     "i": 1144,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kevin",
+     "gen": "Kevin",
+     "margin": 1.4368
+    },
+    {
+     "i": 1145,
+     "l1": true,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": 0.9977
+    },
+    {
+     "i": 1146,
+     "l1": true,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": 1.4842
+    },
+    {
+     "i": 1147,
+     "l1": true,
+     "l3": true,
+     "wrote": "bricks",
+     "gen": "bricks",
+     "margin": 0.4765
+    },
+    {
+     "i": 1148,
+     "l1": false,
+     "l3": true,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": -0.3312
+    },
+    {
+     "i": 1149,
+     "l1": false,
+     "l3": true,
+     "wrote": "morgue",
+     "gen": "morgue",
+     "margin": -1.4273
+    },
+    {
+     "i": 1150,
+     "l1": false,
+     "l3": false,
+     "wrote": "Katrina",
+     "gen": "Katrina",
+     "margin": -0.1441
+    },
+    {
+     "i": 1151,
+     "l1": false,
+     "l3": false,
+     "wrote": "rules",
+     "gen": "rules",
+     "margin": -0.105
+    },
+    {
+     "i": 1152,
+     "l1": false,
+     "l3": false,
+     "wrote": "sand",
+     "gen": "sand",
+     "margin": -0.2947
+    },
+    {
+     "i": 1153,
+     "l1": true,
+     "l3": false,
+     "wrote": "Elena",
+     "gen": "Elena",
+     "margin": 0.7839
+    },
+    {
+     "i": 1154,
+     "l1": true,
+     "l3": false,
+     "wrote": "Lindsey",
+     "gen": "Lindsey",
+     "margin": 1.4265
+    },
+    {
+     "i": 1155,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "IOS",
+     "margin": -0.2143
+    },
+    {
+     "i": 1156,
+     "l1": true,
+     "l3": false,
+     "wrote": "Benjamin",
+     "gen": "Benjamin",
+     "margin": 0.4061
+    },
+    {
+     "i": 1157,
+     "l1": true,
+     "l3": false,
+     "wrote": "slip",
+     "gen": "slip",
+     "margin": 3.7248
+    },
+    {
+     "i": 1158,
+     "l1": false,
+     "l3": true,
+     "wrote": "slip",
+     "gen": "slip",
+     "margin": -3.6217
+    },
+    {
+     "i": 1159,
+     "l1": true,
+     "l3": false,
+     "wrote": "Brian",
+     "gen": "Brian",
+     "margin": 1.3784
+    },
+    {
+     "i": 1160,
+     "l1": false,
+     "l3": true,
+     "wrote": "shoe",
+     "gen": "shoes",
+     "margin": -1.8795
+    },
+    {
+     "i": 1161,
+     "l1": true,
+     "l3": false,
+     "wrote": "shoe",
+     "gen": "shoes",
+     "margin": 2.2968
+    },
+    {
+     "i": 1162,
+     "l1": false,
+     "l3": true,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -0.0739
+    },
+    {
+     "i": 1163,
+     "l1": false,
+     "l3": false,
+     "wrote": "Megan",
+     "gen": "Megan",
+     "margin": -0.4907
+    },
+    {
+     "i": 1164,
+     "l1": true,
+     "l3": false,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 0.0969
+    },
+    {
+     "i": 1165,
+     "l1": false,
+     "l3": false,
+     "wrote": "teacup",
+     "gen": "teacup",
+     "margin": -0.2846
+    },
+    {
+     "i": 1166,
+     "l1": true,
+     "l3": true,
+     "wrote": "teacup",
+     "gen": "teacup",
+     "margin": 0.7749
+    },
+    {
+     "i": 1167,
+     "l1": true,
+     "l3": false,
+     "wrote": "container",
+     "gen": "container",
+     "margin": 1.068
+    },
+    {
+     "i": 1168,
+     "l1": true,
+     "l3": true,
+     "wrote": "container",
+     "gen": "container",
+     "margin": 3.7681
+    },
+    {
+     "i": 1169,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the cracker",
+     "margin": 0.94
+    },
+    {
+     "i": 1170,
+     "l1": true,
+     "l3": true,
+     "wrote": "wood",
+     "gen": "wood",
+     "margin": 3.4024
+    },
+    {
+     "i": 1171,
+     "l1": true,
+     "l3": true,
+     "wrote": "Natalie",
+     "gen": "Natalie",
+     "margin": 1.4108
+    },
+    {
+     "i": 1172,
+     "l1": false,
+     "l3": false,
+     "wrote": "waterskiing",
+     "gen": "waterskiing",
+     "margin": -0.3234
+    },
+    {
+     "i": 1173,
+     "l1": false,
+     "l3": true,
+     "wrote": "passports",
+     "gen": "passports",
+     "margin": -0.2758
+    },
+    {
+     "i": 1174,
+     "l1": true,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 0.9363
+    },
+    {
+     "i": 1175,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samuel",
+     "gen": "Samuel",
+     "margin": 2.3119
+    },
+    {
+     "i": 1176,
+     "l1": false,
+     "l3": true,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": -0.3764
+    },
+    {
+     "i": 1177,
+     "l1": true,
+     "l3": false,
+     "wrote": "Sarah",
+     "gen": "Sarah",
+     "margin": 2.9046
+    },
+    {
+     "i": 1178,
+     "l1": true,
+     "l3": false,
+     "wrote": "Aaron",
+     "gen": "Aaron",
+     "margin": 1.3337
+    },
+    {
+     "i": 1179,
+     "l1": true,
+     "l3": false,
+     "wrote": "Rachel",
+     "gen": "Rachel",
+     "margin": 2.2001
+    },
+    {
+     "i": 1180,
+     "l1": true,
+     "l3": false,
+     "wrote": "Derrick",
+     "gen": "Derrick",
+     "margin": 0.2889
+    },
+    {
+     "i": 1181,
+     "l1": false,
+     "l3": false,
+     "wrote": "table",
+     "gen": "table",
+     "margin": -0.5716
+    },
+    {
+     "i": 1182,
+     "l1": false,
+     "l3": false,
+     "wrote": "clock",
+     "gen": "clock",
+     "margin": -0.3415
+    },
+    {
+     "i": 1183,
+     "l1": true,
+     "l3": true,
+     "wrote": "clock",
+     "gen": "clock",
+     "margin": 0.6863
+    },
+    {
+     "i": 1184,
+     "l1": false,
+     "l3": true,
+     "wrote": "carpentry",
+     "gen": "carpentry",
+     "margin": -3.5912
+    },
+    {
+     "i": 1185,
+     "l1": false,
+     "l3": false,
+     "wrote": "Tanya",
+     "gen": "Tanya",
+     "margin": -0.8542
+    },
+    {
+     "i": 1186,
+     "l1": false,
+     "l3": true,
+     "wrote": "Randy",
+     "gen": "Randy",
+     "margin": -0.2824
+    },
+    {
+     "i": 1187,
+     "l1": true,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy",
+     "margin": 0.6471
+    },
+    {
+     "i": 1188,
+     "l1": false,
+     "l3": false,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": -3.4276
+    },
+    {
+     "i": 1189,
+     "l1": true,
+     "l3": true,
+     "wrote": "Samantha",
+     "gen": "Samantha",
+     "margin": 1.3343
+    },
+    {
+     "i": 1190,
+     "l1": false,
+     "l3": true,
+     "wrote": "water",
+     "gen": "water",
+     "margin": -1.0095
+    },
+    {
+     "i": 1191,
+     "l1": true,
+     "l3": false,
+     "wrote": "water",
+     "gen": "water",
+     "margin": 0.92
+    },
+    {
+     "i": 1192,
+     "l1": true,
+     "l3": true,
+     "wrote": "lotion",
+     "gen": "lotion",
+     "margin": 0.397
+    },
+    {
+     "i": 1193,
+     "l1": true,
+     "l3": true,
+     "wrote": "pants",
+     "gen": "pants or shirts",
+     "margin": 1.9599
+    },
+    {
+     "i": 1194,
+     "l1": false,
+     "l3": true,
+     "wrote": "music",
+     "gen": "music",
+     "margin": -0.4373
+    },
+    {
+     "i": 1195,
+     "l1": true,
+     "l3": false,
+     "wrote": "oil",
+     "gen": "oil",
+     "margin": 1.1401
+    },
+    {
+     "i": 1196,
+     "l1": false,
+     "l3": false,
+     "wrote": "Steven",
+     "gen": "Steven",
+     "margin": -0.4451
+    },
+    {
+     "i": 1197,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": 0.6077
+    },
+    {
+     "i": 1198,
+     "l1": false,
+     "l3": true,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": -2.3134
+    },
+    {
+     "i": 1199,
+     "l1": true,
+     "l3": false,
+     "wrote": "Erin",
+     "gen": "Erin",
+     "margin": 1.7192
+    },
+    {
+     "i": 1200,
+     "l1": true,
+     "l3": false,
+     "wrote": "corn",
+     "gen": "corn",
+     "margin": 0.7137
+    },
+    {
+     "i": 1201,
+     "l1": false,
+     "l3": true,
+     "wrote": "corn",
+     "gen": "corn",
+     "margin": -0.5454
+    },
+    {
+     "i": 1202,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 1.4345
+    },
+    {
+     "i": 1203,
+     "l1": false,
+     "l3": true,
+     "wrote": "Maria",
+     "gen": "Maria",
+     "margin": -0.6307
+    },
+    {
+     "i": 1204,
+     "l1": true,
+     "l3": false,
+     "wrote": "cars",
+     "gen": "cars",
+     "margin": 1.4061
+    },
+    {
+     "i": 1205,
+     "l1": true,
+     "l3": true,
+     "wrote": "cars",
+     "gen": "cars",
+     "margin": 2.3124
+    },
+    {
+     "i": 1206,
+     "l1": false,
+     "l3": false,
+     "wrote": "Christopher",
+     "gen": "Christopher",
+     "margin": -1.0025
+    },
+    {
+     "i": 1207,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "canvas",
+     "margin": 1.3519
+    },
+    {
+     "i": 1208,
+     "l1": false,
+     "l3": false,
+     "wrote": "Patricia",
+     "gen": "Patricia",
+     "margin": -0.7997
+    },
+    {
+     "i": 1209,
+     "l1": false,
+     "l3": true,
+     "wrote": "bag",
+     "gen": "bag",
+     "margin": -0.765
+    },
+    {
+     "i": 1210,
+     "l1": true,
+     "l3": false,
+     "wrote": "bag",
+     "gen": "bag",
+     "margin": 0.2364
+    },
+    {
+     "i": 1211,
+     "l1": false,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -0.7606
+    },
+    {
+     "i": 1212,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": 0.0543
+    },
+    {
+     "i": 1213,
+     "l1": false,
+     "l3": false,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": -0.0602
+    },
+    {
+     "i": 1214,
+     "l1": true,
+     "l3": false,
+     "wrote": "cereal",
+     "gen": "cereal",
+     "margin": 0.604
+    },
+    {
+     "i": 1215,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "small dogs",
+     "margin": 0.7477
+    },
+    {
+     "i": 1216,
+     "l1": true,
+     "l3": false,
+     "wrote": "couch",
+     "gen": "couch",
+     "margin": 0.207
+    },
+    {
+     "i": 1217,
+     "l1": false,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": -0.5527
+    },
+    {
+     "i": 1218,
+     "l1": false,
+     "l3": false,
+     "wrote": "Lawrence",
+     "gen": "Lawrence",
+     "margin": -2.441
+    },
+    {
+     "i": 1219,
+     "l1": true,
+     "l3": false,
+     "wrote": "wiring",
+     "gen": "wiring",
+     "margin": 0.0221
+    },
+    {
+     "i": 1220,
+     "l1": false,
+     "l3": true,
+     "wrote": "Matthew",
+     "gen": "Matthew",
+     "margin": -0.3214
+    },
+    {
+     "i": 1221,
+     "l1": true,
+     "l3": true,
+     "wrote": "ring",
+     "gen": "ring",
+     "margin": 0.4661
+    },
+    {
+     "i": 1222,
+     "l1": false,
+     "l3": false,
+     "wrote": "ring",
+     "gen": "ring",
+     "margin": -0.4355
+    },
+    {
+     "i": 1223,
+     "l1": false,
+     "l3": false,
+     "wrote": "file",
+     "gen": "file",
+     "margin": -0.2601
+    },
+    {
+     "i": 1224,
+     "l1": true,
+     "l3": true,
+     "wrote": "hair",
+     "gen": "hair",
+     "margin": 5.2417
+    },
+    {
+     "i": 1225,
+     "l1": true,
+     "l3": false,
+     "wrote": "hair",
+     "gen": "hair",
+     "margin": 3.511
+    },
+    {
+     "i": 1226,
+     "l1": false,
+     "l3": true,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": -2.2618
+    },
+    {
+     "i": 1227,
+     "l1": true,
+     "l3": false,
+     "wrote": "Cynthia",
+     "gen": "Cynthia",
+     "margin": 1.3135
+    },
+    {
+     "i": 1228,
+     "l1": false,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": -0.015
+    },
+    {
+     "i": 1229,
+     "l1": true,
+     "l3": false,
+     "wrote": "lawn",
+     "gen": "lawn",
+     "margin": 0.8983
+    },
+    {
+     "i": 1230,
+     "l1": true,
+     "l3": true,
+     "wrote": "lawn",
+     "gen": "lawn",
+     "margin": 0.2325
+    },
+    {
+     "i": 1231,
+     "l1": false,
+     "l3": false,
+     "wrote": "kitchen",
+     "gen": "kitchen",
+     "margin": -2.0055
+    },
+    {
+     "i": 1232,
+     "l1": true,
+     "l3": true,
+     "wrote": "kitchen",
+     "gen": "kitchen",
+     "margin": 5.1827
+    },
+    {
+     "i": 1233,
+     "l1": true,
+     "l3": true,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": 1.6624
+    },
+    {
+     "i": 1234,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kenneth",
+     "gen": "Kenneth",
+     "margin": -1.9839
+    },
+    {
+     "i": 1235,
+     "l1": true,
+     "l3": true,
+     "wrote": "Rebecca",
+     "gen": "Rebecca",
+     "margin": 0.2896
+    },
+    {
+     "i": 1236,
+     "l1": true,
+     "l3": false,
+     "wrote": "weight",
+     "gen": "weight",
+     "margin": 1.1959
+    },
+    {
+     "i": 1237,
+     "l1": true,
+     "l3": true,
+     "wrote": "Dennis",
+     "gen": "Dennis",
+     "margin": 0.7229
+    },
+    {
+     "i": 1238,
+     "l1": true,
+     "l3": true,
+     "wrote": "pillow",
+     "gen": "pillow",
+     "margin": 0.0819
+    },
+    {
+     "i": 1239,
+     "l1": false,
+     "l3": true,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": -1.7148
+    },
+    {
+     "i": 1240,
+     "l1": false,
+     "l3": false,
+     "wrote": "Kayla",
+     "gen": "Kayla",
+     "margin": -0.3757
+    },
+    {
+     "i": 1241,
+     "l1": false,
+     "l3": false,
+     "wrote": "William",
+     "gen": "William",
+     "margin": -0.6812
+    },
+    {
+     "i": 1242,
+     "l1": true,
+     "l3": true,
+     "wrote": "razor",
+     "gen": "razor",
+     "margin": 0.8911
+    },
+    {
+     "i": 1243,
+     "l1": true,
+     "l3": true,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": 1.3342
+    },
+    {
+     "i": 1244,
+     "l1": false,
+     "l3": false,
+     "wrote": "Logan",
+     "gen": "Logan",
+     "margin": -1.0621
+    },
+    {
+     "i": 1245,
+     "l1": true,
+     "l3": true,
+     "wrote": "plasma",
+     "gen": "plasma",
+     "margin": 0.9583
+    },
+    {
+     "i": 1246,
+     "l1": false,
+     "l3": false,
+     "wrote": null,
+     "gen": "money",
+     "margin": -0.3378
+    },
+    {
+     "i": 1247,
+     "l1": true,
+     "l3": false,
+     "wrote": "sound",
+     "gen": "sound",
+     "margin": 3.651
+    },
+    {
+     "i": 1248,
+     "l1": false,
+     "l3": true,
+     "wrote": "soap",
+     "gen": "soap",
+     "margin": -1.873
+    },
+    {
+     "i": 1249,
+     "l1": false,
+     "l3": false,
+     "wrote": "soap",
+     "gen": "soap",
+     "margin": -0.0633
+    },
+    {
+     "i": 1250,
+     "l1": true,
+     "l3": true,
+     "wrote": "Brett",
+     "gen": "Brett",
+     "margin": 0.282
+    },
+    {
+     "i": 1251,
+     "l1": false,
+     "l3": true,
+     "wrote": "room",
+     "gen": "room",
+     "margin": -0.0736
+    },
+    {
+     "i": 1252,
+     "l1": false,
+     "l3": false,
+     "wrote": "room",
+     "gen": "room",
+     "margin": -0.5095
+    },
+    {
+     "i": 1253,
+     "l1": false,
+     "l3": false,
+     "wrote": "Randy",
+     "gen": "Randy",
+     "margin": -1.701
+    },
+    {
+     "i": 1254,
+     "l1": true,
+     "l3": true,
+     "wrote": "Randy",
+     "gen": "Randy",
+     "margin": 0.5744
+    },
+    {
+     "i": 1255,
+     "l1": true,
+     "l3": false,
+     "wrote": "auditorium",
+     "gen": "auditorium",
+     "margin": 1.1265
+    },
+    {
+     "i": 1256,
+     "l1": false,
+     "l3": true,
+     "wrote": "sharp",
+     "gen": "sharp",
+     "margin": -4.1065
+    },
+    {
+     "i": 1257,
+     "l1": false,
+     "l3": true,
+     "wrote": "apartments",
+     "gen": "apartments",
+     "margin": -1.4229
+    },
+    {
+     "i": 1258,
+     "l1": true,
+     "l3": false,
+     "wrote": null,
+     "gen": "the shirt",
+     "margin": 0.7015
+    },
+    {
+     "i": 1259,
+     "l1": false,
+     "l3": false,
+     "wrote": "Jennifer",
+     "gen": "Jennifer",
+     "margin": -0.5445
+    },
+    {
+     "i": 1260,
+     "l1": true,
+     "l3": true,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 0.4269
+    },
+    {
+     "i": 1261,
+     "l1": true,
+     "l3": false,
+     "wrote": "Amy",
+     "gen": "Amy",
+     "margin": 0.3137
+    },
+    {
+     "i": 1262,
+     "l1": false,
+     "l3": false,
+     "wrote": "Neil",
+     "gen": "Neil",
+     "margin": -0.058
+    },
+    {
+     "i": 1263,
+     "l1": true,
+     "l3": false,
+     "wrote": "Michael",
+     "gen": "Michael",
+     "margin": 1.2855
+    },
+    {
+     "i": 1264,
+     "l1": true,
+     "l3": true,
+     "wrote": "Betty",
+     "gen": "Betty",
+     "margin": 0.0333
+    },
+    {
+     "i": 1265,
+     "l1": true,
+     "l3": false,
+     "wrote": "tortoise",
+     "gen": "tortoise",
+     "margin": 0.3238
+    },
+    {
+     "i": 1266,
+     "l1": false,
+     "l3": false,
+     "wrote": "black car",
+     "gen": "black car",
+     "margin": -1.2143
+    }
+   ]
+  }
+ },
+ "elapsed_s": 864.0
+}

@@ -1,0 +1,30 @@
+{
+  "checkpoint": "/lambda/nfs/us-west-1-eval-inference/binding_test/control.pt",
+  "step": 22888,
+  "tasks": [
+    "lambada_openai",
+    "piqa"
+  ],
+  "limit": null,
+  "num_fewshot": null,
+  "results": {
+    "lambada_openai": {
+      "name": "lambada_openai",
+      "alias": "lambada_openai",
+      "sample_len": 5153,
+      "perplexity,none": 19297.542714227144,
+      "perplexity_stderr,none": 1355.3774094709909,
+      "acc,none": 0.05239666213856006,
+      "acc_stderr,none": 0.0031043964246458616
+    },
+    "piqa": {
+      "name": "piqa",
+      "alias": "piqa",
+      "sample_len": 1838,
+      "acc,none": 0.6104461371055495,
+      "acc_stderr,none": 0.01137765745513023,
+      "acc_norm,none": 0.5990206746463548,
+      "acc_norm_stderr,none": 0.011434766962108312
+    }
+  }
+}
