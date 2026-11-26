@@ -126,6 +126,9 @@ def main():
     ap.add_argument("--arm", choices=["control", "fix"], required=True)
     ap.add_argument("--n_docs", type=int, default=300_000)
     ap.add_argument("--out", required=True, help="JSONL: text, family, structure, alt")
+    ap.add_argument("--shard_dir", default=None, help="also write tokenized uint16 shards + meta.json here (training pool format)")
+    ap.add_argument("--tokenizer_path", default="bubblspace-tokenizer")
+    ap.add_argument("--shard_tokens", type=int, default=100_000_000)
     ap.add_argument("--seed", type=int, default=20261125)
     ap.add_argument("--probe_files", nargs="*", default=[], help="probes whose names/contexts stay out of training (v2-v5)")
     ap.add_argument("--probe_v5", default=None, help="probe v5 file: its passive contexts are excluded word for word")
@@ -168,7 +171,46 @@ def main():
             out.write(json.dumps({"text": text, "family": fam, "structure": st, "alt": alt}) + "\n")
     if out:
         out.close()
-    print(json.dumps({"arm": a.arm, "docs": n, "skipped": skipped, "by_alternation": counts}))
+    summary = {"arm": a.arm, "docs": n, "skipped": skipped, "by_alternation": counts}
+    print(json.dumps(summary))
+
+    if a.shard_dir and not a.dry_run:
+        # same shard format as gen_contrastive_v3.py / prepare.py: uint16 tokens, <|endoftext|> after every document
+        import numpy as np
+        from transformers import AutoTokenizer
+        tok = AutoTokenizer.from_pretrained(a.tokenizer_path)
+        eot = tok.eos_token_id
+        sd = Path(a.shard_dir)
+        sd.mkdir(parents=True, exist_ok=True)
+        buf = np.empty(a.shard_tokens, dtype=np.uint16)
+        pos, shard, total, batch = 0, 0, 0, []
+
+        def flush():
+            nonlocal pos, shard, total
+            for ids in tok(batch, add_special_tokens=False)["input_ids"]:
+                ids = ids + [eot]
+                if pos + len(ids) > a.shard_tokens:
+                    buf[:pos].tofile(sd / f"shard_{shard:05d}.bin"); shard += 1; pos = 0
+                buf[pos:pos + len(ids)] = ids
+                pos += len(ids); total += len(ids)
+            batch.clear()
+
+        for line in open(a.out):
+            batch.append(json.loads(line)["text"])
+            if len(batch) >= 20_000:
+                flush()
+        if batch:
+            flush()
+        if pos:
+            buf[:pos].tofile(sd / f"shard_{shard:05d}.bin"); shard += 1
+        meta = {"dataset": f"synthetic_contrastive_binding_v4_{a.arm}", "generator": "scripts/gen_contrastive_v4.py",
+                "tokenizer_path": a.tokenizer_path, "total_tokens": total, "unique_docs": n, "n_shards": shard,
+                "dtype": "uint16", "eot_token": eot, "real_vocab_size": len(tok), "is_code": False, "fim_rate": 0.0,
+                "seed": a.seed, "probe_exclusion_files": a.probe_files, "probe_v5_contexts_excluded": bool(a.probe_v5),
+                "heldout_structures": ["relative_clause", "respectively", "object_relative (probe v6)"],
+                "order_alternation_rate": ALT_RATE if a.arm == "fix" else 0.0, "docs_by_alternation": counts}
+        (sd / "meta.json").write_text(json.dumps(meta, indent=2))
+        print(json.dumps({k: meta[k] for k in ("total_tokens", "unique_docs", "n_shards")}))
 
     if a.probe_out:
         cases = build_probe_v6(random.Random(a.seed + 1), pool, names)

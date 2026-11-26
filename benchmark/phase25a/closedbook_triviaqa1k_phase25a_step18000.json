@@ -1,0 +1,18 @@
+{
+  "checkpoint": "/lambda/nfs/us-west-1-eval-inference/phase25a/step_18000.pt",
+  "step": 18000,
+  "tasks": [
+    "triviaqa"
+  ],
+  "limit": 1000,
+  "num_fewshot": 5,
+  "results": {
+    "triviaqa": {
+      "name": "triviaqa",
+      "alias": "triviaqa",
+      "sample_len": 1000,
+      "exact_match,remove_whitespace": 0.137,
+      "exact_match_stderr,remove_whitespace": 0.010878848714333292
+    }
+  }
+}
