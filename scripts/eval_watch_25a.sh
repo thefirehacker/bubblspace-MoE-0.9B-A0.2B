@@ -4,7 +4,7 @@
 #   FAST tier, every 2,000 steps (≈1B tokens), ≈1.5 h:
 #     probes v2 / v3 / v4 / v5 + generation flip on v4 / v5, simple-facts probe, TriviaQA + NQ-open (first 1,000 each, 5-shot),
 #     English 6 (forgetting check), quick suite (FIM / tool-call format / reasoning / greedy samples)
-#   FULL tier, at steps 8,000 / 16,000 / 24,000 / 32,000 and the final 38,147 (≈4B tokens apart), +≈3 h:
+#   FULL tier, at steps 8,000 / 16,000 / 24,000 and the final 29,723 (early decay; was 32,000 / 38,147), +≈3 h:
 #     full TriviaQA (2,000) and NQ-open (3,610) instead of the 1,000 slices, CRUXEval-O + BFCL
 #     (decontaminated), routing balance, HumanEval + MBPP generation with sandboxed execution
 #     (execution runs in the background on CPU while the next checkpoint's GPU evals start)
@@ -24,8 +24,10 @@ V5=$P/probefinding-winogrande-v5-heldout-structures-20261123.json
 FACTS=benchmark/data/facts-closedbook/facts-simple-v1-20261123.json
 for f in $V2 $V3 $V4 $V5 $FACTS; do [ -f $f ] || { echo "[$(date -u)] MISSING $f, abort" >> $LOG; exit 1; }; done
 
-FULL=" 8000 16000 24000 32000 38147 "
-STEPS="$(seq 2000 2000 38000) 38147"
+# early decay (26 Nov): 2.5a now ends at 29,723. Both lists can be overridden to restart mid-run, e.g.
+#   STEPS="24000 26000 28000 29723" nohup bash scripts/eval_watch_25a.sh > /dev/null 2>&1 &
+FULL=${FULL:-" 8000 16000 24000 29723 "}
+STEPS=${STEPS:-"$(seq 2000 2000 28000) 29723"}
 for s in $STEPS; do
   CK=$CKD/step_$s.pt; T=phase25a_step$s
   until [ -f $CK ]; do sleep 60; done

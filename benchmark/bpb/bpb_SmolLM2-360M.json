@@ -1,0 +1,160 @@
+{
+ "model": "HuggingFaceTB/SmolLM2-360M",
+ "revision": null,
+ "weight_sha256": {
+  "model.safetensors": "7aaff6661428bed033abba9522bec81938678642cca3181fe752b6ca9e1e540f"
+ },
+ "data": "uncheatable-2026-10.parquet",
+ "sample_file": "benchmark/bpb/sample_uncheatable-2026-10_n2000_seed0.json",
+ "chunk_tokens": 2048,
+ "overall": {
+  "bpb": 0.8752,
+  "compression_rate_pct": 10.939,
+  "mean_doc_bpb": 0.902,
+  "docs": 1995,
+  "bytes": 13808841,
+  "tokens": 3979106,
+  "bytes_per_token": 3.47
+ },
+ "mean_over_categories_bpb": 0.8953,
+ "mean_over_english_categories_bpb": 0.7986,
+ "by_category": {
+  "ao3_english": {
+   "bpb": 0.9791,
+   "compression_rate_pct": 12.239,
+   "mean_doc_bpb": 0.9938,
+   "docs": 133,
+   "bytes": 1151685,
+   "tokens": 278864,
+   "bytes_per_token": 4.13
+  },
+  "ao3_nonenglish": {
+   "bpb": 1.7283,
+   "compression_rate_pct": 21.604,
+   "mean_doc_bpb": 1.7635,
+   "docs": 133,
+   "bytes": 712751,
+   "tokens": 364500,
+   "bytes_per_token": 1.955
+  },
+  "arxiv_cs": {
+   "bpb": 0.8559,
+   "compression_rate_pct": 10.699,
+   "mean_doc_bpb": 0.8594,
+   "docs": 133,
+   "bytes": 1530194,
+   "tokens": 345862,
+   "bytes_per_token": 4.424
+  },
+  "arxiv_math": {
+   "bpb": 0.7921,
+   "compression_rate_pct": 9.902,
+   "mean_doc_bpb": 0.7911,
+   "docs": 133,
+   "bytes": 1117342,
+   "tokens": 326286,
+   "bytes_per_token": 3.424
+  },
+  "arxiv_other": {
+   "bpb": 0.8059,
+   "compression_rate_pct": 10.074,
+   "mean_doc_bpb": 0.8067,
+   "docs": 133,
+   "bytes": 1467719,
+   "tokens": 336595,
+   "bytes_per_token": 4.36
+  },
+  "arxiv_physics": {
+   "bpb": 0.8181,
+   "compression_rate_pct": 10.227,
+   "mean_doc_bpb": 0.8195,
+   "docs": 133,
+   "bytes": 1470300,
+   "tokens": 357397,
+   "bytes_per_token": 4.114
+  },
+  "bbc_news": {
+   "bpb": 0.8321,
+   "compression_rate_pct": 10.401,
+   "mean_doc_bpb": 0.841,
+   "docs": 133,
+   "bytes": 406838,
+   "tokens": 90657,
+   "bytes_per_token": 4.488
+  },
+  "biorxiv_all": {
+   "bpb": 0.7635,
+   "compression_rate_pct": 9.544,
+   "mean_doc_bpb": 0.7686,
+   "docs": 133,
+   "bytes": 1558684,
+   "tokens": 361185,
+   "bytes_per_token": 4.315
+  },
+  "github_cpp": {
+   "bpb": 0.4799,
+   "compression_rate_pct": 5.998,
+   "mean_doc_bpb": 0.4597,
+   "docs": 133,
+   "bytes": 608006,
+   "tokens": 205117,
+   "bytes_per_token": 2.964
+  },
+  "github_javascript": {
+   "bpb": 0.6551,
+   "compression_rate_pct": 8.189,
+   "mean_doc_bpb": 0.6357,
+   "docs": 133,
+   "bytes": 723550,
+   "tokens": 253877,
+   "bytes_per_token": 2.85
+  },
+  "github_markdown": {
+   "bpb": 1.1877,
+   "compression_rate_pct": 14.846,
+   "mean_doc_bpb": 1.2087,
+   "docs": 133,
+   "bytes": 784307,
+   "tokens": 260969,
+   "bytes_per_token": 3.005
+  },
+  "github_other": {
+   "bpb": 0.6822,
+   "compression_rate_pct": 8.528,
+   "mean_doc_bpb": 0.6938,
+   "docs": 133,
+   "bytes": 706215,
+   "tokens": 243498,
+   "bytes_per_token": 2.9
+  },
+  "github_python": {
+   "bpb": 0.6751,
+   "compression_rate_pct": 8.438,
+   "mean_doc_bpb": 0.6709,
+   "docs": 133,
+   "bytes": 727041,
+   "tokens": 228487,
+   "bytes_per_token": 3.182
+  },
+  "wikipedia_english": {
+   "bpb": 0.8557,
+   "compression_rate_pct": 10.696,
+   "mean_doc_bpb": 0.8568,
+   "docs": 133,
+   "bytes": 360855,
+   "tokens": 93724,
+   "bytes_per_token": 3.85
+  },
+  "wikipedia_nonenglish": {
+   "bpb": 1.319,
+   "compression_rate_pct": 16.488,
+   "mean_doc_bpb": 1.36,
+   "docs": 133,
+   "bytes": 483354,
+   "tokens": 232088,
+   "bytes_per_token": 2.083
+  }
+ },
+ "gpu": "NVIDIA A10",
+ "elapsed_s": 142.6
+}

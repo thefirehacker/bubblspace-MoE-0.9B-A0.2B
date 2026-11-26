@@ -21,7 +21,7 @@ A from-scratch Mixture-of-Experts language model (≈915M total / ≈211M active
 |---|---|---|
 | 1 | English base, FineWeb-Edu `sample-10BT`, 10B tokens, 19,073 steps | ✅ done (`step_19073`, ≈32h 20m on one H100) |
 | 2 | Continual training: English + code + agentic + contrastive, 12B tokens, 22,888 steps | ✅ done (step 22,888, 23 Nov, ≈39h 50m); final evals complete |
-| 2.5a | Knowledge + semantic relations + code, 20B tokens (Wikipedia, fact Q&A, SYNTH, FineWeb-Edu ≥ 4, fresh code, contrastive v3, grounded relational passages) | 🔄 all data ready and decontaminated; smoke-tested; eval watcher and baselines in place; awaiting launch ([plan](doc/plan-03-phase-2.5-knowledge-context.md), [data](doc/data-pipeline.md)) |
+| 2.5a | Knowledge + semantic relations + code (Wikipedia, fact Q&A, SYNTH, FineWeb-Edu ≥ 4, fresh code, contrastive, grounded relational passages). **Decay started early at step 24,000** (decision after the 22k eval), so 2.5a ends at step 29,723 = **15.6B tokens** (planned 20B); the decay mix uses contrastive **v4** (order alternation) | 🔄 in the decay ([plan](doc/plan-03-phase-2.5-knowledge-context.md), [data](doc/data-pipeline.md)) |
 | 2.5b | Context extension 2048 → 16,384 (≈1.5B tokens) | long-context data, evals and baseline ready; runs right after 2.5a |
 | 3 | SFT at 16k (assistant-only loss masking) | planned ([plan](doc/plan-04-phase-3-sft.md)) |
 
@@ -134,7 +134,30 @@ Single-row WinoGrande (L1) is 52.6%. The harness is the same as our 85-checkpoin
 - Phase 2 included synthetic contrastive entity-binding data, which the public models didn't have.
 - Every model here is still **below the 25% chance level**, with mostly the same name written for both twins (78% of pairs for BubblSpace). That's a habit, not yet binding.
 
+### Relational prompts, written answers vs OLMo-2 1B across its training (26 Nov, preliminary)
+
+18 short relational prompts (cause/effect, two-step chains, passive roles, fit, family relations, time, counting, swapping, "respectively"), scored on the first answer each model **writes** under raw greedy decoding. Details: [`doc/handtest-01-relational-vs-olmo.md`](doc/handtest-01-relational-vs-olmo.md).
+
+| Model | Total tokens | Right (of 18) | Answers, then stops |
+|---|---|---|---|
+| **BubblSpace Phase 2 final** | **22B** | **6** | **8** |
+| **BubblSpace 2.5a, step 20,000** | **32.5B** | **6** | **6** |
+| OLMo-2-0425-1B | 21B | 3 | 0 |
+| OLMo-2-0425-1B | 42B | 4 | 0 |
+| OLMo-2-0425-1B | 168B | 8 | 0 |
+| OLMo-2-0425-1B (end of pretraining) | 4.0T | 10 | 0 |
+| OLMo-2-0425-1B (final base, `main`) | ≈4.05T | 9 | 0 |
+
+**Clear wins:**
+- **Ahead at matched tokens:** 6/18 at 22B and 32.5B vs OLMo-2 1B's 3/18 at 21B and 4/18 at 42B. OLMo-2 1B passes it at about 5× the tokens (168B).
+- **A chain only BubblSpace solves:** "Ravi is taller than Meera, and Meera is taller than Sam, so the shortest is" → "Sam" in both our checkpoints; wrong in all five OLMo-2 1B checkpoints, including the final model.
+- **It answers and stops:** our checkpoints end after a short answer on 6–8 prompts. OLMo-2 1B ends on none, at any checkpoint, and mostly loops.
+- **Targeted data fixes what scale doesn't:** five items (time order, counting, exclusion, "respectively", the agent of a "taught by" passive) fail in every model, including OLMo-2 1B at 4T. A related failure, passive roles, went from 0 to 40/40 written answers with our order-alternation data in a test fine-tune ([`doc/binding-study-02-priors-and-word-order.md`](doc/binding-study-02-priors-and-word-order.md) §6.1).
+
+**Caveats:** 18 prompts, scored by hand, one greedy run each, so single items are noisy. OLMo-2 1B gets the "beaten by" passive from 42B on, and our checkpoints don't yet: the 2.5a decay includes the order-alternation data aimed at it.
+
 Raw results:
+- [`benchmark/handtest/relational18_raw_greedy_20261126.txt`](benchmark/handtest/relational18_raw_greedy_20261126.txt) (relational prompts, all seven models)
 - [`benchmark/binding_levels/bubblspace/phase2_step22888.json`](benchmark/binding_levels/bubblspace/phase2_step22888.json)
 - [`benchmark/binding_levels/report.md`](benchmark/binding_levels/report.md) (public models)
 

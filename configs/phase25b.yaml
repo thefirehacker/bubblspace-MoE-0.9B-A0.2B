@@ -91,7 +91,7 @@ wandb:
 # Plan: doc/plan-03-phase-2.5-knowledge-context.md §3
 # ------------------------------------------------------------
 phase2:
-  step_offset: 80108          # after Phase 1 (19,073) + Phase 2 (22,888) + Phase 2.5a (38,147)
+  step_offset: 71684          # after Phase 1 (19,073) + Phase 2 (22,888) + Phase 2.5a (29,723, early decay; was 38,147 -> 80108)
   wandb_group: moe0-9b-a0-2b
   total_steps: 2861           # ~1.5B tokens at 524,288 tokens/step
   decay_start_step: 200       # warmup then linear decay (no plateau)

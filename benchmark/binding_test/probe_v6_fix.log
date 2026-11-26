@@ -1,0 +1,1090 @@
+[ckpt] loaded /lambda/nfs/us-west-1-eval-inference/binding_test/fix.pt (step 22888)
+
+=== v6-passive_heldout_frame-0 ===
+  ctxA: ...Anders was taught by Sara, given that Anders was
+    new to the subject. logprob=  -1.570
+    patient.       logprob=  -9.508   -> prefers: new to the subject.
+  ctxB: ...Anders was taught by Sara, given that Sara was
+    new to the subject. logprob=  -7.888
+    patient.       logprob=  -1.638   -> prefers: patient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-1 ===
+  ctxA: ...rescued by Javier. Anyone could tell that Nils was
+    stranded.      logprob= -15.222
+    quick-thinking. logprob= -19.185   -> prefers: stranded.
+  ctxB: ...scued by Javier. Anyone could tell that Javier was
+    stranded.      logprob= -20.668
+    quick-thinking. logprob= -15.244   -> prefers: quick-thinking.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-2 ===
+  ctxA: ...ided by Javier; the trouble was that Valentina was
+    boastful.      logprob=  -1.783
+    wary.          logprob=  -8.311   -> prefers: boastful.
+  ctxB: ...avoided by Javier; the trouble was that Javier was
+    boastful.      logprob=  -7.145
+    wary.          logprob=  -1.506   -> prefers: wary.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-3 ===
+  ctxA: ... tutored by Olu, owing to the fact that Helena was
+    behind in maths. logprob=  -1.598
+    a former teacher. logprob= -13.312   -> prefers: behind in maths.
+  ctxB: ...was tutored by Olu, owing to the fact that Olu was
+    behind in maths. logprob=  -8.407
+    a former teacher. logprob=  -1.477   -> prefers: a former teacher.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-4 ===
+  ctxA: ...was tutored by Bao, owing to the fact that Olu was
+    preparing for an exam. logprob=  -1.162
+    patient.       logprob=  -7.239   -> prefers: preparing for an exam.
+  ctxB: ...was tutored by Bao, owing to the fact that Bao was
+    preparing for an exam. logprob=  -8.348
+    patient.       logprob=  -1.284   -> prefers: patient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-5 ===
+  ctxA: ...ded by Anders. Anyone could tell that Santiago was
+    careless.      logprob= -15.348
+    angry.         logprob= -20.161   -> prefers: careless.
+  ctxB: ...olded by Anders. Anyone could tell that Anders was
+    careless.      logprob= -20.330
+    angry.         logprob= -16.143   -> prefers: angry.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-6 ===
+  ctxA: ...as taught by Mira; the trouble was that Esther was
+    eager to learn. logprob=  -1.263
+    experienced.   logprob=  -5.775   -> prefers: eager to learn.
+  ctxB: ... was taught by Mira; the trouble was that Mira was
+    eager to learn. logprob=  -7.710
+    experienced.   logprob=  -1.161   -> prefers: experienced.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-7 ===
+  ctxA: ...was hired by Mira. Anyone could tell that Sara was
+    reliable.      logprob= -17.167
+    in need of help. logprob= -22.160   -> prefers: reliable.
+  ctxB: ...was hired by Mira. Anyone could tell that Mira was
+    reliable.      logprob= -24.127
+    in need of help. logprob= -17.146   -> prefers: in need of help.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-8 ===
+  ctxA: ...tiago was beaten by Arjun, given that Santiago was
+    overconfident. logprob=  -1.412
+    more skilled.  logprob=  -6.960   -> prefers: overconfident.
+  ctxB: ...Santiago was beaten by Arjun, given that Arjun was
+    overconfident. logprob=  -8.005
+    more skilled.  logprob=  -1.348   -> prefers: more skilled.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-9 ===
+  ctxA: ...Ezra was hired by Nils, given that Ezra was
+    talented.      logprob=  -1.397
+    short-staffed. logprob=  -8.631   -> prefers: talented.
+  ctxB: ...Ezra was hired by Nils, given that Nils was
+    talented.      logprob=  -8.520
+    short-staffed. logprob=  -1.458   -> prefers: short-staffed.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-10 ===
+  ctxA: ...s beaten by Nils, owing to the fact that Jonas was
+    out of practice. logprob=  -1.210
+    better prepared. logprob=  -8.494   -> prefers: out of practice.
+  ctxB: ...as beaten by Nils, owing to the fact that Nils was
+    out of practice. logprob=  -9.912
+    better prepared. logprob=  -1.393   -> prefers: better prepared.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-11 ===
+  ctxA: ...scued by Santiago. Anyone could tell that Zara was
+    lost.          logprob= -14.224
+    brave.         logprob= -20.786   -> prefers: lost.
+  ctxB: ...d by Santiago. Anyone could tell that Santiago was
+    lost.          logprob= -18.432
+    brave.         logprob= -17.682   -> prefers: brave.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-12 ===
+  ctxA: ...s scolded by Kavya; the trouble was that Jonas was
+    rude.          logprob=  -1.494
+    frustrated.    logprob=  -9.436   -> prefers: rude.
+  ctxB: ...s scolded by Kavya; the trouble was that Kavya was
+    rude.          logprob=  -6.792
+    frustrated.    logprob=  -1.605   -> prefers: frustrated.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-13 ===
+  ctxA: ... was outrun by Zara; the trouble was that Vera was
+    out of shape.  logprob=  -1.599
+    a trained sprinter. logprob=  -7.158   -> prefers: out of shape.
+  ctxB: ... was outrun by Zara; the trouble was that Zara was
+    out of shape.  logprob=  -7.189
+    a trained sprinter. logprob=  -1.278   -> prefers: a trained sprinter.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-14 ===
+  ctxA: ...ssured by Valentina; the trouble was that Ezra was
+    scared.        logprob=  -1.604
+    experienced.   logprob=  -6.417   -> prefers: scared.
+  ctxB: ...d by Valentina; the trouble was that Valentina was
+    scared.        logprob=  -8.477
+    experienced.   logprob=  -1.258   -> prefers: experienced.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-15 ===
+  ctxA: ...mforted by Sara, owing to the fact that Darius was
+    frightened.    logprob=  -1.527
+    patient.       logprob=  -9.245   -> prefers: frightened.
+  ctxB: ...comforted by Sara, owing to the fact that Sara was
+    frightened.    logprob=  -7.480
+    patient.       logprob=  -1.464   -> prefers: patient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-16 ===
+  ctxA: ...utrun by Nils. Anyone could tell that Santiago was
+    slower.        logprob= -14.369
+    faster.        logprob= -18.182   -> prefers: slower.
+  ctxB: ...as outrun by Nils. Anyone could tell that Nils was
+    slower.        logprob= -19.289
+    faster.        logprob= -13.352   -> prefers: faster.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-17 ===
+  ctxA: ... beaten by Ezra. Anyone could tell that Anders was
+    inexperienced. logprob= -17.349
+    better prepared. logprob= -26.068   -> prefers: inexperienced.
+  ctxB: ...as beaten by Ezra. Anyone could tell that Ezra was
+    inexperienced. logprob= -24.085
+    better prepared. logprob= -23.272   -> prefers: better prepared.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-18 ===
+  ctxA: ...s tutored by Darius; the trouble was that Sara was
+    behind in maths. logprob=  -1.381
+    a gifted student. logprob= -11.443   -> prefers: behind in maths.
+  ctxB: ...tutored by Darius; the trouble was that Darius was
+    behind in maths. logprob=  -6.753
+    a gifted student. logprob=  -1.308   -> prefers: a gifted student.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-19 ===
+  ctxA: ...Zara was forgiven by Jonas, given that Zara was
+    truly sorry.   logprob=  -1.556
+    forgiving.     logprob=  -9.102   -> prefers: truly sorry.
+  ctxB: ...Zara was forgiven by Jonas, given that Jonas was
+    truly sorry.   logprob=  -9.730
+    forgiving.     logprob=  -1.573   -> prefers: forgiving.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-20 ===
+  ctxA: ...Gus was hired by Sara, given that Gus was
+    highly qualified. logprob=  -1.363
+    expanding.     logprob=  -9.800   -> prefers: highly qualified.
+  ctxB: ...Gus was hired by Sara, given that Sara was
+    highly qualified. logprob=  -8.738
+    expanding.     logprob=  -1.363   -> prefers: expanding.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-21 ===
+  ctxA: ...s scolded by Esther; the trouble was that Nils was
+    late again.    logprob=  -1.446
+    strict.        logprob=  -9.038   -> prefers: late again.
+  ctxB: ...scolded by Esther; the trouble was that Esther was
+    late again.    logprob=  -7.027
+    strict.        logprob=  -1.541   -> prefers: strict.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-22 ===
+  ctxA: ...s taught by Sara. Anyone could tell that Jonas was
+    new to the subject. logprob= -14.172
+    an expert.     logprob= -23.470   -> prefers: new to the subject.
+  ctxB: ...as taught by Sara. Anyone could tell that Sara was
+    new to the subject. logprob= -17.857
+    an expert.     logprob= -19.251   -> prefers: new to the subject.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-passive_heldout_frame-23 ===
+  ctxA: ...comforted by Olu. Anyone could tell that Tomas was
+    heartbroken.   logprob= -13.940
+    patient.       logprob= -22.189   -> prefers: heartbroken.
+  ctxB: ...s comforted by Olu. Anyone could tell that Olu was
+    heartbroken.   logprob= -19.020
+    patient.       logprob= -18.458   -> prefers: patient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-24 ===
+  ctxA: ...Nils was avoided by Kavya, given that Nils was
+    dishonest.     logprob=  -1.233
+    shy.           logprob=  -8.233   -> prefers: dishonest.
+  ctxB: ...Nils was avoided by Kavya, given that Kavya was
+    dishonest.     logprob=  -8.331
+    shy.           logprob=  -1.143   -> prefers: shy.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-25 ===
+  ctxA: ...s avoided by Nils, owing to the fact that Rhea was
+    unpleasant.    logprob=  -1.276
+    shy.           logprob=  -8.276   -> prefers: unpleasant.
+  ctxB: ...s avoided by Nils, owing to the fact that Nils was
+    unpleasant.    logprob=  -8.445
+    shy.           logprob=  -1.030   -> prefers: shy.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-26 ===
+  ctxA: ...s avoided by Arjun; the trouble was that Soren was
+    rude.          logprob=  -1.197
+    shy.           logprob=  -8.228   -> prefers: rude.
+  ctxB: ...s avoided by Arjun; the trouble was that Arjun was
+    rude.          logprob=  -6.821
+    shy.           logprob=  -1.302   -> prefers: shy.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-27 ===
+  ctxA: ...lded by Valentina, owing to the fact that Amir was
+    late again.    logprob=  -1.425
+    impatient.     logprob=  -8.300   -> prefers: late again.
+  ctxB: ...by Valentina, owing to the fact that Valentina was
+    late again.    logprob=  -7.774
+    impatient.     logprob=  -1.086   -> prefers: impatient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-28 ===
+  ctxA: ...utored by Arjun, owing to the fact that Javier was
+    struggling at school. logprob=  -1.571
+    top of the class. logprob=  -7.341   -> prefers: struggling at school.
+  ctxB: ...tutored by Arjun, owing to the fact that Arjun was
+    struggling at school. logprob=  -6.802
+    top of the class. logprob=  -1.552   -> prefers: top of the class.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-29 ===
+  ctxA: ...lded by Valentina; the trouble was that Javier was
+    rude.          logprob=  -1.510
+    impatient.     logprob=  -8.184   -> prefers: rude.
+  ctxB: ...d by Valentina; the trouble was that Valentina was
+    rude.          logprob=  -6.777
+    impatient.     logprob=  -1.105   -> prefers: impatient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-30 ===
+  ctxA: ...as tutored by Sara; the trouble was that Jonas was
+    preparing for an exam. logprob=  -1.332
+    a former teacher. logprob= -13.302   -> prefers: preparing for an exam.
+  ctxB: ...was tutored by Sara; the trouble was that Sara was
+    preparing for an exam. logprob=  -6.586
+    a former teacher. logprob=  -1.362   -> prefers: a former teacher.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-31 ===
+  ctxA: ... hired by Javier. Anyone could tell that Kavya was
+    talented.      logprob= -17.449
+    expanding.     logprob= -23.011   -> prefers: talented.
+  ctxB: ...hired by Javier. Anyone could tell that Javier was
+    talented.      logprob= -23.193
+    expanding.     logprob= -20.755   -> prefers: expanding.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-32 ===
+  ctxA: ...s outrun by Kavya, owing to the fact that Sara was
+    out of shape.  logprob=  -1.452
+    a trained sprinter. logprob=  -8.427   -> prefers: out of shape.
+  ctxB: ... outrun by Kavya, owing to the fact that Kavya was
+    out of shape.  logprob=  -7.334
+    a trained sprinter. logprob=  -1.427   -> prefers: a trained sprinter.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-33 ===
+  ctxA: ...hired by Javier, owing to the fact that Saskia was
+    talented.      logprob=  -1.443
+    expanding.     logprob= -10.630   -> prefers: talented.
+  ctxB: ...hired by Javier, owing to the fact that Javier was
+    talented.      logprob=  -7.880
+    expanding.     logprob=  -1.443   -> prefers: expanding.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-34 ===
+  ctxA: ...comforted by Mira. Anyone could tell that Sara was
+    grieving.      logprob= -15.872
+    patient.       logprob= -21.935   -> prefers: grieving.
+  ctxB: ...comforted by Mira. Anyone could tell that Mira was
+    grieving.      logprob= -20.370
+    patient.       logprob= -17.558   -> prefers: patient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-35 ===
+  ctxA: ...rgiven by Anders, owing to the fact that Arjun was
+    truly sorry.   logprob=  -1.691
+    forgiving.     logprob= -10.003   -> prefers: truly sorry.
+  ctxB: ...given by Anders, owing to the fact that Anders was
+    truly sorry.   logprob= -10.427
+    forgiving.     logprob=  -1.520   -> prefers: forgiving.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-36 ===
+  ctxA: ...as rescued by Soren; the trouble was that Vera was
+    stranded.      logprob=  -1.284
+    quick-thinking. logprob=  -8.316   -> prefers: stranded.
+  ctxB: ...s rescued by Soren; the trouble was that Soren was
+    stranded.      logprob=  -7.302
+    quick-thinking. logprob=  -1.802   -> prefers: quick-thinking.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-37 ===
+  ctxA: ...s thanked by Kavya, owing to the fact that Gus was
+    thoughtful.    logprob=  -1.613
+    relieved.      logprob=  -9.207   -> prefers: thoughtful.
+  ctxB: ...thanked by Kavya, owing to the fact that Kavya was
+    thoughtful.    logprob=  -9.001
+    relieved.      logprob=  -1.220   -> prefers: relieved.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-38 ===
+  ctxA: ...ther was forgiven by Saskia, given that Esther was
+    truly sorry.   logprob=  -1.537
+    big-hearted.   logprob=  -9.162   -> prefers: truly sorry.
+  ctxB: ...ther was forgiven by Saskia, given that Saskia was
+    truly sorry.   logprob= -10.138
+    big-hearted.   logprob=  -1.200   -> prefers: big-hearted.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-passive_heldout_frame-39 ===
+  ctxA: ...escued by Valentina; the trouble was that Sara was
+    stranded.      logprob=  -1.254
+    quick-thinking. logprob=  -8.471   -> prefers: stranded.
+  ctxB: ...d by Valentina; the trouble was that Valentina was
+    stranded.      logprob=  -8.212
+    quick-thinking. logprob=  -1.775   -> prefers: quick-thinking.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-40 ===
+  ctxA: ...Arjun, whom Gus tutored, was
+    preparing for an exam. logprob=  -2.912
+    top of the class. logprob=  -4.099   -> prefers: preparing for an exam.
+  ctxB: ...Gus, who tutored Arjun, was
+    preparing for an exam. logprob=  -3.103
+    top of the class. logprob=  -2.340   -> prefers: top of the class.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-41 ===
+  ctxA: ...Ezra, whom Gus hired, was
+    talented.      logprob=  -2.326
+    in need of help. logprob=  -3.198   -> prefers: talented.
+  ctxB: ...Gus, who hired Ezra, was
+    talented.      logprob=  -4.534
+    in need of help. logprob=  -2.420   -> prefers: in need of help.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-42 ===
+  ctxA: ...Saskia, whom Zara taught, was
+    struggling with it. logprob=  -2.323
+    qualified.     logprob=  -4.094   -> prefers: struggling with it.
+  ctxB: ...Zara, who taught Saskia, was
+    struggling with it. logprob=  -2.562
+    qualified.     logprob=  -2.539   -> prefers: qualified.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-43 ===
+  ctxA: ...Ezra, whom Gus tutored, was
+    preparing for an exam. logprob=  -2.504
+    top of the class. logprob=  -3.754   -> prefers: preparing for an exam.
+  ctxB: ...Gus, who tutored Ezra, was
+    preparing for an exam. logprob=  -3.034
+    top of the class. logprob=  -2.214   -> prefers: top of the class.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-44 ===
+  ctxA: ...Vera, whom Bao comforted, was
+    grieving.      logprob=  -2.608
+    caring.        logprob=  -3.362   -> prefers: grieving.
+  ctxB: ...Bao, who comforted Vera, was
+    grieving.      logprob=  -3.182
+    caring.        logprob=  -1.816   -> prefers: caring.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-45 ===
+  ctxA: ...Gus, whom Vera scolded, was
+    reckless.      logprob=  -3.055
+    strict.        logprob=  -3.616   -> prefers: reckless.
+  ctxB: ...Vera, who scolded Gus, was
+    reckless.      logprob=  -3.700
+    strict.        logprob=  -2.805   -> prefers: strict.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-46 ===
+  ctxA: ...Darius, whom Bao hired, was
+    highly qualified. logprob=  -3.046
+    growing quickly. logprob=  -2.688   -> prefers: growing quickly.
+  ctxB: ...Bao, who hired Darius, was
+    highly qualified. logprob=  -4.422
+    growing quickly. logprob=  -1.402   -> prefers: growing quickly.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-47 ===
+  ctxA: ...Nils, whom Sara comforted, was
+    frightened.    logprob=  -3.107
+    caring.        logprob=  -3.034   -> prefers: caring.
+  ctxB: ...Sara, who comforted Nils, was
+    frightened.    logprob=  -3.750
+    caring.        logprob=  -1.554   -> prefers: caring.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-48 ===
+  ctxA: ...Valentina, whom Gus reassured, was
+    worried.       logprob=  -3.922
+    steady.        logprob=  -4.422   -> prefers: worried.
+  ctxB: ...Gus, who reassured Valentina, was
+    worried.       logprob=  -3.570
+    steady.        logprob=  -2.208   -> prefers: steady.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-49 ===
+  ctxA: ...Gus, whom Santiago scolded, was
+    late again.    logprob=  -3.851
+    frustrated.    logprob=  -3.663   -> prefers: frustrated.
+  ctxB: ...Santiago, who scolded Gus, was
+    late again.    logprob=  -3.881
+    frustrated.    logprob=  -2.791   -> prefers: frustrated.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-50 ===
+  ctxA: ...Rhea, whom Mira comforted, was
+    heartbroken.   logprob=  -2.722
+    gentle.        logprob=  -2.847   -> prefers: heartbroken.
+  ctxB: ...Mira, who comforted Rhea, was
+    heartbroken.   logprob=  -3.420
+    gentle.        logprob=  -1.669   -> prefers: gentle.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-51 ===
+  ctxA: ...Kavya, whom Bao comforted, was
+    lonely.        logprob=  -2.784
+    patient.       logprob=  -2.860   -> prefers: lonely.
+  ctxB: ...Bao, who comforted Kavya, was
+    lonely.        logprob=  -3.769
+    patient.       logprob=  -1.801   -> prefers: patient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-52 ===
+  ctxA: ...Bao, whom Ezra avoided, was
+    boastful.      logprob=  -4.213
+    shy.           logprob=  -4.292   -> prefers: boastful.
+  ctxB: ...Ezra, who avoided Bao, was
+    boastful.      logprob=  -4.069
+    shy.           logprob=  -1.931   -> prefers: shy.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-53 ===
+  ctxA: ...Anders, whom Gus forgave, was
+    remorseful.    logprob=  -3.528
+    big-hearted.   logprob=  -5.125   -> prefers: remorseful.
+  ctxB: ...Gus, who forgave Anders, was
+    remorseful.    logprob=  -4.034
+    big-hearted.   logprob=  -3.211   -> prefers: big-hearted.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-54 ===
+  ctxA: ...Esther, whom Soren scolded, was
+    careless.      logprob=  -3.315
+    strict.        logprob=  -3.504   -> prefers: careless.
+  ctxB: ...Soren, who scolded Esther, was
+    careless.      logprob=  -3.667
+    strict.        logprob=  -2.263   -> prefers: strict.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-55 ===
+  ctxA: ...Soren, whom Arjun thanked, was
+    helpful.       logprob=  -2.959
+    appreciative.  logprob=  -4.073   -> prefers: helpful.
+  ctxB: ...Arjun, who thanked Soren, was
+    helpful.       logprob=  -2.659
+    appreciative.  logprob=  -2.804   -> prefers: helpful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-56 ===
+  ctxA: ...Mira, whom Tomas scolded, was
+    rude.          logprob=  -3.750
+    impatient.     logprob=  -4.343   -> prefers: rude.
+  ctxB: ...Tomas, who scolded Mira, was
+    rude.          logprob=  -3.671
+    impatient.     logprob=  -2.123   -> prefers: impatient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-57 ===
+  ctxA: ...Valentina, whom Soren forgave, was
+    apologetic.    logprob=  -3.898
+    generous.      logprob=  -2.730   -> prefers: generous.
+  ctxB: ...Soren, who forgave Valentina, was
+    apologetic.    logprob=  -3.841
+    generous.      logprob=  -1.789   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-58 ===
+  ctxA: ...Sara, whom Vera forgave, was
+    truly sorry.   logprob=  -4.004
+    big-hearted.   logprob=  -5.597   -> prefers: truly sorry.
+  ctxB: ...Vera, who forgave Sara, was
+    truly sorry.   logprob=  -4.126
+    big-hearted.   logprob=  -3.174   -> prefers: big-hearted.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-59 ===
+  ctxA: ...Tomas, whom Bao beat, was
+    out of practice. logprob=  -1.775
+    well trained.  logprob=  -2.520   -> prefers: out of practice.
+  ctxB: ...Bao, who beat Tomas, was
+    out of practice. logprob=  -2.398
+    well trained.  logprob=  -1.785   -> prefers: well trained.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-60 ===
+  ctxA: ...Zara, whom Valentina hired, was
+    reliable.      logprob=  -2.505
+    short-staffed. logprob=  -2.381   -> prefers: short-staffed.
+  ctxB: ...Valentina, who hired Zara, was
+    reliable.      logprob=  -4.630
+    short-staffed. logprob=  -1.737   -> prefers: short-staffed.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-61 ===
+  ctxA: ...Valentina, whom Olu forgave, was
+    apologetic.    logprob=  -3.978
+    generous.      logprob=  -2.918   -> prefers: generous.
+  ctxB: ...Olu, who forgave Valentina, was
+    apologetic.    logprob=  -3.583
+    generous.      logprob=  -1.650   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-62 ===
+  ctxA: ...Nils, whom Saskia avoided, was
+    boastful.      logprob=  -4.401
+    busy.          logprob=  -4.148   -> prefers: busy.
+  ctxB: ...Saskia, who avoided Nils, was
+    boastful.      logprob=  -4.169
+    busy.          logprob=  -1.981   -> prefers: busy.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-63 ===
+  ctxA: ...Kavya, whom Sara scolded, was
+    careless.      logprob=  -3.148
+    strict.        logprob=  -3.645   -> prefers: careless.
+  ctxB: ...Sara, who scolded Kavya, was
+    careless.      logprob=  -4.069
+    strict.        logprob=  -2.746   -> prefers: strict.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-64 ===
+  ctxA: ...Bao, whom Tomas tutored, was
+    a slow reader. logprob=  -3.607
+    patient.       logprob=  -3.351   -> prefers: patient.
+  ctxB: ...Tomas, who tutored Bao, was
+    a slow reader. logprob=  -3.424
+    patient.       logprob=  -2.011   -> prefers: patient.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-65 ===
+  ctxA: ...Anders, whom Javier avoided, was
+    dishonest.     logprob=  -3.729
+    wary.          logprob=  -3.666   -> prefers: wary.
+  ctxB: ...Javier, who avoided Anders, was
+    dishonest.     logprob=  -3.850
+    wary.          logprob=  -2.024   -> prefers: wary.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-66 ===
+  ctxA: ...Santiago, whom Soren reassured, was
+    anxious.       logprob=  -3.561
+    steady.        logprob=  -4.561   -> prefers: anxious.
+  ctxB: ...Soren, who reassured Santiago, was
+    anxious.       logprob=  -3.257
+    steady.        logprob=  -2.132   -> prefers: steady.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-67 ===
+  ctxA: ...Jonas, whom Amir reassured, was
+    scared.        logprob=  -3.085
+    calm.          logprob=  -2.772   -> prefers: calm.
+  ctxB: ...Amir, who reassured Jonas, was
+    scared.        logprob=  -4.008
+    calm.          logprob=  -1.799   -> prefers: calm.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-68 ===
+  ctxA: ...Tomas, whom Olu scolded, was
+    careless.      logprob=  -3.879
+    impatient.     logprob=  -4.125   -> prefers: careless.
+  ctxB: ...Olu, who scolded Tomas, was
+    careless.      logprob=  -3.851
+    impatient.     logprob=  -2.421   -> prefers: impatient.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-69 ===
+  ctxA: ...Darius, whom Helena rescued, was
+    trapped.       logprob=  -3.502
+    a trained lifeguard. logprob=  -2.577   -> prefers: a trained lifeguard.
+  ctxB: ...Helena, who rescued Darius, was
+    trapped.       logprob=  -4.964
+    a trained lifeguard. logprob=  -1.980   -> prefers: a trained lifeguard.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-70 ===
+  ctxA: ...Vera, whom Valentina taught, was
+    struggling with it. logprob=  -2.605
+    patient.       logprob=  -3.256   -> prefers: struggling with it.
+  ctxB: ...Valentina, who taught Vera, was
+    struggling with it. logprob=  -2.164
+    patient.       logprob=  -2.480   -> prefers: struggling with it.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-71 ===
+  ctxA: ...Nils, whom Soren comforted, was
+    frightened.    logprob=  -3.409
+    gentle.        logprob=  -2.853   -> prefers: gentle.
+  ctxB: ...Soren, who comforted Nils, was
+    frightened.    logprob=  -3.939
+    gentle.        logprob=  -1.695   -> prefers: gentle.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-72 ===
+  ctxA: ...Bao, whom Ezra taught, was
+    eager to learn. logprob=  -2.306
+    qualified.     logprob=  -4.436   -> prefers: eager to learn.
+  ctxB: ...Ezra, who taught Bao, was
+    eager to learn. logprob=  -2.339
+    qualified.     logprob=  -2.600   -> prefers: eager to learn.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-73 ===
+  ctxA: ...Amir, whom Darius scolded, was
+    reckless.      logprob=  -2.856
+    angry.         logprob=  -4.037   -> prefers: reckless.
+  ctxB: ...Darius, who scolded Amir, was
+    reckless.      logprob=  -3.798
+    angry.         logprob=  -3.305   -> prefers: angry.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-74 ===
+  ctxA: ...Zara, whom Saskia forgave, was
+    honest about it. logprob=  -3.048
+    forgiving.     logprob=  -3.575   -> prefers: honest about it.
+  ctxB: ...Saskia, who forgave Zara, was
+    honest about it. logprob=  -3.101
+    forgiving.     logprob=  -2.303   -> prefers: forgiving.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-75 ===
+  ctxA: ...Helena, whom Tomas scolded, was
+    late again.    logprob=  -3.872
+    impatient.     logprob=  -3.747   -> prefers: impatient.
+  ctxB: ...Tomas, who scolded Helena, was
+    late again.    logprob=  -3.636
+    impatient.     logprob=  -2.220   -> prefers: impatient.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-76 ===
+  ctxA: ...Tomas, whom Gus avoided, was
+    rude.          logprob=  -3.137
+    wary.          logprob=  -4.154   -> prefers: rude.
+  ctxB: ...Gus, who avoided Tomas, was
+    rude.          logprob=  -3.559
+    wary.          logprob=  -2.307   -> prefers: wary.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-77 ===
+  ctxA: ...Ezra, whom Valentina thanked, was
+    supportive.    logprob=  -2.256
+    grateful.      logprob=  -2.998   -> prefers: supportive.
+  ctxB: ...Valentina, who thanked Ezra, was
+    supportive.    logprob=  -2.698
+    grateful.      logprob=  -1.794   -> prefers: grateful.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-object_relative-78 ===
+  ctxA: ...Ezra, whom Valentina comforted, was
+    lonely.        logprob=  -2.811
+    patient.       logprob=  -2.765   -> prefers: patient.
+  ctxB: ...Valentina, who comforted Ezra, was
+    lonely.        logprob=  -4.031
+    patient.       logprob=  -1.740   -> prefers: patient.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-object_relative-79 ===
+  ctxA: ...Anders, whom Tomas hired, was
+    highly qualified. logprob=  -2.615
+    expanding.     logprob=  -2.115   -> prefers: expanding.
+  ctxB: ...Tomas, who hired Anders, was
+    highly qualified. logprob=  -4.178
+    expanding.     logprob=  -1.231   -> prefers: expanding.
+  correct binding (flips A->c1, B->c2): False
+
+=== v6-fit_inverse-80 ===
+  ctxA: ...s tree. Anyone could tell that the living room was
+    too low.       logprob= -15.813
+    too tall.      logprob= -27.813   -> prefers: too low.
+  ctxB: ...ree. Anyone could tell that the Christmas tree was
+    too low.       logprob= -28.313
+    too tall.      logprob= -17.938   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-81 ===
+  ctxA: ...yone could tell that the multi-storey car park was
+    too low.       logprob= -14.063
+    too high.      logprob= -23.063   -> prefers: too low.
+  ctxB: ...or home. Anyone could tell that the motor home was
+    too low.       logprob= -26.375
+    too high.      logprob= -15.031   -> prefers: too high.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-82 ===
+  ctxA: ...wardrobe, owing to the fact that the stairwell was
+    too narrow.    logprob=  -0.000
+    too bulky.     logprob= -18.375   -> prefers: too narrow.
+  ctxB: ... wardrobe, owing to the fact that the wardrobe was
+    too narrow.    logprob= -10.750
+    too bulky.     logprob=  -0.000   -> prefers: too bulky.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-83 ===
+  ctxA: ...the Christmas tree, given that the living room was
+    too low.       logprob=  -0.000
+    too tall.      logprob= -12.938   -> prefers: too low.
+  ctxB: ... Christmas tree, given that the Christmas tree was
+    too low.       logprob= -14.125
+    too tall.      logprob=  -0.000   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-84 ===
+  ctxA: ...s tree, owing to the fact that the living room was
+    too low.       logprob=  -0.000
+    too tall.      logprob= -12.563   -> prefers: too low.
+  ctxB: ...ree, owing to the fact that the Christmas tree was
+    too low.       logprob= -14.938
+    too tall.      logprob=  -0.000   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-85 ===
+  ctxA: ...tor home, given that the multi-storey car park was
+    too low.       logprob=  -0.000
+    too high.      logprob= -10.250   -> prefers: too low.
+  ctxB: ... for the motor home, given that the motor home was
+    too low.       logprob= -12.563
+    too high.      logprob=  -0.000   -> prefers: too high.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-86 ===
+  ctxA: ...mas tree; the trouble was that the living room was
+    too low.       logprob=  -0.001
+    too tall.      logprob= -11.500   -> prefers: too low.
+  ctxB: ... tree; the trouble was that the Christmas tree was
+    too low.       logprob= -14.315
+    too tall.      logprob=  -0.000   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-87 ===
+  ctxA: ...he aquarium. Anyone could tell that the alcove was
+    too narrow.    logprob= -15.001
+    too wide.      logprob= -28.813   -> prefers: too narrow.
+  ctxB: ... aquarium. Anyone could tell that the aquarium was
+    too narrow.    logprob= -25.625
+    too wide.      logprob= -16.750   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-88 ===
+  ctxA: ...rand piano. Anyone could tell that the hallway was
+    too narrow.    logprob= -15.064
+    too wide.      logprob= -29.439   -> prefers: too narrow.
+  ctxB: ... piano. Anyone could tell that the grand piano was
+    too narrow.    logprob= -22.252
+    too wide.      logprob= -16.252   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-89 ===
+  ctxA: ... for the giraffe, given that the horse trailer was
+    too low.       logprob=  -0.000
+    too tall.      logprob= -12.125   -> prefers: too low.
+  ctxB: ...o room for the giraffe, given that the giraffe was
+    too low.       logprob= -13.563
+    too tall.      logprob=  -0.000   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-90 ===
+  ctxA: ...ble bed. Anyone could tell that the spare room was
+    too small.     logprob= -16.189
+    too big.       logprob= -26.877   -> prefers: too small.
+  ctxB: ...ble bed. Anyone could tell that the double bed was
+    too small.     logprob= -25.501
+    too big.       logprob= -17.626   -> prefers: too big.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-91 ===
+  ctxA: ...ng table. Anyone could tell that the doorframe was
+    too narrow.    logprob= -16.064
+    too wide.      logprob= -29.064   -> prefers: too narrow.
+  ctxB: ...table. Anyone could tell that the dining table was
+    too narrow.    logprob= -26.000
+    too wide.      logprob= -17.625   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-92 ===
+  ctxA: ...ad no room for the ladder, given that the shed was
+    too low.       logprob=  -0.000
+    too tall.      logprob= -16.375   -> prefers: too low.
+  ctxB: ... no room for the ladder, given that the ladder was
+    too low.       logprob= -12.000
+    too tall.      logprob=  -0.000   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-93 ===
+  ctxA: ...e the fridge freezer, given that the back door was
+    too narrow.    logprob=  -0.000
+    too wide.      logprob=  -9.250   -> prefers: too narrow.
+  ctxB: ... fridge freezer, given that the fridge freezer was
+    too narrow.    logprob= -13.500
+    too wide.      logprob=  -0.000   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-94 ===
+  ctxA: ...t take the sofa; the trouble was that the lift was
+    too small.     logprob=  -0.002
+    too big.       logprob=  -6.252   -> prefers: too small.
+  ctxB: ...t take the sofa; the trouble was that the sofa was
+    too small.     logprob= -14.375
+    too big.       logprob=  -0.000   -> prefers: too big.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-95 ===
+  ctxA: ...modate the grand piano, given that the hallway was
+    too narrow.    logprob=  -0.000
+    too wide.      logprob= -14.563   -> prefers: too narrow.
+  ctxB: ...te the grand piano, given that the grand piano was
+    too narrow.    logprob= -10.750
+    too wide.      logprob=  -0.000   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-96 ===
+  ctxA: ...the trouble was that the multi-storey car park was
+    too low.       logprob=  -0.000
+    too high.      logprob= -10.250   -> prefers: too low.
+  ctxB: ...otor home; the trouble was that the motor home was
+    too low.       logprob= -12.563
+    too high.      logprob=  -0.000   -> prefers: too high.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-97 ===
+  ctxA: ...modate the rug. Anyone could tell that the box was
+    too small.     logprob= -17.251
+    too long.      logprob= -31.251   -> prefers: too small.
+  ctxB: ...modate the rug. Anyone could tell that the rug was
+    too small.     logprob= -21.516
+    too long.      logprob= -20.672   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-98 ===
+  ctxA: ...not take the rug; the trouble was that the box was
+    too small.     logprob=  -0.000
+    too long.      logprob= -13.313   -> prefers: too small.
+  ctxB: ...not take the rug; the trouble was that the rug was
+    too small.     logprob= -11.125
+    too long.      logprob=  -0.000   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-99 ===
+  ctxA: ...te the ladder. Anyone could tell that the shed was
+    too low.       logprob= -16.032
+    too tall.      logprob= -32.219   -> prefers: too low.
+  ctxB: ... the ladder. Anyone could tell that the ladder was
+    too low.       logprob= -26.438
+    too tall.      logprob= -18.094   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-100 ===
+  ctxA: ...ommodate the rug; the trouble was that the box was
+    too small.     logprob=  -0.000
+    too long.      logprob= -12.938   -> prefers: too small.
+  ctxB: ...ommodate the rug; the trouble was that the rug was
+    too small.     logprob= -11.625
+    too long.      logprob=  -0.000   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-101 ===
+  ctxA: ...e lorry; the trouble was that the village lane was
+    too narrow.    logprob=  -0.000
+    too wide.      logprob= -11.125   -> prefers: too narrow.
+  ctxB: ... for the lorry; the trouble was that the lorry was
+    too narrow.    logprob= -13.563
+    too wide.      logprob=  -0.000   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-102 ===
+  ctxA: ...the surfboard. Anyone could tell that the lift was
+    too short.     logprob= -14.752
+    too long.      logprob= -26.752   -> prefers: too short.
+  ctxB: ...urfboard. Anyone could tell that the surfboard was
+    too short.     logprob= -24.001
+    too long.      logprob= -17.313   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-103 ===
+  ctxA: ... the aquarium; the trouble was that the alcove was
+    too narrow.    logprob=  -0.000
+    too wide.      logprob= -12.125   -> prefers: too narrow.
+  ctxB: ...he aquarium; the trouble was that the aquarium was
+    too narrow.    logprob= -11.250
+    too wide.      logprob=  -0.000   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-104 ===
+  ctxA: ...affe. Anyone could tell that the horse trailer was
+    too low.       logprob= -15.688
+    too tall.      logprob= -29.500   -> prefers: too low.
+  ctxB: ...he giraffe. Anyone could tell that the giraffe was
+    too low.       logprob= -27.939
+    too tall.      logprob= -17.876   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-105 ===
+  ctxA: ...r the surfboard; the trouble was that the lift was
+    too short.     logprob=  -0.001
+    too long.      logprob=  -8.563   -> prefers: too short.
+  ctxB: ... surfboard; the trouble was that the surfboard was
+    too short.     logprob= -12.250
+    too long.      logprob=  -0.000   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-106 ===
+  ctxA: ...t take the rug. Anyone could tell that the box was
+    too small.     logprob= -17.063
+    too long.      logprob= -33.626   -> prefers: too small.
+  ctxB: ...t take the rug. Anyone could tell that the rug was
+    too small.     logprob= -21.389
+    too long.      logprob= -20.203   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-107 ===
+  ctxA: ...ot take the lorry, given that the village lane was
+    too narrow.    logprob=  -0.000
+    too wide.      logprob= -14.250   -> prefers: too narrow.
+  ctxB: ...could not take the lorry, given that the lorry was
+    too narrow.    logprob= -14.500
+    too wide.      logprob=  -0.000   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-108 ===
+  ctxA: ...the Christmas tree, given that the living room was
+    too low.       logprob=  -0.000
+    too tall.      logprob= -13.563   -> prefers: too low.
+  ctxB: ... Christmas tree, given that the Christmas tree was
+    too low.       logprob= -14.563
+    too tall.      logprob=  -0.000   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-109 ===
+  ctxA: ... bookcase, owing to the fact that the car boot was
+    too small.     logprob=  -0.000
+    too large.     logprob= -12.000   -> prefers: too small.
+  ctxB: ... bookcase, owing to the fact that the bookcase was
+    too small.     logprob= -11.750
+    too large.     logprob=  -0.000   -> prefers: too large.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-110 ===
+  ctxA: ... freezer. Anyone could tell that the back door was
+    too narrow.    logprob= -17.063
+    too wide.      logprob= -24.688   -> prefers: too narrow.
+  ctxB: ...zer. Anyone could tell that the fridge freezer was
+    too narrow.    logprob= -27.313
+    too wide.      logprob= -16.938   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-111 ===
+  ctxA: ...ng table. Anyone could tell that the doorframe was
+    too narrow.    logprob= -15.439
+    too wide.      logprob= -27.501   -> prefers: too narrow.
+  ctxB: ...table. Anyone could tell that the dining table was
+    too narrow.    logprob= -27.063
+    too wide.      logprob= -17.250   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-112 ===
+  ctxA: ...wardrobe. Anyone could tell that the stairwell was
+    too narrow.    logprob= -14.375
+    too bulky.     logprob= -30.750   -> prefers: too narrow.
+  ctxB: ... wardrobe. Anyone could tell that the wardrobe was
+    too narrow.    logprob= -22.751
+    too bulky.     logprob= -16.063   -> prefers: too bulky.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-113 ===
+  ctxA: ...t take the rug, owing to the fact that the box was
+    too small.     logprob=  -0.000
+    too long.      logprob= -14.563   -> prefers: too small.
+  ctxB: ...t take the rug, owing to the fact that the rug was
+    too small.     logprob= -11.750
+    too long.      logprob=  -0.000   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-114 ===
+  ctxA: ...wardrobe. Anyone could tell that the stairwell was
+    too narrow.    logprob= -13.814
+    too bulky.     logprob= -29.501   -> prefers: too narrow.
+  ctxB: ... wardrobe. Anyone could tell that the wardrobe was
+    too narrow.    logprob= -23.438
+    too bulky.     logprob= -15.438   -> prefers: too bulky.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-115 ===
+  ctxA: ...ng table, owing to the fact that the doorframe was
+    too narrow.    logprob=  -0.000
+    too wide.      logprob= -12.313   -> prefers: too narrow.
+  ctxB: ...table, owing to the fact that the dining table was
+    too narrow.    logprob= -12.313
+    too wide.      logprob=  -0.000   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-116 ===
+  ctxA: ...yone could tell that the multi-storey car park was
+    too low.       logprob= -14.751
+    too high.      logprob= -22.563   -> prefers: too low.
+  ctxB: ...or home. Anyone could tell that the motor home was
+    too low.       logprob= -26.563
+    too high.      logprob= -15.282   -> prefers: too high.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-117 ===
+  ctxA: ...ning table; the trouble was that the doorframe was
+    too narrow.    logprob=  -0.000
+    too wide.      logprob= -11.250   -> prefers: too narrow.
+  ctxB: ...g table; the trouble was that the dining table was
+    too narrow.    logprob= -12.000
+    too wide.      logprob=  -0.000   -> prefers: too wide.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-118 ===
+  ctxA: ...e the surfboard; the trouble was that the lift was
+    too short.     logprob=  -0.001
+    too long.      logprob=  -9.501   -> prefers: too short.
+  ctxB: ... surfboard; the trouble was that the surfboard was
+    too short.     logprob= -12.500
+    too long.      logprob=  -0.000   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v6-fit_inverse-119 ===
+  ctxA: ...take the sofa. Anyone could tell that the lift was
+    too small.     logprob= -16.315
+    too big.       logprob= -24.190   -> prefers: too small.
+  ctxB: ...take the sofa. Anyone could tell that the sofa was
+    too small.     logprob= -28.750
+    too big.       logprob= -17.438   -> prefers: too big.
+  correct binding (flips A->c1, B->c2): True
+
+============================================================
+Correct entity-attribute binding: 101/120
+
+By category:
+  fit_inverse              40/40  (100%)
+  object_relative          22/40  (55%)
+  passive_heldout_frame    39/40  (98%)
+[probe] saved results to benchmark/binding_test/probe_v6_fix.json

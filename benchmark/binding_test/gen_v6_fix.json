@@ -1,0 +1,2307 @@
+{
+ "checkpoint": "/lambda/nfs/us-west-1-eval-inference/binding_test/fix.pt",
+ "step": 22888,
+ "cases_file": "benchmark/data/probefinding-winograndestyle/probefinding-winogrande-v6-order-20261125.json",
+ "summary": {
+  "n_cases": 120,
+  "flip_hit": 43,
+  "hit_rate": 0.463,
+  "mean_gap_nats": -3.837,
+  "by_category": {
+   "passive_heldout_frame": {
+    "flip_hit": "2/40",
+    "mean_gap": -3.954
+   },
+   "object_relative": {
+    "flip_hit": "1/40",
+    "mean_gap": -0.576
+   },
+   "fit_inverse": {
+    "flip_hit": "40/40",
+    "mean_gap": -6.981
+   }
+  }
+ },
+ "rows": [
+  {
+   "name": "v6-passive_heldout_frame-0",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.25,
+    "gold": " new to the subject.",
+    "generation": " a beginner."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.375,
+    "gold": " patient.",
+    "generation": " experienced."
+   },
+   "ctxA": "Anders was taught by Sara, given that Anders was",
+   "ctxB": "Anders was taught by Sara, given that Sara was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-1",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -14.262,
+    "gold": " stranded.",
+    "generation": " in danger, but Javier was a trained lifeguard."
+   },
+   "B": {
+    "hit": false,
+    "gap": -12.794,
+    "gold": " quick-thinking.",
+    "generation": " brave, whereas Nils was in danger."
+   },
+   "ctxA": "Nils was rescued by Javier. Anyone could tell that Nils was",
+   "ctxB": "Nils was rescued by Javier. Anyone could tell that Javier was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-2",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.535,
+    "gold": " boastful.",
+    "generation": " rude."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.25,
+    "gold": " wary.",
+    "generation": " uncomfortable."
+   },
+   "ctxA": "Valentina was avoided by Javier; the trouble was that Valentina was",
+   "ctxB": "Valentina was avoided by Javier; the trouble was that Javier was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-3",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.474,
+    "gold": " behind in maths.",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": true,
+    "gap": -0.25,
+    "gold": " a former teacher.",
+    "generation": " a gifted student."
+   },
+   "ctxA": "Helena was tutored by Olu, owing to the fact that Helena was",
+   "ctxB": "Helena was tutored by Olu, owing to the fact that Olu was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-4",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " preparing for an exam.",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": false,
+    "gap": 0.139,
+    "gold": " patient.",
+    "generation": " a gifted student."
+   },
+   "ctxA": "Olu was tutored by Bao, owing to the fact that Olu was",
+   "ctxB": "Olu was tutored by Bao, owing to the fact that Bao was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-5",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -14.125,
+    "gold": " careless.",
+    "generation": " reckless, whereas Anders was impatient."
+   },
+   "B": {
+    "hit": false,
+    "gap": -15.0,
+    "gold": " angry.",
+    "generation": " impatient, whereas Santiago was reckless."
+   },
+   "ctxA": "Santiago was scolded by Anders. Anyone could tell that Santiago was",
+   "ctxB": "Santiago was scolded by Anders. Anyone could tell that Anders was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-6",
+   "category": "passive_heldout_frame",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " eager to learn.",
+    "generation": " eager to learn."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " experienced.",
+    "generation": " experienced."
+   },
+   "ctxA": "Esther was taught by Mira; the trouble was that Esther was",
+   "ctxB": "Esther was taught by Mira; the trouble was that Mira was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-7",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": -15.938,
+    "gold": " reliable.",
+    "generation": " reliable, whereas Mira was growing quickly."
+   },
+   "B": {
+    "hit": false,
+    "gap": -14.552,
+    "gold": " in need of help.",
+    "generation": " growing quickly, whereas Sara was reliable."
+   },
+   "ctxA": "Sara was hired by Mira. Anyone could tell that Sara was",
+   "ctxB": "Sara was hired by Mira. Anyone could tell that Mira was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-8",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.249,
+    "gold": " overconfident.",
+    "generation": " out of practice."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " more skilled.",
+    "generation": " more skilled."
+   },
+   "ctxA": "Santiago was beaten by Arjun, given that Santiago was",
+   "ctxB": "Santiago was beaten by Arjun, given that Arjun was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-9",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.125,
+    "gold": " talented.",
+    "generation": " reliable."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.188,
+    "gold": " short-staffed.",
+    "generation": " growing quickly."
+   },
+   "ctxA": "Ezra was hired by Nils, given that Ezra was",
+   "ctxB": "Ezra was hired by Nils, given that Nils was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-10",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " out of practice.",
+    "generation": " out of practice."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.125,
+    "gold": " better prepared.",
+    "generation": " experienced."
+   },
+   "ctxA": "Jonas was beaten by Nils, owing to the fact that Jonas was",
+   "ctxB": "Jonas was beaten by Nils, owing to the fact that Nils was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-11",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -13.187,
+    "gold": " lost.",
+    "generation": " in danger, but Santiago was a trained lifeguard."
+   },
+   "B": {
+    "hit": false,
+    "gap": -16.312,
+    "gold": " brave.",
+    "generation": " a trained lifeguard, but Zara was stranded."
+   },
+   "ctxA": "Zara was rescued by Santiago. Anyone could tell that Zara was",
+   "ctxB": "Zara was rescued by Santiago. Anyone could tell that Santiago was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-12",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.438,
+    "gold": " rude.",
+    "generation": " reckless."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.5,
+    "gold": " frustrated.",
+    "generation": " impatient."
+   },
+   "ctxA": "Jonas was scolded by Kavya; the trouble was that Jonas was",
+   "ctxB": "Jonas was scolded by Kavya; the trouble was that Kavya was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-13",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.5,
+    "gold": " out of shape.",
+    "generation": " carrying a heavy bag."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " a trained sprinter.",
+    "generation": " a trained sprinter."
+   },
+   "ctxA": "Vera was outrun by Zara; the trouble was that Vera was",
+   "ctxB": "Vera was outrun by Zara; the trouble was that Zara was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-14",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.312,
+    "gold": " scared.",
+    "generation": " anxious."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " experienced.",
+    "generation": " experienced."
+   },
+   "ctxA": "Ezra was reassured by Valentina; the trouble was that Ezra was",
+   "ctxB": "Ezra was reassured by Valentina; the trouble was that Valentina was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-15",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.486,
+    "gold": " frightened.",
+    "generation": " grieving."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.375,
+    "gold": " patient.",
+    "generation": " caring."
+   },
+   "ctxA": "Darius was comforted by Sara, owing to the fact that Darius was",
+   "ctxB": "Darius was comforted by Sara, owing to the fact that Sara was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-16",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -13.312,
+    "gold": " slower.",
+    "generation": " out of shape, whereas Nils was fitter."
+   },
+   "B": {
+    "hit": false,
+    "gap": -12.062,
+    "gold": " faster.",
+    "generation": " well rested, but Santiago was carrying a heavy bag."
+   },
+   "ctxA": "Santiago was outrun by Nils. Anyone could tell that Santiago was",
+   "ctxB": "Santiago was outrun by Nils. Anyone could tell that Nils was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-17",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -16.174,
+    "gold": " inexperienced.",
+    "generation": " out of practice, whereas Ezra was experienced."
+   },
+   "B": {
+    "hit": true,
+    "gap": -22.031,
+    "gold": " better prepared.",
+    "generation": " better prepared, but Anders was tired."
+   },
+   "ctxA": "Anders was beaten by Ezra. Anyone could tell that Anders was",
+   "ctxB": "Anders was beaten by Ezra. Anyone could tell that Ezra was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-18",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.107,
+    "gold": " behind in maths.",
+    "generation": " a slow reader."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " a gifted student.",
+    "generation": " a gifted student."
+   },
+   "ctxA": "Sara was tutored by Darius; the trouble was that Sara was",
+   "ctxB": "Sara was tutored by Darius; the trouble was that Darius was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-19",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.313,
+    "gold": " truly sorry.",
+    "generation": " honest about it."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.313,
+    "gold": " forgiving.",
+    "generation": " big-hearted."
+   },
+   "ctxA": "Zara was forgiven by Jonas, given that Zara was",
+   "ctxB": "Zara was forgiven by Jonas, given that Jonas was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-20",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.063,
+    "gold": " highly qualified.",
+    "generation": " reliable."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.062,
+    "gold": " expanding.",
+    "generation": " growing quickly."
+   },
+   "ctxA": "Gus was hired by Sara, given that Gus was",
+   "ctxB": "Gus was hired by Sara, given that Sara was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-21",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.389,
+    "gold": " late again.",
+    "generation": " reckless."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.438,
+    "gold": " strict.",
+    "generation": " impatient."
+   },
+   "ctxA": "Nils was scolded by Esther; the trouble was that Nils was",
+   "ctxB": "Nils was scolded by Esther; the trouble was that Esther was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-22",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -11.435,
+    "gold": " new to the subject.",
+    "generation": " eager to learn, but Sara was experienced."
+   },
+   "B": {
+    "hit": false,
+    "gap": -16.789,
+    "gold": " an expert.",
+    "generation": " experienced, but Jonas was eager to learn."
+   },
+   "ctxA": "Jonas was taught by Sara. Anyone could tell that Jonas was",
+   "ctxB": "Jonas was taught by Sara. Anyone could tell that Sara was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-23",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -11.768,
+    "gold": " heartbroken.",
+    "generation": " grieving, but Olu was patient."
+   },
+   "B": {
+    "hit": false,
+    "gap": -17.313,
+    "gold": " patient.",
+    "generation": " caring, but Tomas was grieving."
+   },
+   "ctxA": "Tomas was comforted by Olu. Anyone could tell that Tomas was",
+   "ctxB": "Tomas was comforted by Olu. Anyone could tell that Olu was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-24",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.026,
+    "gold": " dishonest.",
+    "generation": " unpleasant."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " shy.",
+    "generation": " shy."
+   },
+   "ctxA": "Nils was avoided by Kavya, given that Nils was",
+   "ctxB": "Nils was avoided by Kavya, given that Kavya was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-25",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.062,
+    "gold": " unpleasant.",
+    "generation": " dishonest."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " shy.",
+    "generation": " shy."
+   },
+   "ctxA": "Rhea was avoided by Nils, owing to the fact that Rhea was",
+   "ctxB": "Rhea was avoided by Nils, owing to the fact that Nils was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-26",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " rude.",
+    "generation": " rude."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.0,
+    "gold": " shy.",
+    "generation": " uncomfortable."
+   },
+   "ctxA": "Soren was avoided by Arjun; the trouble was that Soren was",
+   "ctxB": "Soren was avoided by Arjun; the trouble was that Arjun was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-27",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.313,
+    "gold": " late again.",
+    "generation": " reckless."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " impatient.",
+    "generation": " impatient."
+   },
+   "ctxA": "Amir was scolded by Valentina, owing to the fact that Amir was",
+   "ctxB": "Amir was scolded by Valentina, owing to the fact that Valentina was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-28",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.437,
+    "gold": " struggling at school.",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.139,
+    "gold": " top of the class.",
+    "generation": " a gifted student."
+   },
+   "ctxA": "Javier was tutored by Arjun, owing to the fact that Javier was",
+   "ctxB": "Javier was tutored by Arjun, owing to the fact that Arjun was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-29",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.451,
+    "gold": " rude.",
+    "generation": " reckless."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " impatient.",
+    "generation": " impatient."
+   },
+   "ctxA": "Javier was scolded by Valentina; the trouble was that Javier was",
+   "ctxB": "Javier was scolded by Valentina; the trouble was that Valentina was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-30",
+   "category": "passive_heldout_frame",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " preparing for an exam.",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": true,
+    "gap": -0.122,
+    "gold": " a former teacher.",
+    "generation": " a gifted student."
+   },
+   "ctxA": "Jonas was tutored by Sara; the trouble was that Jonas was",
+   "ctxB": "Jonas was tutored by Sara; the trouble was that Sara was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-31",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -16.25,
+    "gold": " talented.",
+    "generation": " reliable, whereas Javier was expanding."
+   },
+   "B": {
+    "hit": false,
+    "gap": -19.5,
+    "gold": " expanding.",
+    "generation": " growing quickly, but Kavya was reliable."
+   },
+   "ctxA": "Kavya was hired by Javier. Anyone could tell that Kavya was",
+   "ctxB": "Kavya was hired by Javier. Anyone could tell that Javier was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-32",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.439,
+    "gold": " out of shape.",
+    "generation": " carrying a heavy bag."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.218,
+    "gold": " a trained sprinter.",
+    "generation": " fitter."
+   },
+   "ctxA": "Sara was outrun by Kavya, owing to the fact that Sara was",
+   "ctxB": "Sara was outrun by Kavya, owing to the fact that Kavya was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-33",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.187,
+    "gold": " talented.",
+    "generation": " highly qualified."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.187,
+    "gold": " expanding.",
+    "generation": " growing quickly."
+   },
+   "ctxA": "Saskia was hired by Javier, owing to the fact that Saskia was",
+   "ctxB": "Saskia was hired by Javier, owing to the fact that Javier was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-34",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": -14.75,
+    "gold": " grieving.",
+    "generation": " grieving, whereas Mira was caring."
+   },
+   "B": {
+    "hit": false,
+    "gap": -16.437,
+    "gold": " patient.",
+    "generation": " caring, whereas Sara was grieving."
+   },
+   "ctxA": "Sara was comforted by Mira. Anyone could tell that Sara was",
+   "ctxB": "Sara was comforted by Mira. Anyone could tell that Mira was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-35",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.5,
+    "gold": " truly sorry.",
+    "generation": " honest about it."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.25,
+    "gold": " forgiving.",
+    "generation": " big-hearted."
+   },
+   "ctxA": "Arjun was forgiven by Anders, owing to the fact that Arjun was",
+   "ctxB": "Arjun was forgiven by Anders, owing to the fact that Anders was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-36",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.017,
+    "gold": " stranded.",
+    "generation": " in danger."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.557,
+    "gold": " quick-thinking.",
+    "generation": " a trained lifeguard."
+   },
+   "ctxA": "Vera was rescued by Soren; the trouble was that Vera was",
+   "ctxB": "Vera was rescued by Soren; the trouble was that Soren was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-37",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.688,
+    "gold": " thoughtful.",
+    "generation": " supportive."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " relieved.",
+    "generation": " relieved."
+   },
+   "ctxA": "Gus was thanked by Kavya, owing to the fact that Gus was",
+   "ctxB": "Gus was thanked by Kavya, owing to the fact that Kavya was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-38",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.25,
+    "gold": " truly sorry.",
+    "generation": " honest about it."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " big-hearted.",
+    "generation": " big-hearted."
+   },
+   "ctxA": "Esther was forgiven by Saskia, given that Esther was",
+   "ctxB": "Esther was forgiven by Saskia, given that Saskia was"
+  },
+  {
+   "name": "v6-passive_heldout_frame-39",
+   "category": "passive_heldout_frame",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.05,
+    "gold": " stranded.",
+    "generation": " in danger."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.531,
+    "gold": " quick-thinking.",
+    "generation": " strong."
+   },
+   "ctxA": "Sara was rescued by Valentina; the trouble was that Sara was",
+   "ctxB": "Sara was rescued by Valentina; the trouble was that Valentina was"
+  },
+  {
+   "name": "v6-object_relative-40",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.467,
+    "gold": " preparing for an exam.",
+    "generation": " tutored by Javier."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.528,
+    "gold": " top of the class.",
+    "generation": " a former teacher."
+   },
+   "ctxA": "Arjun, whom Gus tutored, was",
+   "ctxB": "Gus, who tutored Arjun, was"
+  },
+  {
+   "name": "v6-object_relative-41",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.168,
+    "gold": " talented.",
+    "generation": " short-staffed."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.268,
+    "gold": " in need of help.",
+    "generation": " expanding."
+   },
+   "ctxA": "Ezra, whom Gus hired, was",
+   "ctxB": "Gus, who hired Ezra, was"
+  },
+  {
+   "name": "v6-object_relative-42",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.308,
+    "gold": " struggling with it.",
+    "generation": " new to the subject."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.599,
+    "gold": " qualified.",
+    "generation": " experienced."
+   },
+   "ctxA": "Saskia, whom Zara taught, was",
+   "ctxB": "Zara, who taught Saskia, was"
+  },
+  {
+   "name": "v6-object_relative-43",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 1.199,
+    "gold": " preparing for an exam.",
+    "generation": " tutored by Javier. The news spread quickly. Who"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.418,
+    "gold": " top of the class.",
+    "generation": " a gifted student."
+   },
+   "ctxA": "Ezra, whom Gus tutored, was",
+   "ctxB": "Gus, who tutored Ezra, was"
+  },
+  {
+   "name": "v6-object_relative-44",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.206,
+    "gold": " grieving.",
+    "generation": " comforted by Saskia. The news spread quickly. Who"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.09,
+    "gold": " caring.",
+    "generation": " gentle."
+   },
+   "ctxA": "Vera, whom Bao comforted, was",
+   "ctxB": "Bao, who comforted Vera, was"
+  },
+  {
+   "name": "v6-object_relative-45",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.389,
+    "gold": " reckless.",
+    "generation": " scolded by Saskia."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.181,
+    "gold": " strict.",
+    "generation": " scolded by Saskia. Saskia was strict,"
+   },
+   "ctxA": "Gus, whom Vera scolded, was",
+   "ctxB": "Vera, who scolded Gus, was"
+  },
+  {
+   "name": "v6-object_relative-46",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.732,
+    "gold": " highly qualified.",
+    "generation": " short-staffed."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.186,
+    "gold": " growing quickly.",
+    "generation": " expanding."
+   },
+   "ctxA": "Darius, whom Bao hired, was",
+   "ctxB": "Bao, who hired Darius, was"
+  },
+  {
+   "name": "v6-object_relative-47",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.893,
+    "gold": " frightened.",
+    "generation": " grieving."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " caring.",
+    "generation": " caring."
+   },
+   "ctxA": "Nils, whom Sara comforted, was",
+   "ctxB": "Sara, who comforted Nils, was"
+  },
+  {
+   "name": "v6-object_relative-48",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.053,
+    "gold": " worried.",
+    "generation": " reassured by Vera. The news spread quickly. Who was anxious"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.5,
+    "gold": " steady.",
+    "generation": " experienced."
+   },
+   "ctxA": "Valentina, whom Gus reassured, was",
+   "ctxB": "Gus, who reassured Valentina, was"
+  },
+  {
+   "name": "v6-object_relative-49",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.059,
+    "gold": " late again.",
+    "generation": " scolded by Javier. The news spread quickly."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.28,
+    "gold": " frustrated.",
+    "generation": " scolded by Saskia. Q: Who scold"
+   },
+   "ctxA": "Gus, whom Santiago scolded, was",
+   "ctxB": "Santiago, who scolded Gus, was"
+  },
+  {
+   "name": "v6-object_relative-50",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.251,
+    "gold": " heartbroken.",
+    "generation": " comforted by Rhea."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " gentle.",
+    "generation": " gentle."
+   },
+   "ctxA": "Rhea, whom Mira comforted, was",
+   "ctxB": "Mira, who comforted Rhea, was"
+  },
+  {
+   "name": "v6-object_relative-51",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.425,
+    "gold": " lonely.",
+    "generation": " grieving."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.093,
+    "gold": " patient.",
+    "generation": " gentle."
+   },
+   "ctxA": "Kavya, whom Bao comforted, was",
+   "ctxB": "Bao, who comforted Kavya, was"
+  },
+  {
+   "name": "v6-object_relative-52",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.633,
+    "gold": " boastful.",
+    "generation": " not busy."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.375,
+    "gold": " shy.",
+    "generation": " uncomfortable."
+   },
+   "ctxA": "Bao, whom Ezra avoided, was",
+   "ctxB": "Ezra, who avoided Bao, was"
+  },
+  {
+   "name": "v6-object_relative-53",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.58,
+    "gold": " remorseful.",
+    "generation": " forgiven by Anders."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.492,
+    "gold": " big-hearted.",
+    "generation": " generous."
+   },
+   "ctxA": "Anders, whom Gus forgave, was",
+   "ctxB": "Gus, who forgave Anders, was"
+  },
+  {
+   "name": "v6-object_relative-54",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.38,
+    "gold": " careless.",
+    "generation": " scolded by Saskia. Saskia was strict,"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.176,
+    "gold": " strict.",
+    "generation": " scolded by Saskia."
+   },
+   "ctxA": "Esther, whom Soren scolded, was",
+   "ctxB": "Soren, who scolded Esther, was"
+  },
+  {
+   "name": "v6-object_relative-55",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.261,
+    "gold": " helpful.",
+    "generation": " thanked by Soren."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.809,
+    "gold": " appreciative.",
+    "generation": " grateful."
+   },
+   "ctxA": "Soren, whom Arjun thanked, was",
+   "ctxB": "Arjun, who thanked Soren, was"
+  },
+  {
+   "name": "v6-object_relative-56",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.093,
+    "gold": " rude.",
+    "generation": " scolded by Saskia. Saskia was strict,"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " impatient.",
+    "generation": " impatient."
+   },
+   "ctxA": "Mira, whom Tomas scolded, was",
+   "ctxB": "Tomas, who scolded Mira, was"
+  },
+  {
+   "name": "v6-object_relative-57",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.43,
+    "gold": " apologetic.",
+    "generation": " forgiven by Saskia. Saskia was not honest about it"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " generous.",
+    "generation": " generous."
+   },
+   "ctxA": "Valentina, whom Soren forgave, was",
+   "ctxB": "Soren, who forgave Valentina, was"
+  },
+  {
+   "name": "v6-object_relative-58",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.071,
+    "gold": " truly sorry.",
+    "generation": " forgiven by Saskia."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.492,
+    "gold": " big-hearted.",
+    "generation": " generous."
+   },
+   "ctxA": "Sara, whom Vera forgave, was",
+   "ctxB": "Vera, who forgave Sara, was"
+  },
+  {
+   "name": "v6-object_relative-59",
+   "category": "object_relative",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " out of practice.",
+    "generation": " out of practice."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " well trained.",
+    "generation": " well trained."
+   },
+   "ctxA": "Tomas, whom Bao beat, was",
+   "ctxB": "Bao, who beat Tomas, was"
+  },
+  {
+   "name": "v6-object_relative-60",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.312,
+    "gold": " reliable.",
+    "generation": " talented."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.574,
+    "gold": " short-staffed.",
+    "generation": " expanding."
+   },
+   "ctxA": "Zara, whom Valentina hired, was",
+   "ctxB": "Valentina, who hired Zara, was"
+  },
+  {
+   "name": "v6-object_relative-61",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.406,
+    "gold": " apologetic.",
+    "generation": " forgiven by Gus. Gus or Valentina: who"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " generous.",
+    "generation": " generous."
+   },
+   "ctxA": "Valentina, whom Olu forgave, was",
+   "ctxB": "Olu, who forgave Valentina, was"
+  },
+  {
+   "name": "v6-object_relative-62",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.036,
+    "gold": " boastful.",
+    "generation": " avoided by Javier."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.424,
+    "gold": " busy.",
+    "generation": " uncomfortable."
+   },
+   "ctxA": "Nils, whom Saskia avoided, was",
+   "ctxB": "Saskia, who avoided Nils, was"
+  },
+  {
+   "name": "v6-object_relative-63",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.443,
+    "gold": " careless.",
+    "generation": " scolded by Vera. Vera or Kavya:"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.029,
+    "gold": " strict.",
+    "generation": " scolded by Saskia. Q: Who scold"
+   },
+   "ctxA": "Kavya, whom Sara scolded, was",
+   "ctxB": "Sara, who scolded Kavya, was"
+  },
+  {
+   "name": "v6-object_relative-64",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.004,
+    "gold": " a slow reader.",
+    "generation": " tutored by Bao."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.195,
+    "gold": " patient.",
+    "generation": " a gifted student."
+   },
+   "ctxA": "Bao, whom Tomas tutored, was",
+   "ctxB": "Tomas, who tutored Bao, was"
+  },
+  {
+   "name": "v6-object_relative-65",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.031,
+    "gold": " dishonest.",
+    "generation": " not busy; Anders was."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.562,
+    "gold": " wary.",
+    "generation": " uncomfortable."
+   },
+   "ctxA": "Anders, whom Javier avoided, was",
+   "ctxB": "Javier, who avoided Anders, was"
+  },
+  {
+   "name": "v6-object_relative-66",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.78,
+    "gold": " anxious.",
+    "generation": " reassured by Saskia."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.425,
+    "gold": " steady.",
+    "generation": " experienced."
+   },
+   "ctxA": "Santiago, whom Soren reassured, was",
+   "ctxB": "Soren, who reassured Santiago, was"
+  },
+  {
+   "name": "v6-object_relative-67",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.946,
+    "gold": " scared.",
+    "generation": " reassured by Saskia."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.249,
+    "gold": " calm.",
+    "generation": " experienced."
+   },
+   "ctxA": "Jonas, whom Amir reassured, was",
+   "ctxB": "Amir, who reassured Jonas, was"
+  },
+  {
+   "name": "v6-object_relative-68",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.403,
+    "gold": " careless.",
+    "generation": " scolded by Javier. Q: Who was rude"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.543,
+    "gold": " impatient.",
+    "generation": " scolded by Javier. Q: Who scold"
+   },
+   "ctxA": "Tomas, whom Olu scolded, was",
+   "ctxB": "Olu, who scolded Tomas, was"
+  },
+  {
+   "name": "v6-object_relative-69",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.687,
+    "gold": " trapped.",
+    "generation": " rescued by Darius."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.723,
+    "gold": " a trained lifeguard.",
+    "generation": " strong."
+   },
+   "ctxA": "Darius, whom Helena rescued, was",
+   "ctxB": "Helena, who rescued Darius, was"
+  },
+  {
+   "name": "v6-object_relative-70",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 2.207,
+    "gold": " struggling with it.",
+    "generation": " taught by Saskia."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.499,
+    "gold": " patient.",
+    "generation": " new to the subject."
+   },
+   "ctxA": "Vera, whom Valentina taught, was",
+   "ctxB": "Valentina, who taught Vera, was"
+  },
+  {
+   "name": "v6-object_relative-71",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.234,
+    "gold": " frightened.",
+    "generation": " comforted by Saskia."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " gentle.",
+    "generation": " gentle."
+   },
+   "ctxA": "Nils, whom Soren comforted, was",
+   "ctxB": "Soren, who comforted Nils, was"
+  },
+  {
+   "name": "v6-object_relative-72",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.078,
+    "gold": " eager to learn.",
+    "generation": " new to the subject."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.639,
+    "gold": " qualified.",
+    "generation": " experienced."
+   },
+   "ctxA": "Bao, whom Ezra taught, was",
+   "ctxB": "Ezra, who taught Bao, was"
+  },
+  {
+   "name": "v6-object_relative-73",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.32,
+    "gold": " reckless.",
+    "generation": " scolded by Saskia. Amir was not impatient"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.583,
+    "gold": " angry.",
+    "generation": " scolded by Saskia. Saskia was strict,"
+   },
+   "ctxA": "Amir, whom Darius scolded, was",
+   "ctxB": "Darius, who scolded Amir, was"
+  },
+  {
+   "name": "v6-object_relative-74",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 1.132,
+    "gold": " honest about it.",
+    "generation": " forgiven by Vera. The news spread quickly. Who was honest"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.496,
+    "gold": " forgiving.",
+    "generation": " generous."
+   },
+   "ctxA": "Zara, whom Saskia forgave, was",
+   "ctxB": "Saskia, who forgave Zara, was"
+  },
+  {
+   "name": "v6-object_relative-75",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.295,
+    "gold": " late again.",
+    "generation": " scolded by Saskia. Q: Who was rude"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.081,
+    "gold": " impatient.",
+    "generation": " scolded by Saskia."
+   },
+   "ctxA": "Helena, whom Tomas scolded, was",
+   "ctxB": "Tomas, who scolded Helena, was"
+  },
+  {
+   "name": "v6-object_relative-76",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.367,
+    "gold": " rude.",
+    "generation": " not busy."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.756,
+    "gold": " wary.",
+    "generation": " uncomfortable."
+   },
+   "ctxA": "Tomas, whom Gus avoided, was",
+   "ctxB": "Gus, who avoided Tomas, was"
+  },
+  {
+   "name": "v6-object_relative-77",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.459,
+    "gold": " supportive.",
+    "generation": " thanked by Saskia. Saskia was not thoughtful; Ezra"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " grateful.",
+    "generation": " grateful."
+   },
+   "ctxA": "Ezra, whom Valentina thanked, was",
+   "ctxB": "Valentina, who thanked Ezra, was"
+  },
+  {
+   "name": "v6-object_relative-78",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.301,
+    "gold": " lonely.",
+    "generation": " grieving."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.21,
+    "gold": " patient.",
+    "generation": " gentle."
+   },
+   "ctxA": "Ezra, whom Valentina comforted, was",
+   "ctxB": "Valentina, who comforted Ezra, was"
+  },
+  {
+   "name": "v6-object_relative-79",
+   "category": "object_relative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.625,
+    "gold": " highly qualified.",
+    "generation": " talented."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " expanding.",
+    "generation": " expanding."
+   },
+   "ctxA": "Anders, whom Tomas hired, was",
+   "ctxB": "Tomas, who hired Anders, was"
+  },
+  {
+   "name": "v6-fit_inverse-80",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -15.812,
+    "gold": " too low.",
+    "generation": " too low, not the Christmas tree."
+   },
+   "B": {
+    "hit": true,
+    "gap": -17.937,
+    "gold": " too tall.",
+    "generation": " too tall, not the living room."
+   },
+   "ctxA": "The living room had no room for the Christmas tree. Anyone could tell that the living room was",
+   "ctxB": "The living room had no room for the Christmas tree. Anyone could tell that the Christmas tree was"
+  },
+  {
+   "name": "v6-fit_inverse-81",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -14.063,
+    "gold": " too low.",
+    "generation": " too low, whereas the motor home was too high."
+   },
+   "B": {
+    "hit": true,
+    "gap": -15.031,
+    "gold": " too high.",
+    "generation": " too high, not the multi-storey car park."
+   },
+   "ctxA": "The multi-storey car park could not take the motor home. Anyone could tell that the multi-storey car park was",
+   "ctxB": "The multi-storey car park could not take the motor home. Anyone could tell that the motor home was"
+  },
+  {
+   "name": "v6-fit_inverse-82",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too narrow.",
+    "generation": " too narrow. The stairwell could not accommodate the wardrobe"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too bulky.",
+    "generation": " too bulky. The stairwell could not accommodate the wardrobe"
+   },
+   "ctxA": "The stairwell could not accommodate the wardrobe, owing to the fact that the stairwell was",
+   "ctxB": "The stairwell could not accommodate the wardrobe, owing to the fact that the wardrobe was"
+  },
+  {
+   "name": "v6-fit_inverse-83",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too low.",
+    "generation": " too low. The living room or the Christmas tree: which"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too tall.",
+    "generation": " too tall. The living room or the Christmas tree: which"
+   },
+   "ctxA": "The living room could not accommodate the Christmas tree, given that the living room was",
+   "ctxB": "The living room could not accommodate the Christmas tree, given that the Christmas tree was"
+  },
+  {
+   "name": "v6-fit_inverse-84",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too low.",
+    "generation": " too low. The living room or the Christmas tree: which"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too tall.",
+    "generation": " too tall. The living room or the Christmas tree: which"
+   },
+   "ctxA": "The living room had no room for the Christmas tree, owing to the fact that the living room was",
+   "ctxB": "The living room had no room for the Christmas tree, owing to the fact that the Christmas tree was"
+  },
+  {
+   "name": "v6-fit_inverse-85",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too low.",
+    "generation": " too low."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too high.",
+    "generation": " too high. The multi-storey car park had no"
+   },
+   "ctxA": "The multi-storey car park had no room for the motor home, given that the multi-storey car park was",
+   "ctxB": "The multi-storey car park had no room for the motor home, given that the motor home was"
+  },
+  {
+   "name": "v6-fit_inverse-86",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too low.",
+    "generation": " too low."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too tall.",
+    "generation": " too tall."
+   },
+   "ctxA": "The living room had no room for the Christmas tree; the trouble was that the living room was",
+   "ctxB": "The living room had no room for the Christmas tree; the trouble was that the Christmas tree was"
+  },
+  {
+   "name": "v6-fit_inverse-87",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -15.0,
+    "gold": " too narrow.",
+    "generation": " too narrow, not the aquarium."
+   },
+   "B": {
+    "hit": true,
+    "gap": -16.75,
+    "gold": " too wide.",
+    "generation": " too wide, not the alcove."
+   },
+   "ctxA": "The alcove could not take the aquarium. Anyone could tell that the alcove was",
+   "ctxB": "The alcove could not take the aquarium. Anyone could tell that the aquarium was"
+  },
+  {
+   "name": "v6-fit_inverse-88",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -15.062,
+    "gold": " too narrow.",
+    "generation": " too narrow, whereas the grand piano was too wide."
+   },
+   "B": {
+    "hit": true,
+    "gap": -16.25,
+    "gold": " too wide.",
+    "generation": " too wide, not the hallway."
+   },
+   "ctxA": "The hallway could not accommodate the grand piano. Anyone could tell that the hallway was",
+   "ctxB": "The hallway could not accommodate the grand piano. Anyone could tell that the grand piano was"
+  },
+  {
+   "name": "v6-fit_inverse-89",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too low.",
+    "generation": " too low. The horse trailer had no room for the giraffe"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too tall.",
+    "generation": " too tall. The horse trailer had no room for the giraffe"
+   },
+   "ctxA": "The horse trailer had no room for the giraffe, given that the horse trailer was",
+   "ctxB": "The horse trailer had no room for the giraffe, given that the giraffe was"
+  },
+  {
+   "name": "v6-fit_inverse-90",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -16.187,
+    "gold": " too small.",
+    "generation": " too small, not the double bed."
+   },
+   "B": {
+    "hit": true,
+    "gap": -17.625,
+    "gold": " too big.",
+    "generation": " too big, not the spare room."
+   },
+   "ctxA": "The spare room had no room for the double bed. Anyone could tell that the spare room was",
+   "ctxB": "The spare room had no room for the double bed. Anyone could tell that the double bed was"
+  },
+  {
+   "name": "v6-fit_inverse-91",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -16.062,
+    "gold": " too narrow.",
+    "generation": " too narrow, whereas the dining table was too wide."
+   },
+   "B": {
+    "hit": true,
+    "gap": -17.625,
+    "gold": " too wide.",
+    "generation": " too wide, not the doorframe."
+   },
+   "ctxA": "The doorframe could not accommodate the dining table. Anyone could tell that the doorframe was",
+   "ctxB": "The doorframe could not accommodate the dining table. Anyone could tell that the dining table was"
+  },
+  {
+   "name": "v6-fit_inverse-92",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too low.",
+    "generation": " too low. The news spread quickly. Which was too low"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too tall.",
+    "generation": " too tall. The shed or the ladder: which was too"
+   },
+   "ctxA": "The shed had no room for the ladder, given that the shed was",
+   "ctxB": "The shed had no room for the ladder, given that the ladder was"
+  },
+  {
+   "name": "v6-fit_inverse-93",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too narrow.",
+    "generation": " too narrow. The back door or the fridge freezer: which"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too wide.",
+    "generation": " too wide. The back door or the fridge freezer: which"
+   },
+   "ctxA": "The back door could not take the fridge freezer, given that the back door was",
+   "ctxB": "The back door could not take the fridge freezer, given that the fridge freezer was"
+  },
+  {
+   "name": "v6-fit_inverse-94",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small. The lift could not take the sofa,"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too big.",
+    "generation": " too big. The lift could not take the sofa,"
+   },
+   "ctxA": "The lift could not take the sofa; the trouble was that the lift was",
+   "ctxB": "The lift could not take the sofa; the trouble was that the sofa was"
+  },
+  {
+   "name": "v6-fit_inverse-95",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too narrow.",
+    "generation": " too narrow. The hallway could not accommodate the grand piano"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too wide.",
+    "generation": " too wide. The hallway could not accommodate the grand piano"
+   },
+   "ctxA": "The hallway could not accommodate the grand piano, given that the hallway was",
+   "ctxB": "The hallway could not accommodate the grand piano, given that the grand piano was"
+  },
+  {
+   "name": "v6-fit_inverse-96",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too low.",
+    "generation": " too low."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too high.",
+    "generation": " too high. The multi-storey car park or the"
+   },
+   "ctxA": "The multi-storey car park could not take the motor home; the trouble was that the multi-storey car park was",
+   "ctxB": "The multi-storey car park could not take the motor home; the trouble was that the motor home was"
+  },
+  {
+   "name": "v6-fit_inverse-97",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -17.25,
+    "gold": " too small.",
+    "generation": " too small, not the rug."
+   },
+   "B": {
+    "hit": true,
+    "gap": -20.656,
+    "gold": " too long.",
+    "generation": " too long, not the box."
+   },
+   "ctxA": "The box could not accommodate the rug. Anyone could tell that the box was",
+   "ctxB": "The box could not accommodate the rug. Anyone could tell that the rug was"
+  },
+  {
+   "name": "v6-fit_inverse-98",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small. The rug or the box: which was too"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too long.",
+    "generation": " too long. The box could not take the rug, which"
+   },
+   "ctxA": "The box could not take the rug; the trouble was that the box was",
+   "ctxB": "The box could not take the rug; the trouble was that the rug was"
+  },
+  {
+   "name": "v6-fit_inverse-99",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -16.031,
+    "gold": " too low.",
+    "generation": " too low, not the ladder."
+   },
+   "B": {
+    "hit": true,
+    "gap": -18.094,
+    "gold": " too tall.",
+    "generation": " too tall, not the shed."
+   },
+   "ctxA": "The shed could not accommodate the ladder. Anyone could tell that the shed was",
+   "ctxB": "The shed could not accommodate the ladder. Anyone could tell that the ladder was"
+  },
+  {
+   "name": "v6-fit_inverse-100",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too long.",
+    "generation": " too long. The rug or the box: which was too"
+   },
+   "ctxA": "The box could not accommodate the rug; the trouble was that the box was",
+   "ctxB": "The box could not accommodate the rug; the trouble was that the rug was"
+  },
+  {
+   "name": "v6-fit_inverse-101",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too narrow.",
+    "generation": " too narrow. The lorry or the village lane: which"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too wide.",
+    "generation": " too wide. The lorry or the village lane: which"
+   },
+   "ctxA": "The village lane had no room for the lorry; the trouble was that the village lane was",
+   "ctxB": "The village lane had no room for the lorry; the trouble was that the lorry was"
+  },
+  {
+   "name": "v6-fit_inverse-102",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -14.75,
+    "gold": " too short.",
+    "generation": " too short, while the surfboard was too long."
+   },
+   "B": {
+    "hit": true,
+    "gap": -17.313,
+    "gold": " too long.",
+    "generation": " too long, not the lift."
+   },
+   "ctxA": "The lift could not accommodate the surfboard. Anyone could tell that the lift was",
+   "ctxB": "The lift could not accommodate the surfboard. Anyone could tell that the surfboard was"
+  },
+  {
+   "name": "v6-fit_inverse-103",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too narrow.",
+    "generation": " too narrow. The alcove or the aquarium: which"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too wide.",
+    "generation": " too wide. The alcove could not take the aquarium"
+   },
+   "ctxA": "The alcove could not take the aquarium; the trouble was that the alcove was",
+   "ctxB": "The alcove could not take the aquarium; the trouble was that the aquarium was"
+  },
+  {
+   "name": "v6-fit_inverse-104",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -15.688,
+    "gold": " too low.",
+    "generation": " too low, not the giraffe."
+   },
+   "B": {
+    "hit": true,
+    "gap": -17.875,
+    "gold": " too tall.",
+    "generation": " too tall, not the horse trailer."
+   },
+   "ctxA": "The horse trailer could not take the giraffe. Anyone could tell that the horse trailer was",
+   "ctxB": "The horse trailer could not take the giraffe. Anyone could tell that the giraffe was"
+  },
+  {
+   "name": "v6-fit_inverse-105",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too short.",
+    "generation": " too short."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too long.",
+    "generation": " too long. The lift had no room for the surfboard"
+   },
+   "ctxA": "The lift had no room for the surfboard; the trouble was that the lift was",
+   "ctxB": "The lift had no room for the surfboard; the trouble was that the surfboard was"
+  },
+  {
+   "name": "v6-fit_inverse-106",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -17.063,
+    "gold": " too small.",
+    "generation": " too small, not the rug."
+   },
+   "B": {
+    "hit": true,
+    "gap": -20.188,
+    "gold": " too long.",
+    "generation": " too long, not the box."
+   },
+   "ctxA": "The box could not take the rug. Anyone could tell that the box was",
+   "ctxB": "The box could not take the rug. Anyone could tell that the rug was"
+  },
+  {
+   "name": "v6-fit_inverse-107",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too narrow.",
+    "generation": " too narrow. The lorry or the village lane: which"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too wide.",
+    "generation": " too wide. The lorry or the village lane: which"
+   },
+   "ctxA": "The village lane could not take the lorry, given that the village lane was",
+   "ctxB": "The village lane could not take the lorry, given that the lorry was"
+  },
+  {
+   "name": "v6-fit_inverse-108",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too low.",
+    "generation": " too low. The living room or the Christmas tree: which"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too tall.",
+    "generation": " too tall. The living room or the Christmas tree: which"
+   },
+   "ctxA": "The living room could not take the Christmas tree, given that the living room was",
+   "ctxB": "The living room could not take the Christmas tree, given that the Christmas tree was"
+  },
+  {
+   "name": "v6-fit_inverse-109",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small. The car boot could not accommodate the bookcase"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too large.",
+    "generation": " too large. The car boot could not accommodate the bookcase"
+   },
+   "ctxA": "The car boot could not accommodate the bookcase, owing to the fact that the car boot was",
+   "ctxB": "The car boot could not accommodate the bookcase, owing to the fact that the bookcase was"
+  },
+  {
+   "name": "v6-fit_inverse-110",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -17.063,
+    "gold": " too narrow.",
+    "generation": " too narrow, not the fridge freezer."
+   },
+   "B": {
+    "hit": true,
+    "gap": -16.937,
+    "gold": " too wide.",
+    "generation": " too wide, not the back door."
+   },
+   "ctxA": "The back door could not accommodate the fridge freezer. Anyone could tell that the back door was",
+   "ctxB": "The back door could not accommodate the fridge freezer. Anyone could tell that the fridge freezer was"
+  },
+  {
+   "name": "v6-fit_inverse-111",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -15.437,
+    "gold": " too narrow.",
+    "generation": " too narrow, not the dining table."
+   },
+   "B": {
+    "hit": true,
+    "gap": -17.25,
+    "gold": " too wide.",
+    "generation": " too wide, not the doorframe."
+   },
+   "ctxA": "The doorframe had no room for the dining table. Anyone could tell that the doorframe was",
+   "ctxB": "The doorframe had no room for the dining table. Anyone could tell that the dining table was"
+  },
+  {
+   "name": "v6-fit_inverse-112",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -14.375,
+    "gold": " too narrow.",
+    "generation": " too narrow, not the wardrobe."
+   },
+   "B": {
+    "hit": true,
+    "gap": -16.063,
+    "gold": " too bulky.",
+    "generation": " too bulky, not the stairwell."
+   },
+   "ctxA": "The stairwell could not take the wardrobe. Anyone could tell that the stairwell was",
+   "ctxB": "The stairwell could not take the wardrobe. Anyone could tell that the wardrobe was"
+  },
+  {
+   "name": "v6-fit_inverse-113",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small. The news spread quickly. Which was too small"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too long.",
+    "generation": " too long. The news spread quickly. Which was too long"
+   },
+   "ctxA": "The box could not take the rug, owing to the fact that the box was",
+   "ctxB": "The box could not take the rug, owing to the fact that the rug was"
+  },
+  {
+   "name": "v6-fit_inverse-114",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -13.812,
+    "gold": " too narrow.",
+    "generation": " too narrow, not the wardrobe."
+   },
+   "B": {
+    "hit": true,
+    "gap": -15.437,
+    "gold": " too bulky.",
+    "generation": " too bulky, not the stairwell."
+   },
+   "ctxA": "The stairwell had no room for the wardrobe. Anyone could tell that the stairwell was",
+   "ctxB": "The stairwell had no room for the wardrobe. Anyone could tell that the wardrobe was"
+  },
+  {
+   "name": "v6-fit_inverse-115",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too narrow.",
+    "generation": " too narrow. The doorframe had no room for the dining"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too wide.",
+    "generation": " too wide. The doorframe had no room for the dining"
+   },
+   "ctxA": "The doorframe had no room for the dining table, owing to the fact that the doorframe was",
+   "ctxB": "The doorframe had no room for the dining table, owing to the fact that the dining table was"
+  },
+  {
+   "name": "v6-fit_inverse-116",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -14.75,
+    "gold": " too low.",
+    "generation": " too low, but the motor home was too high."
+   },
+   "B": {
+    "hit": true,
+    "gap": -15.281,
+    "gold": " too high.",
+    "generation": " too high, not the multi-storey car park."
+   },
+   "ctxA": "The multi-storey car park had no room for the motor home. Anyone could tell that the multi-storey car park was",
+   "ctxB": "The multi-storey car park had no room for the motor home. Anyone could tell that the motor home was"
+  },
+  {
+   "name": "v6-fit_inverse-117",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too narrow.",
+    "generation": " too narrow. The doorframe or the dining table: which"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too wide.",
+    "generation": " too wide. The doorframe or the dining table: which"
+   },
+   "ctxA": "The doorframe could not take the dining table; the trouble was that the doorframe was",
+   "ctxB": "The doorframe could not take the dining table; the trouble was that the dining table was"
+  },
+  {
+   "name": "v6-fit_inverse-118",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too short.",
+    "generation": " too short. The lift or the surfboard: which was"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too long.",
+    "generation": " too long. The lift could not accommodate the surfboard,"
+   },
+   "ctxA": "The lift could not accommodate the surfboard; the trouble was that the lift was",
+   "ctxB": "The lift could not accommodate the surfboard; the trouble was that the surfboard was"
+  },
+  {
+   "name": "v6-fit_inverse-119",
+   "category": "fit_inverse",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": -16.312,
+    "gold": " too small.",
+    "generation": " too small, not the sofa."
+   },
+   "B": {
+    "hit": true,
+    "gap": -17.437,
+    "gold": " too big.",
+    "generation": " too big, not the lift."
+   },
+   "ctxA": "The lift could not take the sofa. Anyone could tell that the lift was",
+   "ctxB": "The lift could not take the sofa. Anyone could tell that the sofa was"
+  }
+ ]
+}

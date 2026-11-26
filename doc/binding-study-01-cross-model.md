@@ -23,6 +23,8 @@ Suites: probes v4 (112 pairs) and v5 (120 pairs, structures held out of our trai
 | OLMo-2 1B and 7B | Stage 1 from 1B to ≈4T tokens; the end of stage 1; 4 points along anneal ingredient 1; the end of ingredients 2 and 3; `main` |
 | Final models only | OLMo-2 13B, Qwen2.5 0.5B / 1.5B / 7B, SmolLM2 360M / 1.7B |
 
+**Reading OLMo-2 branch names (note added 26 Nov).** Stage-2 branches count tokens **from the start of the anneal**, not from the start of training. `stage2-ingredient1-step1000-tokens3B` is the ≈4T-token stage-1 model plus 3B anneal tokens, not a 3B-token model. `report.csv` sorts rows by that `tokens_B` value, which puts stage-2 rows next to early stage-1 checkpoints; compare them with the end of stage 1 instead. For OLMo-2 0425-1B, Ai2's card says only ingredient 3 is the real 50B-token stage-2 run (not merged); ingredients 1 and 2 were exploratory. One OLMo-2 1B step is ≈2.1M tokens (512 × 4,096), four of our steps (524,288 tokens).
+
 Machines: the A10 ran all models up to 1.4B, plus OLMo-2 1B and 7B, Qwen2.5 and SmolLM2. The H100 ran Pythia 2.8B-deduped, 6.9B and 12B, and OLMo-2 13B.
 
 ## 2. Main findings
