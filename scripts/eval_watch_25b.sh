@@ -56,7 +56,7 @@ for s in 1000 2000 2861; do
     python3 scripts/eval_bpb.py --config $C --checkpoint $CK --data $HOME/eval_data/uncheatable-2026-10.parquet --out $OUT/bpb_$T.json > $OUT/bpb_$T.log 2>&1
   fi
   python3 scripts/summarize_evals.py --dir $OUT --prefix phase25b_step --out $OUT/summary.md \
-    --baseline benchmark/phase2:phase2_step22888 --baseline benchmark/phase25a:phase25a_step38147 --long_context > /dev/null 2>&1
+    --baseline benchmark/phase2:phase2_step22888 --baseline benchmark/phase25a:phase25a_step29723 --long_context > /dev/null 2>&1
   flock -u 9; exec 9>&-
   echo "[$(date -u)] done $T" >> $LOG
 done

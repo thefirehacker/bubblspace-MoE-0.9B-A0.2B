@@ -7,7 +7,7 @@ cd /home/ubuntu/moe0.9b-a0.2b && source .venv/bin/activate
 OUT=benchmark/phase25a; LOG=$OUT/eval_watch.log
 CKD=/lambda/nfs/us-west-1-eval-inference/phase25a
 DATA=$HOME/eval_data/uncheatable-2026-10.parquet
-for s in 8000 16000 24000 32000 38147; do
+for s in ${STEPS:-8000 16000 24000 29723}; do   # early decay (26 Nov): final is 29,723 (was 32000 / 38147)
   T=phase25a_step$s
   until grep -q "\] done $T\$" $LOG 2>/dev/null; do sleep 300; done
   exec 9>/tmp/a10_gpu.lock; flock 9

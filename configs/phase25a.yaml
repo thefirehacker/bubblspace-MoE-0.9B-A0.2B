@@ -93,8 +93,9 @@ wandb:
 phase2:
   step_offset: 41961          # W&B global_step continues after Phase 1 (19,073) + Phase 2 (22,888)
   wandb_group: moe0-9b-a0-2b
-  total_steps: 38147          # 20.0B tokens at 524,288 tokens/step
-  decay_start_step: 32424     # plateau = first 85%; linear decay over the last 15% (5,723 steps, ~3.0B tokens)
+  total_steps: 29723          # EARLY DECAY (26 Nov, user decision after the 22k eval): 15.6B tokens at 524,288 tokens/step
+  decay_start_step: 24000     # plateau ends at 24,000 (was 32,424); same decay length, 5,723 steps (~3.0B tokens), linear
+                              # launch values were total 38,147 / decay 32,424 (configs/phase25a_decay32424.yaml)
   warmup_steps: 300
   start_lr: 6.0e-6            # Phase 2's final lr (re-warm starts here)
   peak_lr: 2.0e-4
@@ -123,6 +124,9 @@ phase2:
     code_starcoder_sql_shell_cfg: {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_sql_shell_cfg, group: code_replay, fim: true}
     # Relations (English) — 6.15%
     contrastive_v3:  {path: /lambda/nfs/h100-f1/data/phase25_decon/contrastive_v3,  group: contrastive_v3}
+    # Decay stage only (user approval 26 Nov): v3 + order alternation (18% receiver-first), the fix arm of the A10 test
+    # (doc/binding-study-02 §6.1); 4M docs / 136.9M tokens, decontaminated vs probes v2-v6 (scripts/gen_contrastive_v4.py)
+    contrastive_v4:  {path: /lambda/nfs/h100-f1/data/phase25_decon/contrastive_v4,  group: contrastive_v4}
     relational_llm:  {path: /lambda/nfs/h100-f1/data/phase25_decon/relational_llm,  group: relational_llm}   # tokenized + decontaminated after generation
     nli_commonsense: {path: /lambda/nfs/h100-f1/data/phase25_decon/nli_commonsense, group: nli_commonsense}
     kg_text:         {path: /lambda/nfs/h100-f1/data/phase25_decon/kg_text,         group: kg_text}
@@ -138,7 +142,7 @@ phase2:
     en_cosmo:        {path: /lambda/nfs/h100-f1/data/phase2/en_cosmo,        group: cosmo}
 
   stages:
-    - until_step: 32424         # plateau (unchanged from launch); decay_start_step = 32424
+    - until_step: 24000         # plateau mix unchanged; ends early at 24,000 (was 32,424) = decay_start_step
       groups:
         wiki: 0.22
         fact_seeking: 0.18
@@ -155,7 +159,7 @@ phase2:
         agentic: 0.05
         math: 0.05
         cosmo: 0.0
-    - until_step: 38147         # decay mix (25 Nov, plan-03 §2.7): code, tool calling, math, narrative English up;
+    - until_step: 29723         # decay mix (same shares; now 24,000 -> 29,723) (25 Nov, plan-03 §2.7): code, tool calling, math, narrative English up;
       groups:                   # wiki / fact_seeking down (absorbed); contrastive_v3 down (at its template floor)
         wiki: 0.15
         fact_seeking: 0.12
@@ -166,7 +170,7 @@ phase2:
         code_py_fresh: 0.06
         code_jsts_fresh: 0.02
         code_replay: 0.12
-        contrastive_v3: 0.02
+        contrastive_v4: 0.02        # was contrastive_v3: 0.02 (user approval 26 Nov: v4 = v3 + order alternation)
         relational_llm: 0.03
         nli_commonsense: 0.008
         kg_text: 0.002
