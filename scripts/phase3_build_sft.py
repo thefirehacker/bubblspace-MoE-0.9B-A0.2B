@@ -71,6 +71,40 @@ def src_tulu3_run02(raw):
         yield turns
 
 
+# Run 02b (27 Nov): the run 02 smoke test fixed over-refusal (harmless refused 12/48 -> 1/48) but also stopped refusing
+# clearly harmful requests (8/8 -> 0/8). Run 02b keeps ALL of WildGuardMix (refusals of harmful prompts + answers to
+# harmless prompts that sound harmful: the contrast teaches the difference), adds 10% of WildJailbreak, and 10% of
+# CoCoNot after removing its "underspecified" / "real-time" replies (the ones behind "capital of India -> can't provide
+# real-time data"). Refusal-opening replies in the other sources and OLMo's identity rows stay out, as in run 02.
+_COCONOT_OVER = re.compile(r"real-time|real time|current|up-to-date|up to date|underspecified|context|incomplete|unclear|"
+                           r"ambiguous|vague|lacks|more (information|details)|clarify|specify|which .* (are|do) you "
+                           r"(referring|mean)|as of my (last|knowledge)|knowledge cutoff|browse|internet", re.I)
+
+
+def _hash10(turns):
+    return int(hashlib.md5(json.dumps(turns).encode()).hexdigest(), 16) % 10 == 0
+
+
+def src_tulu3_run02b(raw):
+    for r in _parquet_rows(f"{raw}/allenai__tulu-3-sft-olmo-2-mixture-0225/data/*.parquet"):
+        s = r.get("source") or ""
+        if "aya" in s or "olmo_hardcoded" in s:
+            continue
+        turns = [(m["role"], m["content"]) for m in r["messages"]]
+        first = next((t for ro, t in turns if ro == "assistant"), "") or ""
+        if "wildguardmix" in s:
+            pass                                    # all of it
+        elif "wildjailbreak" in s:
+            if not _hash10(turns):                  # 10% sample
+                continue
+        elif "coconot" in s:
+            if _COCONOT_OVER.search(first[:400]) or not _hash10(turns):  # filtered, then 10% sample
+                continue
+        elif _REFUSAL_OPEN.match(first):
+            continue
+        yield turns
+
+
 def src_gsm8k(raw):
     for r in _parquet_rows(f"{raw}/openai__gsm8k/main/train-*.parquet"):  # train only; test stays an eval
         ans = re.sub(r"<<[^>]*>>", "", r["answer"])
@@ -177,6 +211,8 @@ SOURCES = {
     "own_identity": lambda raw: src_own(raw, "own_identity"),
     "own_facts_cmd": lambda raw: src_own(raw, "own_facts_cmd"),
     "tulu3_run02": src_tulu3_run02,
+    "tulu3_run02b": src_tulu3_run02b,
+    "own_realtime": lambda raw: src_own(raw, "own_realtime"),
     "tulu3": src_tulu3, "gsm8k": src_gsm8k, "synthetic1": src_synthetic1, "terminal": src_terminal,
     "agentic_toolmind": lambda raw: src_agentic(raw, "toolmind"),
     "agentic_hermes": lambda raw: src_agentic(raw, "hermes"),

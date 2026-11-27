@@ -27,6 +27,7 @@ from vllm.model_executor.layers.linear import QKVParallelLinear, ReplicatedLinea
 from vllm.model_executor.layers.logits_processor import LogitsProcessor
 from vllm.model_executor.layers.rotary_embedding import get_rope
 from vllm.model_executor.layers.vocab_parallel_embedding import ParallelLMHead, VocabParallelEmbedding
+from vllm.model_executor.model_loader.weight_utils import default_weight_loader
 from vllm.sequence import IntermediateTensors
 
 
@@ -140,12 +141,25 @@ class BubblSpaceMoeForCausalLM(nn.Module):
             assert len(hits) == 1, f"{name}: {len(hits)} matching parameters {hits[:4]}"
             return hits[0]
 
+        # Every tensor goes through the parameter's own weight_loader. vLLM's in-place reload (used by the RL weight
+        # sync) moves layers to the meta device and wraps these loaders; a direct param.data.copy_ would be lost.
         def put(name, tensor):
             name = resolve(name)
             p = params[name]
             assert p.shape == tensor.shape, f"{name}: checkpoint {tuple(tensor.shape)} vs model {tuple(p.shape)}"
-            p.data.copy_(tensor.to(p.dtype))
+            getattr(p, "weight_loader", default_weight_loader)(p, tensor)
             loaded.add(name)
+
+        def put_experts(L, gate, up, down):
+            """Per-expert loads through FusedMoE's loader. Ours: W_gate/W_up (E, d, I), W_down (E, I, d); vLLM wants
+            w1/w3 (I, d) and w2 (d, I) per expert, i.e. the transposes."""
+            n13, n2 = resolve(f"{L}.mlp.experts.w13_weight"), resolve(f"{L}.mlp.experts.w2_weight")
+            p13, p2 = params[n13], params[n2]
+            for e in range(gate.shape[0]):
+                p13.weight_loader(p13, gate[e].t(), f"{L}.mlp.experts.{e}.gate_proj.weight", shard_id="w1", expert_id=e)
+                p13.weight_loader(p13, up[e].t(), f"{L}.mlp.experts.{e}.up_proj.weight", shard_id="w3", expert_id=e)
+                p2.weight_loader(p2, down[e].t(), f"{L}.mlp.experts.{e}.down_proj.weight", shard_id="w2", expert_id=e)
+            loaded.update((n13, n2))
 
         for name, w in weights:
             if name == "embed.weight":
@@ -161,7 +175,7 @@ class BubblSpaceMoeForCausalLM(nn.Module):
             if rest in ("attn.q_proj.weight", "attn.k_proj.weight", "attn.v_proj.weight"):
                 shard = rest.split(".")[1][0]  # q / k / v
                 p = params[f"{L}.self_attn.qkv_proj.weight"]
-                p.weight_loader(p, w.to(p.dtype), shard)
+                p.weight_loader(p, w, shard)
                 loaded.add(f"{L}.self_attn.qkv_proj.weight")
             elif rest == "attn.gate_proj.weight":
                 put(f"{L}.self_attn.gate_proj.weight", w)
@@ -177,14 +191,11 @@ class BubblSpaceMoeForCausalLM(nn.Module):
                 put(f"{L}.post_attention_layernorm.weight", w)
             elif rest == "moe.router.weight":
                 put(f"{L}.mlp.gate.weight", w)
-            elif rest in ("moe.W_gate", "moe.W_up"):
+            elif rest in ("moe.W_gate", "moe.W_up", "moe.W_down"):
                 pending.setdefault(i, {})[rest] = w
-                if len(pending[i]) == 2:  # w13 = [gate ; up], each transposed (E, d, I) -> (E, I, d)
-                    pair = pending.pop(i)
-                    g, u = pair["moe.W_gate"], pair["moe.W_up"]
-                    put(f"{L}.mlp.experts.w13_weight", torch.cat([g.transpose(1, 2), u.transpose(1, 2)], dim=1))
-            elif rest == "moe.W_down":
-                put(f"{L}.mlp.experts.w2_weight", w.transpose(1, 2))
+                if len(pending[i]) == 3:
+                    trio = pending.pop(i)
+                    put_experts(L, trio["moe.W_gate"], trio["moe.W_up"], trio["moe.W_down"])
             else:
                 raise KeyError(f"unexpected weight {name}")
         assert not pending, f"incomplete expert weights for layers {list(pending)}"

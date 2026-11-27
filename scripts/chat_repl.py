@@ -21,6 +21,7 @@ REPL commands:
     /minp <float>      min-p filter: drop tokens below minp * top token prob (0 = off)
     /chat              toggle chat mode: wrap input in <|im_start|>user ... <|im_start|>assistant, stop at <|im_end|>
     /file <path>       send the contents of a file as the prompt (long prompts, multi-line text)
+    /paste             paste any amount of text (line breaks allowed), then type /end on its own line to send it
     /system <text>     (chat) set a system message; "/system off" clears it
     /tools <path>      (chat) load a JSON list of tool definitions into the system turn (<tools>...</tools>); "/tools off"
     /tool <json>       (chat) send a tool result back (a user turn wrapped in <tool_response>), continuing the conversation
@@ -39,6 +40,11 @@ log-likelihood based and use no sampling).
 import argparse
 import json
 import sys
+
+try:  # GNU readline: input() then has no 4,095-character line limit (the terminal's line mode cap) and keeps history
+    import readline  # noqa: F401
+except ImportError:
+    pass
 from pathlib import Path
 
 import torch
@@ -163,7 +169,7 @@ def main():
         print('best, e.g. "The capital of France is" or "def fibonacci(n):". For an SFT checkpoint, use --chat or /chat.')
     print()
     print("Commands: /temp <f>  /topp <f>  /tokens <n>  /greedy  /sample  /rep <f>  /ngram <n>  /minp <f>  /chat  /settings  exit")
-    print("Chat:     /file <path>  /system <text|off>  /tools <path|off>  /tool <json>  /auto  /multi  /reset")
+    print("Chat:     /paste (end with /end)  /file <path>  /system <text|off>  /tools <path|off>  /tool <json>  /auto  /multi  /reset")
 
     temperature, top_p, max_new_tokens, greedy = args.temperature, args.top_p, args.max_new_tokens, False
     rep_penalty, no_repeat_ngram, min_p, chat = args.rep_penalty, args.no_repeat_ngram, args.min_p, args.chat
@@ -258,7 +264,22 @@ def main():
             print(f"[set] tools={'off' if tools is None else [t.get('function', t).get('name') for t in tools]} multi-turn={multi} (conversation cleared)")
             continue
         role = "user"
-        if stripped.startswith("/file "):
+        if stripped == "/paste":
+            print("[paste] paste your text, then type /end on its own line")
+            lines = []
+            while True:
+                try:
+                    line = input()
+                except EOFError:
+                    break
+                if line.strip() == "/end":
+                    break
+                lines.append(line)
+            prompt = "\n".join(lines).strip()
+            if not prompt:
+                continue
+            print(f"[paste] {len(prompt):,} chars, {len(tok.encode(prompt, add_special_tokens=False)):,} tokens")
+        elif stripped.startswith("/file "):
             try:
                 prompt = Path(stripped[len("/file "):].strip()).read_text().strip()
             except Exception as e:

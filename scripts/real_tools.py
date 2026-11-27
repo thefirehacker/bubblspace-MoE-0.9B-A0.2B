@@ -4,7 +4,8 @@ The model only WRITES a call: <tool_call>{"name": ..., "arguments": {...}}</tool
 against the tool schema (known name, required arguments present, no unknown arguments) and runs the real function, so
 the answer the model gives afterwards can be checked against real output.
 
-  calculator        evaluates arithmetic safely (AST walk: numbers and + - * / // % ** only, no names or calls)
+  calculator        evaluates math safely (AST walk: numbers, + - * / // % **, the constants pi and e, and a whitelist of
+                    math functions: sqrt exp log log10 log2 sin cos tan asin acos atan abs round floor ceil factorial)
   get_current_time  the real current time in an IANA timezone (zoneinfo)
   get_weather       live weather from Open-Meteo (free, no API key; geocoding + current conditions)
 """
@@ -19,9 +20,12 @@ from zoneinfo import ZoneInfo
 
 TOOLS = [
     {"type": "function", "function": {
-        "name": "calculator", "description": "Evaluate an arithmetic expression, e.g. '(17 * 23) + 4'.",
+        "name": "calculator",
+        "description": "Evaluate a math expression exactly. Use it for any arithmetic, powers, roots, logarithms or "
+                       "trigonometry instead of computing by hand.",
         "parameters": {"type": "dict", "properties": {
-            "expression": {"type": "string", "description": "Arithmetic expression with numbers and + - * / ( )"}},
+            "expression": {"type": "string", "description": "Math expression using numbers, + - * / ** ( ), pi, e and "
+                                                            "the functions sqrt, exp, log, log10, sin, cos, tan"}},
             "required": ["expression"]}}},
     {"type": "function", "function": {
         "name": "get_current_time", "description": "Get the current date and time in a timezone.",
@@ -35,6 +39,12 @@ TOOLS = [
             "unit": {"type": "string", "description": "celsius or fahrenheit"}}, "required": ["city"]}}},
 ]
 
+import math
+
+_NAMES = {"pi": math.pi, "e": math.e, "tau": math.tau}
+_FUNCS = {f: getattr(math, f) for f in ("sqrt", "exp", "log", "log10", "log2", "sin", "cos", "tan", "asin", "acos", "atan",
+                                         "floor", "ceil", "factorial")}
+_FUNCS.update(abs=abs, round=round)
 _OPS = {ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul, ast.Div: operator.truediv,
         ast.FloorDiv: operator.floordiv, ast.Mod: operator.mod, ast.Pow: operator.pow, ast.USub: operator.neg,
         ast.UAdd: operator.pos}
@@ -45,17 +55,37 @@ def _eval(node):
         return _eval(node.body)
     if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
         return node.value
+    if isinstance(node, ast.Name) and node.id in _NAMES:
+        return _NAMES[node.id]
+    if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in _FUNCS and not node.keywords:
+        args = [_eval(a) for a in node.args]
+        if node.func.id == "factorial" and args and args[0] > 1000:
+            raise ValueError("factorial argument too large")
+        return _FUNCS[node.func.id](*args)
     if isinstance(node, ast.BinOp) and type(node.op) in _OPS:
-        if isinstance(node.op, ast.Pow) and abs(_eval(node.right)) > 100:
-            raise ValueError("exponent too large")
-        return _OPS[type(node.op)](_eval(node.left), _eval(node.right))
+        left, right = _eval(node.left), _eval(node.right)
+        if isinstance(node.op, ast.Pow):
+            if isinstance(left, int) and isinstance(right, int) and abs(right) > 10000:
+                raise ValueError("exponent too large")
+            if isinstance(left, float) or isinstance(right, float):
+                try:
+                    return math.pow(left, right)
+                except OverflowError:  # report huge float powers in scientific notation instead of failing
+                    return f"{math.copysign(1, left) if left < 0 else 1:.0f}e{right * math.log10(abs(left)):.4f}".replace("1e", "10^")
+        return _OPS[type(node.op)](left, right)
     if isinstance(node, ast.UnaryOp) and type(node.op) in _OPS:
         return _OPS[type(node.op)](_eval(node.operand))
-    raise ValueError("only numbers and + - * / // % ** ( ) are allowed")
+    raise ValueError("only numbers, + - * / // % ** ( ), pi, e and sqrt/exp/log/log10/log2/sin/cos/tan/... are allowed")
 
 
 def calculator(expression):
-    return {"expression": expression, "result": _eval(ast.parse(expression.replace("^", "**"), mode="eval"))}
+    try:
+        r = _eval(ast.parse(expression.replace("^", "**"), mode="eval"))
+    except OverflowError:
+        r = "overflow (result too large for a float)"
+    if isinstance(r, float) and (abs(r) >= 1e16 or (r != 0 and abs(r) < 1e-6)):
+        r = f"{r:.10e}"
+    return {"expression": expression, "result": r}
 
 
 def get_current_time(timezone):
