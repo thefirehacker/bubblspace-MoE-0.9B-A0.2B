@@ -130,7 +130,12 @@ def main():
     policy.load_state_dict(state)
     policy.train()
     ref = Transformer(mcfg).to(dev)
-    ref.load_state_dict(state)
+    if C.get("ref_checkpoint") and C["ref_checkpoint"] != C["init_checkpoint"]:
+        # continuing RL from an RL checkpoint: keep the KL anchored to the original SFT model, not to the restart point
+        ref.load_state_dict(load_state(C["ref_checkpoint"]))
+        print(f"[ref] KL reference: {C['ref_checkpoint']}", flush=True)
+    else:
+        ref.load_state_dict(state)
     ref = ref.eval().requires_grad_(False)  # fp32 like the policy (bf16 would also round its RoPE tables: fake KL at step 0)
     del state
     opt = torch.optim.AdamW(policy.parameters(), lr=C["lr"], betas=tuple(C.get("betas", [0.9, 0.99])),
@@ -155,7 +160,8 @@ def main():
         "config": C, "steps": steps, "started_utc": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
         "task_pool_per_area": {k: len(v) for k, v in train.items()},
         "heldout_per_area": {k: sum(1 for t in val if t["area"] == k) for k in train},
-        "area_weights_used": weights, "moe_backend": mcfg.moe.backend}, indent=1))
+        "area_weights_used": weights, "moe_backend": mcfg.moe.backend,
+        "kl_reference": C.get("ref_checkpoint") or C["init_checkpoint"]}, indent=1))
 
     wb = None
     if C.get("wandb_project"):
@@ -295,13 +301,23 @@ def main():
             ev = evaluate(step)
             if wb:
                 wb.log(ev, step=step)
-        if step % C.get("save_every", 100) == 0 or step == steps:
+        out_of_time = bool(C.get("stop_at_epoch")) and time.time() >= float(C["stop_at_epoch"])
+        if out_of_time and step % C.get("eval_every", 25) != 0 and step != steps:
+            ev = evaluate(step)  # final test at the stop step
+            if wb:
+                wb.log(ev, step=step)
+        if step % C.get("save_every", 100) == 0 or step == steps or out_of_time:
             torch.save({"model": policy.state_dict(), "optimizer": opt.state_dict(), "scheduler": sched.state_dict(),
                         "step": step, "rng_state": torch.get_rng_state(), "cuda_rng_state": torch.cuda.get_rng_state(),
                         "config": C, "rl_info": {"init_checkpoint": C["init_checkpoint"], "tasks": C["tasks"],
-                                                 "run_name": C["run_name"]}},
+                                                 "run_name": C["run_name"],
+                                                 "kl_reference": C.get("ref_checkpoint") or C["init_checkpoint"]}},
                        out_dir / f"step_{step}.pt")
             print(f"[save] {out_dir}/step_{step}.pt", flush=True)
+        if out_of_time:
+            print(f"[stop] time limit reached after step {step} (stop_at_epoch {C['stop_at_epoch']})", flush=True)
+            steps = step
+            break
     set_status("finished", step=steps)
 
 
