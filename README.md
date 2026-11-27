@@ -2,17 +2,17 @@
 
 > **🏆 BubblSpace MoE-0.9B-A0.2B is ahead of OLMo-2 1B and Pythia on WinoGrande twin pairs at the same token count:** 18.3% of twin pairs ranked right and 1.8% written right at 22B tokens, with 211M active parameters, vs OLMo-2 1B 17% / 1% and Pythia 410M–1.4B 14–15% / 1% at 21B tokens (Phase 2 final, step 22,888, the weights on Hugging Face `main`). [Details and caveats](#winogrande-twin-pairs-at-three-levels-phase-2-final-step-22888).
 
-> **📌 Current checkpoint on Hugging Face (`main`): Phase 2 final, step 22,888** (after the Stage 2B anneal). The end-of-plateau step 19,000 is on branch `phase2-step19000`.
-> Other checkpoints on HF branches: [`phase2-step9000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step9000) and [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final) (`step_19073`, English only).
-> **Full training checkpoints** (weights + optimizer + scheduler + RNG, to resume or branch training) for **3 specific checkpoints**: Phase 1 final `step_19073`, Phase 2 `step_19000` (end of plateau) and Phase 2 final `step_22888`, in [**bubblspace-moe0.9b-a0.2b-training-states**](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states). Restore with [`scripts/restore_checkpoint.py`](scripts/restore_checkpoint.py).
+> **📌 Pretraining is complete.** Latest weights: **Phase 2.5b final**, step 2,861, **39.1B tokens, 16k context**, on branch [`phase25b-step2861-tokens39B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase25b-step2861-tokens39B) of the Hugging Face repo (base model, its own card has the results). `main` still holds **Phase 2 final, step 22,888**, the checkpoint behind the WinoGrande result above.
+> Other checkpoints on HF branches: [`phase2-step19000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step19000), [`phase2-step9000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step9000) and [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final) (`step_19073`, English only).
+> **Full training checkpoints** (weights + optimizer + scheduler + RNG, to resume or branch training), **one branch per checkpoint**, OLMo-style `<phase>-step<N>-tokens<X>B`, in [**bubblspace-moe0.9b-a0.2b-training-states**](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states): `phase1-step19073-tokens10B`, `phase2-step19000-tokens20B`, `phase2-step22888-tokens22B`, `phase25a-step20000-tokens32B`, `phase25a-step28000-tokens37B`, `phase25a-step29723-tokens38B`, `phase25b-step2000-tokens39B`, [`phase25b-step2861-tokens39B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states/tree/phase25b-step2861-tokens39B). The final checkpoint of every stage is added the same way. Restore with [`scripts/restore_checkpoint.py`](scripts/restore_checkpoint.py).
 
 A from-scratch Mixture-of-Experts language model (≈915M total / ≈211M active params), trained on a single Lambda Cloud H100 80GB. Architecture is Qwen3-Next-inspired: GQA + QK-norm + RoPE + an elementwise attention output-gate, 64-expert dropless top-8 SwiGLU MoE with ZeroCenteredRMSNorm, trained with Muon (hidden matrices) + AdamW (embedding/router/norms).
 
-**Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces). Phase 1 built an English base on FineWeb-Edu. Phase 2 (completed 23 Nov) continued it on English + code + agentic + contrastive-binding data.
+**Training goal**: this model is intended for coding and AI-agentic use — hence the tokenizer's FIM tokens (fill-in-the-middle, for code) and tool-call/think special tokens (for agentic tool-use and reasoning traces). Phase 1 built an English base on FineWeb-Edu. Phase 2 (completed 23 Nov) continued it on English + code + agentic + contrastive-binding data. Phase 2.5 (completed 27 Nov) added knowledge, relations and fresh code, then extended the context to 16k. Phase 3 (SFT) is running.
 
-- **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (`main` = Phase 2 final step 22,888; branches `phase2-step19000`, `phase2-step9000`, `phase1-final`)
-- **Full training states** (3 checkpoints, safetensors + JSON, ≈7.5 GB each): [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states)
-- **Live training graphs/logs (W&B, public)**: Phase 1 [goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker), Phase 2 [lec9ww5h](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/lec9ww5h) (same project; Phase 2's `global_step` continues from 19,073)
+- **Weights + runnable inference code**: [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (`main` = Phase 2 final step 22,888; branches `phase25b-step2861-tokens39B` (latest, 16k), `phase2-step19000`, `phase2-step9000`, `phase1-final`)
+- **Full training states** (one branch per checkpoint, safetensors + JSON, ≈7.5 GB each): [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states)
+- **Live training graphs/logs (W&B, public)**: Phase 1 [goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e?nw=nwuserfirehacker), Phase 2 [lec9ww5h](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/lec9ww5h), Phase 2.5a [l2i2yoqf](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/l2i2yoqf), Phase 2.5b [9be9emiq](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/9be9emiq), Phase 3 SFT [qq4dnyp4](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/qq4dnyp4) (same project; `global_step` continues across phases)
 - **License**: [Apache 2.0](LICENSE)
 
 ## Status
@@ -21,9 +21,24 @@ A from-scratch Mixture-of-Experts language model (≈915M total / ≈211M active
 |---|---|---|
 | 1 | English base, FineWeb-Edu `sample-10BT`, 10B tokens, 19,073 steps | ✅ done (`step_19073`, ≈32h 20m on one H100) |
 | 2 | Continual training: English + code + agentic + contrastive, 12B tokens, 22,888 steps | ✅ done (step 22,888, 23 Nov, ≈39h 50m); final evals complete |
-| 2.5a | Knowledge + semantic relations + code (Wikipedia, fact Q&A, SYNTH, FineWeb-Edu ≥ 4, fresh code, contrastive, grounded relational passages). **Decay started early at step 24,000** (decision after the 22k eval), so 2.5a ends at step 29,723 = **15.6B tokens** (planned 20B); the decay mix uses contrastive **v4** (order alternation) | 🔄 in the decay ([plan](doc/plan-03-phase-2.5-knowledge-context.md), [data](doc/data-pipeline.md)) |
-| 2.5b | Context extension 2048 → 16,384 (≈1.5B tokens) | long-context data, evals and baseline ready; runs right after 2.5a |
-| 3 | SFT at 16k (assistant-only loss masking) | planned ([plan](doc/plan-04-phase-3-sft.md)) |
+| 2.5a | Knowledge + semantic relations + code (Wikipedia, fact Q&A, SYNTH, FineWeb-Edu ≥ 4, fresh code, contrastive, grounded relational passages). **Decay started early at step 24,000** (decision after the 22k eval), so 2.5a ends at step 29,723 = **15.6B tokens** (planned 20B); the decay mix uses contrastive **v4** (order alternation) | ✅ done (step 29,723, 26 Nov) ([plan](doc/plan-03-phase-2.5-knowledge-context.md), [data](doc/data-pipeline.md)) |
+| 2.5b | Context extension 2048 → 16,384 (≈1.5B tokens, RoPE base 1e6; contrastive v4) | ✅ done (step 2,861, 27 Nov); final weights on HF branch `phase25b-step2861-tokens39B` |
+| 3 | SFT at 16k (assistant-only loss masking): Tülu 3 (OLMo-2 mix), SYNTHETIC-1, tool calling (ToolMind, Glaive, Hermes), terminal agent traces, our own facts / arithmetic / binding sets, 3% + 3% replay; decontaminated against HumanEval, MBPP, BFCL, IFEval, GSM8K | 🔄 running (27 Nov, 1,500 steps ≈0.79B tokens) ([plan](doc/plan-04-phase-3-sft.md)) |
+
+**Phase 2.5 results** (2.5a final vs Phase 2 final, same harness; full tables in `benchmark/phase25a/summary.md` and `benchmark/phase25b/summary.md`):
+
+| | Phase 2 final (22B tokens) | **Phase 2.5a final (37.6B tokens)** |
+|---|---|---|
+| English 6-task average | 46.92 | **47.88** |
+| ARC-Easy / ARC-Challenge | 54.1 / 28.6 | **57.4 / 31.1** |
+| LAMBADA | 34.9 | **35.9** |
+| TriviaQA / NQ-open (closed-book, 5-shot) | 11.6% / 3.9% | **15.8% / 4.5%** |
+| HumanEval / MBPP (pass@1, sandboxed) | 14.6% / 18.2% | **15.2% / 20.6%** |
+| BFCL simple / multiple / parallel | 25 / 17 / 1 | 16 / **26** / 0 |
+| Bits per byte, English / code (post-cutoff text) | 0.913 / 0.696 | **0.897 / 0.690** |
+| Binding probe v5 (held-out structures incl. passives) | 10/120 | **54/120** |
+
+Long context (Phase 2.5b): passkey retrieval at 4k / 16k tokens rose from 62% / 35% (step 1,000) to 72% / 45% (step 2,000); 2-hop retrieval at 16k from 8% to 17%; loss falls deeper into a document (2.50 at 1–2k → 2.25 at 8–16k tokens). The final checkpoint is being scored.
 
 **Phase 2 results** (full table in [`benchmark/README.md`](benchmark/README.md)):
 
