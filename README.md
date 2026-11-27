@@ -6,23 +6,15 @@
 
 A small Mixture-of-Experts language model trained from scratch on one H100: **≈915M parameters, ≈211M active per token**, built for **coding and agentic tool use**. Everything is open: the weights, every checkpoint with its optimizer state, the training code and the data pipeline.
 
+<p><img src="doc/assets/stats.svg" width="100%" alt="$1,000 total budget · ~40B tokens of training · 1 H100 GPU for training · 16k context window"></p>
+
+> ⚠️ **A base model for learning.** BubblSpace is a small model built to learn, and to show, how language models are trained. Its outputs are not reliable, so don't depend on them. The whole project is open source to help others learn.
+
 ## Where we are
 
-```mermaid
-flowchart LR
-  P1["<b>Phase 1</b><br/>English base<br/>10B tokens"]:::done
-  P2["<b>Phase 2</b><br/>+ code, tool calls, binding<br/>22B tokens"]:::done
-  P25a["<b>Phase 2.5a</b><br/>knowledge, relations, code<br/>37.6B tokens"]:::done
-  P25b["<b>Phase 2.5b</b><br/>16k context<br/>39.1B tokens"]:::done
-  P3["<b>Phase 3</b><br/>SFT: chat + tool use<br/>running now"]:::now
-  P4["<b>Phase 4</b><br/>RL with verified rewards<br/>planned"]:::next
-  P1 --> P2 --> P25a --> P25b --> P3 --> P4
-  classDef done fill:#1f6f43,stroke:#2ea043,color:#ffffff
-  classDef now fill:#9a6700,stroke:#d4a72c,color:#ffffff
-  classDef next fill:#30363d,stroke:#6e7681,color:#c9d1d9
-```
+<p align="center"><img src="doc/assets/phases.svg" width="100%" alt="Training phases: Phase 1 English base, 10B tokens (done); Phase 2 code, tool calls and binding data, 22B (done); Phase 2.5a knowledge, relations and fresh code, 37.6B (done); Phase 2.5b 16k context, 39.1B (done); Phase 3 SFT, running now; Phase 4 RL with verified rewards, planned"></p>
 
-Green: done · amber: running · grey: planned. Token counts are cumulative. **Pretraining is complete**; supervised fine-tuning is running.
+Token counts are cumulative. **Pretraining is complete**; supervised fine-tuning is running.
 
 | Phase | What it adds | Tokens (total) | Highlight | Status |
 |---|---|---|---|---|
