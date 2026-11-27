@@ -14,6 +14,7 @@ Runs in the vLLM env (Python 3.12, plugin installed):
     python scripts/train_grpo.py configs/rl_v1.yaml
 """
 import argparse
+import gzip
 import json
 import math
 import os
@@ -76,6 +77,13 @@ def microbatches(items, budget):
     if cur:
         mb.append(cur)
     return mb
+
+
+def dump_jsonl_gz(path, rows):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.open(path, "wt", encoding="utf-8") as f:
+        for r in rows:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
 
 def main():
@@ -146,6 +154,9 @@ def main():
         g = eng.generate([render(t["messages"]) for t in val], n=1, temperature=0.0, max_tokens=C["max_tokens"])
         eng.sleep()
         r = score_batch(val, [x[0].text for x in g], [x[0].finished for x in g], C.get("sandbox_workers", 16))
+        dump_jsonl_gz(out_dir / "eval_samples" / f"step_{step:04d}.jsonl.gz",
+                      [{"step": step, "id": t["id"], "area": t["area"], "kind": t["kind"], "prompt": t["messages"],
+                        "answer": x[0].text, "finished": x[0].finished, "reward": rr} for t, x, rr in zip(val, g, r)])
         res = defaultdict(list)
         for t, x in zip(val, r):
             res[t["area"]].append(x)
@@ -184,6 +195,7 @@ def main():
         # 5. group advantages
         n = C["n_samples"]
         items, zero_groups = [], 0
+        adv_all = [0.0] * len(flat_r)
         for gi in range(len(batch)):
             rs = torch.tensor(rew[gi * n:(gi + 1) * n])
             if rs.std() < 1e-6:
@@ -193,6 +205,7 @@ def main():
             if C.get("adv_std_norm", True):
                 adv = adv / (rs.std() + 1e-4)
             for j in range(n):
+                adv_all[gi * n + j] = float(adv[j])
                 r = flat_r[gi * n + j]
                 comp = list(r.completion_ids)
                 if r.finished and (not comp or comp[-1] not in stop_ids):
@@ -233,6 +246,13 @@ def main():
                 stats["grad_norm"] = float(gn)
             sched.step()
 
+        # every rollout of the step (prompt, answer, reward, advantage), for later analysis (pushed to HF with the checkpoints)
+        dump_jsonl_gz(out_dir / "rollouts" / f"step_{step:04d}.jsonl.gz",
+                      [{"step": step, "id": t["id"], "area": t["area"], "kind": t["kind"], "prompt": t["messages"],
+                        "sample": j % n, "answer": r.text, "finished": r.finished, "n_tokens": len(r.completion_ids),
+                        "reward": rw, "advantage": round(ad, 4)}
+                       for j, (t, r, rw, ad) in enumerate(zip(flat_t, flat_r, rew, adv_all))])
+
         # 8. log
         area_r = defaultdict(list)
         for t, x in zip(flat_t, rew):
@@ -255,7 +275,10 @@ def main():
             if wb:
                 wb.log(ev, step=step)
         if step % C.get("save_every", 100) == 0 or step == steps:
-            torch.save({"model": policy.state_dict(), "optimizer": opt.state_dict(), "step": step, "config": C},
+            torch.save({"model": policy.state_dict(), "optimizer": opt.state_dict(), "scheduler": sched.state_dict(),
+                        "step": step, "rng_state": torch.get_rng_state(), "cuda_rng_state": torch.cuda.get_rng_state(),
+                        "config": C, "rl_info": {"init_checkpoint": C["init_checkpoint"], "tasks": C["tasks"],
+                                                 "run_name": C["run_name"]}},
                        out_dir / f"step_{step}.pt")
             print(f"[save] {out_dir}/step_{step}.pt", flush=True)
 

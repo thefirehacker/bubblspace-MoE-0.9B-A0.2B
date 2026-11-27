@@ -1,0 +1,38 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Ignoring part of dataset_info from the dataset card: The `splits` field in YAML is malformed or missing the name/num_examples/num_bytes fields
+Ignoring part of dataset_info from the dataset card: The `splits` field in YAML is malformed or missing the name/num_examples/num_bytes fields
+Ignoring part of dataset_info from the dataset card: The `splits` field in YAML is malformed or missing the name/num_examples/num_bytes fields
+Ignoring part of dataset_info from the dataset card: The `splits` field in YAML is malformed or missing the name/num_examples/num_bytes fields
+Overwriting default num_fewshot of triviaqa from None to 5
+[moe] backend resolved to: grouped_mm
+[ckpt] loaded /lambda/nfs/us-west-1-eval-inference/phase25a/step_2000.pt (step 2000)
+[eval] running tasks: ['triviaqa'] (limit=1000)
+  0%|          | 0/1000 [00:00<?, ?it/s]  2%|▏         | 24/1000 [00:00<00:04, 236.37it/s]  5%|▍         | 49/1000 [00:00<00:03, 242.50it/s]  7%|▋         | 74/1000 [00:00<00:03, 244.39it/s] 10%|▉         | 99/1000 [00:00<00:03, 246.09it/s] 12%|█▎        | 125/1000 [00:00<00:03, 249.11it/s] 15%|█▌        | 151/1000 [00:00<00:03, 249.60it/s] 18%|█▊        | 177/1000 [00:00<00:03, 250.20it/s] 20%|██        | 203/1000 [00:00<00:03, 251.41it/s] 23%|██▎       | 229/1000 [00:00<00:03, 252.33it/s] 26%|██▌       | 255/1000 [00:01<00:02, 253.43it/s] 28%|██▊       | 281/1000 [00:01<00:02, 254.15it/s] 31%|███       | 307/1000 [00:01<00:02, 254.75it/s] 33%|███▎      | 333/1000 [00:01<00:02, 254.77it/s] 36%|███▌      | 359/1000 [00:01<00:02, 255.00it/s] 38%|███▊      | 385/1000 [00:01<00:02, 254.33it/s] 41%|████      | 411/1000 [00:01<00:02, 254.66it/s] 44%|████▎     | 437/1000 [00:01<00:02, 254.89it/s] 46%|████▋     | 463/1000 [00:01<00:02, 255.41it/s] 49%|████▉     | 489/1000 [00:01<00:02, 255.04it/s] 52%|█████▏    | 515/1000 [00:02<00:01, 255.72it/s] 54%|█████▍    | 541/1000 [00:02<00:01, 255.88it/s] 57%|█████▋    | 567/1000 [00:02<00:01, 256.28it/s] 59%|█████▉    | 593/1000 [00:02<00:01, 255.93it/s] 62%|██████▏   | 619/1000 [00:02<00:01, 255.49it/s] 64%|██████▍   | 645/1000 [00:02<00:01, 255.00it/s] 67%|██████▋   | 671/1000 [00:02<00:01, 254.33it/s] 70%|██████▉   | 697/1000 [00:02<00:01, 254.42it/s] 72%|███████▏  | 723/1000 [00:02<00:01, 254.27it/s] 75%|███████▍  | 749/1000 [00:02<00:00, 252.09it/s] 78%|███████▊  | 775/1000 [00:03<00:00, 251.79it/s] 80%|████████  | 801/1000 [00:03<00:00, 251.60it/s] 83%|████████▎ | 827/1000 [00:03<00:00, 252.83it/s] 85%|████████▌ | 853/1000 [00:03<00:00, 253.14it/s] 88%|████████▊ | 879/1000 [00:03<00:00, 253.58it/s] 90%|█████████ | 905/1000 [00:03<00:00, 254.55it/s] 93%|█████████▎| 931/1000 [00:03<00:00, 254.35it/s] 96%|█████████▌| 957/1000 [00:03<00:00, 253.85it/s] 98%|█████████▊| 983/1000 [00:03<00:00, 254.09it/s]100%|██████████| 1000/1000 [00:03<00:00, 253.22it/s]
+fatal: not a git repository (or any of the parent directories): .git
+{
+  "triviaqa": {
+    "name": "triviaqa",
+    "alias": "triviaqa",
+    "sample_len": 1000,
+    "exact_match,remove_whitespace": 0.133,
+    "exact_match_stderr,remove_whitespace": 0.010743669132397313
+  }
+}
+[eval] saved results to benchmark/phase25a/closedbook_triviaqa1k_phase25a_step2000.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Overwriting default num_fewshot of nq_open from None to 5
+[moe] backend resolved to: grouped_mm
+[ckpt] loaded /lambda/nfs/us-west-1-eval-inference/phase25a/step_2000.pt (step 2000)
+[eval] running tasks: ['nq_open'] (limit=1000)
+  0%|          | 0/1000 [00:00<?, ?it/s]  3%|▎         | 26/1000 [00:00<00:03, 258.12it/s]  5%|▌         | 53/1000 [00:00<00:03, 259.91it/s]  8%|▊         | 80/1000 [00:00<00:03, 263.04it/s] 11%|█         | 108/1000 [00:00<00:03, 266.72it/s] 14%|█▎        | 136/1000 [00:00<00:03, 268.91it/s] 16%|█▋        | 164/1000 [00:00<00:03, 269.38it/s] 19%|█▉        | 192/1000 [00:00<00:02, 270.82it/s] 22%|██▏       | 220/1000 [00:00<00:02, 271.95it/s] 25%|██▍       | 248/1000 [00:00<00:02, 271.86it/s] 28%|██▊       | 276/1000 [00:01<00:02, 272.22it/s] 30%|███       | 304/1000 [00:01<00:02, 273.25it/s] 33%|███▎      | 332/1000 [00:01<00:02, 273.61it/s] 36%|███▌      | 360/1000 [00:01<00:02, 274.33it/s] 39%|███▉      | 388/1000 [00:01<00:02, 274.81it/s] 42%|████▏     | 416/1000 [00:01<00:02, 274.06it/s] 44%|████▍     | 444/1000 [00:01<00:02, 273.37it/s] 47%|████▋     | 472/1000 [00:01<00:01, 273.42it/s] 50%|█████     | 500/1000 [00:01<00:01, 274.01it/s] 53%|█████▎    | 528/1000 [00:01<00:01, 258.98it/s] 56%|█████▌    | 555/1000 [00:02<00:02, 216.34it/s] 58%|█████▊    | 582/1000 [00:02<00:01, 229.34it/s] 61%|██████    | 610/1000 [00:02<00:01, 242.68it/s] 64%|██████▍   | 639/1000 [00:02<00:01, 253.37it/s] 67%|██████▋   | 668/1000 [00:02<00:01, 261.01it/s] 70%|██████▉   | 697/1000 [00:02<00:01, 266.65it/s] 72%|███████▎  | 725/1000 [00:02<00:01, 270.40it/s] 75%|███████▌  | 753/1000 [00:02<00:00, 273.06it/s] 78%|███████▊  | 782/1000 [00:02<00:00, 275.65it/s] 81%|████████  | 811/1000 [00:03<00:00, 277.42it/s] 84%|████████▍ | 840/1000 [00:03<00:00, 279.02it/s] 87%|████████▋ | 869/1000 [00:03<00:00, 279.90it/s] 90%|████████▉ | 898/1000 [00:03<00:00, 280.55it/s] 93%|█████████▎| 927/1000 [00:03<00:00, 281.11it/s] 96%|█████████▌| 956/1000 [00:03<00:00, 281.33it/s] 98%|█████████▊| 985/1000 [00:03<00:00, 281.46it/s]100%|██████████| 1000/1000 [00:03<00:00, 268.52it/s]
+fatal: not a git repository (or any of the parent directories): .git
+{
+  "nq_open": {
+    "name": "nq_open",
+    "alias": "nq_open",
+    "sample_len": 1000,
+    "exact_match,remove_whitespace": 0.032,
+    "exact_match_stderr,remove_whitespace": 0.005568393575081355
+  }
+}
+[eval] saved results to benchmark/phase25a/closedbook_nq1k_phase25a_step2000.json

@@ -1,0 +1,253 @@
+{
+  "checkpoint": "/lambda/nfs/us-west-1-eval-inference/phase25a/step_29723.pt",
+  "step": 29723,
+  "cruxeval_o": {
+    "n": 800,
+    "pass_at_1": 0.20125,
+    "parsable_literal_rate": 0.95625,
+    "examples": [
+      {
+        "id": "sample_0",
+        "gold": "[(4, 1), (4, 1), (4, 1), (4, 1), (2, 3), (2, 3)]",
+        "pred": "[1, 3, 1, 3, 1, 3]",
+        "correct": false
+      },
+      {
+        "id": "sample_1",
+        "gold": "{1: None, 2: None}",
+        "pred": "{1: 1, 2: 2}",
+        "correct": false
+      },
+      {
+        "id": "sample_2",
+        "gold": "'hbtofdeiequ'",
+        "pred": "'hbtofdeiequ'",
+        "correct": true
+      },
+      {
+        "id": "sample_3",
+        "gold": "'bcksrutq'",
+        "pred": "'bcksrutq'",
+        "correct": true
+      },
+      {
+        "id": "sample_4",
+        "gold": "'           '",
+        "pred": "'    '",
+        "correct": false
+      },
+      {
+        "id": "sample_5",
+        "gold": "(0, 'xxxxxxxxxxxxxxxxxx')",
+        "pred": "1",
+        "correct": false
+      },
+      {
+        "id": "sample_6",
+        "gold": "[('74', 31)]",
+        "pred": "[52, 34, 52, 31, 12]",
+        "correct": false
+      },
+      {
+        "id": "sample_7",
+        "gold": "[]",
+        "pred": "[]",
+        "correct": true
+      },
+      {
+        "id": "sample_8",
+        "gold": "'UppEr'",
+        "pred": "\"UppEr\"",
+        "correct": true
+      },
+      {
+        "id": "sample_9",
+        "gold": "False",
+        "pred": "True",
+        "correct": false
+      },
+      {
+        "id": "sample_10",
+        "gold": "''",
+        "pred": "''",
+        "correct": true
+      },
+      {
+        "id": "sample_11",
+        "gold": "{'foo': ['bar']}",
+        "pred": "{'foo': ['bar']}",
+        "correct": true
+      },
+      {
+        "id": "sample_12",
+        "gold": "'If you want to live a happy life! Daniel'",
+        "pred": "'If you want to live a happy life! Daniel'",
+        "correct": true
+      },
+      {
+        "id": "sample_13",
+        "gold": "2",
+        "pred": "3",
+        "correct": false
+      },
+      {
+        "id": "sample_14",
+        "gold": "'POO'",
+        "pred": "\"OOPOOPOOP\"",
+        "correct": false
+      }
+    ]
+  },
+  "bfcl": {
+    "simple": {
+      "n": 100,
+      "excluded_contaminated": 3,
+      "ast_accuracy": 0.16,
+      "emits_tool_call": 0.47,
+      "valid_call_json": 0.21,
+      "examples": [
+        {
+          "id": "simple_200",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking about the annual carbon dioxide emissions from a gas-fueled car that travels 12,000 miles per year with a fuel efficiency of 25 MPG.\n\nFirst, I need to check the tools provided. The available tool is calculate_emissions, which requires distance, fuel_type, "
+        },
+        {
+          "id": "simple_391",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user wants the exchange rate from British pounds to Japanese yen with a fee of 0.02.\n\nFirst, I need to check the available tools. The provided tool is get_exchange_rate_with_fee. The parameters required are base_currency, target_currency, and fee. The base_currency is Br"
+        },
+        {
+          "id": "simple_218",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user wants to retrieve the brain MRI report for patient ID 546382, and they specified the status as 'concluded'. I need to check the available tools.\n\nLooking at the tools provided, there's the patient.get_mri_report function. The parameters required are patient_id and s"
+        },
+        {
+          "id": "simple_22",
+          "correct": true,
+          "pred": "<think>\nOkay, the user wants the greatest common divisor of 12 and 15. Let me check the tools provided. There's a math.gcd function that takes two integers. The parameters are num1 and num2, both required. So I need to call that function with 12 and 15. Let me make sure the numbers are integers. Yep"
+        },
+        {
+          "id": "simple_135",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user wants to calculate the return on investment for a stock. They provided the purchase price, sale price, and a dividend.\n\nFirst, I need to check the tools available. The tool given is calculate_return_on_investment, which requires purchase_price and sale_price as para"
+        },
+        {
+          "id": "simple_264",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user wants the size of the sculpture with title 'David' by Michelangelo.\n\nFirst, I need to check the available tools. The tool provided is sculpture.get_details, which requires artist and title. The parameters are artist (string), title (string), and detail (optional, de"
+        },
+        {
+          "id": "simple_251",
+          "correct": true,
+          "pred": "<think>\nOkay, the user is asking for the earliest reference of Jesus Christ in history from historical record. Let me check the tools provided.\n\nThe available tool is get_earliest_reference, which requires the person's name and optionally the source. The source has a default of \"scriptures\". Since t"
+        },
+        {
+          "id": "simple_210",
+          "correct": true,
+          "pred": "<think>\nOkay, let's see. The user wants the latest news on Bitcoin in the US. I need to check the available tools. The tool provided is get_news, which requires topic, quantity, and region.\n\nThe topic here is Bitcoin. The quantity is 5. Region is US. Wait, the parameters say region is a string, defa"
+        }
+      ]
+    },
+    "multiple": {
+      "n": 100,
+      "excluded_contaminated": 1,
+      "ast_accuracy": 0.26,
+      "emits_tool_call": 0.56,
+      "valid_call_json": 0.48,
+      "examples": [
+        {
+          "id": "multiple_10",
+          "correct": false,
+          "pred": "<tool_call>\n{\"name\": \"database.modify_columns\", \"arguments\": {\"db_name\": \"employees\", \"table\": \"employees\", \"operation\": \"delete\", \"columns\": [\"email\", \"social_security_number\"]}}\n</tool_call>\n"
+        },
+        {
+          "id": "multiple_21",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user wants to generate a sound wave at 440Hz for 5 seconds. They're asking about the function and how to use it.\n\nFirst, I need to check the available tools. The provided function is play_sound_wave, which takes wave_file and volume. The user specified 440Hz, so the freq"
+        },
+        {
+          "id": "multiple_180",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user wants to fetch player statistics for 'Zelda' on Switch for user 'Sam'. I need to check which tool can handle this.\n\nLooking at the tools provided: there's flight.book, event_finder.find_upcoming, get_scientist_for_discovery, and game_stats. The last one is game_stat"
+        },
+        {
+          "id": "multiple_139",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user wants details of patent lawsuits involving Apple Inc. from 2010.\n\nFirst, I need to check which tool can handle this. The available tools are get_collectables_in_season, game_score.highest, lawsuit_details.find, and calculate_binomial_probability.\n\nThe lawsuit_detail"
+        },
+        {
+          "id": "multiple_175",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking who is the top player in woman tennis. I need to figure out which tool to use here.\n\nLooking at the provided tools, there's one called \"find_instrument\" which searches for a musical instrument within a budget and type. The parameters required are budget, t"
+        },
+        {
+          "id": "multiple_101",
+          "correct": true,
+          "pred": "<think>\nOkay, the user wants the GCD of 12 and 18. Let me check the tools available. There's a math.gcd function that takes num1 and num2. I need to call that with 12 and 18. The parameters are required, so I'll structure the tool call with those numbers. No need for country or top_number since they"
+        },
+        {
+          "id": "multiple_181",
+          "correct": true,
+          "pred": "<tool_call>\n{\"name\": \"soccer.get_last_match\", \"arguments\": {\"team_name\": \"Liverpool F.C.\", \"include_stats\": true}}\n</tool_call>\n"
+        },
+        {
+          "id": "multiple_135",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking about the victim in the case docket number 2022/AL2562 in California.\n\nFirst, I need to check which tool to use. The available tools are get_case_info and calculate_triangle_area. Since the question is about a case, the get_case_info tool is the right choi"
+        }
+      ]
+    },
+    "parallel": {
+      "n": 100,
+      "excluded_contaminated": 7,
+      "ast_accuracy": 0.0,
+      "emits_tool_call": 0.04,
+      "valid_call_json": 0.01,
+      "examples": [
+        {
+          "id": "parallel_41",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user wants the closest music shop to find a Yamaha acoustic guitar and a Kawai piano in San Francisco and Chicago, Illinois.\n\nFirst, I need to check the tools provided. The available tool is find_music_instrument_store, which requires location and instruments. The locati"
+        },
+        {
+          "id": "parallel_42",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking for the price and stock availability of a Yamaha P125 piano in Berlin and Madrid's music stores.\n\nFirst, I need to check the tools provided. The available tool is check_instrument_availability, which requires instrument and city. The parameters are both re"
+        },
+        {
+          "id": "parallel_92",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking for the shortest driving distance in miles from New York City to Los Angeles and then from Los Angeles to Miami, returning to New York City from Miami.\n\nFirst, I need to check the tools provided. The available tool is get_shortest_driving_distance, which r"
+        },
+        {
+          "id": "parallel_141",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking for movie releases in IMAX and 2D formats over 7 days at specific theaters in New York and Los Angeles.\n\nFirst, I need to check the available tools. The provided tool is get_theater_movie_releases, which requires location, timeframe, and format. The parame"
+        },
+        {
+          "id": "parallel_66",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking for the total area of three circles with specific radii. The first circle has a radius of 5 meters, the second is 10 meters, and the third is 15 meters.\n\nHmm, the tool provided is called geometry.area_circle, which calculates the area given the radius. But"
+        },
+        {
+          "id": "parallel_31",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking two questions here. First, they want to know about the Treaty of Paris and its importance in history. Second, they're asking about Magna Carta's role in history.\n\nLooking at the tools provided, there's only one function called history_fact.fetch. It retrie"
+        },
+        {
+          "id": "parallel_159",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking for three different probabilities: one for rolling a 4 three times in a row, another for rolling a 2 twice in a row, and a third for rolling a 7 twice in a row.\n\nFirst, I need to check the tools provided. The only tool available is probability.dice_roll, w"
+        },
+        {
+          "id": "parallel_118",
+          "correct": false,
+          "pred": "<think>\nOkay, let's see. The user is asking for precipitation statistics for the Amazon rainforest for the last six months, the last year, and the last five years.\n\nFirst, I need to check the available tools. The provided tool is ecology_data.precipitation_stats. It requires location and time_frame."
+        }
+      ]
+    },
+    "overall_ast_accuracy": 0.14,
+    "decontaminated": true
+  },
+  "elapsed_s": 5588.5
+}

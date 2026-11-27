@@ -1,0 +1,2307 @@
+{
+ "checkpoint": "/lambda/nfs/us-west-1-eval-inference/phase25a/step_22000.pt",
+ "step": 22000,
+ "cases_file": "benchmark/data/probefinding-winograndestyle/probefinding-winogrande-v5-heldout-structures-20261123.json",
+ "summary": {
+  "n_cases": 120,
+  "flip_hit": 1,
+  "hit_rate": 0.067,
+  "mean_gap_nats": -6.202,
+  "by_category": {
+   "passive": {
+    "flip_hit": "0/40",
+    "mean_gap": -6.627
+   },
+   "relative_clause": {
+    "flip_hit": "1/40",
+    "mean_gap": -2.516
+   },
+   "respectively": {
+    "flip_hit": "0/40",
+    "mean_gap": -9.464
+   }
+  }
+ },
+ "rows": [
+  {
+   "name": "v5-passive-0",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.969,
+    "gold": " truly sorry.",
+    "generation": " forgiving."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.473,
+    "gold": " big-hearted.",
+    "generation": " remorseful."
+   },
+   "ctxA": "Aarav was forgiven by Pia because Aarav was",
+   "ctxB": "Aarav was forgiven by Pia because Pia was"
+  },
+  {
+   "name": "v5-passive-1",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.861,
+    "gold": " talented.",
+    "generation": " in need of help. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.238,
+    "gold": " in need of help.",
+    "generation": " reliable."
+   },
+   "ctxA": "Sergio was hired by Sana because Sergio was",
+   "ctxB": "Sergio was hired by Sana because Sana was"
+  },
+  {
+   "name": "v5-passive-2",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.035,
+    "gold": " out of practice.",
+    "generation": " a trained sprinter."
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.443,
+    "gold": " well trained.",
+    "generation": " out of practice."
+   },
+   "ctxA": "Joao was beaten by Yara because Joao was",
+   "ctxB": "Joao was beaten by Yara because Yara was"
+  },
+  {
+   "name": "v5-passive-3",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.96,
+    "gold": " talented.",
+    "generation": " in need of help. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.629,
+    "gold": " in need of help.",
+    "generation": " reliable. The news spread quickly. Who was reliable, An"
+   },
+   "ctxA": "Anika was hired by Xavier because Anika was",
+   "ctxB": "Anika was hired by Xavier because Xavier was"
+  },
+  {
+   "name": "v5-passive-4",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.875,
+    "gold": " rude.",
+    "generation": " impatient. The news spread quickly. Who was impatient, Juno"
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.906,
+    "gold": " frustrated.",
+    "generation": " late again. The news spread quickly. Who was late again"
+   },
+   "ctxA": "Juno was scolded by Aiko because Juno was",
+   "ctxB": "Juno was scolded by Aiko because Aiko was"
+  },
+  {
+   "name": "v5-passive-5",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.345,
+    "gold": " supportive.",
+    "generation": " relieved."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.264,
+    "gold": " polite.",
+    "generation": " generous."
+   },
+   "ctxA": "Thabo was thanked by Ayesha because Thabo was",
+   "ctxB": "Thabo was thanked by Ayesha because Ayesha was"
+  },
+  {
+   "name": "v5-passive-6",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.243,
+    "gold": " new to the subject.",
+    "generation": " patient."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.694,
+    "gold": " experienced.",
+    "generation": " a beginner."
+   },
+   "ctxA": "Emil was taught by Vikram because Emil was",
+   "ctxB": "Emil was taught by Vikram because Vikram was"
+  },
+  {
+   "name": "v5-passive-7",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.125,
+    "gold": " rude.",
+    "generation": " impatient."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.5,
+    "gold": " frustrated.",
+    "generation": " late again."
+   },
+   "ctxA": "Pia was scolded by Ada because Pia was",
+   "ctxB": "Pia was scolded by Ada because Ada was"
+  },
+  {
+   "name": "v5-passive-8",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.5,
+    "gold": " dishonest.",
+    "generation": " busy."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.375,
+    "gold": " shy.",
+    "generation": " unpleasant."
+   },
+   "ctxA": "Elena was avoided by Yusuf because Elena was",
+   "ctxB": "Elena was avoided by Yusuf because Yusuf was"
+  },
+  {
+   "name": "v5-passive-9",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.25,
+    "gold": " careless.",
+    "generation": " impatient."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.719,
+    "gold": " frustrated.",
+    "generation": " late again."
+   },
+   "ctxA": "Emeka was scolded by Ana because Emeka was",
+   "ctxB": "Emeka was scolded by Ana because Ana was"
+  },
+  {
+   "name": "v5-passive-10",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.487,
+    "gold": " carrying a heavy bag.",
+    "generation": " a trained sprinter. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.294,
+    "gold": " well rested.",
+    "generation": " carrying a heavy bag. The news spread quickly. Who was"
+   },
+   "ctxA": "Pablo was outrun by Sana because Pablo was",
+   "ctxB": "Pablo was outrun by Sana because Sana was"
+  },
+  {
+   "name": "v5-passive-11",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.454,
+    "gold": " a slow reader.",
+    "generation": " a former teacher. The news spread quickly. Who was a"
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.691,
+    "gold": " a former teacher.",
+    "generation": " preparing for an exam. The news spread quickly. Who was"
+   },
+   "ctxA": "Sunil was tutored by Cyrus because Sunil was",
+   "ctxB": "Sunil was tutored by Cyrus because Cyrus was"
+  },
+  {
+   "name": "v5-passive-12",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.437,
+    "gold": " rude.",
+    "generation": " busy."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.812,
+    "gold": " uncomfortable.",
+    "generation": " unpleasant."
+   },
+   "ctxA": "Hana was avoided by Hassan because Hana was",
+   "ctxB": "Hana was avoided by Hassan because Hassan was"
+  },
+  {
+   "name": "v5-passive-13",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.318,
+    "gold": " eager to learn.",
+    "generation": " patient."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.415,
+    "gold": " an expert.",
+    "generation": " a beginner."
+   },
+   "ctxA": "Oscar was taught by Jude because Oscar was",
+   "ctxB": "Oscar was taught by Jude because Jude was"
+  },
+  {
+   "name": "v5-passive-14",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.609,
+    "gold": " overconfident.",
+    "generation": " a trained sprinter. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.617,
+    "gold": " better prepared.",
+    "generation": " out of practice."
+   },
+   "ctxA": "Bruno was beaten by Freya because Bruno was",
+   "ctxB": "Bruno was beaten by Freya because Freya was"
+  },
+  {
+   "name": "v5-passive-15",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.631,
+    "gold": " a beginner.",
+    "generation": " patient. The news spread quickly. Who was patient, S"
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.818,
+    "gold": " qualified.",
+    "generation": " a beginner. The news spread quickly. Who was a beginner"
+   },
+   "ctxA": "Sana was taught by Chloe because Sana was",
+   "ctxB": "Sana was taught by Chloe because Chloe was"
+  },
+  {
+   "name": "v5-passive-16",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.923,
+    "gold": " out of practice.",
+    "generation": " a trained sprinter. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.818,
+    "gold": " well trained.",
+    "generation": " out of shape. The news spread quickly. Who was out"
+   },
+   "ctxA": "Juno was beaten by Yusuf because Juno was",
+   "ctxB": "Juno was beaten by Yusuf because Yusuf was"
+  },
+  {
+   "name": "v5-passive-17",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.813,
+    "gold": " new to the subject.",
+    "generation": " patient."
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.42,
+    "gold": " qualified.",
+    "generation": " a beginner. The news spread quickly. Who was a beginner"
+   },
+   "ctxA": "Xavier was taught by Isaac because Xavier was",
+   "ctxB": "Xavier was taught by Isaac because Isaac was"
+  },
+  {
+   "name": "v5-passive-18",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.006,
+    "gold": " honest about it.",
+    "generation": " forgiving."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.156,
+    "gold": " easygoing.",
+    "generation": " truly sorry. The news spread quickly. Who was truly sorry"
+   },
+   "ctxA": "Elif was forgiven by Odile because Elif was",
+   "ctxB": "Elif was forgiven by Odile because Odile was"
+  },
+  {
+   "name": "v5-passive-19",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.114,
+    "gold": " lonely.",
+    "generation": " kind."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.625,
+    "gold": " gentle.",
+    "generation": " lonely."
+   },
+   "ctxA": "Pablo was comforted by Kai because Pablo was",
+   "ctxB": "Pablo was comforted by Kai because Kai was"
+  },
+  {
+   "name": "v5-passive-20",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.554,
+    "gold": " slower.",
+    "generation": " a trained sprinter. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.391,
+    "gold": " faster.",
+    "generation": " injured. The news spread quickly. Who was outrun,"
+   },
+   "ctxA": "Lucia was outrun by Ilse because Lucia was",
+   "ctxB": "Lucia was outrun by Ilse because Ilse was"
+  },
+  {
+   "name": "v5-passive-21",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.25,
+    "gold": " supportive.",
+    "generation": " relieved."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.229,
+    "gold": " polite.",
+    "generation": " generous."
+   },
+   "ctxA": "Vikram was thanked by Elena because Vikram was",
+   "ctxB": "Vikram was thanked by Elena because Elena was"
+  },
+  {
+   "name": "v5-passive-22",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.094,
+    "gold": " stranded.",
+    "generation": " a trained lifeguard."
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.79,
+    "gold": " a trained lifeguard.",
+    "generation": " stranded."
+   },
+   "ctxA": "Rosa was rescued by Kasimir because Rosa was",
+   "ctxB": "Rosa was rescued by Kasimir because Kasimir was"
+  },
+  {
+   "name": "v5-passive-23",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.439,
+    "gold": " heartbroken.",
+    "generation": " kind."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.438,
+    "gold": " gentle.",
+    "generation": " grieving."
+   },
+   "ctxA": "Anika was comforted by Rohan because Anika was",
+   "ctxB": "Anika was comforted by Rohan because Rohan was"
+  },
+  {
+   "name": "v5-passive-24",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.144,
+    "gold": " struggling with it.",
+    "generation": " patient."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.751,
+    "gold": " qualified.",
+    "generation": " a beginner."
+   },
+   "ctxA": "Pia was taught by Kenji because Pia was",
+   "ctxB": "Pia was taught by Kenji because Kenji was"
+  },
+  {
+   "name": "v5-passive-25",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.313,
+    "gold": " nervous.",
+    "generation": " experienced."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.906,
+    "gold": " steady.",
+    "generation": " anxious. The news spread quickly. Who was anxious, Pablo"
+   },
+   "ctxA": "Ivan was reassured by Pablo because Ivan was",
+   "ctxB": "Ivan was reassured by Pablo because Pablo was"
+  },
+  {
+   "name": "v5-passive-26",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.813,
+    "gold": " rude.",
+    "generation": " impatient."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.906,
+    "gold": " frustrated.",
+    "generation": " late again."
+   },
+   "ctxA": "Naledi was scolded by Ines because Naledi was",
+   "ctxB": "Naledi was scolded by Ines because Ines was"
+  },
+  {
+   "name": "v5-passive-27",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.188,
+    "gold": " lonely.",
+    "generation": " kind. The news spread quickly. Who was kind, Mohammed"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.875,
+    "gold": " gentle.",
+    "generation": " heartbroken."
+   },
+   "ctxA": "Aarav was comforted by Mohammed because Aarav was",
+   "ctxB": "Aarav was comforted by Mohammed because Mohammed was"
+  },
+  {
+   "name": "v5-passive-28",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.543,
+    "gold": " highly qualified.",
+    "generation": " in need of help."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.442,
+    "gold": " expanding.",
+    "generation": " reliable."
+   },
+   "ctxA": "Marco was hired by Noor because Marco was",
+   "ctxB": "Marco was hired by Noor because Noor was"
+  },
+  {
+   "name": "v5-passive-29",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.091,
+    "gold": " in danger.",
+    "generation": " a trained lifeguard."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.657,
+    "gold": " a trained lifeguard.",
+    "generation": " stranded."
+   },
+   "ctxA": "Teo was rescued by Ibrahim because Teo was",
+   "ctxB": "Teo was rescued by Ibrahim because Ibrahim was"
+  },
+  {
+   "name": "v5-passive-30",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.976,
+    "gold": " slower.",
+    "generation": " a trained sprinter. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.031,
+    "gold": " fitter.",
+    "generation": " slower."
+   },
+   "ctxA": "Elif was outrun by Pablo because Elif was",
+   "ctxB": "Elif was outrun by Pablo because Pablo was"
+  },
+  {
+   "name": "v5-passive-31",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.945,
+    "gold": " preparing for an exam.",
+    "generation": " a former teacher. The news spread quickly. Who was a"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.442,
+    "gold": " a gifted student.",
+    "generation": " preparing for an exam. The news spread quickly. Who was"
+   },
+   "ctxA": "Hugo was tutored by Ana because Hugo was",
+   "ctxB": "Hugo was tutored by Ana because Ana was"
+  },
+  {
+   "name": "v5-passive-32",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.636,
+    "gold": " trapped.",
+    "generation": " a trained lifeguard."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.123,
+    "gold": " strong.",
+    "generation": " in danger."
+   },
+   "ctxA": "Selin was rescued by Rosa because Selin was",
+   "ctxB": "Selin was rescued by Rosa because Rosa was"
+  },
+  {
+   "name": "v5-passive-33",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.062,
+    "gold": " worried.",
+    "generation": " experienced."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.312,
+    "gold": " experienced.",
+    "generation": " anxious. The news spread quickly. Who was anxious, Kas"
+   },
+   "ctxA": "Bilal was reassured by Kasimir because Bilal was",
+   "ctxB": "Bilal was reassured by Kasimir because Kasimir was"
+  },
+  {
+   "name": "v5-passive-34",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.262,
+    "gold": " nervous.",
+    "generation": " experienced."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.715,
+    "gold": " experienced.",
+    "generation": " anxious."
+   },
+   "ctxA": "Ayesha was reassured by Clio because Ayesha was",
+   "ctxB": "Ayesha was reassured by Clio because Clio was"
+  },
+  {
+   "name": "v5-passive-35",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.812,
+    "gold": " a slow reader.",
+    "generation": " a former teacher."
+   },
+   "B": {
+    "hit": false,
+    "gap": -10.283,
+    "gold": " a former teacher.",
+    "generation": " preparing for an exam."
+   },
+   "ctxA": "Adaeze was tutored by Elena because Adaeze was",
+   "ctxB": "Adaeze was tutored by Elena because Elena was"
+  },
+  {
+   "name": "v5-passive-36",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.835,
+    "gold": " out of practice.",
+    "generation": " a trained sprinter. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.759,
+    "gold": " experienced.",
+    "generation": " out of practice. The news spread quickly. Who was out"
+   },
+   "ctxA": "Ruth was beaten by Ana because Ruth was",
+   "ctxB": "Ruth was beaten by Ana because Ana was"
+  },
+  {
+   "name": "v5-passive-37",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.78,
+    "gold": " injured.",
+    "generation": " a trained sprinter."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.343,
+    "gold": " well rested.",
+    "generation": " slower."
+   },
+   "ctxA": "Sofia was outrun by Diego because Sofia was",
+   "ctxB": "Sofia was outrun by Diego because Diego was"
+  },
+  {
+   "name": "v5-passive-38",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.017,
+    "gold": " inexperienced.",
+    "generation": " a trained sprinter. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.262,
+    "gold": " more skilled.",
+    "generation": " out of practice. The news spread quickly. Who was out"
+   },
+   "ctxA": "Tariq was beaten by Lotte because Tariq was",
+   "ctxB": "Tariq was beaten by Lotte because Lotte was"
+  },
+  {
+   "name": "v5-passive-39",
+   "category": "passive",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.093,
+    "gold": " out of shape.",
+    "generation": " a trained sprinter. The news spread quickly. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.782,
+    "gold": " well rested.",
+    "generation": " carrying a heavy bag. The news spread quickly. Who was"
+   },
+   "ctxA": "Elena was outrun by Aarav because Elena was",
+   "ctxB": "Elena was outrun by Aarav because Aarav was"
+  },
+  {
+   "name": "v5-relative_clause-40",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " preparing for an exam",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.75,
+    "gold": " patient",
+    "generation": " preparing for an exam."
+   },
+   "ctxA": "Hana tutored Emil, who was",
+   "ctxB": "Emil was tutored by Hana, who was"
+  },
+  {
+   "name": "v5-relative_clause-41",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.312,
+    "gold": " unpleasant",
+    "generation": " boastful, because Thabo was busy."
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.188,
+    "gold": " busy",
+    "generation": " unpleasant."
+   },
+   "ctxA": "Thabo avoided Ada, who was",
+   "ctxB": "Ada was avoided by Thabo, who was"
+  },
+  {
+   "name": "v5-relative_clause-42",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " anxious",
+    "generation": " anxious. The news spread quickly. Who was anxious, Vik"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.437,
+    "gold": " steady",
+    "generation": " anxious."
+   },
+   "ctxA": "Vikram reassured Ada, who was",
+   "ctxB": "Ada was reassured by Vikram, who was"
+  },
+  {
+   "name": "v5-relative_clause-43",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " preparing for an exam",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.063,
+    "gold": " top of the class",
+    "generation": " preparing for an exam. The news spread quickly. Who was"
+   },
+   "ctxA": "Sergio tutored Lucia, who was",
+   "ctxB": "Lucia was tutored by Sergio, who was"
+  },
+  {
+   "name": "v5-relative_clause-44",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " preparing for an exam",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.94,
+    "gold": " top of the class",
+    "generation": " preparing for an exam."
+   },
+   "ctxA": "Ike tutored Diego, who was",
+   "ctxB": "Diego was tutored by Ike, who was"
+  },
+  {
+   "name": "v5-relative_clause-45",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.125,
+    "gold": " trapped",
+    "generation": " in danger."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.812,
+    "gold": " brave",
+    "generation": " lost."
+   },
+   "ctxA": "Anika rescued Sofia, who was",
+   "ctxB": "Sofia was rescued by Anika, who was"
+  },
+  {
+   "name": "v5-relative_clause-46",
+   "category": "relative_clause",
+   "flip_hit": true,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " preparing for an exam",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": true,
+    "gap": -1.073,
+    "gold": " a gifted student",
+    "generation": " a slow reader."
+   },
+   "ctxA": "Leila tutored Ibrahim, who was",
+   "ctxB": "Ibrahim was tutored by Leila, who was"
+  },
+  {
+   "name": "v5-relative_clause-47",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.115,
+    "gold": " new to the subject",
+    "generation": " a beginner."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.5,
+    "gold": " qualified",
+    "generation": " a beginner."
+   },
+   "ctxA": "Sergio taught Mei, who was",
+   "ctxB": "Mei was taught by Sergio, who was"
+  },
+  {
+   "name": "v5-relative_clause-48",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.188,
+    "gold": " dishonest",
+    "generation": " boastful, because Jamal was unpleasant."
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.938,
+    "gold": " wary",
+    "generation": " unpleasant."
+   },
+   "ctxA": "Vikram avoided Jamal, who was",
+   "ctxB": "Jamal was avoided by Vikram, who was"
+  },
+  {
+   "name": "v5-relative_clause-49",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.5,
+    "gold": " rude",
+    "generation": " boastful, and who was unpleasant? Pia. Who was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.188,
+    "gold": " wary",
+    "generation": " unpleasant."
+   },
+   "ctxA": "Yosef avoided Pia, who was",
+   "ctxB": "Pia was avoided by Yosef, who was"
+  },
+  {
+   "name": "v5-relative_clause-50",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.14,
+    "gold": " highly qualified",
+    "generation": " talented."
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.629,
+    "gold": " growing quickly",
+    "generation": " talented, so Rafael hired Hana."
+   },
+   "ctxA": "Hana hired Rafael, who was",
+   "ctxB": "Rafael was hired by Hana, who was"
+  },
+  {
+   "name": "v5-relative_clause-51",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.25,
+    "gold": " dishonest",
+    "generation": " boastful, and who was unpleasant? Nina, clearly."
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.5,
+    "gold": " shy",
+    "generation": " unpleasant."
+   },
+   "ctxA": "Karim avoided Nina, who was",
+   "ctxB": "Nina was avoided by Karim, who was"
+  },
+  {
+   "name": "v5-relative_clause-52",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.438,
+    "gold": " rude",
+    "generation": " late again, so Naledi scolded Gabriel."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.281,
+    "gold": " angry",
+    "generation": " late again."
+   },
+   "ctxA": "Gabriel scolded Uma, who was",
+   "ctxB": "Uma was scolded by Gabriel, who was"
+  },
+  {
+   "name": "v5-relative_clause-53",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.344,
+    "gold": " overconfident",
+    "generation": " out of practice, and that is why Dalia beat Ale"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.848,
+    "gold": " well trained",
+    "generation": " a former teacher."
+   },
+   "ctxA": "Alejandro beat Dalia, who was",
+   "ctxB": "Dalia was beaten by Alejandro, who was"
+  },
+  {
+   "name": "v5-relative_clause-54",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.434,
+    "gold": " a slow reader",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.125,
+    "gold": " patient",
+    "generation": " preparing for an exam. The news spread quickly. Who was"
+   },
+   "ctxA": "Zainab tutored Sakura, who was",
+   "ctxB": "Sakura was tutored by Zainab, who was"
+  },
+  {
+   "name": "v5-relative_clause-55",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.351,
+    "gold": " struggling at school",
+    "generation": " preparing for an exam."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.438,
+    "gold": " top of the class",
+    "generation": " preparing for an exam."
+   },
+   "ctxA": "Teo tutored Camila, who was",
+   "ctxB": "Camila was tutored by Teo, who was"
+  },
+  {
+   "name": "v5-relative_clause-56",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.137,
+    "gold": " honest about it",
+    "generation": " truly sorry."
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.131,
+    "gold": " easygoing",
+    "generation": " honest about it."
+   },
+   "ctxA": "Clio forgave Sofia, who was",
+   "ctxB": "Sofia was forgiven by Clio, who was"
+  },
+  {
+   "name": "v5-relative_clause-57",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.188,
+    "gold": " inexperienced",
+    "generation": " out of practice, so Anouk beat Jin."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.993,
+    "gold": " more skilled",
+    "generation": " the one who had caused the fight. The confusion arises because"
+   },
+   "ctxA": "Anouk beat Jin, who was",
+   "ctxB": "Jin was beaten by Anouk, who was"
+  },
+  {
+   "name": "v5-relative_clause-58",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " boastful",
+    "generation": " boastful, and who was busy? Fatima, clearly"
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.938,
+    "gold": " shy",
+    "generation": " dishonest."
+   },
+   "ctxA": "Lucia avoided Fatima, who was",
+   "ctxB": "Fatima was avoided by Lucia, who was"
+  },
+  {
+   "name": "v5-relative_clause-59",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.124,
+    "gold": " highly qualified",
+    "generation": " talented."
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.217,
+    "gold": " short-staffed",
+    "generation": " talented, so Fatima hired Paula."
+   },
+   "ctxA": "Paula hired Fatima, who was",
+   "ctxB": "Fatima was hired by Paula, who was"
+  },
+  {
+   "name": "v5-relative_clause-60",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " out of practice",
+    "generation": " out of practice, while Dov was out of practice."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.945,
+    "gold": " better prepared",
+    "generation": " a former teacher."
+   },
+   "ctxA": "Lin beat Dov, who was",
+   "ctxB": "Dov was beaten by Lin, who was"
+  },
+  {
+   "name": "v5-relative_clause-61",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " late again",
+    "generation": " late again? Kofi, clearly. Who was impatient,"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.844,
+    "gold": " angry",
+    "generation": " late again? Bruno, clearly. Who was late again?"
+   },
+   "ctxA": "Bruno scolded Kofi, who was",
+   "ctxB": "Kofi was scolded by Bruno, who was"
+  },
+  {
+   "name": "v5-relative_clause-62",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.188,
+    "gold": " dishonest",
+    "generation": " boastful, because Karim was unpleasant."
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.875,
+    "gold": " uncomfortable",
+    "generation": " unpleasant."
+   },
+   "ctxA": "Isaac avoided Karim, who was",
+   "ctxB": "Karim was avoided by Isaac, who was"
+  },
+  {
+   "name": "v5-relative_clause-63",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.375,
+    "gold": " tired",
+    "generation": " out of practice, while Yara was well trained."
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.438,
+    "gold": " experienced",
+    "generation": " the one who had taken Dante into her care. The source"
+   },
+   "ctxA": "Yara beat Dante, who was",
+   "ctxB": "Dante was beaten by Yara, who was"
+  },
+  {
+   "name": "v5-relative_clause-64",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.125,
+    "gold": " dishonest",
+    "generation": " boastful."
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.813,
+    "gold": " busy",
+    "generation": " unpleasant."
+   },
+   "ctxA": "Selin avoided Mehmet, who was",
+   "ctxB": "Mehmet was avoided by Selin, who was"
+  },
+  {
+   "name": "v5-relative_clause-65",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.562,
+    "gold": " rude",
+    "generation": " boastful."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.0,
+    "gold": " wary",
+    "generation": " unpleasant."
+   },
+   "ctxA": "Lotte avoided Ibrahim, who was",
+   "ctxB": "Ibrahim was avoided by Lotte, who was"
+  },
+  {
+   "name": "v5-relative_clause-66",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.188,
+    "gold": " lost",
+    "generation": " in danger."
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.479,
+    "gold": " quick-thinking",
+    "generation": " lost."
+   },
+   "ctxA": "Ada rescued Jin, who was",
+   "ctxB": "Jin was rescued by Ada, who was"
+  },
+  {
+   "name": "v5-relative_clause-67",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.062,
+    "gold": " trapped",
+    "generation": " in danger."
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.5,
+    "gold": " strong",
+    "generation": " stranded."
+   },
+   "ctxA": "Ines rescued Keiko, who was",
+   "ctxB": "Keiko was rescued by Ines, who was"
+  },
+  {
+   "name": "v5-relative_clause-68",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " out of practice",
+    "generation": " out of practice, and who was out of practice? L"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.938,
+    "gold": " experienced",
+    "generation": " a former teacher."
+   },
+   "ctxA": "Noor beat Lotte, who was",
+   "ctxB": "Lotte was beaten by Noor, who was"
+  },
+  {
+   "name": "v5-relative_clause-69",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.062,
+    "gold": " reckless",
+    "generation": " late again? Cyrus, clearly. Who was impatient, Cyrus"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.125,
+    "gold": " impatient",
+    "generation": " late again."
+   },
+   "ctxA": "Teo scolded Cyrus, who was",
+   "ctxB": "Cyrus was scolded by Teo, who was"
+  },
+  {
+   "name": "v5-relative_clause-70",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.375,
+    "gold": " worried",
+    "generation": " anxious. The news spread quickly. Who was anxious, N"
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.875,
+    "gold": " experienced",
+    "generation": " anxious."
+   },
+   "ctxA": "Nikhil reassured Ivan, who was",
+   "ctxB": "Ivan was reassured by Nikhil, who was"
+  },
+  {
+   "name": "v5-relative_clause-71",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " remorseful",
+    "generation": " remorseful."
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.188,
+    "gold": " big-hearted",
+    "generation": " honest about it."
+   },
+   "ctxA": "Teo forgave Mehmet, who was",
+   "ctxB": "Mehmet was forgiven by Teo, who was"
+  },
+  {
+   "name": "v5-relative_clause-72",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.126,
+    "gold": " highly qualified",
+    "generation": " talented."
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.125,
+    "gold": " growing quickly",
+    "generation": " talented, so Camila hired Pedro."
+   },
+   "ctxA": "Pedro hired Camila, who was",
+   "ctxB": "Camila was hired by Pedro, who was"
+  },
+  {
+   "name": "v5-relative_clause-73",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.562,
+    "gold": " apologetic",
+    "generation": " truly sorry."
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.327,
+    "gold": " big-hearted",
+    "generation": " the one who had lent it. The reason: Elena"
+   },
+   "ctxA": "Adaeze forgave Elena, who was",
+   "ctxB": "Elena was forgiven by Adaeze, who was"
+  },
+  {
+   "name": "v5-relative_clause-74",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " boastful",
+    "generation": " boastful."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.0,
+    "gold": " busy",
+    "generation": " unpleasant, and that is why Selin avoided Quinn."
+   },
+   "ctxA": "Quinn avoided Selin, who was",
+   "ctxB": "Selin was avoided by Quinn, who was"
+  },
+  {
+   "name": "v5-relative_clause-75",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.375,
+    "gold": " frightened",
+    "generation": " grieving."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.5,
+    "gold": " caring",
+    "generation": " grieving."
+   },
+   "ctxA": "Lotte comforted Emil, who was",
+   "ctxB": "Emil was comforted by Lotte, who was"
+  },
+  {
+   "name": "v5-relative_clause-76",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " thoughtful",
+    "generation": " thoughtful."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.937,
+    "gold": " relieved",
+    "generation": " thoughtful, so Jin thanked Layla."
+   },
+   "ctxA": "Layla thanked Jin, who was",
+   "ctxB": "Jin was thanked by Layla, who was"
+  },
+  {
+   "name": "v5-relative_clause-77",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.501,
+    "gold": " honest about it",
+    "generation": " truly sorry."
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.106,
+    "gold": " easygoing",
+    "generation": " honest about it."
+   },
+   "ctxA": "Hana forgave Beatriz, who was",
+   "ctxB": "Beatriz was forgiven by Hana, who was"
+  },
+  {
+   "name": "v5-relative_clause-78",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.312,
+    "gold": " lost",
+    "generation": " in danger. The news spread quickly. Who was in danger"
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.75,
+    "gold": " strong",
+    "generation": " stranded."
+   },
+   "ctxA": "Abigail rescued Marco, who was",
+   "ctxB": "Marco was rescued by Abigail, who was"
+  },
+  {
+   "name": "v5-relative_clause-79",
+   "category": "relative_clause",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.375,
+    "gold": " frightened",
+    "generation": " grieving. The news spread quickly. Who was grieving, X"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.937,
+    "gold": " patient",
+    "generation": " grieving."
+   },
+   "ctxA": "Kiran comforted Xavier, who was",
+   "ctxB": "Xavier was comforted by Kiran, who was"
+  },
+  {
+   "name": "v5-respectively-80",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 1.432,
+    "gold": " too narrow and too wide.",
+    "generation": " bigger and bigger. The village lane was too narrow, whereas"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.266,
+    "gold": " too wide and too narrow.",
+    "generation": " bigger and smaller than the village lane. The village lane was"
+   },
+   "ctxA": "The lorry could not drive down the village lane. The village lane and the lorry were, respectively,",
+   "ctxB": "The lorry could not drive down the village lane. The lorry and the village lane were, respectively,"
+  },
+  {
+   "name": "v5-respectively-81",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.785,
+    "gold": " too narrow and too wide.",
+    "generation": " more valuable and more common."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.207,
+    "gold": " too wide and too narrow.",
+    "generation": " more valuable and more common."
+   },
+   "ctxA": "The dining table would not go through the doorframe. The doorframe and the dining table were, respectively,",
+   "ctxB": "The dining table would not go through the doorframe. The dining table and the doorframe were, respectively,"
+  },
+  {
+   "name": "v5-respectively-82",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -11.699,
+    "gold": " very hot and freezing.",
+    "generation": " hotter and colder. Which was hotter? The radiator."
+   },
+   "B": {
+    "hit": false,
+    "gap": -12.732,
+    "gold": " freezing and very hot.",
+    "generation": " hotter and colder. Which was hotter? The radiator."
+   },
+   "ctxA": "The radiator made people sweat more than the marble floor. The radiator and the marble floor were, respectively,",
+   "ctxB": "The radiator made people sweat more than the marble floor. The marble floor and the radiator were, respectively,"
+  },
+  {
+   "name": "v5-respectively-83",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.312,
+    "gold": " noisy and faint.",
+    "generation": " louder and more booming. Which was louder? The drum kit"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.713,
+    "gold": " faint and noisy.",
+    "generation": " louder and more deafening than the flute. Which was louder"
+   },
+   "ctxA": "The drum kit woke the baby but the flute did not. The drum kit and the flute were, respectively,",
+   "ctxB": "The drum kit woke the baby but the flute did not. The flute and the drum kit were, respectively,"
+  },
+  {
+   "name": "v5-respectively-84",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.817,
+    "gold": " very lengthy and brief.",
+    "generation": " much longer and more complex. Which was much longer? The"
+   },
+   "B": {
+    "hit": false,
+    "gap": -15.0,
+    "gold": " brief and very lengthy.",
+    "generation": " longer and more complex. Which was longer? The lecture."
+   },
+   "ctxA": "People spent more time on the lecture than on the coffee break. The lecture and the coffee break were, respectively,",
+   "ctxB": "People spent more time on the lecture than on the coffee break. The coffee break and the lecture were, respectively,"
+  },
+  {
+   "name": "v5-respectively-85",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.145,
+    "gold": " too small and too big.",
+    "generation": " bigger and heavier than the sofa. The lift was too"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.07,
+    "gold": " too big and too small.",
+    "generation": " bigger and taller. The sofa was too big, whereas"
+   },
+   "ctxA": "The sofa would not fit in the lift. The lift and the sofa were, respectively,",
+   "ctxB": "The sofa would not fit in the lift. The sofa and the lift were, respectively,"
+  },
+  {
+   "name": "v5-respectively-86",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.886,
+    "gold": " too small and too big.",
+    "generation": " bigger and taller than the trampoline."
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.706,
+    "gold": " too big and too small.",
+    "generation": " bigger and smaller than the trampoline. The back garden"
+   },
+   "ctxA": "The trampoline would not fit in the back garden. The back garden and the trampoline were, respectively,",
+   "ctxB": "The trampoline would not fit in the back garden. The trampoline and the back garden were, respectively,"
+  },
+  {
+   "name": "v5-respectively-87",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.489,
+    "gold": " too small and too long.",
+    "generation": " bigger and heavier than the rug. The reason: the rug"
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.464,
+    "gold": " too long and too small.",
+    "generation": " bigger and heavier than the box. Why? The box was"
+   },
+   "ctxA": "The rug would not fit in the box. The box and the rug were, respectively,",
+   "ctxB": "The rug would not fit in the box. The rug and the box were, respectively,"
+  },
+  {
+   "name": "v5-respectively-88",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.218,
+    "gold": " too narrow and too wide.",
+    "generation": " more expensive and more complicated to maintain. Which was more expensive"
+   },
+   "B": {
+    "hit": false,
+    "gap": 2.419,
+    "gold": " too wide and too narrow.",
+    "generation": " more expensive and more common."
+   },
+   "ctxA": "The fridge freezer would not go through the back door. The back door and the fridge freezer were, respectively,",
+   "ctxB": "The fridge freezer would not go through the back door. The fridge freezer and the back door were, respectively,"
+  },
+  {
+   "name": "v5-respectively-89",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": -16.782,
+    "gold": " the owner and finished with it.",
+    "generation": " the one who had lent it and the one who had lent"
+   },
+   "B": {
+    "hit": false,
+    "gap": -20.845,
+    "gold": " finished with it and the owner.",
+    "generation": " the one who had lent it and the one who had lent"
+   },
+   "ctxA": "Kai returned the book to Vikram. Vikram and Kai were, respectively,",
+   "ctxB": "Kai returned the book to Vikram. Kai and Vikram were, respectively,"
+  },
+  {
+   "name": "v5-respectively-90",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.518,
+    "gold": " upset and remorseful.",
+    "generation": " more guilty and more sorry."
+   },
+   "B": {
+    "hit": false,
+    "gap": -12.324,
+    "gold": " remorseful and upset.",
+    "generation": " more guilty and more sorry."
+   },
+   "ctxA": "Kasimir apologized to Leila. Leila and Kasimir were, respectively,",
+   "ctxB": "Kasimir apologized to Leila. Kasimir and Leila were, respectively,"
+  },
+  {
+   "name": "v5-respectively-91",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -9.835,
+    "gold": " massive and tiny.",
+    "generation": " bigger and taller than the galleon. The galle"
+   },
+   "B": {
+    "hit": false,
+    "gap": -11.941,
+    "gold": " tiny and massive.",
+    "generation": " bigger and taller than the dinghy."
+   },
+   "ctxA": "The galleon needed more room than the dinghy. The galleon and the dinghy were, respectively,",
+   "ctxB": "The galleon needed more room than the dinghy. The dinghy and the galleon were, respectively,"
+  },
+  {
+   "name": "v5-respectively-92",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.458,
+    "gold": " too short and too long.",
+    "generation": " heavier and more expensive. The lift or the surfboard:"
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.062,
+    "gold": " too long and too short.",
+    "generation": " bigger and taller than the lift. The reason: the lift"
+   },
+   "ctxA": "The surfboard would not fit in the lift. The lift and the surfboard were, respectively,",
+   "ctxB": "The surfboard would not fit in the lift. The surfboard and the lift were, respectively,"
+  },
+  {
+   "name": "v5-respectively-93",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -9.553,
+    "gold": " very heavy and almost weightless.",
+    "generation": " heavier and taller. The silk scarf was much lighter,"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.452,
+    "gold": " almost weightless and very heavy.",
+    "generation": " much heavier and more massive."
+   },
+   "ctxA": "The suit of armour bent the shelf more than the silk scarf. The suit of armour and the silk scarf were, respectively,",
+   "ctxB": "The suit of armour bent the shelf more than the silk scarf. The silk scarf and the suit of armour were, respectively,"
+  },
+  {
+   "name": "v5-respectively-94",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.546,
+    "gold": " too small and too large.",
+    "generation": " bigger and heavier than the bookcase. The car boot was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.396,
+    "gold": " too large and too small.",
+    "generation": " bigger and taller than the bookcase. The car boot was"
+   },
+   "ctxA": "The bookcase would not fit in the car boot. The car boot and the bookcase were, respectively,",
+   "ctxB": "The bookcase would not fit in the car boot. The bookcase and the car boot were, respectively,"
+  },
+  {
+   "name": "v5-respectively-95",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -12.752,
+    "gold": " lonely and patient.",
+    "generation": " more skilled and more experienced."
+   },
+   "B": {
+    "hit": false,
+    "gap": -15.43,
+    "gold": " patient and lonely.",
+    "generation": " the same person and the same thing."
+   },
+   "ctxA": "Emeka comforted Beatriz. Beatriz and Emeka were, respectively,",
+   "ctxB": "Emeka comforted Beatriz. Emeka and Beatriz were, respectively,"
+  },
+  {
+   "name": "v5-respectively-96",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -16.186,
+    "gold": " truly sorry and forgiving.",
+    "generation": " the one who did the work and the one who did the"
+   },
+   "B": {
+    "hit": false,
+    "gap": -22.538,
+    "gold": " forgiving and truly sorry.",
+    "generation": " the one who did the work and the one who did the"
+   },
+   "ctxA": "Alejandro forgave Lucia. Lucia and Alejandro were, respectively,",
+   "ctxB": "Alejandro forgave Lucia. Alejandro and Lucia were, respectively,"
+  },
+  {
+   "name": "v5-respectively-97",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -14.181,
+    "gold": " remorseful and forgiving.",
+    "generation": " the one who did the action and the one who did the"
+   },
+   "B": {
+    "hit": false,
+    "gap": -18.711,
+    "gold": " forgiving and remorseful.",
+    "generation": " the one who did the action and the rest were the rest"
+   },
+   "ctxA": "Sana forgave Diego. Diego and Sana were, respectively,",
+   "ctxB": "Sana forgave Diego. Sana and Diego were, respectively,"
+  },
+  {
+   "name": "v5-respectively-98",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.629,
+    "gold": " too narrow and too bulky.",
+    "generation": " taller and wider than the stairwell. The wardrobe or"
+   },
+   "B": {
+    "hit": false,
+    "gap": 0.862,
+    "gold": " too bulky and too narrow.",
+    "generation": " more expensive and more bulky."
+   },
+   "ctxA": "The wardrobe could not be carried up the stairwell. The stairwell and the wardrobe were, respectively,",
+   "ctxB": "The wardrobe could not be carried up the stairwell. The wardrobe and the stairwell were, respectively,"
+  },
+  {
+   "name": "v5-respectively-99",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.229,
+    "gold": " much heavier and light.",
+    "generation": " heavier and lighter. The paper screen was easy to lift,"
+   },
+   "B": {
+    "hit": false,
+    "gap": -14.933,
+    "gold": " light and much heavier.",
+    "generation": " heavier and taller. The paper screen was easy to lift,"
+   },
+   "ctxA": "The iron gate weighed more than the paper screen. The iron gate and the paper screen were, respectively,",
+   "ctxB": "The iron gate weighed more than the paper screen. The paper screen and the iron gate were, respectively,"
+  },
+  {
+   "name": "v5-respectively-100",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.251,
+    "gold": " dazzling and weak.",
+    "generation": " brighter and dimmer."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.618,
+    "gold": " weak and dazzling.",
+    "generation": " brighter and more brilliant. Which was brighter? The stadium flood"
+   },
+   "ctxA": "The stadium floodlight lit up more of the field than the night light. The stadium floodlight and the night light were, respectively,",
+   "ctxB": "The stadium floodlight lit up more of the field than the night light. The night light and the stadium floodlight were, respectively,"
+  },
+  {
+   "name": "v5-respectively-101",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -25.112,
+    "gold": " a helpful neighbour and without a ladder.",
+    "generation": " the one who was a builder and the one who was in"
+   },
+   "B": {
+    "hit": false,
+    "gap": -22.38,
+    "gold": " without a ladder and a helpful neighbour.",
+    "generation": " the one who was a builder and the one who was in"
+   },
+   "ctxA": "Gabriel borrowed a ladder from Xavier. Xavier and Gabriel were, respectively,",
+   "ctxB": "Gabriel borrowed a ladder from Xavier. Gabriel and Xavier were, respectively,"
+  },
+  {
+   "name": "v5-respectively-102",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -13.143,
+    "gold": " much heavier and easy to lift.",
+    "generation": " heavier and taller. Which was heavier? The marble statue."
+   },
+   "B": {
+    "hit": false,
+    "gap": -13.032,
+    "gold": " easy to lift and much heavier.",
+    "generation": " heavier and taller. Which was heavier? The marble statue."
+   },
+   "ctxA": "The marble statue bent the shelf more than the cardboard cutout. The marble statue and the cardboard cutout were, respectively,",
+   "ctxB": "The marble statue bent the shelf more than the cardboard cutout. The cardboard cutout and the marble statue were, respectively,"
+  },
+  {
+   "name": "v5-respectively-103",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -14.72,
+    "gold": " far more time-consuming and quick.",
+    "generation": " longer and shorter. The board meeting was far more time-"
+   },
+   "B": {
+    "hit": false,
+    "gap": -13.496,
+    "gold": " quick and far more time-consuming.",
+    "generation": " longer and more complex."
+   },
+   "ctxA": "The board meeting lasted longer than the phone call. The board meeting and the phone call were, respectively,",
+   "ctxB": "The board meeting lasted longer than the phone call. The phone call and the board meeting were, respectively,"
+  },
+  {
+   "name": "v5-respectively-104",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -13.861,
+    "gold": " pricey and inexpensive.",
+    "generation": " more expensive and more common."
+   },
+   "B": {
+    "hit": false,
+    "gap": -16.277,
+    "gold": " inexpensive and pricey.",
+    "generation": " more expensive and more popular than the community hall. The sports"
+   },
+   "ctxA": "The sports stadium cost more than the community hall. The sports stadium and the community hall were, respectively,",
+   "ctxB": "The sports stadium cost more than the community hall. The community hall and the sports stadium were, respectively,"
+  },
+  {
+   "name": "v5-respectively-105",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -12.821,
+    "gold": " far more time-consuming and over quickly.",
+    "generation": " longer and more complex."
+   },
+   "B": {
+    "hit": false,
+    "gap": -11.876,
+    "gold": " over quickly and far more time-consuming.",
+    "generation": " longer and more time-consuming."
+   },
+   "ctxA": "People spent more time on the semester than on the weekend workshop. The semester and the weekend workshop were, respectively,",
+   "ctxB": "People spent more time on the semester than on the weekend workshop. The weekend workshop and the semester were, respectively,"
+  },
+  {
+   "name": "v5-respectively-106",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.577,
+    "gold": " too low and too tall.",
+    "generation": " bigger and taller than the Christmas tree. The Christmas tree or"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.435,
+    "gold": " too tall and too low.",
+    "generation": " bigger and taller than the living room. The Christmas tree or"
+   },
+   "ctxA": "The Christmas tree would not stand up in the living room. The living room and the Christmas tree were, respectively,",
+   "ctxB": "The Christmas tree would not stand up in the living room. The Christmas tree and the living room were, respectively,"
+  },
+  {
+   "name": "v5-respectively-107",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -21.181,
+    "gold": " short of cash and trusting.",
+    "generation": " the one who did the work and the one who lent it"
+   },
+   "B": {
+    "hit": false,
+    "gap": -12.029,
+    "gold": " trusting and short of cash.",
+    "generation": " the one who did the work and the one who did the"
+   },
+   "ctxA": "Diego lent money to Elif. Elif and Diego were, respectively,",
+   "ctxB": "Diego lent money to Elif. Diego and Elif were, respectively,"
+  },
+  {
+   "name": "v5-respectively-108",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -12.967,
+    "gold": " grieving and patient.",
+    "generation": " more experienced and more experienced."
+   },
+   "B": {
+    "hit": false,
+    "gap": -16.194,
+    "gold": " patient and grieving.",
+    "generation": " the one who was heartbroken and Gabriel was heartbroken."
+   },
+   "ctxA": "Rafael comforted Gabriel. Gabriel and Rafael were, respectively,",
+   "ctxB": "Rafael comforted Gabriel. Rafael and Gabriel were, respectively,"
+  },
+  {
+   "name": "v5-respectively-109",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -14.972,
+    "gold": " rude and strict.",
+    "generation": " more skilled and more experienced."
+   },
+   "B": {
+    "hit": false,
+    "gap": -15.441,
+    "gold": " strict and rude.",
+    "generation": " more skilled and more experienced."
+   },
+   "ctxA": "Adaeze scolded Maya. Maya and Adaeze were, respectively,",
+   "ctxB": "Adaeze scolded Maya. Adaeze and Maya were, respectively,"
+  },
+  {
+   "name": "v5-respectively-110",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -12.083,
+    "gold": " ancient and much newer.",
+    "generation": " older and newer than the fossil. The fossil was ancient,"
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.208,
+    "gold": " much newer and ancient.",
+    "generation": " older and more ancient than the fossil. Which was older?"
+   },
+   "ctxA": "The fossil predated the newspaper. The fossil and the newspaper were, respectively,",
+   "ctxB": "The fossil predated the newspaper. The newspaper and the fossil were, respectively,"
+  },
+  {
+   "name": "v5-respectively-111",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -10.532,
+    "gold": " much warmer and chilly.",
+    "generation": " hotter and colder. Which was hotter? The desert."
+   },
+   "B": {
+    "hit": false,
+    "gap": -14.085,
+    "gold": " chilly and much warmer.",
+    "generation": " hotter and colder. Which was hotter? The desert."
+   },
+   "ctxA": "The desert melted the butter faster than the glacier. The desert and the glacier were, respectively,",
+   "ctxB": "The desert melted the butter faster than the glacier. The glacier and the desert were, respectively,"
+  },
+  {
+   "name": "v5-respectively-112",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.96,
+    "gold": " booming and barely audible.",
+    "generation": " louder and louder louder. Which was louder? The jet engine"
+   },
+   "B": {
+    "hit": false,
+    "gap": -10.316,
+    "gold": " barely audible and booming.",
+    "generation": " louder and faster. Which was louder? The jet engine."
+   },
+   "ctxA": "The jet engine woke the baby but the desk fan did not. The jet engine and the desk fan were, respectively,",
+   "ctxB": "The jet engine woke the baby but the desk fan did not. The desk fan and the jet engine were, respectively,"
+  },
+  {
+   "name": "v5-respectively-113",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.512,
+    "gold": " too small and too big.",
+    "generation": " more expensive and more spacious."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too big and too small.",
+    "generation": " too big and too small."
+   },
+   "ctxA": "The double bed would not fit in the spare room. The spare room and the double bed were, respectively,",
+   "ctxB": "The double bed would not fit in the spare room. The double bed and the spare room were, respectively,"
+  },
+  {
+   "name": "v5-respectively-114",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.929,
+    "gold": " too narrow and too wide.",
+    "generation": " bigger and taller than the hallway."
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.708,
+    "gold": " too wide and too narrow.",
+    "generation": " bigger and taller."
+   },
+   "ctxA": "The grand piano would not go down the hallway. The hallway and the grand piano were, respectively,",
+   "ctxB": "The grand piano would not go down the hallway. The grand piano and the hallway were, respectively,"
+  },
+  {
+   "name": "v5-respectively-115",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -11.958,
+    "gold": " much faster and sluggish.",
+    "generation": " faster and faster."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.346,
+    "gold": " sluggish and much faster.",
+    "generation": " faster and more expensive."
+   },
+   "ctxA": "The jet covered the distance faster than the hot-air balloon. The jet and the hot-air balloon were, respectively,",
+   "ctxB": "The jet covered the distance faster than the hot-air balloon. The hot-air balloon and the jet were, respectively,"
+  },
+  {
+   "name": "v5-respectively-116",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 2.488,
+    "gold": " too low and too high.",
+    "generation": " more expensive and more valuable."
+   },
+   "B": {
+    "hit": false,
+    "gap": 2.529,
+    "gold": " too high and too low.",
+    "generation": " more expensive and more important than the multi-storey car"
+   },
+   "ctxA": "The motor home could not enter the multi-storey car park. The multi-storey car park and the motor home were, respectively,",
+   "ctxB": "The motor home could not enter the multi-storey car park. The motor home and the multi-storey car park were, respectively,"
+  },
+  {
+   "name": "v5-respectively-117",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.062,
+    "gold": " too narrow and too wide.",
+    "generation": " bigger and taller than the alcove."
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.461,
+    "gold": " too wide and too narrow.",
+    "generation": " bigger and taller than the alcove. The reason:"
+   },
+   "ctxA": "The aquarium would not fit in the alcove. The alcove and the aquarium were, respectively,",
+   "ctxB": "The aquarium would not fit in the alcove. The aquarium and the alcove were, respectively,"
+  },
+  {
+   "name": "v5-respectively-118",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -17.73,
+    "gold": " reliable and short-staffed.",
+    "generation": " the one who did the work and the workman who did"
+   },
+   "B": {
+    "hit": false,
+    "gap": -15.864,
+    "gold": " short-staffed and reliable.",
+    "generation": " the one who did the work and the workman who did"
+   },
+   "ctxA": "Pia hired Nina. Nina and Pia were, respectively,",
+   "ctxB": "Pia hired Nina. Pia and Nina were, respectively,"
+  },
+  {
+   "name": "v5-respectively-119",
+   "category": "respectively",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": -20.552,
+    "gold": " the owner of a ladder and fixing the roof.",
+    "generation": " the one who was a builder and the one who was in"
+   },
+   "B": {
+    "hit": false,
+    "gap": -34.349,
+    "gold": " fixing the roof and the owner of a ladder.",
+    "generation": " the one who was a builder and the one who was a"
+   },
+   "ctxA": "Noor borrowed a ladder from Oscar. Oscar and Noor were, respectively,",
+   "ctxB": "Noor borrowed a ladder from Oscar. Noor and Oscar were, respectively,"
+  }
+ ]
+}

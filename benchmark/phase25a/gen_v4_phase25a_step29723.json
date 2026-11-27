@@ -1,0 +1,2163 @@
+{
+ "checkpoint": "/lambda/nfs/us-west-1-eval-inference/phase25a/step_29723.pt",
+ "step": 29723,
+ "cases_file": "benchmark/data/probefinding-winograndestyle/probefinding-winogrande-v4-heldout-20261122.json",
+ "summary": {
+  "n_cases": 112,
+  "flip_hit": 0,
+  "hit_rate": 0.094,
+  "mean_gap_nats": -5.599,
+  "by_category": {
+   "ability": {
+    "flip_hit": "0/24",
+    "mean_gap": -7.441
+   },
+   "comparative": {
+    "flip_hit": "0/24",
+    "mean_gap": -1.698
+   },
+   "emotional": {
+    "flip_hit": "0/24",
+    "mean_gap": -6.599
+   },
+   "fit": {
+    "flip_hit": "0/16",
+    "mean_gap": -4.668
+   },
+   "possession": {
+    "flip_hit": "0/24",
+    "mean_gap": -7.28
+   }
+  }
+ },
+ "rows": [
+  {
+   "name": "v4-ability-0",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.729,
+    "gold": " mistaken.",
+    "generation": " confused."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.847,
+    "gold": " well informed.",
+    "generation": " experienced."
+   },
+   "ctxA": "Hiro corrected Zoe, owing to the fact that Zoe was",
+   "ctxB": "Hiro corrected Zoe, owing to the fact that Hiro was"
+  },
+  {
+   "name": "v4-ability-1",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.859,
+    "gold": " mistaken.",
+    "generation": " a student of the latter. So it is true that am"
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.086,
+    "gold": " an expert.",
+    "generation": " the one who had made the error. So it cannot be"
+   },
+   "ctxA": "Amara corrected Reza, owing to the fact that Reza was",
+   "ctxB": "Amara corrected Reza, owing to the fact that Amara was"
+  },
+  {
+   "name": "v4-ability-2",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.963,
+    "gold": " mistaken.",
+    "generation": " not the one who had made the error. So it is"
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.072,
+    "gold": " certain.",
+    "generation": " the one who had made the error. So it cannot be"
+   },
+   "ctxA": "Dmitri corrected Basil. Anyone could tell that Basil was",
+   "ctxB": "Dmitri corrected Basil. Anyone could tell that Dmitri was"
+  },
+  {
+   "name": "v4-ability-3",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.838,
+    "gold": " mistaken.",
+    "generation": " not the one who had lent it. So it cannot be"
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.006,
+    "gold": " an expert.",
+    "generation": " not the one who had made the error. So it is"
+   },
+   "ctxA": "Basil corrected Nadia. Anyone could tell that Nadia was",
+   "ctxB": "Basil corrected Nadia. Anyone could tell that Basil was"
+  },
+  {
+   "name": "v4-ability-4",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.038,
+    "gold": " wrong.",
+    "generation": " a beginner."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.706,
+    "gold": " careful.",
+    "generation": " experienced."
+   },
+   "ctxA": "Tess corrected Farah, owing to the fact that Farah was",
+   "ctxB": "Tess corrected Farah, owing to the fact that Tess was"
+  },
+  {
+   "name": "v4-ability-5",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -21.489,
+    "gold": " careless with the figures.",
+    "generation": " not the one who had made the error. So it cannot"
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.04,
+    "gold": " well informed.",
+    "generation": " not the one who had made the error. So it cannot"
+   },
+   "ctxA": "Reza corrected Nadia. Anyone could tell that Nadia was",
+   "ctxB": "Reza corrected Nadia. Anyone could tell that Reza was"
+  },
+  {
+   "name": "v4-ability-6",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.894,
+    "gold": " confused.",
+    "generation": " not the one who had lent it."
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.236,
+    "gold": " certain.",
+    "generation": " an expert on the subject."
+   },
+   "ctxA": "Ravi corrected Astrid. Anyone could tell that Astrid was",
+   "ctxB": "Ravi corrected Astrid. Anyone could tell that Ravi was"
+  },
+  {
+   "name": "v4-ability-7",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -15.508,
+    "gold": " careless with the figures.",
+    "generation": " a woman. So it cannot be that astrid was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.101,
+    "gold": " well informed.",
+    "generation": " a woman. So it cannot be that astrid was"
+   },
+   "ctxA": "Astrid corrected Nadia; the trouble was that Nadia was",
+   "ctxB": "Astrid corrected Nadia; the trouble was that Astrid was"
+  },
+  {
+   "name": "v4-ability-8",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -13.178,
+    "gold": " careless with the figures.",
+    "generation": " a woman. So it is true that amarawa corrected"
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.773,
+    "gold": " certain.",
+    "generation": " a woman. So it cannot be that amara was a"
+   },
+   "ctxA": "Amara corrected Samir; the trouble was that Samir was",
+   "ctxB": "Amara corrected Samir; the trouble was that Amara was"
+  },
+  {
+   "name": "v4-ability-9",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -15.826,
+    "gold": " careless with the figures.",
+    "generation": " a woman. So it is true that reza was not"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.332,
+    "gold": " well informed.",
+    "generation": " a man of the world, and Hedda was a woman"
+   },
+   "ctxA": "Reza corrected Hedda; the trouble was that Hedda was",
+   "ctxB": "Reza corrected Hedda; the trouble was that Reza was"
+  },
+  {
+   "name": "v4-ability-10",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.287,
+    "gold": " confused.",
+    "generation": " a very good friend of the family. So it cannot be"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.261,
+    "gold": " an expert.",
+    "generation": " a woman. So it cannot be that astrid was"
+   },
+   "ctxA": "Astrid corrected Felix, owing to the fact that Felix was",
+   "ctxB": "Astrid corrected Felix, owing to the fact that Astrid was"
+  },
+  {
+   "name": "v4-ability-11",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.358,
+    "gold": " confused.",
+    "generation": " not the one who had made the error. So it is"
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.142,
+    "gold": " certain.",
+    "generation": " the one who had made the error. So it is true"
+   },
+   "ctxA": "Nadia corrected Hiro. Anyone could tell that Hiro was",
+   "ctxB": "Nadia corrected Hiro. Anyone could tell that Nadia was"
+  },
+  {
+   "name": "v4-ability-12",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -28.264,
+    "gold": " careless with the figures.",
+    "generation": " a beginner."
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.73,
+    "gold": " certain.",
+    "generation": " new to the job. So it is true that zoe"
+   },
+   "ctxA": "Hiro corrected Zoe; the trouble was that Zoe was",
+   "ctxB": "Hiro corrected Zoe; the trouble was that Hiro was"
+  },
+  {
+   "name": "v4-ability-13",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.092,
+    "gold": " mistaken.",
+    "generation": " careless."
+   },
+   "B": {
+    "hit": false,
+    "gap": -11.303,
+    "gold": " well informed.",
+    "generation": " the one who had lent it."
+   },
+   "ctxA": "Ravi corrected Kamala, given that Kamala was",
+   "ctxB": "Ravi corrected Kamala, given that Ravi was"
+  },
+  {
+   "name": "v4-ability-14",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.387,
+    "gold": " confused.",
+    "generation": " a beginner."
+   },
+   "B": {
+    "hit": true,
+    "gap": -0.687,
+    "gold": " an expert.",
+    "generation": " an expert on the subject. So it cannot be that d"
+   },
+   "ctxA": "Dmitri corrected Astrid, owing to the fact that Astrid was",
+   "ctxB": "Dmitri corrected Astrid, owing to the fact that Dmitri was"
+  },
+  {
+   "name": "v4-ability-15",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -16.038,
+    "gold": " careless with the figures.",
+    "generation": " a woman. So it is true that jana was a"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.296,
+    "gold": " careful.",
+    "generation": " a woman. So it is true that jana was a"
+   },
+   "ctxA": "Kamala corrected Jana; the trouble was that Jana was",
+   "ctxB": "Kamala corrected Jana; the trouble was that Kamala was"
+  },
+  {
+   "name": "v4-ability-16",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.723,
+    "gold": " confused.",
+    "generation": " careless."
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.688,
+    "gold": " certain.",
+    "generation": " an expert on the subject."
+   },
+   "ctxA": "Nadia corrected Lars, given that Lars was",
+   "ctxB": "Nadia corrected Lars, given that Nadia was"
+  },
+  {
+   "name": "v4-ability-17",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.525,
+    "gold": " wrong.",
+    "generation": " a beginner."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.435,
+    "gold": " certain.",
+    "generation": " experienced."
+   },
+   "ctxA": "Nadia corrected Omar, owing to the fact that Omar was",
+   "ctxB": "Nadia corrected Omar, owing to the fact that Nadia was"
+  },
+  {
+   "name": "v4-ability-18",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -17.699,
+    "gold": " careless with the figures.",
+    "generation": " disappointed."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " an expert.",
+    "generation": " an expert."
+   },
+   "ctxA": "Zoe corrected Omar, given that Omar was",
+   "ctxB": "Zoe corrected Omar, given that Zoe was"
+  },
+  {
+   "name": "v4-ability-19",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.586,
+    "gold": " mistaken.",
+    "generation": " a woman. So it cannot be that reza was a"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.773,
+    "gold": " certain.",
+    "generation": " a very good friend of Wanjiru's. So"
+   },
+   "ctxA": "Reza corrected Wanjiru; the trouble was that Wanjiru was",
+   "ctxB": "Reza corrected Wanjiru; the trouble was that Reza was"
+  },
+  {
+   "name": "v4-ability-20",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.482,
+    "gold": " confused.",
+    "generation": " not the one who had lent it."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.783,
+    "gold": " well informed.",
+    "generation": " an expert."
+   },
+   "ctxA": "Nadia corrected Jana. Anyone could tell that Jana was",
+   "ctxB": "Nadia corrected Jana. Anyone could tell that Nadia was"
+  },
+  {
+   "name": "v4-ability-21",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.362,
+    "gold": " mistaken.",
+    "generation": " not the one who had made the error. So it cannot"
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.103,
+    "gold": " careful.",
+    "generation": " the one who had made the error. So it is true"
+   },
+   "ctxA": "Kamala corrected Hedda. Anyone could tell that Hedda was",
+   "ctxB": "Kamala corrected Hedda. Anyone could tell that Kamala was"
+  },
+  {
+   "name": "v4-ability-22",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.43,
+    "gold": " confused.",
+    "generation": " a student of the author. So it cannot be that basil"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.523,
+    "gold": " careful.",
+    "generation": " a trained lawyer. So it cannot be that basil was a"
+   },
+   "ctxA": "Basil corrected Chen, owing to the fact that Chen was",
+   "ctxB": "Basil corrected Chen, owing to the fact that Basil was"
+  },
+  {
+   "name": "v4-ability-23",
+   "category": "ability",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -10.229,
+    "gold": " careless with the figures.",
+    "generation": " a very poor student. So it cannot be that dmit"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.483,
+    "gold": " well informed.",
+    "generation": " a man of the world, and he was not a man"
+   },
+   "ctxA": "Basil corrected Dmitri; the trouble was that Dmitri was",
+   "ctxB": "Basil corrected Dmitri; the trouble was that Basil was"
+  },
+  {
+   "name": "v4-comparative-24",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 0.547,
+    "gold": " pricey.",
+    "generation": " expensive. The street outside was quiet. Which was expensive?"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.001,
+    "gold": " inexpensive.",
+    "generation": " cheap. The street outside was quiet. Which was cheap?"
+   },
+   "ctxA": "The designer coat was harder to afford than the thrift-store jacket; the trouble was that the designer coat was",
+   "ctxB": "The designer coat was harder to afford than the thrift-store jacket; the trouble was that the thrift-store jacket was"
+  },
+  {
+   "name": "v4-comparative-25",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " far more valuable.",
+    "generation": " far more valuable. Which was far more valuable, the designer"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.038,
+    "gold": " common and cheap.",
+    "generation": " inexpensive, but the designer coat was expensive."
+   },
+   "ctxA": "Buyers saved for months for the designer coat but not for the thrift-store jacket. Anyone could tell that the designer coat was",
+   "ctxB": "Buyers saved for months for the designer coat but not for the thrift-store jacket. Anyone could tell that the thrift-store jacket was"
+  },
+  {
+   "name": "v4-comparative-26",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.074,
+    "gold": " built for speed.",
+    "generation": " much faster."
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.073,
+    "gold": " sluggish.",
+    "generation": " slow. The reason: the tortoise was much slower. The"
+   },
+   "ctxA": "The hare covered the distance faster than the snail; the trouble was that the hare was",
+   "ctxB": "The hare covered the distance faster than the snail; the trouble was that the snail was"
+  },
+  {
+   "name": "v4-comparative-27",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.548,
+    "gold": " lofty.",
+    "generation": " much bigger. The street outside was quiet. Which was much"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.324,
+    "gold": " low.",
+    "generation": " much smaller. The street outside was quiet. Which was much"
+   },
+   "ctxA": "The palm tree reached higher than the fern; the trouble was that the palm tree was",
+   "ctxB": "The palm tree reached higher than the fern; the trouble was that the fern was"
+  },
+  {
+   "name": "v4-comparative-28",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.1,
+    "gold": " very lengthy.",
+    "generation": " much longer. The street outside was quiet. Which was much"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " short.",
+    "generation": " short. The street outside was quiet. Which was short,"
+   },
+   "ctxA": "The hike up the mountain lasted longer than the stroll in the park; the trouble was that the hike up the mountain was",
+   "ctxB": "The hike up the mountain lasted longer than the stroll in the park; the trouble was that the stroll in the park was"
+  },
+  {
+   "name": "v4-comparative-29",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.956,
+    "gold": " very quick.",
+    "generation": " much slower."
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.792,
+    "gold": " unhurried.",
+    "generation": " much slower."
+   },
+   "ctxA": "The speedboat finished sooner than the rowing boat, given that the speedboat was",
+   "ctxB": "The speedboat finished sooner than the rowing boat, given that the rowing boat was"
+  },
+  {
+   "name": "v4-comparative-30",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.506,
+    "gold": " much warmer.",
+    "generation": " very hot. The street outside was quiet. Which was very"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " much cooler.",
+    "generation": " much cooler. The street outside was quiet. Which was much"
+   },
+   "ctxA": "The forge made people sweat more than the cellar, owing to the fact that the forge was",
+   "ctxB": "The forge made people sweat more than the cellar, owing to the fact that the cellar was"
+  },
+  {
+   "name": "v4-comparative-31",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.405,
+    "gold": " very tall.",
+    "generation": " much taller. The street outside was quiet. Which was much"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.242,
+    "gold": " short.",
+    "generation": " much shorter. The street outside was quiet. Which was much"
+   },
+   "ctxA": "The mountain could be seen from further away than the hill, owing to the fact that the mountain was",
+   "ctxB": "The mountain could be seen from further away than the hill, owing to the fact that the hill was"
+  },
+  {
+   "name": "v4-comparative-32",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.894,
+    "gold": " noisy.",
+    "generation": " very loud."
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.471,
+    "gold": " soft.",
+    "generation": " much quieter. The street outside was quiet. Which was much"
+   },
+   "ctxA": "The rock concert could be heard further away than the library, given that the rock concert was",
+   "ctxB": "The rock concert could be heard further away than the library, given that the library was"
+  },
+  {
+   "name": "v4-comparative-33",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.1,
+    "gold": " long and drawn out.",
+    "generation": " far more time-consuming. The street outside was quiet."
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " short.",
+    "generation": " short. The street outside was quiet. Which was short,"
+   },
+   "ctxA": "People spent more time on the road trip than on the walk to the corner shop, owing to the fact that the road trip was",
+   "ctxB": "People spent more time on the road trip than on the walk to the corner shop, owing to the fact that the walk to the corner shop was"
+  },
+  {
+   "name": "v4-comparative-34",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.427,
+    "gold": " scorching.",
+    "generation": " very hot. The street outside was quiet. Which was very"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " much cooler.",
+    "generation": " much cooler. The street outside was quiet. Which was much"
+   },
+   "ctxA": "The forge melted the butter faster than the cellar, owing to the fact that the forge was",
+   "ctxB": "The forge melted the butter faster than the cellar, owing to the fact that the cellar was"
+  },
+  {
+   "name": "v4-comparative-35",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": -3.0,
+    "gold": " very hot.",
+    "generation": " very hot, but only the cellar was very hot."
+   },
+   "B": {
+    "hit": false,
+    "gap": -12.255,
+    "gold": " cold.",
+    "generation": " much cooler, but the forge was much warmer."
+   },
+   "ctxA": "The forge melted the butter faster than the cellar. Anyone could tell that the forge was",
+   "ctxB": "The forge melted the butter faster than the cellar. Anyone could tell that the cellar was"
+  },
+  {
+   "name": "v4-comparative-36",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.292,
+    "gold": " very old.",
+    "generation": " ancient, but the text message was recent."
+   },
+   "B": {
+    "hit": true,
+    "gap": -2.875,
+    "gold": " much newer.",
+    "generation": " much newer, but the manuscript was ancient."
+   },
+   "ctxA": "The manuscript appeared in older records than the text message. Anyone could tell that the manuscript was",
+   "ctxB": "The manuscript appeared in older records than the text message. Anyone could tell that the text message was"
+  },
+  {
+   "name": "v4-comparative-37",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " a real burden.",
+    "generation": " a real burden. The box of tissues or the crate"
+   },
+   "B": {
+    "hit": false,
+    "gap": 1.112,
+    "gold": " almost weightless.",
+    "generation": " much lighter. The box of tissues or the crate of"
+   },
+   "ctxA": "The crate of books bent the shelf more than the box of tissues, owing to the fact that the crate of books was",
+   "ctxB": "The crate of books bent the shelf more than the box of tissues, owing to the fact that the box of tissues was"
+  },
+  {
+   "name": "v4-comparative-38",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 3.354,
+    "gold": " far more valuable.",
+    "generation": " expensive. The news spread quickly. Which was expensive, the"
+   },
+   "B": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " cheap.",
+    "generation": " cheap. The sports car cost more than the scooter,"
+   },
+   "ctxA": "The sports car cost more than the scooter, given that the sports car was",
+   "ctxB": "The sports car cost more than the scooter, given that the scooter was"
+  },
+  {
+   "name": "v4-comparative-39",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.768,
+    "gold": " huge.",
+    "generation": " much bigger. The street outside was quiet. Which was much"
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.318,
+    "gold": " tiny.",
+    "generation": " much smaller. The street outside was quiet. Which was much"
+   },
+   "ctxA": "The lake was harder to move than the puddle, given that the lake was",
+   "ctxB": "The lake was harder to move than the puddle, given that the puddle was"
+  },
+  {
+   "name": "v4-comparative-40",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.094,
+    "gold": " enormous.",
+    "generation": " much bigger. The street outside was quiet. Which was much"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.243,
+    "gold": " tiny.",
+    "generation": " much smaller. The street outside was quiet. Which was much"
+   },
+   "ctxA": "Fitting the lake in the photo was harder than fitting the puddle, given that the lake was",
+   "ctxB": "Fitting the lake in the photo was harder than fitting the puddle, given that the puddle was"
+  },
+  {
+   "name": "v4-comparative-41",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.617,
+    "gold": " rare and costly.",
+    "generation": " far more valuable, but the scooter was cheap."
+   },
+   "B": {
+    "hit": false,
+    "gap": -13.945,
+    "gold": " inexpensive.",
+    "generation": " cheap, but the sports car was expensive."
+   },
+   "ctxA": "Buyers saved for months for the sports car but not for the scooter. Anyone could tell that the sports car was",
+   "ctxB": "Buyers saved for months for the sports car but not for the scooter. Anyone could tell that the scooter was"
+  },
+  {
+   "name": "v4-comparative-42",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -0.938,
+    "gold": " enormous.",
+    "generation": " much bigger. The street outside was quiet. Which was much"
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.168,
+    "gold": " tiny.",
+    "generation": " much smaller. The street outside was quiet. Which was much"
+   },
+   "ctxA": "The lake needed more room than the puddle; the trouble was that the lake was",
+   "ctxB": "The lake needed more room than the puddle; the trouble was that the puddle was"
+  },
+  {
+   "name": "v4-comparative-43",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.95,
+    "gold": " very old.",
+    "generation": " much older than the text message. The text message was written"
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.252,
+    "gold": " new.",
+    "generation": " not from the manuscript. So it is true that the manuscript"
+   },
+   "ctxA": "The manuscript predated the text message. Anyone could tell that the manuscript was",
+   "ctxB": "The manuscript predated the text message. Anyone could tell that the text message was"
+  },
+  {
+   "name": "v4-comparative-44",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " much heavier.",
+    "generation": " much heavier. The box of tissues or the crate of"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.476,
+    "gold": " light.",
+    "generation": " much lighter. The box of tissues or the crate of"
+   },
+   "ctxA": "The crate of books bent the shelf more than the box of tissues, given that the crate of books was",
+   "ctxB": "The crate of books bent the shelf more than the box of tissues, given that the box of tissues was"
+  },
+  {
+   "name": "v4-comparative-45",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " very lengthy.",
+    "generation": " very lengthy."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.587,
+    "gold": " quick.",
+    "generation": " short."
+   },
+   "ctxA": "People spent more time on the hike up the mountain than on the stroll in the park, given that the hike up the mountain was",
+   "ctxB": "People spent more time on the hike up the mountain than on the stroll in the park, given that the stroll in the park was"
+  },
+  {
+   "name": "v4-comparative-46",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " much longer.",
+    "generation": " much longer. The street outside was quiet. Which was much"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.5,
+    "gold": " quick.",
+    "generation": " short. The street outside was quiet. Which was short,"
+   },
+   "ctxA": "The road trip lasted longer than the walk to the corner shop, owing to the fact that the road trip was",
+   "ctxB": "The road trip lasted longer than the walk to the corner shop, owing to the fact that the walk to the corner shop was"
+  },
+  {
+   "name": "v4-comparative-47",
+   "category": "comparative",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.038,
+    "gold": " long and drawn out.",
+    "generation": " much longer."
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.25,
+    "gold": " quick.",
+    "generation": " short. The street outside was quiet. Which was short?"
+   },
+   "ctxA": "The hike up the mountain lasted longer than the stroll in the park, given that the hike up the mountain was",
+   "ctxB": "The hike up the mountain lasted longer than the stroll in the park, given that the stroll in the park was"
+  },
+  {
+   "name": "v4-emotional-48",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.031,
+    "gold": " lucky.",
+    "generation": " a very beautiful girl. So it cannot be that omar"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.895,
+    "gold": " jealous.",
+    "generation": " a very good person. So it cannot be that omar"
+   },
+   "ctxA": "Omar envied Nadia. Anyone could tell that Nadia was",
+   "ctxB": "Omar envied Nadia. Anyone could tell that Omar was"
+  },
+  {
+   "name": "v4-emotional-49",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.762,
+    "gold": " successful.",
+    "generation": " not the one who had congratulated her."
+   },
+   "B": {
+    "hit": false,
+    "gap": -14.961,
+    "gold": " sporting.",
+    "generation": " the one who had been the one to congratulate Hiro."
+   },
+   "ctxA": "Farah congratulated Hiro. Anyone could tell that Hiro was",
+   "ctxB": "Farah congratulated Hiro. Anyone could tell that Farah was"
+  },
+  {
+   "name": "v4-emotional-50",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.696,
+    "gold": " victorious.",
+    "generation": " the one who had made the mistake of not telling him about"
+   },
+   "B": {
+    "hit": false,
+    "gap": -13.886,
+    "gold": " sporting.",
+    "generation": " the one who had made the decision to end her relationship with"
+   },
+   "ctxA": "Hiro congratulated Zoe, owing to the fact that Zoe was",
+   "ctxB": "Hiro congratulated Zoe, owing to the fact that Hiro was"
+  },
+  {
+   "name": "v4-emotional-51",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.6,
+    "gold": " admired by everyone.",
+    "generation": " the one who had been sent to the palace to be married"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.873,
+    "gold": " jealous.",
+    "generation": " the son of a powerful king and had a strong connection to"
+   },
+   "ctxA": "Reza envied Astrid, given that Astrid was",
+   "ctxB": "Reza envied Astrid, given that Reza was"
+  },
+  {
+   "name": "v4-emotional-52",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.867,
+    "gold": " promoted.",
+    "generation": " the one who had made the mistake of not telling him the"
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.377,
+    "gold": " happy for them.",
+    "generation": " the one who had made the mistake. So it cannot be"
+   },
+   "ctxA": "Amara congratulated Shreya. Anyone could tell that Shreya was",
+   "ctxB": "Amara congratulated Shreya. Anyone could tell that Amara was"
+  },
+  {
+   "name": "v4-emotional-53",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": -4.377,
+    "gold": " the winner.",
+    "generation": " the one who had been the one who had been the one"
+   },
+   "B": {
+    "hit": false,
+    "gap": -10.354,
+    "gold": " happy for them.",
+    "generation": " the one who had made the decision to leave the group."
+   },
+   "ctxA": "Zoe congratulated Hiro, given that Hiro was",
+   "ctxB": "Zoe congratulated Hiro, given that Zoe was"
+  },
+  {
+   "name": "v4-emotional-54",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.736,
+    "gold": " lucky.",
+    "generation": " a woman. So it cannot be that the trouble was that"
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.88,
+    "gold": " jealous.",
+    "generation": " a woman. So it is true that the trouble was that"
+   },
+   "ctxA": "Chen envied Farah; the trouble was that Farah was",
+   "ctxB": "Chen envied Farah; the trouble was that Chen was"
+  },
+  {
+   "name": "v4-emotional-55",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.127,
+    "gold": " admired by everyone.",
+    "generation": " a skilled fighter. So it cannot be that nadia was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -12.221,
+    "gold": " unhappy with their own life.",
+    "generation": " a child of the same family.\n\nWhat happened to"
+   },
+   "ctxA": "Nadia envied Wanjiru, owing to the fact that Wanjiru was",
+   "ctxB": "Nadia envied Wanjiru, owing to the fact that Nadia was"
+  },
+  {
+   "name": "v4-emotional-56",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.575,
+    "gold": " very successful.",
+    "generation": " the one who had the most power.\n\nRavi"
+   },
+   "B": {
+    "hit": false,
+    "gap": -0.135,
+    "gold": " jealous.",
+    "generation": " a woman of great beauty. So it cannot be that k"
+   },
+   "ctxA": "Kamala envied Ravi. Anyone could tell that Ravi was",
+   "ctxB": "Kamala envied Ravi. Anyone could tell that Kamala was"
+  },
+  {
+   "name": "v4-emotional-57",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.672,
+    "gold": " admired by everyone.",
+    "generation": " a woman. So it cannot be that samir was a"
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.516,
+    "gold": " insecure.",
+    "generation": " a very good student. So it cannot be that samir"
+   },
+   "ctxA": "Samir envied Zoe; the trouble was that Zoe was",
+   "ctxB": "Samir envied Zoe; the trouble was that Samir was"
+  },
+  {
+   "name": "v4-emotional-58",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.271,
+    "gold": " promoted.",
+    "generation": " the one who had been the one to congratulate her."
+   },
+   "B": {
+    "hit": false,
+    "gap": -10.86,
+    "gold": " happy for them.",
+    "generation": " the one who had given her a gift.\n\nWhat"
+   },
+   "ctxA": "Amara congratulated Nadia, owing to the fact that Nadia was",
+   "ctxB": "Amara congratulated Nadia, owing to the fact that Amara was"
+  },
+  {
+   "name": "v4-emotional-59",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.222,
+    "gold": " promoted.",
+    "generation": " a woman. So it cannot be that astrid was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -11.501,
+    "gold": " happy for them.",
+    "generation": " a woman. So it cannot be that astrid was"
+   },
+   "ctxA": "Astrid congratulated Felix; the trouble was that Felix was",
+   "ctxB": "Astrid congratulated Felix; the trouble was that Astrid was"
+  },
+  {
+   "name": "v4-emotional-60",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.333,
+    "gold": " the winner.",
+    "generation": " not happy. So it cannot be that kamala was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.166,
+    "gold": " proud.",
+    "generation": " not the one who had made the mistake. So it cannot"
+   },
+   "ctxA": "Hiro congratulated Kamala. Anyone could tell that Kamala was",
+   "ctxB": "Hiro congratulated Kamala. Anyone could tell that Hiro was"
+  },
+  {
+   "name": "v4-emotional-61",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.203,
+    "gold": " successful.",
+    "generation": " the one who had made the decision to leave the country."
+   },
+   "B": {
+    "hit": false,
+    "gap": -10.349,
+    "gold": " happy for them.",
+    "generation": " the one who had made the decision to leave the country."
+   },
+   "ctxA": "Farah congratulated Ravi, owing to the fact that Ravi was",
+   "ctxB": "Farah congratulated Ravi, owing to the fact that Farah was"
+  },
+  {
+   "name": "v4-emotional-62",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.396,
+    "gold": " the winner.",
+    "generation": " feeling low."
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.732,
+    "gold": " proud.",
+    "generation": " the one who had been chosen to be the new leader."
+   },
+   "ctxA": "Jana congratulated Lena, given that Lena was",
+   "ctxB": "Jana congratulated Lena, given that Jana was"
+  },
+  {
+   "name": "v4-emotional-63",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.064,
+    "gold": " popular.",
+    "generation": " a very good friend of her father. So it cannot be"
+   },
+   "B": {
+    "hit": false,
+    "gap": -14.146,
+    "gold": " unhappy with their own life.",
+    "generation": " a girl of 12 years old. So it is"
+   },
+   "ctxA": "Nadia envied Felix, owing to the fact that Felix was",
+   "ctxB": "Nadia envied Felix, owing to the fact that Nadia was"
+  },
+  {
+   "name": "v4-emotional-64",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.782,
+    "gold": " very successful.",
+    "generation": " a skilled fighter and Ravi was a skilled warrior. Rav"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.834,
+    "gold": " resentful.",
+    "generation": " a skilled fighter and Amara was a skilled warrior. Rav"
+   },
+   "ctxA": "Ravi envied Amara, given that Amara was",
+   "ctxB": "Ravi envied Amara, given that Ravi was"
+  },
+  {
+   "name": "v4-emotional-65",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.263,
+    "gold": " the winner.",
+    "generation": " feeling low. Who was feeling low? Zoe."
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.572,
+    "gold": " warm.",
+    "generation": " good-humoured."
+   },
+   "ctxA": "Zoe congratulated Reza. Anyone could tell that Reza was",
+   "ctxB": "Zoe congratulated Reza. Anyone could tell that Zoe was"
+  },
+  {
+   "name": "v4-emotional-66",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.33,
+    "gold": " admired by everyone.",
+    "generation": " a very good friend. From this alone, we cannot tell"
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.171,
+    "gold": " resentful.",
+    "generation": " a very poor man. So it cannot be that basil was"
+   },
+   "ctxA": "Basil envied Samir; the trouble was that Samir was",
+   "ctxB": "Basil envied Samir; the trouble was that Basil was"
+  },
+  {
+   "name": "v4-emotional-67",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.154,
+    "gold": " very successful.",
+    "generation": " a skilled musician and had a reputation for being a good musician"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.366,
+    "gold": " resentful.",
+    "generation": " a skilled fighter and Ravi was a skilled fighter. This"
+   },
+   "ctxA": "Basil envied Ravi, given that Ravi was",
+   "ctxB": "Basil envied Ravi, given that Basil was"
+  },
+  {
+   "name": "v4-emotional-68",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.751,
+    "gold": " successful.",
+    "generation": " the one who had been the one who had been the one"
+   },
+   "B": {
+    "hit": false,
+    "gap": -11.184,
+    "gold": " warm.",
+    "generation": " the one who had been the one to give him the award"
+   },
+   "ctxA": "Hedda congratulated Lars, given that Lars was",
+   "ctxB": "Hedda congratulated Lars, given that Hedda was"
+  },
+  {
+   "name": "v4-emotional-69",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.897,
+    "gold": " admired by everyone.",
+    "generation": " a skilled warrior and had a strong reputation for his bravery."
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.971,
+    "gold": " jealous.",
+    "generation": " the one who had the power to make decisions and control the"
+   },
+   "ctxA": "Farah envied Hiro, given that Hiro was",
+   "ctxB": "Farah envied Hiro, given that Farah was"
+  },
+  {
+   "name": "v4-emotional-70",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -9.152,
+    "gold": " promoted.",
+    "generation": " a woman. So it cannot be that astrid was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.202,
+    "gold": " proud.",
+    "generation": " a woman. So it cannot be that astrid was"
+   },
+   "ctxA": "Astrid congratulated Hedda; the trouble was that Hedda was",
+   "ctxB": "Astrid congratulated Hedda; the trouble was that Astrid was"
+  },
+  {
+   "name": "v4-emotional-71",
+   "category": "emotional",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -3.286,
+    "gold": " the winner.",
+    "generation": " not happy. Who was cheerful, Amara or Lars?"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.05,
+    "gold": " proud.",
+    "generation": " not the one who had made the mistake. So it cannot"
+   },
+   "ctxA": "Lars congratulated Amara. Anyone could tell that Amara was",
+   "ctxB": "Lars congratulated Amara. Anyone could tell that Lars was"
+  },
+  {
+   "name": "v4-fit-72",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.516,
+    "gold": " too low.",
+    "generation": " too narrow. The reason: the barge was too wide"
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.528,
+    "gold": " too tall.",
+    "generation": " too large. The reason: the barge was too large"
+   },
+   "ctxA": "The barge could not pass through the tunnel under the canal, owing to the fact that the tunnel under the canal was",
+   "ctxB": "The barge could not pass through the tunnel under the canal, owing to the fact that the barge was"
+  },
+  {
+   "name": "v4-fit-73",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small. The reason: the cello was too large"
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.701,
+    "gold": " too bulky.",
+    "generation": " too large. The taxi was too small, so the cell"
+   },
+   "ctxA": "The cello case would not fit in the taxi, owing to the fact that the taxi was",
+   "ctxB": "The cello case would not fit in the taxi, owing to the fact that the cello case was"
+  },
+  {
+   "name": "v4-fit-74",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.762,
+    "gold": " too low.",
+    "generation": " too narrow. The reason: the barge was too wide"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.3,
+    "gold": " too tall.",
+    "generation": " too large to fit through the narrow passage. The passage was"
+   },
+   "ctxA": "The barge could not pass through the tunnel under the canal, given that the tunnel under the canal was",
+   "ctxB": "The barge could not pass through the tunnel under the canal, given that the barge was"
+  },
+  {
+   "name": "v4-fit-75",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -11.787,
+    "gold": " too short.",
+    "generation": " too small. The street outside was quiet. Which was too"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.395,
+    "gold": " too long.",
+    "generation": " too wide. The street outside was quiet. Which was too"
+   },
+   "ctxA": "The canoe would not fit in the garage, given that the garage was",
+   "ctxB": "The canoe would not fit in the garage, given that the canoe was"
+  },
+  {
+   "name": "v4-fit-76",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -10.377,
+    "gold": " too short.",
+    "generation": " too small. The street outside was quiet. Which was too"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.39,
+    "gold": " too long.",
+    "generation": " too small. The street outside was quiet. Which was too"
+   },
+   "ctxA": "The canoe would not fit in the garage, owing to the fact that the garage was",
+   "ctxB": "The canoe would not fit in the garage, owing to the fact that the canoe was"
+  },
+  {
+   "name": "v4-fit-77",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -15.456,
+    "gold": " too short.",
+    "generation": " too small, but the canoe was too large."
+   },
+   "B": {
+    "hit": false,
+    "gap": -11.079,
+    "gold": " too long.",
+    "generation": " too small, but only the motor home was too high."
+   },
+   "ctxA": "The canoe would not fit in the garage. Anyone could tell that the garage was",
+   "ctxB": "The canoe would not fit in the garage. Anyone could tell that the canoe was"
+  },
+  {
+   "name": "v4-fit-78",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.87,
+    "gold": " too small.",
+    "generation": " designed for a different vehicle type. This mismatch led to the"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.582,
+    "gold": " too tall.",
+    "generation": " designed for a different vehicle. The hatchback was built for"
+   },
+   "ctxA": "The harp would not fit in the hatchback, given that the hatchback was",
+   "ctxB": "The harp would not fit in the hatchback, given that the harp was"
+  },
+  {
+   "name": "v4-fit-79",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -10.099,
+    "gold": " too short.",
+    "generation": " too small. The street outside was quiet. Which was too"
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.815,
+    "gold": " too long.",
+    "generation": " too wide. The street outside was quiet. Which was too"
+   },
+   "ctxA": "The canoe would not fit in the garage; the trouble was that the garage was",
+   "ctxB": "The canoe would not fit in the garage; the trouble was that the canoe was"
+  },
+  {
+   "name": "v4-fit-80",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.646,
+    "gold": " too low.",
+    "generation": " too narrow for the barge to pass through. The b"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.22,
+    "gold": " too tall.",
+    "generation": " too large to pass through the tunnel. The barge was"
+   },
+   "ctxA": "The barge could not pass through the tunnel under the canal. Anyone could tell that the tunnel under the canal was",
+   "ctxB": "The barge could not pass through the tunnel under the canal. Anyone could tell that the barge was"
+  },
+  {
+   "name": "v4-fit-81",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small. So it cannot be that the hatchback was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.696,
+    "gold": " too tall.",
+    "generation": " too heavy. So it cannot be that the harp was too"
+   },
+   "ctxA": "The harp would not fit in the hatchback; the trouble was that the hatchback was",
+   "ctxB": "The harp would not fit in the hatchback; the trouble was that the harp was"
+  },
+  {
+   "name": "v4-fit-82",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small. The cello case would not fit in the"
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.559,
+    "gold": " too bulky.",
+    "generation": " too large and the taxi was too small. The cello"
+   },
+   "ctxA": "The cello case would not fit in the taxi, given that the taxi was",
+   "ctxB": "The cello case would not fit in the taxi, given that the cello case was"
+  },
+  {
+   "name": "v4-fit-83",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": -1.625,
+    "gold": " too small.",
+    "generation": " too small, but only the cello could do that."
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.464,
+    "gold": " too bulky.",
+    "generation": " too large, but in fact the taxi was too small."
+   },
+   "ctxA": "The cello case would not fit in the taxi. Anyone could tell that the taxi was",
+   "ctxB": "The cello case would not fit in the taxi. Anyone could tell that the cello case was"
+  },
+  {
+   "name": "v4-fit-84",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": 1.596,
+    "gold": " too small.",
+    "generation": " not a good fit for the harp. The hatchback had"
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.788,
+    "gold": " too tall.",
+    "generation": " too big. So it is true that the harp was too"
+   },
+   "ctxA": "The harp would not fit in the hatchback. Anyone could tell that the hatchback was",
+   "ctxB": "The harp would not fit in the hatchback. Anyone could tell that the harp was"
+  },
+  {
+   "name": "v4-fit-85",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.443,
+    "gold": " too low.",
+    "generation": " too narrow. So it is true that the barge was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.91,
+    "gold": " too tall.",
+    "generation": " too large to pass through the tunnel. So it cannot be"
+   },
+   "ctxA": "The barge could not pass through the tunnel under the canal; the trouble was that the tunnel under the canal was",
+   "ctxB": "The barge could not pass through the tunnel under the canal; the trouble was that the barge was"
+  },
+  {
+   "name": "v4-fit-86",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small. The street outside was quiet. Which was too"
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.957,
+    "gold": " too bulky.",
+    "generation": " too large. The street outside was quiet. Which was too"
+   },
+   "ctxA": "The cello case would not fit in the taxi; the trouble was that the taxi was",
+   "ctxB": "The cello case would not fit in the taxi; the trouble was that the cello case was"
+  },
+  {
+   "name": "v4-fit-87",
+   "category": "fit",
+   "flip_hit": false,
+   "A": {
+    "hit": true,
+    "gap": 0.0,
+    "gold": " too small.",
+    "generation": " too small. So it is true that the harp was too"
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.009,
+    "gold": " too tall.",
+    "generation": " too large. So it is true that the harp was too"
+   },
+   "ctxA": "The harp would not fit in the hatchback, owing to the fact that the hatchback was",
+   "ctxB": "The harp would not fit in the hatchback, owing to the fact that the harp was"
+  },
+  {
+   "name": "v4-possession-88",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.961,
+    "gold": " recovering from illness.",
+    "generation": " the son of a man who had once been a king."
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.322,
+    "gold": " generous.",
+    "generation": " the one who had previously given a gift to Reza."
+   },
+   "ctxA": "Ravi gave a gift to Reza, given that Reza was",
+   "ctxB": "Ravi gave a gift to Reza, given that Ravi was"
+  },
+  {
+   "name": "v4-possession-89",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -9.665,
+    "gold": " leaving the company.",
+    "generation": " the one who had been chosen by the king to be his"
+   },
+   "B": {
+    "hit": false,
+    "gap": -12.412,
+    "gold": " fond of them.",
+    "generation": " the one who had the gift and Felix was the one who"
+   },
+   "ctxA": "Amara gave a gift to Felix, given that Felix was",
+   "ctxB": "Amara gave a gift to Felix, given that Amara was"
+  },
+  {
+   "name": "v4-possession-90",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.801,
+    "gold": " a close friend.",
+    "generation": " not a Muslim. So it cannot be that reza was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.224,
+    "gold": " generous.",
+    "generation": " not a Muslim. So it is true that amara gave"
+   },
+   "ctxA": "Amara gave a gift to Reza; the trouble was that Reza was",
+   "ctxB": "Amara gave a gift to Reza; the trouble was that Amara was"
+  },
+  {
+   "name": "v4-possession-91",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -4.355,
+    "gold": " a close friend.",
+    "generation": " not a good person. So it cannot be that kam"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.534,
+    "gold": " grateful.",
+    "generation": " not a good person. So it cannot be that nadia"
+   },
+   "ctxA": "Nadia gave a gift to Kamala; the trouble was that Kamala was",
+   "ctxB": "Nadia gave a gift to Kamala; the trouble was that Nadia was"
+  },
+  {
+   "name": "v4-possession-92",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -2.011,
+    "gold": " a close friend.",
+    "generation": " not a good person. Basil was not a good person because"
+   },
+   "B": {
+    "hit": false,
+    "gap": -3.706,
+    "gold": " thoughtful.",
+    "generation": " not a friend. Basil was not a friend. He was"
+   },
+   "ctxA": "Samir gave a gift to Basil. Anyone could tell that Basil was",
+   "ctxB": "Samir gave a gift to Basil. Anyone could tell that Samir was"
+  },
+  {
+   "name": "v4-possession-93",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.641,
+    "gold": " celebrating a birthday.",
+    "generation": " not a good person. So it cannot be that dmit"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.623,
+    "gold": " generous.",
+    "generation": " not a good person. So it is true that dmit"
+   },
+   "ctxA": "Dmitri gave a gift to Chen; the trouble was that Chen was",
+   "ctxB": "Dmitri gave a gift to Chen; the trouble was that Dmitri was"
+  },
+  {
+   "name": "v4-possession-94",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -16.215,
+    "gold": " leaving the company.",
+    "generation": " the one who received the gift. The act of giving was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -11.686,
+    "gold": " fond of them.",
+    "generation": " the one who gave the gift. The source says that Am"
+   },
+   "ctxA": "Amara gave a gift to Jana. Anyone could tell that Jana was",
+   "ctxB": "Amara gave a gift to Jana. Anyone could tell that Amara was"
+  },
+  {
+   "name": "v4-possession-95",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -10.232,
+    "gold": " leaving the company.",
+    "generation": " the one who received the gift. The act of giving was"
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.843,
+    "gold": " thoughtful.",
+    "generation": " the one who had the gift and Felix was the one who"
+   },
+   "ctxA": "Farah gave a gift to Felix, given that Felix was",
+   "ctxB": "Farah gave a gift to Felix, given that Farah was"
+  },
+  {
+   "name": "v4-possession-96",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.307,
+    "gold": " recovering from illness.",
+    "generation": " the one who had been in a relationship with her. This"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.21,
+    "gold": " grateful.",
+    "generation": " the one who had previously been in a relationship with Luis."
+   },
+   "ctxA": "Lena gave a gift to Luis, given that Luis was",
+   "ctxB": "Lena gave a gift to Luis, given that Lena was"
+  },
+  {
+   "name": "v4-possession-97",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.576,
+    "gold": " celebrating a birthday.",
+    "generation": " not a good person. So it cannot be that hiro"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.167,
+    "gold": " generous.",
+    "generation": " not a good person. So it cannot be that hiro"
+   },
+   "ctxA": "Hiro gave a gift to Lars; the trouble was that Lars was",
+   "ctxB": "Hiro gave a gift to Lars; the trouble was that Hiro was"
+  },
+  {
+   "name": "v4-possession-98",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -10.762,
+    "gold": " celebrating a birthday.",
+    "generation": " the one who received the gift. Shreya, in"
+   },
+   "B": {
+    "hit": false,
+    "gap": -2.415,
+    "gold": " generous.",
+    "generation": " the one who gave the gift. Shreya was the"
+   },
+   "ctxA": "Astrid gave a gift to Shreya. Anyone could tell that Shreya was",
+   "ctxB": "Astrid gave a gift to Shreya. Anyone could tell that Astrid was"
+  },
+  {
+   "name": "v4-possession-99",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -8.137,
+    "gold": " celebrating a birthday.",
+    "generation": " the one who had been the one who had been given the"
+   },
+   "B": {
+    "hit": false,
+    "gap": -9.714,
+    "gold": " fond of them.",
+    "generation": " the one who had been the one to give it. This"
+   },
+   "ctxA": "Jana gave a gift to Dmitri, owing to the fact that Dmitri was",
+   "ctxB": "Jana gave a gift to Dmitri, owing to the fact that Jana was"
+  },
+  {
+   "name": "v4-possession-100",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.381,
+    "gold": " celebrating a birthday.",
+    "generation": " not a good person. So it cannot be that lars"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.866,
+    "gold": " grateful.",
+    "generation": " a very kind man. He was a very good friend of"
+   },
+   "ctxA": "Lars gave a gift to Felix. Anyone could tell that Felix was",
+   "ctxB": "Lars gave a gift to Felix. Anyone could tell that Lars was"
+  },
+  {
+   "name": "v4-possession-101",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -1.93,
+    "gold": " a close friend.",
+    "generation": " the one who had been chosen to be the new queen."
+   },
+   "B": {
+    "hit": false,
+    "gap": -12.884,
+    "gold": " fond of them.",
+    "generation": " the one who had been given the gift. This act of"
+   },
+   "ctxA": "Amara gave a gift to Astrid, given that Astrid was",
+   "ctxB": "Amara gave a gift to Astrid, given that Amara was"
+  },
+  {
+   "name": "v4-possession-102",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -11.238,
+    "gold": " leaving the company.",
+    "generation": " not a member of the royal family. So it cannot be"
+   },
+   "B": {
+    "hit": false,
+    "gap": -8.594,
+    "gold": " fond of them.",
+    "generation": " not a good person. So it is true that farah"
+   },
+   "ctxA": "Farah gave a gift to Wanjiru; the trouble was that Wanjiru was",
+   "ctxB": "Farah gave a gift to Wanjiru; the trouble was that Farah was"
+  },
+  {
+   "name": "v4-possession-103",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -10.238,
+    "gold": " leaving the company.",
+    "generation": " the one who had been chosen to be the new leader."
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.14,
+    "gold": " generous.",
+    "generation": " the one who had previously been in a relationship with Dmit"
+   },
+   "ctxA": "Nadia gave a gift to Dmitri, given that Dmitri was",
+   "ctxB": "Nadia gave a gift to Dmitri, given that Nadia was"
+  },
+  {
+   "name": "v4-possession-104",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.813,
+    "gold": " celebrating a birthday.",
+    "generation": " the one who had been in danger and was in danger."
+   },
+   "B": {
+    "hit": false,
+    "gap": -4.446,
+    "gold": " grateful.",
+    "generation": " the one who had previously given a gift to Basil. This"
+   },
+   "ctxA": "Ravi gave a gift to Basil, given that Basil was",
+   "ctxB": "Ravi gave a gift to Basil, given that Ravi was"
+  },
+  {
+   "name": "v4-possession-105",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -12.762,
+    "gold": " leaving the company.",
+    "generation": " not the one who had given it. The source says that"
+   },
+   "B": {
+    "hit": false,
+    "gap": -5.998,
+    "gold": " grateful.",
+    "generation": " not a good husband. So it cannot be that luis"
+   },
+   "ctxA": "Luis gave a gift to Hedda; the trouble was that Hedda was",
+   "ctxB": "Luis gave a gift to Hedda; the trouble was that Luis was"
+  },
+  {
+   "name": "v4-possession-106",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -7.16,
+    "gold": " leaving the company.",
+    "generation": " not a good person. So it is true that lars"
+   },
+   "B": {
+    "hit": false,
+    "gap": -6.058,
+    "gold": " grateful.",
+    "generation": " not a good person. So it cannot be that lars"
+   },
+   "ctxA": "Lars gave a gift to Astrid; the trouble was that Astrid was",
+   "ctxB": "Lars gave a gift to Astrid; the trouble was that Lars was"
+  },
+  {
+   "name": "v4-possession-107",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.904,
+    "gold": " recovering from illness.",
+    "generation": " the one who had been the one who had been given the"
+   },
+   "B": {
+    "hit": false,
+    "gap": -10.07,
+    "gold": " fond of them.",
+    "generation": " a widow. This act of giving was not a loan or"
+   },
+   "ctxA": "Hedda gave a gift to Nadia, owing to the fact that Nadia was",
+   "ctxB": "Hedda gave a gift to Nadia, owing to the fact that Hedda was"
+  },
+  {
+   "name": "v4-possession-108",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.012,
+    "gold": " a close friend.",
+    "generation": " not the one who had the gift. The source says that"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.717,
+    "gold": " generous.",
+    "generation": " not a good person. So it cannot be that shre"
+   },
+   "ctxA": "Shreya gave a gift to Chen; the trouble was that Chen was",
+   "ctxB": "Shreya gave a gift to Chen; the trouble was that Shreya was"
+  },
+  {
+   "name": "v4-possession-109",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -6.304,
+    "gold": " celebrating a birthday.",
+    "generation": " not a good person. So it cannot be that luis"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.635,
+    "gold": " thoughtful.",
+    "generation": " not a good person. So it cannot be that hed"
+   },
+   "ctxA": "Hedda gave a gift to Luis; the trouble was that Luis was",
+   "ctxB": "Hedda gave a gift to Luis; the trouble was that Hedda was"
+  },
+  {
+   "name": "v4-possession-110",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -10.969,
+    "gold": " leaving the company.",
+    "generation": " the one who had been the one who had been the one"
+   },
+   "B": {
+    "hit": false,
+    "gap": -7.42,
+    "gold": " thoughtful.",
+    "generation": " the one who had been the one who had been the one"
+   },
+   "ctxA": "Kamala gave a gift to Jana, owing to the fact that Jana was",
+   "ctxB": "Kamala gave a gift to Jana, owing to the fact that Kamala was"
+  },
+  {
+   "name": "v4-possession-111",
+   "category": "possession",
+   "flip_hit": false,
+   "A": {
+    "hit": false,
+    "gap": -5.947,
+    "gold": " a close friend.",
+    "generation": " not the one who gave the gift. The source says that"
+   },
+   "B": {
+    "hit": false,
+    "gap": -1.445,
+    "gold": " grateful.",
+    "generation": " generous."
+   },
+   "ctxA": "Hiro gave a gift to Lena. Anyone could tell that Lena was",
+   "ctxB": "Hiro gave a gift to Lena. Anyone could tell that Hiro was"
+  }
+ ]
+}
