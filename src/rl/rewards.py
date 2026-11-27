@@ -8,9 +8,15 @@ Kinds and answer keys (task dicts are built by scripts/rl_build_tasks.py):
   number     {"answer": "19"}                  GSM8K / MATH with a numeric answer: last \\boxed{} / "answer is" / last number
   time       {"answer": "1:30"}                our time word problems: the reply's last clock time (H:MM, "1.30", "half past one")
   name       {"answer": "Anita", "names": [...]}  binding: the first of the candidate names the reply commits to
-  ifeval     {"constraint": {...}}             instruction constraints (Tülu RLVR format: func_name + kwargs)
+  ifeval     {"constraint": {...}}             instruction constraints (Tülu RLVR format: func_name + kwargs); only the
+                                               constraint is checkable (the content of these prompts is open-ended)
+  ifeval_answer {"constraint": {...}, "answer": "...", "answer_kind": "number"|"time"|"text"}
+                                               a constraint on a question with a known answer: reward 1 only if the
+                                               constraint holds AND the answer is right (added 27 Nov: RLVR-only rows
+                                               paid "w = 0 or 14" for having no commas)
   code       {"tests": "...", "setup": "..."}   reward computed by the caller in the sandbox (see code_program)
-  tool       {"calls": [...]} or {"calls": []}  gold tool calls (name + arguments); [] means "answer without a call"
+  tool       {"calls": [...]} or {"calls": []}  gold tool calls (name + arguments); [] means "answer without a call",
+                                               and if the task has an "answer" (a sum, a capital) the reply must contain it
   refusal    {"expect": "answer"|"refuse"|"no_live", "answer": "..."}
 """
 from __future__ import annotations
@@ -286,13 +292,17 @@ def _norm(v):
     return v
 
 
-def reward_tool(reply: str, gold_calls: list[dict]) -> float:
+def reward_tool(reply: str, gold_calls: list[dict], answer: str | None = None) -> float:
     """1.0: exactly the gold calls (any order; required argument values equal; no extra arguments beyond the gold ones
     and the optional ones listed in "optional"). 0.2: valid call JSON with the right tool names but wrong arguments.
-    No-call tasks (gold_calls == []): 1.0 for answering without any <tool_call>, else 0."""
+    No-call tasks (gold_calls == []): 1.0 for answering without any <tool_call>, and, when the task has a known answer
+    (e.g. "What is 12 plus 14?" -> 26), only if the reply contains it; else 0."""
     calls = parse_calls(reply)
     if not gold_calls:
-        return float("<tool_call>" not in reply and bool(strip_think(reply)))
+        body = strip_think(reply)
+        if "<tool_call>" in reply or not body:
+            return 0.0
+        return float(answer is None or _answer_ok(body, answer, "number" if _num(str(answer)) is not None else "text"))
     if not calls:
         return 0.0
     if sorted(c["name"] or "" for c in calls) != sorted(g["name"] for g in gold_calls):
@@ -312,6 +322,19 @@ def reward_tool(reply: str, gold_calls: list[dict]) -> float:
     return 1.0
 
 
+def _answer_ok(reply: str, answer: str, kind: str) -> bool:
+    if kind == "number":
+        return reward_number(reply, answer) == 1.0
+    if kind == "time":
+        return reward_time(reply, answer) == 1.0
+    return re.search(rf"\b{re.escape(str(answer).lower())}\b", strip_think(reply).lower()) is not None
+
+
+def reward_ifeval_answer(reply: str, constraint: dict, answer: str, answer_kind: str) -> float:
+    """Constraint satisfied AND the known answer right: both or nothing."""
+    return float(reward_ifeval(reply, constraint) == 1.0 and _answer_ok(reply, answer, answer_kind))
+
+
 # ------------------------------------------------------------------ refusal balance
 def reward_refusal(reply: str, expect: str, answer: str | None = None) -> float:
     t = strip_think(reply)[:600]
@@ -320,8 +343,8 @@ def reward_refusal(reply: str, expect: str, answer: str | None = None) -> float:
         return float(refused)
     if expect == "no_live":
         return float(bool(NO_LIVE.search(t)))
-    # "answer": must not refuse; if a gold answer is given it must appear
-    if refused:
+    # "answer": must not refuse (and must say something); if a gold answer is given it must appear
+    if refused or not t:
         return 0.0
     return float(answer is None or answer.lower() in t.lower())
 
@@ -340,8 +363,10 @@ def score(task: dict, reply: str, finished: bool) -> float:
         return reward_name(reply, task["answer"], task["names"])
     if k == "ifeval":
         return reward_ifeval(reply, task["constraint"])
+    if k == "ifeval_answer":
+        return reward_ifeval_answer(reply, task["constraint"], task["answer"], task["answer_kind"])
     if k == "tool":
-        return reward_tool(reply, task["calls"])
+        return reward_tool(reply, task["calls"], task.get("answer"))
     if k == "refusal":
         return reward_refusal(reply, task["expect"], task.get("answer"))
     if k == "code":

@@ -4,7 +4,8 @@
                the 8-shot "Question: ... Answer:" wrapper is removed, only the last question is kept
   ifeval       the same set's instruction-constraint prompts (24 constraint types, checker in src/rl/rewards.py)
   code         MBPP train + validation + prompt splits (the test split stays an eval), tests run in the sandbox
-  generated    time word problems, binding, tool calls / no-call, live-data questions (scripts/rl_task_gen.py)
+  generated    time word problems, binding, tool calls / no-call (with answers where known), live-data questions,
+               constraint + known-answer tasks (area ifeval_answer), simple code tasks (scripts/rl_task_gen.py)
   refusal      harmless commands with a known answer (expect an answer) and WildGuardMix prompts whose Tülu reply
                is a refusal (expect a refusal)
 
@@ -113,7 +114,11 @@ def from_synthetic1_code(tulu_raw, max_difficulty, cap, rng):
     return out[:cap]
 
 
-def refusal_tasks(tulu_raw, rng, n_harmless, n_harmful):
+def refusal_tasks(tulu_raw, rng, n_harmless, n_harmful, n_benign_edgy=0):
+    """Refusal balance. harmless (capital commands, expect the answer), harmful (WildGuardMix prompts whose Tülu reply
+    refuses: expect a refusal) and, added 27 Nov, benign_edgy: WildGuardMix prompts that SOUND harmful but whose Tülu reply
+    is a normal answer (expect no refusal). The 45-min RL run without them learned to refuse "kill a Python process",
+    "shoot a photo at night", "a regex for email addresses"."""
     out = []
     caps = [c for c in CAPITALS if c[0] not in ("India", "France")]
     for _ in range(n_harmless):
@@ -121,16 +126,25 @@ def refusal_tasks(tulu_raw, rng, n_harmless, n_harmful):
         q = rng.choice([f"give me the capital of {c}", f"tell me the capital of {c} in one word", f"capital of {c} pls",
                         f"I need the capital of {c} as JSON"])
         out.append({"area": "refusal", "kind": "refusal", "messages": [["user", q]], "expect": "answer", "answer": k.split(",")[0]})
-    harmful = []
+    harmful, benign = [], []
     for f in sorted(glob.glob(f"{tulu_raw}/allenai__tulu-3-sft-olmo-2-mixture-0225/data/*.parquet")):
         for r in pq.read_table(f, columns=["messages", "source"]).to_pylist():
             if "wildguardmix" not in (r["source"] or ""):
                 continue
             m = r["messages"]
-            if len(m) >= 2 and m[0]["role"] == "user" and REFUSAL.match(m[1]["content"] or "") and len(m[0]["content"]) < 600:
-                harmful.append(m[0]["content"])
+            if len(m) < 2 or m[0]["role"] != "user" or len(m[0]["content"]) >= 600:
+                continue
+            (harmful if REFUSAL.match(m[1]["content"] or "") else benign).append(m[0]["content"])
     rng.shuffle(harmful)
-    out += [{"area": "refusal", "kind": "refusal", "messages": [["user", h]], "expect": "refuse"} for h in harmful[:n_harmful]]
+    rng.shuffle(benign)
+    # keep our refusal check fair: no task may contain one of its prompts (scripts/eval_chat.py BENIGN/HARMFUL/REALTIME)
+    from eval_chat import BENIGN, HARMFUL, REALTIME
+    evals = [e.lower() for e in BENIGN + HARMFUL + REALTIME]
+    clean = lambda p: not any(e in p.lower() or p.lower() in e for e in evals)
+    out += [{"area": "refusal", "kind": "refusal", "messages": [["user", h]], "expect": "refuse"}
+            for h in [h for h in harmful if clean(h)][:n_harmful]]
+    out += [{"area": "refusal", "kind": "refusal", "source": "benign_edgy", "messages": [["user", b]], "expect": "answer"}
+            for b in [b for b in benign if clean(b)][:n_benign_edgy]]
     return out
 
 
@@ -144,8 +158,11 @@ def main():
     ap.add_argument("--n_binding", type=int, default=4000)
     ap.add_argument("--n_tool", type=int, default=4000)
     ap.add_argument("--n_live", type=int, default=1000)
+    ap.add_argument("--n_if_answer", type=int, default=6000, help="constraint + known answer tasks (27 Nov fix)")
+    ap.add_argument("--n_gen_code", type=int, default=6000, help="generated simple code tasks (27 Nov: grow the code pool)")
     ap.add_argument("--n_harmless", type=int, default=1500)
     ap.add_argument("--n_harmful", type=int, default=1500)
+    ap.add_argument("--n_benign_edgy", type=int, default=3000, help="harmful-sounding but harmless prompts: expect an answer")
     ap.add_argument("--max_if_chars", type=int, default=3000)
     ap.add_argument("--code_max_difficulty", type=int, default=7, help="SYNTHETIC-1 / CodeContests difficulty cap")
     ap.add_argument("--n_synthetic1_code", type=int, default=4000)
@@ -156,8 +173,9 @@ def main():
     tasks, skipped = from_rlvr(a.rlvr, rng, a.max_if_chars)
     tasks += from_mbpp()
     tasks += from_synthetic1_code(a.tulu, a.code_max_difficulty, a.n_synthetic1_code, rng)
-    tasks += rl_task_gen.generate(a.n_time, a.n_binding, a.n_tool, a.n_live, repo_root=str(Path(__file__).resolve().parents[1]))
-    tasks += refusal_tasks(a.tulu, rng, a.n_harmless, a.n_harmful)
+    tasks += rl_task_gen.generate(a.n_time, a.n_binding, a.n_tool, a.n_live, repo_root=str(Path(__file__).resolve().parents[1]),
+                                  n_if_answer=a.n_if_answer, n_code=a.n_gen_code)
+    tasks += refusal_tasks(a.tulu, rng, a.n_harmless, a.n_harmful, a.n_benign_edgy)
 
     # decontamination: any 13-token window (or whole short item) shared with an eval -> drop
     from transformers import AutoTokenizer
@@ -170,7 +188,7 @@ def main():
     uniq, dropped, seen = [], collections.Counter(), set()
     for t in tasks:
         text = " ".join(m[1] for m in t["messages"] if m[0] == "user")
-        h = hashlib.md5(text.encode()).hexdigest()
+        h = hashlib.md5(json.dumps(t["messages"]).encode()).hexdigest()  # whole conversation: tool tasks differ in their tool list
         if h in seen:
             dropped["duplicate"] += 1
             continue

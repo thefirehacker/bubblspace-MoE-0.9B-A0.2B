@@ -9,6 +9,10 @@ so every answer key is correct by construction (doc/rl-primer-phase4.md §5.1). 
   tool_tasks       live-data questions with a matching tool among distractors -> the exact gold call; plus no-call
                    tasks (greetings / fixed facts with tools present)
   live_data        live-data questions with no tools -> "I don't have live data" (refusal-balance kind no_live)
+  if_answer        (27 Nov) an instruction constraint on a question with a known answer (time problem, arithmetic,
+                   capital): reward needs the constraint AND the right answer
+  code_task        (27 Nov) simple Python functions with tests computed by a reference implementation (MBPP-style),
+                   to grow the code pool
 
 Each task: {"area", "kind", "messages": [[role, text], ...], + the kind's answer key}.
 """
@@ -123,18 +127,64 @@ def binding(rng, names) -> dict:
     return {"area": "binding", "kind": "name", "messages": [["user", f"{s} {q}"]], "answer": ans, "names": [a, b, c]}
 
 
+# requests no listed tool can serve (BFCL "irrelevance"-style): answer directly, don't call (27 Nov: run 02b scored 59%
+# on BFCL's no-tool-needed questions vs 75% for run 01)
+NO_TOOL_REQUESTS = [
+    "Write a short poem about the sea.", "Explain what photosynthesis is in two sentences.", "Give me three tips for better sleep.",
+    "Tell me a fun fact about octopuses.", "What does 'serendipity' mean?", "Summarize the story of Cinderella in one sentence.",
+    "Suggest a name for a black cat.", "Write a haiku about autumn.", "How do I boil an egg?", "What is a prime number?",
+    "Explain recursion to a ten-year-old.", "Give me a synonym for 'happy'.", "Write a one-line birthday wish for my friend.",
+    "What are the three states of matter?", "How many legs does a spider have?", "Why is the sky blue?",
+    "Recommend a good habit for learning a language.", "What is the difference between a lake and a sea?",
+    "Write a Python one-liner that prints hello.", "Who wrote Romeo and Juliet?", "What is the boiling point of water in Celsius?",
+    "Can you help me plan a simple vegetarian dinner?", "List three primary colours.", "Tell me a short joke about computers.",
+    "Translate 'thank you' into French.", "What is 15% of 200?", "Is a tomato a fruit or a vegetable?", "What is the largest ocean?",
+]
+
+
 def tool_task(rng) -> dict:
-    if rng.random() < 0.7:  # a matching tool exists: exact call expected
+    """Tool choice among 1-5 distractors (exact call), parallel calls (two cities), or no tool fits (answer directly)."""
+    k = rng.random()
+    if k < 0.45:  # one matching tool among distractors: exact call expected
         q, tool, args, _, _ = _rt_case(rng)
-        optional = [k for k in RT_TOOLS[tool]["properties"] if k not in args]
-        sys_t = "<tools>\n" + json.dumps(_rt_tools(rng, tool)) + "\n</tools>"
+        optional = [o for o in RT_TOOLS[tool]["properties"] if o not in args]
+        names = rng.sample([n for n in RT_TOOLS if n != tool], rng.randint(1, 5)) + [tool]
+        rng.shuffle(names)
+        sys_t = "<tools>\n" + json.dumps(_tool_defs(names)) + "\n</tools>"
         return {"area": "tool", "kind": "tool", "messages": [["system", sys_t], ["user", q]],
                 "calls": [{"name": tool, "arguments": args, "optional": optional}]}
-    sys_t = "<tools>\n" + json.dumps(_rt_tools(rng)) + "\n</tools>"  # tools present, none needed
-    c, k = rng.choice(CAPITALS)
-    q = rng.choice(["Hi! How are you?", "Thanks for the help!", f"What is the capital of {c}?", "Good evening!",
-                    f"What is {rng.randint(2, 20)} plus {rng.randint(2, 20)}?"])
-    return {"area": "tool", "kind": "tool", "messages": [["system", sys_t], ["user", q]], "calls": []}
+    if k < 0.60:  # parallel: the same tool for two cities -> two calls
+        c1, c2 = rng.sample(list(RT_CITIES), 2)
+        tool, key, q = rng.choice([
+            ("get_weather", "city", rng.choice([f"What's the weather in {c1} and in {c2}?", f"Weather for {c1} and {c2}, please."])),
+            ("get_current_time", "timezone", rng.choice([f"What time is it in {c1} and in {c2}?", f"Current time in {c1} and {c2}?"]))])
+        val = (lambda c: c) if key == "city" else (lambda c: RT_CITIES[c])
+        names = rng.sample([n for n in RT_TOOLS if n != tool], rng.randint(1, 4)) + [tool]
+        rng.shuffle(names)
+        opt = [o for o in RT_TOOLS[tool]["properties"] if o != key]
+        sys_t = "<tools>\n" + json.dumps(_tool_defs(names)) + "\n</tools>"
+        return {"area": "tool", "kind": "tool", "messages": [["system", sys_t], ["user", q]],
+                "calls": [{"name": tool, "arguments": {key: val(c1)}, "optional": opt},
+                          {"name": tool, "arguments": {key: val(c2)}, "optional": opt}]}
+    # no tool fits: answer directly (the answer is checked when it is known)
+    names = rng.sample([n for n in RT_TOOLS if n != "calculator"], rng.randint(1, 5))
+    sys_t = "<tools>\n" + json.dumps(_tool_defs(names)) + "\n</tools>"
+    c, cap = rng.choice(CAPITALS)
+    x, y = rng.randint(2, 20), rng.randint(2, 20)
+    options = [("Hi! How are you?", None), ("Thanks for the help!", None), ("Good evening!", None),
+               (f"What is the capital of {c}?", cap.split(",")[0]), (f"What is {x} plus {y}?", str(x + y))]
+    options += [(rng.choice(NO_TOOL_REQUESTS), None) for _ in range(5)]  # open requests are most of the no-call share
+    q, ans = rng.choice(options)
+    task = {"area": "tool", "kind": "tool", "messages": [["system", sys_t], ["user", q]], "calls": []}
+    if ans is not None:
+        task["answer"] = ans  # no call AND the right answer (27 Nov fix)
+    return task
+
+
+def _tool_defs(names):
+    return [{"type": "function", "function": {"name": n, "description": RT_TOOLS[n]["description"],
+             "parameters": {"type": "dict", "properties": RT_TOOLS[n]["properties"], "required": RT_TOOLS[n]["required"]}}}
+            for n in names]
 
 
 def live_data(rng) -> dict:
@@ -142,9 +192,123 @@ def live_data(rng) -> dict:
     return {"area": "refusal", "kind": "refusal", "messages": [["user", q]], "expect": "no_live"}
 
 
-def generate(n_time, n_binding, n_tool, n_live, seed=20261130, repo_root="."):
+# ---------------------------------------------------------------- constraint + known answer
+IF_CONSTRAINTS = [  # (instruction text, constraint, answer kinds it is safe with)
+    ("Do not use any commas in your answer.", {"func_name": "validate_no_commas"}, ("number", "time", "text")),
+    ("Wrap your entire answer in double quotation marks.", {"func_name": "validate_quotation"}, ("number", "time", "text")),
+    ('End your answer with the exact phrase "Hope this helps!"', {"func_name": "validate_end", "end_phrase": "Hope this helps!"},
+     ("number", "time", "text")),
+    ('Include the word "result" in your answer.', {"func_name": "verify_keywords", "keyword_list": ["result"]}, ("number", "time", "text")),
+    ("Give your answer a title wrapped in double angular brackets, such as <<my title>>.", {"func_name": "validate_title"},
+     ("number", "time", "text")),
+    ('Answer in JSON format with a single key "answer".', {"func_name": "validate_json_format"}, ("number", "time", "text")),
+    ("Your entire answer must be in lowercase letters.", {"func_name": "validate_lowercase"}, ("text",)),
+    ("At the end of your answer, add a postscript starting with P.S.", {"func_name": "verify_postscript", "postscript_marker": "P.S."},
+     ("text",)),
+]
+
+
+def if_answer(rng) -> dict:
+    k = rng.random()
+    if k < 0.4:
+        base = time_problem(rng)
+        q, ans, kind = base["messages"][0][1], base["answer"], ("time" if base["kind"] == "time" else "number")
+    elif k < 0.7:
+        a, b = rng.randint(3, 60), rng.randint(3, 40)
+        q, ans = rng.choice([(f"What is {a} times {b}?", a * b), (f"What is {a} plus {b}?", a + b),
+                             (f"What is {a + b} minus {b}?", a), (f"What is {a * b} divided by {b}?", a)])
+        ans, kind = str(ans), "number"
+    else:
+        c, cap = rng.choice([x for x in CAPITALS if "," not in x[1] and x[0] not in ("India", "France")])
+        q, ans, kind = f"What is the capital of {c}?", cap, "text"
+    text, cons, kinds = rng.choice([x for x in IF_CONSTRAINTS if kind in x[2]])
+    prompt = f"{q} {text}" if rng.random() < 0.5 else f"{text} {q}"
+    return {"area": "ifeval_answer", "kind": "ifeval_answer", "messages": [["user", prompt]], "constraint": cons,
+            "answer": ans, "answer_kind": kind}
+
+
+# ---------------------------------------------------------------- simple code tasks, tests from a reference implementation
+def _words_list(rng, n):
+    pool = ["apple", "river", "stone", "cloud", "tiger", "level", "radar", "music", "green", "orbit", "noon", "piano", "table"]
+    return [rng.choice(pool) for _ in range(n)]
+
+
+def _ints(rng, n, lo=-20, hi=50):
+    return [rng.randint(lo, hi) for _ in range(n)]
+
+
+CODE_TEMPLATES = [  # (function name, signature, description, reference, input maker)
+    ("reverse_string", "s", "returns the string s reversed", lambda s: s[::-1], lambda r: (r.choice(_words_list(r, 1)) + r.choice(["", "s", "ing"]),)),
+    ("count_vowels", "s", "returns the number of vowels (a, e, i, o, u) in the string s", lambda s: sum(c in "aeiou" for c in s),
+     lambda r: (" ".join(_words_list(r, r.randint(1, 4))),)),
+    ("is_palindrome", "s", "returns True if the string s reads the same backwards, otherwise False", lambda s: s == s[::-1],
+     lambda r: (r.choice(_words_list(r, 1)),)),
+    ("sum_list", "nums", "returns the sum of the numbers in the list nums", sum, lambda r: (_ints(r, r.randint(0, 7)),)),
+    ("max_of_list", "nums", "returns the largest number in the non-empty list nums", max, lambda r: (_ints(r, r.randint(1, 7)),)),
+    ("second_largest", "nums", "returns the second largest distinct value in the list nums",
+     lambda n: sorted(set(n))[-2], lambda r: (list(dict.fromkeys(_ints(r, 6)))[:6] + [999, 1000],)),
+    ("count_occurrences", "items, x", "returns how many times x appears in the list items", lambda items, x: items.count(x),
+     lambda r: (lambda l: (l, r.choice(l)))(_ints(r, 8, 0, 5))),
+    ("remove_duplicates", "items", "returns a new list with duplicates removed, keeping the first occurrence order",
+     lambda items: list(dict.fromkeys(items)), lambda r: (_ints(r, 8, 0, 6),)),
+    ("factorial", "n", "returns n! (the factorial of the non-negative integer n)", lambda n: __import__("math").factorial(n),
+     lambda r: (r.randint(0, 10),)),
+    ("fibonacci", "n", "returns the n-th Fibonacci number, with fibonacci(0) == 0 and fibonacci(1) == 1",
+     lambda n: (lambda f: f(f, n))(lambda f, k: k if k < 2 else f(f, k - 1) + f(f, k - 2)), lambda r: (r.randint(0, 15),)),
+    ("sum_digits", "n", "returns the sum of the decimal digits of the non-negative integer n", lambda n: sum(map(int, str(n))),
+     lambda r: (r.randint(0, 99999),)),
+    ("is_prime", "n", "returns True if n is a prime number, otherwise False",
+     lambda n: n > 1 and all(n % d for d in range(2, int(n ** 0.5) + 1)), lambda r: (r.randint(0, 60),)),
+    ("gcd", "a, b", "returns the greatest common divisor of the positive integers a and b", lambda a, b: __import__("math").gcd(a, b),
+     lambda r: (r.randint(1, 60), r.randint(1, 60))),
+    ("word_count", "s", "returns the number of words in the string s (words are separated by spaces)", lambda s: len(s.split()),
+     lambda r: (" ".join(_words_list(r, r.randint(0, 6))),)),
+    ("capitalize_words", "s", "returns s with the first letter of every word in upper case", lambda s: " ".join(w.capitalize() for w in s.split(" ")),
+     lambda r: (" ".join(_words_list(r, r.randint(1, 4))),)),
+    ("flatten", "lists", "returns a single list with all elements of the list of lists, in order", lambda ls: [x for l in ls for x in l],
+     lambda r: ([_ints(r, r.randint(0, 3), 0, 9) for _ in range(r.randint(1, 4))],)),
+    ("even_numbers", "nums", "returns a list of the even numbers in nums, in their original order", lambda n: [x for x in n if x % 2 == 0],
+     lambda r: (_ints(r, 7),)),
+    ("square_list", "nums", "returns a list with the square of every number in nums", lambda n: [x * x for x in n], lambda r: (_ints(r, 5, -9, 9),)),
+    ("merge_sorted", "a, b", "returns one sorted list containing all elements of the sorted lists a and b",
+     lambda a, b: sorted(a + b), lambda r: (sorted(_ints(r, 4)), sorted(_ints(r, 3)))),
+    ("char_frequency", "s", "returns a dict mapping each character of s to the number of times it appears",
+     lambda s: {c: s.count(c) for c in dict.fromkeys(s)}, lambda r: (r.choice(_words_list(r, 1)),)),
+    ("common_elements", "a, b", "returns a sorted list of the distinct values that appear in both lists a and b",
+     lambda a, b: sorted(set(a) & set(b)), lambda r: (_ints(r, 6, 0, 9), _ints(r, 6, 0, 9))),
+    ("rotate_left", "items, k", "returns the list items rotated to the left by k positions (k may exceed the length)",
+     lambda items, k: items[k % len(items):] + items[:k % len(items)] if items else [], lambda r: (_ints(r, 5, 0, 9), r.randint(0, 7))),
+    ("binary_to_decimal", "s", "converts the binary string s (like '101') to its integer value", lambda s: int(s, 2),
+     lambda r: (bin(r.randint(0, 255))[2:],)),
+    ("decimal_to_binary", "n", "returns the binary representation of the non-negative integer n as a string without a prefix",
+     lambda n: bin(n)[2:], lambda r: (r.randint(0, 255),)),
+    ("count_long_words", "s, n", "returns how many words in the string s are longer than n characters",
+     lambda s, n: sum(len(w) > n for w in s.split()), lambda r: (" ".join(_words_list(r, r.randint(1, 6))), r.randint(3, 5))),
+]
+
+
+def code_task(rng) -> dict:
+    name, sig, desc, ref, make = rng.choice(CODE_TEMPLATES)
+    cases, seen = [], set()
+    while len(cases) < 4:
+        args = make(rng)
+        key = repr(args)
+        if key in seen:
+            if len(seen) > 30:
+                break
+            continue
+        seen.add(key)
+        cases.append(f"assert {name}({', '.join(repr(x) for x in args)}) == {ref(*args)!r}")
+    prompt = (f"Write a Python function {name}({sig}) that {desc}.\nYour code should pass this test:\n{cases[0]}\n"
+              "Write the Python function in a ```python code block.")
+    return {"area": "code", "kind": "code", "source": f"generated/{name}", "messages": [["user", prompt]],
+            "tests": "\n".join(cases), "setup": ""}
+
+
+def generate(n_time, n_binding, n_tool, n_live, seed=20261130, repo_root=".", n_if_answer=0, n_code=0):
     rng = random.Random(seed)
     names = _names(repo_root)
     out = [time_problem(rng) for _ in range(n_time)] + [binding(rng, names) for _ in range(n_binding)]
     out += [tool_task(rng) for _ in range(n_tool)] + [live_data(rng) for _ in range(n_live)]
+    out += [if_answer(rng) for _ in range(n_if_answer)] + [code_task(rng) for _ in range(n_code)]
     return out

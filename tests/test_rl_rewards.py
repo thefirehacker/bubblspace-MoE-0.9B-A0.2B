@@ -86,3 +86,22 @@ def test_code_program():
     assert R.code_program("The answer is 5.", mbpp) is None
     io = {"kind": "code", "tests_io": [["1 2\n", "3\n"]]}
     assert "TESTS" in R.code_program("```python\nprint(sum(map(int, input().split())))\n```", io)
+
+
+def test_ifeval_answer_needs_both():
+    t = {"kind": "ifeval_answer", "constraint": {"func_name": "validate_no_commas"}, "answer": "26", "answer_kind": "number"}
+    assert R.score(t, "12 plus 14 is 26", True) == 1
+    assert R.score(t, "12 plus 14 is 25", True) == 0           # constraint met, answer wrong
+    assert R.score(t, "Well, it is 26", True) == 0             # answer right, constraint broken
+    c = {"kind": "ifeval_answer", "constraint": {"func_name": "validate_lowercase"}, "answer": "Tehran", "answer_kind": "text"}
+    assert R.score(c, "the capital of iran is tehran.", True) == 1
+    tm = {"kind": "ifeval_answer", "constraint": {"func_name": "validate_quotation"}, "answer": "1:30", "answer_kind": "time"}
+    assert R.score(tm, '"It started at 1:30."', True) == 1 and R.score(tm, '"It started at 2:30."', True) == 0
+
+
+def test_no_call_with_answer():
+    t = {"kind": "tool", "calls": [], "answer": "26"}
+    assert R.score(t, "<think>simple</think>\n12 + 14 = 26.", True) == 1
+    assert R.score(t, "12 + 14 = 27.", True) == 0              # no call, but wrong (paid 1 before the 27 Nov fix)
+    assert R.score({"kind": "tool", "calls": []}, "Hello! How can I help?", True) == 1
+    assert R.score({"kind": "tool", "calls": [], "answer": "Ulaanbaatar"}, "The capital of Mongolia is Ulaanbaatar.", True) == 1
