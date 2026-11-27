@@ -215,7 +215,8 @@ def main():
             show()
             continue
 
-        text = f"<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n" if chat else prompt
+        # same wire format as pretraining (prepare_agentic.py) and SFT (phase3_build_sft.py): "\n" before <|im_end|>, no gap between turns
+        text = f"<|im_start|>user\n{prompt}\n<|im_end|><|im_start|>assistant\n" if chat else prompt
         completion = generate(
             model, tok, device, real_vocab_size, {eot_id, im_end_id}, cfg.model.max_seq_len,
             text, max_new_tokens, temperature, top_p, greedy, rep_penalty, no_repeat_ngram, min_p,
