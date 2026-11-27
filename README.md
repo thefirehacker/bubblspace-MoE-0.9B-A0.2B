@@ -8,35 +8,56 @@ A small Mixture-of-Experts language model trained from scratch on one H100: **�
 
 <p><img src="doc/assets/stats.svg" width="100%" alt="$1,000 total budget · ~40B tokens of training · 1 H100 GPU for training · 16k context window"></p>
 
-> ⚠️ **A base model for learning.** BubblSpace is a small model built to learn, and to show, how language models are trained. Its outputs are not reliable, so don't depend on them. The whole project is open source to help others learn.
+> ⚠️ **A small model for learning.** BubblSpace is a small model built to learn, and to show, how language models are trained. Its outputs are not reliable, so don't depend on them. The whole project is open source to help others learn.
 
 ## Where we are
 
-<p align="center"><img src="doc/assets/phases.svg" width="100%" alt="Training phases: Phase 1 English base, 10B tokens (done); Phase 2 code, tool calls and binding data, 22B (done); Phase 2.5a knowledge, relations and fresh code, 37.6B (done); Phase 2.5b 16k context, 39.1B (done); Phase 3 SFT, running now; Phase 4 RL with verified rewards, planned"></p>
+<p align="center"><img src="doc/assets/phases.svg" width="100%" alt="Training phases: Phase 1 English base, 10B tokens (done); Phase 2 code, tool calls and binding data, 22B (done); Phase 2.5a knowledge, relations and fresh code, 37.6B (done); Phase 2.5b 16k context, 39.1B (done); Phase 3 SFT, +0.8B (done); Phase 4 RL with verified rewards, planned"></p>
 
-Token counts are cumulative. **Pretraining is complete**; supervised fine-tuning is running.
+Token counts are cumulative. **Pretraining and supervised fine-tuning are complete.** The SFT chat model is on Hugging Face `main`. Next: RL with verified rewards.
 
 | Phase | What it adds | Tokens (total) | Highlight | Status |
 |---|---|---|---|---|
 | **1** | English base (FineWeb-Edu) | 10B | English 6-task average 47.2 | ✅ 19,073 steps, 32 h |
 | **2** | code, tool calls, synthetic binding data ([plan](doc/plan-02-phase-2-continual-training.md)) | 22B | HumanEval 14.6% · MBPP 18.2% · the WinoGrande twin-pair lead | ✅ 22,888 steps, 40 h, 23 Nov |
 | **2.5a** | knowledge (full Wikipedia, fact Q&A, SYNTH), relations, fresh code; early LR decay with order-alternated binding data ([plan](doc/plan-03-phase-2.5-knowledge-context.md)) | 37.6B | TriviaQA 15.8% · English average 47.9 · BFCL multiple 26% | ✅ 29,723 steps, 26 Nov |
-| **2.5b** | context 2k → 16k (RoPE base 1e6) | 39.1B | passkey retrieval 72% at 4k, 45% at 16k (step 2,000) | ✅ 2,861 steps, 27 Nov |
-| **3** | SFT: chat, tool calling, agent traces, step-by-step maths; assistant-only loss at 16k ([plan](doc/plan-04-phase-3-sft.md)) | +0.8B | — | 🔄 running |
+| **2.5b** | context 2k → 16k (RoPE base 1e6) | 39.1B | passkey retrieval 70% at 4k, 48% at 16k | ✅ 2,861 steps, 27 Nov |
+| **3** | SFT: chat, tool calling, agent traces, step-by-step maths; assistant-only loss at 16k ([plan](doc/plan-04-phase-3-sft.md)) | +0.8B | chats, picks the right tool, makes parallel calls, uses tool results ([results](#results)) | ✅ 1,500 steps, 3 h, 27 Nov |
 | **4** | RL with verified rewards (code, tool calls) | — | — | planned |
 
 ## Checkpoints
 
 | | Where |
 |---|---|
-| **Latest weights**: Phase 2.5b final, 16k context (base model) | branch [`phase25b-step2861-tokens39B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase25b-step2861-tokens39B) of [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) |
-| `main` | Phase 2 final (step 22,888), the WinoGrande checkpoint |
-| Earlier weights | branches [`phase2-step19000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step19000), [`phase2-step9000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step9000), [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final) |
-| **Full training states** (weights + optimizer + schedulers + RNG, to resume or branch training) | [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states): one branch per checkpoint, named like OLMo's `<phase>-step<N>-tokens<X>B` (9 so far, from `phase1-step19073-tokens10B` to `phase25b-step2861-tokens39B`). Restore with [`scripts/restore_checkpoint.py`](scripts/restore_checkpoint.py) |
+| **Latest weights**: Phase 3 SFT final (step 1,500), the chat model, 16k context | `main` of [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (also branch [`phase3-step1500-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase3-step1500-tokens40B)); tokenizer includes the chat template |
+| SFT step 1,000 | branch [`phase3-step1000-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase3-step1000-tokens40B) |
+| Base model (last pretraining checkpoint) | branch [`phase25b-step2861-tokens39B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase25b-step2861-tokens39B): Phase 2.5b final, 16k context, no SFT |
+| Earlier weights | branches [`phase2-step22888-tokens22B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step22888-tokens22B) (Phase 2 final, the WinoGrande checkpoint), [`phase2-step19000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step19000), [`phase2-step9000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step9000), [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final) |
+| **Full training states** (weights + optimizer + schedulers + RNG, to resume or branch training) | [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states): one branch per checkpoint, named like OLMo's `<phase>-step<N>-tokens<X>B` (11 so far, from `phase1-step19073-tokens10B` to `phase3-step1500-tokens40B`). Restore with [`scripts/restore_checkpoint.py`](scripts/restore_checkpoint.py) |
 | Training logs (public W&B) | Phase 1 [goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e) · Phase 2 [lec9ww5h](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/lec9ww5h) · 2.5a [l2i2yoqf](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/l2i2yoqf) · 2.5b [9be9emiq](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/9be9emiq) · SFT [qq4dnyp4](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/qq4dnyp4) |
 | License | [Apache 2.0](LICENSE) |
 
 ## Results
+
+**Phase 3 (SFT) results**
+
+Phase 3 fine-tuned the Phase 2.5b base model into a chat model: 1,500 steps, ≈0.8B tokens in 16k-token blocks, loss on assistant tokens only, learning rate 6e-5 decaying to 0 (3 h on one H100). Data: Tülu 3 (OLMo-2 mix) for chat, ToolMind, Glaive and Hermes for function calling, Nemotron terminal traces, SYNTHETIC-1 verified code and maths, GSM8K train, our own fact, arithmetic, binding and identity sets, and 6% pretraining replay. Every set was decontaminated against the evals.
+
+**Hand test, 23 conversations** (greedy, no repetition penalty; [full transcript](benchmark/phase3/chat_smoke_phase3_step1500.md)):
+
+| Area | Result |
+|---|---|
+| Facts, both directions | ✅ "What is the capital of India?" → New Delhi; "New Delhi is the capital of which country?" → India |
+| Instructions | ✅ "three fruits, one per line" → a clean list; "one word only" → `blue` |
+| Maths with steps | ✅ 47 + 38 = 85; 7 pens × 12 = 84; 3 × 8 − 5 = 19 |
+| Code | ✅ correct string reversal, PyTorch `nn.Module`, FizzBuzz |
+| Tool calls | ✅ picks `convert_currency` over `get_weather`; two parallel calls for two cities; turns a tool result into an answer |
+| Who did what | ✅ taller-than chain; ❌ "Ravi gave Anita a red cap… who has it?"; ❌ "written by Maya… who wrote it?" |
+| No tool needed | ❌ "Hi! How are you?" with tools available → calls `get_weather` |
+
+**What changed:** the base model's quiz-format and hedging habits are gone; it answers directly and stops cleanly at the end of its turn. Tool calls come after a `<think>` block (from the ToolMind data), which makes them slow. Validation loss on plain pretraining text rose only ≈1%, so SFT caused little forgetting.
+
+**Still weak:** binding in "gave" and passive sentences (SFT changed the answer format, not this ability), and knowing when *not* to call a tool. Standard chat benchmarks (HumanEval and MBPP in chat format, GSM8K, IFEval, BFCL including no-call questions) are running and will be added here.
 
 **Phase 2.5 results** (2.5a final vs Phase 2 final, same harness; full tables in `benchmark/phase25a/summary.md` and `benchmark/phase25b/summary.md`):
 
@@ -51,7 +72,15 @@ Token counts are cumulative. **Pretraining is complete**; supervised fine-tuning
 | Bits per byte, English / code (post-cutoff text) | 0.913 / 0.696 | **0.897 / 0.690** |
 | Binding probe v5 (held-out structures incl. passives) | 10/120 | **54/120** |
 
-Long context (Phase 2.5b): passkey retrieval at 4k / 16k tokens rose from 62% / 35% (step 1,000) to 72% / 45% (step 2,000); 2-hop retrieval at 16k from 8% to 17%; loss falls deeper into a document (2.50 at 1–2k → 2.25 at 8–16k tokens). The final checkpoint is being scored.
+**Long context (Phase 2.5b):**
+
+| Checkpoint | Passkey 4k | Passkey 8k | Passkey 16k | 2-hop 4k | 2-hop 16k | Loss at 1–2k / 8–16k tokens |
+|---|---|---|---|---|---|---|
+| 2.5b step 1,000 | 62% | 78% | 35% | 21% | 8% | 2.52 / 2.27 |
+| 2.5b step 2,000 | 72% | 75% | 45% | 21% | 17% | 2.50 / 2.25 |
+| **2.5b final (2,861)** | **70%** | **72%** | **48%** | **29%** | **17%** | **2.49 / 2.24** |
+
+Passkey: 40 trials per length; 2-hop fact retrieval from the text: 24 per length. Loss keeps falling deeper into a document, so the model uses the long context. Retrieval works well up to 8k and about half the time at 16k.
 
 **Phase 2 results** (full table in [`benchmark/README.md`](benchmark/README.md)):
 
@@ -318,8 +347,8 @@ the code, checkpoints, or data pipeline is entirely at your own risk, and is
 provided "AS IS" without warranty of any kind, express or implied, consistent
 with Section 7 of the Apache License 2.0 above.
 
-**On the nature of AI output:** this is a small, base-pretrained (non-instruction-tuned)
-language model. Its outputs are statistically plausible continuations of text,
+**On the nature of AI output:** this is a small language model, pretrained and then
+lightly instruction-tuned (SFT). Its outputs are statistically plausible continuations of text,
 not verified facts, advice, or reasoning. It can be confidently wrong, biased,
 inconsistent, or nonsensical, especially at this parameter scale and training
 stage — see [`benchmark/README.md`](benchmark/README.md) for where it stands

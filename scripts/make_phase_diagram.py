@@ -12,7 +12,7 @@ PHASES = [  # (title, two description lines, tokens line, status)
     ("Phase 2", ("code, tool calls,", "binding data"), "22B tokens", "done"),
     ("Phase 2.5a", ("knowledge, relations,", "fresh code"), "37.6B tokens", "done"),
     ("Phase 2.5b", ("16k context", ""), "39.1B tokens", "done"),
-    ("Phase 3", ("SFT: chat, tool use,", "step-by-step maths"), "+0.8B tokens", "running"),
+    ("Phase 3", ("SFT: chat, tool use,", "step-by-step maths"), "+0.8B tokens", "done"),
     ("Phase 4", ("RL with verified", "rewards"), "", "planned"),
 ]
 STYLE = {  # box fill, box stroke, text, status label colour, status label
