@@ -1,4 +1,4 @@
-# Phase 4 RL smoke test: 20 steps of configs/rl_v1.yaml (same settings), no W&B
+# Phase 4 RL smoke test: 20 steps of configs/rl_v1.yaml (same settings); logged to W&B as Phase4_rl_smoke
 # init: the SFT winner (run 01 or run 02b, decided after the run 02b evals); fill in init_checkpoint + vllm_model_dir.
 run_name: Phase4_rl_smoke
 out_dir: /lambda/nfs/h100-f1/checkpoints/Phase4_rl_smoke
@@ -6,7 +6,7 @@ model_config: configs/phase3_run02b.yaml          # architecture (same for every
 init_checkpoint: /lambda/nfs/h100-f1/checkpoints/Phase3_run02b/step_1500.pt   # TO CONFIRM after the run 02b evals
 vllm_model_dir: /home/ubuntu/vllm_models/Phase3_run02b-step1500               # scripts/make_vllm_model_dir.py of the same weights
 tasks: /home/ubuntu/rl_tasks/filtered_rl_v1.jsonl                              # scripts/rl_filter.py output for the chosen SFT model
-wandb_project: null
+wandb_project: moe0-9b-a0-2b
 seed: 0
 
 steps: 20

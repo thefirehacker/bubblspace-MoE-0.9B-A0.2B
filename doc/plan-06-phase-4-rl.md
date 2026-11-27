@@ -2,7 +2,7 @@
 
 **Status (27 Nov, evening):** rollout engine, weight sync, rewards, task set and GRPO trainer built; difficulty filter running on the A10 (run 01); 20-step RL smoke test armed on fire01 for after run 02b + its evals. RL v1 waits for the user's go.
 **Starts from:** the Phase 3 SFT model that wins the run 01 vs run 02b comparison (doc/issue-02-phase3-over-refusal.md).
-**Preview in:** plan-04 §7. **How it works (method, GRPO, checkers):** [rl-primer-phase4.md](rl-primer-phase4.md).
+**Preview in:** plan-04 §7. **How it works (method, GRPO, checkers):** [rl-primer-phase4.md](rl-primer-phase4.md). **Smoke test order, environments, watching a run live:** [rl-smoke-test-guide.md](rl-smoke-test-guide.md).
 
 ## Agreed next steps (27 Nov)
 

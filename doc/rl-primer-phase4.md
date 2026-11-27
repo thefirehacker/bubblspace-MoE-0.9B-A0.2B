@@ -1,6 +1,6 @@
 # Phase 4 RL primer: how our RL setup works
 
-A walk-through of the reinforcement-learning stage planned after SFT: what each part does, which tools it uses, how GRPO works, who scores the answers, and what can go wrong. The task list and status are in [plan-06-phase-4-rl.md](plan-06-phase-4-rl.md); this document explains the method.
+A walk-through of the reinforcement-learning stage planned after SFT: what each part does, which tools it uses, how GRPO works, who scores the answers, and what can go wrong. The task list and status are in [plan-06-phase-4-rl.md](plan-06-phase-4-rl.md); this document explains the method. **The smoke test step by step, its environments, and how to watch a run live:** [rl-smoke-test-guide.md](rl-smoke-test-guide.md).
 
 ---
 

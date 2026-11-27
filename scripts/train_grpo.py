@@ -21,7 +21,7 @@ import os
 import random
 import sys
 import time
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 os.environ.setdefault("VLLM_ENABLE_V1_MULTIPROCESSING", "0")
@@ -102,6 +102,14 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
     steps = a.max_steps or C["steps"]
     dev = "cuda"
+    t_start = time.time()
+
+    def set_status(phase, **kw):
+        """What the run is doing right now, for a second terminal: scripts/rl_view.py <out_dir> --follow / --info."""
+        (out_dir / "status.json").write_text(json.dumps({"phase": phase, "since_start_s": round(time.time() - t_start),
+                                                         "time_utc": time.strftime("%H:%M:%S", time.gmtime()), **kw}))
+
+    set_status("setup: loading vLLM")
 
     # ---- rollout engine first, so vLLM profiles memory before the policy and optimizer are allocated
     from src.rl.vllm_engine import VLLMEngine
@@ -114,6 +122,7 @@ def main():
     eng.sleep()
 
     # ---- policy + reference
+    set_status("setup: loading policy, reference model, optimizer")
     mcfg = load_config(C["model_config"]).model
     mcfg.moe.backend = "grouped_mm" if probe_grouped_mm() else "fallback"
     state = load_state(C["init_checkpoint"])
@@ -142,6 +151,11 @@ def main():
         train[area] = ts[k:]
     weights = {ar: w for ar, w in C["area_weights"].items() if train.get(ar)}
     print(f"[tasks] train {sum(len(v) for v in train.values()):,} ({ {k: len(v) for k, v in train.items()} }), val {len(val)}", flush=True)
+    (out_dir / "run_config.json").write_text(json.dumps({
+        "config": C, "steps": steps, "started_utc": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
+        "task_pool_per_area": {k: len(v) for k, v in train.items()},
+        "heldout_per_area": {k: sum(1 for t in val if t["area"] == k) for k in train},
+        "area_weights_used": weights, "moe_backend": mcfg.moe.backend}, indent=1))
 
     wb = None
     if C.get("wandb_project"):
@@ -149,10 +163,12 @@ def main():
         wb = wandb.init(project=C["wandb_project"], name=C["run_name"], config=C)
 
     def evaluate(step):
+        set_status(f"held-out test at step {step}: generating", step=step)
         eng.wake()
         eng.sync_weights(policy)
         g = eng.generate([render(t["messages"]) for t in val], n=1, temperature=0.0, max_tokens=C["max_tokens"])
         eng.sleep()
+        set_status(f"held-out test at step {step}: scoring", step=step)
         r = score_batch(val, [x[0].text for x in g], [x[0].finished for x in g], C.get("sandbox_workers", 16))
         dump_jsonl_gz(out_dir / "eval_samples" / f"step_{step:04d}.jsonl.gz",
                       [{"step": step, "id": t["id"], "area": t["area"], "kind": t["kind"], "prompt": t["messages"],
@@ -179,6 +195,7 @@ def main():
         batch = [rng.choice(train[ar]) for ar in areas]
 
         # 1-3. rollouts
+        set_status(f"step {step}/{steps}: generating {len(batch) * C['n_samples']} answers (vLLM awake)", step=step)
         eng.wake()
         sync_s = eng.sync_weights(policy)
         groups = eng.generate([render(t["messages"]) for t in batch], n=C["n_samples"], temperature=C.get("temperature", 1.0),
@@ -187,6 +204,8 @@ def main():
         t_gen = time.time() - t0
 
         # 4. rewards
+        n_code = sum(1 for t in batch if t["kind"] == "code") * C["n_samples"]
+        set_status(f"step {step}/{steps}: scoring (vLLM asleep; {n_code} code answers in docker, 16 at a time)", step=step)
         flat_t = [t for t, g in zip(batch, groups) for _ in g]
         flat_r = [r for g in groups for r in g]
         rew = score_batch(flat_t, [r.text for r in flat_r], [r.finished for r in flat_r], C.get("sandbox_workers", 16))
@@ -215,6 +234,7 @@ def main():
                 items.append({"seq": list(r.prompt_ids) + comp, "n_prompt": len(r.prompt_ids), "adv": float(adv[j])})
 
         # 6-7. loss and update
+        set_status(f"step {step}/{steps}: training update on {len(items)} answers", step=step)
         stats = defaultdict(float)
         if items:
             n_tok = sum(len(it["seq"]) - it["n_prompt"] for it in items)
@@ -262,7 +282,8 @@ def main():
                "finished_frac": sum(r.finished for r in flat_r) / len(flat_r),
                "answer_len": sum(len(r.completion_ids) for r in flat_r) / len(flat_r),
                "t_gen": round(t_gen, 1), "t_reward": round(t_rew, 1), "t_step": round(time.time() - t0, 1), "t_sync": round(sync_s, 2),
-               **{f"reward/{k}": sum(v) / len(v) for k, v in area_r.items()}, **stats}
+               **{f"reward/{k}": sum(v) / len(v) for k, v in area_r.items()},
+               **{f"n/{k}": c for k, c in sorted(Counter(areas).items())}, "code_answers": n_code, **stats}
         log_f.write(json.dumps(rec) + "\n")
         log_f.flush()
         print(f"[step {step}] reward {rec['reward_mean']:.3f} zero-adv {rec['zero_adv_groups']:.2f} kl {stats['kl']:.4f} "
@@ -281,6 +302,7 @@ def main():
                                                  "run_name": C["run_name"]}},
                        out_dir / f"step_{step}.pt")
             print(f"[save] {out_dir}/step_{step}.pt", flush=True)
+    set_status("finished", step=steps)
 
 
 if __name__ == "__main__":
