@@ -21,7 +21,7 @@ Plan (27 Nov): after RL v1, the H100 (fire01) and its `h100-f1` filesystem may b
 - tokenized data (about 140 GB) and raw downloads (290 GB), which our scripts rebuild;
 - the HF cache.
 
-The training logs (about 10 MB) are small enough to upload to the training-states repo under `logs/` (pending decision).
+**Training logs** (about 10 MB, 80 files from fire01 and the A10; IP addresses, e-mails and tokens redacted) are on the training-states repo under [`logs/`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states/tree/main/logs) (snapshot 27 Nov 12:45 UTC; refresh after run 02b and RL v1).
 
 ## 2. Checkpoint branches (training-states repo)
 
@@ -73,6 +73,6 @@ Every downloaded dataset or model gets a malware scan (HF scan status, or ClamAV
 - [ ] All branches in §2 present on HF. Run the audit script: every training-state branch has `model.safetensors`, `optimizer.safetensors`, `rng.safetensors`, `trainer_state.json`, `restore_checkpoint.py`, `README.md`.
 - [ ] RL v1 final + second-to-last pushed with rollouts and logs.
 - [ ] `benchmark/` results from the A10 and fire01 copied into the repo and pushed to GitHub.
-- [ ] Logs uploaded (or accepted as lost; W&B keeps the curves).
+- [ ] Logs refreshed on HF (`logs/`, redacted) after the last runs on this NFS.
 - [ ] Any experiment-only files still wanted (e.g. WSP edits) copied off.
 - [ ] The A10's filesystem (`us-west-1-eval-inference`, California) is separate; decide whether to keep it.
