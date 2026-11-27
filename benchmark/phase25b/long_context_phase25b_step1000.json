@@ -1,0 +1,3153 @@
+{
+ "checkpoint": "/lambda/nfs/us-west-1-eval-inference/phase25b/step_1000.pt",
+ "step": 1000,
+ "config": "configs/phase25b.yaml",
+ "max_seq_len": 16384,
+ "rope_theta": 1000000,
+ "seed": 1234,
+ "passkey": {
+  "by_len": {
+   "2048": [
+    0.85,
+    40
+   ],
+   "4096": [
+    0.625,
+    40
+   ],
+   "8192": [
+    0.775,
+    40
+   ],
+   "16384": [
+    0.35,
+    40
+   ]
+  },
+  "by_len_depth": {
+   "2048@0.1": 0.625,
+   "2048@0.3": 0.875,
+   "2048@0.5": 0.875,
+   "2048@0.7": 0.875,
+   "2048@0.9": 1.0,
+   "4096@0.1": 0.5,
+   "4096@0.3": 0.5,
+   "4096@0.5": 0.75,
+   "4096@0.7": 0.625,
+   "4096@0.9": 0.75,
+   "8192@0.1": 0.625,
+   "8192@0.3": 0.875,
+   "8192@0.5": 0.75,
+   "8192@0.7": 0.875,
+   "8192@0.9": 0.75,
+   "16384@0.1": 0.375,
+   "16384@0.3": 0.0,
+   "16384@0.5": 0.375,
+   "16384@0.7": 0.375,
+   "16384@0.9": 0.625
+  },
+  "rows": [
+   {
+    "len": 2048,
+    "depth": 0.1,
+    "key": "67767",
+    "out": "a key that is used to unlock the door to",
+    "correct": false
+   },
+   {
+    "len": 2048,
+    "depth": 0.1,
+    "key": "10981",
+    "out": "10981. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.1,
+    "key": "86313",
+    "out": "the main road leading from the capital t",
+    "correct": false
+   },
+   {
+    "len": 2048,
+    "depth": 0.1,
+    "key": "98023",
+    "out": "98023. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.1,
+    "key": "22900",
+    "out": "22900. Remember it. 2",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.1,
+    "key": "41039",
+    "out": "41039.\n\nIn the season",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.1,
+    "key": "14038",
+    "out": "a symbol of the pass key used by the Fre",
+    "correct": false
+   },
+   {
+    "len": 2048,
+    "depth": 0.1,
+    "key": "55362",
+    "out": "55362. Remember it. 5",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.3,
+    "key": "90716",
+    "out": "90716. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.3,
+    "key": "29471",
+    "out": "29471. Remember it. 2",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.3,
+    "key": "33998",
+    "out": "33998. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.3,
+    "key": "11916",
+    "out": "11916.\n\n## References",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.3,
+    "key": "73799",
+    "out": "73799. Remember it. 7",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.3,
+    "key": "18462",
+    "out": "18462. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.3,
+    "key": "71066",
+    "out": "71066. Remember it. 7",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.3,
+    "key": "88835",
+    "out": "the only road in Namibia that is passabl",
+    "correct": false
+   },
+   {
+    "len": 2048,
+    "depth": 0.5,
+    "key": "77507",
+    "out": "77507. Remember it. 7",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.5,
+    "key": "45335",
+    "out": "45335. Remember it. 4",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.5,
+    "key": "94493",
+    "out": "94493. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.5,
+    "key": "73050",
+    "out": "73050. Remember it. 7",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.5,
+    "key": "44924",
+    "out": "44924. Remember it. 4",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.5,
+    "key": "95915",
+    "out": "95915. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.5,
+    "key": "69426",
+    "out": "the solution to the recurrence relation ",
+    "correct": false
+   },
+   {
+    "len": 2048,
+    "depth": 0.5,
+    "key": "97216",
+    "out": "97216.\n\nMr. Test",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.7,
+    "key": "76597",
+    "out": "a key that is used to open a lock. The k",
+    "correct": false
+   },
+   {
+    "len": 2048,
+    "depth": 0.7,
+    "key": "10757",
+    "out": "10757. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.7,
+    "key": "28844",
+    "out": "28844. 75 (a",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.7,
+    "key": "96160",
+    "out": "96160. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.7,
+    "key": "31903",
+    "out": "31903. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.7,
+    "key": "19992",
+    "out": "19992.\n\nThe pass key",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.7,
+    "key": "31496",
+    "out": "31496. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.7,
+    "key": "83050",
+    "out": "83050. 8305",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.9,
+    "key": "28906",
+    "out": "28906.  This is the pass",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.9,
+    "key": "55381",
+    "out": "55381. Remember it. 5",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.9,
+    "key": "79426",
+    "out": "79426. Remember it. 7",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.9,
+    "key": "97884",
+    "out": "97884. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.9,
+    "key": "69525",
+    "out": "69525. Remember it. 6",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.9,
+    "key": "64558",
+    "out": "a 64558-6455",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.9,
+    "key": "96820",
+    "out": "96820. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 2048,
+    "depth": 0.9,
+    "key": "33244",
+    "out": "33244. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.1,
+    "key": "30259",
+    "out": "30259. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.1,
+    "key": "30257",
+    "out": "the pass key.\nval passKey : 'a (",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.1,
+    "key": "15382",
+    "out": "15382. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.1,
+    "key": "55821",
+    "out": "the number of subjects that were include",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.1,
+    "key": "54788",
+    "out": "54788. Remember it. 5",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.1,
+    "key": "72381",
+    "out": "the key to the inner world of the German",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.1,
+    "key": "71713",
+    "out": "a symbol of the nation\u2019s identity. It is",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.1,
+    "key": "67618",
+    "out": "67618. Remember it. 6",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.3,
+    "key": "67392",
+    "out": "67392. Remember it. 6",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.3,
+    "key": "46050",
+    "out": "a unique\n\nThe pass key is a unique",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.3,
+    "key": "34329",
+    "out": "a special type of enable input. It is a ",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.3,
+    "key": "67155",
+    "out": "a key that is used to unlock the door to",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.3,
+    "key": "79441",
+    "out": "a symbol of the pass. It is a symbol of ",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.3,
+    "key": "73596",
+    "out": "73596. Remember it. 7",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.3,
+    "key": "96034",
+    "out": "96034. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.3,
+    "key": "94022",
+    "out": "94022. 9402",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.5,
+    "key": "55265",
+    "out": "55265. Remember it. 5",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.5,
+    "key": "30600",
+    "out": "30600. The pass key is a",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.5,
+    "key": "30296",
+    "out": "30296. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.5,
+    "key": "68546",
+    "out": "a device that allows a person to enter a",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.5,
+    "key": "20288",
+    "out": "20288. Remember it. 2",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.5,
+    "key": "38069",
+    "out": "38069. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.5,
+    "key": "47504",
+    "out": "a crucial element in the game, and it is",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.5,
+    "key": "38756",
+    "out": "38756.\n\n## 1",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.7,
+    "key": "21490",
+    "out": "21490. Remember it. 2",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.7,
+    "key": "50058",
+    "out": "a key on a piano that is used to control",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.7,
+    "key": "18680",
+    "out": "a key that is used to identify the gene ",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.7,
+    "key": "19568",
+    "out": "19568.\n\nI don't",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.7,
+    "key": "36463",
+    "out": "a key that is used to unlock the doors o",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.7,
+    "key": "61989",
+    "out": "61989. 6198",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.7,
+    "key": "70236",
+    "out": "70236. Remember it. 7",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.7,
+    "key": "40975",
+    "out": "40975. Remember it. 4",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.9,
+    "key": "36880",
+    "out": "36880. The pass key is the",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.9,
+    "key": "65204",
+    "out": "a key that is used to open a door. The k",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.9,
+    "key": "86613",
+    "out": "86613.\n- The pass key",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.9,
+    "key": "49554",
+    "out": "49554. Remember it. 4",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.9,
+    "key": "56201",
+    "out": "56201. 6 The pass key",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.9,
+    "key": "30061",
+    "out": "the first non-zero digit of the number.",
+    "correct": false
+   },
+   {
+    "len": 4096,
+    "depth": 0.9,
+    "key": "81962",
+    "out": "81962. 8196",
+    "correct": true
+   },
+   {
+    "len": 4096,
+    "depth": 0.9,
+    "key": "53746",
+    "out": "a 53746-shaped island in the",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.1,
+    "key": "27161",
+    "out": "27161. Remember it. 2",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.1,
+    "key": "91855",
+    "out": "a symbol of the colonial system of educa",
+    "correct": false
+   },
+   {
+    "len": 8192,
+    "depth": 0.1,
+    "key": "28996",
+    "out": "a key that is used to unlock the door of",
+    "correct": false
+   },
+   {
+    "len": 8192,
+    "depth": 0.1,
+    "key": "52635",
+    "out": "52635. Remember it. 5",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.1,
+    "key": "10223",
+    "out": "a key that is used to unlock the N.O.",
+    "correct": false
+   },
+   {
+    "len": 8192,
+    "depth": 0.1,
+    "key": "93660",
+    "out": "93660. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.1,
+    "key": "29434",
+    "out": "29434. 2943",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.1,
+    "key": "15231",
+    "out": "15231. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.3,
+    "key": "61306",
+    "out": "61306. Remember it. 6",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.3,
+    "key": "37147",
+    "out": "37147. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.3,
+    "key": "46706",
+    "out": "46706. Remember it. 4",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.3,
+    "key": "92817",
+    "out": "92817. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.3,
+    "key": "65317",
+    "out": "65317. Remember it. 6",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.3,
+    "key": "99819",
+    "out": "a 99819-code sequence that is",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.3,
+    "key": "79814",
+    "out": "a unique code that is used to identify a",
+    "correct": false
+   },
+   {
+    "len": 8192,
+    "depth": 0.3,
+    "key": "44120",
+    "out": "44120. Remember it. 4",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.5,
+    "key": "63773",
+    "out": "63773. Remember it.",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.5,
+    "key": "84048",
+    "out": "84048. Remember it. 8",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.5,
+    "key": "78917",
+    "out": "78917. Remember it.  Jane",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.5,
+    "key": "59197",
+    "out": "59197. Remember it. 5",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.5,
+    "key": "38034",
+    "out": "the key that is used to\ngenerate the pas",
+    "correct": false
+   },
+   {
+    "len": 8192,
+    "depth": 0.5,
+    "key": "87006",
+    "out": "87006. Remember it. 8",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.5,
+    "key": "16881",
+    "out": "16881. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.5,
+    "key": "67744",
+    "out": "a large, flat stone, 1.5m high",
+    "correct": false
+   },
+   {
+    "len": 8192,
+    "depth": 0.7,
+    "key": "74290",
+    "out": "74290.\n\nWhat is the",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.7,
+    "key": "59878",
+    "out": "59878. Remember it. 5",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.7,
+    "key": "10320",
+    "out": "10320. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.7,
+    "key": "72941",
+    "out": "72941. Remember it. 7",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.7,
+    "key": "49114",
+    "out": "a function that takes a string of charac",
+    "correct": false
+   },
+   {
+    "len": 8192,
+    "depth": 0.7,
+    "key": "99495",
+    "out": "99495. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.7,
+    "key": "34324",
+    "out": "34324. Remember it.",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.7,
+    "key": "92366",
+    "out": "92366.\n\nWhat is the",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.9,
+    "key": "30603",
+    "out": "30603. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.9,
+    "key": "87529",
+    "out": "87529. Remember it. 8",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.9,
+    "key": "95881",
+    "out": "95881. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.9,
+    "key": "37009",
+    "out": "37009.\nThe pass key is",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.9,
+    "key": "78008",
+    "out": "78008. 1. A fair",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.9,
+    "key": "97596",
+    "out": "the value of the pass key that makes the",
+    "correct": false
+   },
+   {
+    "len": 8192,
+    "depth": 0.9,
+    "key": "96486",
+    "out": "96486. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 8192,
+    "depth": 0.9,
+    "key": "71327",
+    "out": "a symbol of the Albanian national anthem",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.1,
+    "key": "13527",
+    "out": "the key that the user has to enter to ge",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.1,
+    "key": "72366",
+    "out": "a secret code used by the rebels to comm",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.1,
+    "key": "28352",
+    "out": "28352. Remember it. 2",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.1,
+    "key": "55729",
+    "out": "the key that will be used to\npass the va",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.1,
+    "key": "49140",
+    "out": "49140. Remember it. 4",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.1,
+    "key": "83774",
+    "out": "83774. Remember it. 8",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.1,
+    "key": "83731",
+    "out": "a device used in the Bible to indicate t",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.1,
+    "key": "76736",
+    "out": "a key that is pressed by the user.\n\nWhat",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.3,
+    "key": "19500",
+    "out": "a key that is used to indicate that a st",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.3,
+    "key": "88932",
+    "out": "a key that is used to open the door of t",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.3,
+    "key": "54516",
+    "out": "the key to the method. It is a function ",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.3,
+    "key": "53808",
+    "out": "the pass key.\n\nThe pass key is the pass",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.3,
+    "key": "70034",
+    "out": "a key that is used to open a window to a",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.3,
+    "key": "21135",
+    "out": "a function that is used to determine whe",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.3,
+    "key": "87231",
+    "out": "a key that is used to open the door of t",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.3,
+    "key": "42145",
+    "out": "a key that is used to identify the gene ",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.5,
+    "key": "58742",
+    "out": "a 5-digit code that is used to identify ",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.5,
+    "key": "13719",
+    "out": "13719. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.5,
+    "key": "14896",
+    "out": "14896. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.5,
+    "key": "37355",
+    "out": "37355.\n\nWhat is the",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.5,
+    "key": "51026",
+    "out": "the command to display the result of the",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.5,
+    "key": "56586",
+    "out": "the key that is used to open the cylinde",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.5,
+    "key": "77539",
+    "out": "a secret code name given to the members ",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.5,
+    "key": "49998",
+    "out": "a statistical measure of the statistical",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.7,
+    "key": "73644",
+    "out": "a reference to the Sogdian-style \u201can",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.7,
+    "key": "55579",
+    "out": "55579.\n\n## 1",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.7,
+    "key": "20862",
+    "out": "a key that is used to control the power ",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.7,
+    "key": "99489",
+    "out": "99489. Remember it. 9",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.7,
+    "key": "83948",
+    "out": "a key that is used to identify the pass ",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.7,
+    "key": "31303",
+    "out": "31303. Remember it. 3",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.7,
+    "key": "75459",
+    "out": "a keypad that is used to enter a series ",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.7,
+    "key": "79771",
+    "out": "a key that is used to unlock the main ga",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.9,
+    "key": "29075",
+    "out": "29075. 1. Which of",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.9,
+    "key": "41887",
+    "out": "the key to understanding the relationshi",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.9,
+    "key": "76379",
+    "out": "76379.\n\n## 1",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.9,
+    "key": "61531",
+    "out": "61531. Remember it. 6",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.9,
+    "key": "26898",
+    "out": "a key that is used to unlock a particula",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.9,
+    "key": "89976",
+    "out": "the key that is passed to the function.\n",
+    "correct": false
+   },
+   {
+    "len": 16384,
+    "depth": 0.9,
+    "key": "15359",
+    "out": "15359. Remember it. 1",
+    "correct": true
+   },
+   {
+    "len": 16384,
+    "depth": 0.9,
+    "key": "19003",
+    "out": "19003. Remember it. 1",
+    "correct": true
+   }
+  ]
+ },
+ "multihop": {
+  "2hop_by_len": {
+   "2048": [
+    0.167,
+    24
+   ],
+   "4096": [
+    0.208,
+    24
+   ],
+   "8192": [
+    0.25,
+    24
+   ],
+   "16384": [
+    0.083,
+    24
+   ]
+  },
+  "1hop_by_len": {
+   "2048": [
+    0.375,
+    24
+   ],
+   "4096": [
+    0.25,
+    24
+   ],
+   "8192": [
+    0.25,
+    24
+   ],
+   "16384": [
+    0.042,
+    24
+   ]
+  },
+  "2hop_picked_listed": 0.562,
+  "rows": [
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Silomar",
+    "out": "Silomar.\n\nQuestion: What is the bakery",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Silomar",
+    "out": "Silomar.\n\nQuestion: What is the land",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Nezumar",
+    "out": "Nezumar.\n\nThe bakery is located in the",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Nezumar",
+    "out": "Quintisbel.\n\nQuestion: What is the baker",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Rarosmar",
+    "out": "Ballencrieff.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Rarosmar",
+    "out": "Sikato.\n\nQuestion: What is the bakery in",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Roszuquin",
+    "out": "Marquintis.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Roszuquin",
+    "out": "Quinvatsi.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Tisdortis",
+    "out": "Tismarmi.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Tisdortis",
+    "out": "Tisdortis.\n\nQuestion: What is",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Zuneros",
+    "out": "Nebelpa.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Zuneros",
+    "out": "Nebelpa.\nQuestion: What is the name of",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Nemitis",
+    "out": "the Panemar.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Nemitis",
+    "out": "Nemitis.\nQuestion: What is the bakery in",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Zutisra",
+    "out": "Tisvemi.\n\nThe Sextuple",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Zutisra",
+    "out": "Tistovat.\n\n3.1. The",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Lodorros",
+    "out": "Tisnera.\n    // 1 ETH, yield",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Lodorros",
+    "out": "Lodorros.\n\nQuestion: What is the probabi",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Dorzuros",
+    "out": "Lenkaquin.\n\nThe 1976",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Dorzuros",
+    "out": "Dorzuros.\n\nQuestion: What is the",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Zutisto",
+    "out": "Zutisto.\n\nQuestion: What is the",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Zutisto",
+    "out": "Zutisto.\n\nQuestion: What is the",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Tismarbel",
+    "out": "Sengkang.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Tismarbel",
+    "out": "Sinedor.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Vattislen",
+    "out": "Tisbelpa.\n\nDemographics\n\nAs",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Vattislen",
+    "out": "Vattislen.\n\n#### Question 16",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Lenlenbel",
+    "out": "Loloka.\n\n/**\n * @interface",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Lenlenbel",
+    "out": "Lenlenbel. The bakery is called Lenlenbe",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Kaloquin",
+    "out": "Kazuvat.\n\nThe bakery is a small,",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Kaloquin",
+    "out": "Kazuvat.\n\nThe bakery is called Kazuv",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Marmartis",
+    "out": "Marmartis.\n\nThe bakery is called Marmart",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Marmartis",
+    "out": "Marmartis.\n\nThe memorial was unveiled on",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lonelo",
+    "out": "Rapato.\n\nReferences\n\n1980",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lonelo",
+    "out": "Tisbello.\n\n## Notes\n\n1",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Nemartis",
+    "out": "Lotistis.\nQuestion: What is the name of",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Nemartis",
+    "out": "Belsibel.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Belmardor",
+    "out": "Lopavat.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Belmardor",
+    "out": "Dormarne.",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Vatmimi",
+    "out": "Sitove.\n\nQuestion: What is the bakery ca",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Vatmimi",
+    "out": "Sitove.\n\n#### Question 19:",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Dorvatlen",
+    "out": "Tisroska.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Dorvatlen",
+    "out": "Zumipa.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Rasimar",
+    "out": "\"The Dura Lube 500\"",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Rasimar",
+    "out": "Quinmarros.\n\n/**\n * @return",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Rospasi",
+    "out": "Lobelra.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Rospasi",
+    "out": "Lobelra.\n\n## Notes\n\n1.",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Vekami",
+    "out": "Quinvatros.\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 2048,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Vekami",
+    "out": "Tokapa.\n\nThe bakery in Dorbelquin",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Lodordor",
+    "out": "Lodordor.\nQuestion: What is the name of",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Lodordor",
+    "out": "Lodordor.\n\n2009\n\"",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Lodorra",
+    "out": "\"Lodorra\".\n\nMr. Belding's",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Lodorra",
+    "out": "Dorlenve.\n\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Rossine",
+    "out": "Belvatsi.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Rossine",
+    "out": "Belvatsi.\n\nRoman-Dacian",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Netosi",
+    "out": "Tisvelen.\n\nReferences\n\nBibli",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Netosi",
+    "out": "Netosi.\n\nQuestion: What is the bakery in",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Marnebel",
+    "out": "Marnebel.\n\n## The Triangle Area Light",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Marnebel",
+    "out": "Marnebel.\nQuestion: What is the only bak",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Kasilen",
+    "out": "Lololo.\n\nFrance\n\n Country: France",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Kasilen",
+    "out": "Lodorpaquin.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Tispaka",
+    "out": "\"Radorros\" in the town of Quinneros",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Tispaka",
+    "out": "Lorabel.\n\nQuestion: What is the differen",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Mivezu",
+    "out": "Miveza.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Mivezu",
+    "out": "Mivezu.\n\n### Design and simulate a D",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Vezune",
+    "out": "Zutiszu.\n\n## Exercises\n\n1",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Vezune",
+    "out": "\"Kamal Pokhari\".\n\nSee also",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Ramarve",
+    "out": "Ramarve.\n\n# Engaging students: Finding t",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Ramarve",
+    "out": "Ramarve.\n\nThe new mathematics is not a",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Nesidor",
+    "out": "Marpapa.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Nesidor",
+    "out": "Vatkane.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Velenmar",
+    "out": "Velenmar.\n\nReferences\n\n191",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Velenmar",
+    "out": "Velenmar.\n\n#### Question 7:",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Belnemi",
+    "out": "Rosdormi.\n       \n}\n\nexport class",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Belnemi",
+    "out": "Nelento.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Vekara",
+    "out": "Tiszuquin.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Vekara",
+    "out": "Vemimi.\n\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Nemilo",
+    "out": "Katisra.\nQuestion: What is the bakery ca",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Nemilo",
+    "out": "\"Mangyong\" (\ub9c8\ufffd",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Raquinlen",
+    "out": "Lonetis.\n\nR: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Raquinlen",
+    "out": "the Belbelvat.",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Nelomar",
+    "out": "Sibelmar.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Nelomar",
+    "out": "Sibelmar.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Marbelros",
+    "out": "Rosquinvat.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Marbelros",
+    "out": "\"Boyan\" (Boyan means \"b",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lennetis",
+    "out": "Quintopa.\n\nQuestion: What is the bakery ",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lennetis",
+    "out": "Markaros.\n\nRoman Empire \nThe Roman",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Marbelbel",
+    "out": "Rosquinka.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Marbelbel",
+    "out": "Rosmarquin.\n\nQuestion: What is the proba",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Pavetis",
+    "out": "Tisrosros.\n\n# Engaging students: Finding",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Pavetis",
+    "out": "Tolenne.  The only bakery in Dorlenvat",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Sirossi",
+    "out": "Dorsimar.\n\nQuestion: What is the name of",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Sirossi",
+    "out": "Quinveros.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Quinzulen",
+    "out": "Tonebel.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Quinzulen",
+    "out": "Veveka.\n\n# Engaging students: Finding th",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Vetove",
+    "out": "\u2018Milobel\u2019 in the town of Tisves",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 4096,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Vetove",
+    "out": "Milobel. Exercise 4.2 The plot of",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Lovelen",
+    "out": "Tisralo.\n\nThe Angolan War of",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Lovelen",
+    "out": "Misito.\n\nQuestion: What is the bakery in",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Panebel",
+    "out": "Quinkabel.\nQuestion: What is the name of",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Panebel",
+    "out": "Silopa.\nQuestion: What is the bakery in ",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Quinlone",
+    "out": "Nedordor.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Quinlone",
+    "out": "Lenmarmar.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Dorlenzu",
+    "out": "Beltisros.\n\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Dorlenzu",
+    "out": "Velenvat.\n\n## The 199",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Tisrosto",
+    "out": "Tisrosto.\n*/\n\nexport const",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Tisrosto",
+    "out": "Tisrosto.\n\nQuestion: What is the",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Belmimi",
+    "out": "Lenmitis.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Belmimi",
+    "out": "Pavene.\n\nQuestion: What is the bakery in",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Mimartis",
+    "out": "Mimartis.\n\nQuestion: What is the bakery",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Mimartis",
+    "out": "Roslolo.\nQuestion: What is the name of",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Kadorne",
+    "out": "Kadorne.\n*/\n\nexport const get",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Kadorne",
+    "out": "Kadorne.\n\nKadar \n\nThe",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Tokami",
+    "out": "Lenquindor.\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Tokami",
+    "out": "Kazutis.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Pasibel",
+    "out": "S\u00edmbolo de Espera.\n*/",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Pasibel",
+    "out": "Pasibel.\n\nQuestion: What is the bakery",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Marmilo",
+    "out": "Marmilo.\nQuestion: What is the name of t",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Marmilo",
+    "out": "Kakador.\nQuestion: What is the name of t",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Tispato",
+    "out": "Tisrostis.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Tispato",
+    "out": "Tispato.\n\nReferences\n\nFurther reading",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Dormive",
+    "out": "\"Vespa Woman\".\n\nKana Kou",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Dormive",
+    "out": "Dormive.\n\nQuestion: What is the bakery",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Tislozu",
+    "out": "Lomidor.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Tislozu",
+    "out": "Tislozu.\n\n/**\n * @",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Mivatmi",
+    "out": "Mivatmi.\n\nQuestion: What is the",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Mivatmi",
+    "out": "Tiskamar.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Razuka",
+    "out": "Razuka.\nQuestion: What is the name of th",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Razuka",
+    "out": "\u201cRangers\u201d in Marraka.\n\nQuestion",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Zunetis",
+    "out": "\"Carlota\" in the town where Quinbelka li",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Zunetis",
+    "out": "Vatvelo.\n\n1.2. Functions",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Kakaros",
+    "out": "Veveve.\n\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Kakaros",
+    "out": "the Food City 500.\n\nBaker",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Tissipa",
+    "out": "Venesi's.\n\nWinston 500",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Tissipa",
+    "out": "Tosho.\n\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Todorlen",
+    "out": "Lenveka.\n\n## The Triangular Area Light",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Todorlen",
+    "out": "Lenveka.\n\nThe court martial was adjour",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Nesimar",
+    "out": "Nemiros.\n*/\n\nexport const get",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Nesimar",
+    "out": "Nemiros.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Katisra",
+    "out": "Markara.\n\n#### Question 30:",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Katisra",
+    "out": "Tonetis.\n\n### Solving homogeneous linear",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Karane",
+    "out": "Lenlentis.\n\nThe bakery is called Len",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Karane",
+    "out": "\"Lolone\"\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lenzubel",
+    "out": "Nelobel.\n\nThe bakery is located in",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 8192,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lenzubel",
+    "out": "the \u201cPalestinian bakery\u201d in Dortisquin",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Pamibel",
+    "out": "Zuvatquin.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Pamibel",
+    "out": "\"The Max\".\n\nKannazuki Kotone",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Rostomi",
+    "out": "Sitoka.\nQuestion: What is the name of th",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Rostomi",
+    "out": "Nekaquin.\n\nThe bakery in Lom",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Dorkazu",
+    "out": "Palodor.\n\nThe bakery is a small, old",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Dorkazu",
+    "out": "the bakery in Patolen.\n\n### Alternating-",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Zukazu",
+    "out": "Nelenros.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Zukazu",
+    "out": "the \"Durham Doughnut Company\".",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Kamarbel",
+    "out": "Toquinros.\n\nThe modernists have not been",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Kamarbel",
+    "out": "\"Toneve\".\n\nMain characters\n\nZ",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Mikamar",
+    "out": "Nesine.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Mikamar",
+    "out": "Pasisi.\nQuestion: What is the bakery in",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Nevebel",
+    "out": "Rapapa.\n\nQuestion: What is the bakery ca",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Nevebel",
+    "out": "Rosnelen.\n\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Sivatne",
+    "out": "Rosquinvat.\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.1,
+    "d_bakery": 0.6,
+    "gold": "Sivatne",
+    "out": "Rakador.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Padorsi",
+    "out": "Marroszu.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Padorsi",
+    "out": "Marveve.\n\n#### Question 13:",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Ravepa",
+    "out": "Ravepa.\n\nQuestion: What is the name",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Ravepa",
+    "out": "Belvetis.\n\n#### Question 5:",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Quinpalen",
+    "out": "Raraquin.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Quinpalen",
+    "out": "Zusito.\nQuestion: What is the bakery in",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Vatquinquin",
+    "out": "Belquinzu.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Vatquinquin",
+    "out": "Vatquinquin.\n\n## The Triangle-",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Rasira",
+    "out": "Rasira.\n\n## References\n\n1. ^",
+    "correct": true,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Rasira",
+    "out": "Lozuvat.\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Rossitis",
+    "out": "Pavatra.\n\nQuestion: What is the bakery c",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Rossitis",
+    "out": "Vekaquin.\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Lenloto",
+    "out": "'Rossika' in Lenmito.\n\nQuestion",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Lenloto",
+    "out": "the Simarros bakery.\nQuestion: What is t",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Marlenzu",
+    "out": "Rosnemar.\n\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.4,
+    "d_bakery": 0.9,
+    "gold": "Marlenzu",
+    "out": "Tosizu.\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lenquintis",
+    "out": "Siroslen.\n\nThe bakery is called Siros",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lenquintis",
+    "out": "Markador.\n\nQuestion: What is the bakery ",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lentomi",
+    "out": "the Lenmarquin.\n\n17 Alternating-",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Lentomi",
+    "out": "Tolosi.\n\nQuestion: What is the differenc",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Tisravat",
+    "out": "Vatvetis.\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Tisravat",
+    "out": "\u201cLhasa Jokhang\u201d in Tibetan.\nQuestion",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Vetismi",
+    "out": "Belkador.\n\nNASCAR 40",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Vetismi",
+    "out": "the Dortisbel.\n\n22 7",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Rasipa",
+    "out": "Dortosi.\n\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Rasipa",
+    "out": "Belsizu.\nQuestion: What is the name",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Rasilo",
+    "out": "\"Silove\" in the town of X\u00e9p\u00f4",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Rasilo",
+    "out": "Silove.\n\n## Summary\n\nIn this lesson",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Raralen",
+    "out": "Tislensi.\n\n### 7.2",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Raralen",
+    "out": "Dordorzu.\nQuestion: What is the bakery",
+    "correct": false,
+    "picked_listed": false
+   },
+   {
+    "len": 16384,
+    "kind": "2hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Ralenpa",
+    "out": "Vebeltis.\n\nQuestion: What is the",
+    "correct": false,
+    "picked_listed": true
+   },
+   {
+    "len": 16384,
+    "kind": "1hop",
+    "d_person": 0.8,
+    "d_bakery": 0.2,
+    "gold": "Ralenpa",
+    "out": "Torara.\nQuestion: What is the name of th",
+    "correct": false,
+    "picked_listed": false
+   }
+  ]
+ },
+ "posloss": {
+  "n_docs": 48,
+  "buckets": {
+   "0-512": 2.498,
+   "512-1024": 2.5223,
+   "1024-2048": 2.517,
+   "2048-4096": 2.4762,
+   "4096-8192": 2.3635,
+   "8192-16384": 2.2677
+  },
+  "tokens": {
+   "0-512": 24576,
+   "512-1024": 24576,
+   "1024-2048": 49152,
+   "2048-4096": 98304,
+   "4096-8192": 196608,
+   "8192-16384": 189523
+  }
+ },
+ "elapsed_s": 443.2
+}

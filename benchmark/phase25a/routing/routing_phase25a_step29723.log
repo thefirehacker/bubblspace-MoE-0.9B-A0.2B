@@ -1,0 +1,33 @@
+/home/ubuntu/moe0.9b-a0.2b/.venv/lib/python3.10/site-packages/torch/nn/attention/flex_attention.py:2596: UserWarning: flex_attention called without torch.compile() - this will use an unfused implementation that materializes the full scores matrix instead of generating a fused kernel.
+
+SOLUTION: Use torch.compile(flex_attention)(...)
+
+If you want to debug your score_mod/mask_mod, you can set:
+torch.nn.attention.flex_attention._FLEX_ATTENTION_DISABLE_COMPILE_DEBUG = True
+
+This will allow you to use print statements or breakpoints. Note: This doesn't work with the backwards pass and may produce incorrect results.
+  _warn_once(
+[routing] agentic: 74,509 tokens from 5 pools
+[routing] code: 98,304 tokens from 6 pools
+[routing] contrastive: 98,304 tokens from 2 pools
+[routing] english: 98,304 tokens from 3 pools
+
+=== routing @ step 29723 ===
+layer    max    min     cv  entropy  starved  overloaded  specialized (lift>=2)
+    0  1.536  0.584  0.175   0.9964        0           0  code:e41x4.12, code:e59x3.61, code:e23x3.53, cont:e12x2.44, cont:e2x2.41, cont:e57x2.38
+    1   1.43  0.555   0.19   0.9956        0           0  agen:e7x9.3, agen:e48x6.84, agen:e4x4.82, code:e12x10.43, code:e0x9.83, code:e61x5.92, cont:e60x5.53, cont:e41x3.21, cont:e52x2.56, engl:e63x3.38, engl:e30x2.98, engl:e38x2.89
+    2  1.486  0.495   0.18   0.9959        0           0  agen:e1x2.32, code:e26x5.44, code:e51x5.3, code:e55x4.88, cont:e11x6.69, cont:e63x4.44, cont:e31x3.52, engl:e20x7.14, engl:e56x2.58
+    3  1.598  0.547  0.216   0.9943        0           0  agen:e31x3.78, agen:e32x2.94, agen:e23x2.85, code:e16x4.17, code:e27x4.15, code:e30x3.23, cont:e53x6.17, cont:e2x3.91, cont:e4x3.75, engl:e34x4.8, engl:e24x3.84, engl:e59x2.97
+    4  1.444  0.258  0.224   0.9935        0           0  agen:e35x3.6, agen:e36x2.6, code:e37x6.67, code:e57x4.99, code:e55x4.96, cont:e5x4.69, cont:e59x3.95, cont:e11x3.47, engl:e22x3.3, engl:e21x2.57
+    5  1.393  0.569    0.2   0.9952        0           0  agen:e14x2.02, code:e6x4.57, code:e16x4.13, code:e25x2.13, cont:e20x5.04, cont:e31x2.76, cont:e36x2.61
+    6  1.492   0.65  0.204   0.9951        0           0  agen:e42x2.03, code:e59x2.93, code:e8x2.7, code:e60x2.51, cont:e25x4.51, cont:e20x3.83, cont:e30x3.52, engl:e35x2.27, engl:e2x2.03
+    7  1.541  0.497  0.235   0.9934        0           0  agen:e47x2.4, agen:e11x2.26, code:e4x3.59, code:e2x3.14, code:e41x2.44, cont:e43x10.32, cont:e15x3.51, cont:e5x2.74, engl:e47x3.04, engl:e34x2.95
+    8   2.46  0.556  0.295   0.9906        0           0  agen:e10x2.51, agen:e25x2.05, agen:e1x2.04, code:e32x5.63, code:e53x4.19, code:e33x3.72, cont:e26x6.77, cont:e34x4.4, cont:e56x4.36, engl:e25x3.49, engl:e31x3.43, engl:e51x3.25
+    9   2.01  0.372  0.247   0.9929        0           0  agen:e36x2.18, agen:e38x2.06, code:e24x3.5, code:e61x3.44, code:e40x3.02, cont:e63x4.97, cont:e50x3.72, cont:e44x3.31, engl:e48x2.78, engl:e43x2.67, engl:e1x2.46
+   10  1.488  0.447   0.21   0.9943        0           0  agen:e16x2.26, agen:e53x2.1, code:e51x4.3, code:e29x3.62, code:e46x3.55, cont:e23x5.31, cont:e25x3.94, cont:e52x3.93, engl:e7x7.33, engl:e4x3.76, engl:e19x3.55
+   11  1.642  0.378  0.208   0.9946        0           0  agen:e5x2.3, agen:e60x2.23, code:e7x3.7, code:e36x2.9, code:e62x2.7, cont:e26x4.34, cont:e38x4.32, cont:e10x3.81, engl:e40x8.62, engl:e3x3.63, engl:e1x2.75
+   12  1.576   0.51  0.218   0.9941        0           0  agen:e21x3.73, agen:e26x2.27, agen:e36x2.01, code:e55x4.2, code:e0x4.04, code:e28x3.76, cont:e60x4.97, cont:e31x3.22, cont:e24x3.12, engl:e56x7.02, engl:e25x3.13, engl:e26x3.0
+   13   1.74  0.383  0.257   0.9916        0           0  agen:e58x2.48, agen:e7x2.38, agen:e45x2.04, code:e22x6.32, code:e19x4.89, code:e61x3.7, cont:e49x4.64, cont:e54x3.61, cont:e38x3.27, engl:e63x9.5, engl:e25x4.56, engl:e46x3.44
+   14  1.715  0.307  0.261   0.9917        0           0  agen:e7x2.08, agen:e33x2.03, code:e54x3.07, code:e42x2.96, code:e19x2.89, cont:e15x4.62, cont:e46x2.89, cont:e2x2.74, engl:e28x7.05, engl:e39x5.89
+   15  2.318  0.292  0.351   0.9855        0           0  agen:e26x2.12, agen:e25x2.12, agen:e45x2.09, code:e20x6.17, code:e0x4.74, code:e14x4.05, cont:e38x4.36, cont:e4x4.3, cont:e63x4.18, engl:e46x4.13, engl:e24x3.26
+[routing] saved benchmark/phase25a/routing/routing_phase25a_step29723.json

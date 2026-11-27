@@ -1,0 +1,30 @@
+{
+  "checkpoint": "/lambda/nfs/us-west-1-eval-inference/wsp_direction/wsp_L6_lam5.pt",
+  "step": 22888,
+  "tasks": [
+    "lambada_openai",
+    "piqa"
+  ],
+  "limit": null,
+  "num_fewshot": null,
+  "results": {
+    "lambada_openai": {
+      "name": "lambada_openai",
+      "alias": "lambada_openai",
+      "sample_len": 5153,
+      "perplexity,none": 33.91595933294852,
+      "perplexity_stderr,none": 1.3166801087797215,
+      "acc,none": 0.34872889578886085,
+      "acc_stderr,none": 0.0066395239985089834
+    },
+    "piqa": {
+      "name": "piqa",
+      "alias": "piqa",
+      "sample_len": 1838,
+      "acc,none": 0.690968443960827,
+      "acc_stderr,none": 0.01078141946440698,
+      "acc_norm,none": 0.6817192600652884,
+      "acc_norm_stderr,none": 0.010868093932082231
+    }
+  }
+}

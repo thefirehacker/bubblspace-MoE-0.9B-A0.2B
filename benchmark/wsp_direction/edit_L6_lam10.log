@@ -1,0 +1,9 @@
+[ckpt] loaded /lambda/nfs/us-west-1-eval-inference/keep/phase2_step_22888.pt (step 22888)
+[probe] 40 target cases, 80 protected (other) cases
+[edit] building positive (key, value-delta) pairs at layer 6...
+[edit] 80 positive keys collected
+[edit] building negative/protected keys at layer 6...
+[edit] 160 protected keys collected
+[edit] solved delta_w, shape=(1024, 1024), norm=4.4971, mu=0.121277
+[edit] o_proj.weight norm 31.2511 -> 31.5831 (delta_w norm 4.4971)
+[wsp] saved edited checkpoint to /lambda/nfs/us-west-1-eval-inference/wsp_direction/wsp_L6_lam10.pt

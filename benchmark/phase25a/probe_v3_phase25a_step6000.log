@@ -1,0 +1,643 @@
+[ckpt] loaded /lambda/nfs/us-west-1-eval-inference/phase25a/step_6000.pt (step 6000)
+
+=== drone / train (entity) ===
+  ctxA: ... its parcel first. The one that was faster was the
+    drone.         logprob=  -3.374
+    train.         logprob=  -9.331   -> prefers: drone.
+  ctxB: ... its parcel first. The one that was slower was the
+    drone.         logprob=  -5.013
+    train.         logprob= -10.256   -> prefers: drone.
+  correct binding (flips A->c1, B->c2): False
+
+=== drone / train (attribute) ===
+  ctxA: ...el first, so of the two, the drone was clearly the
+    faster one.    logprob=  -4.465
+    slower one.    logprob=  -7.435   -> prefers: faster one.
+  ctxB: ...el first, so of the two, the train was clearly the
+    faster one.    logprob=  -4.771
+    slower one.    logprob=  -8.199   -> prefers: faster one.
+  correct binding (flips A->c1, B->c2): False
+
+=== banquet / snack (entity) ===
+  ctxA: ...e table for hours. The one that was longer was the
+    banquet.       logprob=  -4.327
+    snack.         logprob=  -6.781   -> prefers: banquet.
+  ctxB: ... table for hours. The one that was shorter was the
+    banquet.       logprob=  -4.650
+    snack.         logprob=  -6.753   -> prefers: banquet.
+  correct binding (flips A->c1, B->c2): False
+
+=== banquet / snack (attribute) ===
+  ctxA: ... hours, so of the two, the banquet was clearly the
+    longer one.    logprob=  -2.234
+    shorter one.   logprob=  -6.579   -> prefers: longer one.
+  ctxB: ...or hours, so of the two, the snack was clearly the
+    longer one.    logprob=  -3.051
+    shorter one.   logprob=  -6.583   -> prefers: longer one.
+  correct binding (flips A->c1, B->c2): False
+
+=== tugboat / dinghy (entity) ===
+  ctxA: ... beside it. The one that was more powerful was the
+    tugboat.       logprob=  -3.744
+    dinghy.        logprob=  -3.426   -> prefers: dinghy.
+  ctxB: ...drifted beside it. The one that was weaker was the
+    tugboat.       logprob=  -4.545
+    dinghy.        logprob=  -3.501   -> prefers: dinghy.
+  correct binding (flips A->c1, B->c2): False
+
+=== tugboat / dinghy (attribute) ===
+  ctxA: ...ide it, so of the two, the tugboat was clearly the
+    more powerful one. logprob=  -7.077
+    weaker one.    logprob=  -8.968   -> prefers: more powerful one.
+  ctxB: ...side it, so of the two, the dinghy was clearly the
+    more powerful one. logprob=  -8.342
+    weaker one.    logprob=  -8.940   -> prefers: more powerful one.
+  correct binding (flips A->c1, B->c2): False
+
+=== Stradivarius / student violin (entity) ===
+  ctxA: ...t of her savings. The one that was pricier was the
+    Stradivarius.  logprob=  -5.971
+    student violin. logprob=  -2.643   -> prefers: student violin.
+  ctxB: ...t of her savings. The one that was cheaper was the
+    Stradivarius.  logprob=  -6.435
+    student violin. logprob=  -2.072   -> prefers: student violin.
+  correct binding (flips A->c1, B->c2): False
+
+=== Stradivarius / student violin (attribute) ===
+  ctxA: ...s, so of the two, the Stradivarius was clearly the
+    pricier one.   logprob= -12.327
+    cheaper one.   logprob=  -7.021   -> prefers: cheaper one.
+  ctxB: ... so of the two, the student violin was clearly the
+    pricier one.   logprob= -12.484
+    cheaper one.   logprob=  -6.733   -> prefers: cheaper one.
+  correct binding (flips A->c1, B->c2): False
+
+=== truck / golf cart (entity) ===
+  ctxA: ...ck made it creak. The one that was heavier was the
+    truck.         logprob=  -5.353
+    golf cart.     logprob=  -7.796   -> prefers: truck.
+  ctxB: ...ck made it creak. The one that was lighter was the
+    truck.         logprob=  -5.538
+    golf cart.     logprob=  -7.680   -> prefers: truck.
+  correct binding (flips A->c1, B->c2): False
+
+=== truck / golf cart (attribute) ===
+  ctxA: ...it creak, so of the two, the truck was clearly the
+    heavier one.   logprob=  -3.198
+    lighter one.   logprob=  -7.356   -> prefers: heavier one.
+  ctxB: ...reak, so of the two, the golf cart was clearly the
+    heavier one.   logprob=  -3.331
+    lighter one.   logprob=  -7.354   -> prefers: heavier one.
+  correct binding (flips A->c1, B->c2): False
+
+=== cathedral bell / bicycle bell (entity) ===
+  ctxA: ...across the valley. The one that was louder was the
+    cathedral bell. logprob=  -4.506
+    bicycle bell.  logprob=  -3.582   -> prefers: bicycle bell.
+  ctxB: ...cross the valley. The one that was quieter was the
+    cathedral bell. logprob=  -5.814
+    bicycle bell.  logprob=  -1.807   -> prefers: bicycle bell.
+  correct binding (flips A->c1, B->c2): False
+
+=== cathedral bell / bicycle bell (attribute) ===
+  ctxA: ... so of the two, the cathedral bell was clearly the
+    louder one.    logprob=  -1.114
+    quieter one.   logprob=  -6.214   -> prefers: louder one.
+  ctxB: ...y, so of the two, the bicycle bell was clearly the
+    louder one.    logprob=  -1.088
+    quieter one.   logprob=  -5.706   -> prefers: louder one.
+  correct binding (flips A->c1, B->c2): False
+
+=== ice cube / glacier (entity) ===
+  ctxA: ...e within minutes. The one that was smaller was the
+    ice cube.      logprob=  -4.885
+    glacier.       logprob=  -5.331   -> prefers: ice cube.
+  ctxB: ...ne within minutes. The one that was larger was the
+    ice cube.      logprob=  -4.894
+    glacier.       logprob=  -5.848   -> prefers: ice cube.
+  correct binding (flips A->c1, B->c2): False
+
+=== ice cube / glacier (attribute) ===
+  ctxA: ...nutes, so of the two, the ice cube was clearly the
+    smaller one.   logprob=  -4.819
+    larger one.    logprob=  -4.130   -> prefers: larger one.
+  ctxB: ...inutes, so of the two, the glacier was clearly the
+    smaller one.   logprob=  -4.646
+    larger one.    logprob=  -4.182   -> prefers: larger one.
+  correct binding (flips A->c1, B->c2): False
+
+=== novel / pamphlet (entity) ===
+  ctxA: ...le term to finish. The one that was longer was the
+    novel.         logprob=  -3.004
+    pamphlet.      logprob=  -6.078   -> prefers: novel.
+  ctxB: ...e term to finish. The one that was shorter was the
+    novel.         logprob=  -3.663
+    pamphlet.      logprob=  -5.322   -> prefers: novel.
+  correct binding (flips A->c1, B->c2): False
+
+=== novel / pamphlet (attribute) ===
+  ctxA: ...o finish, so of the two, the novel was clearly the
+    longer one.    logprob=  -2.641
+    shorter one.   logprob=  -5.252   -> prefers: longer one.
+  ctxB: ...inish, so of the two, the pamphlet was clearly the
+    longer one.    logprob=  -2.820
+    shorter one.   logprob=  -5.256   -> prefers: longer one.
+  correct binding (flips A->c1, B->c2): False
+
+=== hawk / sparrow (entity) ===
+  ctxA: ...he wider wingspan. The one that was bigger was the
+    hawk.          logprob=  -2.376
+    sparrow.       logprob=  -3.171   -> prefers: hawk.
+  ctxB: ...e wider wingspan. The one that was smaller was the
+    hawk.          logprob=  -3.225
+    sparrow.       logprob=  -2.534   -> prefers: sparrow.
+  correct binding (flips A->c1, B->c2): True
+
+=== hawk / sparrow (attribute) ===
+  ctxA: ... wingspan, so of the two, the hawk was clearly the
+    bigger one.    logprob=  -1.666
+    smaller one.   logprob=  -5.776   -> prefers: bigger one.
+  ctxB: ...ngspan, so of the two, the sparrow was clearly the
+    bigger one.    logprob=  -1.811
+    smaller one.   logprob=  -5.113   -> prefers: bigger one.
+  correct binding (flips A->c1, B->c2): False
+
+=== espresso / decaf (entity) ===
+  ctxA: ...awake all night. The one that was stronger was the
+    espresso.      logprob=  -5.752
+    decaf.         logprob=  -3.408   -> prefers: decaf.
+  ctxB: ...r awake all night. The one that was milder was the
+    espresso.      logprob=  -6.926
+    decaf.         logprob=  -3.932   -> prefers: decaf.
+  correct binding (flips A->c1, B->c2): False
+
+=== espresso / decaf (attribute) ===
+  ctxA: ...night, so of the two, the espresso was clearly the
+    stronger one.  logprob=  -4.183
+    milder one.    logprob= -11.841   -> prefers: stronger one.
+  ctxB: ...ll night, so of the two, the decaf was clearly the
+    stronger one.  logprob=  -4.798
+    milder one.    logprob= -11.641   -> prefers: stronger one.
+  correct binding (flips A->c1, B->c2): False
+
+=== skyscraper / kiosk (entity) ===
+  ctxA: ...the afternoon sun. The one that was taller was the
+    skyscraper.    logprob=  -7.687
+    kiosk.         logprob=  -7.422   -> prefers: kiosk.
+  ctxB: ...he afternoon sun. The one that was shorter was the
+    skyscraper.    logprob=  -6.698
+    kiosk.         logprob=  -5.527   -> prefers: kiosk.
+  correct binding (flips A->c1, B->c2): False
+
+=== skyscraper / kiosk (attribute) ===
+  ctxA: ...sun, so of the two, the skyscraper was clearly the
+    taller one.    logprob=  -1.103
+    shorter one.   logprob=  -8.632   -> prefers: taller one.
+  ctxB: ...noon sun, so of the two, the kiosk was clearly the
+    taller one.    logprob=  -1.469
+    shorter one.   logprob=  -8.172   -> prefers: taller one.
+  correct binding (flips A->c1, B->c2): False
+
+=== necklace / bracelet (entity) ===
+  ctxA: ...ighest bid. The one that was more valuable was the
+    necklace.      logprob=  -5.661
+    bracelet.      logprob=  -3.530   -> prefers: bracelet.
+  ctxB: ...ighest bid. The one that was less valuable was the
+    necklace.      logprob=  -8.243
+    bracelet.      logprob=  -3.053   -> prefers: bracelet.
+  correct binding (flips A->c1, B->c2): False
+
+=== necklace / bracelet (attribute) ===
+  ctxA: ...t bid, so of the two, the necklace was clearly the
+    more valuable one. logprob=  -4.522
+    less valuable one. logprob= -10.763   -> prefers: more valuable one.
+  ctxB: ...t bid, so of the two, the bracelet was clearly the
+    more valuable one. logprob=  -4.562
+    less valuable one. logprob= -11.327   -> prefers: more valuable one.
+  correct binding (flips A->c1, B->c2): False
+
+=== harp / minivan (entity) ===
+  ctxA: ...into the minivan. The one that was too big was the
+    harp.          logprob= -12.139
+    minivan.       logprob=  -3.346   -> prefers: minivan.
+  ctxB: ...to the minivan. The one that was too small was the
+    harp.          logprob= -10.945
+    minivan.       logprob=  -2.696   -> prefers: minivan.
+  correct binding (flips A->c1, B->c2): False
+
+=== harp / minivan (attribute) ===
+  ctxA: ...e minivan, so of the two, the harp was clearly the
+    too big one.   logprob= -15.570
+    too small one. logprob= -16.988   -> prefers: too big one.
+  ctxB: ...inivan, so of the two, the minivan was clearly the
+    too big one.   logprob= -19.794
+    too small one. logprob= -19.556   -> prefers: too small one.
+  correct binding (flips A->c1, B->c2): True
+
+=== pool table / stairs (entity) ===
+  ctxA: ...basement stairs. The one that was too wide was the
+    pool table.    logprob=  -9.044
+    stairs.        logprob= -14.865   -> prefers: pool table.
+  ctxB: ...sement stairs. The one that was too narrow was the
+    pool table.    logprob=  -9.742
+    stairs.        logprob= -13.314   -> prefers: pool table.
+  correct binding (flips A->c1, B->c2): False
+
+=== pool table / stairs (attribute) ===
+  ctxA: ...irs, so of the two, the pool table was clearly the
+    too wide one.  logprob= -20.501
+    too narrow one. logprob= -18.991   -> prefers: too narrow one.
+  ctxB: ... stairs, so of the two, the stairs was clearly the
+    too wide one.  logprob= -19.119
+    too narrow one. logprob= -15.046   -> prefers: too narrow one.
+  correct binding (flips A->c1, B->c2): False
+
+=== drum kit / closet (entity) ===
+  ctxA: ...ide the closet. The one that was too bulky was the
+    drum kit.      logprob=  -3.442
+    closet.        logprob=  -9.044   -> prefers: drum kit.
+  ctxB: ...ide the closet. The one that was too small was the
+    drum kit.      logprob=  -3.648
+    closet.        logprob= -10.266   -> prefers: drum kit.
+  correct binding (flips A->c1, B->c2): False
+
+=== drum kit / closet (attribute) ===
+  ctxA: ...loset, so of the two, the drum kit was clearly the
+    too bulky one. logprob= -19.303
+    too small one. logprob= -24.527   -> prefers: too bulky one.
+  ctxB: ... closet, so of the two, the closet was clearly the
+    too bulky one. logprob= -17.203
+    too small one. logprob= -19.500   -> prefers: too bulky one.
+  correct binding (flips A->c1, B->c2): False
+
+=== statue / crate (entity) ===
+  ctxA: ...into the crate. The one that was too large was the
+    statue.        logprob= -15.951
+    crate.         logprob= -10.643   -> prefers: crate.
+  ctxB: ...into the crate. The one that was too small was the
+    statue.        logprob= -14.281
+    crate.         logprob= -10.429   -> prefers: crate.
+  correct binding (flips A->c1, B->c2): False
+
+=== statue / crate (attribute) ===
+  ctxA: ...e crate, so of the two, the statue was clearly the
+    too large one. logprob= -15.799
+    too small one. logprob= -19.271   -> prefers: too large one.
+  ctxB: ...he crate, so of the two, the crate was clearly the
+    too large one. logprob= -17.875
+    too small one. logprob= -19.425   -> prefers: too large one.
+  correct binding (flips A->c1, B->c2): False
+
+=== hot tub / gate (entity) ===
+  ctxA: ...the garden gate. The one that was too wide was the
+    hot tub.       logprob=  -7.487
+    gate.          logprob= -12.211   -> prefers: hot tub.
+  ctxB: ...e garden gate. The one that was too narrow was the
+    hot tub.       logprob=  -6.445
+    gate.          logprob= -11.305   -> prefers: hot tub.
+  correct binding (flips A->c1, B->c2): False
+
+=== hot tub / gate (attribute) ===
+  ctxA: ...n gate, so of the two, the hot tub was clearly the
+    too wide one.  logprob= -23.723
+    too narrow one. logprob= -20.881   -> prefers: too narrow one.
+  ctxB: ...rden gate, so of the two, the gate was clearly the
+    too wide one.  logprob= -19.939
+    too narrow one. logprob= -15.573   -> prefers: too narrow one.
+  correct binding (flips A->c1, B->c2): False
+
+=== telescope / roof (entity) ===
+  ctxA: ... the attic roof. The one that was too tall was the
+    telescope.     logprob=  -8.864
+    roof.          logprob=  -9.944   -> prefers: telescope.
+  ctxB: ...r the attic roof. The one that was too low was the
+    telescope.     logprob=  -7.582
+    roof.          logprob=  -8.939   -> prefers: telescope.
+  correct binding (flips A->c1, B->c2): False
+
+=== telescope / roof (attribute) ===
+  ctxA: ...roof, so of the two, the telescope was clearly the
+    too tall one.  logprob= -14.322
+    too low one.   logprob= -19.392   -> prefers: too tall one.
+  ctxB: ...ttic roof, so of the two, the roof was clearly the
+    too tall one.  logprob= -15.103
+    too low one.   logprob= -16.520   -> prefers: too tall one.
+  correct binding (flips A->c1, B->c2): False
+
+=== rowing machine / hallway (entity) ===
+  ctxA: ...ong the hallway. The one that was too long was the
+    rowing machine. logprob= -10.211
+    hallway.       logprob= -10.363   -> prefers: rowing machine.
+  ctxB: ...ng the hallway. The one that was too short was the
+    rowing machine. logprob=  -8.338
+    hallway.       logprob=  -8.417   -> prefers: rowing machine.
+  correct binding (flips A->c1, B->c2): False
+
+=== rowing machine / hallway (attribute) ===
+  ctxA: ... so of the two, the rowing machine was clearly the
+    too long one.  logprob= -19.351
+    too short one. logprob= -19.031   -> prefers: too short one.
+  ctxB: ...allway, so of the two, the hallway was clearly the
+    too long one.  logprob= -18.799
+    too short one. logprob= -19.911   -> prefers: too long one.
+  correct binding (flips A->c1, B->c2): False
+
+=== teddy bear / gift bag (entity) ===
+  ctxA: ...nto the gift bag. The one that was too big was the
+    teddy bear.    logprob= -11.534
+    gift bag.      logprob=  -6.708   -> prefers: gift bag.
+  ctxB: ...o the gift bag. The one that was too small was the
+    teddy bear.    logprob= -10.658
+    gift bag.      logprob=  -6.261   -> prefers: gift bag.
+  correct binding (flips A->c1, B->c2): False
+
+=== teddy bear / gift bag (attribute) ===
+  ctxA: ...bag, so of the two, the teddy bear was clearly the
+    too big one.   logprob= -17.316
+    too small one. logprob= -19.131   -> prefers: too big one.
+  ctxB: ...t bag, so of the two, the gift bag was clearly the
+    too big one.   logprob= -17.340
+    too small one. logprob= -18.231   -> prefers: too big one.
+  correct binding (flips A->c1, B->c2): False
+
+=== tractor / archway (entity) ===
+  ctxA: ...der the archway. The one that was too tall was the
+    tractor.       logprob=  -3.279
+    archway.       logprob= -10.280   -> prefers: tractor.
+  ctxB: ...nder the archway. The one that was too low was the
+    tractor.       logprob=  -2.988
+    archway.       logprob= -11.308   -> prefers: tractor.
+  correct binding (flips A->c1, B->c2): False
+
+=== tractor / archway (attribute) ===
+  ctxA: ...rchway, so of the two, the tractor was clearly the
+    too tall one.  logprob= -19.635
+    too low one.   logprob= -22.019   -> prefers: too tall one.
+  ctxB: ...rchway, so of the two, the archway was clearly the
+    too tall one.  logprob= -20.693
+    too low one.   logprob= -20.643   -> prefers: too low one.
+  correct binding (flips A->c1, B->c2): True
+
+=== canvas / easel (entity) ===
+  ctxA: ...t on the easel. The one that was too large was the
+    canvas.        logprob=  -7.944
+    easel.         logprob=  -9.613   -> prefers: canvas.
+  ctxB: ...t on the easel. The one that was too small was the
+    canvas.        logprob=  -8.062
+    easel.         logprob=  -8.970   -> prefers: canvas.
+  correct binding (flips A->c1, B->c2): False
+
+=== canvas / easel (attribute) ===
+  ctxA: ...e easel, so of the two, the canvas was clearly the
+    too large one. logprob= -14.803
+    too small one. logprob= -17.480   -> prefers: too large one.
+  ctxB: ...he easel, so of the two, the easel was clearly the
+    too large one. logprob= -15.889
+    too small one. logprob= -15.942   -> prefers: too large one.
+  correct binding (flips A->c1, B->c2): False
+
+=== consoled (Beatrix/Cormac) ===
+  ctxA: ...er the audition. The person who was devastated was
+    Cormac.        logprob=  -3.818
+    Beatrix.       logprob=  -4.378   -> prefers: Cormac.
+  ctxB: ...r the audition. The person who was sympathetic was
+    Cormac.        logprob=  -4.329
+    Beatrix.       logprob=  -6.810   -> prefers: Cormac.
+  correct binding (flips A->c1, B->c2): False
+
+=== sent flowers to (Delphine/Eamon) ===
+  ctxA: ...at the hospital. The person who was recovering was
+    Eamon.         logprob=  -7.064
+    Delphine.      logprob= -11.129   -> prefers: Eamon.
+  ctxB: ...at the hospital. The person who was thoughtful was
+    Eamon.         logprob=  -3.163
+    Delphine.      logprob=  -6.218   -> prefers: Eamon.
+  correct binding (flips A->c1, B->c2): False
+
+=== cheered up (Florian/Greta) ===
+  ctxA: ...e exam results. The person who was discouraged was
+    Greta.         logprob=  -3.338
+    Florian.       logprob=  -6.077   -> prefers: Greta.
+  ctxB: ...er the exam results. The person who was upbeat was
+    Greta.         logprob=  -9.106
+    Florian.       logprob= -10.756   -> prefers: Greta.
+  correct binding (flips A->c1, B->c2): False
+
+=== wrote a thank-you note to (Horace/Imogen) ===
+  ctxA: ...you note to Imogen. The person who was helpful was
+    Imogen.        logprob=  -5.332
+    Horace.        logprob=  -6.882   -> prefers: Imogen.
+  ctxB: ...ou note to Imogen. The person who was grateful was
+    Imogen.        logprob=  -4.408
+    Horace.        logprob=  -7.345   -> prefers: Imogen.
+  correct binding (flips A->c1, B->c2): False
+
+=== made amends with (Jasper/Kirra) ===
+  ctxA: ... amends with Kirra. The person who was wronged was
+    Kirra.         logprob=  -3.382
+    Jasper.        logprob=  -3.890   -> prefers: Kirra.
+  ctxB: ...mends with Kirra. The person who was regretful was
+    Kirra.         logprob=  -2.810
+    Jasper.        logprob=  -3.487   -> prefers: Kirra.
+  correct binding (flips A->c1, B->c2): False
+
+=== calmed down (Lucan/Marisol) ===
+  ctxA: ...re the interview. The person who was panicking was
+    Marisol.       logprob=  -2.789
+    Lucan.         logprob=  -5.277   -> prefers: Marisol.
+  ctxB: ...ore the interview. The person who was composed was
+    Marisol.       logprob=  -3.335
+    Lucan.         logprob=  -6.395   -> prefers: Marisol.
+  correct binding (flips A->c1, B->c2): False
+
+=== welcomed (Niamh/Orrin) ===
+  ctxA: ... neighbourhood. The person who was new in town was
+    Orrin.         logprob=  -2.378
+    Niamh.         logprob= -10.853   -> prefers: Orrin.
+  ctxB: ...the neighbourhood. The person who was friendly was
+    Orrin.         logprob=  -3.425
+    Niamh.         logprob=  -9.944   -> prefers: Orrin.
+  correct binding (flips A->c1, B->c2): False
+
+=== sympathized with (Petra/Quentin) ===
+  ctxA: ...n after the flood. The person who was homeless was
+    Quentin.       logprob=  -5.866
+    Petra.         logprob=  -9.018   -> prefers: Quentin.
+  ctxB: ...er the flood. The person who was compassionate was
+    Quentin.       logprob=  -3.809
+    Petra.         logprob=  -6.345   -> prefers: Quentin.
+  correct binding (flips A->c1, B->c2): False
+
+=== repaid (Rowan/Saoirse) ===
+  ctxA: ...aoirse the loan. The person who was the lender was
+    Saoirse.       logprob=  -2.898
+    Rowan.         logprob=  -5.536   -> prefers: Saoirse.
+  ctxB: ...irse the loan. The person who was the borrower was
+    Saoirse.       logprob=  -2.937
+    Rowan.         logprob=  -6.645   -> prefers: Saoirse.
+  correct binding (flips A->c1, B->c2): False
+
+=== handed the house keys to (Tobias/Ulla) ===
+  ctxA: ...keys to Ulla. The person who was the new owner was
+    Ulla.          logprob=  -6.898
+    Tobias.        logprob= -11.624   -> prefers: Ulla.
+  ctxB: ...se keys to Ulla. The person who was the seller was
+    Ulla.          logprob=  -9.648
+    Tobias.        logprob= -15.365   -> prefers: Ulla.
+  correct binding (flips A->c1, B->c2): False
+
+=== returned the drill to (Viggo/Wren) ===
+  ctxA: ...he drill to Wren. The person who was the owner was
+    Wren.          logprob=  -5.010
+    Viggo.         logprob=  -9.250   -> prefers: Wren.
+  ctxB: ...drill to Wren. The person who was the borrower was
+    Wren.          logprob=  -2.271
+    Viggo.         logprob=  -8.719   -> prefers: Wren.
+  correct binding (flips A->c1, B->c2): False
+
+=== reimbursed (Yasmin/Zeno) ===
+  ctxA: ...rain tickets. The person who was out of pocket was
+    Zeno.          logprob=  -3.847
+    Yasmin.        logprob=  -5.116   -> prefers: Zeno.
+  ctxB: ...kets. The person who was in charge of expenses was
+    Zeno.          logprob=  -3.970
+    Yasmin.        logprob=  -4.496   -> prefers: Zeno.
+  correct binding (flips A->c1, B->c2): False
+
+=== tipped (Beatrix/Cormac) ===
+  ctxA: ... after the meal. The person who was the waiter was
+    Cormac.        logprob=  -5.721
+    Beatrix.       logprob=  -6.496   -> prefers: Cormac.
+  ctxB: ...fter the meal. The person who was the customer was
+    Cormac.        logprob=  -5.571
+    Beatrix.       logprob=  -6.528   -> prefers: Cormac.
+  correct binding (flips A->c1, B->c2): False
+
+=== paid rent to (Delphine/Eamon) ===
+  ctxA: ...rent to Eamon. The person who was the landlord was
+    Eamon.         logprob=  -2.028
+    Delphine.      logprob=  -9.349   -> prefers: Eamon.
+  ctxB: ...d rent to Eamon. The person who was the tenant was
+    Eamon.         logprob=  -1.562
+    Delphine.      logprob=  -8.842   -> prefers: Eamon.
+  correct binding (flips A->c1, B->c2): False
+
+=== lent a spare jacket to (Florian/Greta) ===
+  ctxA: ...spare jacket to Greta. The person who was cold was
+    Greta.         logprob=  -9.571
+    Florian.       logprob= -11.856   -> prefers: Greta.
+  ctxB: ...ket to Greta. The person who was well prepared was
+    Greta.         logprob=  -7.657
+    Florian.       logprob=  -7.642   -> prefers: Florian.
+  correct binding (flips A->c1, B->c2): True
+
+=== gave the trophy to (Horace/Imogen) ===
+  ctxA: ...phy to Imogen. The person who was the champion was
+    Imogen.        logprob=  -2.785
+    Horace.        logprob=  -6.794   -> prefers: Imogen.
+  ctxB: ...hy to Imogen. The person who was the presenter was
+    Imogen.        logprob=  -5.872
+    Horace.        logprob=  -8.066   -> prefers: Imogen.
+  correct binding (flips A->c1, B->c2): False
+
+=== defeated (Jasper/Kirra) ===
+  ctxA: ...the final round. The person who was outclassed was
+    Kirra.         logprob=  -2.766
+    Jasper.        logprob=  -3.369   -> prefers: Kirra.
+  ctxB: ... round. The person who was the stronger player was
+    Kirra.         logprob=  -4.149
+    Jasper.        logprob=  -5.685   -> prefers: Kirra.
+  correct binding (flips A->c1, B->c2): False
+
+=== coached (Lucan/Marisol) ===
+  ctxA: ...ore the match. The person who was the beginner was
+    Marisol.       logprob=  -3.610
+    Lucan.         logprob=  -4.999   -> prefers: Marisol.
+  ctxB: ...efore the match. The person who was the expert was
+    Marisol.       logprob=  -3.176
+    Lucan.         logprob=  -4.153   -> prefers: Marisol.
+  correct binding (flips A->c1, B->c2): False
+
+=== translated the letter for (Niamh/Orrin) ===
+  ctxA: ...or Orrin. The person who was unable to read it was
+    Orrin.         logprob=  -4.928
+    Niamh.         logprob= -10.516   -> prefers: Orrin.
+  ctxB: ...rin. The person who was fluent in the language was
+    Orrin.         logprob=  -2.886
+    Niamh.         logprob=  -9.475   -> prefers: Orrin.
+  correct binding (flips A->c1, B->c2): False
+
+=== fixed the bicycle for (Petra/Quentin) ===
+  ctxA: ...entin. The person who was not handy with tools was
+    Quentin.       logprob=  -1.719
+    Petra.         logprob=  -6.674   -> prefers: Quentin.
+  ctxB: ...Quentin. The person who was a skilled mechanic was
+    Quentin.       logprob= -11.588
+    Petra.         logprob= -15.190   -> prefers: Quentin.
+  correct binding (flips A->c1, B->c2): False
+
+=== out-sprinted (Rowan/Saoirse) ===
+  ctxA: ...oirse at the finish. The person who was slower was
+    Saoirse.       logprob=  -2.775
+    Rowan.         logprob=  -5.520   -> prefers: Saoirse.
+  ctxB: ...oirse at the finish. The person who was faster was
+    Saoirse.       logprob=  -2.420
+    Rowan.         logprob=  -4.589   -> prefers: Saoirse.
+  correct binding (flips A->c1, B->c2): False
+
+=== promoted (Tobias/Ulla) ===
+  ctxA: ...a. The person who was the hardworking employee was
+    Ulla.          logprob=  -3.362
+    Tobias.        logprob=  -3.426   -> prefers: Ulla.
+  ctxB: ... promoted Ulla. The person who was the manager was
+    Ulla.          logprob=  -3.024
+    Tobias.        logprob=  -4.144   -> prefers: Ulla.
+  correct binding (flips A->c1, B->c2): False
+
+=== fined (Viggo/Wren) ===
+  ctxA: ...en for speeding. The person who was the driver was
+    Wren.          logprob=  -9.898
+    Viggo.         logprob= -10.801   -> prefers: Wren.
+  ctxB: ...peeding. The person who was the police officer was
+    Wren.          logprob= -10.414
+    Viggo.         logprob= -10.669   -> prefers: Wren.
+  correct binding (flips A->c1, B->c2): False
+
+=== interviewed (Yasmin/Zeno) ===
+  ctxA: ... for the job. The person who was the candidate was
+    Zeno.          logprob=  -3.508
+    Yasmin.        logprob=  -3.886   -> prefers: Zeno.
+  ctxB: ... for the job. The person who was the recruiter was
+    Zeno.          logprob=  -3.728
+    Yasmin.        logprob=  -4.543   -> prefers: Zeno.
+  correct binding (flips A->c1, B->c2): False
+
+=== graded (Beatrix/Cormac) ===
+  ctxA: ...Cormac's essay. The person who was the student was
+    Cormac.        logprob=  -6.227
+    Beatrix.       logprob=  -2.950   -> prefers: Beatrix.
+  ctxB: ...Cormac's essay. The person who was the teacher was
+    Cormac.        logprob=  -6.284
+    Beatrix.       logprob=  -3.772   -> prefers: Beatrix.
+  correct binding (flips A->c1, B->c2): False
+
+=== diagnosed (Delphine/Eamon) ===
+  ctxA: ...iagnosed Eamon. The person who was the patient was
+    Eamon.         logprob=  -1.897
+    Delphine.      logprob=  -4.682   -> prefers: Eamon.
+  ctxB: ...diagnosed Eamon. The person who was the doctor was
+    Eamon.         logprob=  -3.068
+    Delphine.      logprob=  -6.000   -> prefers: Eamon.
+  correct binding (flips A->c1, B->c2): False
+
+============================================================
+Correct entity-attribute binding: 4/70
+
+By category:
+  ability_attribution      0/5  (0%)
+  comparative_value        1/24  (4%)
+  emotional_attribution    0/8  (0%)
+  possession_obligation    1/8  (12%)
+  social_attribution       0/5  (0%)
+  spatial_fit              2/20  (10%)
+[probe] saved results to benchmark/phase25a/probe_v3_phase25a_step6000.json

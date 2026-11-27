@@ -1,0 +1,426 @@
+{
+  "checkpoint": "/lambda/nfs/us-west-1-eval-inference/phase25b/step_2861.pt",
+  "step": 2861,
+  "fim": {
+    "n": 60,
+    "exact_match": 0.03333333333333333,
+    "examples": [
+      {
+        "pool": "code_starcoder_javascript",
+        "gold": "        this.id = roleId;",
+        "pred": "}",
+        "exact": false
+      },
+      {
+        "pool": "code_python_edu",
+        "gold": "                return [self.act(v) for v in arg]",
+        "pred": "#        return [image.index(v) for v in range(max(image)+1)]",
+        "exact": false
+      },
+      {
+        "pool": "code_python_edu",
+        "gold": "print(demo2)",
+        "pred": "print(demo2)",
+        "exact": true
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "  rabbitmq:",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_typescript",
+        "gold": "export const MessageSchema = new mongoose.Schema({",
+        "pred": "import { Schema } from 'mongoose';",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_typescript",
+        "gold": "// GET an Article",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_go",
+        "gold": "\t\t\t\tif filepath.IsAbs(globPath) {",
+        "pred": "\t}",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_python",
+        "gold": "        Application(",
+        "pred": "]",
+        "exact": false
+      },
+      {
+        "pool": "code_python_edu",
+        "gold": "r = df.rolling(window=3, min_periods=1)",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_python",
+        "gold": "The parameter of the function is a Boolean value. ",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_javascript",
+        "gold": "      height={600}",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "- name: octopipe-charlescd",
+        "pred": "- name: redis-server",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_python",
+        "gold": "    def __init__(self, x, y, daltonism):\r",
+        "pred": "\r",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_go",
+        "gold": "\tdeVal := reflect.ValueOf(de)",
+        "pred": "\tif s.Len() == 0 {",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_python",
+        "gold": "        pkt = flagged_packet()",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_go",
+        "gold": "\t\tKey:     &publicKey,",
+        "pred": "\t\"webhook events\": &webhookEvents,",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_typescript",
+        "gold": "import Vuex from 'vuex';",
+        "pred": "import ChiVue from '@/store/modules/ChiVue';",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "os: linux",
+        "pred": "- node: 8",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_sql_shell_cfg",
+        "gold": "          selector: xpath",
+        "pred": "",
+        "exact": false
+      },
+      {
+        "pool": "code_starcoder_python",
+        "gold": "                    template,",
+        "pred": "",
+        "exact": false
+      }
+    ]
+  },
+  "agentic": {
+    "n": 45,
+    "emits_tool_call": 0.7777777777777778,
+    "closes_tool_call": 0.7555555555555555,
+    "valid_json_call": 0.7333333333333333,
+    "name_in_tools": 0.4,
+    "name_eq_gold": 0.7333333333333333,
+    "argkeys_eq_gold": 0.7333333333333333,
+    "ends_turn": 0.7555555555555555,
+    "examples": [
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_random_fact",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_random_fact\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "generate_random_color",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"generate_random_color\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": false,
+        "closes_tool_call": false,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_news",
+          "args": {}
+        },
+        "pred_text": "Sure, let me fetch the latest news for you.\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_current_time",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_current_time\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": false,
+        "name_in_tools": false,
+        "name_eq_gold": false,
+        "argkeys_eq_gold": false,
+        "ends_turn": true,
+        "gold": {
+          "name": "calculate_bmi",
+          "args": {
+            "weight": 70,
+            "height": 1.75
+          }
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"calculate_bmi\", \"arguments\": '{\"weight\": 70, \"height\": 1.75}'}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_random_joke",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_random_joke\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_random_fact",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_random_fact\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_random_joke",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_random_joke\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "generate_random_name",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"generate_random_name\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_random_fact",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_random_fact\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_random_joke",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_random_joke\", \"arguments\": {}}\n</tool_call>\n"
+      },
+      {
+        "pool": "agentic_glaive_fc_v2",
+        "emits_tool_call": true,
+        "closes_tool_call": true,
+        "valid_json_call": true,
+        "name_in_tools": true,
+        "name_eq_gold": true,
+        "argkeys_eq_gold": true,
+        "ends_turn": true,
+        "gold": {
+          "name": "get_random_quote",
+          "args": {}
+        },
+        "pred_text": "<tool_call>\n{\"name\": \"get_random_quote\", \"arguments\": {}}\n</tool_call>\n"
+      }
+    ]
+  },
+  "reasoning": {
+    "n": 8,
+    "budget_tokens": 512,
+    "opens_think": 1.0,
+    "closes_think": 0.0,
+    "examples": [
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out the effect of surface area and pore size on the rate of reaction in solid catalysts. Let me start by recalling what I know about catalysts and reactions. I remember that catalysts are substances that accelerate a chemical reaction without being consumed in the "
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out how decreasing the concentration of a reactant affects the equilibrium position of a chemical reaction. Let me start by recalling what I know about equilibrium. \n\nFirst, equilibrium is when the concentrations of reactants and products are equal. So, if you have"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out how the equilibrium position of the reaction CO(g) + 2H2(g) ⇌ CH3OH(g) would change if 0.5 moles of H2 are added to a system that already has 1 mole of CO, 2 moles of H2, and 0.5 moles of CH3OH. Hmm, equilibrium reactions are about the balance between forward a"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out how increasing the concentration of a reactant affects the equilibrium constant and concentration of products in a redox reaction. Let me start by recalling what I know about redox reactions. \n\nFirst, redox reactions involve the transfer of electrons between at"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, so I need to figure out how the formation of ground-level ozone from NOx and VOCs affects human health and what can be done to minimize that health impact. Let me start by breaking down the question. \n\nFirst, I know that NOx and VOCs are involved in air pollution. NOx is a pollutant t"
+      },
+      {
+        "pool": "agentic_openthoughts",
+        "opens_think": true,
+        "closes_think": false,
+        "n_tokens": 512,
+        "head": "<think>\n\nOkay, let's see. I need to find the cell potential of a redox reaction where there are three ions involved: zinc, copper, and zinc ions. The problem gives me the concentrations of each ion, the standard reduction potential for zinc, and the standard reduction potential for copper. Hmm, cell"
+      }
+    ]
+  },
+  "greedy": [
+    {
+      "prompt": "The marathon took longer to finish than the sprint because the marathon was",
+      "completion": " much longer. The street outside was quiet. Which was much longer, the sprint or the marathon? The marathon."
+    },
+    {
+      "prompt": "The marathon took longer to finish than the sprint because the sprint was",
+      "completion": " over quickly. The street outside was quiet. Which was over quickly, the sprint or the marathon? The sprint."
+    },
+    {
+      "prompt": "The wardrobe would not go through the doorway because the doorway was",
+      "completion": " too narrow. The news spread quickly. Which was too narrow, the wardrobe or the stairwell? The doorframe."
+    },
+    {
+      "prompt": "The wardrobe would not go through the doorway because the wardrobe was",
+      "completion": " too bulky. The wardrobe or the stairwell: which was too bulky? The wardrobe, clearly."
+    },
+    {
+      "prompt": "The capital of India is",
+      "completion": " the country's political, economic, and cultural center. It is the largest city in the world by land area and the second-largest by population. It is also the largest city in South Asia. The city is located in the Indian state of Uttar Pradesh, in the state of Uttar Pradesh, India"
+    },
+    {
+      "prompt": "The capital of the United States is",
+      "completion": " the United States of America. The United States is a federal republic, which means that the government is divided into three branches: the executive, the legislative, and the judicial. The executive branch is headed by the president, who is elected by the people. The legislative branch is headed by the Senate,"
+    },
+    {
+      "prompt": "The Riemann hypothesis is a mathematical conjecture about",
+      "completion": " the distribution of prime numbers. It states that the sum of the reciprocals of the primes is a constant, and that the sum of the reciprocals of the primes is equal to 1.\n\nThe Riemann hypothesis is named after the German mathematician Bernhard Riemann, who first formulated it"
+    },
+    {
+      "prompt": "In Sanskrit, the word Kama means",
+      "completion": " \"desire\" and is used to describe the desire for pleasure. In the context of the Mahabharata, what is the meaning of the word Kama in the context of the character Arjuna?\nA. Desire for wealth and power\nB. Desire for physical beauty and beauty\n"
+    },
+    {
+      "prompt": "def fibonacci(n):\n",
+      "completion": "\tif n == 0:\n\t\treturn 0\n\telif n == 1:\n\t\treturn 1\n\telse:\n\t\treturn fibonacci(n-1) + fibonacci(n-2)\n\ndef fibonacci_recursion(n):\n"
+    },
+    {
+      "prompt": "import json\n\ndef load_config(path):\n",
+      "completion": "\twith open(path, 'r') as f:\n\t\tconfig = json.load(f)\n\treturn config\n\ndef save_config(config, path):\n\twith open(path, 'w') as f:\n\t\tjson.dump(config, f)"
+    },
+    {
+      "prompt": "SELECT name, email FROM users WHERE",
+      "completion": " email = ?;\", (email,))\n\n# print(cursor.fetchall())\n\n# cursor.execute(\"SELECT * FROM users\")\n# print(cursor.fetchall())\n\n# cursor.execute(\"SELECT * FROM users WHERE email = ?\", (\"test\",))\n# print"
+    },
+    {
+      "prompt": "<|im_start|>system\n<tools>\n[{\"name\": \"get_weather\", \"description\": \"Get current weather for a city\", \"parameters\": {\"type\": \"object\", \"properties\": {\"city\": {\"type\": \"string\"}}, \"required\": [\"city\"]}}]\n</tools>\n<|im_end|>\n<|im_start|>user\nWhat's the weather in Paris right now?\n<|im_end|>\n<|im_start|>assistant\n",
+      "completion": "<tool_call>\n{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Paris\"}}\n</tool_call>\n"
+    }
+  ],
+  "elapsed_s": 602.4
+}
