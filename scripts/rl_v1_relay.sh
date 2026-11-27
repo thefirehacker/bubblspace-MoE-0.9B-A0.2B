@@ -8,8 +8,8 @@ cd /home/ubuntu/moe0.9b-a0.2b
 OUT=/lambda/nfs/h100-f1/checkpoints/Phase4_rl_v1
 DST=/lambda/nfs/us-west-1-eval-inference/Phase4_rl_v1
 SSH="ssh -i $HOME/.ssh/a10_temp -o BatchMode=yes"
-until grep -qE "RL v1 exited|ABORT" /lambda/nfs/h100-f1/rl_v1_chain.log 2>/dev/null; do sleep 120; done
-grep -q "RL v1 exited rc=0" /lambda/nfs/h100-f1/rl_v1_chain.log || exit 1
+# wait for a successful RL v1 exit (the log may already hold a failed first attempt)
+until grep -q "RL v1 exited rc=0" /lambda/nfs/h100-f1/rl_v1_chain.log 2>/dev/null; do sleep 120; done
 A10=$A10 RUN=Phase4_rl_v1 DST_DIR=Phase4_rl_v1 STEPS="400 500" bash scripts/relay_ckpts.sh
 grep -oE "runs/[a-z0-9]+" /lambda/nfs/h100-f1/train_rl_v1.log | head -1 | cut -d/ -f2 > $OUT/wandb_run.txt
 $SSH $A10 "mkdir -p $DST/meta"

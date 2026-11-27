@@ -27,7 +27,7 @@ clip_eps: 0.2
 kl_beta: 0.02
 adv_std_norm: true
 ppo_epochs: 1
-micro_batch_tokens: 32768
+micro_batch_tokens: 16384      # 27 Nov: 32768 ran out of GPU memory in the first update (logits + their grads); 16384 is proven
 
 area_weights:          # share of prompts per step
   maths: 0.16
