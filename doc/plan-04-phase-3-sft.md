@@ -173,6 +173,8 @@ Each branch README records the phase, step, tokens, W&B run ID and the restore c
 
 ## 7. Phase 4 (RL) preview
 
+The full plan is now [plan-06-phase-4-rl.md](plan-06-phase-4-rl.md) (27 Nov): task data, rewards, engineering status, time estimate.
+
 GRPO-style RL with **sandbox-verified rewards** on code. Task sources:
 - MBPP train
 - SYNTHETIC-1 verified problems
