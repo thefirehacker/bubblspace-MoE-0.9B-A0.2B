@@ -175,6 +175,8 @@ class _Pool:
                 x, y = self._join_blocks(xys, pad_id, eot_id)
                 xs.append(x)
                 ys.append(y)
+            if not xs:  # pool too small for a hold-out (e.g. a one-block SFT set): no val batch; run_val skips it
+                return np.empty((0, L), dtype=np.int64), np.empty((0, L), dtype=np.int64)
         else:
             span = self.val_tokens - L - 1
             if span <= 0:

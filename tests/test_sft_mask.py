@@ -60,6 +60,14 @@ def test_mask_joined_blocks(tmp_path):
     assert (x != PAD).all()  # pads in joined inputs become document boundaries (EOT)
 
 
+def test_tiny_pool_val_batch_is_empty(tmp_path):
+    B = 16
+    _make_pool(tmp_path, B, 1)  # one block: no room for a validation hold-out
+    pool = _Pool("tiny", {"path": str(tmp_path), "group": "g", "kind": "block"}, seq_len=B, val_tokens=8 * B)
+    xv, yv = pool.val_batch(2, PAD)
+    assert xv.shape == yv.shape == (0, B)
+
+
 def test_no_mask_pool_unchanged(tmp_path):
     B = 16
     ids, _ = _make_pool(tmp_path, B, 4)
