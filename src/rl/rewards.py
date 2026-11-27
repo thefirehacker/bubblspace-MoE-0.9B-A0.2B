@@ -133,7 +133,7 @@ IF_CHECKS = {
     "validate_placeholders": lambda t, c: len(re.findall(r"\[[^\[\]]+\]", t)) >= c["N"],
     "verify_bullet_points": lambda t, c: len(re.findall(r"^\s*[*-]\s+\S", t, re.M)) == c["N"],
     "validate_title": lambda t, c: bool(re.search(r"<<[^<>\n]+>>", t)),
-    "validate_choice": lambda t, c: t.strip().strip(".\"'").lower() in [o.strip().lower() for o in _options(c.get("options"))],
+    "validate_choice": lambda t, c: _choice_ok(t, _options(c.get("options"))),
     "validate_highlighted_sections": lambda t, c: len(re.findall(r"\*[^*\n]+\*", t)) >= c["N"],
     "validate_sections": lambda t, c: len(re.findall(rf"^\s*{re.escape(c.get('section_splitter') or 'SECTION')}\s*\d+", t, re.M)) == c["N"],
     "validate_json_format": lambda t, c: _is_json(t),
@@ -157,6 +157,16 @@ def _options(o):
     return []
 
 
+def _choice_ok(t, options):
+    """The reply must be one of the options: exact for short labels ("a"), starts-with for full sentences."""
+    norm = lambda s: s.strip().strip(".\"'() ").lower()
+    r = norm(t)
+    for o in map(norm, options):
+        if o and (r == o or (len(o) >= 3 and r.startswith(o))):
+            return True
+    return False
+
+
 def _is_json(t):
     t = t.strip()
     t = re.sub(r"^```(?:json)?\s*|\s*```$", "", t)
@@ -167,7 +177,27 @@ def _is_json(t):
         return False
 
 
+def normalize_constraint(c: dict) -> dict:
+    """The Tülu RLVR ground truth stores numbers as strings ('19') and lists as their Python text ("['a', 'b']");
+    convert them so the checkers compare like with like."""
+    import ast
+    out = {}
+    for k, v in c.items():
+        if v is None:
+            continue
+        if k in ("N", "i") and isinstance(v, str) and v.strip().lstrip("-").isdigit():
+            v = int(v)
+        elif k in ("keyword_list", "forbidden_words", "options") and isinstance(v, str) and v.strip()[:1] in "[(":
+            try:
+                v = list(ast.literal_eval(v))
+            except (ValueError, SyntaxError):
+                pass
+        out[k] = v
+    return out
+
+
 def reward_ifeval(reply: str, constraint: dict) -> float:
+    constraint = normalize_constraint(constraint)
     fn = IF_CHECKS.get(constraint.get("func_name"))
     if fn is None:
         raise KeyError(f"no checker for {constraint.get('func_name')}")
@@ -182,14 +212,41 @@ def extract_code(reply: str) -> str:
     t = strip_think(reply)
     blocks = re.findall(r"```(?:python|py)?[^\n]*\n(.*?)```", t, re.S)
     if not blocks:
-        m = re.search(r"```(?:python|py)?[^\n]*\n(.*)", t, re.S)
-        return m.group(1) if m else ""
+        m = re.search(r"```(?:python|py)?[^\n]*\n(.*)", t, re.S)  # unclosed block (ran out of budget)
+        if m:
+            return m.group(1)
+        # no fences at all: accept the reply as code if it starts like code (run 01 sometimes answers this way)
+        return t if re.match(r"\s*(def |import |from |class |#|[A-Za-z_]\w* *=)", t) else ""
     return next((b for b in blocks if "def " in b), blocks[0])
 
 
-def code_program(reply: str, task: dict) -> str | None:
-    """The program to run in the sandbox (scripts/sandbox_exec.py run_in_sandbox); None if there is no code."""
+_IO_RUNNER = """import io, sys
+SRC = {src}
+TESTS = {tests}
+for inp, want in TESTS:
+    sys.stdin, out = io.StringIO(inp), io.StringIO()
+    sys.stdout = out
+    try:
+        exec(compile(SRC, "<solution>", "exec"), {{"__name__": "__main__"}})
+    except SystemExit:
+        pass
+    finally:
+        sys.stdout, sys.stdin = sys.__stdout__, sys.__stdin__
+    if out.getvalue().split() != want.split():
+        sys.exit(1)
+"""
+
+
+def code_program(reply: str, task: dict, max_io_tests: int = 6) -> str | None:
+    """The program to run in the sandbox (scripts/sandbox_exec.py run_in_sandbox, exit code 0 = pass); None if no code.
+    Two task formats: MBPP-style asserts ("tests", optional "setup"), or stdin/stdout cases ("tests_io": [[in, out]...],
+    SYNTHETIC-1 / competitive programming), run in one container by a small runner that compares whitespace-split
+    output."""
     code = extract_code(reply)
+    if "tests_io" in task:
+        if not code.strip():
+            return None
+        return _IO_RUNNER.format(src=json.dumps(code), tests=json.dumps(task["tests_io"][:max_io_tests]))
     if "def " not in code:
         return None
     setup = task.get("setup") or ""

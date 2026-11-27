@@ -15,6 +15,7 @@ overlap. Output: one task per line, {"id", "area", "kind", "messages", <answer k
         --index ~/phase3_logs/sft_eval_index.npz --out ~/rl_tasks/tasks_v1.jsonl
 """
 import argparse
+import ast
 import collections
 import glob
 import hashlib
@@ -86,6 +87,32 @@ def from_mbpp():
     return out
 
 
+def from_synthetic1_code(tulu_raw, max_difficulty, cap, rng):
+    """SYNTHETIC-1 verifiable_code problems written for Python, with stdin/stdout test cases (kind code, tests_io)."""
+    out = []
+    for f in sorted(glob.glob(f"{tulu_raw}/PrimeIntellect__SYNTHETIC-1/data/*.parquet")):
+        for r in pq.read_table(f, columns=["task_type", "prompt", "verification_info", "metadata"]).to_pylist():
+            if r["task_type"] != "verifiable_code" or "programming language python" not in r["prompt"][:200].lower():
+                continue
+            try:
+                vi = ast.literal_eval(r["verification_info"])
+                md = ast.literal_eval(r["metadata"] or "{}")
+            except (ValueError, SyntaxError):
+                continue
+            tests = [[c["input"], c["output"]] for c in vi.get("test_cases", []) if c.get("type") == "stdin_stdout"]
+            try:
+                diff = int(md.get("difficulty", 99))
+            except (TypeError, ValueError):
+                diff = 99  # unrated (or a text label): skip
+            if not tests or diff > max_difficulty or len(r["prompt"]) > 4000:
+                continue
+            prompt = r["prompt"].strip() + "\n\nWrite a Python program that reads from standard input and writes to standard output, in a ```python code block."
+            out.append({"area": "code", "kind": "code", "source": f"synthetic1/d{diff}",
+                        "messages": [["user", prompt]], "tests_io": tests[:10]})
+    rng.shuffle(out)
+    return out[:cap]
+
+
 def refusal_tasks(tulu_raw, rng, n_harmless, n_harmful):
     out = []
     caps = [c for c in CAPITALS if c[0] not in ("India", "France")]
@@ -120,11 +147,15 @@ def main():
     ap.add_argument("--n_harmless", type=int, default=1500)
     ap.add_argument("--n_harmful", type=int, default=1500)
     ap.add_argument("--max_if_chars", type=int, default=3000)
+    ap.add_argument("--code_max_difficulty", type=int, default=7, help="SYNTHETIC-1 / CodeContests difficulty cap")
+    ap.add_argument("--n_synthetic1_code", type=int, default=4000)
+    ap.add_argument("--max_docs", type=int, default=10, help="windows hit by more tasks than this are generic, ignored")
     a = ap.parse_args()
     rng = random.Random(20261130)
 
     tasks, skipped = from_rlvr(a.rlvr, rng, a.max_if_chars)
     tasks += from_mbpp()
+    tasks += from_synthetic1_code(a.tulu, a.code_max_difficulty, a.n_synthetic1_code, rng)
     tasks += rl_task_gen.generate(a.n_time, a.n_binding, a.n_tool, a.n_live, repo_root=str(Path(__file__).resolve().parents[1]))
     tasks += refusal_tasks(a.tulu, rng, a.n_harmless, a.n_harmful)
 
@@ -133,7 +164,10 @@ def main():
     tok = AutoTokenizer.from_pretrained(str(Path(__file__).resolve().parents[1] / "bubblspace-tokenizer"))
     idx = np.load(a.index)
     sets = {int(n): set(idx[f"h{n}"].tolist()) for n in LENGTHS if f"h{n}" in idx}
-    kept, dropped, seen = [], collections.Counter(), set()
+    # Pass 1: which eval windows does each task hit? Pass 2: ignore generic windows (hit by more than --max_docs tasks,
+    # e.g. IFEval's constraint wording "Your response should contain N paragraphs", shared by design) and drop tasks
+    # that hit any rarer one, as scripts/phase3_decon.py does for the SFT data.
+    uniq, dropped, seen = [], collections.Counter(), set()
     for t in tasks:
         text = " ".join(m[1] for m in t["messages"] if m[0] == "user")
         h = hashlib.md5(text.encode()).hexdigest()
@@ -141,12 +175,20 @@ def main():
             dropped["duplicate"] += 1
             continue
         seen.add(h)
-        ids = np.asarray(tok.encode(text, add_special_tokens=False), dtype=np.int64)
-        if any(sets.get(n) and not sets[n].isdisjoint(window_hashes(ids, n).tolist()) for n in sets):
-            dropped[t["area"]] += 1
-            continue
         t["id"] = f"{t['area']}-{h[:12]}"
+        ids = np.asarray(tok.encode(text, add_special_tokens=False), dtype=np.int64)
+        hits = set()
+        for n, s in sets.items():
+            hits |= {(n, w) for w in window_hashes(ids, n).tolist() if w in s}
+        uniq.append((t, hits))
+    freq = collections.Counter(w for _, hits in uniq for w in hits)
+    kept = []
+    for t, hits in uniq:
+        if any(freq[w] <= a.max_docs for w in hits):
+            dropped[f"decon:{t['area']}"] += 1
+            continue
         kept.append(t)
+    dropped["generic_windows_ignored"] = sum(1 for w, c in freq.items() if c > a.max_docs)
     rng.shuffle(kept)
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     with open(a.out, "w") as f:

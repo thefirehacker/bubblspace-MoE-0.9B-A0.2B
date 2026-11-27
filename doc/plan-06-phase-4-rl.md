@@ -1,8 +1,31 @@
 # Plan 06: Phase 4, RL with verifiable rewards
 
-**Status (27 Nov):** planning; rollout engine and weight sync built and verified; trainer, rewards and task data not built.
+**Status (27 Nov, evening):** rollout engine, weight sync, rewards, task set and GRPO trainer built; difficulty filter running on the A10 (run 01); 20-step RL smoke test armed on fire01 for after run 02b + its evals. RL v1 waits for the user's go.
 **Starts from:** the Phase 3 SFT model that wins the run 01 vs run 02b comparison (doc/issue-02-phase3-over-refusal.md).
 **Preview in:** plan-04 §7. **How it works (method, GRPO, checkers):** [rl-primer-phase4.md](rl-primer-phase4.md).
+
+## Agreed next steps (27 Nov)
+
+RL v1 is also the first test of the RL pipeline, so a small round before a bigger one is the plan.
+
+1. **Finish SFT.** Run 02b finishes about 19:15 IST, its evals by about 21:00. Compare it with run 01, pick the winner, upload it to Hugging Face.
+2. **RL v1** (about 1–2 days of prep, then about 6 hours of training) on the winning SFT model, using the task mix in this plan.
+3. **Benchmark the RL model fully,** with **8 samples per question** (not one):
+   - the chat evals (HumanEval/MBPP, GSM8K, IFEval, BFCL);
+   - the refusal check and long-context tests;
+   - the hand tests, against the same OLMo-2 1B checkpoints as before.
+4. **Decide the next round from those results.** A knowledge stage from the 2.5b base → redo SFT → a bigger RL only when the map below says knowledge.
+
+How the benchmark tells us what kind of training is needed:
+
+| What we see | What it means | Fix |
+|---|---|---|
+| Right on the 1st try and across 8 tries (pass@1 high) | Solved | — |
+| Rarely right on 1 try, but often right somewhere in 8 (pass@1 low, pass@8 high) | The model can do it but doesn't pick it reliably: a skill / choice problem | More or bigger RL sharpens exactly this |
+| Almost never right, even in 8 tries (pass@8 ≈ 0) | The model doesn't know it: a knowledge problem (e.g. Qwen3 APIs, TriviaQA facts) | Data: a knowledge pretraining stage → redo SFT; or a docs/search tool |
+| Right answers, wrong format or behaviour | SFT data problem (like the refusals) | Fix the SFT mix |
+
+Do **not** start a large knowledge stage before that map. TriviaQA / NQ still have headroom at ~40B tokens, and a ~200B total is a plausible later target if pass@8 ≈ 0 on knowledge items; OLMo-2 1B still fails state-tracking items at 4T, so those need targeted data, not scale alone. Capacity estimate, token target, and the OLMo comparison are in [knowledge-capacity-and-tokens.md](knowledge-capacity-and-tokens.md). After RL v1 the per-area map says which lever to pull.
 
 ## 1. Method
 
@@ -43,9 +66,11 @@ Everything is decontaminated against our evals (13-token overlap), the same as f
 | Fast generation: vLLM plugin for our architecture (`vllm_plugin/`) | ✅ built 27 Nov. 99.0% top-1 agreement with our PyTorch model (scripts/vllm_parity.py); **15–17k tok/s on the A10** vs 224 tok/s for our own batched generator on the H100 |
 | Weight sync trainer → vLLM (`src/rl/vllm_engine.py`) | ✅ built 27 Nov. Matches a fresh load **exactly** (log-prob difference 0.0, scripts/vllm_sync_test.py); **0.47 s** per sync; sleep level 1 frees about 8 GB on the A10 for the training step (level 2 breaks non-weight buffers such as the RoPE table) |
 | RL-style sampling with per-token log-probs | ✅ 64 prompts × 8 answers at 12k tok/s on the A10 |
-| Reward checkers | 🟡 exist inside the evals (sandbox, GSM8K extraction, BFCL matching, IFEval checkers, real tools). They need wrapping as fast reward functions; the sandbox needs to run many programs in parallel. Candidate: Prime Intellect `verifiers` (MIT) environments where they fit |
-| GRPO trainer (loss, KL to the SFT model, rollout → reward → update loop) | ❌ not built |
-| Task data | ❌ not downloaded or built |
+| Reward checkers (`src/rl/rewards.py`, `src/rl/common.py`) | ✅ built 27 Nov: number, time, name (binding), 24 instruction-constraint types, tool calls (exact / partial 0.2 / no-call), refusal balance; code via the docker sandbox in parallel (MBPP asserts or stdin/stdout cases). `tests/test_rl_rewards.py` (9 tests). Two bugs caught before use: the Tülu RLVR answer keys store numbers as strings and lists as text (would have scored most instruction tasks 0); fence-less code replies were scored as "no code" |
+| GRPO trainer (`scripts/train_grpo.py`, `configs/rl_v1.yaml`, `configs/rl_smoke.yaml`) | 🟡 written 27 Nov, not yet run: vLLM-first memory order, fp32 reference, group advantages (std-normalised), clipped ratio + k3 KL on answer tokens, token-budget micro-batches, MoE load-balance term, held-out evals every 25 steps, checkpoints every 100. First run: the 20-step smoke test (`scripts/rl_smoke_chain.sh`) |
+| Task data (`scripts/rl_build_tasks.py`, `scripts/rl_task_gen.py`) | ✅ v1 built 27 Nov: **38,266** decontaminated tasks: maths 12,347 (GSM8K + MATH numeric, from the Tülu RLVR set), instruction constraints 12,835, time problems 5,940, binding 3,997, refusal balance 1,692, code 849 (MBPP train/val + 426 SYNTHETIC-1 Python problems with stdin/stdout tests), tool calls 606 (thin: generator templates repeat; to grow) |
+| Difficulty filter (`scripts/rl_filter.py`) | 🔄 running 27 Nov on the A10 for run 01 (8 answers per task): keeps tasks solved 1–7 times out of 8, and writes the per-area pass@1 / pass@8 map. Rerun for the chosen SFT model |
+| Library API sandbox image | ❌ not built |
 
 ## 5. New knowledge (e.g. recent library APIs): before or after RL?
 
