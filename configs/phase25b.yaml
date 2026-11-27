@@ -121,7 +121,9 @@ phase2:
     code_starcoder_ts_fresh:     {path: /lambda/nfs/h100-f1/data/phase25_decon/code_starcoder_ts_fresh,     group: code_fresh, fim: true}
     code_python_edu:             {path: /lambda/nfs/h100-f1/data/phase2/code_python_edu,             group: code_replay, fim: true}
     code_starcoder_python:       {path: /lambda/nfs/h100-f1/data/phase2/code_starcoder_python,       group: code_replay, fim: true}
-    contrastive_v3:  {path: /lambda/nfs/h100-f1/data/phase25_decon/contrastive_v3,  group: contrastive_v3}
+    # v4 = v3 + order alternation (user approval 27 Nov, as in the 2.5a decay): keeps the passive fix instead of
+    # ending training on doer-first v3 again (doc/binding-study-02 §6.1)
+    contrastive_v4:  {path: /lambda/nfs/h100-f1/data/phase25_decon/contrastive_v4,  group: contrastive_v4}
     relational_llm:  {path: /lambda/nfs/h100-f1/data/phase25_decon/relational_llm,  group: relational_llm}
     nli_commonsense: {path: /lambda/nfs/h100-f1/data/phase25_decon/nli_commonsense, group: nli_commonsense}
     kg_text:         {path: /lambda/nfs/h100-f1/data/phase25_decon/kg_text,         group: kg_text}
@@ -146,7 +148,7 @@ phase2:
         fwe_edu4: 0.06
         code_fresh: 0.13
         code_replay: 0.045
-        contrastive_v3: 0.03
+        contrastive_v4: 0.03  # was contrastive_v3: 0.03 (user approval 27 Nov)
         relational_llm: 0.005
         nli_commonsense: 0.005
         kg_text: 0.001

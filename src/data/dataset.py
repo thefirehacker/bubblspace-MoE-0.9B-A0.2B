@@ -91,6 +91,13 @@ class _Pool:
 
         self.shards = [np.memmap(p, dtype=np.uint16, mode="r") for p in shard_paths]
         lengths = np.array([len(s) for s in self.shards], dtype=np.int64)
+        # SFT pools (scripts/phase3_build_sft.py): a parallel uint8 mask_*.bin per shard, 1 = token is a training target
+        # (assistant turns). Targets whose token has mask 0 become IGNORE_INDEX, so the loss covers assistant text only.
+        self.masks = None
+        if self.meta.get("loss_mask"):
+            self.masks = [np.memmap(p.with_name(p.name.replace("shard_", "mask_")), dtype=np.uint8, mode="r") for p in shard_paths]
+            if [len(m) for m in self.masks] != lengths.tolist():
+                raise ValueError(f"[{name}] mask_*.bin lengths don't match shard_*.bin")
 
         self.block_len = seq_len
         if self.kind == "block":
@@ -109,11 +116,13 @@ class _Pool:
     def _window(self, shard: np.ndarray, start: int) -> np.ndarray:
         return shard[start : start + self.seq_len + 1].astype(np.int64)
 
-    def _block_xy(self, block: np.ndarray, pad_id: int):
+    def _block_xy(self, block: np.ndarray, pad_id: int, mask: np.ndarray | None = None):
         y = np.empty(len(block), dtype=np.int64)
         y[:-1] = block[1:]
         y[-1] = IGNORE_INDEX  # next token belongs to a different block
         y[y == pad_id] = IGNORE_INDEX
+        if mask is not None:  # SFT: y[j] predicts token j+1, so it is trained only where mask[j+1] == 1
+            y[:-1][np.asarray(mask[1:]) == 0] = IGNORE_INDEX
         return block, y
 
     def _join_blocks(self, xys, pad_id: int, eot_id: int):
@@ -137,7 +146,8 @@ class _Pool:
                     shard_idx = np.random.choice(len(self.shards), p=self.shard_weights)
                     shard, train_len = self.shards[shard_idx], int(self.train_lengths[shard_idx])
                 k = rng.randrange(train_len // B)
-                xys.append(self._block_xy(shard[k * B : (k + 1) * B].astype(np.int64), pad_id))
+                m = self.masks[shard_idx][k * B : (k + 1) * B] if self.masks is not None else None
+                xys.append(self._block_xy(shard[k * B : (k + 1) * B].astype(np.int64), pad_id, m))
             return self._join_blocks(xys, pad_id, eot_id)
 
         start = rng.randint(0, train_len - L - 1)
@@ -159,10 +169,14 @@ class _Pool:
             for i in range(min(n, n_blocks)):
                 k = i * n_blocks // max(1, min(n, n_blocks))
                 win = shard[base + k * L : base + (k + 1) * L].astype(np.int64)
-                xys = [self._block_xy(win[j : j + B], pad_id) for j in range(0, L, B)]
+                mwin = self.masks[-1][base + k * L : base + (k + 1) * L] if self.masks is not None else None
+                xys = [self._block_xy(win[j : j + B], pad_id, mwin[j : j + B] if mwin is not None else None)
+                       for j in range(0, L, B)]
                 x, y = self._join_blocks(xys, pad_id, eot_id)
                 xs.append(x)
                 ys.append(y)
+            if not xs:  # pool too small for a hold-out (e.g. a one-block SFT set): no val batch; run_val skips it
+                return np.empty((0, L), dtype=np.int64), np.empty((0, L), dtype=np.int64)
         else:
             span = self.val_tokens - L - 1
             if span <= 0:
