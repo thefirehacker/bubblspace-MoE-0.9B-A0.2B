@@ -24,6 +24,9 @@ REPL commands:
     /system <text>     (chat) set a system message; "/system off" clears it
     /tools <path>      (chat) load a JSON list of tool definitions into the system turn (<tools>...</tools>); "/tools off"
     /tool <json>       (chat) send a tool result back (a user turn wrapped in <tool_response>), continuing the conversation
+    /auto              (chat) REAL tool calls: load the tools in scripts/real_tools.py (calculator, get_current_time,
+                       live get_weather), then check every <tool_call> the model writes against the schema, execute it,
+                       and send the real result back automatically; "/auto" again turns it off
     /multi             (chat) toggle multi-turn: keep the conversation history (on automatically after /tools)
     /reset             (chat) forget the conversation history
     /settings          show current settings
@@ -155,16 +158,16 @@ def main():
     print(f"[ckpt] loaded {args.checkpoint}" + (f" (step {step})" if step is not None else ""))
     print(f"[device] {device}")
     print()
-    print("This is a BASE model (no SFT) -- it continues text, it does not answer")
-    print("questions or follow instructions. Short declarative prompts work best,")
-    print('e.g. "The capital of France is" or "def fibonacci(n):".')
+    if not args.chat:
+        print("Plain-text mode: the model continues your text. For a base checkpoint, short declarative prompts work")
+        print('best, e.g. "The capital of France is" or "def fibonacci(n):". For an SFT checkpoint, use --chat or /chat.')
     print()
     print("Commands: /temp <f>  /topp <f>  /tokens <n>  /greedy  /sample  /rep <f>  /ngram <n>  /minp <f>  /chat  /settings  exit")
-    print("Chat:     /file <path>  /system <text|off>  /tools <path|off>  /tool <json>  /multi  /reset")
+    print("Chat:     /file <path>  /system <text|off>  /tools <path|off>  /tool <json>  /auto  /multi  /reset")
 
     temperature, top_p, max_new_tokens, greedy = args.temperature, args.top_p, args.max_new_tokens, False
     rep_penalty, no_repeat_ngram, min_p, chat = args.rep_penalty, args.no_repeat_ngram, args.min_p, args.chat
-    system, tools, history, multi = None, None, [], False  # chat: history = [(role, text), ...] kept when multi is on
+    system, tools, history, multi, auto = None, None, [], False, False  # chat: history = [(role, text), ...] kept when multi is on
 
     def show():
         print(f"Current: mode={'greedy' if greedy else 'sample'} temperature={temperature} top_p={top_p} min_p={min_p} "
@@ -224,6 +227,12 @@ def main():
             show()
             print(f"system={'set' if system else 'off'} tools={len(tools) if tools else 0} multi-turn={multi} history_turns={len(history)}")
             continue
+        if stripped == "/auto":
+            import real_tools
+            auto = not auto
+            tools, history, multi = (real_tools.TOOLS, [], True) if auto else (None, [], multi)
+            print(f"[set] auto (real tool execution)={auto}" + (f", tools={list(real_tools.FUNCS)}" if auto else ", tools=off"))
+            continue
         if stripped == "/multi":
             multi, history = not multi, []
             print(f"[set] multi-turn={multi} (conversation cleared)")
@@ -260,19 +269,40 @@ def main():
             prompt = f"<tool_response>\n{stripped[len('/tool '):].strip()}\n</tool_response>"
 
         # same wire format as pretraining (prepare_agentic.py) and SFT (phase3_build_sft.py): "\n" before <|im_end|>, no gap between turns
-        if chat:
-            sys_text = "\n".join(x for x in (system, f"<tools>\n{json.dumps(tools)}\n</tools>" if tools else None) if x)
-            turns = ([("system", sys_text)] if sys_text else []) + history + [(role, prompt)]
-            text = "".join(f"<|im_start|>{r}\n{c}\n<|im_end|>" for r, c in turns) + "<|im_start|>assistant\n"
-        else:
-            text = prompt
-        completion = generate(
-            model, tok, device, real_vocab_size, {eot_id, im_end_id}, cfg.model.max_seq_len,
-            text, max_new_tokens, temperature, top_p, greedy, rep_penalty, no_repeat_ngram, min_p,
-        )
-        print(f"=> {completion}\n")
-        if chat and multi:
-            history += [(role, prompt), ("assistant", completion.strip())]
+        for _round in range(4 if (chat and auto) else 1):  # /auto: up to 3 tool rounds, then the final answer
+            if chat:
+                sys_text = "\n".join(x for x in (system, f"<tools>\n{json.dumps(tools)}\n</tools>" if tools else None) if x)
+                turns = ([("system", sys_text)] if sys_text else []) + history + [(role, prompt)]
+                text = "".join(f"<|im_start|>{r}\n{c}\n<|im_end|>" for r, c in turns) + "<|im_start|>assistant\n"
+            else:
+                text = prompt
+            completion = generate(
+                model, tok, device, real_vocab_size, {eot_id, im_end_id}, cfg.model.max_seq_len,
+                text, max_new_tokens, temperature, top_p, greedy, rep_penalty, no_repeat_ngram, min_p,
+            )
+            print(f"=> {completion}\n")
+            if chat and multi:
+                history += [(role, prompt), ("assistant", completion.strip())]
+            if not (chat and auto):
+                break
+            import real_tools
+            calls = real_tools.parse_calls(completion)
+            if not calls:
+                if "<tool_call>" in completion:
+                    print("[tool] FAIL: <tool_call> opened but never closed (ran out of tokens?)\n")
+                break
+            results = []
+            for call, raw, err in calls:
+                if err:
+                    print(f"[tool] FAIL: {err}: {raw[:200]}")
+                    results.append(json.dumps({"error": err}))
+                    continue
+                verdict, res = real_tools.check_and_run(call, tools)
+                print(f"[tool] {call.get('name')}({json.dumps(call.get('arguments', {}), ensure_ascii=False)}) -> {verdict}")
+                print(f"[tool] real result: {json.dumps(res, ensure_ascii=False)}")
+                results.append(json.dumps(res, ensure_ascii=False))
+            print()
+            role, prompt = "user", "\n".join(f"<tool_response>\n{r}\n</tool_response>" for r in results)
 
 
 if __name__ == "__main__":

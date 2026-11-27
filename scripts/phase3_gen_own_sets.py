@@ -82,6 +82,103 @@ def gen_facts(parquet, n, rng):
     return out
 
 
+# ---------------------------------------------------------------- B2 (run 02): facts asked as commands, in formats
+# Run 01 refused harmless commands ("give me capital of India and France in a json" -> "I can't provide real-time data").
+# These rows ask for facts as commands and in requested formats (JSON, CSV, list, one line) and answer plainly.
+# India and France are left out of the capital table: they are in the hand tests.
+CAPITALS = [("Japan", "Tokyo"), ("China", "Beijing"), ("Germany", "Berlin"), ("Italy", "Rome"), ("Spain", "Madrid"),
+            ("Portugal", "Lisbon"), ("United Kingdom", "London"), ("Ireland", "Dublin"), ("Russia", "Moscow"),
+            ("Canada", "Ottawa"), ("United States", "Washington, D.C."), ("Mexico", "Mexico City"), ("Brazil", "Brasília"),
+            ("Argentina", "Buenos Aires"), ("Chile", "Santiago"), ("Peru", "Lima"), ("Colombia", "Bogotá"),
+            ("Egypt", "Cairo"), ("Kenya", "Nairobi"), ("Nigeria", "Abuja"), ("South Africa", "Pretoria"),
+            ("Ethiopia", "Addis Ababa"), ("Morocco", "Rabat"), ("Ghana", "Accra"), ("Australia", "Canberra"),
+            ("New Zealand", "Wellington"), ("Indonesia", "Jakarta"), ("Thailand", "Bangkok"), ("Vietnam", "Hanoi"),
+            ("Philippines", "Manila"), ("Malaysia", "Kuala Lumpur"), ("South Korea", "Seoul"), ("Nepal", "Kathmandu"),
+            ("Bangladesh", "Dhaka"), ("Sri Lanka", "Sri Jayawardenepura Kotte"), ("Pakistan", "Islamabad"),
+            ("Afghanistan", "Kabul"), ("Iran", "Tehran"), ("Iraq", "Baghdad"), ("Saudi Arabia", "Riyadh"),
+            ("Turkey", "Ankara"), ("Greece", "Athens"), ("Netherlands", "Amsterdam"), ("Belgium", "Brussels"),
+            ("Switzerland", "Bern"), ("Austria", "Vienna"), ("Poland", "Warsaw"), ("Sweden", "Stockholm"),
+            ("Norway", "Oslo"), ("Finland", "Helsinki"), ("Denmark", "Copenhagen"), ("Hungary", "Budapest"),
+            ("Czech Republic", "Prague"), ("Ukraine", "Kyiv"), ("Romania", "Bucharest"), ("Israel", "Jerusalem"),
+            ("Jordan", "Amman"), ("Qatar", "Doha"), ("United Arab Emirates", "Abu Dhabi"), ("Cuba", "Havana"),
+            ("Venezuela", "Caracas"), ("Iceland", "Reykjavík"), ("Mongolia", "Ulaanbaatar"), ("Singapore", "Singapore")]
+CMD_ONE = ["Give me the answer: {q}", "Tell me: {q}", "Answer this: {q}", "Quick question: {q}", "{q} Just the answer, please.",
+           "I need the answer to this: {q}", "Please answer: {q}", "Answer in one line: {q}"]
+
+
+def _cap_rows(rng):
+    pairs = rng.sample(CAPITALS, rng.randint(1, 4))
+    names = [c for c, _ in pairs]
+    lst = names[0] if len(names) == 1 else ", ".join(names[:-1]) + " and " + names[-1]
+    fmt = rng.choice(["json", "csv", "list", "plain", "table", "lines"])
+    verb = rng.choice(["give me", "Give me", "tell me", "List", "Write", "I need"])
+    if fmt == "json":
+        q = rng.choice([f"{verb} the capital of {lst} in a json", f"{verb} the capitals of {lst} as JSON",
+                        f"capital of {lst} in json format"])
+        a = "```json\n" + json.dumps({c: k for c, k in pairs}, ensure_ascii=False, indent=2) + "\n```"
+    elif fmt == "csv":
+        q = rng.choice([f"{verb} only comma separated values of country and capital for {lst}",
+                        f"{verb} the capitals of {lst} as CSV", f"CSV of country,capital for {lst}"])
+        a = "country,capital\n" + "\n".join(f'{c},"{k}"' if "," in k else f"{c},{k}" for c, k in pairs)
+    elif fmt == "list":
+        q = rng.choice([f"{verb} a list of the capitals of {lst}", f"list the capital cities of {lst}"])
+        a = "\n".join(f"- {c}: {k}" for c, k in pairs)
+    elif fmt == "table":
+        q = f"{verb} a table of {lst} and their capitals"
+        a = "| Country | Capital |\n|---|---|\n" + "\n".join(f"| {c} | {k} |" for c, k in pairs)
+    elif fmt == "lines":
+        q = f"{verb} the capital of {lst}, one per line, nothing else"
+        a = "\n".join(k for _, k in pairs)
+    else:
+        q = rng.choice([f"{verb} the capital of {lst}", f"capital of {lst}", f"what are the capitals of {lst}?"])
+        a = " ".join(f"The capital of {c} is {k}." for c, k in pairs)
+    return [["user", q], ["assistant", a]]
+
+
+def gen_facts_cmd(parquet, n, rng, skip):
+    """Fact-Seeking questions not used by gen_facts (skip the first `skip` matches), asked as commands or in batches."""
+    qa, seen = [], 0
+    for batch in pq.ParquetFile(parquet).iter_batches(batch_size=4096, columns=["text"]):
+        for r in batch.to_pylist():
+            m = QUIZ.match((r["text"] or "").strip())
+            if not m or "\n" in m["q"] or len(m["q"]) > 300:
+                continue
+            seen += 1
+            if seen <= skip:
+                continue
+            ans = m["ans"].strip().rstrip(".")
+            qa.append((m["q"].strip(), ans[0].upper() + ans[1:]))
+        if len(qa) >= n * 2:
+            break
+    out, i = [], 0
+    while len(out) < n and i < len(qa):
+        kind = rng.random()
+        if kind < 0.25:
+            out.append(_cap_rows(rng))
+            continue
+        if kind < 0.65:
+            q, a = qa[i]; i += 1
+            out.append([["user", rng.choice(CMD_ONE).format(q=q)], ["assistant", a + "."]])
+            continue
+        k = rng.randint(2, 3)
+        batch_qa = qa[i:i + k]; i += k
+        if len(batch_qa) < k:
+            break
+        numbered = "\n".join(f"{j + 1}. {q}" for j, (q, _) in enumerate(batch_qa))
+        fmt = rng.choice(["json", "list", "csv"])
+        if fmt == "json":
+            u = rng.choice(["Answer these as JSON:", "Give me the answers in a json:", "Return the answers as a JSON object:"])
+            a = "```json\n" + json.dumps({str(j + 1): x for j, (_, x) in enumerate(batch_qa)}, ensure_ascii=False, indent=2) + "\n```"
+        elif fmt == "list":
+            u = rng.choice(["Answer each of these:", "Give me short answers:", "Answer these questions briefly:"])
+            a = "\n".join(f"{j + 1}. {x}" for j, (_, x) in enumerate(batch_qa))
+        else:
+            u = rng.choice(["Give me only the answers, comma separated:", "Answers only, separated by commas:"])
+            a = ", ".join(x for _, x in batch_qa)
+        out.append([["user", f"{u}\n{numbered}"], ["assistant", a]])
+    return out
+
+
 # ---------------------------------------------------------------- C: arithmetic with steps
 def clock(h):
     return (h - 1) % 12 + 1
@@ -283,6 +380,8 @@ def main():
     ap.add_argument("--n_facts", type=int, default=150000)
     ap.add_argument("--n_math", type=int, default=120000)
     ap.add_argument("--n_binding", type=int, default=120000)
+    ap.add_argument("--only", default=None, help="run 02: build just this set, e.g. own_facts_cmd (others untouched)")
+    ap.add_argument("--n_facts_cmd", type=int, default=60000)
     a = ap.parse_args()
     rng = random.Random(20261127)
     banned = HANDTEST_NAMES | load_probe_names(a.repo_root)
@@ -290,10 +389,13 @@ def main():
     females = [f for f in FEMALE if f not in banned]
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    sets = {"own_facts": gen_facts(a.facts_parquet, a.n_facts, rng),
-            "own_math": gen_math(a.n_math, rng, males + females),
-            "own_binding": gen_binding(a.n_binding, rng, males, females),
-            "own_identity": gen_identity(rng)}
+    if a.only == "own_facts_cmd":
+        sets = {"own_facts_cmd": gen_facts_cmd(a.facts_parquet, a.n_facts_cmd, random.Random(20261128), skip=a.n_facts)}
+    else:
+        sets = {"own_facts": gen_facts(a.facts_parquet, a.n_facts, rng),
+                "own_math": gen_math(a.n_math, rng, males + females),
+                "own_binding": gen_binding(a.n_binding, rng, males, females),
+                "own_identity": gen_identity(rng)}
     for name, rows in sets.items():
         with open(out / f"{name}.jsonl", "w") as f:
             for turns in rows:
