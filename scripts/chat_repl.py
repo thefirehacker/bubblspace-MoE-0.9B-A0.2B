@@ -20,6 +20,12 @@ REPL commands:
     /ngram <int>       never repeat an n-gram of this size (0 = off, default 4)
     /minp <float>      min-p filter: drop tokens below minp * top token prob (0 = off)
     /chat              toggle chat mode: wrap input in <|im_start|>user ... <|im_start|>assistant, stop at <|im_end|>
+    /file <path>       send the contents of a file as the prompt (long prompts, multi-line text)
+    /system <text>     (chat) set a system message; "/system off" clears it
+    /tools <path>      (chat) load a JSON list of tool definitions into the system turn (<tools>...</tools>); "/tools off"
+    /tool <json>       (chat) send a tool result back (a user turn wrapped in <tool_response>), continuing the conversation
+    /multi             (chat) toggle multi-turn: keep the conversation history (on automatically after /tools)
+    /reset             (chat) forget the conversation history
     /settings          show current settings
     exit / quit         stop
 
@@ -28,6 +34,7 @@ log-likelihood based and use no sampling).
 """
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -153,9 +160,11 @@ def main():
     print('e.g. "The capital of France is" or "def fibonacci(n):".')
     print()
     print("Commands: /temp <f>  /topp <f>  /tokens <n>  /greedy  /sample  /rep <f>  /ngram <n>  /minp <f>  /chat  /settings  exit")
+    print("Chat:     /file <path>  /system <text|off>  /tools <path|off>  /tool <json>  /multi  /reset")
 
     temperature, top_p, max_new_tokens, greedy = args.temperature, args.top_p, args.max_new_tokens, False
     rep_penalty, no_repeat_ngram, min_p, chat = args.rep_penalty, args.no_repeat_ngram, args.min_p, args.chat
+    system, tools, history, multi = None, None, [], False  # chat: history = [(role, text), ...] kept when multi is on
 
     def show():
         print(f"Current: mode={'greedy' if greedy else 'sample'} temperature={temperature} top_p={top_p} min_p={min_p} "
@@ -213,15 +222,57 @@ def main():
             continue
         if stripped == "/settings":
             show()
+            print(f"system={'set' if system else 'off'} tools={len(tools) if tools else 0} multi-turn={multi} history_turns={len(history)}")
             continue
+        if stripped == "/multi":
+            multi, history = not multi, []
+            print(f"[set] multi-turn={multi} (conversation cleared)")
+            continue
+        if stripped == "/reset":
+            history = []
+            print("[set] conversation cleared")
+            continue
+        if stripped.startswith("/system "):
+            arg = stripped[len("/system "):].strip()
+            system = None if arg == "off" else arg
+            history = []
+            print(f"[set] system={'off' if system is None else repr(system[:60])} (conversation cleared)")
+            continue
+        if stripped.startswith("/tools "):
+            arg = stripped[len("/tools "):].strip()
+            try:
+                tools = None if arg == "off" else json.loads(Path(arg).read_text())
+            except Exception as e:
+                print(f"[error] {e}")
+                continue
+            history, multi = [], multi or tools is not None
+            print(f"[set] tools={'off' if tools is None else [t.get('function', t).get('name') for t in tools]} multi-turn={multi} (conversation cleared)")
+            continue
+        role = "user"
+        if stripped.startswith("/file "):
+            try:
+                prompt = Path(stripped[len("/file "):].strip()).read_text().strip()
+            except Exception as e:
+                print(f"[error] {e}")
+                continue
+            print(f"[file] {len(prompt):,} chars, {len(tok.encode(prompt, add_special_tokens=False)):,} tokens")
+        elif stripped.startswith("/tool "):
+            prompt = f"<tool_response>\n{stripped[len('/tool '):].strip()}\n</tool_response>"
 
         # same wire format as pretraining (prepare_agentic.py) and SFT (phase3_build_sft.py): "\n" before <|im_end|>, no gap between turns
-        text = f"<|im_start|>user\n{prompt}\n<|im_end|><|im_start|>assistant\n" if chat else prompt
+        if chat:
+            sys_text = "\n".join(x for x in (system, f"<tools>\n{json.dumps(tools)}\n</tools>" if tools else None) if x)
+            turns = ([("system", sys_text)] if sys_text else []) + history + [(role, prompt)]
+            text = "".join(f"<|im_start|>{r}\n{c}\n<|im_end|>" for r, c in turns) + "<|im_start|>assistant\n"
+        else:
+            text = prompt
         completion = generate(
             model, tok, device, real_vocab_size, {eot_id, im_end_id}, cfg.model.max_seq_len,
             text, max_new_tokens, temperature, top_p, greedy, rep_penalty, no_repeat_ngram, min_p,
         )
         print(f"=> {completion}\n")
+        if chat and multi:
+            history += [(role, prompt), ("assistant", completion.strip())]
 
 
 if __name__ == "__main__":

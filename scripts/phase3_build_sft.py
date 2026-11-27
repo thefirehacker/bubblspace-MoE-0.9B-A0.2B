@@ -47,6 +47,30 @@ def src_tulu3(raw):
         yield [(m["role"], m["content"]) for m in r["messages"]]
 
 
+# Run 02 (27 Nov): run 01 over-refused harmless commands ("give me the capital of India" -> "I can't provide real-time
+# data"). 5.1% of Tülu replies open with a refusal, nearly all from three safety sets. Drop two of them, keep a 10% sample
+# of WildGuardMix (refusals of clearly harmful requests + answers to harmless-but-edgy ones), drop refusal-opening
+# replies elsewhere, and drop OLMo's hard-coded identity rows ("I am OLMo, made by Ai2").
+_REFUSAL_OPEN = re.compile(r"^\s*(I'?m sorry|I am sorry|I cannot|I can'?t|I apologi[sz]e|As an AI|Sorry,|Unfortunately, I)", re.I)
+RUN02_DROP_SOURCES = ("wildjailbreak", "coconot", "olmo_hardcoded")
+
+
+def src_tulu3_run02(raw):
+    for r in _parquet_rows(f"{raw}/allenai__tulu-3-sft-olmo-2-mixture-0225/data/*.parquet"):
+        s = r.get("source") or ""
+        if "aya" in s or any(d in s for d in RUN02_DROP_SOURCES):
+            continue
+        turns = [(m["role"], m["content"]) for m in r["messages"]]
+        if "wildguardmix" in s:
+            if int(hashlib.md5(json.dumps(turns).encode()).hexdigest(), 16) % 10:  # deterministic 10% sample
+                continue
+        else:
+            first = next((t for ro, t in turns if ro == "assistant"), "") or ""
+            if _REFUSAL_OPEN.match(first):
+                continue
+        yield turns
+
+
 def src_gsm8k(raw):
     for r in _parquet_rows(f"{raw}/openai__gsm8k/main/train-*.parquet"):  # train only; test stays an eval
         ans = re.sub(r"<<[^>]*>>", "", r["answer"])
@@ -151,6 +175,8 @@ SOURCES = {
     "own_math": lambda raw: src_own(raw, "own_math"),
     "own_binding": lambda raw: src_own(raw, "own_binding"),
     "own_identity": lambda raw: src_own(raw, "own_identity"),
+    "own_facts_cmd": lambda raw: src_own(raw, "own_facts_cmd"),
+    "tulu3_run02": src_tulu3_run02,
     "tulu3": src_tulu3, "gsm8k": src_gsm8k, "synthetic1": src_synthetic1, "terminal": src_terminal,
     "agentic_toolmind": lambda raw: src_agentic(raw, "toolmind"),
     "agentic_hermes": lambda raw: src_agentic(raw, "hermes"),
