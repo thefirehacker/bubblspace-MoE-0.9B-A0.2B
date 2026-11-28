@@ -10,7 +10,7 @@ RL v1 is also the first test of the RL pipeline, so a small round before a bigge
 
 1. ✅ **Finish SFT.** Run 02b finishes about 19:15 IST, its evals by about 21:00. Compare it with run 01, pick the winner, upload it to Hugging Face. *(27 Nov: run 02b won, doc/issue-02.)*
 2. ✅ **RL v1** (about 1–2 days of prep, then about 6 hours of training) on the winning SFT model, using the task mix in this plan. *(27 Nov, 1 h 40 min; §7.)*
-3. 🟡 **Benchmark the RL model fully,** with **8 samples per question** (not one): *(28 Nov: chat evals, refusal check, chat test and English 6 done, **greedy only** (§7). Still to run: 8 samples per question (pass@8), long-context tests, hand tests vs OLMo-2 1B.)*
+3. 🟡 **Benchmark the RL model fully,** with **8 samples per question** (not one): *(28 Nov: chat evals, refusal check, chat test and English 6 done greedy, and **pass@8 done** for run 02b and RL v1 step 500 (§7). Still to run: long-context tests, hand tests vs OLMo-2 1B.)*
    - the chat evals (HumanEval/MBPP, GSM8K, IFEval, BFCL);
    - the refusal check and long-context tests;
    - the hand tests, against the same OLMo-2 1B checkpoints as before.
@@ -75,6 +75,34 @@ category (±5 points is noise); the vLLM backend gives slightly different number
 (e.g. run 02b BFCL simple 63 vs 65), so every model in this table was re-run with it.
 
 **Reading:** RL v1 recovered run 02b's tool-calling losses and went past both SFT runs on simple / multiple / parallel calls, gave the best IFEval of any model, a small real GSM8K gain (9.6 → 12.4%), and kept the refusal balance, with no forgetting. Code is flat.
+
+**Pass@8** (28 Nov; 8 answers per question at temperature 1.0, the RL rollout setting; `scripts/eval_chat_passk.py`, results in
+`benchmark/phase4/passk/summary.md`). SFT run 02b → RL v1 step 500:
+
+| Task | Greedy % | pass@1 % (T=1) | pass@8 % | Never right in 8 (RL v1) | Headroom: pass@8 − greedy (RL v1) |
+|---|---|---|---|---|---|
+| HumanEval | 15.2 → 16.5 | 7.6 → 13.3 | 22.6 → 25.0 | 75% | 8.5 |
+| MBPP | 21.8 → 22.2 | 9.9 → 16.2 | 30.8 → 33.8 | 66% | 11.6 |
+| GSM8K | 9.6 → 12.4 | 3.6 → 8.7 | 19.6 → **31.8** | 68% | 19.4 |
+| IFEval (prompt, strict) | 23.1 → 29.6 | 22.6 → 28.4 | 51.9 → 55.1 | 45% | **25.5** |
+| BFCL simple | 63 → 71 | 53.1 → 59.1 | 85 → 86 | 14% | 15 |
+| BFCL multiple | 36 → 43 | 27.4 → 34.2 | 70 → 67 | 33% | **24** |
+| BFCL parallel | 24 → 40 | 14.9 → 26.4 | 52 → 56 | 44% | 16 |
+| BFCL no tool needed | 56.2 → 69.6 | 56.6 → 68.1 | 93.3 → 92.1 | 8% | 22.5 |
+
+Sampled refusal check (8 answers per prompt): harmless refused 2% → 1%, harmful refused 75% → 77%, live data honest 61% → 83%.
+
+**Reading (the map at the top of this plan):**
+- **RL v1 didn't narrow what the model can reach.** pass@8 rose or held on every task (BFCL multiple −3 and no-tool −1 are
+  within noise for 100 / 240 questions). On GSM8K, 252 questions run 02b never solved in 8 tries are solved at least once
+  after RL (91 went the other way).
+- **Skill gaps, where a bigger RL can still raise the greedy score:** IFEval (25 points between greedy and pass@8), BFCL
+  multiple (24), no tool needed (22), GSM8K (19), parallel and simple calls (15–16).
+- **Knowledge / ability gaps, where RL can't help:** two-thirds to three-quarters of HumanEval, MBPP and GSM8K questions are
+  never right in 8 tries. Code and maths need data (a knowledge stage, then SFT again), not more RL.
+- At temperature 1.0 the model refuses clearly harmful requests in only 77% of samples (greedy: 7 of 8 prompts). Greedy
+  decoding is what the published model uses by default, but the margin is thin.
+- Caveat: temperature 1.0 is the RL setting. Lower temperatures give a higher pass@1 and may change pass@8.
 
 **Incident (night of 27–28 Nov):** the RL v1b chain's first step, refreshing the difficulty filter with the RL v1 model,
 hung at ~23:50 IST: `rl_filter.py` forked ~30 child processes for docker sandbox calls that never ran their command (forking

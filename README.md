@@ -60,6 +60,8 @@ Chat benchmarks, all models evaluated the same way (A10, vLLM backend, greedy; r
 - **No forgetting:** English 6-task average 47.91 (run 02b) → 48.00 (RL v1).
 - **Chat test:** passive sentences right for the first time ("The letter was written by Maya… who wrote it?" → Maya), two calls for "weather in Tokyo and London", shorter direct answers.
 
+**Pass@8** (8 answers per question at temperature 1.0; [summary](benchmark/phase4/passk/summary.md)): RL v1 raised pass@8 or kept it level on every task (GSM8K 19.6 → 31.8%), so it didn't narrow what the model can reach. The gap between greedy and pass@8 shows where a bigger RL can still help: IFEval 30 vs 55%, BFCL multiple 43 vs 67%, GSM8K 12 vs 32%. Two-thirds to three-quarters of HumanEval, MBPP and GSM8K questions are never right in 8 tries: that part needs more code and maths knowledge, not more RL.
+
 BFCL has 100 questions per category (±5 points is noise). The overnight continuation of RL (v1b/v1c) didn't run: its first step hung and the H100 was retired ([details](doc/plan-06-phase-4-rl.md)).
 
 **Phase 3 (SFT) results**

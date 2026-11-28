@@ -10,6 +10,7 @@ least once (gained), and the reverse (lost: the second never solves what the fir
 IFEval needs lm-eval (scored here, per sample, with its own checkers).
 """
 import argparse
+import gzip
 import json
 from collections import defaultdict
 from pathlib import Path
@@ -23,8 +24,12 @@ TASKS = [("humaneval", "HumanEval"), ("mbpp", "MBPP"), ("gsm8k", "GSM8K"), ("ife
 
 
 def load(p):
+    """JSON file, or its .gz copy (the repo keeps the large gen/codeexec files gzipped)."""
     p = Path(p)
-    return json.loads(p.read_text()) if p.exists() else None
+    if p.exists():
+        return json.loads(p.read_text())
+    gz = p.with_name(p.name + ".gz")
+    return json.loads(gzip.decompress(gz.read_bytes())) if gz.exists() else None
 
 
 def counts(gen, cx):

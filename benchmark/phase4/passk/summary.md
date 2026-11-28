@@ -1,0 +1,42 @@
+# Pass@8 chat benchmarks: SFT run 02b, RL v1 step 500
+
+Decoding: 8 samples, T=1.0, top-p=1.0, vLLM (the RL v1 rollout settings), A10. Greedy = the single greedy answer from `benchmark/phase4/` (same prompts and checkers). pass@1 = mean over the 8 samples; pass@8 = at least one of the 8 right. The last three columns split the questions by how many of the 8 samples were right: 0/8 = the model doesn't produce it (knowledge or ability gap), 1–7/8 = it can but doesn't pick it reliably (what RL sharpens), 8/8 = solved.
+
+| Task | Model | Questions | Greedy % | pass@1 % (T=1) | pass@8 % | 0/8 % | 1–7/8 % | 8/8 % |
+|---|---|---|---|---|---|---|---|---|
+| HumanEval | SFT run 02b | 164 | 15.2 | 7.6 | 22.6 | 77.4 | 22.6 | 0.0 |
+| HumanEval | RL v1 step 500 | 164 | 16.5 | 13.3 | 25.0 | 75.0 | 18.3 | 6.7 |
+| MBPP | SFT run 02b | 500 | 21.8 | 9.9 | 30.8 | 69.2 | 30.6 | 0.2 |
+| MBPP | RL v1 step 500 | 500 | 22.2 | 16.2 | 33.8 | 66.2 | 30.0 | 3.8 |
+| GSM8K | SFT run 02b | 1319 | 9.6 | 3.6 | 19.6 | 80.4 | 19.6 | 0.0 |
+| GSM8K | RL v1 step 500 | 1319 | 12.4 | 8.7 | 31.8 | 68.2 | 31.5 | 0.4 |
+| IFEval (prompt, strict) | SFT run 02b | 541 | 23.1 | 22.6 | 51.9 | 48.1 | 49.2 | 2.8 |
+| IFEval (prompt, strict) | RL v1 step 500 | 541 | 29.6 | 28.4 | 55.1 | 44.9 | 44.9 | 10.2 |
+| BFCL simple | SFT run 02b | 100 | 63.0 | 53.1 | 85.0 | 15.0 | 70.0 | 15.0 |
+| BFCL simple | RL v1 step 500 | 100 | 71.0 | 59.1 | 86.0 | 14.0 | 64.0 | 22.0 |
+| BFCL multiple | SFT run 02b | 100 | 36.0 | 27.4 | 70.0 | 30.0 | 69.0 | 1.0 |
+| BFCL multiple | RL v1 step 500 | 100 | 43.0 | 34.2 | 67.0 | 33.0 | 60.0 | 7.0 |
+| BFCL parallel | SFT run 02b | 100 | 24.0 | 14.9 | 52.0 | 48.0 | 52.0 | 0.0 |
+| BFCL parallel | RL v1 step 500 | 100 | 40.0 | 26.4 | 56.0 | 44.0 | 55.0 | 1.0 |
+| BFCL no tool needed | SFT run 02b | 240 | 56.2 | 56.6 | 93.3 | 6.7 | 76.7 | 16.7 |
+| BFCL no tool needed | RL v1 step 500 | 240 | 69.6 | 68.1 | 92.1 | 7.9 | 56.7 | 35.4 |
+
+**SFT run 02b → RL v1 step 500, per question** (gained: never solved by SFT run 02b, solved at least once by RL v1 step 500; lost: the reverse)
+
+| Task | Never by SFT run 02b | of those, gained | Solved ≥1 by SFT run 02b | of those, lost | Mean right samples per question |
+|---|---|---|---|---|---|
+| HumanEval | 127 | 11 | 37 | 7 | 0.61 → 1.07 of 8 |
+| MBPP | 346 | 46 | 154 | 31 | 0.79 → 1.30 of 8 |
+| GSM8K | 1060 | 252 | 259 | 91 | 0.29 → 0.69 of 8 |
+| IFEval (prompt, strict) | 260 | 60 | 281 | 43 | 1.80 → 2.27 of 8 |
+| BFCL simple | 15 | 3 | 85 | 2 | 4.25 → 4.73 of 8 |
+| BFCL multiple | 30 | 8 | 70 | 11 | 2.19 → 2.74 of 8 |
+| BFCL parallel | 48 | 11 | 52 | 7 | 1.19 → 2.11 of 8 |
+| BFCL no tool needed | 16 | 5 | 224 | 8 | 4.53 → 5.45 of 8 |
+
+**Refusal check, all 8 samples per prompt** (greedy: one answer per prompt)
+
+| Model | Harmless refused (want low) | Harmful refused (want high) | Live data honest (want high) |
+|---|---|---|---|
+| SFT run 02b | 6/360 (2%) | 48/64 (75%) | 39/64 (61%) |
+| RL v1 step 500 | 2/360 (1%) | 49/64 (77%) | 53/64 (83%) |
