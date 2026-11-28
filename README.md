@@ -60,6 +60,10 @@ Chat benchmarks, all models evaluated the same way (A10, vLLM backend, greedy; r
 - **No forgetting:** English 6-task average 47.91 (run 02b) → 48.00 (RL v1).
 - **Chat test:** passive sentences right for the first time ("The letter was written by Maya… who wrote it?" → Maya), two calls for "weather in Tokyo and London", shorter direct answers.
 
+**Pass@8** (8 answers per question at temperature 1.0; [summary](benchmark/phase4/passk/summary.md)): RL v1 raised pass@8 or kept it level on every task (GSM8K 19.6 → 31.8%), so it didn't narrow what the model can reach. The gap between greedy and pass@8 shows where a bigger RL can still help: IFEval 30 vs 55%, BFCL multiple 43 vs 67%, GSM8K 12 vs 32%. Two-thirds to three-quarters of HumanEval, MBPP and GSM8K questions are never right in 8 tries: that part needs more code and maths knowledge, not more RL.
+
+**Hand tests and long context** ([summary](benchmark/phase4/handtest_longctx/summary.md)): on the 18 relational and 16 calculation prompts of our OLMo comparison, RL v1 scores 10/18 and 9/16 as raw text (2.5a base: 6/18 and 5/16; OLMo-2 1B final base: 9/18 and 10/16) and 8/18 and 12/16 in chat (SFT run 02b: 5/18 and 8/16; OLMo-2 1B Instruct: 14/18 and 16/16). Days of the week, time order and swapping stay wrong. Long-context retrieval is kept as raw text (passkey 85% at 2k, 83% at 8k, 50% at 16k), but drops when the document comes as a chat message (75 / 38 / 33%): long-document questions in the chat format are the next gap to train.
+
 BFCL has 100 questions per category (±5 points is noise). The overnight continuation of RL (v1b/v1c) didn't run: its first step hung and the H100 was retired ([details](doc/plan-06-phase-4-rl.md)).
 
 **Phase 3 (SFT) results**
@@ -102,8 +106,10 @@ Phase 3 fine-tuned the Phase 2.5b base model into a chat model: 1,500 steps, ≈
 | 2.5b step 1,000 | 62% | 78% | 35% | 21% | 8% | 2.52 / 2.27 |
 | 2.5b step 2,000 | 72% | 75% | 45% | 21% | 17% | 2.50 / 2.25 |
 | **2.5b final (2,861)** | **70%** | **72%** | **48%** | **29%** | **17%** | **2.49 / 2.24** |
+| SFT run 02b (28 Nov) | 73% | 80% | 40% | 29% | 0% | 2.52 / 2.27 |
+| RL v1 step 500 (28 Nov) | 73% | 83% | 50% | 13% | 8% | 2.53 / 2.28 |
 
-Passkey: 40 trials per length; 2-hop fact retrieval from the text: 24 per length. Loss keeps falling deeper into a document, so the model uses the long context. Retrieval works well up to 8k and about half the time at 16k.
+Passkey: 40 trials per length; 2-hop fact retrieval from the text: 24 per length (chance 25%). Loss keeps falling deeper into a document, so the model uses the long context. Retrieval works well up to 8k and about half the time at 16k; SFT and RL kept it (same raw-text test). In the chat format (document in a user message) passkey falls to 55% at 4k and 33% at 16k for RL v1.
 
 **Phase 2 results** (full table in [`benchmark/README.md`](benchmark/README.md)):
 
@@ -124,7 +130,7 @@ The code scores are not inflated by memorization: problems the model passed over
 
 **Published datasets** (ours):
 - [`bubblspace-contrastive-binding`](https://huggingface.co/datasets/TheFireHacker/bubblspace-contrastive-binding): template binding corpora v1–v3, plus the binding probes v2–v4 with a canary string. CC BY 4.0.
-- [`bubblspace-relational-passages-Qwen3-30B`](https://huggingface.co/datasets/TheFireHacker/bubblspace-relational-passages-Qwen3-30B): grounded, fact-checked relational passages. CC BY-SA 4.0, partial release while generation finishes.
+- [`bubblspace-relational-passages-Qwen3-30B`](https://huggingface.co/datasets/TheFireHacker/bubblspace-relational-passages-Qwen3-30B): grounded, fact-checked relational passages (222,088 in 25 shards, plus the fact-check rejects with critiques), used in Phase 2.5a. CC BY-SA 4.0.
 
 **Mid-run changes (applied at step 19,000 by resuming from the checkpoint; the switch ran automatically on 23 Nov and was verified):**
 - Stage 2B keeps FineWeb-Edu at ≈5.7% instead of 0%.
@@ -141,7 +147,7 @@ See [`doc/eval-notes.md`](doc/eval-notes.md) for how every eval is wired up for 
 | MoE | 64 experts, top-8, SwiGLU, expert_hidden 256, dropless |
 | Norm | ZeroCenteredRMSNorm (`1+w`, `w` init 0, weight-decayed) |
 | Vocab | 49,280 (bubblspace-tokenizer, padded), tied embedding/lm_head |
-| Context | 2048 tokens |
+| Context | 2,048 tokens (Phases 1–2.5a); 16,384 from Phase 2.5b on (RoPE base 1e6) |
 
 | | Total | Active |
 |---|---|---|
@@ -343,6 +349,8 @@ src/model/      transformer, attention (GQA+QK-norm+RoPE+output-gate), MoE (2 ba
 src/optim/      Muon (batched Newton-Schulz), AdamW/Muon param-group split, LR schedule
 src/data/       tokenization (prepare.py), FIM transform (fim.py), memmap dataset reader (dataset.py)
 src/eval/       lm-evaluation-harness adapter for this custom (non-transformers-native) architecture
+src/rl/         RL (Phase 4): reward checkers, vLLM engine with trainer weight sync
+vllm_plugin/    vLLM model plugin for this architecture (fast generation for RL and evals)
 scripts/        build_tokenizer.py, setup_fire01.sh, sanity_check_data.py, train.py,
                 generate.py (inference), run_benchmarks.py, push_to_hf.py
 benchmark/      per-checkpoint benchmark results (raw JSON + readable summary)
@@ -370,8 +378,8 @@ the code, checkpoints, or data pipeline is entirely at your own risk, and is
 provided "AS IS" without warranty of any kind, express or implied, consistent
 with Section 7 of the Apache License 2.0 above.
 
-**On the nature of AI output:** this is a small language model, pretrained and then
-lightly instruction-tuned (SFT). Its outputs are statistically plausible continuations of text,
+**On the nature of AI output:** this is a small language model, pretrained, then
+instruction-tuned (SFT) and given one short round of RL. Its outputs are statistically plausible continuations of text,
 not verified facts, advice, or reasoning. It can be confidently wrong, biased,
 inconsistent, or nonsensical, especially at this parameter scale and training
 stage — see [`benchmark/README.md`](benchmark/README.md) for where it stands

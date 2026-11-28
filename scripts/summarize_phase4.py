@@ -41,13 +41,20 @@ def main():
             "IFEval prompt %", "IFEval instr. %", "BFCL simple %", "BFCL multiple %", "BFCL parallel %", "BFCL no-tool %"]
     lines = ["| " + " | ".join(head) + " |", "|" + "---|" * len(head)]
     lines += ["| " + " | ".join(fmt(v) for v in row) + " |" for row in rows]
+    # English 6-task: acc_norm for HellaSwag / PIQA / ARC, acc for WinoGrande / LAMBADA (same as every earlier phase)
+    e6 = [("HellaSwag", "hellaswag", "acc_norm,none"), ("PIQA", "piqa", "acc_norm,none"),
+          ("ARC-e", "arc_easy", "acc_norm,none"), ("ARC-c", "arc_challenge", "acc_norm,none"),
+          ("WinoGrande", "winogrande", "acc,none"), ("LAMBADA", "lambada_openai", "acc,none")]
     eng = []
     for m in ("phase3-run02b-step1500-tokens40B", "phase4-rlv1-step500-tokens40B"):
         e = load(d / f"english6_{m}.json")
         if e:
-            eng.append(f"- {NAMES[m]}: " + json.dumps(e.get("summary", e.get("results", {})))[:600])
+            v = [100 * e["results"][t][k] for _, t, k in e6]
+            eng.append(f"| {NAMES[m]} | " + " | ".join(f"{x:.1f}" for x in v) + f" | **{sum(v) / len(v):.2f}** |")
+    eng_table = ("| Model | " + " | ".join(n for n, _, _ in e6) + " | Average |\n|" + "---|" * (len(e6) + 2) + "\n"
+                 + "\n".join(eng)) if eng else "(not run)"
     out = ("# Phase 3 SFT vs Phase 4 RL v1: chat benchmarks (vLLM backend, greedy, A10, 28 Nov)\n\n" + "\n".join(lines)
-           + "\n\nEnglish 6-task (forgetting check):\n" + ("\n".join(eng) or "(not run)") + "\n")
+           + "\n\nEnglish 6-task (forgetting check):\n\n" + eng_table + "\n")
     Path(a.out).write_text(out)
     print(out)
 

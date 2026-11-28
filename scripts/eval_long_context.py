@@ -28,6 +28,10 @@ Step 2 (GPU):
         --docs benchmark/data/long-context/long_docs_heldout.npz --output long_context_stepN.json
 For a checkpoint trained at 2k (baseline), keep its RoPE theta and only raise the cache length:
     ... eval --config configs/base.yaml --max_seq_len 16384 ...
+For a chat model (SFT / RL), --chat wraps the same haystack in the chat template: the document and the question go in
+the user turn, and the assistant turn starts with the answer stem ("The pass key is" / "The bakery is called"), so the
+scoring is unchanged. Without --chat a chat model is tested exactly like the base models (raw text):
+    ... eval --config configs/phase3_run02b.yaml --checkpoint model.safetensors --chat --tests passkey,multihop ...
 Deterministic: fixed seed, greedy decoding.
 """
 
@@ -119,6 +123,8 @@ class Ctx:
         self.model.eval()
         self.real_vocab = len(self.tok)
         self.eot = self.tok.convert_tokens_to_ids(cfg.tokenizer.doc_separator)
+        self.chat = getattr(a, "chat", False)
+        self.stops = {self.eot, self.tok.convert_tokens_to_ids("<|im_end|>")} if self.chat else {self.eot}
 
     def enc(self, s):
         return self.tok.encode(s, add_special_tokens=False)
@@ -133,7 +139,7 @@ class Ctx:
                 with torch.autocast(device_type=self.device, dtype=torch.bfloat16, enabled=(self.device == "cuda")):
                     logits, _, _, _ = self.model(x, kv_cache=cache)
                 nid = int(logits[0, -1, : self.real_vocab].argmax())
-                if nid == self.eot:
+                if nid in self.stops:
                     break
                 out.append(nid)
                 x = torch.tensor([[nid]], dtype=torch.long, device=self.device)
@@ -182,13 +188,21 @@ class Haystack:
 def build(ctx, hay, rng, total_len, inserts, question):
     """inserts: list of (depth, text). Returns token ids of exactly <= total_len tokens."""
     ins = [(d, ctx.enc(" " + t.strip() + " ")) for d, t in inserts]
-    q = ctx.enc("\n\n" + question)
-    n_fill = total_len - len(q) - sum(len(t) for _, t in ins)
+    pre = []
+    if ctx.chat:  # user turn = haystack + question; the assistant turn starts with the answer stem
+        q_user, stem = question.rsplit("?", 1)
+        q_user = q_user.removeprefix("Question: ") + "?"
+        stem = stem.strip().removeprefix("Answer:").strip()
+        pre = ctx.enc("<|im_start|>user\n")
+        q = ctx.enc("\n\n" + q_user + "\n<|im_end|><|im_start|>assistant\n" + stem)
+    else:
+        q = ctx.enc("\n\n" + question)
+    n_fill = total_len - len(pre) - len(q) - sum(len(t) for _, t in ins)
     ids = hay.filler(rng, n_fill)
     for d, t in sorted(ins, key=lambda x: -x[0]):  # insert deepest first so earlier positions don't shift
         p = hay.snap(ids, int(d * len(ids)))
         ids[p:p] = t
-    return ids + q
+    return pre + ids + q
 
 
 def run_passkey(ctx, hay, rng, n_trials):
@@ -267,7 +281,7 @@ def evaluate(a):
     hay = Haystack(ctx, docs)
     rng = random.Random(a.seed)
     res = {"checkpoint": a.checkpoint, "step": ctx.step, "config": a.config, "max_seq_len": ctx.max_len,
-           "rope_theta": ctx.cfg.model.attention.rope_theta, "seed": a.seed}
+           "rope_theta": ctx.cfg.model.attention.rope_theta, "seed": a.seed, "chat": ctx.chat}
     lens = [L for L in LENGTHS if L <= ctx.max_len]
     if "passkey" in a.tests:
         rows = run_passkey(ctx, hay, rng, a.trials)
@@ -314,6 +328,7 @@ def main():
     e.add_argument("--max_seq_len", type=int, default=None, help="override, e.g. 16384 for a 2k-trained baseline")
     e.add_argument("--rope_theta", type=float, default=None, help="override (normally leave as the config's)")
     e.add_argument("--seed", type=int, default=1234)
+    e.add_argument("--chat", action="store_true", help="wrap prompts in the chat template (SFT / RL models)")
     a = ap.parse_args()
     make_docs(a) if a.cmd == "make_docs" else evaluate(a)
 

@@ -2,7 +2,7 @@
 
 Plan (27 Nov): after RL v1, the H100 (fire01) and its `h100-f1` filesystem may be deleted to save cost. Work must then be able to continue on a **new H100 with a new, empty NFS**, using only GitHub, Hugging Face and W&B. This document lists what lives where and how to bring a new machine up.
 
-**28 Nov: fire01 (the H100) has been terminated.** Its `h100-f1` filesystem may still exist in Lambda (1.15 TB); everything needed to continue is on Hugging Face and GitHub (§1–2). Lost with fire01: RL v1's training-log text after 18:15 UTC on 27 Nov (W&B keeps the curves) and files on its home disk (the run 02b / RL v1 quick checks, redone on the A10 in `benchmark/phase4/`).
+**28 Nov: fire01 (the H100) and its `h100-f1` filesystem have been deleted.** Everything needed to continue is on Hugging Face and GitHub (§1–2). Lost with fire01: RL v1's training-log text after 18:15 UTC on 27 Nov (W&B keeps the curves) and files on its home disk (the run 02b / RL v1 quick checks, redone on the A10 in `benchmark/phase4/`).
 
 **Tested 27 Nov:** the Phase 3 step 1,500 training state downloaded from Hugging Face and rebuilt with `restore_checkpoint.py` is **bit-identical** to the original `.pt` (all 915,573,760 parameters, both optimizers, schedulers, RNG, step).
 
@@ -13,7 +13,7 @@ Plan (27 Nov): after RL v1, the H100 (fire01) and its `h100-f1` filesystem may b
 | **Code, configs, docs, eval results** | GitHub: [thefirehacker/bubblspace-MoE-0.9B-A0.2B](https://github.com/thefirehacker/bubblspace-MoE-0.9B-A0.2B) | `benchmark/` holds every eval result (JSON/MD) |
 | **Full training states** (weights + optimizer + schedulers + RNG): the **last two checkpoints of every stage** | HF: [bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states), one branch per checkpoint | see §2 |
 | **Runnable models** (weights + code + tokenizer + `generate.py`) | HF: [bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) | `main` = the current best model; one branch per published model |
-| **RL v1** (when done) | training-states repo: final + second-to-last checkpoint, **with every rollout** (`rollouts/step_NNNN.jsonl.gz`), eval samples, `train_log.jsonl`, `evals.jsonl`; model repo: the runnable final model | rollouts: prompt, answer, reward, advantage for every sample of every step |
+| **RL v1** (done 27 Nov) | training-states repo: steps 100 / 300 / 500, **with every rollout** (`rollouts/step_NNNN.jsonl.gz`), eval samples, `train_log.jsonl`, `evals.jsonl`; model repo: the runnable final model | rollouts: prompt, answer, reward, advantage for every sample of every step |
 | **Training curves** | W&B: [moe0-9b-a0-2b](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b) | runs listed in README.md |
 | **Our generated datasets** | HF datasets: [bubblspace-contrastive-binding](https://huggingface.co/datasets/TheFireHacker/bubblspace-contrastive-binding), [bubblspace-relational-passages-Qwen3-30B](https://huggingface.co/datasets/TheFireHacker/bubblspace-relational-passages-Qwen3-30B) | |
 | **Third-party training data** (FineWeb-Edu, Wikipedia, Tülu 3, ToolMind, …) | their original sources; **not re-uploaded** | rebuilt with our scripts (§4) |
@@ -23,7 +23,7 @@ Plan (27 Nov): after RL v1, the H100 (fire01) and its `h100-f1` filesystem may b
 - tokenized data (about 140 GB) and raw downloads (290 GB), which our scripts rebuild;
 - the HF cache.
 
-**Training logs** (about 10 MB, 80 files from fire01 and the A10; IP addresses, e-mails and tokens redacted) are on the training-states repo under [`logs/`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states/tree/main/logs) (snapshot 27 Nov 12:45 UTC; refresh after run 02b and RL v1).
+**Training logs** (about 10 MB, 80 files from fire01 and the A10; IP addresses, e-mails and tokens redacted) are on the training-states repo under [`logs/`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states/tree/main/logs) (snapshot 27 Nov 12:45 UTC, plus the A10's later logs added 28 Nov; fire01's later logs were lost with it).
 
 ## 2. Checkpoint branches (training-states repo)
 
@@ -72,9 +72,9 @@ Every downloaded dataset or model gets a malware scan (HF scan status, or ClamAV
 
 ## 5. Before deleting the old NFS: checklist
 
-- [ ] All branches in §2 present on HF. Run the audit script: every training-state branch has `model.safetensors`, `optimizer.safetensors`, `rng.safetensors`, `trainer_state.json`, `restore_checkpoint.py`, `README.md`.
-- [ ] RL v1 final + second-to-last pushed with rollouts and logs.
-- [ ] `benchmark/` results from the A10 and fire01 copied into the repo and pushed to GitHub.
-- [ ] Logs refreshed on HF (`logs/`, redacted) after the last runs on this NFS.
+- [x] All branches in §2 present on HF. Run the audit script: every training-state branch has `model.safetensors`, `optimizer.safetensors`, `rng.safetensors`, `trainer_state.json`, `restore_checkpoint.py`, `README.md`. *(28 Nov: all 18 branches pass; the RL branches also have `train_log.jsonl`, `evals.jsonl` and every rollout.)*
+- [x] RL v1 final + second-to-last pushed with rollouts and logs. *(Steps 100 / 300 / 500, both repos.)*
+- [x] `benchmark/` results from the A10 and fire01 copied into the repo and pushed to GitHub. *(`benchmark/phase4/`, merged to `main` in PR #32. fire01's home-disk quick checks were lost and redone on the A10.)*
+- [x] Logs refreshed on HF (`logs/`, redacted) after the last runs on this NFS. *(28 Nov: the A10's logs after the snapshot added. fire01's later logs, incl. the RL v1 training text, were lost with `h100-f1`.)*
 - [ ] Any experiment-only files still wanted (e.g. WSP edits) copied off.
-- [ ] The A10's filesystem (`us-west-1-eval-inference`, California) is separate; decide whether to keep it.
+- [x] The A10's filesystem (`us-west-1-eval-inference`, California) is separate; decide whether to keep it. *(28 Nov: kept, but cleaned from 285 GB to ≈0.1 GB: every checkpoint `.pt` (the needed ones are on HF), the OLMo-2 download cache and the old Phase 2 tokenized data deleted. The A10's own disk keeps the HF exports used for evals, `~/hf_export`.)*

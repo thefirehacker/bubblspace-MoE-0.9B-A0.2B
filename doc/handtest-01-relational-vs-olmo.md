@@ -1,6 +1,6 @@
 # Hand test 01: relational and calculation prompts, BubblSpace vs OLMo-2 1B across its training
 
-Status: **26 Nov 2026, preliminary** (18 relational + 16 calculation prompts, one greedy run each). Raw outputs in [`benchmark/handtest/`](../benchmark/handtest/):
+Status: **26 Nov 2026, preliminary** (18 relational + 16 calculation prompts, one greedy run each). **28 Nov:** rerun on the post-trained models, SFT run 02b and RL v1 step 500 (§7). Prompt lists: [`benchmark/handtest/prompts/`](../benchmark/handtest/prompts/). Raw outputs in [`benchmark/handtest/`](../benchmark/handtest/):
 - [`relational18_raw_greedy_20261126.txt`](../benchmark/handtest/relational18_raw_greedy_20261126.txt): relational prompts, all base checkpoints
 - [`calculation16_raw_greedy_20261126.txt`](../benchmark/handtest/calculation16_raw_greedy_20261126.txt) and [`calculation16_olmo_main_base_20261126.txt`](../benchmark/handtest/calculation16_olmo_main_base_20261126.txt): calculation prompts
 - [`instruct_all_raw_and_chat_20261126.txt`](../benchmark/handtest/instruct_all_raw_and_chat_20261126.txt) and [`instruct_chat_200tok_20261126.txt`](../benchmark/handtest/instruct_chat_200tok_20261126.txt): OLMo-2 1B Instruct, every set, raw and with its chat template
@@ -121,3 +121,35 @@ SYNTH also gives 2.5a a useful habit: it answers bare queries directly. OLMo-2 1
 - 18 prompts, scored by hand, one greedy run each. Near-ties flip: in a manual REPL run of the same prompts, 2.5a got #5 right ("Maria."), but the scripted run didn't. Treat single-item differences as noise. The totals and the "never stops" pattern are the robust parts.
 - The prompts are statement completions, which suit base models. A bare-question test would favour 2.5a, and a "Q: … A:" test would favour OLMo.
 - Next step: turn these into an automated behaviour eval (≈40 prompts per category, scored on what the model writes), run on every checkpoint, ours and OLMo's.
+
+## 7. After SFT and RL (28 Nov): SFT run 02b and RL v1 step 500
+
+Same 34 prompts and settings (greedy, repetition penalty 1.0, no n-gram block), run two ways like OLMo-2 1B Instruct:
+raw text with 40 new tokens, and in our chat template with 200. Per-item tables and outputs:
+[`benchmark/phase4/handtest_longctx/`](../benchmark/phase4/handtest_longctx/summary.md).
+
+| Model | Total tokens | Relational raw | Relational chat | Calculation raw | Calculation chat |
+|---|---|---|---|---|---|
+| BubblSpace 2.5a step 20,000 (base) | 32.5B | 6/18 | — | 5/16 | — |
+| BubblSpace SFT run 02b | ≈40B | 10/18 | 5/18 | 6/16 | 8/16 |
+| **BubblSpace RL v1 step 500** | ≈40B | **10/18** | **8/18** | **9/16** | **12/16** |
+| OLMo-2 1B final base | ≈4.05T | 9/18 | — | 10/16 | — |
+| OLMo-2 1B Instruct (SFT + DPO + RL) | ≈4.05T | 12/18 | 14/18 | 14/16 | 16/16 |
+
+1. **Raw text: 10/18 relational after SFT, above OLMo-2 1B's final base (9/18) at about 1/100 of its tokens.** RL kept
+   the same 10 items. Among them is the "beaten by" passive (#3), our main gap in §4.8, now right. RL raised raw
+   calculation from 6 to 9/16 by writing the equation ("8 − 3 = 5", "2 * 7 = 14").
+2. **Chat: RL v1 takes relational from 5 to 8/18 and calculation from 8 to 12/16.** The "helped by" and "taught by"
+   passives (#5 Maria, #7 Hassan) are right for the first time, as is "Rohan is Asha's grandson" and the apples (#14).
+   Run 02b answered 11 of the 34 chat prompts with long step-by-step text, several never reaching an answer or
+   miscounting ("three pens cost 8", "4 + 3 … = 2"). RL v1 answers 33 of 34 in one short line.
+3. **New errors in chat:** RL v1 says "Naledi" for "beaten by Kofi, so the winner was" (raw: Kofi), puts the film's end
+   at "14:20", and calls the suitcase "too heavy" and the cup "too full".
+4. **Wrong in every model and mode:** days of the week (Monday + 2 days → Tuesday; "yesterday was Tuesday" → Tuesday,
+   which the 2.5a base got right), time order (#12), swapping (#15), "respectively" (#17), and "written by Ahmed" (#6).
+   These state-tracking items were not in the RL task mix; §4.5's case for targeted data stands.
+5. **Still behind OLMo-2 1B Instruct** in chat (8 vs 14/18, 12 vs 16/16), which had about 100× more pretraining tokens
+   and a full post-training pipeline.
+
+Caveat: our PyTorch greedy generator isn't bit-identical between calls. Run 02b gave two different answers to the same
+apples prompt in the two lists.
