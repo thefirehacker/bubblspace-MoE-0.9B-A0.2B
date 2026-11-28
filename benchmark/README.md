@@ -14,6 +14,7 @@ multiple-choice tasks only. Later phases have their own summaries:
 | 3 SFT (chat, refusal check, hand test) | [`phase3/`](phase3/) (run 01 hand test: [`chat_smoke_phase3_step1500.md`](phase3/chat_smoke_phase3_step1500.md)) |
 | 3 SFT runs 01 / 02b vs 4 RL v1 (chat evals, BFCL, IFEval, GSM8K, English 6) | [`phase4/summary.md`](phase4/summary.md) |
 | Pass@8 (8 samples, T=1.0): SFT run 02b vs RL v1 step 500, skill vs knowledge gaps | [`phase4/passk/summary.md`](phase4/passk/summary.md) |
+| Hand tests (relational, calculation; raw and chat) and long context (raw and chat): SFT run 02b vs RL v1 step 500 | [`phase4/handtest_longctx/summary.md`](phase4/handtest_longctx/summary.md) |
 | Hand tests vs OLMo-2 1B, binding levels | [`handtest/`](handtest/), [`binding_levels/report.md`](binding_levels/report.md) |
 
 ## step_7000 (2026-11-20)

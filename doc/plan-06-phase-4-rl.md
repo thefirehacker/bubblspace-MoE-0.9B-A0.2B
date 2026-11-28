@@ -10,11 +10,11 @@ RL v1 is also the first test of the RL pipeline, so a small round before a bigge
 
 1. ✅ **Finish SFT.** Run 02b finishes about 19:15 IST, its evals by about 21:00. Compare it with run 01, pick the winner, upload it to Hugging Face. *(27 Nov: run 02b won, doc/issue-02.)*
 2. ✅ **RL v1** (about 1–2 days of prep, then about 6 hours of training) on the winning SFT model, using the task mix in this plan. *(27 Nov, 1 h 40 min; §7.)*
-3. 🟡 **Benchmark the RL model fully,** with **8 samples per question** (not one): *(28 Nov: chat evals, refusal check, chat test and English 6 done greedy, and **pass@8 done** for run 02b and RL v1 step 500 (§7). Still to run: long-context tests, hand tests vs OLMo-2 1B.)*
+3. ✅ **Benchmark the RL model fully,** with **8 samples per question** (not one): *(28 Nov, all done for run 02b and RL v1 step 500 (§7): chat evals, refusal check, chat test and English 6 (greedy), pass@8, hand tests vs OLMo-2 1B, long context.)*
    - the chat evals (HumanEval/MBPP, GSM8K, IFEval, BFCL);
    - the refusal check and long-context tests;
    - the hand tests, against the same OLMo-2 1B checkpoints as before.
-4. ⏳ **Decide the next round from those results.** A knowledge stage from the 2.5b base → redo SFT → a bigger RL only when the map below says knowledge.
+4. ⏳ **Decide the next round from those results** (the inputs are all in §7). A knowledge stage from the 2.5b base → redo SFT → a bigger RL only when the map below says knowledge.
 
 How the benchmark tells us what kind of training is needed:
 
@@ -103,6 +103,30 @@ Sampled refusal check (8 answers per prompt): harmless refused 2% → 1%, harmfu
 - At temperature 1.0 the model refuses clearly harmful requests in only 77% of samples (greedy: 7 of 8 prompts). Greedy
   decoding is what the published model uses by default, but the margin is thin.
 - Caveat: temperature 1.0 is the RL setting. Lower temperatures give a higher pass@1 and may change pass@8.
+
+**Hand tests and long context** (28 Nov; `scripts/handtest_longctx_a10.sh`, results in
+`benchmark/phase4/handtest_longctx/summary.md`, hand tests in doc/handtest-01 §7):
+
+| | SFT run 02b | RL v1 step 500 | Reference |
+|---|---|---|---|
+| Relational prompts, raw / chat | 10/18 / 5/18 | 10/18 / **8/18** | 2.5a base 6/18; OLMo-2 1B Instruct 12/18 / 14/18 |
+| Calculation prompts, raw / chat | 6/16 / 8/16 | **9/16** / **12/16** | 2.5a base 5/16; OLMo-2 1B Instruct 14/16 / 16/16 |
+| Passkey 2k / 4k / 8k / 16k, raw | 85 / 73 / 80 / 40% | 85 / 73 / 83 / 50% | 2.5b base 88 / 70 / 73 / 48% |
+| Passkey 2k / 4k / 8k / 16k, chat | 75 / 48 / 38 / 30% | 75 / 55 / 38 / 33% | — |
+| 2-hop 2k–16k, raw (chance 25%) | 13 / 29 / 25 / 0% | 29 / 13 / 8 / 8% | 2.5b base 25 / 29 / 29 / 17% |
+| Loss at 1–2k / 8–16k tokens | 2.52 / 2.27 | 2.53 / 2.28 | 2.5b base 2.49 / 2.24 |
+
+- **Hand tests:** RL v1 kept the raw relational score and answers in one short line where run 02b rambled; the chat
+  answers to the "helped by" / "taught by" passives are right for the first time. New chat errors: "beaten by Kofi" →
+  Naledi, the film ends at "14:20". Days of the week, time order, swapping and "respectively" stay wrong in every
+  model: none of them was in the RL task mix.
+- **Long context, raw text:** SFT and RL kept the base model's retrieval, and loss still falls deeper into a document
+  (≈0.04 above the base). 2-hop is at or below chance for every model, the base included, so this test can't separate
+  them yet.
+- **Long context, chat format:** retrieval drops to 75 / 55 / 38 / 33% when the document comes as a user message, the
+  way people ask (the Dune question in §2 failed the same way). The model can find the fact (raw format), so this is a
+  format / skill gap, not knowledge. The long-document area planned in §2 wasn't in RL v1's mix; long-document
+  questions in the chat format (SFT data, an RL area, or both) are the direct fix.
 
 **Incident (night of 27–28 Nov):** the RL v1b chain's first step, refreshing the difficulty filter with the RL v1 model,
 hung at ~23:50 IST: `rl_filter.py` forked ~30 child processes for docker sandbox calls that never ran their command (forking

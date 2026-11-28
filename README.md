@@ -62,6 +62,8 @@ Chat benchmarks, all models evaluated the same way (A10, vLLM backend, greedy; r
 
 **Pass@8** (8 answers per question at temperature 1.0; [summary](benchmark/phase4/passk/summary.md)): RL v1 raised pass@8 or kept it level on every task (GSM8K 19.6 → 31.8%), so it didn't narrow what the model can reach. The gap between greedy and pass@8 shows where a bigger RL can still help: IFEval 30 vs 55%, BFCL multiple 43 vs 67%, GSM8K 12 vs 32%. Two-thirds to three-quarters of HumanEval, MBPP and GSM8K questions are never right in 8 tries: that part needs more code and maths knowledge, not more RL.
 
+**Hand tests and long context** ([summary](benchmark/phase4/handtest_longctx/summary.md)): on the 18 relational and 16 calculation prompts of our OLMo comparison, RL v1 scores 10/18 and 9/16 as raw text (2.5a base: 6/18 and 5/16; OLMo-2 1B final base: 9/18 and 10/16) and 8/18 and 12/16 in chat (SFT run 02b: 5/18 and 8/16; OLMo-2 1B Instruct: 14/18 and 16/16). Days of the week, time order and swapping stay wrong. Long-context retrieval is kept as raw text (passkey 85% at 2k, 83% at 8k, 50% at 16k), but drops when the document comes as a chat message (75 / 38 / 33%): long-document questions in the chat format are the next gap to train.
+
 BFCL has 100 questions per category (±5 points is noise). The overnight continuation of RL (v1b/v1c) didn't run: its first step hung and the H100 was retired ([details](doc/plan-06-phase-4-rl.md)).
 
 **Phase 3 (SFT) results**
@@ -104,8 +106,10 @@ Phase 3 fine-tuned the Phase 2.5b base model into a chat model: 1,500 steps, ≈
 | 2.5b step 1,000 | 62% | 78% | 35% | 21% | 8% | 2.52 / 2.27 |
 | 2.5b step 2,000 | 72% | 75% | 45% | 21% | 17% | 2.50 / 2.25 |
 | **2.5b final (2,861)** | **70%** | **72%** | **48%** | **29%** | **17%** | **2.49 / 2.24** |
+| SFT run 02b (28 Nov) | 73% | 80% | 40% | 29% | 0% | 2.52 / 2.27 |
+| RL v1 step 500 (28 Nov) | 73% | 83% | 50% | 13% | 8% | 2.53 / 2.28 |
 
-Passkey: 40 trials per length; 2-hop fact retrieval from the text: 24 per length. Loss keeps falling deeper into a document, so the model uses the long context. Retrieval works well up to 8k and about half the time at 16k.
+Passkey: 40 trials per length; 2-hop fact retrieval from the text: 24 per length (chance 25%). Loss keeps falling deeper into a document, so the model uses the long context. Retrieval works well up to 8k and about half the time at 16k; SFT and RL kept it (same raw-text test). In the chat format (document in a user message) passkey falls to 55% at 4k and 33% at 16k for RL v1.
 
 **Phase 2 results** (full table in [`benchmark/README.md`](benchmark/README.md)):
 
