@@ -1,7 +1,7 @@
 # Issue 02: Phase 3 run 01 over-refuses harmless requests ("guardrailed" behaviour)
 
 **Status (28 Nov): resolved.** Run 02b's data fixed the over-refusal; RL v1 kept that balance and recovered tool calling (§6, final results).
-**Checkpoint affected:** Phase 3 run 01 final (`phase3-step1500-tokens40B`, the current Hugging Face `main`).
+**Checkpoint affected:** Phase 3 run 01 final (`phase3-step1500-tokens40B`; Hugging Face `main` 27–28 Nov, since replaced by RL v1 step 500).
 **Run 02 checkpoints:** `checkpoints/Phase3_run02/` (smoke test: `checkpoints/Phase3_run02_smoke/`).
 
 ## 1. Symptom
