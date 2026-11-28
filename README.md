@@ -124,7 +124,7 @@ The code scores are not inflated by memorization: problems the model passed over
 
 **Published datasets** (ours):
 - [`bubblspace-contrastive-binding`](https://huggingface.co/datasets/TheFireHacker/bubblspace-contrastive-binding): template binding corpora v1–v3, plus the binding probes v2–v4 with a canary string. CC BY 4.0.
-- [`bubblspace-relational-passages-Qwen3-30B`](https://huggingface.co/datasets/TheFireHacker/bubblspace-relational-passages-Qwen3-30B): grounded, fact-checked relational passages. CC BY-SA 4.0, partial release while generation finishes.
+- [`bubblspace-relational-passages-Qwen3-30B`](https://huggingface.co/datasets/TheFireHacker/bubblspace-relational-passages-Qwen3-30B): grounded, fact-checked relational passages (222,088 in 25 shards, plus the fact-check rejects with critiques), used in Phase 2.5a. CC BY-SA 4.0.
 
 **Mid-run changes (applied at step 19,000 by resuming from the checkpoint; the switch ran automatically on 23 Nov and was verified):**
 - Stage 2B keeps FineWeb-Edu at ≈5.7% instead of 0%.
@@ -141,7 +141,7 @@ See [`doc/eval-notes.md`](doc/eval-notes.md) for how every eval is wired up for 
 | MoE | 64 experts, top-8, SwiGLU, expert_hidden 256, dropless |
 | Norm | ZeroCenteredRMSNorm (`1+w`, `w` init 0, weight-decayed) |
 | Vocab | 49,280 (bubblspace-tokenizer, padded), tied embedding/lm_head |
-| Context | 2048 tokens |
+| Context | 2,048 tokens (Phases 1–2.5a); 16,384 from Phase 2.5b on (RoPE base 1e6) |
 
 | | Total | Active |
 |---|---|---|
@@ -343,6 +343,8 @@ src/model/      transformer, attention (GQA+QK-norm+RoPE+output-gate), MoE (2 ba
 src/optim/      Muon (batched Newton-Schulz), AdamW/Muon param-group split, LR schedule
 src/data/       tokenization (prepare.py), FIM transform (fim.py), memmap dataset reader (dataset.py)
 src/eval/       lm-evaluation-harness adapter for this custom (non-transformers-native) architecture
+src/rl/         RL (Phase 4): reward checkers, vLLM engine with trainer weight sync
+vllm_plugin/    vLLM model plugin for this architecture (fast generation for RL and evals)
 scripts/        build_tokenizer.py, setup_fire01.sh, sanity_check_data.py, train.py,
                 generate.py (inference), run_benchmarks.py, push_to_hf.py
 benchmark/      per-checkpoint benchmark results (raw JSON + readable summary)
@@ -370,8 +372,8 @@ the code, checkpoints, or data pipeline is entirely at your own risk, and is
 provided "AS IS" without warranty of any kind, express or implied, consistent
 with Section 7 of the Apache License 2.0 above.
 
-**On the nature of AI output:** this is a small language model, pretrained and then
-lightly instruction-tuned (SFT). Its outputs are statistically plausible continuations of text,
+**On the nature of AI output:** this is a small language model, pretrained, then
+instruction-tuned (SFT) and given one short round of RL. Its outputs are statistically plausible continuations of text,
 not verified facts, advice, or reasoning. It can be confidently wrong, biased,
 inconsistent, or nonsensical, especially at this parameter scale and training
 stage — see [`benchmark/README.md`](benchmark/README.md) for where it stands

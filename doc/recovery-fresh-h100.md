@@ -13,7 +13,7 @@ Plan (27 Nov): after RL v1, the H100 (fire01) and its `h100-f1` filesystem may b
 | **Code, configs, docs, eval results** | GitHub: [thefirehacker/bubblspace-MoE-0.9B-A0.2B](https://github.com/thefirehacker/bubblspace-MoE-0.9B-A0.2B) | `benchmark/` holds every eval result (JSON/MD) |
 | **Full training states** (weights + optimizer + schedulers + RNG): the **last two checkpoints of every stage** | HF: [bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states), one branch per checkpoint | see §2 |
 | **Runnable models** (weights + code + tokenizer + `generate.py`) | HF: [bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) | `main` = the current best model; one branch per published model |
-| **RL v1** (when done) | training-states repo: final + second-to-last checkpoint, **with every rollout** (`rollouts/step_NNNN.jsonl.gz`), eval samples, `train_log.jsonl`, `evals.jsonl`; model repo: the runnable final model | rollouts: prompt, answer, reward, advantage for every sample of every step |
+| **RL v1** (done 27 Nov) | training-states repo: steps 100 / 300 / 500, **with every rollout** (`rollouts/step_NNNN.jsonl.gz`), eval samples, `train_log.jsonl`, `evals.jsonl`; model repo: the runnable final model | rollouts: prompt, answer, reward, advantage for every sample of every step |
 | **Training curves** | W&B: [moe0-9b-a0-2b](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b) | runs listed in README.md |
 | **Our generated datasets** | HF datasets: [bubblspace-contrastive-binding](https://huggingface.co/datasets/TheFireHacker/bubblspace-contrastive-binding), [bubblspace-relational-passages-Qwen3-30B](https://huggingface.co/datasets/TheFireHacker/bubblspace-relational-passages-Qwen3-30B) | |
 | **Third-party training data** (FineWeb-Edu, Wikipedia, Tülu 3, ToolMind, …) | their original sources; **not re-uploaded** | rebuilt with our scripts (§4) |
@@ -72,9 +72,9 @@ Every downloaded dataset or model gets a malware scan (HF scan status, or ClamAV
 
 ## 5. Before deleting the old NFS: checklist
 
-- [ ] All branches in §2 present on HF. Run the audit script: every training-state branch has `model.safetensors`, `optimizer.safetensors`, `rng.safetensors`, `trainer_state.json`, `restore_checkpoint.py`, `README.md`.
-- [ ] RL v1 final + second-to-last pushed with rollouts and logs.
-- [ ] `benchmark/` results from the A10 and fire01 copied into the repo and pushed to GitHub.
-- [ ] Logs refreshed on HF (`logs/`, redacted) after the last runs on this NFS.
+- [x] All branches in §2 present on HF. Run the audit script: every training-state branch has `model.safetensors`, `optimizer.safetensors`, `rng.safetensors`, `trainer_state.json`, `restore_checkpoint.py`, `README.md`. *(28 Nov: all 18 branches pass; the RL branches also have `train_log.jsonl`, `evals.jsonl` and every rollout.)*
+- [x] RL v1 final + second-to-last pushed with rollouts and logs. *(Steps 100 / 300 / 500, both repos.)*
+- [x] `benchmark/` results from the A10 and fire01 copied into the repo and pushed to GitHub. *(`benchmark/phase4/`, merged to `main` in PR #32. fire01's home-disk quick checks were lost and redone on the A10.)*
+- [ ] Logs refreshed on HF (`logs/`, redacted) after the last runs on this NFS. *(Still the 27 Nov 12:45 UTC snapshot. fire01's later logs can only come off `h100-f1` if it still mounts; the A10's Phase 4 benchmark logs are in `benchmark/phase4/`.)*
 - [ ] Any experiment-only files still wanted (e.g. WSP edits) copied off.
 - [ ] The A10's filesystem (`us-west-1-eval-inference`, California) is separate; decide whether to keep it.

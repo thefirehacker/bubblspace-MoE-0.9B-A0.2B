@@ -8,13 +8,13 @@
 
 RL v1 is also the first test of the RL pipeline, so a small round before a bigger one is the plan.
 
-1. **Finish SFT.** Run 02b finishes about 19:15 IST, its evals by about 21:00. Compare it with run 01, pick the winner, upload it to Hugging Face.
-2. **RL v1** (about 1–2 days of prep, then about 6 hours of training) on the winning SFT model, using the task mix in this plan.
-3. **Benchmark the RL model fully,** with **8 samples per question** (not one):
+1. ✅ **Finish SFT.** Run 02b finishes about 19:15 IST, its evals by about 21:00. Compare it with run 01, pick the winner, upload it to Hugging Face. *(27 Nov: run 02b won, doc/issue-02.)*
+2. ✅ **RL v1** (about 1–2 days of prep, then about 6 hours of training) on the winning SFT model, using the task mix in this plan. *(27 Nov, 1 h 40 min; §7.)*
+3. 🟡 **Benchmark the RL model fully,** with **8 samples per question** (not one): *(28 Nov: chat evals, refusal check, chat test and English 6 done, **greedy only** (§7). Still to run: 8 samples per question (pass@8), long-context tests, hand tests vs OLMo-2 1B.)*
    - the chat evals (HumanEval/MBPP, GSM8K, IFEval, BFCL);
    - the refusal check and long-context tests;
    - the hand tests, against the same OLMo-2 1B checkpoints as before.
-4. **Decide the next round from those results.** A knowledge stage from the 2.5b base → redo SFT → a bigger RL only when the map below says knowledge.
+4. ⏳ **Decide the next round from those results.** A knowledge stage from the 2.5b base → redo SFT → a bigger RL only when the map below says knowledge.
 
 How the benchmark tells us what kind of training is needed:
 
@@ -35,17 +35,20 @@ start ran out of GPU memory in the first update (32k-token micro-batches); the r
 
 **Held-out test** (greedy, 40 per subject; same task types as training, so this overstates real gains):
 
-| Subject | Step 0 (run 02b) | Step 100 | Step 300 | Step 425 |
-|---|---|---|---|---|
-| Tool calls (incl. parallel, no tool fits) | 0.455 | 0.930 | 0.975 | **0.975** |
-| Who did what | 0.500 | 0.850 | 0.850 | **0.975** |
-| Constraint + known answer | 0.450 | 0.850 | 0.900 | **0.925** |
-| Time problems | 0.225 | 0.525 | 0.550 | **0.650** |
-| Refusal balance | 0.550 | 0.725 | 0.725 | **0.775** |
-| Code | 0.775 | 0.975 | 0.975 | **0.975** |
-| Instruction constraints | 0.425 | 0.500 | 0.525 | **0.550** |
-| Maths | 0.325 | 0.175 | 0.250 | 0.275 |
-| **Average** | **0.463** | **0.691** | **0.719** | **0.762** |
+| Subject | Step 0 (run 02b) | Step 100 | Step 300 | Step 425 (best average) | **Step 500 (published)** |
+|---|---|---|---|---|---|
+| Tool calls (incl. parallel, no tool fits) | 0.455 | 0.930 | 0.975 | 0.975 | **1.000** |
+| Who did what | 0.500 | 0.850 | 0.850 | 0.975 | **0.975** |
+| Constraint + known answer | 0.450 | 0.850 | 0.900 | 0.925 | **0.925** |
+| Time problems | 0.225 | 0.525 | 0.550 | 0.650 | **0.625** |
+| Refusal balance | 0.550 | 0.725 | 0.725 | 0.775 | **0.750** |
+| Code | 0.775 | 0.975 | 0.975 | 0.975 | **0.975** |
+| Instruction constraints | 0.425 | 0.500 | 0.525 | 0.550 | **0.575** |
+| Maths | 0.325 | 0.175 | 0.250 | 0.275 | 0.250 |
+| **Average** | **0.463** | **0.691** | **0.719** | **0.762** | **0.759** |
+
+From step 425 on the average is flat (0.747–0.762; ±0.025 is one question in 40). All 21 held-out evals are in
+`evals.jsonl` on the training-states branch `phase4-rlv1-step500-tokens40B`.
 
 Training: reward 0.41 → ~0.75; KL rose to ~0.05–0.1; answers got shorter (~145 → ~75–110 tokens); the share of questions
 where all 8 answers scored the same rose 0.38 → ~0.7 (the filtered tasks became easy for the policy).
@@ -126,9 +129,9 @@ Everything is decontaminated against our evals (13-token overlap), the same as f
 | Weight sync trainer → vLLM (`src/rl/vllm_engine.py`) | ✅ built 27 Nov. Matches a fresh load **exactly** (log-prob difference 0.0, scripts/vllm_sync_test.py); **0.47 s** per sync; sleep level 1 frees about 8 GB on the A10 for the training step (level 2 breaks non-weight buffers such as the RoPE table) |
 | RL-style sampling with per-token log-probs | ✅ 64 prompts × 8 answers at 12k tok/s on the A10 |
 | Reward checkers (`src/rl/rewards.py`, `src/rl/common.py`) | ✅ built 27 Nov: number, time, name (binding), 24 instruction-constraint types, tool calls (exact / partial 0.2 / no-call), refusal balance; code via the docker sandbox in parallel (MBPP asserts or stdin/stdout cases). `tests/test_rl_rewards.py` (9 tests). Two bugs caught before use: the Tülu RLVR answer keys store numbers as strings and lists as text (would have scored most instruction tasks 0); fence-less code replies were scored as "no code" |
-| GRPO trainer (`scripts/train_grpo.py`, `configs/rl_v1.yaml`, `configs/rl_smoke.yaml`) | 🟡 written 27 Nov, not yet run: vLLM-first memory order, fp32 reference, group advantages (std-normalised), clipped ratio + k3 KL on answer tokens, token-budget micro-batches, MoE load-balance term, held-out evals every 25 steps, checkpoints every 100. First run: the 20-step smoke test (`scripts/rl_smoke_chain.sh`) |
+| GRPO trainer (`scripts/train_grpo.py`, `configs/rl_v1.yaml`, `configs/rl_smoke.yaml`) | ✅ smoke test and RL v1 (500 steps) ran 27 Nov (§7); micro-batches cut to 16k tokens after the first start ran out of memory. Built as: vLLM-first memory order, fp32 reference, group advantages (std-normalised), clipped ratio + k3 KL on answer tokens, token-budget micro-batches, MoE load-balance term, held-out evals every 25 steps, checkpoints every 100. First run: the 20-step smoke test (`scripts/rl_smoke_chain.sh`) |
 | Task data (`scripts/rl_build_tasks.py`, `scripts/rl_task_gen.py`) | ✅ v1 built 27 Nov: **38,266** decontaminated tasks: maths 12,347 (GSM8K + MATH numeric, from the Tülu RLVR set), instruction constraints 12,835, time problems 5,940, binding 3,997, refusal balance 1,692, code 849 (MBPP train/val + 426 SYNTHETIC-1 Python problems with stdin/stdout tests), tool calls 606 (thin: generator templates repeat; to grow) |
-| Difficulty filter (`scripts/rl_filter.py`) | 🔄 running 27 Nov on the A10 for run 01 (8 answers per task): keeps tasks solved 1–7 times out of 8, and writes the per-area pass@1 / pass@8 map. Rerun for the chosen SFT model |
+| Difficulty filter (`scripts/rl_filter.py`) | ✅ run 27 Nov for run 01, then for run 02b (task set v3 → 6,684 training + 320 held-out tasks): keeps tasks solved 1–7 times out of 8, and writes the per-area pass@1 / pass@8 map. ⚠️ Its refresh with the RL v1 model hung fire01 (§7); needs the fork-safe fix before reuse |
 | Fixes after the smoke test (27 Nov) | ✅ three reward issues found by reading rollouts: (1) Tülu instruction tasks pay the constraint alone ("w = 0 or 14" scored 1 for having no commas): new area `ifeval_answer`, a constraint on a question with a known answer, reward only if both hold (5,019 tasks; weights ifeval 0.10 + ifeval_answer 0.08); (2) no-tool tasks paid any answer: sums and capitals now must be right; (3) only 62 code tasks survived the filter: ~4,200 generated MBPP-style tasks (tests from reference implementations, all self-checked). **Task set v2: 47,476** (`~/rl_tasks/tasks_v2.jsonl`); needs the difficulty filter for the chosen SFT model. 11 reward tests |
 | Library API sandbox image | ❌ not built |
 
