@@ -21,6 +21,9 @@ Every task also reports stop rate (answer ended with <|im_end|> inside the budge
 
     python scripts/eval_chat.py --config configs/phase3.yaml --checkpoint step_1500.pt --out benchmark/phase3/chat_phase3_step1500.json
     python scripts/eval_chat.py --score_ifeval benchmark/phase3/chat_phase3_step1500.json   # on the A10 (lm-eval + langdetect)
+    # vLLM backend (28 Nov; vLLM env + plugin): same prompts, greedy, same scoring, ~50x faster; for comparing models, run
+    # them all with the same backend (bf16 vLLM vs our PyTorch generator agree on 99% of next tokens, not 100%)
+    python scripts/eval_chat.py --backend vllm --vllm_model_dir vllm_models/<model> --out benchmark/phase4/chat_<tag>.json
 """
 import argparse
 import json
@@ -120,10 +123,16 @@ def main():
     ap.add_argument("--bfcl_per_category", type=int, default=100)
     ap.add_argument("--bfcl_exclude_json", default="benchmark/phase2/contamination_bfcl.json")
     ap.add_argument("--score_ifeval", default=None, help="score the IFEval responses saved in this JSON (lm-eval needed)")
+    ap.add_argument("--backend", choices=["batched", "vllm"], default="batched")
+    ap.add_argument("--vllm_model_dir", default=None, help="scripts/make_vllm_model_dir.py output (--backend vllm)")
+    ap.add_argument("--gpu_mem", type=float, default=0.6)
     a = ap.parse_args()
     if a.score_ifeval:
         return score_ifeval(a.score_ifeval)
 
+    if a.backend == "vllm":
+        import os
+        os.environ.setdefault("VLLM_ENABLE_V1_MULTIPROCESSING", "0")
     import torch
     from datasets import load_dataset
     from huggingface_hub import hf_hub_download
@@ -136,21 +145,33 @@ def main():
     from src.model.moe import probe_grouped_mm
     from src.model.transformer import Transformer
 
-    make_deterministic()
     cfg = load_config(a.config)
-    if cfg.model.moe.backend == "auto":
-        cfg.model.moe.backend = "grouped_mm" if probe_grouped_mm() else "fallback"
     tok = AutoTokenizer.from_pretrained(cfg.tokenizer.path)
     stop = {tok.eos_token_id, tok.convert_tokens_to_ids("<|im_end|>")}
     pad = tok.convert_tokens_to_ids("<|fim_pad|>")
-    model = Transformer(cfg.model).cuda().eval()
-    ck = torch.load(a.checkpoint, map_location="cpu")
-    model.load_state_dict(ck["model"] if "model" in ck else ck)
-    step = ck.get("step") if isinstance(ck, dict) else None
-    del ck
-    print(f"[ckpt] {a.checkpoint} (step {step})", flush=True)
+    if a.backend == "vllm":
+        from src.rl.vllm_engine import VLLMEngine
+        eng = VLLMEngine(a.vllm_model_dir, gpu_memory_utilization=a.gpu_mem, max_model_len=8192, enable_sleep_mode=False)
+        step, decoding = None, "greedy, vLLM (src/rl/vllm_engine.py + vllm_plugin)"
+        print(f"[model] vLLM {a.vllm_model_dir}", flush=True)
+    else:
+        make_deterministic()
+        if cfg.model.moe.backend == "auto":
+            cfg.model.moe.backend = "grouped_mm" if probe_grouped_mm() else "fallback"
+        model = Transformer(cfg.model).cuda().eval()
+        if a.checkpoint.endswith(".safetensors"):
+            from safetensors.torch import load_file
+            model.load_state_dict(load_file(a.checkpoint))
+            step = None
+        else:
+            ck = torch.load(a.checkpoint, map_location="cpu")
+            model.load_state_dict(ck["model"] if "model" in ck else ck)
+            step = ck.get("step") if isinstance(ck, dict) else None
+            del ck
+        decoding = "greedy, batched (src/eval/batched_gen.py)"
+        print(f"[ckpt] {a.checkpoint} (step {step})", flush=True)
 
-    res = {"checkpoint": a.checkpoint, "step": step, "decoding": "greedy, batched (src/eval/batched_gen.py)", "tasks": {}}
+    res = {"checkpoint": a.checkpoint or a.vllm_model_dir, "step": step, "decoding": decoding, "tasks": {}}
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     save = lambda: Path(a.out).write_text(json.dumps(res, indent=1))
     tasks = a.tasks.split(",")
@@ -158,6 +179,17 @@ def main():
 
     def run(prompts, budget):
         t0 = time.time()
+        if a.backend == "vllm":
+            groups = eng.generate(prompts, n=1, temperature=0.0, max_tokens=budget)
+            texts = []
+            for g in groups:
+                txt = g[0].text
+                for s in ("<|im_end|>", "<|endoftext|>"):  # the batched generator never includes the stop token
+                    txt = txt.removesuffix(s)
+                texts.append((txt, g[0].finished))
+            n_tok = sum(len(g[0].completion_ids) for g in groups)
+            print(f"  {len(prompts)} prompts, {n_tok:,} tokens in {time.time() - t0:.0f}s ({n_tok / max(1e-9, time.time() - t0):,.0f} tok/s)", flush=True)
+            return texts
         outs = generate_many(model, [tok.encode(p, add_special_tokens=False) for p in prompts], budget, stop, pad,
                              batch_size=a.batch_size, real_vocab_size=len(tok))
         n_tok = sum(len(o) for o, _ in outs)

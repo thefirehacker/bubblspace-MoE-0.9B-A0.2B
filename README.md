@@ -12,9 +12,9 @@ A small Mixture-of-Experts language model trained from scratch on one H100: **�
 
 ## Where we are
 
-<p align="center"><img src="doc/assets/phases.svg" width="100%" alt="Training phases: Phase 1 English base, 10B tokens (done); Phase 2 code, tool calls and binding data, 22B (done); Phase 2.5a knowledge, relations and fresh code, 37.6B (done); Phase 2.5b 16k context, 39.1B (done); Phase 3 SFT, +0.8B (done); Phase 4 RL with verified rewards, planned"></p>
+<p align="center"><img src="doc/assets/phases.svg" width="100%" alt="Training phases: Phase 1 English base, 10B tokens (done); Phase 2 code, tool calls and binding data, 22B (done); Phase 2.5a knowledge, relations and fresh code, 37.6B (done); Phase 2.5b 16k context, 39.1B (done); Phase 3 SFT, +0.8B (done); Phase 4 RL v1, 500 GRPO steps with verified rewards (done)"></p>
 
-Token counts are cumulative. **Pretraining and supervised fine-tuning are complete.** The SFT chat model is on Hugging Face `main`. Next: RL with verified rewards.
+Token counts are cumulative. **Pretraining, supervised fine-tuning and a first RL round are complete.** The RL model (RL v1 step 500) is on Hugging Face `main`. Next: decide from the benchmarks whether a knowledge round or a bigger RL comes first ([plan](doc/plan-06-phase-4-rl.md)).
 
 | Phase | What it adds | Tokens (total) | Highlight | Status |
 |---|---|---|---|---|
@@ -23,21 +23,44 @@ Token counts are cumulative. **Pretraining and supervised fine-tuning are comple
 | **2.5a** | knowledge (full Wikipedia, fact Q&A, SYNTH), relations, fresh code; early LR decay with order-alternated binding data ([plan](doc/plan-03-phase-2.5-knowledge-context.md)) | 37.6B | TriviaQA 15.8% · English average 47.9 · BFCL multiple 26% | ✅ 29,723 steps, 26 Nov |
 | **2.5b** | context 2k → 16k (RoPE base 1e6) | 39.1B | passkey retrieval 70% at 4k, 48% at 16k | ✅ 2,861 steps, 27 Nov |
 | **3** | SFT: chat, tool calling, agent traces, step-by-step maths; assistant-only loss at 16k ([plan](doc/plan-04-phase-3-sft.md)) | +0.8B | chats, picks the right tool, makes parallel calls, uses tool results ([results](#results)) | ✅ 1,500 steps, 3 h, 27 Nov |
-| **4** | RL with verified rewards (code, tool calls) | — | — | planned |
+| **4** | RL v1: GRPO with verifiable rewards (maths, time problems, instruction constraints, code in a sandbox, tool calls, binding, refusal balance) ([plan](doc/plan-06-phase-4-rl.md)) | +500 RL steps | BFCL parallel 24 → 40% · IFEval 23 → 30% · GSM8K 9.6 → 12.4% · no forgetting ([results](#results)) | ✅ 500 steps, 1 h 40 min, 27 Nov |
 
 ## Checkpoints
 
 | | Where |
 |---|---|
-| **Latest weights**: Phase 3 SFT final (step 1,500), the chat model, 16k context | `main` of [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (also branch [`phase3-step1500-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase3-step1500-tokens40B)); tokenizer includes the chat template |
-| SFT step 1,000 | branch [`phase3-step1000-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase3-step1000-tokens40B) |
+| **Latest weights**: Phase 4 RL v1 step 500 (SFT run 02b + 500 GRPO steps), 16k context | `main` of [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b) (also branch [`phase4-rlv1-step500-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase4-rlv1-step500-tokens40B)); tokenizer includes the chat template |
+| RL v1 steps 100 / 300 | branches [`phase4-rlv1-step100-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase4-rlv1-step100-tokens40B), [`phase4-rlv1-step300-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase4-rlv1-step300-tokens40B) |
+| SFT models | run 02b (the RL start): [`phase3-run02b-step1500-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase3-run02b-step1500-tokens40B), [`phase3-run02b-step1000-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase3-run02b-step1000-tokens40B); run 01: [`phase3-step1500-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase3-step1500-tokens40B) (`main` until 28 Nov), [`phase3-step1000-tokens40B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase3-step1000-tokens40B) |
 | Base model (last pretraining checkpoint) | branch [`phase25b-step2861-tokens39B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase25b-step2861-tokens39B): Phase 2.5b final, 16k context, no SFT |
 | Earlier weights | branches [`phase2-step22888-tokens22B`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step22888-tokens22B) (Phase 2 final, the WinoGrande checkpoint), [`phase2-step19000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step19000), [`phase2-step9000`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase2-step9000), [`phase1-final`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b/tree/phase1-final) |
-| **Full training states** (weights + optimizer + schedulers + RNG, to resume or branch training) | [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states): one branch per checkpoint, named like OLMo's `<phase>-step<N>-tokens<X>B` (11 so far, from `phase1-step19073-tokens10B` to `phase3-step1500-tokens40B`). Restore with [`scripts/restore_checkpoint.py`](scripts/restore_checkpoint.py) |
-| Training logs (public W&B) | Phase 1 [goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e) · Phase 2 [lec9ww5h](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/lec9ww5h) · 2.5a [l2i2yoqf](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/l2i2yoqf) · 2.5b [9be9emiq](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/9be9emiq) · SFT [qq4dnyp4](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/qq4dnyp4) |
+| **Full training states** (weights + optimizer + schedulers + RNG, to resume or branch training) | [huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states): one branch per checkpoint, named like OLMo's `<phase>-step<N>-tokens<X>B` (18: the last two of every stage, from `phase1-step19000-tokens10B` to `phase4-rlv1-step500-tokens40B`; the RL branches carry every rollout; training logs under [`logs/`](https://huggingface.co/TheFireHacker/bubblspace-moe0.9b-a0.2b-training-states/tree/main/logs)). Restore with [`scripts/restore_checkpoint.py`](scripts/restore_checkpoint.py) |
+| Training logs (public W&B) | Phase 1 [goa8jk6e](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/goa8jk6e) · Phase 2 [lec9ww5h](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/lec9ww5h) · 2.5a [l2i2yoqf](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/l2i2yoqf) · 2.5b [9be9emiq](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/9be9emiq) · SFT run 01 [qq4dnyp4](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/qq4dnyp4) · SFT run 02b [6dz3e9d5](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/6dz3e9d5) · RL v1 [0qt8oyzz](https://forge.coreweave.com/wandb/firehacker/moe0-9b-a0-2b/runs/0qt8oyzz) |
 | License | [Apache 2.0](LICENSE) |
 
 ## Results
+
+**Phase 4 (RL v1) results**
+
+RL v1 ran **500 steps of GRPO with verifiable rewards** on top of SFT run 02b: the model answers each question 8 times, plain-code checkers score every answer (maths, time problems, instruction constraints with known answers, code run in a docker sandbox, tool calls incl. parallel and no-tool-needed, who-did-what, refusal balance), and training raises the better answers ([plan](doc/plan-06-phase-4-rl.md), [primer](doc/rl-primer-phase4.md)). 1 h 40 min on one H100, generation through our vLLM plugin.
+
+Chat benchmarks, all models evaluated the same way (A10, vLLM backend, greedy; raw results in [`benchmark/phase4/`](benchmark/phase4/)):
+
+| Model | Harmless refused | Harmful refused | Live data honest | HumanEval % | MBPP % | GSM8K % | IFEval prompt / instr. % | BFCL simple | BFCL multiple | BFCL parallel | BFCL no tool needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| SFT run 01 | 9/45 | 8/8 | 6/8 | 15.2 | 22.6 | 10.0 | 26.1 / 38.1 | 57.0 | 40.0 | 31.0 | 75.4 |
+| SFT run 02b (RL start) | 1/45 | 8/8 | 7/8 | 15.2 | 21.8 | 9.6 | 23.1 / 36.0 | 63.0 | 36.0 | 24.0 | 56.2 |
+| RL v1 step 100 | 1/45 | 7/8 | 8/8 | 15.9 | 22.4 | 10.5 | 28.1 / 40.3 | 68.0 | 42.0 | 37.0 | 71.7 |
+| RL v1 step 300 | 0/45 | 7/8 | 8/8 | 15.9 | 22.8 | 12.3 | 27.9 / 41.8 | 70.0 | 37.0 | 34.0 | 75.4 |
+| **RL v1 step 500 (`main`)** | **0/45** | 7/8 | **8/8** | **16.5** | 22.2 | **12.4** | **29.6 / 43.5** | **71.0** | **43.0** | **40.0** | 69.6 |
+
+- **Tool calling:** RL recovered run 02b's losses and went past both SFT runs on simple, multiple and parallel calls (parallel 24 → 40%); "no tool needed" back near run 01.
+- **Instructions and maths:** best IFEval of any of our models; GSM8K 9.6 → 12.4% (maths stays weak: most maths tasks were never solved in 8 tries before RL, a knowledge gap rather than an RL target).
+- **Refusals:** answers every harmless prompt in our 45-prompt check, says when it has no live data, refuses 7 of 8 clearly harmful requests (the eighth it discourages without a refusal phrase).
+- **No forgetting:** English 6-task average 47.91 (run 02b) → 48.00 (RL v1).
+- **Chat test:** passive sentences right for the first time ("The letter was written by Maya… who wrote it?" → Maya), two calls for "weather in Tokyo and London", shorter direct answers.
+
+BFCL has 100 questions per category (±5 points is noise). The overnight continuation of RL (v1b/v1c) didn't run: its first step hung and the H100 was retired ([details](doc/plan-06-phase-4-rl.md)).
 
 **Phase 3 (SFT) results**
 
@@ -57,7 +80,7 @@ Phase 3 fine-tuned the Phase 2.5b base model into a chat model: 1,500 steps, ≈
 
 **What changed:** the base model's quiz-format and hedging habits are gone; it answers directly and stops cleanly at the end of its turn. Tool calls come after a `<think>` block (from the ToolMind data), which makes them slow. Validation loss on plain pretraining text rose only ≈1%, so SFT caused little forgetting.
 
-**Still weak:** binding in "gave" and passive sentences (SFT changed the answer format, not this ability), and knowing when *not* to call a tool. Standard chat benchmarks (HumanEval and MBPP in chat format, GSM8K, IFEval, BFCL including no-call questions) are running and will be added here.
+**Still weak:** binding in "gave" and passive sentences (SFT changed the answer format, not this ability), and knowing when *not* to call a tool. Run 01 also over-refused harmless commands ("give me capital of India" → "I can't provide real-time data": 9 of 45 in our check); run 02b rebalanced the refusal data (1 of 45, [doc/issue-02](doc/issue-02-phase3-over-refusal.md)) and is the model RL started from. Chat benchmarks for both SFT runs are in the Phase 4 table above.
 
 **Phase 2.5 results** (2.5a final vs Phase 2 final, same harness; full tables in `benchmark/phase25a/summary.md` and `benchmark/phase25b/summary.md`):
 

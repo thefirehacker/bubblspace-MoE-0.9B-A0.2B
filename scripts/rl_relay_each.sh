@@ -13,7 +13,8 @@ SSH="ssh -i $HOME/.ssh/a10_temp -o BatchMode=yes"
 $SSH $A10 "mkdir -p $DST" < /dev/null
 WRUN_FILE=$OUT/wandb_run.txt
 while true; do
-  finished=0; grep -qE "$DONE_PATTERN" $CHAIN_LOG 2>/dev/null && finished=1
+  # the chain is done only if its LAST line says so (the log can hold an ABORT from an earlier, restarted attempt)
+  finished=0; tail -1 $CHAIN_LOG 2>/dev/null | grep -qE "$DONE_PATTERN" && finished=1
   for CK in $(ls $OUT/step_*.pt 2>/dev/null | sort -V); do
     s=$(basename $CK .pt | sed s/step_//)
     [ -f $OUT/.relayed_$s ] && continue

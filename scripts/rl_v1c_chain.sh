@@ -3,7 +3,7 @@
 #   1. refresh the difficulty filter of task set v3 with the RL v1 model (step 500): questions it now always gets right
 #      teach nothing (W&B: zero_adv_groups rose 0.3 -> ~0.55 during v1)
 #   2. continue RL from RL v1 step 500 with the KL still anchored to the SFT model (run 02b), configs/rl_v1.yaml settings,
-#      tests every 50, checkpoints every 500 + one at the stop (user: at most 10 RL checkpoints in total), HARD STOP at 06:00 IST (00:30 UTC Nov 28): final test + checkpoint, then exit; RL v1c continues (rl_v1c_chain.sh)
+#      tests every 50, checkpoints every 600 + one at the stop (user: at most 10 RL checkpoints on HF; last two mandatory), HARD STOP at 06:00 IST (00:30 UTC Nov 28): final test + checkpoint, then exit; RL v1c continues (rl_v1c_chain.sh)
 #   3. quick check on the final checkpoint (refusal check + 23-conversation chat test)
 #   A10=ubuntu@<a10-host> nohup bash scripts/rl_v1b_chain.sh > /dev/null 2>&1 &
 set -u
@@ -32,7 +32,7 @@ cat ~/rl_tasks/filtered_v3_rlv1b.summary.json >> $LOG
 say "2/3 RL v1c from $V1 (KL reference $SFT) on $(wc -l < ~/rl_tasks/filtered_v3_rlv1b.jsonl) tasks, stop at 06:30 UTC"
 PATH=~/vllm_env/bin:$PATH python -u scripts/train_grpo.py configs/rl_v1.yaml --set run_name=Phase4_rl_v1c out_dir=$OUT \
   init_checkpoint=$V1 ref_checkpoint=$SFT vllm_model_dir=$VDIR tasks=/home/ubuntu/rl_tasks/filtered_v3_rlv1b.jsonl \
-  steps=4000 eval_every=50 save_every=500 stop_at_epoch=$STOP \
+  steps=4000 eval_every=50 save_every=600 stop_at_epoch=$STOP \
   > /lambda/nfs/h100-f1/train_rl_v1c.log 2>&1 < /dev/null
 rc=$?; say "RL v1c exited rc=$rc"
 LAST=$(ls $OUT | grep -oE "step_[0-9]+" | sed s/step_// | sort -n | tail -1)

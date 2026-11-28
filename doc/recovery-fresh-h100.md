@@ -2,6 +2,8 @@
 
 Plan (27 Nov): after RL v1, the H100 (fire01) and its `h100-f1` filesystem may be deleted to save cost. Work must then be able to continue on a **new H100 with a new, empty NFS**, using only GitHub, Hugging Face and W&B. This document lists what lives where and how to bring a new machine up.
 
+**28 Nov: fire01 (the H100) has been terminated.** Its `h100-f1` filesystem may still exist in Lambda (1.15 TB); everything needed to continue is on Hugging Face and GitHub (§1–2). Lost with fire01: RL v1's training-log text after 18:15 UTC on 27 Nov (W&B keeps the curves) and files on its home disk (the run 02b / RL v1 quick checks, redone on the A10 in `benchmark/phase4/`).
+
 **Tested 27 Nov:** the Phase 3 step 1,500 training state downloaded from Hugging Face and rebuilt with `restore_checkpoint.py` is **bit-identical** to the original `.pt` (all 915,573,760 parameters, both optimizers, schedulers, RNG, step).
 
 ## 1. What lives where
@@ -33,7 +35,7 @@ Plan (27 Nov): after RL v1, the H100 (fire01) and its `h100-f1` filesystem may b
 | Phase 2.5b (16k context; **the base model**) | `phase25b-step2000-tokens39B`, `phase25b-step2861-tokens39B` | `configs/phase25b.yaml` |
 | Phase 3 SFT run 01 | `phase3-step1000-tokens40B`, `phase3-step1500-tokens40B` | `configs/phase3.yaml` |
 | Phase 3 SFT run 02b | `phase3-run02b-step1000-tokens40B`, `phase3-run02b-step1500-tokens40B` | `configs/phase3_run02b.yaml` |
-| Phase 4 RL v1 | to come: final + second-to-last, with rollouts | `configs/rl_v1.yaml` |
+| Phase 4 RL v1 | `phase4-rlv1-step100-tokens40B`, `phase4-rlv1-step300-tokens40B`, `phase4-rlv1-step500-tokens40B` (each with rollouts, test answers, logs; also runnable branches of the same names on the model repo) | `configs/rl_v1.yaml` |
 
 ## 3. Bring up a new machine
 

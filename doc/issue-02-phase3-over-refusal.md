@@ -1,6 +1,6 @@
 # Issue 02: Phase 3 run 01 over-refuses harmless requests ("guardrailed" behaviour)
 
-**Status (27 Nov):** cause found; run 02 data rebuilt without the refusal sources; run 02 smoke test queued on fire01.
+**Status (28 Nov): resolved.** Run 02b's data fixed the over-refusal; RL v1 kept that balance and recovered tool calling (§6, final results).
 **Checkpoint affected:** Phase 3 run 01 final (`phase3-step1500-tokens40B`, the current Hugging Face `main`).
 **Run 02 checkpoints:** `checkpoints/Phase3_run02/` (smoke test: `checkpoints/Phase3_run02_smoke/`).
 
@@ -127,6 +127,31 @@ Run 02b data: all of WildGuardMix, 10% of WildJailbreak, 10% of CoCoNot after re
 - 23-conversation chat test: cap/room → **Anita** ✅ and passive → **Maya** ✅ (run 01 got both wrong); "Hi! How are you?" with tools → a direct answer, no tool call ✅. Weaker: identity answered "a simple text-based AI model" (not BubblSpace; the identity set is tiny and the smoke run is short). "Rewrite this more politely" got a strange refusal, and the currency question was answered with a made-up rate instead of a tool call.
 
 Caveat: 200 steps (≈13% of a full run). Next: the full 1,500-step run 02b, then the same checks plus the chat evals.
+
+### Final results (28 Nov): run 02b, and RL v1 on top of it
+
+Run 02b's full SFT (1,500 steps) kept the smoke test's balance: **harmless refused 1/45, harmful refused 8/8, live data honest
+7/8**, equal to run 01 on code, maths and instruction following, but weaker at tool calling (BFCL no tool needed 75 → 56%,
+parallel 31 → 24%). RL v1 (Phase 4, doc/plan-06-phase-4-rl.md §7) started from run 02b, with harmful-sounding-but-harmless
+prompts in its refusal tasks; it ended at **harmless refused 0/45, harmful 7/8** (the miss discourages it without the refusal
+phrase), **live data 8/8**, and recovered the tool-calling loss:
+
+| Model | Harmless refused | Harmful refused | Live data honest | HumanEval % | MBPP % | GSM8K % | IFEval prompt / instr. % | BFCL simple | BFCL multiple | BFCL parallel | BFCL no tool needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| SFT run 01 | 9/45 | 8/8 | 6/8 | 15.2 | 22.6 | 10.0 | 26.1 / 38.1 | 57.0 | 40.0 | 31.0 | 75.4 |
+| SFT run 02b (RL start) | 1/45 | 8/8 | 7/8 | 15.2 | 21.8 | 9.6 | 23.1 / 36.0 | 63.0 | 36.0 | 24.0 | 56.2 |
+| RL v1 step 100 | 1/45 | 7/8 | 8/8 | 15.9 | 22.4 | 10.5 | 28.1 / 40.3 | 68.0 | 42.0 | 37.0 | 71.7 |
+| RL v1 step 300 | 0/45 | 7/8 | 8/8 | 15.9 | 22.8 | 12.3 | 27.9 / 41.8 | 70.0 | 37.0 | 34.0 | 75.4 |
+| **RL v1 step 500** | **0/45** | 7/8 | **8/8** | **16.5** | 22.2 | **12.4** | **29.6 / 43.5** | **71.0** | **43.0** | **40.0** | 69.6 |
+
+All five evaluated the same way on 28 Nov (A10, vLLM backend, greedy; `scripts/phase4_benchmarks_a10.sh`, raw results and
+`summary.md` in `benchmark/phase4/`). English 6-task average (forgetting check): run 02b **47.91**, RL v1 step 500 **48.00**
+(HellaSwag 41.5, PIQA 66.6, ARC-e 59.6, ARC-c 30.5, WinoGrande 54.3, LAMBADA 35.5): no forgetting. BFCL has 100 questions per
+category (±5 points is noise); the vLLM backend gives slightly different numbers than the earlier batched runs of the same model
+(e.g. run 02b BFCL simple 63 vs 65), so every model in this table was re-run with it.
+
+The issue is resolved: the final model (RL v1) answers ordinary commands, keeps refusing clearly harmful requests, and says
+when it has no live data.
 
 ### Run 01 chat evals (Phase 3 final, step 1,500)
 

@@ -1,6 +1,6 @@
 # Plan 06: Phase 4, RL with verifiable rewards
 
-**Status (27 Nov, evening):** rollout engine, weight sync, rewards, task set and GRPO trainer built; difficulty filter running on the A10 (run 01); 20-step RL smoke test armed on fire01 for after run 02b + its evals. RL v1 waits for the user's go.
+**Status (28 Nov):** **RL v1 done** (500 steps from Phase 3 run 02b, 27 Nov 22:06–23:45 IST); checkpoints 100 / 300 / 500 on both HF repos with rollouts. The overnight extension (RL v1b / v1c) never trained: its first step hung (§7). fire01 has been terminated; benchmarks run on the A10 from the HF exports (§7, `benchmark/phase4/`).
 **Starts from:** the Phase 3 SFT model that wins the run 01 vs run 02b comparison (doc/issue-02-phase3-over-refusal.md).
 **Preview in:** plan-04 §7. **How it works (method, GRPO, checkers):** [rl-primer-phase4.md](rl-primer-phase4.md). **Smoke test order, environments, watching a run live:** [rl-smoke-test-guide.md](rl-smoke-test-guide.md).
 
@@ -26,6 +26,65 @@ How the benchmark tells us what kind of training is needed:
 | Right answers, wrong format or behaviour | SFT data problem (like the refusals) | Fix the SFT mix |
 
 Do **not** start a large knowledge stage before that map. TriviaQA / NQ still have headroom at ~40B tokens, and a ~200B total is a plausible later target if pass@8 ≈ 0 on knowledge items; OLMo-2 1B still fails state-tracking items at 4T, so those need targeted data, not scale alone. Capacity estimate, token target, and the OLMo comparison are in [knowledge-capacity-and-tokens.md](knowledge-capacity-and-tokens.md). After RL v1 the per-area map says which lever to pull.
+
+## 7. RL v1 results and the overnight incident (28 Nov)
+
+**Run:** `configs/rl_v1.yaml`, start Phase 3 run 02b step 1,500, task set v3 filtered for run 02b (6,684 training + 320 held-out
+tasks), 500 steps × 64 prompts × 8 answers, ~13 s per step on the H100 (1 h 40 min in total). W&B `Phase4_rl_v1`. The first
+start ran out of GPU memory in the first update (32k-token micro-batches); the restart used 16k.
+
+**Held-out test** (greedy, 40 per subject; same task types as training, so this overstates real gains):
+
+| Subject | Step 0 (run 02b) | Step 100 | Step 300 | Step 425 |
+|---|---|---|---|---|
+| Tool calls (incl. parallel, no tool fits) | 0.455 | 0.930 | 0.975 | **0.975** |
+| Who did what | 0.500 | 0.850 | 0.850 | **0.975** |
+| Constraint + known answer | 0.450 | 0.850 | 0.900 | **0.925** |
+| Time problems | 0.225 | 0.525 | 0.550 | **0.650** |
+| Refusal balance | 0.550 | 0.725 | 0.725 | **0.775** |
+| Code | 0.775 | 0.975 | 0.975 | **0.975** |
+| Instruction constraints | 0.425 | 0.500 | 0.525 | **0.550** |
+| Maths | 0.325 | 0.175 | 0.250 | 0.275 |
+| **Average** | **0.463** | **0.691** | **0.719** | **0.762** |
+
+Training: reward 0.41 → ~0.75; KL rose to ~0.05–0.1; answers got shorter (~145 → ~75–110 tokens); the share of questions
+where all 8 answers scored the same rose 0.38 → ~0.7 (the filtered tasks became easy for the policy).
+
+**Quick check, step 500** (refusal check and chat test, not trained on): harmless refused 1 → **0**/45, harmful refused
+8 → 7/8 (the miss discourages it without the refusal phrase), live data honest 7 → **8**/8. Chat test: passive binding
+**right for the first time** ("written by Maya" → Maya), **two parallel calls** for two cities (was one), the tool result
+used fully, shorter direct answers; one regression: "capital of India" → "Delhi" instead of "New Delhi". Maths flat, matching
+the difficulty filter's reading (81% of maths tasks never solved in 8 tries: a knowledge/ability gap, not an RL target).
+**Real benchmarks** (not trained on):
+
+| Model | Harmless refused | Harmful refused | Live data honest | HumanEval % | MBPP % | GSM8K % | IFEval prompt / instr. % | BFCL simple | BFCL multiple | BFCL parallel | BFCL no tool needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| SFT run 01 | 9/45 | 8/8 | 6/8 | 15.2 | 22.6 | 10.0 | 26.1 / 38.1 | 57.0 | 40.0 | 31.0 | 75.4 |
+| SFT run 02b (RL start) | 1/45 | 8/8 | 7/8 | 15.2 | 21.8 | 9.6 | 23.1 / 36.0 | 63.0 | 36.0 | 24.0 | 56.2 |
+| RL v1 step 100 | 1/45 | 7/8 | 8/8 | 15.9 | 22.4 | 10.5 | 28.1 / 40.3 | 68.0 | 42.0 | 37.0 | 71.7 |
+| RL v1 step 300 | 0/45 | 7/8 | 8/8 | 15.9 | 22.8 | 12.3 | 27.9 / 41.8 | 70.0 | 37.0 | 34.0 | 75.4 |
+| **RL v1 step 500** | **0/45** | 7/8 | **8/8** | **16.5** | 22.2 | **12.4** | **29.6 / 43.5** | **71.0** | **43.0** | **40.0** | 69.6 |
+
+All five evaluated the same way on 28 Nov (A10, vLLM backend, greedy; `scripts/phase4_benchmarks_a10.sh`, raw results and
+`summary.md` in `benchmark/phase4/`). English 6-task average (forgetting check): run 02b **47.91**, RL v1 step 500 **48.00**
+(HellaSwag 41.5, PIQA 66.6, ARC-e 59.6, ARC-c 30.5, WinoGrande 54.3, LAMBADA 35.5): no forgetting. BFCL has 100 questions per
+category (±5 points is noise); the vLLM backend gives slightly different numbers than the earlier batched runs of the same model
+(e.g. run 02b BFCL simple 63 vs 65), so every model in this table was re-run with it.
+
+**Reading:** RL v1 recovered run 02b's tool-calling losses and went past both SFT runs on simple / multiple / parallel calls, gave the best IFEval of any model, a small real GSM8K gain (9.6 → 12.4%), and kept the refusal balance, with no forgetting. Code is flat.
+
+**Incident (night of 27–28 Nov):** the RL v1b chain's first step, refreshing the difficulty filter with the RL v1 model,
+hung at ~23:50 IST: `rl_filter.py` forked ~30 child processes for docker sandbox calls that never ran their command (forking
+a large multi-threaded process with vLLM + CUDA + 32 sandbox threads can deadlock); they ended in uninterruptible kernel
+sleep, holding 49 GB of GPU memory, and fire01's `h100-f1` filesystem stopped responding. No training ran for ~8 h; the
+watchers only waited for "done" or "ABORT" lines, which a hang never writes. fire01 was terminated on 28 Nov. What was
+lost: RL v1's training log text after 18:15 UTC and its quick-check files (W&B has the curves; checkpoints and rollouts are
+on HF; the quick check is redone on the A10).
+
+**Fixes before the next RL run:**
+- **No-progress alarm:** every long job writes `status.json`; a watchdog alerts when it hasn't changed for N minutes.
+- **Fork-safe sandbox calls:** start the sandbox worker pool **before** vLLM loads (or use `spawn`), and fewer workers (16).
+- **Filter refresh without a fresh vLLM load:** reuse the trainer's engine, or score in the trainer itself.
 
 ## 1. Method
 
