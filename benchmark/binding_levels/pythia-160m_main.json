@@ -1,0 +1,321 @@
+{
+ "model": "EleutherAI/pythia-160m",
+ "revision": null,
+ "n_params": 162322944,
+ "gpu": "NVIDIA A10",
+ "suites": {
+  "v4": {
+   "n_pairs": 112,
+   "L1": 0.5312,
+   "L2": 0.0982,
+   "L3_rows": 0.0268,
+   "L3": 0.0,
+   "by_category": {
+    "ability": {
+     "n": 24,
+     "L2": 0.0,
+     "L3": 0.0
+    },
+    "comparative": {
+     "n": 24,
+     "L2": 0.083,
+     "L3": 0.0
+    },
+    "emotional": {
+     "n": 24,
+     "L2": 0.125,
+     "L3": 0.0
+    },
+    "fit": {
+     "n": 16,
+     "L2": 0.125,
+     "L3": 0.0
+    },
+    "possession": {
+     "n": 24,
+     "L2": 0.167,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a\nbomber, and,"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a \"good\"\n\n\"A"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a\nmigraine, and"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a\n1,000,000'"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a\ngood,,\nI\n"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a\ngreat, great, great,"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a \"real\" person, and,"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a \"real\" man, and the"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a\nfam'a''"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a\na-b-c-"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "gen": " a \"real\" person, and the"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "gen": " a \"real\" man!\n\n"
+     }
+    }
+   ]
+  },
+  "v5": {
+   "n_pairs": 120,
+   "L1": 0.525,
+   "L2": 0.1667,
+   "L3_rows": 0.0375,
+   "L3": 0.0,
+   "by_category": {
+    "passive": {
+     "n": 40,
+     "L2": 0.125,
+     "L3": 0.0
+    },
+    "relative_clause": {
+     "n": 40,
+     "L2": 0.175,
+     "L3": 0.0
+    },
+    "respectively": {
+     "n": 40,
+     "L2": 0.2,
+     "L3": 0.0
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a\n<Aarav> the"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a\nP.A.A."
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a \"B\"\n\n\"B"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a \"B\"\n<Amar"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a \"B\" and he is a"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a \"B\"\n<Yara"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a \"good girl\"\n<k"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a\n\n\"feminine\""
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a \"B\" in the \"A"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a \"B\" in the same way"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "gen": " a \"B\" in the \"B"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "gen": " a very good friend.<|endoftext|>"
+     }
+    }
+   ]
+  },
+  "winogrande": {
+   "n_pairs": 284,
+   "L1": 0.5264,
+   "L2": 0.2394,
+   "L3_rows": 0.3873,
+   "L3": 0.0775,
+   "by_category": {
+    "winogrande": {
+     "n": 284,
+     "L2": 0.239,
+     "L3": 0.077
+    }
+   },
+   "examples": [
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Sarah"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "home"
+     },
+     "B": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "home"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "bakery"
+     },
+     "B": {
+      "l1": true,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "bank"
+     }
+    },
+    {
+     "A": {
+      "l1": true,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "I"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "short"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": false,
+      "gen": "Amy, or"
+     },
+     "B": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "cafe"
+     }
+    },
+    {
+     "A": {
+      "l1": false,
+      "l3": false,
+      "answered_with_option": true,
+      "gen": "Michael"
+     },
+     "B": {
+      "l1": false,
+      "l3": true,
+      "answered_with_option": true,
+      "gen": "Michael"
+     }
+    }
+   ],
+   "n_rows": 1267,
+   "n_twin_pairs": 284,
+   "l1_all_rows": 0.5209,
+   "l3_all_rows": 0.3788,
+   "answered_with_option": 0.7766,
+   "rows_outside_pairs": 699
+  }
+ },
+ "elapsed_s": 125.5
+}

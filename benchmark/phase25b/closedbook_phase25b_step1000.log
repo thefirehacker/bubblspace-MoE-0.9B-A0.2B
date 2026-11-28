@@ -1,0 +1,36 @@
+Ignoring part of dataset_info from the dataset card: The `splits` field in YAML is malformed or missing the name/num_examples/num_bytes fields
+Ignoring part of dataset_info from the dataset card: The `splits` field in YAML is malformed or missing the name/num_examples/num_bytes fields
+Ignoring part of dataset_info from the dataset card: The `splits` field in YAML is malformed or missing the name/num_examples/num_bytes fields
+Ignoring part of dataset_info from the dataset card: The `splits` field in YAML is malformed or missing the name/num_examples/num_bytes fields
+Overwriting default num_fewshot of triviaqa from None to 5
+[moe] backend resolved to: grouped_mm
+[ckpt] loaded /lambda/nfs/us-west-1-eval-inference/phase25b/step_1000.pt (step 1000)
+[eval] running tasks: ['triviaqa'] (limit=1000)
+  0%|          | 0/1000 [00:00<?, ?it/s]  2%|▏         | 24/1000 [00:00<00:04, 235.26it/s]  5%|▍         | 49/1000 [00:00<00:03, 241.06it/s]  7%|▋         | 74/1000 [00:00<00:03, 242.35it/s] 10%|▉         | 99/1000 [00:00<00:03, 243.55it/s] 12%|█▎        | 125/1000 [00:00<00:03, 246.38it/s] 15%|█▌        | 151/1000 [00:00<00:03, 247.99it/s] 18%|█▊        | 177/1000 [00:00<00:03, 249.31it/s] 20%|██        | 203/1000 [00:00<00:03, 250.10it/s] 23%|██▎       | 229/1000 [00:00<00:03, 250.69it/s] 26%|██▌       | 255/1000 [00:01<00:02, 251.33it/s] 28%|██▊       | 281/1000 [00:01<00:02, 251.05it/s] 31%|███       | 307/1000 [00:01<00:02, 251.90it/s] 33%|███▎      | 333/1000 [00:01<00:02, 252.08it/s] 36%|███▌      | 359/1000 [00:01<00:02, 252.99it/s] 38%|███▊      | 385/1000 [00:01<00:02, 252.96it/s] 41%|████      | 411/1000 [00:01<00:02, 252.98it/s] 44%|████▎     | 437/1000 [00:01<00:02, 251.96it/s] 46%|████▋     | 463/1000 [00:01<00:02, 251.94it/s] 49%|████▉     | 489/1000 [00:01<00:02, 251.47it/s] 52%|█████▏    | 515/1000 [00:02<00:01, 252.12it/s] 54%|█████▍    | 541/1000 [00:02<00:01, 252.53it/s] 57%|█████▋    | 567/1000 [00:02<00:01, 253.14it/s] 59%|█████▉    | 593/1000 [00:02<00:01, 252.77it/s] 62%|██████▏   | 619/1000 [00:02<00:01, 251.91it/s] 64%|██████▍   | 645/1000 [00:02<00:01, 252.21it/s] 67%|██████▋   | 671/1000 [00:02<00:01, 252.54it/s] 70%|██████▉   | 697/1000 [00:02<00:01, 252.55it/s] 72%|███████▏  | 723/1000 [00:02<00:01, 252.32it/s] 75%|███████▍  | 749/1000 [00:02<00:00, 251.95it/s] 78%|███████▊  | 775/1000 [00:03<00:00, 251.15it/s] 80%|████████  | 801/1000 [00:03<00:00, 250.71it/s] 83%|████████▎ | 827/1000 [00:03<00:00, 250.96it/s] 85%|████████▌ | 853/1000 [00:03<00:00, 251.06it/s] 88%|████████▊ | 879/1000 [00:03<00:00, 251.18it/s] 90%|█████████ | 905/1000 [00:03<00:00, 251.53it/s] 93%|█████████▎| 931/1000 [00:03<00:00, 251.99it/s] 96%|█████████▌| 957/1000 [00:03<00:00, 250.89it/s] 98%|█████████▊| 983/1000 [00:03<00:00, 250.73it/s]100%|██████████| 1000/1000 [00:03<00:00, 250.88it/s]
+fatal: not a git repository (or any of the parent directories): .git
+{
+  "triviaqa": {
+    "name": "triviaqa",
+    "alias": "triviaqa",
+    "sample_len": 1000,
+    "exact_match,remove_whitespace": 0.153,
+    "exact_match_stderr,remove_whitespace": 0.01138950045966553
+  }
+}
+[eval] saved results to benchmark/phase25b/closedbook_triviaqa1k_phase25b_step1000.json
+Overwriting default num_fewshot of nq_open from None to 5
+[moe] backend resolved to: grouped_mm
+[ckpt] loaded /lambda/nfs/us-west-1-eval-inference/phase25b/step_1000.pt (step 1000)
+[eval] running tasks: ['nq_open'] (limit=1000)
+  0%|          | 0/1000 [00:00<?, ?it/s]  3%|▎         | 26/1000 [00:00<00:03, 250.43it/s]  5%|▌         | 53/1000 [00:00<00:03, 258.87it/s]  8%|▊         | 81/1000 [00:00<00:03, 265.19it/s] 11%|█         | 110/1000 [00:00<00:03, 271.20it/s] 14%|█▍        | 138/1000 [00:00<00:03, 273.07it/s] 17%|█▋        | 166/1000 [00:00<00:03, 275.33it/s] 20%|█▉        | 195/1000 [00:00<00:02, 278.07it/s] 22%|██▏       | 224/1000 [00:00<00:02, 280.07it/s] 25%|██▌       | 253/1000 [00:00<00:02, 281.58it/s] 28%|██▊       | 282/1000 [00:01<00:02, 283.04it/s] 31%|███       | 311/1000 [00:01<00:02, 283.72it/s] 34%|███▍      | 340/1000 [00:01<00:02, 284.04it/s] 37%|███▋      | 369/1000 [00:01<00:02, 283.52it/s] 40%|███▉      | 398/1000 [00:01<00:02, 283.39it/s] 43%|████▎     | 427/1000 [00:01<00:02, 283.78it/s] 46%|████▌     | 456/1000 [00:01<00:01, 283.94it/s] 48%|████▊     | 485/1000 [00:01<00:01, 284.22it/s] 51%|█████▏    | 514/1000 [00:01<00:01, 284.67it/s] 54%|█████▍    | 543/1000 [00:01<00:01, 284.86it/s] 57%|█████▋    | 572/1000 [00:02<00:01, 283.74it/s] 60%|██████    | 601/1000 [00:02<00:01, 282.88it/s] 63%|██████▎   | 630/1000 [00:02<00:01, 282.79it/s] 66%|██████▌   | 659/1000 [00:02<00:01, 282.76it/s] 69%|██████▉   | 688/1000 [00:02<00:01, 282.55it/s] 72%|███████▏  | 717/1000 [00:02<00:01, 282.76it/s] 75%|███████▍  | 746/1000 [00:02<00:00, 282.63it/s] 78%|███████▊  | 775/1000 [00:02<00:00, 282.89it/s] 80%|████████  | 804/1000 [00:02<00:00, 282.49it/s] 83%|████████▎ | 833/1000 [00:02<00:00, 282.62it/s] 86%|████████▌ | 862/1000 [00:03<00:00, 283.03it/s] 89%|████████▉ | 891/1000 [00:03<00:00, 283.48it/s] 92%|█████████▏| 920/1000 [00:03<00:00, 283.60it/s] 95%|█████████▍| 949/1000 [00:03<00:00, 282.20it/s] 98%|█████████▊| 978/1000 [00:03<00:00, 280.57it/s]100%|██████████| 1000/1000 [00:03<00:00, 281.01it/s]
+fatal: not a git repository (or any of the parent directories): .git
+{
+  "nq_open": {
+    "name": "nq_open",
+    "alias": "nq_open",
+    "sample_len": 1000,
+    "exact_match,remove_whitespace": 0.039,
+    "exact_match_stderr,remove_whitespace": 0.0061250727764261105
+  }
+}
+[eval] saved results to benchmark/phase25b/closedbook_nq1k_phase25b_step1000.json

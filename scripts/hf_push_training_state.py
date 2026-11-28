@@ -42,6 +42,39 @@ Code: https://github.com/thefirehacker/bubblspace-MoE-0.9B-A0.2B
 """
 
 
+RL_README = """# {branch}
+
+**BubblSpace MoE-0.9B-A0.2B, Phase 4 RL** (GRPO with verifiable rewards): step {step} of the RL run, started from the
+Phase 3 SFT model ({tokens:.2f}B pretraining + SFT tokens; RL adds sampled answers, not training tokens).
+Method: [doc/rl-primer-phase4.md](https://github.com/thefirehacker/bubblspace-MoE-0.9B-A0.2B/blob/main/doc/rl-primer-phase4.md).
+
+| File | Content |
+|---|---|
+| `model.safetensors` | policy weights |
+| `optimizer.safetensors` | AdamW state |
+| `rng.safetensors` | CPU/CUDA RNG state |
+| `trainer_state.json` | step, LR scheduler, optimizer scalars, the full RL config, start checkpoint and task file (`rl_info`) |
+| `rollouts/step_NNNN.jsonl.gz` | **every sampled answer of every step**: prompt, subject, task id, answer, finished, length, reward, advantage |
+| `eval_samples/step_NNNN.jsonl.gz` | every held-out test answer with its reward |
+| `train_log.jsonl`, `evals.jsonl`, `run_config.json` | per-step metrics (reward per subject, KL, length, timings), held-out scores, run settings |
+
+Exported pickle-free with `restore_checkpoint.py export --verify` (bit-exact round trip against the original `.pt`).
+
+```bash
+hf download {repo} --revision {branch} --local-dir {branch}
+python scripts/rl_view.py {branch}                                  # per-step table + held-out scores
+python scripts/rl_view.py {branch} --step 100 --area time           # read the answers of a step
+python scripts/restore_checkpoint.py restore --dir {branch} --pt step_{step}.pt
+python scripts/train_grpo.py {config} --set init_checkpoint=step_{step}.pt ...   # more RL from these weights
+```
+
+`train_grpo.py` starts from the weights (`model`); the optimizer state is saved here for an exact continuation, which the
+trainer does not wire up yet. W&B run: {wandb_run}.
+
+Code: https://github.com/thefirehacker/bubblspace-MoE-0.9B-A0.2B
+"""
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--folder", required=True)
@@ -60,8 +93,9 @@ def main():
     for f in ("model.safetensors", "optimizer.safetensors", "rng.safetensors", "trainer_state.json"):
         if not os.path.exists(os.path.join(folder, f)):
             raise SystemExit("missing %s in %s (run restore_checkpoint.py export --verify first)" % (f, folder))
+    template = RL_README if os.path.isdir(os.path.join(folder, "rollouts")) else README
     with open(os.path.join(folder, "README.md"), "w") as fh:
-        fh.write(README.format(branch=branch, phase=a.phase, step=a.step, global_step=a.global_step, tokens=tokens,
+        fh.write(template.format(branch=branch, phase=a.phase, step=a.step, global_step=a.global_step, tokens=tokens,
                                repo=REPO, config=a.config, wandb_run=a.wandb_run))
     shutil.copy(a.restore_script, os.path.join(folder, "restore_checkpoint.py"))
     api = HfApi()

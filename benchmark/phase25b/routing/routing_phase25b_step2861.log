@@ -1,0 +1,14 @@
+[W1127 10:39:34.522550641 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 17179869184 bytes (free: 9944825856, total: 23684841472).
+[W1127 10:39:34.559409886 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 17179869184 bytes (free: 10217455616, total: 23684841472).
+Traceback (most recent call last):
+  File "/home/ubuntu/moe0.9b-a0.2b/scripts/analyze_routing.py", line 154, in <module>
+    main()
+  File "/home/ubuntu/moe0.9b-a0.2b/scripts/analyze_routing.py", line 99, in main
+    model(xb, None, build_doc_block_mask(xb, eot))
+  File "/home/ubuntu/moe0.9b-a0.2b/src/model/attention.py", line 31, in build_doc_block_mask
+    return create_block_mask(mask_mod, B=bsz, H=None, Q_LEN=seq_len, KV_LEN=seq_len, device=idx.device)
+  File "/home/ubuntu/moe0.9b-a0.2b/.venv/lib/python3.10/site-packages/torch/nn/attention/flex_attention.py", line 2064, in create_block_mask
+    partial_block_mask, full_block_mask = _convert_mask_to_block_mask(
+  File "/home/ubuntu/moe0.9b-a0.2b/.venv/lib/python3.10/site-packages/torch/nn/attention/flex_attention.py", line 1743, in _convert_mask_to_block_mask
+    mask_block_sum = mask.sum(
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 16.00 GiB. GPU 0 has a total capacity of 22.06 GiB of which 9.52 GiB is free. Process 723089 has 4.76 GiB memory in use. Including non-PyTorch memory, this process has 7.77 GiB memory in use. Of the allocated memory 7.45 GiB is allocated by PyTorch, and 21.11 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

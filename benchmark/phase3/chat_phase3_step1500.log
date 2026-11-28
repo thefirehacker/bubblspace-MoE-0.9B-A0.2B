@@ -1,0 +1,27 @@
+[ckpt] /lambda/nfs/h100-f1/checkpoints/moe0-9b-a0-2b-phase03-sft/step_1500.pt (step 1500)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[humaneval]
+  164 prompts, 45,690 tokens in 204s (224 tok/s)
+[mbpp]
+  500 prompts, 96,163 tokens in 444s (217 tok/s)
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 176062.38 examples/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 122585.57 examples/s]
+[gsm8k]
+  1319 prompts, 328,459 tokens in 961s (342 tok/s)
+[gsm8k] accuracy 122/1319 = 0.092
+Generating train split:   0%|          | 0/541 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 541/541 [00:00<00:00, 25265.48 examples/s]
+[ifeval]
+  541 prompts, 238,875 tokens in 649s (368 tok/s)
+[bfcl:simple]
+  100 prompts, 39,293 tokens in 144s (272 tok/s)
+[bfcl:simple] 65/100 = 0.650  stop 0.92
+[bfcl:multiple]
+  100 prompts, 35,602 tokens in 145s (246 tok/s)
+[bfcl:multiple] 40/100 = 0.400  stop 0.92
+[bfcl:parallel]
+  100 prompts, 62,344 tokens in 158s (395 tok/s)
+[bfcl:parallel] 35/100 = 0.350  stop 0.78
+[bfcl:irrelevance]
+  240 prompts, 116,654 tokens in 250s (467 tok/s)
+[bfcl:irrelevance] 180/240 = 0.750  stop 0.82
+[done] saved benchmark/phase3/chat_phase3_step1500.json

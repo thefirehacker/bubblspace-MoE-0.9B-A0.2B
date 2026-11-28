@@ -1,0 +1,155 @@
+# Phase 3 run 02b (27 Nov): run 02 + all of WildGuardMix, 10% WildJailbreak, filtered 10% CoCoNot (tulu3_run02b) and
+# own_realtime (live-data honesty, tool calls, no call when not needed). Based on run 02:
+# Phase 3 run 02 (27 Nov): same recipe as phase3_smoke.yaml, started again from the Phase 2.5b final; only the chat pool
+# (tulu3 -> tulu3_run02) and one new pool (own_facts_cmd) differ. Run 01 over-refused harmless commands.
+# ============================================================
+# MoE-0.9B-A0.2B v2  —  PHASE 3 SMOKE TEST: 200 steps of the real SFT mix (gate before the full run)
+# Qwen3-Next-inspired, single H100 80GB, Muon + AdamW
+# ============================================================
+
+run_name: Phase3_run02b_smoke
+
+model:
+  n_layers: 16
+  d_model: 1024
+  vocab_size: 49280          # bubblspace-tokenizer real length 49164, padded to a multiple of 128
+  tie_embeddings: true
+  max_seq_len: 16384          # 2.5b: 8x the trained context
+  norm_eps: 1.0e-6
+
+  attention:
+    n_heads: 16
+    head_dim: 64
+    n_kv_heads: 4
+    qk_norm: true
+    rope_theta: 1000000        # 2.5b: RoPE base raised (ABF) so 16k positions fall in familiar angle ranges
+    output_gate: true
+    bias: false
+
+  moe:
+    n_experts: 64
+    top_k: 8
+    expert_hidden: 256
+    activation: silu
+    router_init_std: 0.02
+    backend: auto              # auto | grouped_mm | fallback — resolved at startup by probing torch._grouped_mm
+    load_balance_coef: 0.01
+    router_z_loss_coef: 0.001
+
+  init:
+    std: 0.02
+    # residual_proj_std = std / sqrt(2 * n_layers), applied to attn.o_proj and experts.W_down
+
+optimizer:
+  muon:
+    lr: 6.0e-4
+    momentum: 0.95
+    nesterov: true
+    ns_steps: 5
+    weight_decay: 0.1
+  adamw:
+    lr: 6.0e-4
+    betas: [0.9, 0.95]
+    eps: 1.0e-8
+    weight_decay: 0.1
+  grad_clip: 1.0
+
+schedule:
+  warmup_steps: 2000
+  decay: cosine               # cosine | wsd
+  min_lr_ratio: 0.1
+  wsd_decay_frac: 0.2         # only used when decay: wsd
+
+training:
+  dataset: HuggingFaceFW/fineweb-edu
+  dataset_config: sample-10BT
+  total_tokens: 10_000_000_000
+  seq_len: 16384
+  global_batch_tokens: 524288
+  micro_batch: 2              # 2 x 16,384 = same tokens per micro-batch as 16 x 2,048
+  precision: bf16
+  compile: true
+  checkpoint_every: 100
+  log_every: 10
+  expert_hist_every: 100
+  attn_logit_every: 100
+
+data:
+  data_dir: /lambda/nfs/h100-f1/data
+  checkpoint_dir: /lambda/nfs/h100-f1/checkpoints
+
+tokenizer:
+  path: ./bubblspace-tokenizer
+  doc_separator: "<|endoftext|>"
+
+wandb:
+  project: moe0-9b-a0-2b
+  entity: null
+
+# ------------------------------------------------------------
+# Phase 3 SFT (doc/plan-04-phase-3-sft.md §3.1): init from the Phase 2.5b final checkpoint via --init_from.
+# SFT pools are built by scripts/phase3_build_sft.py (+ phase3_decon.py): whole episodes packed in 16k blocks with a
+# parallel mask_*.bin; src/data/dataset.py trains only where the mask marks assistant tokens (incl. <|im_end|>).
+# Replay pools (plain LM loss) limit forgetting. Group shares are set from pool sizes so no small set repeats much
+# more than ~2 times; tool calling + agent traces get ≈38% (priority: weakest skill, BFCL multiple 6% / parallel 0%).
+# ------------------------------------------------------------
+phase2:
+  step_offset: 74545          # after Phase 1 (19,073) + Phase 2 (22,888) + 2.5a (29,723) + 2.5b (2,861)
+  wandb_group: moe0-9b-a0-2b
+  total_steps: 200            # smoke test only
+  decay_start_step: 20
+  warmup_steps: 20
+  start_lr: 1.0e-5            # 2.5b's final LR
+  peak_lr: 6.0e-5             # ~0.3x the 2.5a plateau (2e-4)
+  end_lr: 0.0
+  doc_mask: true
+  fim_rate: 0.5               # only the code replay pools are FIM pools
+  val_every: 50
+  val_tokens_per_pool: 131072 # 8 blocks per pool (small SFT pools would otherwise lose a quarter to validation)
+
+  pools:
+    # chat / instruction following (Tülu 3 OLMo-2 mix, Aya removed)
+    # run 02b: all WildGuardMix, 10% WildJailbreak, 10% CoCoNot minus its underspecified/real-time replies; OLMo identity
+    # rows and refusal-opening replies in the other sources removed
+    tulu3_run02b:     {path: /lambda/nfs/h100-f1/data/phase3/tulu3_run02b,     group: chat,      kind: block}
+    # code + maths, verified (SYNTHETIC-1: gold solutions, verified code without reasoning traces) + GSM8K train
+    synthetic1:       {path: /lambda/nfs/h100-f1/data/phase3/synthetic1,       group: code_math, kind: block}
+    gsm8k:            {path: /lambda/nfs/h100-f1/data/phase3/gsm8k,            group: gsm8k,     kind: block}
+    # tool calling (ToolMind without APIGen-MT, Glaive FC v2 fixed parser, Hermes FC) + terminal agent traces
+    agentic_toolmind: {path: /lambda/nfs/h100-f1/data/phase3/agentic_toolmind, group: toolmind,  kind: block}
+    agentic_glaive:   {path: /lambda/nfs/h100-f1/data/phase3/agentic_glaive,   group: glaive,    kind: block}
+    agentic_hermes:   {path: /lambda/nfs/h100-f1/data/phase3/agentic_hermes,   group: hermes,    kind: block}
+    terminal:         {path: /lambda/nfs/h100-f1/data/phase3/terminal,         group: terminal,  kind: block}
+    # our sets (scripts/phase3_gen_own_sets.py)
+    own_facts:        {path: /lambda/nfs/h100-f1/data/phase3/own_facts,        group: own_facts,   kind: block}
+    own_math:         {path: /lambda/nfs/h100-f1/data/phase3/own_math,         group: own_math,    kind: block}
+    own_binding:      {path: /lambda/nfs/h100-f1/data/phase3/own_binding,      group: own_binding, kind: block}
+    own_identity:     {path: /lambda/nfs/h100-f1/data/phase3/own_identity,     group: own_identity, kind: block}
+    # run 02: facts asked as commands and in formats (JSON / CSV / list), country-capital tables without India/France
+    own_facts_cmd:    {path: /lambda/nfs/h100-f1/data/phase3/own_facts_cmd,    group: own_facts_cmd, kind: block}
+    # run 02b: live data -> "no live access" / tool call; tools present but not needed -> direct answer
+    own_realtime:     {path: /lambda/nfs/h100-f1/data/phase3/own_realtime,     group: own_realtime, kind: block}
+    # replay, plain LM loss
+    en_wiki_full:     {path: /lambda/nfs/h100-f1/data/phase25_decon/en_wiki_full,     group: replay_en}
+    fwe_edu4:         {path: /lambda/nfs/h100-f1/data/phase25_decon/fwe_edu4,         group: replay_en}
+    code_python_edu_fresh:       {path: /lambda/nfs/h100-f1/data/phase25_decon/code_python_edu_fresh,       group: replay_code, fim: true}
+    code_starcoder_python_fresh: {path: /lambda/nfs/h100-f1/data/phase25_decon/code_starcoder_python_fresh, group: replay_code, fim: true}
+
+  stages:
+    - until_step: 200
+      groups:                 # ≈ passes over each pool in 0.79B tokens
+        chat: 0.4124          # run 02b: ~0.33B of ~0.60B (~0.55)
+        code_math: 0.10       # 0.08B of 0.08B  (~1.0)
+        gsm8k: 0.002          # (~1.3)
+        toolmind: 0.25        # 0.20B of 0.82B  (~0.25)
+        glaive: 0.04          # (~0.55)
+        hermes: 0.012         # (~0.9)
+        terminal: 0.08        # (~0.35)
+        own_facts: 0.02       # (~1.7)
+        own_math: 0.006       # (~1.6)
+        own_binding: 0.008    # (~1.6)
+        own_identity: 0.0001  # tiny set, repeated on purpose
+        own_facts_cmd: 0.008   # run 02: ~6M tokens (~1.2 passes)
+        own_realtime: 0.0015   # run 02b: ~1.2M tokens (~1.2 passes)
+        replay_en: 0.03
+        replay_code: 0.03

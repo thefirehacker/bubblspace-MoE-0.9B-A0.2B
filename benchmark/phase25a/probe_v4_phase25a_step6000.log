@@ -1,0 +1,1020 @@
+[ckpt] loaded /lambda/nfs/us-west-1-eval-inference/phase25a/step_6000.pt (step 6000)
+
+=== v4-ability-0 ===
+  ctxA: ...Hiro corrected Zoe, owing to the fact that Zoe was
+    mistaken.      logprob=  -4.365
+    well informed. logprob=  -8.986   -> prefers: mistaken.
+  ctxB: ...iro corrected Zoe, owing to the fact that Hiro was
+    mistaken.      logprob=  -9.484
+    well informed. logprob=  -4.688   -> prefers: well informed.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-ability-1 ===
+  ctxA: ...ra corrected Reza, owing to the fact that Reza was
+    mistaken.      logprob=  -6.808
+    an expert.     logprob=  -5.080   -> prefers: an expert.
+  ctxB: ...a corrected Reza, owing to the fact that Amara was
+    mistaken.      logprob=  -8.177
+    an expert.     logprob=  -3.428   -> prefers: an expert.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-2 ===
+  ctxA: ... corrected Basil. Anyone could tell that Basil was
+    mistaken.      logprob=  -5.356
+    certain.       logprob= -12.439   -> prefers: mistaken.
+  ctxB: ...corrected Basil. Anyone could tell that Dmitri was
+    mistaken.      logprob=  -8.047
+    certain.       logprob= -10.675   -> prefers: mistaken.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-3 ===
+  ctxA: ... corrected Nadia. Anyone could tell that Nadia was
+    mistaken.      logprob=  -3.363
+    an expert.     logprob=  -5.916   -> prefers: mistaken.
+  ctxB: ... corrected Nadia. Anyone could tell that Basil was
+    mistaken.      logprob=  -6.040
+    an expert.     logprob=  -1.782   -> prefers: an expert.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-ability-4 ===
+  ctxA: ... corrected Farah, owing to the fact that Farah was
+    wrong.         logprob=  -6.019
+    careful.       logprob= -10.788   -> prefers: wrong.
+  ctxB: ...s corrected Farah, owing to the fact that Tess was
+    wrong.         logprob=  -8.774
+    careful.       logprob=  -8.482   -> prefers: careful.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-ability-5 ===
+  ctxA: ... corrected Nadia. Anyone could tell that Nadia was
+    careless with the figures. logprob= -17.832
+    well informed. logprob=  -8.960   -> prefers: well informed.
+  ctxB: ...a corrected Nadia. Anyone could tell that Reza was
+    careless with the figures. logprob= -18.836
+    well informed. logprob=  -5.415   -> prefers: well informed.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-6 ===
+  ctxA: ...orrected Astrid. Anyone could tell that Astrid was
+    confused.      logprob=  -1.471
+    certain.       logprob= -11.167   -> prefers: confused.
+  ctxB: ... corrected Astrid. Anyone could tell that Ravi was
+    confused.      logprob=  -2.976
+    certain.       logprob=  -7.808   -> prefers: confused.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-7 ===
+  ctxA: ...id corrected Nadia; the trouble was that Nadia was
+    careless with the figures. logprob= -17.867
+    well informed. logprob= -11.018   -> prefers: well informed.
+  ctxB: ...d corrected Nadia; the trouble was that Astrid was
+    careless with the figures. logprob= -17.649
+    well informed. logprob=  -9.007   -> prefers: well informed.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-8 ===
+  ctxA: ...ra corrected Samir; the trouble was that Samir was
+    careless with the figures. logprob= -15.821
+    certain.       logprob= -10.385   -> prefers: certain.
+  ctxB: ...ra corrected Samir; the trouble was that Amara was
+    careless with the figures. logprob= -16.100
+    certain.       logprob=  -8.064   -> prefers: certain.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-9 ===
+  ctxA: ...za corrected Hedda; the trouble was that Hedda was
+    careless with the figures. logprob= -14.985
+    well informed. logprob= -10.657   -> prefers: well informed.
+  ctxB: ...eza corrected Hedda; the trouble was that Reza was
+    careless with the figures. logprob= -16.229
+    well informed. logprob=  -9.569   -> prefers: well informed.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-10 ===
+  ctxA: ... corrected Felix, owing to the fact that Felix was
+    confused.      logprob=  -5.252
+    an expert.     logprob=  -6.920   -> prefers: confused.
+  ctxB: ...corrected Felix, owing to the fact that Astrid was
+    confused.      logprob=  -6.595
+    an expert.     logprob=  -5.690   -> prefers: an expert.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-ability-11 ===
+  ctxA: ...ia corrected Hiro. Anyone could tell that Hiro was
+    confused.      logprob=  -1.390
+    certain.       logprob=  -8.799   -> prefers: confused.
+  ctxB: ...a corrected Hiro. Anyone could tell that Nadia was
+    confused.      logprob=  -3.587
+    certain.       logprob=  -5.617   -> prefers: confused.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-12 ===
+  ctxA: ...Hiro corrected Zoe; the trouble was that Zoe was
+    careless with the figures. logprob= -21.575
+    certain.       logprob=  -8.704   -> prefers: certain.
+  ctxB: ...Hiro corrected Zoe; the trouble was that Hiro was
+    careless with the figures. logprob= -21.906
+    certain.       logprob=  -6.012   -> prefers: certain.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-13 ===
+  ctxA: ...Ravi corrected Kamala, given that Kamala was
+    mistaken.      logprob=  -5.599
+    well informed. logprob= -12.795   -> prefers: mistaken.
+  ctxB: ...Ravi corrected Kamala, given that Ravi was
+    mistaken.      logprob=  -9.390
+    well informed. logprob=  -6.971   -> prefers: well informed.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-ability-14 ===
+  ctxA: ...orrected Astrid, owing to the fact that Astrid was
+    confused.      logprob=  -1.910
+    an expert.     logprob=  -4.138   -> prefers: confused.
+  ctxB: ...orrected Astrid, owing to the fact that Dmitri was
+    confused.      logprob=  -4.059
+    an expert.     logprob=  -1.343   -> prefers: an expert.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-ability-15 ===
+  ctxA: ...mala corrected Jana; the trouble was that Jana was
+    careless with the figures. logprob= -16.675
+    careful.       logprob= -11.216   -> prefers: careful.
+  ctxB: ...la corrected Jana; the trouble was that Kamala was
+    careless with the figures. logprob= -16.811
+    careful.       logprob=  -8.621   -> prefers: careful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-16 ===
+  ctxA: ...Nadia corrected Lars, given that Lars was
+    confused.      logprob=  -2.172
+    certain.       logprob= -11.128   -> prefers: confused.
+  ctxB: ...Nadia corrected Lars, given that Nadia was
+    confused.      logprob=  -4.842
+    certain.       logprob=  -6.759   -> prefers: confused.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-17 ===
+  ctxA: ...ia corrected Omar, owing to the fact that Omar was
+    wrong.         logprob=  -4.457
+    certain.       logprob= -10.415   -> prefers: wrong.
+  ctxB: ...a corrected Omar, owing to the fact that Nadia was
+    wrong.         logprob=  -8.694
+    certain.       logprob=  -6.476   -> prefers: certain.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-ability-18 ===
+  ctxA: ...Zoe corrected Omar, given that Omar was
+    careless with the figures. logprob= -14.505
+    an expert.     logprob=  -5.711   -> prefers: an expert.
+  ctxB: ...Zoe corrected Omar, given that Zoe was
+    careless with the figures. logprob= -23.246
+    an expert.     logprob=  -1.322   -> prefers: an expert.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-19 ===
+  ctxA: ...orrected Wanjiru; the trouble was that Wanjiru was
+    mistaken.      logprob=  -3.425
+    certain.       logprob= -10.445   -> prefers: mistaken.
+  ctxB: ...a corrected Wanjiru; the trouble was that Reza was
+    mistaken.      logprob=  -4.749
+    certain.       logprob=  -8.833   -> prefers: mistaken.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-20 ===
+  ctxA: ...ia corrected Jana. Anyone could tell that Jana was
+    confused.      logprob=  -1.427
+    well informed. logprob= -10.295   -> prefers: confused.
+  ctxB: ...a corrected Jana. Anyone could tell that Nadia was
+    confused.      logprob=  -3.940
+    well informed. logprob=  -4.392   -> prefers: confused.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-21 ===
+  ctxA: ... corrected Hedda. Anyone could tell that Hedda was
+    mistaken.      logprob=  -3.842
+    careful.       logprob= -14.813   -> prefers: mistaken.
+  ctxB: ...corrected Hedda. Anyone could tell that Kamala was
+    mistaken.      logprob=  -5.994
+    careful.       logprob= -14.038   -> prefers: mistaken.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-22 ===
+  ctxA: ...il corrected Chen, owing to the fact that Chen was
+    confused.      logprob=  -1.986
+    careful.       logprob= -10.963   -> prefers: confused.
+  ctxB: ...l corrected Chen, owing to the fact that Basil was
+    confused.      logprob=  -3.987
+    careful.       logprob=  -7.857   -> prefers: confused.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-ability-23 ===
+  ctxA: ... corrected Dmitri; the trouble was that Dmitri was
+    careless with the figures. logprob= -16.448
+    well informed. logprob= -12.601   -> prefers: well informed.
+  ctxB: ...l corrected Dmitri; the trouble was that Basil was
+    careless with the figures. logprob= -16.786
+    well informed. logprob=  -8.704   -> prefers: well informed.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-comparative-24 ===
+  ctxA: ...jacket; the trouble was that the designer coat was
+    pricey.        logprob=  -2.194
+    inexpensive.   logprob=  -6.569   -> prefers: pricey.
+  ctxB: ...; the trouble was that the thrift-store jacket was
+    pricey.        logprob=  -7.870
+    inexpensive.   logprob=  -2.120   -> prefers: inexpensive.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-25 ===
+  ctxA: ...cket. Anyone could tell that the designer coat was
+    far more valuable. logprob=  -2.737
+    common and cheap. logprob= -17.749   -> prefers: far more valuable.
+  ctxB: ...Anyone could tell that the thrift-store jacket was
+    far more valuable. logprob=  -2.988
+    common and cheap. logprob= -10.082   -> prefers: far more valuable.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-comparative-26 ===
+  ctxA: ... than the snail; the trouble was that the hare was
+    built for speed. logprob=  -4.187
+    sluggish.      logprob=  -2.302   -> prefers: sluggish.
+  ctxB: ...than the snail; the trouble was that the snail was
+    built for speed. logprob=  -8.697
+    sluggish.      logprob=  -1.424   -> prefers: sluggish.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-comparative-27 ===
+  ctxA: ...n the fern; the trouble was that the palm tree was
+    lofty.         logprob=  -3.004
+    low.           logprob=  -6.254   -> prefers: lofty.
+  ctxB: ...r than the fern; the trouble was that the fern was
+    lofty.         logprob=  -7.839
+    low.           logprob=  -2.153   -> prefers: low.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-28 ===
+  ctxA: ... the trouble was that the hike up the mountain was
+    very lengthy.  logprob=  -2.507
+    short.         logprob=  -7.510   -> prefers: very lengthy.
+  ctxB: ...k; the trouble was that the stroll in the park was
+    very lengthy.  logprob= -11.667
+    short.         logprob=  -1.583   -> prefers: short.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-29 ===
+  ctxA: ...than the rowing boat, given that the speedboat was
+    very quick.    logprob=  -2.017
+    unhurried.     logprob=  -4.386   -> prefers: very quick.
+  ctxB: ...an the rowing boat, given that the rowing boat was
+    very quick.    logprob=  -8.367
+    unhurried.     logprob=  -1.195   -> prefers: unhurried.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-30 ===
+  ctxA: ...n the cellar, owing to the fact that the forge was
+    much warmer.   logprob=  -1.380
+    much cooler.   logprob=  -6.008   -> prefers: much warmer.
+  ctxB: ... the cellar, owing to the fact that the cellar was
+    much warmer.   logprob=  -6.778
+    much cooler.   logprob=  -1.340   -> prefers: much cooler.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-31 ===
+  ctxA: ... the hill, owing to the fact that the mountain was
+    very tall.     logprob=  -1.823
+    short.         logprob=  -9.630   -> prefers: very tall.
+  ctxB: ...than the hill, owing to the fact that the hill was
+    very tall.     logprob= -11.185
+    short.         logprob=  -2.175   -> prefers: short.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-32 ===
+  ctxA: ... than the library, given that the rock concert was
+    noisy.         logprob=  -2.299
+    soft.          logprob= -12.178   -> prefers: noisy.
+  ctxB: ... away than the library, given that the library was
+    noisy.         logprob=  -4.853
+    soft.          logprob=  -4.628   -> prefers: soft.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-33 ===
+  ctxA: ...ner shop, owing to the fact that the road trip was
+    long and drawn out. logprob=  -1.612
+    short.         logprob=  -7.878   -> prefers: long and drawn out.
+  ctxB: ...g to the fact that the walk to the corner shop was
+    long and drawn out. logprob=  -5.850
+    short.         logprob=  -1.653   -> prefers: short.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-34 ===
+  ctxA: ...n the cellar, owing to the fact that the forge was
+    scorching.     logprob=  -1.332
+    much cooler.   logprob=  -5.481   -> prefers: scorching.
+  ctxB: ... the cellar, owing to the fact that the cellar was
+    scorching.     logprob=  -7.036
+    much cooler.   logprob=  -1.212   -> prefers: much cooler.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-35 ===
+  ctxA: ...n the cellar. Anyone could tell that the forge was
+    very hot.      logprob=  -1.926
+    cold.          logprob= -12.136   -> prefers: very hot.
+  ctxB: ... the cellar. Anyone could tell that the cellar was
+    very hot.      logprob=  -7.098
+    cold.          logprob=  -7.755   -> prefers: very hot.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-comparative-36 ===
+  ctxA: ...message. Anyone could tell that the manuscript was
+    very old.      logprob=  -8.880
+    much newer.    logprob= -13.004   -> prefers: very old.
+  ctxB: ...ssage. Anyone could tell that the text message was
+    very old.      logprob= -14.153
+    much newer.    logprob=  -8.725   -> prefers: much newer.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-37 ===
+  ctxA: ...ues, owing to the fact that the crate of books was
+    a real burden. logprob=  -2.299
+    almost weightless. logprob=  -4.970   -> prefers: a real burden.
+  ctxB: ...ues, owing to the fact that the box of tissues was
+    a real burden. logprob=  -7.034
+    almost weightless. logprob=  -1.564   -> prefers: almost weightless.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-38 ===
+  ctxA: ...re than the scooter, given that the sports car was
+    far more valuable. logprob=  -1.431
+    cheap.         logprob=  -6.177   -> prefers: far more valuable.
+  ctxB: ... more than the scooter, given that the scooter was
+    far more valuable. logprob=  -9.441
+    cheap.         logprob=  -1.235   -> prefers: cheap.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-39 ===
+  ctxA: ...r to move than the puddle, given that the lake was
+    huge.          logprob=  -1.608
+    tiny.          logprob=  -7.057   -> prefers: huge.
+  ctxB: ...to move than the puddle, given that the puddle was
+    huge.          logprob=  -8.759
+    tiny.          logprob=  -1.916   -> prefers: tiny.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-40 ===
+  ctxA: ...r than fitting the puddle, given that the lake was
+    enormous.      logprob=  -0.967
+    tiny.          logprob=  -6.844   -> prefers: enormous.
+  ctxB: ...than fitting the puddle, given that the puddle was
+    enormous.      logprob=  -8.403
+    tiny.          logprob=  -1.778   -> prefers: tiny.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-41 ===
+  ctxA: ...scooter. Anyone could tell that the sports car was
+    rare and costly. logprob=  -8.319
+    inexpensive.   logprob= -18.641   -> prefers: rare and costly.
+  ctxB: ...he scooter. Anyone could tell that the scooter was
+    rare and costly. logprob= -15.023
+    inexpensive.   logprob= -12.669   -> prefers: inexpensive.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-42 ===
+  ctxA: ...than the puddle; the trouble was that the lake was
+    enormous.      logprob=  -1.043
+    tiny.          logprob=  -6.356   -> prefers: enormous.
+  ctxB: ...an the puddle; the trouble was that the puddle was
+    enormous.      logprob=  -7.881
+    tiny.          logprob=  -1.756   -> prefers: tiny.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-43 ===
+  ctxA: ...message. Anyone could tell that the manuscript was
+    very old.      logprob=  -5.021
+    new.           logprob= -14.381   -> prefers: very old.
+  ctxB: ...ssage. Anyone could tell that the text message was
+    very old.      logprob=  -4.952
+    new.           logprob= -12.351   -> prefers: very old.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-comparative-44 ===
+  ctxA: ... box of tissues, given that the crate of books was
+    much heavier.  logprob=  -0.947
+    light.         logprob=  -6.502   -> prefers: much heavier.
+  ctxB: ... box of tissues, given that the box of tissues was
+    much heavier.  logprob=  -7.452
+    light.         logprob=  -1.139   -> prefers: light.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-45 ===
+  ctxA: ... the park, given that the hike up the mountain was
+    very lengthy.  logprob=  -1.324
+    quick.         logprob=  -8.882   -> prefers: very lengthy.
+  ctxB: ...in the park, given that the stroll in the park was
+    very lengthy.  logprob= -13.045
+    quick.         logprob=  -1.991   -> prefers: quick.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-46 ===
+  ctxA: ...ner shop, owing to the fact that the road trip was
+    much longer.   logprob=  -1.588
+    quick.         logprob=  -7.773   -> prefers: much longer.
+  ctxB: ...g to the fact that the walk to the corner shop was
+    much longer.   logprob=  -7.990
+    quick.         logprob=  -1.592   -> prefers: quick.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-comparative-47 ===
+  ctxA: ... the park, given that the hike up the mountain was
+    long and drawn out. logprob=  -1.583
+    quick.         logprob=  -7.474   -> prefers: long and drawn out.
+  ctxB: ...in the park, given that the stroll in the park was
+    long and drawn out. logprob=  -8.297
+    quick.         logprob=  -1.857   -> prefers: quick.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-emotional-48 ===
+  ctxA: ...mar envied Nadia. Anyone could tell that Nadia was
+    lucky.         logprob=  -8.800
+    jealous.       logprob=  -6.111   -> prefers: jealous.
+  ctxB: ...Omar envied Nadia. Anyone could tell that Omar was
+    lucky.         logprob=  -9.008
+    jealous.       logprob=  -5.793   -> prefers: jealous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-49 ===
+  ctxA: ...ongratulated Hiro. Anyone could tell that Hiro was
+    successful.    logprob=  -5.880
+    sporting.      logprob= -17.064   -> prefers: successful.
+  ctxB: ...ngratulated Hiro. Anyone could tell that Farah was
+    successful.    logprob=  -5.855
+    sporting.      logprob= -14.264   -> prefers: successful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-50 ===
+  ctxA: ... congratulated Zoe, owing to the fact that Zoe was
+    victorious.    logprob=  -7.428
+    sporting.      logprob= -11.393   -> prefers: victorious.
+  ctxB: ...congratulated Zoe, owing to the fact that Hiro was
+    victorious.    logprob=  -8.764
+    sporting.      logprob= -10.055   -> prefers: victorious.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-51 ===
+  ctxA: ...Reza envied Astrid, given that Astrid was
+    admired by everyone. logprob= -12.134
+    jealous.       logprob=  -8.742   -> prefers: jealous.
+  ctxB: ...Reza envied Astrid, given that Reza was
+    admired by everyone. logprob= -13.446
+    jealous.       logprob=  -8.968   -> prefers: jealous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-52 ===
+  ctxA: ...atulated Shreya. Anyone could tell that Shreya was
+    promoted.      logprob=  -7.918
+    happy for them. logprob= -22.560   -> prefers: promoted.
+  ctxB: ...ratulated Shreya. Anyone could tell that Amara was
+    promoted.      logprob=  -8.060
+    happy for them. logprob= -21.572   -> prefers: promoted.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-53 ===
+  ctxA: ...Zoe congratulated Hiro, given that Hiro was
+    the winner.    logprob=  -2.906
+    happy for them. logprob= -18.556   -> prefers: the winner.
+  ctxB: ...Zoe congratulated Hiro, given that Zoe was
+    the winner.    logprob=  -5.099
+    happy for them. logprob= -14.567   -> prefers: the winner.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-54 ===
+  ctxA: ...Chen envied Farah; the trouble was that Farah was
+    lucky.         logprob= -11.085
+    jealous.       logprob=  -7.292   -> prefers: jealous.
+  ctxB: ...Chen envied Farah; the trouble was that Chen was
+    lucky.         logprob= -10.911
+    jealous.       logprob=  -6.537   -> prefers: jealous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-55 ===
+  ctxA: ...envied Wanjiru, owing to the fact that Wanjiru was
+    admired by everyone. logprob= -12.093
+    unhappy with their own life. logprob= -24.855   -> prefers: admired by everyone.
+  ctxB: ...a envied Wanjiru, owing to the fact that Nadia was
+    admired by everyone. logprob= -12.366
+    unhappy with their own life. logprob= -24.766   -> prefers: admired by everyone.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-56 ===
+  ctxA: ...amala envied Ravi. Anyone could tell that Ravi was
+    very successful. logprob= -10.762
+    jealous.       logprob=  -5.240   -> prefers: jealous.
+  ctxB: ...ala envied Ravi. Anyone could tell that Kamala was
+    very successful. logprob= -10.804
+    jealous.       logprob=  -5.576   -> prefers: jealous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-57 ===
+  ctxA: ...Samir envied Zoe; the trouble was that Zoe was
+    admired by everyone. logprob= -13.872
+    insecure.      logprob=  -9.204   -> prefers: insecure.
+  ctxB: ...Samir envied Zoe; the trouble was that Samir was
+    admired by everyone. logprob= -14.572
+    insecure.      logprob=  -8.380   -> prefers: insecure.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-58 ===
+  ctxA: ...gratulated Nadia, owing to the fact that Nadia was
+    promoted.      logprob=  -7.690
+    happy for them. logprob= -15.428   -> prefers: promoted.
+  ctxB: ...gratulated Nadia, owing to the fact that Amara was
+    promoted.      logprob=  -8.509
+    happy for them. logprob= -14.724   -> prefers: promoted.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-59 ===
+  ctxA: ...ongratulated Felix; the trouble was that Felix was
+    promoted.      logprob=  -9.928
+    happy for them. logprob= -17.868   -> prefers: promoted.
+  ctxB: ...ngratulated Felix; the trouble was that Astrid was
+    promoted.      logprob= -11.444
+    happy for them. logprob= -16.445   -> prefers: promoted.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-60 ===
+  ctxA: ...atulated Kamala. Anyone could tell that Kamala was
+    the winner.    logprob=  -3.054
+    proud.         logprob=  -9.576   -> prefers: the winner.
+  ctxB: ...gratulated Kamala. Anyone could tell that Hiro was
+    the winner.    logprob=  -4.807
+    proud.         logprob=  -5.393   -> prefers: the winner.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-61 ===
+  ctxA: ...ongratulated Ravi, owing to the fact that Ravi was
+    successful.    logprob=  -6.031
+    happy for them. logprob= -15.205   -> prefers: successful.
+  ctxB: ...ngratulated Ravi, owing to the fact that Farah was
+    successful.    logprob=  -6.233
+    happy for them. logprob= -13.478   -> prefers: successful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-62 ===
+  ctxA: ...Jana congratulated Lena, given that Lena was
+    the winner.    logprob=  -3.053
+    proud.         logprob= -10.235   -> prefers: the winner.
+  ctxB: ...Jana congratulated Lena, given that Jana was
+    the winner.    logprob=  -4.821
+    proud.         logprob=  -5.276   -> prefers: the winner.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-63 ===
+  ctxA: ...dia envied Felix, owing to the fact that Felix was
+    popular.       logprob=  -9.782
+    unhappy with their own life. logprob= -24.582   -> prefers: popular.
+  ctxB: ...dia envied Felix, owing to the fact that Nadia was
+    popular.       logprob=  -9.599
+    unhappy with their own life. logprob= -24.571   -> prefers: popular.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-64 ===
+  ctxA: ...Ravi envied Amara, given that Amara was
+    very successful. logprob= -14.122
+    resentful.     logprob= -11.572   -> prefers: resentful.
+  ctxB: ...Ravi envied Amara, given that Ravi was
+    very successful. logprob= -14.245
+    resentful.     logprob= -11.829   -> prefers: resentful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-65 ===
+  ctxA: ...ongratulated Reza. Anyone could tell that Reza was
+    the winner.    logprob=  -4.981
+    warm.          logprob= -12.671   -> prefers: the winner.
+  ctxB: ...congratulated Reza. Anyone could tell that Zoe was
+    the winner.    logprob=  -5.539
+    warm.          logprob=  -5.956   -> prefers: the winner.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-66 ===
+  ctxA: ...Basil envied Samir; the trouble was that Samir was
+    admired by everyone. logprob= -13.971
+    resentful.     logprob= -10.988   -> prefers: resentful.
+  ctxB: ...Basil envied Samir; the trouble was that Basil was
+    admired by everyone. logprob= -14.720
+    resentful.     logprob=  -9.964   -> prefers: resentful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-67 ===
+  ctxA: ...Basil envied Ravi, given that Ravi was
+    very successful. logprob= -12.753
+    resentful.     logprob= -11.541   -> prefers: resentful.
+  ctxB: ...Basil envied Ravi, given that Basil was
+    very successful. logprob= -12.897
+    resentful.     logprob= -12.581   -> prefers: resentful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-68 ===
+  ctxA: ...Hedda congratulated Lars, given that Lars was
+    successful.    logprob=  -6.062
+    warm.          logprob= -11.808   -> prefers: successful.
+  ctxB: ...Hedda congratulated Lars, given that Hedda was
+    successful.    logprob=  -8.299
+    warm.          logprob=  -7.890   -> prefers: warm.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-emotional-69 ===
+  ctxA: ...Farah envied Hiro, given that Hiro was
+    admired by everyone. logprob= -13.227
+    jealous.       logprob=  -9.017   -> prefers: jealous.
+  ctxB: ...Farah envied Hiro, given that Farah was
+    admired by everyone. logprob= -13.120
+    jealous.       logprob=  -8.017   -> prefers: jealous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-70 ===
+  ctxA: ...ongratulated Hedda; the trouble was that Hedda was
+    promoted.      logprob= -10.004
+    proud.         logprob=  -9.339   -> prefers: proud.
+  ctxB: ...ngratulated Hedda; the trouble was that Astrid was
+    promoted.      logprob= -11.198
+    proud.         logprob=  -7.762   -> prefers: proud.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-emotional-71 ===
+  ctxA: ...gratulated Amara. Anyone could tell that Amara was
+    the winner.    logprob=  -2.108
+    proud.         logprob=  -9.203   -> prefers: the winner.
+  ctxB: ...ngratulated Amara. Anyone could tell that Lars was
+    the winner.    logprob=  -5.368
+    proud.         logprob=  -4.841   -> prefers: proud.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-fit-72 ===
+  ctxA: ...ng to the fact that the tunnel under the canal was
+    too low.       logprob=  -7.670
+    too tall.      logprob= -10.847   -> prefers: too low.
+  ctxB: ...er the canal, owing to the fact that the barge was
+    too low.       logprob=  -6.979
+    too tall.      logprob=  -5.425   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-fit-73 ===
+  ctxA: ...t in the taxi, owing to the fact that the taxi was
+    too small.     logprob=  -0.033
+    too bulky.     logprob=  -9.721   -> prefers: too small.
+  ctxB: ...he taxi, owing to the fact that the cello case was
+    too small.     logprob=  -2.087
+    too bulky.     logprob=  -5.838   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-fit-74 ===
+  ctxA: ...e canal, given that the tunnel under the canal was
+    too low.       logprob=  -8.904
+    too tall.      logprob= -11.765   -> prefers: too low.
+  ctxB: ...e tunnel under the canal, given that the barge was
+    too low.       logprob=  -8.276
+    too tall.      logprob=  -6.137   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-fit-75 ===
+  ctxA: ...d not fit in the garage, given that the garage was
+    too short.     logprob=  -9.940
+    too long.      logprob= -17.112   -> prefers: too short.
+  ctxB: ...ld not fit in the garage, given that the canoe was
+    too short.     logprob=  -6.504
+    too long.      logprob=  -5.016   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-fit-76 ===
+  ctxA: ... the garage, owing to the fact that the garage was
+    too short.     logprob= -10.254
+    too long.      logprob= -16.817   -> prefers: too short.
+  ctxB: ...n the garage, owing to the fact that the canoe was
+    too short.     logprob=  -6.850
+    too long.      logprob=  -5.100   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-fit-77 ===
+  ctxA: ... the garage. Anyone could tell that the garage was
+    too short.     logprob= -16.569
+    too long.      logprob= -21.432   -> prefers: too short.
+  ctxB: ...n the garage. Anyone could tell that the canoe was
+    too short.     logprob= -15.176
+    too long.      logprob= -13.672   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-fit-78 ===
+  ctxA: ...fit in the hatchback, given that the hatchback was
+    too small.     logprob=  -0.369
+    too tall.      logprob=  -7.206   -> prefers: too small.
+  ctxB: ... not fit in the hatchback, given that the harp was
+    too small.     logprob=  -2.726
+    too tall.      logprob=  -5.246   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-fit-79 ===
+  ctxA: ...in the garage; the trouble was that the garage was
+    too short.     logprob=  -8.699
+    too long.      logprob= -13.824   -> prefers: too short.
+  ctxB: ... in the garage; the trouble was that the canoe was
+    too short.     logprob=  -6.112
+    too long.      logprob=  -3.862   -> prefers: too long.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-fit-80 ===
+  ctxA: ...one could tell that the tunnel under the canal was
+    too low.       logprob= -10.518
+    too tall.      logprob= -12.044   -> prefers: too low.
+  ctxB: ...er the canal. Anyone could tell that the barge was
+    too low.       logprob= -10.429
+    too tall.      logprob=  -8.552   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-fit-81 ===
+  ctxA: ... hatchback; the trouble was that the hatchback was
+    too small.     logprob=  -0.793
+    too tall.      logprob=  -4.695   -> prefers: too small.
+  ctxB: ...n the hatchback; the trouble was that the harp was
+    too small.     logprob=  -3.270
+    too tall.      logprob=  -4.186   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-fit-82 ===
+  ctxA: ...would not fit in the taxi, given that the taxi was
+    too small.     logprob=  -0.040
+    too bulky.     logprob= -10.282   -> prefers: too small.
+  ctxB: ...not fit in the taxi, given that the cello case was
+    too small.     logprob=  -1.215
+    too bulky.     logprob=  -6.214   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-fit-83 ===
+  ctxA: ...t in the taxi. Anyone could tell that the taxi was
+    too small.     logprob=  -4.439
+    too bulky.     logprob= -16.682   -> prefers: too small.
+  ctxB: ...he taxi. Anyone could tell that the cello case was
+    too small.     logprob=  -5.701
+    too bulky.     logprob= -11.742   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-fit-84 ===
+  ctxA: ...atchback. Anyone could tell that the hatchback was
+    too small.     logprob=  -2.416
+    too tall.      logprob=  -8.793   -> prefers: too small.
+  ctxB: ...the hatchback. Anyone could tell that the harp was
+    too small.     logprob=  -3.668
+    too tall.      logprob=  -7.401   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-fit-85 ===
+  ctxA: ...he trouble was that the tunnel under the canal was
+    too low.       logprob=  -7.533
+    too tall.      logprob=  -9.364   -> prefers: too low.
+  ctxB: ...nder the canal; the trouble was that the barge was
+    too low.       logprob=  -8.238
+    too tall.      logprob=  -5.676   -> prefers: too tall.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-fit-86 ===
+  ctxA: ...fit in the taxi; the trouble was that the taxi was
+    too small.     logprob=  -0.265
+    too bulky.     logprob=  -7.519   -> prefers: too small.
+  ctxB: ... the taxi; the trouble was that the cello case was
+    too small.     logprob=  -2.355
+    too bulky.     logprob=  -3.862   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-fit-87 ===
+  ctxA: ...atchback, owing to the fact that the hatchback was
+    too small.     logprob=  -0.244
+    too tall.      logprob=  -6.697   -> prefers: too small.
+  ctxB: ...the hatchback, owing to the fact that the harp was
+    too small.     logprob=  -2.284
+    too tall.      logprob=  -4.488   -> prefers: too small.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-88 ===
+  ctxA: ...Ravi gave a gift to Reza, given that Reza was
+    recovering from illness. logprob=  -9.425
+    generous.      logprob=  -6.228   -> prefers: generous.
+  ctxB: ...Ravi gave a gift to Reza, given that Ravi was
+    recovering from illness. logprob= -10.332
+    generous.      logprob=  -4.642   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-89 ===
+  ctxA: ...Amara gave a gift to Felix, given that Felix was
+    leaving the company. logprob= -12.456
+    fond of them.  logprob= -16.378   -> prefers: leaving the company.
+  ctxB: ...Amara gave a gift to Felix, given that Amara was
+    leaving the company. logprob= -14.909
+    fond of them.  logprob= -13.699   -> prefers: fond of them.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-possession-90 ===
+  ctxA: ...gave a gift to Reza; the trouble was that Reza was
+    a close friend. logprob=  -9.343
+    generous.      logprob=  -8.374   -> prefers: generous.
+  ctxB: ...ave a gift to Reza; the trouble was that Amara was
+    a close friend. logprob=  -9.331
+    generous.      logprob=  -7.444   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-91 ===
+  ctxA: ... a gift to Kamala; the trouble was that Kamala was
+    a close friend. logprob=  -9.090
+    grateful.      logprob=  -7.507   -> prefers: grateful.
+  ctxB: ...e a gift to Kamala; the trouble was that Nadia was
+    a close friend. logprob=  -9.596
+    grateful.      logprob=  -6.970   -> prefers: grateful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-92 ===
+  ctxA: ... a gift to Basil. Anyone could tell that Basil was
+    a close friend. logprob=  -8.029
+    thoughtful.    logprob=  -4.671   -> prefers: thoughtful.
+  ctxB: ... a gift to Basil. Anyone could tell that Samir was
+    a close friend. logprob=  -9.938
+    thoughtful.    logprob=  -3.881   -> prefers: thoughtful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-93 ===
+  ctxA: ...gave a gift to Chen; the trouble was that Chen was
+    celebrating a birthday. logprob= -11.447
+    generous.      logprob=  -7.379   -> prefers: generous.
+  ctxB: ...ve a gift to Chen; the trouble was that Dmitri was
+    celebrating a birthday. logprob= -12.894
+    generous.      logprob=  -6.511   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-94 ===
+  ctxA: ...ve a gift to Jana. Anyone could tell that Jana was
+    leaving the company. logprob= -16.554
+    fond of them.  logprob= -17.201   -> prefers: leaving the company.
+  ctxB: ...e a gift to Jana. Anyone could tell that Amara was
+    leaving the company. logprob= -18.323
+    fond of them.  logprob= -12.653   -> prefers: fond of them.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-possession-95 ===
+  ctxA: ...Farah gave a gift to Felix, given that Felix was
+    leaving the company. logprob= -12.981
+    thoughtful.    logprob=  -8.395   -> prefers: thoughtful.
+  ctxB: ...Farah gave a gift to Felix, given that Farah was
+    leaving the company. logprob= -14.318
+    thoughtful.    logprob=  -8.155   -> prefers: thoughtful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-96 ===
+  ctxA: ...Lena gave a gift to Luis, given that Luis was
+    recovering from illness. logprob=  -9.348
+    grateful.      logprob=  -6.469   -> prefers: grateful.
+  ctxB: ...Lena gave a gift to Luis, given that Lena was
+    recovering from illness. logprob= -11.280
+    grateful.      logprob=  -3.355   -> prefers: grateful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-97 ===
+  ctxA: ...gave a gift to Lars; the trouble was that Lars was
+    celebrating a birthday. logprob= -11.459
+    generous.      logprob=  -7.139   -> prefers: generous.
+  ctxB: ...gave a gift to Lars; the trouble was that Hiro was
+    celebrating a birthday. logprob= -12.819
+    generous.      logprob=  -5.864   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-98 ===
+  ctxA: ... gift to Shreya. Anyone could tell that Shreya was
+    celebrating a birthday. logprob= -11.902
+    generous.      logprob=  -6.142   -> prefers: generous.
+  ctxB: ... gift to Shreya. Anyone could tell that Astrid was
+    celebrating a birthday. logprob= -12.102
+    generous.      logprob=  -3.156   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-99 ===
+  ctxA: ... gift to Dmitri, owing to the fact that Dmitri was
+    celebrating a birthday. logprob= -10.371
+    fond of them.  logprob= -15.951   -> prefers: celebrating a birthday.
+  ctxB: ... a gift to Dmitri, owing to the fact that Jana was
+    celebrating a birthday. logprob= -11.951
+    fond of them.  logprob= -13.724   -> prefers: celebrating a birthday.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-100 ===
+  ctxA: ... a gift to Felix. Anyone could tell that Felix was
+    celebrating a birthday. logprob= -11.825
+    grateful.      logprob=  -5.074   -> prefers: grateful.
+  ctxB: ...e a gift to Felix. Anyone could tell that Lars was
+    celebrating a birthday. logprob= -12.383
+    grateful.      logprob=  -4.839   -> prefers: grateful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-101 ===
+  ctxA: ...Amara gave a gift to Astrid, given that Astrid was
+    a close friend. logprob=  -5.269
+    fond of them.  logprob= -16.480   -> prefers: a close friend.
+  ctxB: ...Amara gave a gift to Astrid, given that Amara was
+    a close friend. logprob=  -5.940
+    fond of them.  logprob= -14.532   -> prefers: a close friend.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-102 ===
+  ctxA: ... gift to Wanjiru; the trouble was that Wanjiru was
+    leaving the company. logprob= -13.748
+    fond of them.  logprob= -15.636   -> prefers: leaving the company.
+  ctxB: ... a gift to Wanjiru; the trouble was that Farah was
+    leaving the company. logprob= -14.735
+    fond of them.  logprob= -13.858   -> prefers: fond of them.
+  correct binding (flips A->c1, B->c2): True
+
+=== v4-possession-103 ===
+  ctxA: ...Nadia gave a gift to Dmitri, given that Dmitri was
+    leaving the company. logprob= -12.268
+    generous.      logprob=  -6.065   -> prefers: generous.
+  ctxB: ...Nadia gave a gift to Dmitri, given that Nadia was
+    leaving the company. logprob= -14.117
+    generous.      logprob=  -4.594   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-104 ===
+  ctxA: ...Ravi gave a gift to Basil, given that Basil was
+    celebrating a birthday. logprob=  -9.565
+    grateful.      logprob=  -6.182   -> prefers: grateful.
+  ctxB: ...Ravi gave a gift to Basil, given that Ravi was
+    celebrating a birthday. logprob= -11.060
+    grateful.      logprob=  -4.989   -> prefers: grateful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-105 ===
+  ctxA: ...ve a gift to Hedda; the trouble was that Hedda was
+    leaving the company. logprob= -13.202
+    grateful.      logprob=  -7.586   -> prefers: grateful.
+  ctxB: ...ave a gift to Hedda; the trouble was that Luis was
+    leaving the company. logprob= -14.687
+    grateful.      logprob=  -7.377   -> prefers: grateful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-106 ===
+  ctxA: ... a gift to Astrid; the trouble was that Astrid was
+    leaving the company. logprob= -14.109
+    grateful.      logprob=  -8.002   -> prefers: grateful.
+  ctxB: ...ve a gift to Astrid; the trouble was that Lars was
+    leaving the company. logprob= -14.684
+    grateful.      logprob=  -8.235   -> prefers: grateful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-107 ===
+  ctxA: ... a gift to Nadia, owing to the fact that Nadia was
+    recovering from illness. logprob=  -8.867
+    fond of them.  logprob= -15.990   -> prefers: recovering from illness.
+  ctxB: ... a gift to Nadia, owing to the fact that Hedda was
+    recovering from illness. logprob= -10.278
+    fond of them.  logprob= -13.545   -> prefers: recovering from illness.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-108 ===
+  ctxA: ...gave a gift to Chen; the trouble was that Chen was
+    a close friend. logprob=  -9.397
+    generous.      logprob=  -7.462   -> prefers: generous.
+  ctxB: ...ve a gift to Chen; the trouble was that Shreya was
+    a close friend. logprob=  -9.521
+    generous.      logprob=  -6.769   -> prefers: generous.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-109 ===
+  ctxA: ...gave a gift to Luis; the trouble was that Luis was
+    celebrating a birthday. logprob= -11.778
+    thoughtful.    logprob=  -7.924   -> prefers: thoughtful.
+  ctxB: ...ave a gift to Luis; the trouble was that Hedda was
+    celebrating a birthday. logprob= -13.183
+    thoughtful.    logprob=  -8.728   -> prefers: thoughtful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-110 ===
+  ctxA: ...ve a gift to Jana, owing to the fact that Jana was
+    leaving the company. logprob= -13.746
+    thoughtful.    logprob=  -7.963   -> prefers: thoughtful.
+  ctxB: ... a gift to Jana, owing to the fact that Kamala was
+    leaving the company. logprob= -15.384
+    thoughtful.    logprob=  -8.260   -> prefers: thoughtful.
+  correct binding (flips A->c1, B->c2): False
+
+=== v4-possession-111 ===
+  ctxA: ...ve a gift to Lena. Anyone could tell that Lena was
+    a close friend. logprob=  -7.116
+    grateful.      logprob=  -7.300   -> prefers: a close friend.
+  ctxB: ...ve a gift to Lena. Anyone could tell that Hiro was
+    a close friend. logprob= -11.049
+    grateful.      logprob=  -4.803   -> prefers: grateful.
+  correct binding (flips A->c1, B->c2): True
+
+============================================================
+Correct entity-attribute binding: 41/112
+
+By category:
+  ability                  7/24  (29%)
+  comparative              20/24  (83%)
+  emotional                2/24  (8%)
+  fit                      8/16  (50%)
+  possession               4/24  (17%)
+[probe] saved results to benchmark/phase25a/probe_v4_phase25a_step6000.json

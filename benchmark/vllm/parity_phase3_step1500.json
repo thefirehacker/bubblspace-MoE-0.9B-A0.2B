@@ -1,0 +1,45 @@
+{
+ "teacher_forced": {
+  "positions": 205,
+  "mean_abs_dlogprob": 0.03348140498678104,
+  "max_abs_dlogprob": 1.9638023376464844,
+  "top1_agreement": 0.9902439024390244
+ },
+ "greedy": {
+  "cases": 23,
+  "identical": 15,
+  "mean_common_prefix_frac": 0.7421457689494164
+ },
+ "examples": [
+  {
+   "case": "who are you",
+   "vllm": "I'm BubblSpace MoE-0.9B-A0.2B, a small open language model trained from scratch by BubblSpace. I'm a small model with about 0.9 billion parameters in total, and I'm built to be efficient and expressive. I'm designed to be easy to use and understand, which is why I'm well-suited for many tasks.\n"
+  },
+  {
+   "case": "capital of India",
+   "vllm": "The capital of India is New Delhi.\n"
+  },
+  {
+   "case": "reverse capital",
+   "vllm": "New Delhi is the capital of India.\n"
+  },
+  {
+   "case": "photosynthesis",
+   "vllm": "Photosynthesis is the process by which plants convert light energy into chemical energy in the form of glucose. It is a vital process for all living organisms, as it is the primary source of energy for most organisms.\n"
+  },
+  {
+   "case": "largest planet",
+   "vllm": "The largest planet in the solar system is Jupiter. It is the largest planet in the solar system and the only planet in the solar system that has a significant atmosphere. Jupiter is also the only planet in the solar system that has a significant magnetic field.\n"
+  },
+  {
+   "case": "three fruits",
+   "vllm": "1. Apple\n2. Banana\n3. Cherry\n"
+  }
+ ],
+ "throughput": {
+  "prompts": 512,
+  "generated_tokens": 131072,
+  "seconds": 7.8,
+  "tok_per_s": 16886
+ }
+}

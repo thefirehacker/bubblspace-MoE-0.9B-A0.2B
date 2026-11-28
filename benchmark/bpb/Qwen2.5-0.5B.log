@@ -1,0 +1,27 @@
+Fetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 7 files:  29%|██▊       | 2/7 [00:00<00:00, 18.18it/s]Fetching 7 files: 100%|██████████| 7/7 [00:03<00:00,  1.76it/s]Fetching 7 files: 100%|██████████| 7/7 [00:03<00:00,  1.91it/s]
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 6499.70it/s]
+200/1995 docs  20s
+400/1995 docs  38s
+600/1995 docs  57s
+800/1995 docs  75s
+1000/1995 docs  86s
+1200/1995 docs  101s
+1400/1995 docs  114s
+1600/1995 docs  125s
+1800/1995 docs  135s
+{
+ "overall": {
+  "bpb": 0.8128,
+  "compression_rate_pct": 10.16,
+  "mean_doc_bpb": 0.8199,
+  "docs": 1995,
+  "bytes": 13808841,
+  "tokens": 3386903,
+  "bytes_per_token": 4.077
+ },
+ "mean_over_categories_bpb": 0.8144,
+ "mean_over_english_categories_bpb": 0.7665
+}
+{'ao3_english': 1.0078, 'ao3_nonenglish': 1.264, 'arxiv_cs': 0.8338, 'arxiv_math': 0.7355, 'arxiv_other': 0.7818, 'arxiv_physics': 0.7915, 'bbc_news': 0.8472, 'biorxiv_all': 0.7646, 'github_cpp': 0.4225, 'github_javascript': 0.6056, 'github_markdown': 1.116, 'github_other': 0.5961, 'github_python': 0.6021, 'wikipedia_english': 0.8602, 'wikipedia_nonenglish': 0.9876}
+wrote benchmark/bpb/bpb_Qwen2.5-0.5B.json (144.3 s)

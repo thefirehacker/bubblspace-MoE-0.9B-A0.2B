@@ -1,0 +1,112 @@
+[Tue Nov 24 20:43:14 UTC 2026] start EleutherAI/pythia-1b step4000
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files:  40%|████      | 2/5 [00:00<00:00, 16.81it/s]Fetching 5 files:  80%|████████  | 4/5 [00:20<00:00, 16.81it/s]Fetching 5 files: 100%|██████████| 5/5 [00:21<00:00,  4.96s/it]Fetching 5 files: 100%|██████████| 5/5 [00:21<00:00,  4.37s/it]
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s]Loading weights:  93%|█████████▎| 183/196 [00:00<00:00, 1805.63it/s]Loading weights: 100%|██████████| 196/196 [00:00<00:00, 1812.88it/s]
+seed 0: {'answered': 0.9006, 'row_acc': 0.4515, 'L3_pairs': 0.0035, 'same_name_both_twins': 0.8768, 'first_mentioned_share': 0.8221}
+seed 1: {'answered': 0.7545, 'row_acc': 0.3796, 'L3_pairs': 0.0035, 'same_name_both_twins': 0.7359, 'first_mentioned_share': 0.8243}
+seed 2: {'answered': 0.809, 'row_acc': 0.4025, 'L3_pairs': 0.0, 'same_name_both_twins': 0.7852, 'first_mentioned_share': 0.7971}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.9021, 'row_acc': 0.4515, 'L3_pairs': 0.0036, 'same_name_both_twins': 0.8736, 'first_mentioned_share': 0.8287}, 'swapped': {'answered': 0.9021, 'row_acc': 0.445, 'L3_pairs': 0.0036, 'same_name_both_twins': 0.8628, 'first_mentioned_share': 0.4179}, 'n_rows_answered_both': 1105, 'kept_same_name': 0.7339, 'kept_same_position': 0.2661}
+wrote benchmark/binding_levels/controls/pythia-1b_step4000.json (380.1 s)
+[Tue Nov 24 20:49:39 UTC 2026] end EleutherAI/pythia-1b step4000 rc=0
+[Tue Nov 24 20:49:39 UTC 2026] start EleutherAI/pythia-1b step20000
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files:  40%|████      | 2/5 [00:00<00:00, 17.71it/s]Fetching 5 files: 100%|██████████| 5/5 [00:08<00:00,  2.02s/it]Fetching 5 files: 100%|██████████| 5/5 [00:08<00:00,  1.78s/it]
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s]Loading weights: 100%|██████████| 196/196 [00:00<00:00, 2037.73it/s]
+seed 0: {'answered': 0.9755, 'row_acc': 0.4799, 'L3_pairs': 0.0106, 'same_name_both_twins': 0.9401, 'first_mentioned_share': 0.4854}
+seed 1: {'answered': 0.7727, 'row_acc': 0.3899, 'L3_pairs': 0.007, 'same_name_both_twins': 0.7289, 'first_mentioned_share': 0.5577}
+seed 2: {'answered': 0.9771, 'row_acc': 0.4759, 'L3_pairs': 0.0282, 'same_name_both_twins': 0.912, 'first_mentioned_share': 0.6042}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.9757, 'row_acc': 0.4773, 'L3_pairs': 0.0108, 'same_name_both_twins': 0.9386, 'first_mentioned_share': 0.4876}, 'swapped': {'answered': 0.9757, 'row_acc': 0.5016, 'L3_pairs': 0.0144, 'same_name_both_twins': 0.9458, 'first_mentioned_share': 0.408}, 'n_rows_answered_both': 1196, 'kept_same_name': 0.7475, 'kept_same_position': 0.2525}
+wrote benchmark/binding_levels/controls/pythia-1b_step20000.json (377.8 s)
+[Tue Nov 24 20:56:02 UTC 2026] end EleutherAI/pythia-1b step20000 rc=0
+[Tue Nov 24 20:56:02 UTC 2026] start EleutherAI/pythia-1b step143000
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files:  20%|██        | 1/5 [00:00<00:00,  8.75it/s]Fetching 5 files: 100%|██████████| 5/5 [00:14<00:00,  3.02s/it]Fetching 5 files: 100%|██████████| 5/5 [00:14<00:00,  2.84s/it]
+Loading weights:   0%|          | 0/196 [00:00<?, ?it/s]Loading weights: 100%|██████████| 196/196 [00:00<00:00, 2010.58it/s]
+seed 0: {'answered': 0.9953, 'row_acc': 0.4909, 'L3_pairs': 0.0176, 'same_name_both_twins': 0.9437, 'first_mentioned_share': 0.5202}
+seed 1: {'answered': 0.9558, 'row_acc': 0.4862, 'L3_pairs': 0.0141, 'same_name_both_twins': 0.9296, 'first_mentioned_share': 0.6094}
+seed 2: {'answered': 0.9897, 'row_acc': 0.5028, 'L3_pairs': 0.0352, 'same_name_both_twins': 0.9296, 'first_mentioned_share': 0.6962}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.9951, 'row_acc': 0.4887, 'L3_pairs': 0.0181, 'same_name_both_twins': 0.9458, 'first_mentioned_share': 0.5195}, 'swapped': {'answered': 0.9935, 'row_acc': 0.5113, 'L3_pairs': 0.0181, 'same_name_both_twins': 0.9603, 'first_mentioned_share': 0.3127}, 'n_rows_answered_both': 1226, 'kept_same_name': 0.7194, 'kept_same_position': 0.2806}
+wrote benchmark/binding_levels/controls/pythia-1b_step143000.json (378.9 s)
+[Tue Nov 24 21:02:26 UTC 2026] end EleutherAI/pythia-1b step143000 rc=0
+[Tue Nov 24 21:02:26 UTC 2026] start allenai/OLMo-2-0425-1B stage1-step10000-tokens21B
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files:  20%|██        | 2/10 [00:00<00:00, 16.65it/s]Fetching 10 files:  80%|████████  | 8/10 [00:00<00:00, 39.56it/s]Fetching 10 files: 100%|██████████| 10/10 [00:19<00:00,  1.90s/it]
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights:  56%|█████▌    | 100/179 [00:00<00:00, 992.05it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 1173.71it/s]
+seed 0: {'answered': 0.7964, 'row_acc': 0.4033, 'L3_pairs': 0.0106, 'same_name_both_twins': 0.7289, 'first_mentioned_share': 0.774}
+seed 1: {'answered': 0.7285, 'row_acc': 0.3567, 'L3_pairs': 0.0106, 'same_name_both_twins': 0.662, 'first_mentioned_share': 0.7281}
+seed 2: {'answered': 0.7822, 'row_acc': 0.3875, 'L3_pairs': 0.0211, 'same_name_both_twins': 0.7183, 'first_mentioned_share': 0.7568}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.7977, 'row_acc': 0.4037, 'L3_pairs': 0.0108, 'same_name_both_twins': 0.7256, 'first_mentioned_share': 0.7809}, 'swapped': {'answered': 0.8091, 'row_acc': 0.3956, 'L3_pairs': 0.0144, 'same_name_both_twins': 0.7365, 'first_mentioned_share': 0.659}, 'n_rows_answered_both': 967, 'kept_same_name': 0.4643, 'kept_same_position': 0.5357}
+wrote benchmark/binding_levels/controls/OLMo-2-0425-1B_stage1-step10000-tokens21B.json (689.1 s)
+[Tue Nov 24 21:14:00 UTC 2026] end allenai/OLMo-2-0425-1B stage1-step10000-tokens21B rc=0
+[Tue Nov 24 21:14:00 UTC 2026] start allenai/OLMo-2-0425-1B stage1-step20000-tokens42B
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files:  10%|█         | 1/10 [00:00<00:00,  9.49it/s]Fetching 10 files:  80%|████████  | 8/10 [00:00<00:00, 39.82it/s]Fetching 10 files:  90%|█████████ | 9/10 [00:20<00:00, 39.82it/s]Fetching 10 files: 100%|██████████| 10/10 [00:36<00:00,  4.95s/it]Fetching 10 files: 100%|██████████| 10/10 [00:36<00:00,  3.67s/it]
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights:  61%|██████    | 109/179 [00:00<00:00, 1067.80it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 1247.76it/s]
+seed 0: {'answered': 0.8966, 'row_acc': 0.442, 'L3_pairs': 0.0141, 'same_name_both_twins': 0.8662, 'first_mentioned_share': 0.6717}
+seed 1: {'answered': 0.8485, 'row_acc': 0.4341, 'L3_pairs': 0.0282, 'same_name_both_twins': 0.7711, 'first_mentioned_share': 0.4019}
+seed 2: {'answered': 0.8414, 'row_acc': 0.4278, 'L3_pairs': 0.0387, 'same_name_both_twins': 0.7676, 'first_mentioned_share': 0.6201}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.8997, 'row_acc': 0.4442, 'L3_pairs': 0.0144, 'same_name_both_twins': 0.8664, 'first_mentioned_share': 0.6718}, 'swapped': {'answered': 0.9086, 'row_acc': 0.4466, 'L3_pairs': 0.0217, 'same_name_both_twins': 0.8628, 'first_mentioned_share': 0.6625}, 'n_rows_answered_both': 1101, 'kept_same_name': 0.5259, 'kept_same_position': 0.4741}
+wrote benchmark/binding_levels/controls/OLMo-2-0425-1B_stage1-step20000-tokens42B.json (703.2 s)
+[Tue Nov 24 21:41:05 UTC 2026] end allenai/OLMo-2-0425-1B stage1-step20000-tokens42B rc=0
+[Tue Nov 24 21:41:05 UTC 2026] start allenai/OLMo-2-0425-1B main
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files:  20%|██        | 2/10 [00:00<00:00, 15.60it/s]Fetching 10 files:  80%|████████  | 8/10 [00:00<00:00, 33.24it/s]Fetching 10 files: 100%|██████████| 10/10 [00:16<00:00,  1.66s/it]
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights:  73%|███████▎  | 131/179 [00:00<00:00, 1303.12it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 1346.06it/s]
+seed 0: {'answered': 1.0, 'row_acc': 0.4933, 'L3_pairs': 0.0317, 'same_name_both_twins': 0.9437, 'first_mentioned_share': 0.4175}
+seed 1: {'answered': 0.9961, 'row_acc': 0.4957, 'L3_pairs': 0.0352, 'same_name_both_twins': 0.9331, 'first_mentioned_share': 0.3883}
+seed 2: {'answered': 0.9992, 'row_acc': 0.5012, 'L3_pairs': 0.0387, 'same_name_both_twins': 0.9331, 'first_mentioned_share': 0.3705}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 1.0, 'row_acc': 0.4911, 'L3_pairs': 0.0325, 'same_name_both_twins': 0.9422, 'first_mentioned_share': 0.4126}, 'swapped': {'answered': 1.0, 'row_acc': 0.5032, 'L3_pairs': 0.0253, 'same_name_both_twins': 0.9386, 'first_mentioned_share': 0.4506}, 'n_rows_answered_both': 1236, 'kept_same_name': 0.6917, 'kept_same_position': 0.3083}
+wrote benchmark/binding_levels/controls/OLMo-2-0425-1B_main.json (202.7 s)
+[Tue Nov 24 23:48:42 UTC 2026] end allenai/OLMo-2-0425-1B main rc=0
+[Tue Nov 24 23:48:42 UTC 2026] start EleutherAI/pythia-6.9b step4000
+Fetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Fetching 7 files:  14%|█▍        | 1/7 [00:00<00:01,  4.42it/s]Fetching 7 files:  86%|████████▌ | 6/7 [00:17<00:03,  3.12s/it]Fetching 7 files: 100%|██████████| 7/7 [00:46<00:00,  8.20s/it]Fetching 7 files: 100%|██████████| 7/7 [00:46<00:00,  6.62s/it]
+[scan] ClamAV clean: EleutherAI/pythia-6.9b@step4000
+Loading weights:   0%|          | 0/388 [00:00<?, ?it/s]Loading weights:  12%|█▏        | 48/388 [00:00<00:00, 479.38it/s]Loading weights:  28%|██▊       | 108/388 [00:00<00:00, 509.02it/s]Loading weights:  43%|████▎     | 168/388 [00:00<00:00, 536.95it/s]Loading weights:  59%|█████▉    | 228/388 [00:00<00:00, 515.83it/s]Loading weights:  74%|███████▍  | 288/388 [00:00<00:00, 537.91it/s]Loading weights:  90%|████████▉ | 348/388 [00:00<00:00, 549.85it/s]Loading weights: 100%|██████████| 388/388 [00:00<00:00, 544.60it/s]
+seed 0: {'answered': 0.9534, 'row_acc': 0.4743, 'L3_pairs': 0.007, 'same_name_both_twins': 0.9366, 'first_mentioned_share': 0.8642}
+seed 1: {'answered': 0.7798, 'row_acc': 0.3836, 'L3_pairs': 0.0, 'same_name_both_twins': 0.743, 'first_mentioned_share': 0.8634}
+seed 2: {'answered': 0.9021, 'row_acc': 0.4451, 'L3_pairs': 0.0, 'same_name_both_twins': 0.8732, 'first_mentioned_share': 0.8766}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.9531, 'row_acc': 0.4733, 'L3_pairs': 0.0072, 'same_name_both_twins': 0.935, 'first_mentioned_share': 0.8727}, 'swapped': {'answered': 0.9515, 'row_acc': 0.4854, 'L3_pairs': 0.0144, 'same_name_both_twins': 0.9242, 'first_mentioned_share': 0.2942}, 'n_rows_answered_both': 1166, 'kept_same_name': 0.8208, 'kept_same_position': 0.1792}
+wrote benchmark/binding_levels/controls/pythia-6.9b_step4000.json (1574.0 s)
+[Wed Nov 25 00:15:03 UTC 2026] end EleutherAI/pythia-6.9b step4000 rc=0
+[Wed Nov 25 00:15:03 UTC 2026] start EleutherAI/pythia-6.9b step20000
+Fetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Fetching 7 files:  14%|█▍        | 1/7 [00:00<00:01,  4.38it/s]Fetching 7 files:  86%|████████▌ | 6/7 [00:16<00:02,  2.91s/it]Fetching 7 files: 100%|██████████| 7/7 [00:29<00:00,  4.97s/it]Fetching 7 files: 100%|██████████| 7/7 [00:29<00:00,  4.27s/it]
+[scan] ClamAV clean: EleutherAI/pythia-6.9b@step20000
+Loading weights:   0%|          | 0/388 [00:00<?, ?it/s]Loading weights:  13%|█▎        | 50/388 [00:00<00:00, 470.21it/s]Loading weights:  28%|██▊       | 110/388 [00:00<00:00, 512.52it/s]Loading weights:  43%|████▎     | 168/388 [00:00<00:00, 525.75it/s]Loading weights:  59%|█████▉    | 230/388 [00:00<00:00, 539.71it/s]Loading weights:  75%|███████▍  | 290/388 [00:00<00:00, 553.38it/s]Loading weights:  90%|████████▉ | 348/388 [00:00<00:00, 553.07it/s]Loading weights: 100%|██████████| 388/388 [00:00<00:00, 550.13it/s]
+seed 0: {'answered': 0.9747, 'row_acc': 0.5004, 'L3_pairs': 0.0387, 'same_name_both_twins': 0.9049, 'first_mentioned_share': 0.2235}
+seed 1: {'answered': 0.9013, 'row_acc': 0.4649, 'L3_pairs': 0.0352, 'same_name_both_twins': 0.8415, 'first_mentioned_share': 0.2828}
+seed 2: {'answered': 0.9605, 'row_acc': 0.4815, 'L3_pairs': 0.0387, 'same_name_both_twins': 0.8838, 'first_mentioned_share': 0.3254}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.9741, 'row_acc': 0.4976, 'L3_pairs': 0.0397, 'same_name_both_twins': 0.9061, 'first_mentioned_share': 0.2143}, 'swapped': {'answered': 0.9773, 'row_acc': 0.5162, 'L3_pairs': 0.0433, 'same_name_both_twins': 0.8953, 'first_mentioned_share': 0.4346}, 'n_rows_answered_both': 1195, 'kept_same_name': 0.6151, 'kept_same_position': 0.3849}
+wrote benchmark/binding_levels/controls/pythia-6.9b_step20000.json (1558.3 s)
+[Wed Nov 25 00:41:07 UTC 2026] end EleutherAI/pythia-6.9b step20000 rc=0
+[Wed Nov 25 00:41:07 UTC 2026] start EleutherAI/pythia-6.9b step143000
+Fetching 7 files:   0%|          | 0/7 [00:00<?, ?it/s]Fetching 7 files:  14%|█▍        | 1/7 [00:00<00:01,  4.57it/s]Fetching 7 files:  86%|████████▌ | 6/7 [00:19<00:03,  3.38s/it]Fetching 7 files: 100%|██████████| 7/7 [00:55<00:00,  9.91s/it]Fetching 7 files: 100%|██████████| 7/7 [00:55<00:00,  7.90s/it]
+[scan] ClamAV clean: EleutherAI/pythia-6.9b@step143000
+Loading weights:   0%|          | 0/388 [00:00<?, ?it/s]Loading weights:  12%|█▏        | 48/388 [00:00<00:00, 476.31it/s]Loading weights:  26%|██▌       | 100/388 [00:00<00:00, 484.35it/s]Loading weights:  41%|████      | 158/388 [00:00<00:00, 495.56it/s]Loading weights:  56%|█████▌    | 218/388 [00:00<00:00, 515.44it/s]Loading weights:  71%|███████   | 276/388 [00:00<00:00, 512.06it/s]Loading weights:  87%|████████▋ | 336/388 [00:00<00:00, 518.03it/s]Loading weights: 100%|██████████| 388/388 [00:00<00:00, 521.74it/s]
+seed 0: {'answered': 0.9992, 'row_acc': 0.5091, 'L3_pairs': 0.0599, 'same_name_both_twins': 0.9049, 'first_mentioned_share': 0.1864}
+seed 1: {'answered': 0.9953, 'row_acc': 0.5059, 'L3_pairs': 0.0317, 'same_name_both_twins': 0.9296, 'first_mentioned_share': 0.207}
+seed 2: {'answered': 0.9992, 'row_acc': 0.5122, 'L3_pairs': 0.0669, 'same_name_both_twins': 0.8803, 'first_mentioned_share': 0.2259}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.9992, 'row_acc': 0.5081, 'L3_pairs': 0.0505, 'same_name_both_twins': 0.9134, 'first_mentioned_share': 0.1765}, 'swapped': {'answered': 0.9984, 'row_acc': 0.5008, 'L3_pairs': 0.0794, 'same_name_both_twins': 0.8412, 'first_mentioned_share': 0.6353}, 'n_rows_answered_both': 1234, 'kept_same_name': 0.7172, 'kept_same_position': 0.2828}
+wrote benchmark/binding_levels/controls/pythia-6.9b_step143000.json (1582.7 s)
+[Wed Nov 25 01:07:36 UTC 2026] end EleutherAI/pythia-6.9b step143000 rc=0
+[Wed Nov 25 01:07:36 UTC 2026] start allenai/OLMo-2-1124-7B stage1-step2000-tokens9B
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files:  14%|█▍        | 2/14 [00:00<00:00, 17.13it/s]Fetching 14 files:  36%|███▌      | 5/14 [00:00<00:00, 22.89it/s]Fetching 14 files:  57%|█████▋    | 8/14 [00:00<00:00, 17.89it/s]Fetching 14 files:  57%|█████▋    | 8/14 [00:20<00:00, 17.89it/s]Fetching 14 files:  64%|██████▍   | 9/14 [00:33<00:31,  6.35s/it]Fetching 14 files:  71%|███████▏  | 10/14 [00:46<00:31,  7.76s/it]Fetching 14 files:  79%|███████▊  | 11/14 [00:47<00:18,  6.08s/it]Fetching 14 files:  93%|█████████▎| 13/14 [00:49<00:04,  4.13s/it]Fetching 14 files: 100%|██████████| 14/14 [00:51<00:00,  3.57s/it]Fetching 14 files: 100%|██████████| 14/14 [00:51<00:00,  3.65s/it]
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:  13%|█▎        | 45/355 [00:00<00:00, 432.50it/s]Loading weights:  29%|██▊       | 102/355 [00:00<00:00, 511.40it/s]Loading weights:  44%|████▍     | 157/355 [00:00<00:00, 528.24it/s]Loading weights:  61%|██████    | 215/355 [00:00<00:00, 548.47it/s]Loading weights:  77%|███████▋  | 273/355 [00:00<00:00, 553.36it/s]Loading weights:  93%|█████████▎| 331/355 [00:00<00:00, 560.15it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 556.01it/s]
+seed 0: {'answered': 0.5927, 'row_acc': 0.292, 'L3_pairs': 0.0, 'same_name_both_twins': 0.5739, 'first_mentioned_share': 0.7936}
+seed 1: {'answered': 0.5422, 'row_acc': 0.2668, 'L3_pairs': 0.0, 'same_name_both_twins': 0.493, 'first_mentioned_share': 0.7482}
+seed 2: {'answered': 0.5075, 'row_acc': 0.247, 'L3_pairs': 0.0035, 'same_name_both_twins': 0.4542, 'first_mentioned_share': 0.7138}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.5939, 'row_acc': 0.2921, 'L3_pairs': 0.0, 'same_name_both_twins': 0.574, 'first_mentioned_share': 0.8025}, 'swapped': {'answered': 0.5841, 'row_acc': 0.2816, 'L3_pairs': 0.0072, 'same_name_both_twins': 0.5487, 'first_mentioned_share': 0.5346}, 'n_rows_answered_both': 652, 'kept_same_name': 0.7163, 'kept_same_position': 0.2837}
+wrote benchmark/binding_levels/controls/OLMo-2-1124-7B_stage1-step2000-tokens9B.json (1840.8 s)
+[Wed Nov 25 03:42:13 UTC 2026] end allenai/OLMo-2-1124-7B stage1-step2000-tokens9B rc=0
+[Wed Nov 25 03:42:13 UTC 2026] start allenai/OLMo-2-1124-7B stage1-step10000-tokens42B
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files:  14%|█▍        | 2/14 [00:00<00:00, 13.65it/s]Fetching 14 files:  36%|███▌      | 5/14 [00:00<00:00, 20.49it/s]Fetching 14 files:  57%|█████▋    | 8/14 [00:00<00:00, 17.12it/s]Fetching 14 files:  57%|█████▋    | 8/14 [00:20<00:00, 17.12it/s]Fetching 14 files:  64%|██████▍   | 9/14 [00:26<00:24,  4.99s/it]Fetching 14 files:  71%|███████▏  | 10/14 [00:37<00:24,  6.20s/it]Fetching 14 files:  79%|███████▊  | 11/14 [00:53<00:26,  8.68s/it]Fetching 14 files:  93%|█████████▎| 13/14 [00:54<00:05,  5.29s/it]Fetching 14 files: 100%|██████████| 14/14 [00:54<00:00,  3.88s/it]
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:  10%|▉         | 34/355 [00:00<00:00, 325.08it/s]Loading weights:  26%|██▌       | 93/355 [00:00<00:00, 470.42it/s]Loading weights:  44%|████▎     | 155/355 [00:00<00:00, 525.23it/s]Loading weights:  59%|█████▉    | 211/355 [00:00<00:00, 536.35it/s]Loading weights:  75%|███████▌  | 267/355 [00:00<00:00, 537.03it/s]Loading weights:  91%|█████████▏| 324/355 [00:00<00:00, 542.16it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 537.10it/s]
+seed 0: {'answered': 0.9921, 'row_acc': 0.4917, 'L3_pairs': 0.0246, 'same_name_both_twins': 0.9401, 'first_mentioned_share': 0.1965}
+seed 1: {'answered': 0.9645, 'row_acc': 0.4767, 'L3_pairs': 0.0141, 'same_name_both_twins': 0.9155, 'first_mentioned_share': 0.3101}
+seed 2: {'answered': 0.989, 'row_acc': 0.4878, 'L3_pairs': 0.0141, 'same_name_both_twins': 0.9472, 'first_mentioned_share': 0.3073}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.9927, 'row_acc': 0.4903, 'L3_pairs': 0.0253, 'same_name_both_twins': 0.9422, 'first_mentioned_share': 0.1883}, 'swapped': {'answered': 0.9935, 'row_acc': 0.5049, 'L3_pairs': 0.0253, 'same_name_both_twins': 0.9386, 'first_mentioned_share': 0.3591}, 'n_rows_answered_both': 1226, 'kept_same_name': 0.5245, 'kept_same_position': 0.4755}
+wrote benchmark/binding_levels/controls/OLMo-2-1124-7B_stage1-step10000-tokens42B.json (1923.5 s)
+[Wed Nov 25 04:14:25 UTC 2026] end allenai/OLMo-2-1124-7B stage1-step10000-tokens42B rc=0
+[Wed Nov 25 04:14:25 UTC 2026] start allenai/OLMo-2-1124-7B main
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files:  14%|█▍        | 2/14 [00:00<00:00, 15.86it/s]Fetching 14 files:  36%|███▌      | 5/14 [00:00<00:00, 21.38it/s]Fetching 14 files:  57%|█████▋    | 8/14 [00:00<00:00, 17.57it/s]Fetching 14 files:  57%|█████▋    | 8/14 [00:19<00:00, 17.57it/s]Fetching 14 files:  64%|██████▍   | 9/14 [00:25<00:24,  4.81s/it]Fetching 14 files:  71%|███████▏  | 10/14 [00:30<00:19,  4.84s/it]Fetching 14 files:  86%|████████▌ | 12/14 [00:46<00:12,  6.05s/it]Fetching 14 files:  93%|█████████▎| 13/14 [00:51<00:05,  5.83s/it]Fetching 14 files: 100%|██████████| 14/14 [00:59<00:00,  6.33s/it]Fetching 14 files: 100%|██████████| 14/14 [00:59<00:00,  4.25s/it]
+Loading weights:   0%|          | 0/355 [00:00<?, ?it/s]Loading weights:  10%|█         | 36/355 [00:00<00:00, 330.56it/s]Loading weights:  28%|██▊       | 98/355 [00:00<00:00, 486.90it/s]Loading weights:  44%|████▍     | 157/355 [00:00<00:00, 514.96it/s]Loading weights:  61%|██████    | 216/355 [00:00<00:00, 543.37it/s]Loading weights:  76%|███████▋  | 271/355 [00:00<00:00, 544.93it/s]Loading weights:  92%|█████████▏| 326/355 [00:00<00:00, 538.77it/s]Loading weights: 100%|██████████| 355/355 [00:00<00:00, 536.59it/s]
+seed 0: {'answered': 0.9992, 'row_acc': 0.614, 'L3_pairs': 0.25, 'same_name_both_twins': 0.7113, 'first_mentioned_share': 0.2978}
+seed 1: {'answered': 0.9984, 'row_acc': 0.6125, 'L3_pairs': 0.257, 'same_name_both_twins': 0.7183, 'first_mentioned_share': 0.3059}
+seed 2: {'answered': 0.9992, 'row_acc': 0.5983, 'L3_pairs': 0.2394, 'same_name_both_twins': 0.75, 'first_mentioned_share': 0.2757}
+order swap: {'n_rows_swapped': 1236, 'n_pairs_swapped': 277, 'original': {'answered': 0.9992, 'row_acc': 0.6149, 'L3_pairs': 0.2527, 'same_name_both_twins': 0.7112, 'first_mentioned_share': 0.2931}, 'swapped': {'answered': 0.9992, 'row_acc': 0.5502, 'L3_pairs': 0.2347, 'same_name_both_twins': 0.6318, 'first_mentioned_share': 0.604}, 'n_rows_answered_both': 1235, 'kept_same_name': 0.5684, 'kept_same_position': 0.4316}
+wrote benchmark/binding_levels/controls/OLMo-2-1124-7B_main.json (680.8 s)
+[Wed Nov 25 06:51:21 UTC 2026] end allenai/OLMo-2-1124-7B main rc=0
+[Wed Nov 25 06:51:21 UTC 2026] a10 queue finished

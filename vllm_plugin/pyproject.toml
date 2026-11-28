@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bubblspace-vllm"
+version = "0.1.0"
+description = "vLLM plugin for BubblSpace MoE-0.9B-A0.2B (out-of-tree model)"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+dependencies = ["vllm"]
+
+[project.entry-points."vllm.general_plugins"]
+bubblspace = "bubblspace_vllm:register"
+
+[tool.setuptools]
+packages = ["bubblspace_vllm"]

@@ -1,0 +1,35 @@
+[Sun Nov 22 16:07:20 UTC 2026] gen phase1_step19073
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[Sun Nov 22 17:06:31 UTC 2026] restarted: Phase 2 HE+MBPP first, then Phase 1 HE only
+[Sun Nov 22 17:06:31 UTC 2026] gen phase2_step9000
+[ckpt] /lambda/nfs/us-west-1-eval-inference/keep/phase2_step_9000.pt (step 9000)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[humaneval] 164 completions in 2231s
+[mbpp] 500 completions in 4379s
+[codegen] saved benchmark/phase2/codegen_phase2_step9000.json (NOT executed; run scripts/sandbox_exec.py)
+[Sun Nov 22 18:57:05 UTC 2026] exec phase2_step9000 (background)
+[Sun Nov 22 18:57:05 UTC 2026] gen phase1_step19073
+[ckpt] /lambda/nfs/us-west-1-eval-inference/step_19073.pt (step 19073)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[humaneval] pass@1 = 15/164 = 9.1%   {'exit_1': 149, 'ok': 15}
+[mbpp] pass@1 = 42/500 = 8.4%   {'exit_1': 457, 'ok': 42, 'timeout': 1}
+[sandbox] saved benchmark/phase2/codeexec_phase2_step9000.json
+[Sun Nov 22 18:57:30 UTC 2026] exec done phase2_step9000
+[humaneval] 164 completions in 5085s
+[codegen] saved benchmark/phase2/codegen_phase1_step19073.json (NOT executed; run scripts/sandbox_exec.py)
+[Sun Nov 22 20:22:14 UTC 2026] exec phase1_step19073 (background)
+[humaneval] pass@1 = 0/164 = 0.0%   {'exit_1': 164}
+[sandbox] saved benchmark/phase2/codeexec_phase1_step19073.json
+[Sun Nov 22 20:22:19 UTC 2026] exec done phase1_step19073
+[Sun Nov 22 20:22:19 UTC 2026] code eval finished
+[Mon Nov 23 04:59:14 UTC 2026] gen phase2_step19000
+[ckpt] /lambda/nfs/us-west-1-eval-inference/keep/phase2_step_19000.pt (step 19000)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[humaneval] 164 completions in 1450s
+[mbpp] 500 completions in 3711s
+[codegen] saved benchmark/phase2/codegen_phase2_step19000.json (NOT executed; run scripts/sandbox_exec.py)
+[Mon Nov 23 06:26:35 UTC 2026] exec phase2_step19000
+[humaneval] pass@1 = 19/164 = 11.6%   {'exit_1': 145, 'ok': 19}
+[mbpp] pass@1 = 63/500 = 12.6%   {'ok': 63, 'exit_1': 436, 'exit_137': 1}
+[sandbox] saved benchmark/phase2/codeexec_phase2_step19000.json
+[Mon Nov 23 06:26:58 UTC 2026] code eval 19k finished

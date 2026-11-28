@@ -26,8 +26,15 @@ from pathlib import Path
 import torch
 from safetensors.torch import load_file, save_file
 
-OPT_KEYS = ("muon_opt", "adamw_opt")
+OPT_KEYS = ("muon_opt", "adamw_opt")        # pretraining / SFT checkpoints (scripts/train.py)
 SCHED_KEYS = ("muon_sched", "adamw_sched")
+RL_OPT_KEYS = ("optimizer",)                 # RL checkpoints (scripts/train_grpo.py: one AdamW)
+RL_SCHED_KEYS = ("scheduler",)
+
+
+def _state_keys(ck):
+    """Optimizer + scheduler keys present in a checkpoint (both layouts); exports record them so restore is exact."""
+    return [k for k in OPT_KEYS + SCHED_KEYS + RL_OPT_KEYS + RL_SCHED_KEYS if k in ck]
 TENSOR_TAG = "__tensor__"
 
 
@@ -69,10 +76,12 @@ def export(pt_path, out_dir):
     out.mkdir(parents=True, exist_ok=True)
     save_file({k: v.contiguous() for k, v in ck["model"].items()}, str(out / "model.safetensors"), metadata={"step": str(ck["step"])})
     opt_t, rng_t, state = {}, {}, {"step": ck["step"], "config": ck.get("config"), "keys": sorted(ck.keys())}
-    for k in OPT_KEYS:
-        state[k] = _split(ck[k], k, opt_t)
-    for k in SCHED_KEYS:
+    state["state_keys"] = _state_keys(ck)
+    for k in state["state_keys"]:
         state[k] = _split(ck[k], k, opt_t)  # schedulers are tensor-free in practice
+    for k in ("rl_info",):                   # RL extras (reference checkpoint, task file, ...): plain JSON
+        if k in ck:
+            state[k] = ck[k]
     state["rng"] = _split({"rng_state": ck.get("rng_state"), "cuda_rng_state": ck.get("cuda_rng_state")}, "rng", rng_t)
     save_file(opt_t, str(out / "optimizer.safetensors"))
     save_file(rng_t, str(out / "rng.safetensors"))
@@ -86,8 +95,10 @@ def restore(dir_path):
     opt_t = load_file(str(d / "optimizer.safetensors"))
     rng_t = load_file(str(d / "rng.safetensors"))
     ck = {"model": load_file(str(d / "model.safetensors")), "step": state["step"], "config": state["config"]}
-    for k in OPT_KEYS + SCHED_KEYS:
+    for k in state.get("state_keys", OPT_KEYS + SCHED_KEYS):  # older exports: the pretraining layout
         ck[k] = _join(state[k], opt_t)
+    if "rl_info" in state:
+        ck["rl_info"] = state["rl_info"]
     ck.update(_join(state["rng"], rng_t))
     return ck
 

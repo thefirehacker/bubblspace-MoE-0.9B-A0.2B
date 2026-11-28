@@ -1,0 +1,45 @@
+# Phase 4 RL v1: GRPO with verifiable rewards (doc/plan-06-phase-4-rl.md, doc/rl-primer-phase4.md)
+# init: Phase 3 run 02b step 1500 (chosen 27 Nov after the run 01 vs run 02b evals); tasks: set v3 filtered for it.
+run_name: Phase4_rl_v1
+out_dir: /lambda/nfs/h100-f1/checkpoints/Phase4_rl_v1
+model_config: configs/phase3_run02b.yaml          # architecture (same for every Phase 3 run)
+init_checkpoint: /lambda/nfs/h100-f1/checkpoints/Phase3_run02b/step_1500.pt   # chosen 27 Nov (user): run 02b final
+vllm_model_dir: /home/ubuntu/vllm_models/Phase3_run02b-step1500               # scripts/make_vllm_model_dir.py of the same weights
+tasks: /home/ubuntu/rl_tasks/filtered_v3_run02b.jsonl                          # task set v3 filtered for run 02b (scripts/rl_filter.py)
+wandb_project: moe0-9b-a0-2b
+seed: 0
+
+steps: 500
+prompts_per_step: 64
+n_samples: 8
+max_tokens: 1024
+temperature: 1.0
+top_p: 1.0
+max_model_len: 6144
+vllm_gpu_mem: 0.3
+
+lr: 1.0e-6
+warmup_steps: 10
+betas: [0.9, 0.99]
+weight_decay: 0.0
+grad_clip: 1.0
+clip_eps: 0.2
+kl_beta: 0.02
+adv_std_norm: true
+ppo_epochs: 1
+micro_batch_tokens: 16384      # 27 Nov: 32768 ran out of GPU memory in the first update (logits + their grads); 16384 is proven
+
+area_weights:          # share of prompts per step
+  maths: 0.16
+  time: 0.11
+  ifeval: 0.09          # Tülu RLVR constraints (only the constraint is checkable)
+  ifeval_answer: 0.08   # constraint + known answer: both must hold (27 Nov fix)
+  code: 0.15
+  tool: 0.18            # raised 27 Nov: run 02b lost BFCL no-tool-needed (75% -> 59%), multiple and parallel calls
+  binding: 0.10
+  refusal: 0.13         # now incl. harmful-sounding but harmless prompts (expect an answer)
+
+val_per_area: 40
+eval_every: 25
+save_every: 100
+sandbox_workers: 16
